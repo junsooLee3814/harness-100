@@ -1,0 +1,451 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>강의 입력 정보</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">AI 활용 바이브코딩 · 강의 입력</div><h1>강의 입력 정보</h1></header><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">과정 주제</div></div>
+<p>AI 활용 바이브코딩 (Vibe Coding with AI)</p>
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">과정 설명</div></div>
+<p>Claude·Gemini 등 AI 도구와 VS Code 개발 환경을 활용하여 코드를 작성하는 "바이브코딩" 방법론을 기초부터 고급까지 단계적으로 학습한다. 프롬프트 엔지니어링, AI 페어 프로그래밍, Google AI 생태계 활용(Gemini · AI Studio · NotebookLM · 안티그래비티), VS Code 개발 환경 기초, 그리고 스킬·에이전트·MCP·하네스 등 AI 자동화 워크플로우까지 포괄한다.</p>
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">대상 학습자</div></div>
+<ul>
+<li><strong>입문</strong>: 코딩 경험 없는 일반인 / 비개발자 직장인</li>
+<li><strong>중급</strong>: 코딩 기초 있는 학습자, AI 도구 처음 접하는 개발자</li>
+<li><strong>고급</strong>: AI 도구를 실무에 적극 활용하고 싶은 개발자/기획자</li>
+</ul>
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">과정 규모</div></div>
+<ul>
+<li>총 8강 × 3시간 = 24시간</li>
+<li>주 2회 × 4주 (예: 화·목 또는 월·수)</li>
+<li>1강 구성: 이론 1시간 + 실습 2시간</li>
+</ul>
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">강의 구성 요청</div></div>
+<ul>
+<li><strong>커리큘럼</strong>: 8강 전체 구조, 강별 학습목표, 진도표</li>
+<li><strong>강의노트</strong>: 각 강별 상세 강의노트 (강사용 스크립트 포함)</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">실습 환경 (도구 목록)</div></div>
+<h3>Claude 계열 (Anthropic)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>도구</th>
+<th>접근 방법</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Chat</td>
+<td>claude.ai 웹 브라우저</td>
+<td>빠른 코드 생성·질문·아이디어 검증</td>
+</tr>
+<tr>
+<td>Claude Co-work (Projects)</td>
+<td>claude.ai → Projects 탭</td>
+<td>프로젝트 맥락 유지, 스킬 파일 저장</td>
+</tr>
+<tr>
+<td>Claude Code CLI</td>
+<td>터미널 (<code>claude</code> 명령어, npm 설치)</td>
+<td>실제 파일 수정·생성, 에이전트 직접 실행</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Google 계열 (Google 계정 공통 인증)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>도구</th>
+<th>접근 방법</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google 계정</td>
+<td>accounts.google.com</td>
+<td>아래 모든 Google 도구의 공통 로그인 기반</td>
+</tr>
+<tr>
+<td>Gemini</td>
+<td>gemini.google.com</td>
+<td>대화형 AI — Claude와 비교 체험</td>
+</tr>
+<tr>
+<td>Google AI Studio</td>
+<td>aistudio.google.com</td>
+<td>Gemini API 테스트, 프롬프트 플레이그라운드, API 키 발급</td>
+</tr>
+<tr>
+<td>NotebookLM</td>
+<td>notebooklm.google.com</td>
+<td>문서 기반 AI 리서치·요약·팟캐스트 생성</td>
+</tr>
+<tr>
+<td>안티그래비티</td>
+<td>강사 확인 후 기입</td>
+<td>AI 활용 자동화 / 특수 목적 도구</td>
+</tr>
+</tbody>
+</table></div>
+<h3>개발 환경</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>도구</th>
+<th>접근 방법</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VS Code</td>
+<td>code.visualstudio.com</td>
+<td>주 코드 에디터 — Claude Code CLI 통합</td>
+</tr>
+<tr>
+<td>Node.js / npm</td>
+<td>nodejs.org (LTS 버전)</td>
+<td>Claude Code CLI 설치 의존성</td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>github.com</td>
+<td>버전 관리, GitHub Pages 무료 배포</td>
+</tr>
+<tr>
+<td>Supabase</td>
+<td>supabase.com</td>
+<td>PostgreSQL DB + Auth(회원가입·로그인) + Storage, 무료 플랜</td>
+</tr>
+<tr>
+<td>Vercel</td>
+<td>vercel.com</td>
+<td>풀스택 배포, GitHub 자동 연동, 환경변수 관리</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Google Colab 제외</strong>: Python 실습이 필요한 경우 VS Code 내장 터미널에서 진행한다.
+<strong>설치 최소화</strong>: VS Code·Node.js 외 나머지는 웹 브라우저 접근 우선.
+<strong>GitHub + Supabase + Vercel = 현대 풀스택 3종 세트</strong>: 7·8강에서 통합 실습.</p>
+</blockquote>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">8강 강의 구성 (개요)</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>주차</th>
+<th>강</th>
+<th>주제</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1주</td>
+<td>1강</td>
+<td>바이브코딩의 세계 — Claude Chat + Gemini로 첫 코드 짜기</td>
+</tr>
+<tr>
+<td>1주</td>
+<td>2강</td>
+<td>프롬프트 엔지니어링 &amp; Claude Co-work — 잘 말하고 스킬을 만든다</td>
+</tr>
+<tr>
+<td>2주</td>
+<td>3강</td>
+<td>VS Code + Claude Code CLI — 개발 환경을 완전히 내 것으로</td>
+</tr>
+<tr>
+<td>2주</td>
+<td>4강</td>
+<td>Google AI 생태계 완전 정복 — Gemini · AI Studio · NotebookLM · 안티그래비티</td>
+</tr>
+<tr>
+<td>3주</td>
+<td>5강</td>
+<td>웹페이지 제작 심화 — 인터랙티브 UI &amp; API 연동</td>
+</tr>
+<tr>
+<td>3주</td>
+<td>6강</td>
+<td>AI 코드 리뷰 &amp; 디버깅 — 오류 없는 코드의 비밀</td>
+</tr>
+<tr>
+<td>4주</td>
+<td>7강</td>
+<td>나만의 AI 앱 제작 — Supabase + AI API로 풀스택 MVP</td>
+</tr>
+<tr>
+<td>4주</td>
+<td>8강</td>
+<td>프로덕션 배포 &amp; 고급 워크플로우 — 세상에 내보내기</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">08</span><div class="sess-title">5대 핵심 개념 도입 전략</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>개념</th>
+<th>한 줄 정의</th>
+<th>처음 체험 강</th>
+<th>방식</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>스킬 (Skill)</strong></td>
+<td>AI에게 전문 역할을 부여하는 재사용 지침 파일</td>
+<td>2강</td>
+<td>Co-work 시스템 지침 직접 작성</td>
+</tr>
+<tr>
+<td><strong>에이전트 (Agent)</strong></td>
+<td>목표를 주면 계획·실행·검증을 자율 수행하는 AI</td>
+<td>3강</td>
+<td>Claude Code CLI 첫 파일 생성</td>
+</tr>
+<tr>
+<td><strong>에이전트팀</strong></td>
+<td>역할 다른 에이전트들이 협업하는 구조</td>
+<td>1강</td>
+<td>강사 라이브 시연 (보기)</td>
+</tr>
+<tr>
+<td><strong>MCP</strong></td>
+<td>Claude와 외부 도구를 연결하는 표준 규약</td>
+<td>3강 (개념) / 8강 (실습)</td>
+<td>USB 비유 + 실제 연결</td>
+</tr>
+<tr>
+<td><strong>하네스 (Harness)</strong></td>
+<td>에이전트팀+스킬+MCP 묶음 반복 실행 파이프라인</td>
+<td>1강 (시연) / 8강 (직접 실행)</td>
+<td>결과물 감상 → 직접 구동</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">09</span><div class="sess-title">실행 모드</div></div>
+<p>풀 파이프라인 (커리큘럼 설계 → 강의노트 작성 → 과정 검증)</p></section></div></div></body></html>

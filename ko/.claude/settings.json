@@ -7,7 +7,9 @@
       "Bash(start \"c:/Users/juncp/00_claudecode/01_Harness_100/ko/03-newsletter-engine/_workspace/newsletter.html\")",
       "Bash(git commit *)",
       "Bash(git remote *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "PowerShell(if \\(-not \\(Test-Path \"C:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\08-course-builder\\\\_workspace\"\\)\\) { New-Item -ItemType Directory -Force \"C:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\08-course-builder\\\\_workspace\" } Get-ChildItem \"C:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\08-course-builder\\\\\" -ErrorAction SilentlyContinue)",
+      "PowerShell(if \\(-not $?\\) { \"Directory not found\" })"
     ],
     "additionalDirectories": [
       "c:\\Users\\juncp\\00_claudecode\\01_Harness_100\\ko\\03-newsletter-engine"
