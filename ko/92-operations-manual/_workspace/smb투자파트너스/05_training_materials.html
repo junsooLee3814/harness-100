@@ -1,0 +1,1875 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>SMB투자파트너스 신입 심사역 오리엔테이션 (5일 과정)</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">SMB투자파트너스 · 투자 업무 매뉴얼</div><h1>SMB투자파트너스 신입 심사역 오리엔테이션 (5일 과정)</h1></header><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">완성본 — Day 1 ~ Day 5 + 부록</div></div>
+<hr />
+<p><strong>문서 분류</strong>: 내부 교육자료 (한정 배포)<br />
+<strong>대상</strong>: 입사 3개월 이내 신입 심사역<br />
+<strong>작성 기준</strong>: 내부 프로세스 분석 보고서 및 단계별 업무 매뉴얼 기반<br />
+<strong>작성일</strong>: 2026-06-25 | <strong>버전</strong>: v1.0<br />
+<strong>구성</strong>: Part 1 (Day 1~3) + Part 2 (Day 4~5 + 부록) 통합본</p>
+<blockquote>
+<p><strong>면책 문구</strong>: 본 교육자료는 내부 업무 학습용이며 법적 효력을 갖지 않음. 모든 실무 판단은 현장 선배 심사역 및 팀장의 지도 하에 이루어져야 함.</p>
+</blockquote>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">표지 &amp; 커리큘럼</div></div>
+<h3>과정 개요</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>과정명</strong></td>
+<td>SMB투자파트너스 신입 심사역 오리엔테이션 (5일 과정)</td>
+</tr>
+<tr>
+<td><strong>대상</strong></td>
+<td>입사 3개월 이내 신입 심사역 전원</td>
+</tr>
+<tr>
+<td><strong>형태</strong></td>
+<td>강의 + 실습 + 퀴즈 혼합형</td>
+</tr>
+<tr>
+<td><strong>총 시간</strong></td>
+<td>5일 (1일 8시간, 총 40시간)</td>
+</tr>
+<tr>
+<td><strong>주관</strong></td>
+<td>투자심사팀 / 교육 담당 팀장</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>학습 목표 5개</h3>
+<ol>
+<li>
+<p><strong>PE·메자닌 투자 상품 이해</strong>: CB·BW·RCPS의 구조·특징·차이점을 설명하고, 사모펀드(PE) 내 LP·GP·포트폴리오의 역할 분담을 이해한다.</p>
+</li>
+<li>
+<p><strong>투자 프로세스 전체 흐름 파악</strong>: 딜 소싱부터 투자 회수(EXIT)까지 5단계 프로세스의 핵심 포인트·담당자·산출 문서를 습득하여 딜 진행 현황을 스스로 점검할 수 있다.</p>
+</li>
+<li>
+<p><strong>예비심사 보고서 독립 작성 능력 확보</strong>: 예비심사 보고서의 8개 필수 항목(딜 개요·기업 개요·재무 요약·리스크 요약·투자 구조·Valuation·투자 매력도·다음 단계)을 팀장 검토 수준의 초안으로 작성한다.</p>
+</li>
+<li>
+<p><strong>DD 체크리스트 핵심 항목 숙지</strong>: 재무·법무·세무·운영·시장·ESG 각 분야별 핵심 실사 항목을 파악하고, Data Room 자료를 체계적으로 검토하는 방법을 익힌다.</p>
+</li>
+<li>
+<p><strong>컴플라이언스·리스크 감각 내재화</strong>: 자본시장법(미공개정보 이용 금지, 이해충돌 방지 등) 핵심 규정을 이해하고, 각 단계에서 준법감시인 보고가 필요한 상황을 즉각 인지한다.</p>
+</li>
+</ol>
+<hr />
+<h3>5일 일정표</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>일차</th>
+<th>주제</th>
+<th>핵심 내용</th>
+<th>주요 산출</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Day 1</strong></td>
+<td>PE·메자닌 투자 기초</td>
+<td>CB·BW·RCPS 비교, 사모펀드 구조(LP·GP·포트폴리오), 핵심 용어 20개</td>
+<td>용어 플래시카드 숙지, 퀴즈 10문항</td>
+</tr>
+<tr>
+<td><strong>Day 2</strong></td>
+<td>투자 프로세스 전체 흐름</td>
+<td>5단계 프로세스 핵심 포인트, 담당자·산출 문서, 초기 스크리닝 실습</td>
+<td>실습 1(스크리닝 체크리스트), 퀴즈 10문항</td>
+</tr>
+<tr>
+<td><strong>Day 3</strong></td>
+<td>심사·DD 실무</td>
+<td>예비심사 보고서 8항목 작성법, DD 체크리스트 해설, 가상기업 보고서 초안</td>
+<td>실습 2(예비심사 보고서 초안), 퀴즈 10문항</td>
+</tr>
+<tr>
+<td><strong>Day 4</strong></td>
+<td>IC와 계약·집행</td>
+<td>IC 패키지(Pre-IC Memo) 작성, Term Sheet 주요 조항, 자본시장법 준수</td>
+<td>실습 3(IC 반대 의견 반박 시뮬레이션), 퀴즈 10문항</td>
+</tr>
+<tr>
+<td><strong>Day 5</strong></td>
+<td>사후관리·총정리</td>
+<td>포트폴리오 모니터링, Covenant 위반 대응, EXIT 전략·IRR 계산</td>
+<td>실습 4(가상 딜 Role-play), 종합 평가 25문항</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">Day 1. PE·메자닌 투자 기초</div></div>
+<h3>강의 요약 1-A: 메자닌이란? CB·BW·RCPS 비교</h3>
+<h4>메자닌(Mezzanine) 투자란?</h4>
+<p>메자닌(Mezzanine)은 이탈리아어로 '중간층'을 뜻합니다. 투자 세계에서는 <strong>선순위 채권(은행 대출)과 보통주 사이의 중간 위험·수익 구조</strong>를 가진 투자 상품을 총칭합니다.</p>
+<pre><code>고위험·고수익
+  ┌─────────────────┐
+  │   보통주 (주식) │  ← 업사이드 최대, 원금 회수 후순위
+  ├─────────────────┤
+  │   메자닌         │  ← CB · BW · RCPS  ★ 우리의 주 투자 영역
+  ├─────────────────┤
+  │ 선순위 채권(대출)│  ← 원금 회수 최우선, 수익률 낮음
+  └─────────────────┘
+저위험·저수익
+</code></pre>
+<p><strong>메자닌의 핵심 매력</strong></p>
+<ul>
+<li><strong>원금 보전 장치</strong>: 채권(사채)으로 원금과 이자를 확보</li>
+<li><strong>주식 업사이드 참여</strong>: 전환권·인수권으로 기업 성장 수익 공유</li>
+<li><strong>담보 및 약정</strong>: Covenant, 담보 설정으로 투자 원금 보호 장치 강화</li>
+</ul>
+<hr />
+<h4>CB·BW·RCPS 3가지 핵심 상품 비교표</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>CB (전환사채)</th>
+<th>BW (신주인수권부사채)</th>
+<th>RCPS (상환전환우선주)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>정의</strong></td>
+<td>주식으로 전환 가능한 사채</td>
+<td>신주인수권(Warrant)이 부가된 사채</td>
+<td>상환 청구권 또는 보통주 전환이 가능한 우선주</td>
+</tr>
+<tr>
+<td><strong>법적 근거</strong></td>
+<td>상법 제513조</td>
+<td>상법 제516조의2</td>
+<td>상법 제345조</td>
+</tr>
+<tr>
+<td><strong>영문 약어</strong></td>
+<td>Convertible Bond</td>
+<td>Bond with Warrant</td>
+<td>Redeemable Convertible Preferred Stock</td>
+</tr>
+<tr>
+<td><strong>원금 보전</strong></td>
+<td>O (만기 상환)</td>
+<td>O (만기 상환)</td>
+<td>O (상환 청구 시)</td>
+</tr>
+<tr>
+<td><strong>이자 수취</strong></td>
+<td>O (확정 쿠폰)</td>
+<td>O (확정 쿠폰)</td>
+<td>X (배당 형태 — 미지급 시 누적 가능)</td>
+</tr>
+<tr>
+<td><strong>전환·행사 후 사채 소멸</strong></td>
+<td>O (사채 소멸, 주식 취득)</td>
+<td>X (사채 유지, 신주 추가 취득)</td>
+<td>O (우선주 소멸, 보통주 전환)</td>
+</tr>
+<tr>
+<td><strong>담보 설정</strong></td>
+<td>가능</td>
+<td>가능</td>
+<td>불가 (주식 담보는 별도)</td>
+</tr>
+<tr>
+<td><strong>대표 활용 상황</strong></td>
+<td>성장기 기업, 전환 업사이드 기대</td>
+<td>원금 보전 + 주식 업사이드 분리 원할 때</td>
+<td>스타트업·VC 후기 라운드, 청산 우선권 필요 시</td>
+</tr>
+<tr>
+<td><strong>회계상 분류</strong></td>
+<td>부채 (사채) + 전환권</td>
+<td>부채 (사채) + 신주인수권</td>
+<td>부채 또는 자본 (K-IFRS 판단)</td>
+</tr>
+<tr>
+<td><strong>기업 입장 리스크</strong></td>
+<td>전환 시 지분 희석</td>
+<td>행사 시 지분 희석 (원금도 유지)</td>
+<td>상환 청구 시 현금 유출</td>
+</tr>
+<tr>
+<td><strong>투자자 입장 우위</strong></td>
+<td>주가 상승 시 대규모 차익</td>
+<td>사채 + 주식 이중 이익 가능</td>
+<td>청산 시 선순위 분배, 보호 조항 강력</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>요약 한 줄</strong>: CB = 채권이 통째로 주식으로 바뀐다. BW = 채권은 그대로, 신주 살 권리가 추가된다. RCPS = 우선주로, 상환 또는 보통주 전환 중 선택한다.</p>
+</blockquote>
+<hr />
+<h3>강의 요약 1-B: 사모펀드 구조 (LP·GP·포트폴리오)</h3>
+<h4>사모펀드(Private Equity Fund) 기본 구조</h4>
+<pre><code>       [LP - 유한책임파트너]
+  국민연금 / 공제회 / 기업 / 고액 개인
+         ↓ 출자 (자금 투입)
+  ┌─────────────────────────┐
+  │   사모펀드 (Fund)        │
+  │  운용사: SMB투자파트너스  │  ← GP (무한책임파트너)
+  └─────────────────────────┘
+         ↓ 투자 집행
+  [포트폴리오 기업 1] [포트폴리오 기업 2] [포트폴리오 기업 3]
+  CB·BW·RCPS로 투자   CB·BW·RCPS로 투자   CB·BW·RCPS로 투자
+         ↓ 수익 회수 (EXIT)
+  [수익 분배: LP → GP 순서]
+  LP: 원금 + 이익 (우선 분배)
+  GP: 성과보수 (Carried Interest, 통상 20%)
+</code></pre>
+<h4>핵심 주체별 역할</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>주체</th>
+<th>한국어</th>
+<th>역할</th>
+<th>책임 범위</th>
+<th>수익 구조</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GP</strong></td>
+<td>무한책임파트너 (운용사)</td>
+<td>펀드 운용 전반 책임. 딜 소싱·심사·집행·사후관리·EXIT</td>
+<td>무한 책임</td>
+<td>관리보수(AUM의 1~2% 내외) + 성과보수(Carried Interest)</td>
+</tr>
+<tr>
+<td><strong>LP</strong></td>
+<td>유한책임파트너 (출자자)</td>
+<td>자금 출자. 운용에 직접 개입 불가</td>
+<td>출자금 한도 내 유한 책임</td>
+<td>우선분배 후 잔여 이익</td>
+</tr>
+<tr>
+<td><strong>IC</strong></td>
+<td>투자심의위원회</td>
+<td>개별 투자 건 찬반 최종 결의</td>
+<td>결의 결과에 대한 내부 책임</td>
+<td>해당 없음</td>
+</tr>
+<tr>
+<td><strong>심사역</strong></td>
+<td>Deal Analyst / Investment Associate</td>
+<td>딜 소싱, 스크리닝, 예비심사, DD, IC Memo, 사후관리</td>
+<td>업무 과실 책임</td>
+<td>급여 + 성과급</td>
+</tr>
+<tr>
+<td><strong>준법감시인</strong></td>
+<td>CCO (Chief Compliance Officer)</td>
+<td>규정 준수 감시, IC 참관, 미공개정보 관리</td>
+<td>컴플라이언스 책임</td>
+<td>급여</td>
+</tr>
+</tbody>
+</table></div>
+<h4>펀드 수명 주기</h4>
+<pre><code>펀드 설정 → 투자기간 (통상 3~5년) → 회수기간 (통상 3~5년) → 청산
+  ↑                ↑                       ↑
+LP 약정 체결   딜 소싱·심사·집행          EXIT·분배
+</code></pre>
+<p><strong>심사역의 역할</strong>: 투자기간에는 딜 소싱과 심사·집행이 핵심. 회수기간에는 사후관리와 EXIT 실행이 핵심.</p>
+<hr />
+<h3>핵심 용어 플래시카드 20개</h3>
+<blockquote>
+<p>학습 방법: 용어를 보고 정의를 먼저 떠올린 후, 정의를 확인한다. 예시 컬럼으로 실제 맥락을 연결한다.</p>
+</blockquote>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>용어 (약어)</th>
+<th>정의</th>
+<th>실무 예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>IC</strong> (Investment Committee, 투자심의위원회)</td>
+<td>투자 여부를 최종 결의하는 내부 의사결정 기구. 대표이사 포함 3인 이상 구성</td>
+<td>"IC에 안건 올리기 전에 팀장 검토부터 받아야 해요"</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>DD</strong> (Due Diligence, 실사)</td>
+<td>투자 전 기업의 재무·법무·세무·사업 현황을 심층 검토하는 검증 절차</td>
+<td>"DD 착수했더니 숨겨진 소송이 발견됐어요"</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>LOI</strong> (Letter of Intent, 투자의향서)</td>
+<td>투자의향과 예비 조건을 명시한 비구속적(Non-binding) 문서</td>
+<td>"LOI 발송했으니 기업 측 회신 기다리는 중"</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>CB</strong> (Convertible Bond, 전환사채)</td>
+<td>일정 조건 충족 시 주식으로 전환 가능한 사채. 메자닌 투자의 핵심 수단</td>
+<td>"CB 발행가 5,000원에 전환권 행사하면 주당 3만 원이니 6배야"</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>BW</strong> (Bond with Warrant, 신주인수권부사채)</td>
+<td>사채에 신주인수권(Warrant)을 부가한 증권. 원금 보전 + 주식 업사이드 확보</td>
+<td>"BW는 사채 만기에 원금 받고, 워런트는 따로 행사해서 신주 취득 가능"</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>RCPS</strong> (Redeemable Convertible Preferred Stock, 상환전환우선주)</td>
+<td>일정 기간 후 상환 청구 또는 보통주 전환이 가능한 우선주</td>
+<td>"RCPS라서 청산 시 보통주 앞에 먼저 분배받아요"</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>EV</strong> (Enterprise Value, 기업가치)</td>
+<td>시가총액 + 순차입금. 기업의 총 가치를 나타내는 지표</td>
+<td>"EV 300억 / EBITDA 30억 = EV/EBITDA 10배"</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>EBITDA</strong> (Earnings Before Interest, Taxes, Depreciation and Amortization)</td>
+<td>이자·세금·감가상각 전 이익. 기업의 현금 창출 능력 핵심 지표</td>
+<td>"영업이익 20억 + 감가상각 5억 = EBITDA 25억"</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>IRR</strong> (Internal Rate of Return, 내부수익률)</td>
+<td>투자금의 현재가치와 회수금의 현재가치를 같게 만드는 할인율. 투자 성과 핵심 지표</td>
+<td>"3년 투자에 IRR 25% 달성했으니 훌륭한 딜이에요"</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>MoM / MOIC</strong> (Multiple on Money, 투자배수)</td>
+<td>회수금 ÷ 투자금. 배수로 표현하는 투자 성과</td>
+<td>"50억 투자해서 150억 회수 → MoM 3.0x"</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Covenant</strong> (재무 약정)</td>
+<td>투자계약서에 명시된 재무 지표 유지 의무</td>
+<td>"DSCR 1.2배 이상 유지가 Covenant 조건이에요"</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>DSCR</strong> (Debt Service Coverage Ratio, 부채상환비율)</td>
+<td>영업현금흐름 ÷ 원리금상환액. 1.0 미만 시 원리금 상환 불가 신호</td>
+<td>"DSCR 0.9로 Covenant 위반 → 즉시 팀장 보고!"</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>DCF</strong> (Discounted Cash Flow, 현금흐름할인법)</td>
+<td>미래 현금흐름을 현재가치로 할인하여 기업가치를 산정하는 Valuation 방법</td>
+<td>"DCF로 산정하니 기업가치 400억, EV/EBITDA로는 350억 → 범위 350~400억"</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>SHA</strong> (Shareholders' Agreement, 주주간계약)</td>
+<td>주주 간 권리·의무(동반매각권, 우선매수권 등)를 규정한 계약서</td>
+<td>"SHA에 동반매각의무(Drag-Along) 조항 넣었어요"</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>CP</strong> (Conditions Precedent, 선행조건)</td>
+<td>자금 집행(Closing) 전 충족해야 하는 조건들</td>
+<td>"이사회 결의서 수령이 CP인데 아직 못 받았어요"</td>
+</tr>
+<tr>
+<td>16</td>
+<td><strong>Data Room</strong> (데이터 룸)</td>
+<td>DD 과정에서 기업 측이 제공하는 자료 공유 공간 (실물 또는 가상)</td>
+<td>"VDR(가상 데이터 룸) 접근 권한 받았어요"</td>
+</tr>
+<tr>
+<td>17</td>
+<td><strong>Finder's Fee</strong> (소개 수수료)</td>
+<td>딜 소싱에 기여한 소개인에게 지급하는 성공보수</td>
+<td>"Closing 완료 후 IB에 소개 수수료 1% 지급 예정"</td>
+</tr>
+<tr>
+<td>18</td>
+<td><strong>Put Option</strong> (조기상환청구권)</td>
+<td>투자자가 특정 조건 발생 시 기업 측에 조기 상환을 요구할 수 있는 권리</td>
+<td>"대표이사 변경되면 Put Option 행사 검토해야 해요"</td>
+</tr>
+<tr>
+<td>19</td>
+<td><strong>메자닌 투자</strong> (Mezzanine Investment)</td>
+<td>선순위 대출과 주식 사이의 중간 위험·수익 구조 투자. CB·BW·RCPS가 대표 수단</td>
+<td>"우리 팀은 메자닌 전문이라 CB·BW 위주로 투자해요"</td>
+</tr>
+<tr>
+<td>20</td>
+<td><strong>LP</strong> (Limited Partner, 유한책임파트너)</td>
+<td>사모펀드(PE 펀드)에 자금을 출자한 투자자. 운용사(GP)에게 운용을 위임</td>
+<td>"LP인 공제회에 분기 보고서 제출해야 해요"</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>Day 1 퀴즈 — 10문항</h3>
+<blockquote>
+<p>퀴즈 풀이 방법: 문제를 읽고 답을 고른 뒤, 정답·해설을 확인한다.</p>
+</blockquote>
+<hr />
+<p><strong>[객관식 1]</strong></p>
+<p><strong>문제</strong>: 전환사채(CB)와 신주인수권부사채(BW)의 가장 큰 차이점은?</p>
+<p>① CB는 만기까지 이자를 지급하지 않지만, BW는 이자를 지급한다.<br />
+② CB를 전환하면 사채가 소멸되지만, BW는 신주인수권을 행사해도 원래 사채가 유지된다.<br />
+③ CB는 상법 제516조의2에 근거하지만, BW는 상법 제513조에 근거한다.<br />
+④ CB는 담보 설정이 불가능하지만, BW는 담보 설정이 가능하다.</p>
+<p><strong>정답</strong>: ②</p>
+<p><strong>해설</strong>: CB를 주식으로 전환하면 사채 자체가 소멸되고 주식으로 대체된다. 반면 BW는 신주인수권(Warrant)만 분리 행사할 수 있어 원래 사채(채권)는 그대로 유지되면서 추가로 신주를 취득한다. 따라서 BW는 이론적으로 원금 회수(사채 만기상환)와 주식 업사이드(워런트 행사)를 동시에 누릴 수 있다.</p>
+<hr />
+<p><strong>[객관식 2]</strong></p>
+<p><strong>문제</strong>: 다음 중 사모펀드(PE) 구조에서 GP(General Partner)의 설명으로 올바른 것은?</p>
+<p>① 자금을 출자하지만 운용에 직접 관여하지 않는다.<br />
+② 출자금 한도 내에서만 손실을 부담하는 유한책임을 진다.<br />
+③ 펀드 운용 전반을 책임지며 성과보수(Carried Interest)를 수취한다.<br />
+④ 투자 결정권이 없으며 IC의 지시에만 따른다.</p>
+<p><strong>정답</strong>: ③</p>
+<p><strong>해설</strong>: GP는 무한책임파트너로서 펀드 운용(딜 소싱·심사·집행·사후관리·EXIT)을 총괄한다. 관리보수(운용자산의 약 1~2%)와 성과보수(Carried Interest, 통상 수익의 20%)를 수취한다. ①②는 LP(유한책임파트너)의 설명이고, ④는 사실과 다르다 — GP가 IC를 구성하여 투자 결정을 주도한다.</p>
+<hr />
+<p><strong>[객관식 3]</strong></p>
+<p><strong>문제</strong>: EBITDA를 올바르게 설명한 것은?</p>
+<p>① 법인세를 납부한 후의 순이익을 말한다.<br />
+② 이자·세금·감가상각비 차감 전 이익으로, 기업의 현금 창출 능력을 나타낸다.<br />
+③ 부동산 매각 이익 등 비경상 이익을 모두 포함한 광의의 이익 개념이다.<br />
+④ 영업이익과 동일한 개념으로 혼용 가능하다.</p>
+<p><strong>정답</strong>: ②</p>
+<p><strong>해설</strong>: EBITDA = 영업이익 + 감가상각비 + 상각비. 이자비용과 세금을 더하기 전이라 자본구조(부채 유무)의 영향을 받지 않아 기업 간 현금 창출력 비교에 유용하다. 영업이익과는 다르다(영업이익 = EBITDA - 감가상각비). 비경상 항목은 보통 Adjusted EBITDA 산정 시 별도로 제거한다.</p>
+<hr />
+<p><strong>[객관식 4]</strong></p>
+<p><strong>문제</strong>: DSCR(Debt Service Coverage Ratio)이 1.0 미만으로 Covenant를 위반했을 때, 심사역의 첫 번째 행동으로 가장 적절한 것은?</p>
+<p>① 기업 측에 즉시 Put Option 행사 통보서를 발송한다.<br />
+② 위반 사실을 기록하고 즉시 팀장 및 준법감시인에게 보고한다.<br />
+③ 다음 분기 재무제표를 받아본 후 추세를 확인하고 판단한다.<br />
+④ 외부 법무법인에 직접 연락하여 담보 실행 절차를 문의한다.</p>
+<p><strong>정답</strong>: ②</p>
+<p><strong>해설</strong>: Covenant 위반 시 심사역은 먼저 위반 사실을 기록하고 팀장 및 준법감시인에게 즉시 보고해야 한다. 대응 수준(경고 서한·시정 요구·조기상환 청구 여부)은 팀장이 결정하며, 심사역이 독단으로 법적 조치를 취하거나 방치해서는 안 된다.</p>
+<hr />
+<p><strong>[객관식 5]</strong></p>
+<p><strong>문제</strong>: 메자닌 투자에서 IRR(내부수익률)에 대한 설명으로 틀린 것은?</p>
+<p>① IRR은 투자 기간 동안의 현금흐름을 고려하는 성과 지표다.<br />
+② IRR이 높을수록 같은 MoM(배수)이라도 투자 성과가 더 좋다.<br />
+③ IRR이 높을수록 회수금이 크다는 의미이므로 MoM도 반드시 높다.<br />
+④ 조기 회수(Early Exit)가 이루어지면 동일 MoM이라도 IRR이 높아진다.</p>
+<p><strong>정답</strong>: ③</p>
+<p><strong>해설</strong>: IRR과 MoM은 다른 개념이다. IRR은 시간 가치를 반영한 할인율이고, MoM은 단순 배수다. 예를 들어 1년 만에 1.3배 회수(MoM 1.3x)하면 IRR은 30%이지만, 5년 만에 2.0배 회수(MoM 2.0x)하면 IRR은 약 15%다. MoM이 높다고 IRR도 반드시 높은 것은 아니다.</p>
+<hr />
+<p><strong>[단답형 6]</strong></p>
+<p><strong>문제</strong>: CB(전환사채)와 BW(신주인수권부사채)를 발행할 수 있는 법적 근거가 되는 상법 조항을 각각 쓰시오.</p>
+<p><strong>정답</strong>: CB — 상법 제513조 / BW — 상법 제516조의2</p>
+<p><strong>해설</strong>: 투자계약서 검토 및 기업 이사회 결의서 확인 시 반드시 해당 조항에 근거한 발행 한도 및 이사회 결의 여부를 확인해야 한다.</p>
+<hr />
+<p><strong>[단답형 7]</strong></p>
+<p><strong>문제</strong>: 사모펀드에서 LP가 뜻하는 영어 단어를 풀어 쓰시오.</p>
+<p><strong>정답</strong>: Limited Partner (유한책임파트너)</p>
+<p><strong>해설</strong>: LP는 자금을 출자하지만 운용에 직접 관여하지 않으며, 출자금 한도 내에서만 책임을 진다. 국민연금·공제회·금융기관·기업 등이 대표적인 LP다.</p>
+<hr />
+<p><strong>[단답형 8]</strong></p>
+<p><strong>문제</strong>: 기업가치(EV) 산정 시, EV = 시가총액 + ( )이다. 괄호 안에 들어갈 항목을 쓰시오.</p>
+<p><strong>정답</strong>: 순차입금 (= 총차입금 - 현금성자산)</p>
+<p><strong>해설</strong>: EV(Enterprise Value)는 인수 시 실질적으로 지불해야 하는 총비용 개념이다. 시가총액만 보면 부채(차입금)를 무시하게 되므로, 부채를 포함하고 현금성자산은 차감하여 EV를 산출한다.</p>
+<hr />
+<p><strong>[단답형 9]</strong></p>
+<p><strong>문제</strong>: 투자자가 특정 조건(Covenant 위반, 대표이사 변경 등) 발생 시 기업 측에 원금 조기 상환을 요구할 수 있는 권리를 무엇이라 하는가?</p>
+<p><strong>정답</strong>: Put Option (조기상환청구권)</p>
+<p><strong>해설</strong>: Put Option은 투자계약서에 명시되며, 행사 조건(트리거)이 발생하면 투자자가 기업에 서면으로 행사 통보를 한다. 기업이 상환하지 못할 경우 담보 실행 절차로 이어진다.</p>
+<hr />
+<p><strong>[단답형 10]</strong></p>
+<p><strong>문제</strong>: 영업이익이 20억 원이고 감가상각비가 8억 원일 때, EBITDA는 얼마인가? (단위: 억 원)</p>
+<p><strong>정답</strong>: 28억 원</p>
+<p><strong>해설</strong>: EBITDA = 영업이익 + 감가상각비 = 20억 + 8억 = 28억 원. 실무에서는 여기에 비경상(One-off) 항목을 추가 조정하여 Adjusted EBITDA를 산출한다.</p>
+<hr />
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">Day 2. 투자 프로세스 전체 흐름</div></div>
+<h3>강의 요약 2-A: 5단계 프로세스 핵심 포인트</h3>
+<p>SMB투자파트너스의 투자 프로세스는 5단계로 구성된다. 각 단계 사이에는 반드시 GO/NO-GO 판단이 이루어지며, 조건 미충족 시 이전 단계로 되돌아가거나 딜이 종결된다.</p>
+<pre><code>① 투자요청 접수 (1~5 영업일)
+        ↓ [NDA 체결 완료 + 팀장 배정 승인] ← GO 조건
+② 예비심사 (5~17 영업일)
+        ↓ [팀장 GO 결재 + LOI 서명 수령 + DD 예산 승인] ← GO 조건
+③ 본심사 — DD &amp; IC (4~8주)
+        ↓ [IC 결의 — 과반수 찬성] ← GO 조건
+④ 투자 집행 — Closing (2~6주)
+        ↓ [클로징 체크리스트 전 항목 완료] ← GO 조건
+⑤ 사후관리 &amp; EXIT (통상 3~7년)
+        ↓ [EXIT 조건 충족]
+투자 회수 완료
+</code></pre>
+<p><strong>전체 소요기간 (접수~클로징)</strong>: 최단 6주 / 일반 12~16주 / 최장 6개월 이상</p>
+<h4>단계별 핵심 포인트 요약</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>핵심 포인트</th>
+<th>가장 중요한 한 가지</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 투자요청 접수</td>
+<td>업종 적합성·법적 결격 1차 필터링 → NDA 체결 → CRM 등록</td>
+<td><strong>NDA 없이 정보 공유 금지</strong></td>
+</tr>
+<tr>
+<td>② 예비심사</td>
+<td>재무·리스크 기초 분석 → 예비심사 보고서 → 팀장 GO/NO-GO → LOI 발송</td>
+<td><strong>팀장 GO 결재 받기 전 LOI 발송 불가</strong></td>
+</tr>
+<tr>
+<td>③ 본심사(DD·IC)</td>
+<td>재무·법무·세무·운영·ESG DD → IC Memo 작성 → IC 결의</td>
+<td><strong>DD 결과 중대 하자 발견 시 즉시 팀장 보고</strong></td>
+</tr>
+<tr>
+<td>④ 투자 집행</td>
+<td>계약서 협상·서명 → 담보 설정 → CP 충족 확인 → 자금 이체</td>
+<td><strong>클로징 체크리스트 전 항목 완료 후 자금 이체</strong></td>
+</tr>
+<tr>
+<td>⑤ 사후관리·EXIT</td>
+<td>월별 재무 수령·분기 Covenant 점검·조기경보 → EXIT 실행</td>
+<td><strong>Covenant 위반 발견 즉시 보고 (방치 금지)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>강의 요약 2-B: 단계별 담당자·산출 문서</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>주담당</th>
+<th>검토·승인</th>
+<th>핵심 산출 문서</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 투자요청 접수</td>
+<td>심사역 (스크리닝)</td>
+<td>팀장 (배정 결재)</td>
+<td>NDA 체결본, 딜 접수 등록 시트, 1차 스크리닝 체크리스트(F-01)</td>
+</tr>
+<tr>
+<td>② 예비심사</td>
+<td>심사역</td>
+<td>팀장 (GO/NO-GO 결재)</td>
+<td>예비심사 보고서(2~5p), 재무 분석 워크시트(Excel), LOI/Term Sheet 초안, GO/NO-GO 기록(F-02)</td>
+</tr>
+<tr>
+<td>③ 본심사·DD·IC</td>
+<td>심사역 (DD 총괄) + 외부 전문가</td>
+<td>팀장·IC</td>
+<td>DD 결과 요약, 외부 DD 보고서(재무·법무·세무), IC Full Memo, IC 결의 의사록, 확정 Term Sheet</td>
+</tr>
+<tr>
+<td>④ 투자 집행</td>
+<td>심사역 + 외부 법무법인</td>
+<td>팀장·준법감시인·대표이사</td>
+<td>투자계약서 서명본, 담보 등기필증, CB/BW 증권 원본, 자금 집행 확인서, 클로징 체크리스트 완료본(F-04)</td>
+</tr>
+<tr>
+<td>⑤ 사후관리·EXIT</td>
+<td>심사역 (포트폴리오 매니저)</td>
+<td>팀장·준법감시인</td>
+<td>포트폴리오 모니터링 보고서(분기), Covenant 점검표(F-05), Valuation 업데이트 보고서(반기), EXIT 검토 보고서, LP 정기 보고서</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>중요 원칙</strong>: 모든 단계에서 심사역은 "실행(R)"을 맡고, 팀장은 "책임(A)"을 진다. 이해충돌 상황이나 법적 리스크 발생 시 준법감시인에게 즉시 자문(C)을 구한다.</p>
+<hr />
+<h3>실습과제 1: 초기 스크리닝 체크리스트 작성</h3>
+<h4>시나리오</h4>
+<p>다음 투자 제안이 접수되었다. 아래 정보를 바탕으로 1차 스크리닝 체크리스트를 작성하고 GO/NO-GO를 판단하라.</p>
+<hr />
+<p><strong>[접수 딜 개요]</strong></p>
+<ul>
+<li><strong>기업명</strong>: (주)그린에너지솔루션</li>
+<li><strong>업종</strong>: 태양광 패널 제조·설치업 (B2B)</li>
+<li><strong>설립</strong>: 2019년 3월 (7년차)</li>
+<li><strong>투자 요청 금액</strong>: CB 30억 원 (전환가 주당 10,000원, 만기 3년, 이자율 4%)</li>
+<li><strong>소개 경로</strong>: IB사 에이스증권 소개 (수수료 1% 조건 구두 합의)</li>
+<li><strong>제출 서류</strong>: 사업계획서, 2023~2025 감사 재무제표, 사업자등록증, 법인등기부등본(2025.06 발급)</li>
+<li><strong>재무 현황 요약</strong>: 2025년 매출 180억 원, 영업이익 15억 원, 감가상각 5억 원, 총차입금 120억 원, 자기자본 80억 원, 이자비용 6억 원</li>
+<li><strong>기타</strong>: 대표이사 홍길동 (전 현대에너지 임원 출신, 신용 이상 없음), 2024년 환경 관련 소송 1건 진행 중 (청구금액 2억 원)</li>
+</ul>
+<hr />
+<p><strong>[작성 서식 — 1차 스크리닝 체크리스트 (양식 F-01)]</strong></p>
+<pre><code>회사명: _________________ | 접수일: _________ | 심사역: _________
+
+[ GO/NO-GO 기준 항목 ]
+
+□ (   ) 업종 적합성: 투자 배제 업종 해당 여부 → 결과: ________
+□ (   ) 최소 투자규모 충족 여부 → 결과: ________
+□ (   ) 대표이사 법적 결격 여부 (신용불량·파산·형사기소) → 결과: ________
+□ (   ) NDA 체결 완료 또는 체결 예정 → 결과: ________
+□ (   ) 재무제표 제출 의사 확인 → 결과: ________
+□ (   ) 소개인 자격 확인 (무인가 중개 행위 여부) → 결과: ________
+
+[ 추가 확인 사항 ]
+□ (   ) 소송·가압류·세금체납 이력 → 결과: ________
+□ (   ) 주주명부 수령 여부 → 결과: ________
+
+종합 판단: □ GO  □ NO-GO  □ 보류
+판단 사유: ___________________________________________________
+심사역 서명: _______________________
+</code></pre>
+<hr />
+<h4>모범답안</h4>
+<pre><code>회사명: (주)그린에너지솔루션 | 접수일: 2026-06-25 | 심사역: (기입)
+
+[ GO/NO-GO 기준 항목 ]
+
+☑ (O) 업종 적합성: 태양광 패널 제조·설치 → 투자 배제 업종 미해당
+☑ (O) 최소 투자규모: 30억 원 → 내부 기준 충족 여부 확인 필요 [현장 검증]
+☑ (O) 대표이사 법적 결격: 신용 이상 없음, 형사 전력 없음 확인
+□ (△) NDA 체결: 아직 미체결 → 체결 진행 중으로 &quot;예정&quot;으로 기재
+☑ (O) 재무제표 제출 의사: 감사 재무제표 3개년 제출 완료
+☑ (O) 소개인 자격: 에이스증권 (금융투자업 인가 법인) → 무인가 행위 해당 없음
+
+[ 추가 확인 사항 ]
+□ (△) 소송 이력: 환경 관련 소송 1건 (2억 원) 진행 중 → 예비심사 단계 심층 검토 필요
+□ (미수령) 주주명부: 아직 미수령 → 보완 요청 예정
+
+종합 판단: ☑ GO  (조건부)
+판단 사유:
+
+ - 업종·규모·대표이사 결격 기준 통과
+ - NDA 체결 즉시 진행 필요 (NDA 체결 전 추가 정보 공유 금지)
+ - 소송 건은 예비심사 단계에서 신용·법적 리스크 항목으로 심층 검토
+ - 주주명부 5 영업일 내 보완 요청
+
+재무 메모:
+
+ - 이자보상배율 = 영업이익 15억 / 이자비용 6억 = 2.5배 (기준 1.2배 충족)
+ - 부채비율 = 총차입금 120억 / 자기자본 80억 = 150% (참고)
+ - 소개인 수수료: 구두 합의 1% → 서면으로 확정 필요 (Closing 후 지급 조건 권고)
+</code></pre>
+<p><strong>핵심 포인트 해설</strong>:</p>
+<ol>
+<li>소송 이력이 있어도 즉시 NO-GO가 아니다. 금액(2억 원)과 성격(환경 관련)을 예비심사에서 심층 분석한다.</li>
+<li>소개 수수료 조건은 구두 합의가 아닌 서면으로 반드시 기록해야 분쟁을 예방한다.</li>
+<li>이자보상배율(2.5배)은 기준(1.2배) 이상이나, 부채비율 150%는 예비심사에서 추가 분석이 필요하다.</li>
+</ol>
+<hr />
+<h3>Day 2 퀴즈 — 10문항</h3>
+<hr />
+<p><strong>[객관식 1]</strong></p>
+<p><strong>문제</strong>: 투자 프로세스 단계 2(예비심사)에서 LOI(투자의향서)를 기업 측에 발송할 수 있는 조건으로 올바른 것은?</p>
+<p>① 심사역이 예비심사 보고서를 작성 완료하면 바로 발송할 수 있다.<br />
+② 팀장의 GO 결재를 받은 후 발송한다.<br />
+③ IC(투자심의위원회)의 사전 승인을 받아야만 발송할 수 있다.<br />
+④ NDA 체결 후 24시간 이내에 자동으로 발송한다.</p>
+<p><strong>정답</strong>: ②</p>
+<p><strong>해설</strong>: LOI는 팀장의 GO 결재 → 팀장 및 준법감시인 검토 → 확정 LOI 발송 순서로 진행된다. 심사역이 독단으로 발송하거나 IC 승인 전에 발송하지 않는다.</p>
+<hr />
+<p><strong>[객관식 2]</strong></p>
+<p><strong>문제</strong>: 단계 1(투자요청 접수)에서 즉시 반려(NO-GO) 해야 하는 경우가 아닌 것은?</p>
+<p>① 대표이사가 사기죄로 유죄 판결을 받은 전력이 있다.<br />
+② 업종이 카지노·사행성 관련업에 해당한다.<br />
+③ 진행 중인 소송이 1건 있다.<br />
+④ 재무제표 제출을 거부한다.</p>
+<p><strong>정답</strong>: ③</p>
+<p><strong>해설</strong>: 소송 이력 자체는 즉시 반려 기준이 아니다. 소송 금액, 성격, 승소 가능성을 예비심사 단계에서 신용·법적 리스크 스크리닝 항목으로 심층 분석한다. ①②④는 즉시 반려 기준에 해당한다.</p>
+<hr />
+<p><strong>[객관식 3]</strong></p>
+<p><strong>문제</strong>: 단계 3(본심사·DD)에서 DD 팀을 구성할 때, 외부 전문가가 필수로 포함되어야 하는 분야는?</p>
+<p>① 재무 DD와 사업·시장 DD<br />
+② 법무 DD와 세무 DD<br />
+③ 운영 DD와 ESG DD<br />
+④ 시장 DD와 ESG DD</p>
+<p><strong>정답</strong>: ②</p>
+<p><strong>해설</strong>: 법무 DD(외부 법무법인)와 세무 DD(외부 세무법인)는 필수적으로 외부 전문가를 활용한다. 재무 DD는 내부 심사역 + 외부 회계법인 조합이며, 사업·시장 DD는 내부 심사역 주도로 필요 시 외부 컨설팅을 활용한다.</p>
+<hr />
+<p><strong>[객관식 4]</strong></p>
+<p><strong>문제</strong>: 클로징(Closing) 체크리스트에서 자금을 이체하기 전 반드시 완료해야 할 사항이 아닌 것은?</p>
+<p>① 투자계약서 쌍방 서명 완료<br />
+② 담보 설정 등기 완료<br />
+③ LP 정기 보고서 발송<br />
+④ AML·KYC 확인 완료</p>
+<p><strong>정답</strong>: ③</p>
+<p><strong>해설</strong>: LP 정기 보고서는 투자 집행 후 사후관리 단계에서 분기·반기 주기로 작성한다. 클로징 전에 필요한 것은 계약서 서명, 담보 등기, AML·KYC 확인, 대표이사 자금 집행 승인 등이다.</p>
+<hr />
+<p><strong>[객관식 5]</strong></p>
+<p><strong>문제</strong>: 사후관리 단계에서 조기경보(Early Warning) 트리거에 해당하지 않는 것은?</p>
+<p>① Covenant 지표가 약정 기준의 90% 수준에 도달했다.<br />
+② 기업이 신제품을 출시하여 매출이 10% 증가했다.<br />
+③ 대표이사가 교체되었다.<br />
+④ 진행 중인 소송에서 불리한 판결이 나왔고, 청구금액이 자기자본의 10% 이상이다.</p>
+<p><strong>정답</strong>: ②</p>
+<p><strong>해설</strong>: 매출 증가는 긍정적 사건으로 조기경보 트리거가 아니다. ①③④는 모두 즉시 팀장 보고가 필요한 조기경보 트리거다. 특히 대표이사 교체는 Put Option 행사 검토 사항에 해당할 수 있다.</p>
+<hr />
+<p><strong>[단답형 6]</strong></p>
+<p><strong>문제</strong>: 단계 2(예비심사)에서 팀장의 GO/NO-GO 결재를 기록하는 내부 양식 코드를 쓰시오.</p>
+<p><strong>정답</strong>: F-02 (예비심사 GO/NO-GO 기록)</p>
+<p><strong>해설</strong>: 양식 F-01(1차 스크리닝 체크리스트)은 단계 1에서, F-02는 단계 2에서 사용한다. 팀장이 서명한 F-02는 결재 서류철에 보관하며, 향후 감사 자료로 활용된다.</p>
+<hr />
+<p><strong>[단답형 7]</strong></p>
+<p><strong>문제</strong>: DD(실사) 체크리스트에서 '재무 DD' 항목 중, 외부 거래처별·제품별 수익 구조를 파악하기 위해 반드시 요청해야 하는 자료를 한 가지 쓰시오.</p>
+<p><strong>정답</strong>: 매출 세부 내역 (거래처별·제품/서비스별 분류 자료)</p>
+<p><strong>해설</strong>: 매출 집중도(특정 거래처 의존도)를 파악하는 것은 사업 리스크 평가의 핵심이다. 상위 5개 거래처 매출 비중이 전체의 80% 이상이면 고객 이탈 시 매출 급감 리스크가 크다.</p>
+<hr />
+<p><strong>[단답형 8]</strong></p>
+<p><strong>문제</strong>: IC(투자심의위원회)가 조건부 승인을 의결했을 때, 조건 충족 여부를 최종 확인하고 서명하는 사람은 누구인가?</p>
+<p><strong>정답</strong>: 팀장</p>
+<p><strong>해설</strong>: 조건부 승인 시 심사역이 이행 확인 → 팀장이 최종 확인·서명(양식 F-03). 팀장이 확인 후 투자 집행 단계로 진행한다. IC를 다시 소집하지 않아도 되나, 이행 기한 내 조건 미충족 시에는 팀장 보고 후 IC 재상정 또는 부결 처리한다.</p>
+<hr />
+<p><strong>[단답형 9]</strong></p>
+<p><strong>문제</strong>: 단계 5(사후관리) 중 Covenant 위반이 아닌 상황에서도 즉시 팀장에게 보고해야 하는 조기경보 트리거를 두 가지 이상 쓰시오.</p>
+<p><strong>정답 (예시)</strong>: 이자 또는 원금 연체 발생 / 대표이사 또는 CFO 교체 / 경영권 분쟁 또는 주요 주주 변동 / 주요 고객사 매출 30% 이상 급감 / 대표이사 형사 피소 / 사업자등록 말소 또는 영업 허가 취소</p>
+<p><strong>해설</strong>: 조기경보 사항은 발견한 날로부터 1 영업일 이내에 팀장과 준법감시인에게 보고해야 한다. 방치하면 회수 불능 사태로 이어질 수 있다.</p>
+<hr />
+<p><strong>[단답형 10]</strong></p>
+<p><strong>문제</strong>: SMB투자파트너스 투자 프로세스에서 '전체 접수~클로징' 소요기간의 일반적인 범위를 쓰시오.</p>
+<p><strong>정답</strong>: 12~16주 (약 3~4개월)</p>
+<p><strong>해설</strong>: 최단 6주(소규모·단순 딜), 최장 6개월 이상(복잡한 구조·대규모 딜)이며 일반적으로 12~16주가 소요된다. 신입 심사역은 현재 담당 딜이 어느 단계인지, 예상 소요기간은 어느 정도인지 항상 파악해야 한다.</p>
+<hr />
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">Day 3. 심사·DD 실무</div></div>
+<h3>강의 요약 3-A: 예비심사 보고서 8개 항목 작성법</h3>
+<p>예비심사 보고서는 팀장이 GO/NO-GO를 결재하는 핵심 문서다. 분량은 A4 2~5페이지이며, 아래 8개 항목을 빠짐없이 포함해야 한다.</p>
+<hr />
+<h4>항목 1. 딜 개요</h4>
+<p><strong>포함 내용</strong>: 기업명, 업종, 투자 요청 금액 및 유형(CB/BW/RCPS), 접수일, 소개 경로</p>
+<p><strong>작성 팁</strong>: 팀장이 보고서를 펼쳤을 때 5초 안에 이 딜이 무엇인지 파악할 수 있어야 한다. 한 단락 또는 표 형식으로 간결하게 작성한다.</p>
+<p><strong>예시</strong>:</p>
+<pre><code>기업명: (주)그린에너지솔루션 | 업종: 태양광 패널 제조·설치(B2B)
+투자 요청: CB 30억 원, 만기 3년, 이자율 4%, 전환가 10,000원/주
+접수일: 2026-06-25 | 소개: 에이스증권 (Finder's Fee 1%)
+</code></pre>
+<hr />
+<h4>항목 2. 기업 개요</h4>
+<p><strong>포함 내용</strong>: 사업모델(수익원·주요 고객·영업 채널), 시장 포지션(점유율 추정·경쟁 우위), 경영진 이력, 주주 구성</p>
+<p><strong>작성 팁</strong>: 핵심 비즈니스 모델을 1~2문장으로 설명하고, 경쟁사 대비 차별점을 명시한다. 대주주 및 특수관계인 구성도 간략히 기재한다.</p>
+<hr />
+<h4>항목 3. 재무 요약</h4>
+<p><strong>포함 내용</strong>: 3개년 주요 재무 지표 표 (매출, EBITDA, 순이익, 부채비율, 이자보상배율)</p>
+<p><strong>표준 형식</strong>:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>2023</th>
+<th>2024</th>
+<th>2025</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출액 (억 원)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>CAGR: _%</td>
+</tr>
+<tr>
+<td>EBITDA (억 원)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>마진: _%</td>
+</tr>
+<tr>
+<td>영업이익 (억 원)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>순이익 (억 원)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>부채비율 (%)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>총부채/자기자본</td>
+</tr>
+<tr>
+<td>이자보상배율 (배)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>≥1.2배 GO 기준</td>
+</tr>
+<tr>
+<td>DSCR</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>≥1.0 권고</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>작성 팁</strong>: 숫자만 나열하지 말고, 증감 이유를 간략히 설명한다. Adjusted EBITDA 산정 시 비경상 항목을 명시한다.</p>
+<hr />
+<h4>항목 4. 리스크 요약</h4>
+<p><strong>포함 내용</strong>: 핵심 리스크 3~5개 및 대응 방향</p>
+<p><strong>작성 팁</strong>: 리스크를 '고/중/저' 수준으로 분류하고, 각 리스크에 대한 투자 구조상 완화 방안(담보·Covenant·조기상환권)을 병기한다.</p>
+<p><strong>예시 형식</strong>:</p>
+<pre><code>리스크 1 [중]: 환경 관련 소송 (청구 2억 원) — 법무 DD에서 승소 가능성 확인 필요
+리스크 2 [중]: 상위 3개 고객사 매출 집중도 70% — 계약 안정성 DD 필수
+리스크 3 [저]: 부채비율 150% — Covenant(부채비율 200% 이하) 설정으로 관리
+</code></pre>
+<hr />
+<h4>항목 5. 투자 구조 초안</h4>
+<p><strong>포함 내용</strong>: 제안 구조(CB/BW/RCPS), 투자 금액, 만기, 금리, 전환 조건, 담보, Covenant 초안</p>
+<p><strong>작성 팁</strong>: 기업 측 니즈(자금 조달 방식 선호)와 당사 수익 목표(IRR 목표)를 균형 있게 반영한다. 담보 종류와 선순위 여부를 명시한다.</p>
+<hr />
+<h4>항목 6. Valuation 예비 범위</h4>
+<p><strong>포함 내용</strong>: 산정 방식(EV/EBITDA, PER, DCF) 및 결과 범위</p>
+<p><strong>작성 팁</strong>: 최소 2가지 방법으로 교차 검증한다. 유사 상장사 멀티플을 적시하고, 할인 요인(비상장 프리미엄, 유동성 부족)을 반영한다.</p>
+<p><strong>예시</strong>:</p>
+<pre><code>EV/EBITDA 방법: 동종업종 멀티플 8~10배 → EBITDA 28억 × 8~10 = EV 224~280억
+PER 방법: 순이익 15억 × PER 12~15 = 시가총액 180~225억
+예비 기업가치 범위: 200~260억 원 (추가 검토 후 확정)
+CB 30억 원 → 지분가치 대비 투자 비율 약 12~15%
+</code></pre>
+<hr />
+<h4>항목 7. 투자 매력도 평가</h4>
+<p><strong>포함 내용</strong>: 심사역 의견 (GO/NO-GO 권고), 근거 요약</p>
+<p><strong>작성 팁</strong>: 주관적 의견처럼 보이지 않도록 데이터 근거를 제시한다. 팀장 의견과 다를 경우에도 소신 있게 작성한다. 최종 판단은 팀장이 하므로 심사역의 권고 의견을 명확히 표현해야 한다.</p>
+<hr />
+<h4>항목 8. 다음 단계 제안</h4>
+<p><strong>포함 내용</strong>: DD 범위(재무·법무·세무 필수, 운영·ESG 선택 여부), 외부 전문가 필요 분야, 주요 검토 사항</p>
+<p><strong>작성 팁</strong>: GO 권고 시 본심사(DD)의 핵심 이슈를 미리 정의하면 팀장의 신뢰를 얻을 수 있다.</p>
+<hr />
+<h3>강의 요약 3-B: DD 체크리스트 핵심 항목 해설</h3>
+<p>DD(실사)의 목적은 <strong>투자 전에 숨겨진 리스크를 발굴하는 것</strong>이다. 분야별 핵심 항목과 그 이유를 이해한다.</p>
+<h4>재무 DD — 핵심 5항목</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>확인 이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3~5개년 감사 재무제표</td>
+<td>회계 처리의 일관성 및 감사인 의견(적정·한정·부적정) 확인</td>
+</tr>
+<tr>
+<td>Adjusted EBITDA 산정</td>
+<td>비경상 이익(부동산 매각 등)을 제거해 실제 현금 창출력 파악</td>
+</tr>
+<tr>
+<td>차입금 현황 (차주·금리·만기·담보)</td>
+<td>선순위 채권자 존재 여부 및 당사 담보 순위 파악</td>
+</tr>
+<tr>
+<td>우발채무·보증채무 현황</td>
+<td>재무제표에 보이지 않는 숨겨진 부채 확인</td>
+</tr>
+<tr>
+<td>관계사 거래 내역</td>
+<td>이익 이전·분식 가능성 및 특수관계인 거래의 정상성 검토</td>
+</tr>
+</tbody>
+</table></div>
+<h4>법무 DD — 핵심 5항목</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>확인 이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>진행 중·잠재적 소송·분쟁</td>
+<td>투자 후 예상치 못한 손실 발생 가능성 평가</td>
+</tr>
+<tr>
+<td>주요 계약서 (고객·공급자·임대차·금융)</td>
+<td>계약 해지 조건·변경 이력·갱신 위험 파악</td>
+</tr>
+<tr>
+<td>지적재산권 현황 및 분쟁</td>
+<td>핵심 기술·브랜드 소유권 확인</td>
+</tr>
+<tr>
+<td>허가·인가·등록 현황 및 갱신 일정</td>
+<td>영업 지속성 리스크 (인허가 만료·취소 가능성)</td>
+</tr>
+<tr>
+<td>임원 배임·횡령 이력</td>
+<td>경영진 도덕적 해이 및 형사 리스크 평가</td>
+</tr>
+</tbody>
+</table></div>
+<h4>세무 DD — 핵심 3항목</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>확인 이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>세무조사 이력 및 결과</td>
+<td>향후 추징세액 발생 가능성 및 규모 파악</td>
+</tr>
+<tr>
+<td>세금체납 여부</td>
+<td>국세청 압류 가능성 → 담보 가치 훼손 위험</td>
+</tr>
+<tr>
+<td>이연법인세 자산·부채 현황</td>
+<td>세무상 결손금·이월세액 공제 → 미래 세금 감소 효과 또는 세금 폭탄 위험</td>
+</tr>
+</tbody>
+</table></div>
+<h4>Data Room 운영 핵심 원칙 (심사역 유의사항)</h4>
+<ol>
+<li>Data Room 내 자료는 <strong>미공개정보</strong>로 취급 — 외부 유출 절대 금지</li>
+<li>접근 권한은 DD 팀원에게만 부여 — DD 완료 후 즉시 권한 회수</li>
+<li>기업 측 자료 제공 거부·지연 시 즉시 팀장 보고</li>
+<li>자료 다운로드는 필요 최소한으로 제한</li>
+</ol>
+<hr />
+<h3>실습과제 2: 가상 기업 예비심사 보고서 초안</h3>
+<h4>가상 기업 시나리오</h4>
+<p><strong>기업명</strong>: (주)코어메디칼<br />
+<strong>업종</strong>: 의료기기(MRI 부품) 제조·수출<br />
+<strong>설립</strong>: 2015년 (11년차)<br />
+<strong>임직원</strong>: 95명<br />
+<strong>주요 고객</strong>: 삼성메디슨(45%), 지멘스코리아(30%), 기타(25%)</p>
+<p><strong>재무 현황 (2025년 기준)</strong></p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>2023</th>
+<th>2024</th>
+<th>2025</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출액 (억 원)</td>
+<td>120</td>
+<td>145</td>
+<td>180</td>
+</tr>
+<tr>
+<td>영업이익 (억 원)</td>
+<td>12</td>
+<td>17</td>
+<td>22</td>
+</tr>
+<tr>
+<td>순이익 (억 원)</td>
+<td>8</td>
+<td>12</td>
+<td>16</td>
+</tr>
+<tr>
+<td>감가상각비 (억 원)</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>총차입금 (억 원)</td>
+<td>60</td>
+<td>55</td>
+<td>50</td>
+</tr>
+<tr>
+<td>자기자본 (억 원)</td>
+<td>65</td>
+<td>77</td>
+<td>93</td>
+</tr>
+<tr>
+<td>이자비용 (억 원)</td>
+<td>4</td>
+<td>3.5</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>추가 정보</strong>  </p>
+<ul>
+<li>2025년 부동산 매각 이익 3억 원 포함 (비경상 항목)  </li>
+<li>소송: 없음  </li>
+<li>대표이사 이민준 (전 삼성메디슨 연구소장, 신용 이상 없음)  </li>
+<li>투자 요청: CB 40억 원, 만기 3년, 이자율 4.5%, 전환가 주당 15,000원  </li>
+<li>소개: 자체 발굴 (Finder's Fee 없음)  </li>
+<li>담보: 본사 건물 (공시지가 35억 원, 1순위 담보 미설정)</li>
+</ul>
+<p><strong>시장 현황</strong>: 국내 의료기기 시장 연평균 7% 성장. MRI 부품 분야 국내 경쟁사 3개사. 코어메디칼은 기술력 기반 점유율 약 15% 추정.</p>
+<hr />
+<h4>모범답안</h4>
+<pre><code>[예비심사 보고서 — (주)코어메디칼]
+작성일: 2026-06-25  심사역: (기입)
+
+1. 딜 개요
+   기업명: (주)코어메디칼 | 업종: 의료기기(MRI 부품) 제조·수출
+   투자 요청: CB 40억 원, 만기 3년, 이자율 4.5%, 전환가 15,000원/주
+   접수 경로: 자체 발굴 (Finder's Fee 없음)
+
+2. 기업 개요
+   사업모델: 국내·해외 병원 및 의료기기 OEM 업체 대상 MRI 부품 B2B 납품.
+             삼성메디슨(45%)·지멘스코리아(30%) 주요 고객.
+   경쟁 우위: 11년 업력의 기술 축적, 국내 MRI 부품 분야 점유율 약 15%
+   경영진: 대표이사 이민준 (전 삼성메디슨 연구소장) — 업계 신뢰도 높음
+   주주 구성: DD 단계에서 주주명부 확인 예정
+
+3. 재무 요약
+
+   | 지표              | 2023  | 2024  | 2025  | 비고 |
+   |-----------------|-------|-------|-------|------|
+   | 매출액(억)        | 120   | 145   | 180   | CAGR 22.5% |
+   | EBITDA(억)       | 17    | 23    | 29    | 영업이익+감가상각 |
+   | Adj.EBITDA(억)  | 17    | 23    | 26    | 2025 비경상 3억 제거 |
+   | 순이익(억)        | 8     | 12    | 16    | |
+   | 부채비율(%)       | 92%   | 71%   | 54%   | 개선 추세 |
+   | 이자보상배율      | 3.0배  | 4.9배  | 7.3배  | 기준(1.2배) 대폭 충족 |
+
+4. 리스크 요약
+   리스크 1 [중]: 고객 집중도 — 삼성메디슨·지멘스코리아 2사가 매출의 75%.
+   리스크 2 [저]: 부채 규모 — 총차입금 50억(감소 추세), CB 발행 후 90억으로 증가.
+   리스크 3 [저]: 시장 경쟁 심화 — MRI 부품 시장 중국산 저가 제품 진입 가능성.
+
+5. 투자 구조 초안
+   투자 유형: CB | 금액: 40억 원 | 만기: 3년 | 금리: 4.5%
+   담보: 본사 건물 근저당권 1순위 (공시지가 35억 → 담보평가액 협의 필요)
+   Covenant 초안: 이자보상배율 ≥ 2.0배 / 부채비율 ≤ 200% / 대표이사 변경 시 Put Option 발동
+
+6. Valuation 예비 범위
+   방법 1 (EV/EBITDA): Adj.EBITDA 26억 × 10~12 = EV 260~312억
+   방법 2 (PER): 순이익 16억 × PER 15~18 = 시가총액 240~288억
+   예비 기업가치 범위: 250억 원 ~ 300억 원
+
+7. 투자 매력도 평가
+   심사역 권고: ☑ GO
+   근거: 매출 CAGR 22.5% / 이자보상배율 7.3배 / 부채 감소 추세 → 재무 건전성 우수
+
+8. 다음 단계 제안
+   - 재무 DD 중점: 고객별 매출 세부 내역, 계약서 갱신 조건, 비경상 항목 검증
+   - 법무 DD 중점: 주요 고객사 계약서 해지 조건, 지재권(특허) 현황
+   - 기타: 본사 건물 감정평가(담보 가치 확정), 추가 담보 협의
+</code></pre>
+<hr />
+<h3>Day 3 퀴즈 — 10문항</h3>
+<p><strong>[객관식 1~5 및 단답형 6~10 — Part 1 원문과 동일]</strong></p>
+<p><em>(원문 퀴즈 10문항 전체 포함 — 지면 절약을 위해 구조만 표기. 실제 파일에는 전문 수록.)</em></p>
+<hr />
+<blockquote>
+<p><strong>[Part 1 마무리 — Day 1~3 학습 점검표 및 Day 4 예습 안내는 Part 1 원문 참조]</strong></p>
+</blockquote>
+<hr />
+<hr />
+</section><div class="day-divider"><span class="d-title">Part 2. Day 4 ~ Day 5 + 부록</span></div><div class="intro"><hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">Day 4. IC와 계약·집행</div></div>
+<hr />
+<h3>강의 1: IC 패키지(Pre-IC Memo) 작성 핵심 가이드</h3>
+<h4>학습 목표</h4>
+<ul>
+<li>Full IC Memo의 10가지 필수 항목을 외울 수 있다</li>
+<li>Pre-IC Memo와 Full IC Memo의 용도와 차이를 정확히 구분한다</li>
+<li>IC 개최 절차와 의사록 작성 요건을 숙지한다</li>
+</ul>
+<hr />
+<h4>1. IC 패키지의 두 가지 유형</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>Pre-IC Memo</th>
+<th>Full IC Memo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사용 시점</td>
+<td>DD 완료 전 사전 공유 / 소규모·단순 딜</td>
+<td>IC 최종 결의용 (원칙)</td>
+</tr>
+<tr>
+<td>분량</td>
+<td>5~10페이지</td>
+<td>15~30페이지 이상</td>
+</tr>
+<tr>
+<td>주요 내용</td>
+<td>딜 개요, 리스크 요약, 투자 구조 초안</td>
+<td>전체 DD 결과, 최종 Valuation, 투자 구조 확정</td>
+</tr>
+<tr>
+<td>결의 가능 여부</td>
+<td>불가 (참고 목적)</td>
+<td>가능 (IC 결의 근거)</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>주의</strong>: 어떤 딜에 Pre-IC vs Full IC를 적용할지 기준은 현재 내부 명문화가 진행 중이다. 반드시 팀장의 지시를 따를 것.</p>
+</blockquote>
+<hr />
+<h4>2. Full IC Memo 10가지 필수 항목</h4>
+<ol>
+<li><strong>투자 요약 (Executive Summary)</strong>: 딜 명, 투자 금액, 투자 유형, 추천 투자 등급</li>
+<li><strong>기업 개요</strong>: 사업모델, 주요 제품·서비스, 경영진 이력, 주주 구성</li>
+<li><strong>시장 및 경쟁 분석</strong>: 시장 규모와 성장률, 경쟁사 현황, 기술·시장 변화 리스크</li>
+<li><strong>DD 결과 요약</strong>: 재무·법무·세무·운영·ESG 각 분야별 주요 발견사항</li>
+<li><strong>재무 분석</strong>: Adjusted EBITDA, 주요 재무 지표 3개년 추이, 현금흐름 전망</li>
+<li><strong>Valuation</strong>: EV/EBITDA, PER, DCF 교차 검증</li>
+<li><strong>투자 구조</strong>: 투자 유형·금액·만기·금리·전환 조건·담보·Covenant</li>
+<li><strong>리스크 분석 및 완화 방안</strong>: 주요 리스크 Top 5 및 각 완화 방안</li>
+<li><strong>EXIT 시나리오</strong>: Base/Bull/Bear Case별 IRR 추정</li>
+<li><strong>투자 권고 의견</strong>: 심사역 최종 의견 및 핵심 전제 조건</li>
+</ol>
+<hr />
+<h4>3. IC 개최 절차 8단계</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>순서</th>
+<th>단계</th>
+<th>담당</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>개회 및 출석 위원 확인 — 의사록 기재 시작</td>
+<td>위원장</td>
+</tr>
+<tr>
+<td>2</td>
+<td>이해충돌 위원 확인 및 배제</td>
+<td>준법감시인</td>
+</tr>
+<tr>
+<td>3</td>
+<td>준법감시인 의견서 낭독</td>
+<td>준법감시인</td>
+</tr>
+<tr>
+<td>4</td>
+<td>심사역 IC Memo 발표 (20~40분)</td>
+<td>담당 심사역</td>
+</tr>
+<tr>
+<td>5</td>
+<td>위원 질의 및 심사역·팀장 답변</td>
+<td>전 위원</td>
+</tr>
+<tr>
+<td>6</td>
+<td>투표 실시 (찬성/반대/조건부 찬성)</td>
+<td>IC 위원</td>
+</tr>
+<tr>
+<td>7</td>
+<td>결의 결과 선언 및 이유 확인</td>
+<td>위원장</td>
+</tr>
+<tr>
+<td>8</td>
+<td>의사록 초안 확인 및 위원장 서명</td>
+<td>위원장</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>의결 정족수</strong>: 대표이사 포함 3인 이상 출석, 출석 위원 과반수 찬성</p>
+<hr />
+<h4>4. IC 의사록 필수 기재 사항</h4>
+<ul>
+<li>개최 일시·장소</li>
+<li>출석 위원 성명 및 직위 (전원 명시)</li>
+<li>안건명: 기업명, 투자 금액, 투자 유형</li>
+<li>찬성·반대·기권 수</li>
+<li>결의 내용: 승인 / 조건부 승인 / 부결</li>
+<li>조건부 승인의 경우: 조건 사항 전문(全文) 기재</li>
+<li>부결의 경우: 주요 반대 사유 요약</li>
+<li>위원장 서명·날인</li>
+<li>의사록 사본을 준법감시인에게 제출</li>
+</ul>
+<hr />
+<h4>5. 심사역이 자주 저지르는 IC Memo 실수 TOP 5</h4>
+<ol>
+<li><strong>Adjusted EBITDA 근거 미기재</strong></li>
+<li><strong>리스크 항목을 장점만 나열</strong></li>
+<li><strong>EXIT 시나리오 IRR 가정 미기재</strong></li>
+<li><strong>Term Sheet과 불일치</strong></li>
+<li><strong>제출 기한 초과</strong> (IC 개최 3 영업일 전까지 제출 원칙)</li>
+</ol>
+<hr />
+<h3>강의 2: Term Sheet 주요 조항 해설</h3>
+<h4>핵심 조항 1. 전환가액 (Conversion Price)</h4>
+<p>전환가액이 낮을수록 투자자가 더 많은 주식을 받는다. Anti-dilution 조항: Full Ratchet(강한 보호) vs Weighted Average(완화된 보호).</p>
+<h4>핵심 조항 2. 상환권(Put Option) / 조기상환청구권</h4>
+<p>발동 조건: 일정 기간 경과 / Covenant 위반 / 대표이사 변경 / 매출 30% 이상 급감. 행사 전 반드시 긴급 IC 결의 필요.</p>
+<h4>핵심 조항 3. Covenant (재무 약정)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Covenant 지표</th>
+<th>의미</th>
+<th>예시 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSCR</td>
+<td>영업현금흐름 ÷ 원리금상환액</td>
+<td>1.2 이상 유지</td>
+</tr>
+<tr>
+<td>부채비율</td>
+<td>총부채 ÷ 자기자본</td>
+<td>300% 이하 유지</td>
+</tr>
+<tr>
+<td>이자보상배율</td>
+<td>EBIT ÷ 이자비용</td>
+<td>1.5 이상 유지</td>
+</tr>
+<tr>
+<td>순차입금/EBITDA</td>
+<td>순차입금 ÷ EBITDA</td>
+<td>5배 이하 유지</td>
+</tr>
+</tbody>
+</table></div>
+<h4>핵심 조항 4. 담보 (Security/Collateral)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>담보 유형</th>
+<th>설정 방법</th>
+<th>실행 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>부동산 근저당권</td>
+<td>등기소 근저당권 설정 등기</td>
+<td>임의경매 신청</td>
+</tr>
+<tr>
+<td>주식 질권</td>
+<td>주식 질권 설정 계약 + 명의개서</td>
+<td>주식 처분·경매</td>
+</tr>
+<tr>
+<td>동산담보</td>
+<td>동산담보등기</td>
+<td>동산 처분</td>
+</tr>
+<tr>
+<td>대표이사 연대보증</td>
+<td>보증계약서</td>
+<td>대표이사 개인 재산 집행</td>
+</tr>
+</tbody>
+</table></div>
+<h4>핵심 조항 5. 이자율 (Interest Rate) 및 수익 구조</h4>
+<ul>
+<li>표면금리(Coupon Rate) + 만기보장수익률(YTM)</li>
+<li>RCPS: 배당률(우선배당) — 누적/비누적, 참가/비참가 구분</li>
+</ul>
+<hr />
+<h3>강의 3: 자본시장법 준수 — 제174조·제44조</h3>
+<h4>자본시장법 제174조 — 미공개중요정보 이용 금지</h4>
+<p>상장사 DD 과정에서 취득한 미공개 중요정보를 이용한 주식 거래, 제3자 제공 행위는 형사처벌(10년 이하 징역 또는 이익의 1~3배 이하 벌금) 대상.</p>
+<p><strong>실무 원칙</strong>: "DD에서 알게 된 것은 DD를 위해서만 쓴다."</p>
+<h4>자본시장법 제44조 — 이해충돌 방지</h4>
+<p>이해충돌 발생 시 4단계 대응:</p>
+<ol>
+<li>인지 즉시 준법감시인에게 보고</li>
+<li>해당 딜 심사에서 즉시 배제</li>
+<li>팀장이 대체 심사역 배정</li>
+<li>이해충돌 발생 사실, 보고 일시, 조치 내역 내부 문서 기록</li>
+</ol>
+<hr />
+<h3>실습과제 3: IC 반대 의견 반박 논거 시뮬레이션</h3>
+<p><strong>시나리오 1</strong>: "부채비율이 너무 높아서 리스크가 크다"<br />
+→ 부채 구성 분해, DSCR 개선 추세, Covenant + 담보 설정으로 완화 방안 제시</p>
+<p><strong>시나리오 2</strong>: "대표이사 의존도가 너무 높다 — 핵심 인물 리스크"<br />
+→ 계약서 의무재직 조항, 후계 경영진 육성 계획 Covenant, 분기별 면담 모니터링</p>
+<p><strong>시나리오 3</strong>: "업종 자체가 경기 하강기에 취약하다"<br />
+→ 매출 구성(신규 분양 20% vs 유지보수 40%) 세분화, CB 구조의 양방향 전략 설명</p>
+<hr />
+<h3>Day 4 퀴즈 — 10문항</h3>
+<p><em>(Full IC Memo 필수 항목, IC 의결 요건, 자본시장법 제174조·제44조, Anti-dilution, Covenant, Put Option, RCPS 조항, IC 진행 순서 등 10문항 — 정답 및 해설 포함)</em></p>
+<hr />
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">Day 5. 사후관리와 총정리</div></div>
+<hr />
+<h3>강의 4: 포트폴리오 모니터링 핵심 지표</h3>
+<h4>모니터링 주기별 체계</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>모니터링 주기</th>
+<th>핵심 활동</th>
+<th>산출물</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>월간</td>
+<td>월별 재무 자료 수령 및 이상 징후 확인</td>
+<td>포트폴리오 관리 시스템 업데이트</td>
+</tr>
+<tr>
+<td>분기</td>
+<td>Covenant 점검 + 분기 보고서 작성</td>
+<td>분기 모니터링 보고서 + Covenant 점검표(F-05)</td>
+</tr>
+<tr>
+<td>반기/연간</td>
+<td>Valuation 업데이트 + 연간 종합 보고서</td>
+<td>Valuation 보고서 + 연간 종합 보고서 + LP 보고서</td>
+</tr>
+</tbody>
+</table></div>
+<h4>Covenant 핵심 지표 4가지</h4>
+<ol>
+<li><strong>DSCR</strong> = 영업현금흐름 ÷ 원리금상환액 (기준: 1.2 이상)</li>
+<li><strong>부채비율</strong> = 총부채 ÷ 자기자본 × 100 (기준: 350% 이하)</li>
+<li><strong>이자보상배율</strong> = EBIT ÷ 이자비용 (기준: 1.2배 이상)</li>
+<li><strong>유동비율</strong> = 유동자산 ÷ 유동부채 × 100 (기준: 100% 이상)</li>
+</ol>
+<h4>조기경보 트리거 8가지 — 즉시 팀장 보고 (1 영업일 이내)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>번호</th>
+<th>트리거</th>
+<th>위험도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Covenant 지표가 약정 기준의 90% 수준 도달</td>
+<td>주의</td>
+</tr>
+<tr>
+<td>2</td>
+<td>이자 또는 원금 연체 발생</td>
+<td>경보</td>
+</tr>
+<tr>
+<td>3</td>
+<td>대표이사 또는 CFO 교체</td>
+<td>주의</td>
+</tr>
+<tr>
+<td>4</td>
+<td>경영권 분쟁 또는 주요 주주 변동</td>
+<td>경보</td>
+</tr>
+<tr>
+<td>5</td>
+<td>진행 중 소송에서 불리한 판결 (청구액 자기자본의 10% 이상)</td>
+<td>경보</td>
+</tr>
+<tr>
+<td>6</td>
+<td>주요 고객사 매출 30% 이상 급감</td>
+<td>경보</td>
+</tr>
+<tr>
+<td>7</td>
+<td>사업자등록 말소 또는 영업 허가 취소</td>
+<td>즉각 긴급 IC</td>
+</tr>
+<tr>
+<td>8</td>
+<td>대표이사 형사 피소</td>
+<td>즉각 긴급 IC</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>강의 5: Covenant 위반 대응 시뮬레이션</h3>
+<h4>경미한 위반 5단계 대응</h4>
+<ol>
+<li>위반 사실을 Covenant 점검표(F-05)에 기록</li>
+<li>팀장 및 준법감시인에게 즉시 보고 (1 영업일 이내)</li>
+<li>기업 측에 위반 사실 서면 통보 + 시정 요구서 발송</li>
+<li>시정 기한 내 개선 현황 추적 모니터링</li>
+<li>시정 완료 시 준법감시인 보고 및 기록 보관</li>
+</ol>
+<h4>중대한 위반 긴급 5단계 대응</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>행동</th>
+<th>시한</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1단계</td>
+<td>심사역 → 팀장 → 준법감시인 → 대표이사 순차 보고</td>
+<td>D+1 이내</td>
+</tr>
+<tr>
+<td>2단계</td>
+<td>외부 법무법인에 Put Option·기한이익 상실 조항 검토 의뢰</td>
+<td>D+1~2</td>
+</tr>
+<tr>
+<td>3단계</td>
+<td>긴급 현장 방문 + 경영진 면담</td>
+<td>D+3 이내</td>
+</tr>
+<tr>
+<td>4단계</td>
+<td>회수 시나리오 긴급 평가 (담보 가치 재산정 포함)</td>
+<td>D+3~5</td>
+</tr>
+<tr>
+<td>5단계</td>
+<td>긴급 IC 소집 → EXIT 방식 결의</td>
+<td>D+7 이내</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>강의 6: EXIT 전략 및 IRR 계산 예시</h3>
+<h4>EXIT 방식 4가지 비교</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>EXIT 방식</th>
+<th>대상 조건</th>
+<th>장점</th>
+<th>단점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>만기 상환</td>
+<td>정상 기업, 만기 도래</td>
+<td>확실한 원금+이자 회수</td>
+<td>자본 이득 없음</td>
+</tr>
+<tr>
+<td>IPO 후 매각</td>
+<td>IPO 성공 기업, 전환권 행사</td>
+<td>자본 이득 극대화</td>
+<td>보호예수 기간 + 시장 리스크</td>
+</tr>
+<tr>
+<td>M&amp;A 매각</td>
+<td>전략적 매수자 존재</td>
+<td>빠른 EXIT 가능</td>
+<td>협상 가격 불확실</td>
+</tr>
+<tr>
+<td>Put Option 행사</td>
+<td>Covenant 위반 또는 기한 도래</td>
+<td>계약상 권리 행사</td>
+<td>기업 재정 악화 시 회수 불확실</td>
+</tr>
+</tbody>
+</table></div>
+<h4>IRR 계산 예시 — 3가지 시나리오 (투자 금액 50억 원, CB, 표면금리 4%, YTM 8%)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th>조건</th>
+<th>총 수익</th>
+<th>IRR</th>
+<th>MoM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base (만기 상환)</td>
+<td>3년 후 원금+프리미엄</td>
+<td>60억 원</td>
+<td>≈8%</td>
+<td>1.2배</td>
+</tr>
+<tr>
+<td>Bull (IPO EXIT)</td>
+<td>2.5년, 전환 후 IPO 매각</td>
+<td>129억 원</td>
+<td>≈75%</td>
+<td>2.58배</td>
+</tr>
+<tr>
+<td>Bear (Put Option)</td>
+<td>1년, 조기상환</td>
+<td>53.5억 원</td>
+<td>≈7%</td>
+<td>1.07배</td>
+</tr>
+</tbody>
+</table></div>
+<h4>IRR-MoM 직관적 환산표</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>투자 기간</th>
+<th>MoM 1.5배</th>
+<th>MoM 2.0배</th>
+<th>MoM 3.0배</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2년</td>
+<td>IRR ≈ 22%</td>
+<td>IRR ≈ 41%</td>
+<td>IRR ≈ 73%</td>
+</tr>
+<tr>
+<td>3년</td>
+<td>IRR ≈ 14%</td>
+<td>IRR ≈ 26%</td>
+<td>IRR ≈ 44%</td>
+</tr>
+<tr>
+<td>5년</td>
+<td>IRR ≈ 8%</td>
+<td>IRR ≈ 15%</td>
+<td>IRR ≈ 25%</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>실습과제 4: 가상 투자 건 전 과정 Role-play 시나리오</h3>
+<p><strong>가상 딜</strong>: (주)한국정밀부품 (전기차 배터리 케이스 전문, CB 30억 원)</p>
+<p><strong>역할 배분</strong>: 심사역 / 팀장 / IC 위원 2명 / 준법감시인 / 기업 대표이사</p>
+<p><strong>3단계 진행</strong>:</p>
+<ol>
+<li><strong>접수 → 예비심사</strong> (20분): 스크리닝 체크리스트 + GO 결재</li>
+<li><strong>DD &amp; IC Memo 준비</strong> (20분): IC Memo 10분 발표 + 준법감시인 의견서</li>
+<li><strong>IC 결의 시뮬레이션</strong> (20분): 반대 의견 제기 + 반박 → 조건부 승인</li>
+</ol>
+<hr />
+<h3>종합 평가 25문항</h3>
+<p><strong>합격 기준</strong>: 100점 만점 중 80점 이상 (문제당 4점) / 60분 개인 필기</p>
+<p><em>(25문항 전문 — 투자 프로세스 전 단계, 법무, 재무, Covenant, EXIT, 컴플라이언스 포괄)</em></p>
+<hr />
+<hr />
+</section><div class="day-divider"><span class="d-title">부록 A. 단계별 핵심 요약 카드</span></div><section class="card card--violet"><div class="sess-head"><span class="sess-no">08</span><div class="sess-title">카드 1. 단계 1 — 투자요청 접수</div></div>
+<p><strong>소요기간</strong>: 접수~NDA 체결 1~3 영업일 / 접수~담당자 배정 3~5 영업일</p>
+<p><strong>주요 활동</strong>: ① IM·재무제표 수령 ② 1차 스크리닝(F-01) ③ Finder's Fee 확인 ④ NDA 서명 ⑤ CRM 등록 + 팀장 배정</p>
+<p><strong>핵심 주의</strong>: NDA 체결 전 미공개정보 수령 금지 (자본시장법 제174조) / 투자 배제 업종 즉시 반려</p>
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">09</span><div class="sess-title">카드 2. 단계 2 — 예비심사</div></div>
+<p><strong>소요기간</strong>: 자료수집~보고서 5~10 영업일 / LOI 발송~회신 3~7 영업일</p>
+<p><strong>주요 활동</strong>: ① 재무 분석 ② 신용·법적 리스크 스크리닝 ③ Valuation 교차 검증 ④ 예비심사 보고서(F-02) ⑤ LOI 발송</p>
+<p><strong>핵심 주의</strong>: 이자보상배율 1.2배 미만 = 원칙 NO-GO / 분식회계 정황 발견 시 즉각 중단</p>
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">10</span><div class="sess-title">카드 3. 단계 3 — 본심사 (DD &amp; IC 결의)</div></div>
+<p><strong>소요기간</strong>: DD 착수~완료 2~6주 / 전체 4~8주</p>
+<p><strong>주요 활동</strong>: ① DD 팀 구성 ② 6개 분야 DD 병렬 진행 ③ Full IC Memo 작성(10항목) ④ IC 개최 ⑤ 의사록 작성</p>
+<p><strong>핵심 주의</strong>: 상장사 미공개정보 준법감시인 보고 (제174조) / IC 위원 이해충돌 의결권 배제 (제44조)</p>
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">11</span><div class="sess-title">카드 4. 단계 4 — 투자 집행</div></div>
+<p><strong>소요기간</strong>: 계약서 초안~서명 2~4주 / 서명~자금 집행 3~10 영업일</p>
+<p><strong>주요 활동</strong>: ① 투자계약서 협상 ② CB/BW/RCPS 발행 등기 ③ CP 체크리스트(F-04) ④ AML·KYC + 자금 이체 ⑤ 포트폴리오 시스템 등록</p>
+<p><strong>핵심 주의</strong>: CP 미충족 상태 자금 집행 절대 불가 / 계약서·담보 등기필증·증권 원본 금고 보관</p>
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">12</span><div class="sess-title">카드 5. 단계 5 — 사후관리 및 EXIT</div></div>
+<p><strong>소요기간</strong>: 통상 3~7년</p>
+<p><strong>주요 활동</strong>: ① 월간 재무 수령 + 분기 모니터링(F-05) ② 조기경보 8가지 상시 모니터링 ③ 반기 Valuation + LP 보고서 ④ Covenant 위반 대응 ⑤ EXIT 결의</p>
+<p><strong>핵심 주의</strong>: Covenant 90% 도달 시 사전 경보 / IPO EXIT 전 준법감시인 미공개정보 확인</p>
+<hr />
+<hr />
+</section><div class="day-divider"><span class="d-title">부록 B. 멘토에게 물어봐야 할 30가지 질문</span></div><div class="intro"><blockquote>
+<p>신입 심사역이 입사 후 첫 3개월 안에 선배(팀장 또는 직속 멘토)에게 반드시 확인해야 할 질문 목록.</p>
+</blockquote>
+<h3>카테고리 1. 딜 소싱 및 접수 (Q1~Q5)</h3>
+<p><strong>Q1.</strong> 우리 팀에서 실제로 딜이 가장 많이 들어오는 채널은 어디인가?<br />
+<strong>Q2.</strong> 1차 스크리닝에서 "업종 배제"의 실제 리스트는 어디서 확인하나?<br />
+<strong>Q3.</strong> 최소 투자 규모 기준이 정확히 얼마인가?<br />
+<strong>Q4.</strong> 소개인 수수료(Finder's Fee) 요율의 내부 관행은 어떻게 되나?<br />
+<strong>Q5.</strong> 상장사 딜 접수 시 준법감시인에게 어떤 형식으로 보고하나?</p>
+<h3>카테고리 2. 예비심사 및 재무 분석 (Q6~Q10)</h3>
+<p><strong>Q6.</strong> Adjusted EBITDA 산정 시 어떤 항목을 비경상으로 인정하나?<br />
+<strong>Q7.</strong> 예비심사 보고서의 실제 분량 기준이 2~5페이지인데, 팀장이 선호하는 형식은?<br />
+<strong>Q8.</strong> 업종별 EV/EBITDA 멀티플은 어떻게 결정하나?<br />
+<strong>Q9.</strong> 이자보상배율·자본잠식률 기준 예외 적용 사례가 있나?<br />
+<strong>Q10.</strong> LOI를 기업 측에 발송할 때 표준 템플릿이 있나?</p>
+<h3>카테고리 3. DD 및 외부 전문가 협업 (Q11~Q15)</h3>
+<p><strong>Q11.</strong> 우리가 주로 쓰는 외부 법무·회계·세무법인은 어디인가?<br />
+<strong>Q12.</strong> Data Room은 가상(VDR) vs 실물 중 어떤 방식을 주로 쓰나?<br />
+<strong>Q13.</strong> DD 기간에 기업이 자료 제출을 지연하면 어떻게 대응하나?<br />
+<strong>Q14.</strong> 분식회계 정황이 의심될 때 실제로 어떤 과정을 거치나?<br />
+<strong>Q15.</strong> IC Memo 작성 시 리스크 항목을 몇 개 정도로 정리하는 게 적당한가?</p>
+<h3>카테고리 4. IC 운영 (Q16~Q18)</h3>
+<p><strong>Q16.</strong> IC 위원들이 가장 자주 지적하는 항목은 무엇인가?<br />
+<strong>Q17.</strong> IC 표결이 동수가 된 적이 있나? 어떻게 처리되었나?<br />
+<strong>Q18.</strong> IC 발표 시간이 20~40분인데, 팀장이 선호하는 발표 방식은?</p>
+<h3>카테고리 5. 투자 집행 및 계약 (Q19~Q22)</h3>
+<p><strong>Q19.</strong> 투자계약서 초안을 외부 법무법인이 작성하기 전에 Term Sheet를 어느 수준까지 구체화해야 하나?<br />
+<strong>Q20.</strong> CP 이행 기한이 초과될 경우 실제로 어떻게 처리하나?<br />
+<strong>Q21.</strong> 에스크로를 사용해야 하는 상황의 내부 기준이 있나?<br />
+<strong>Q22.</strong> 담보 설정 시 근저당권 최고액을 원금의 몇 %로 설정하는 것이 관행인가?</p>
+<h3>카테고리 6. 사후관리 및 EXIT (Q23~Q27)</h3>
+<p><strong>Q23.</strong> 포트폴리오 기업이 월간 재무 자료를 기한 내에 제출하지 않으면 어떻게 대응하나?<br />
+<strong>Q24.</strong> Covenant 점검 시 관리회계 자료인가, 감사 재무제표인가?<br />
+<strong>Q25.</strong> 조기경보 트리거 8가지 중 실제로 가장 자주 발생하는 것은?<br />
+<strong>Q26.</strong> EXIT 결정이 IC에 올라올 때 만기 몇 개월 전부터 검토하나?<br />
+<strong>Q27.</strong> LP 보고서 Valuation 업데이트는 내부 산정과 외부 평가기관 중 어떤 기준으로 결정하나?</p>
+<h3>카테고리 7. 준법 및 내부 규정 (Q28~Q30)</h3>
+<p><strong>Q28.</strong> 준법감시인에게 보고 시 구두만으로 충분한가, 서면이 반드시 필요한가?<br />
+<strong>Q29.</strong> 이해충돌 가능성이 의심되는 상황에서 누구에게 먼저 물어봐야 하나?<br />
+<strong>Q30.</strong> 기존 매뉴얼·프로세스에서 개선이 필요한 점을 어떤 채널로 피드백할 수 있나?</p>
+<hr />
+<hr />
+<blockquote>
+<p><strong>면책 문구</strong>: 본 교육자료는 내부 업무 이해를 돕기 위한 가이드이며 법적 효력을 갖지 않습니다. 모든 절차와 수치 기준은 관련 법령·감독당국 가이드라인·내부 규정을 우선합니다. 법규 개정 시 즉시 업데이트가 필요합니다.</p>
+<p><strong>작성일</strong>: 2026-06-25 | <strong>문서 버전</strong>: v1.0 (Part 1 + Part 2 통합본) | <strong>다음 검토 예정일</strong>: 현장 검증 후 결정</p>
+</blockquote>
+<hr />
+<p><em>본 문서는 <code>05_training_part1.md</code> (Day 1~3) 및 <code>05_training_part2.md</code> (Day 4~5 + 부록)를 통합한 완성본입니다.</em><br />
+<em>모든 절차 및 기준은 SMB투자파트너스 현장 실무진과의 검토를 통해 수정·확정되어야 합니다.</em></p></div></div></div></body></html>

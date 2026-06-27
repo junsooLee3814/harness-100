@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:info.bd-notes2155.com)",
+      "WebFetch(domain:www.mediasearch.co.kr)",
+      "WebFetch(domain:namu.wiki)",
+      "WebFetch(domain:schoolzone.emac.kr)",
+      "WebFetch(domain:hogangnono.com)",
+      "WebFetch(domain:weolbu.com)",
+      "WebFetch(domain:www.asiatime.co.kr)",
+      "WebFetch(domain:www.bok.or.kr)",
+      "WebFetch(domain:ko.wikipedia.org)",
+      "WebFetch(domain:m.cafe.daum.net)",
+      "WebFetch(domain:m.richgo.ai)",
+      "WebFetch(domain:apt2.me)",
+      "WebFetch(domain:www.reb.or.kr)",
+      "WebFetch(domain:www.aptrank.com)",
+      "WebFetch(domain:ko.tradingeconomics.com)",
+      "WebFetch(domain:land.seoul.go.kr)",
+      "PowerShell(python \"C:\\\\Users\\\\juncp\\\\.claude\\\\skills\\\\html-pastel-style\\\\scripts\\\\build_html.py\" \"c:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\96-real-estate-analyst\\\\_workspace\\\\05_investment_report.md\" \"c:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\96-real-estate-analyst\\\\_workspace\\\\05_investment_report.html\" \"�ε��� ���� �м� �� ��걸 �Ѱ���� 208-57\")"
+    ]
+  }
+}

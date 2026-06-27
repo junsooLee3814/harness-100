@@ -1,0 +1,905 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>부동산 투자 분석 보고서</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">부동산 투자 분석 · 용산구 한강대로 208-57</div><h1>부동산 투자 분석 보고서</h1></header><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">서울시 용산구 한강대로 208-57</div></div>
+<blockquote>
+<p>⚠️ 본 보고서는 투자 참고 자료이며, 투자 권유가 아닙니다.
+최종 투자 결정은 전문가 상담 후 본인의 판단으로 하십시오.
+본 보고서는 시장조사(market-researcher), 입지분석(location-analyst), 수익성분석(profitability-analyst), 리스크평가(risk-assessor) 4개 에이전트의 분석을 종합하여 작성되었습니다.</p>
+</blockquote>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">Executive Summary</div></div>
+<h3>분석 대상</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>주소</td>
+<td>서울시 용산구 한강대로 208-57 (한강로1가)</td>
+</tr>
+<tr>
+<td>물건 유형</td>
+<td>주거/상업 복합 추정 (<strong>건축물대장 미확인 — 최우선 확인 필요</strong>)</td>
+</tr>
+<tr>
+<td>위치 특성</td>
+<td>삼각지역(4·6호선) 도보 4~5분, 신용산역 도보 5~7분, 용산역 도보 8~10분</td>
+</tr>
+<tr>
+<td>추정 매입가</td>
+<td>약 8억 5,000만원 (±3억 편차 주의)</td>
+</tr>
+<tr>
+<td>분석 기준 시점</td>
+<td>2026년 6월</td>
+</tr>
+</tbody>
+</table></div>
+<h3>핵심 수치</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>수치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>입지 종합 점수</td>
+<td>3.87 / 5.0 (교통 4.5, 개발호재 5.0, 학군 2.5)</td>
+</tr>
+<tr>
+<td>추정 취득 총비용</td>
+<td>약 8억 9,675만원 (취득세 등 부대비용 4,675만원 포함)</td>
+</tr>
+<tr>
+<td>실질 자기자본 투입 (전세 활용 후)</td>
+<td>약 1억 2,175만원</td>
+</tr>
+<tr>
+<td>중립 시나리오 IRR (자기자본 기준)</td>
+<td>약 13.6% (연 3.5% 상승 가정)</td>
+</tr>
+<tr>
+<td>중립 시나리오 NPV</td>
+<td>+9,624만원 (할인율 4.5%)</td>
+</tr>
+<tr>
+<td>중립 시나리오 최종 순이익</td>
+<td>약 2,151만원 (다주택 중과 적용 시) / 약 9,235만원 (1주택 비과세 시)</td>
+</tr>
+<tr>
+<td>최악 시나리오 최대 손실</td>
+<td>약 -2억 460만원 (자기자본 손실률 -43.4%)</td>
+</tr>
+<tr>
+<td>종합 리스크 등급</td>
+<td><strong>상(高)</strong></td>
+</tr>
+<tr>
+<td>시장 국면</td>
+<td>회복기 (2021년 고점의 90~95% 수준)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>투자 의견: <strong>Conditional Hold (조건부 보류)</strong></h3>
+<p>현 분석 조건에서 투자 실행은 <strong>보류</strong>가 타당하다. 그러나 이 판단은 건축물대장 미확인·다주택 세제 여부 미결이라는 두 가지 정보 공백에 기인한 것이다. 만약 (1) 건축물대장 확인 후 주거용으로 판명되고, (2) 1세대 1주택 조건 충족이 가능하며, (3) 실거주 2년 이행이 가능하다면, 입지 강점과 개발 호재를 고려할 때 <strong>Hold → Conditional Buy</strong>로 전환 가능하다. 정보가 해소되지 않은 상태에서의 즉각적 매입은 권고하지 않는다.</p>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">1. 시장 환경 요약</div></div>
+<h3>1-1. 거시경제 환경</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>현황</th>
+<th>부동산 영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기준금리</td>
+<td>2.50% (8회 연속 동결)</td>
+<td>대출 비용 안정화, 레버리지 여건 개선</td>
+</tr>
+<tr>
+<td>주담대 변동금리</td>
+<td>4.05~4.65%</td>
+<td>실질 이자 부담 유지</td>
+</tr>
+<tr>
+<td>소비자물가</td>
+<td>3.1% (2026.05)</td>
+<td>실물자산 헤지 수요 자극</td>
+</tr>
+<tr>
+<td>가계부채 (GDP 대비)</td>
+<td>88.6%</td>
+<td>정부 강력 관리 — 추가 대출 규제 압력</td>
+</tr>
+</tbody>
+</table></div>
+<p>기준금리는 동결 기조이나 소비자물가(3.1%)가 목표치를 상회하여 추가 인하는 제한적이다. 물가 상승은 실물자산 수요를 자극하지만, 스트레스 DSR 3단계(2025.07 시행)와 대출 한도 차등화(2025.10.16)로 고가 주택 매수의 실질 여력은 상당히 제약된다.</p>
+<h3>1-2. 용산구 시장 현황</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>수치</th>
+<th>신호</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>평균 매매가</td>
+<td>약 252만원/㎡ (서울 3위)</td>
+<td>고가 지역</td>
+</tr>
+<tr>
+<td>한강대로 인근 매매가</td>
+<td>약 279~296만원/㎡</td>
+<td>권역 프리미엄</td>
+</tr>
+<tr>
+<td>전세가율</td>
+<td>39.9% (하락 추세)</td>
+<td>매매가 고평가 신호</td>
+</tr>
+<tr>
+<td>PIR (서울 중간값)</td>
+<td>10.6배</td>
+<td>과열 수준</td>
+</tr>
+<tr>
+<td>PIR (한강벨트 상위 20%)</td>
+<td>17배</td>
+<td>극도 과열</td>
+</tr>
+<tr>
+<td>시장 국면</td>
+<td>회복기 중반~후반</td>
+<td>2021년 고점의 90~95%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>향후 전망</strong>: 2026~2028년은 공급 제한으로 연 3~5% 완만한 상승이 예상된다. 2030년 이후 용산국제업무지구 주거 공급(1.3만호) 본격화 시 공급 압박이 가중될 수 있다. 스트레스 DSR 3단계 + 양도세 중과 복합 규제로 단기 급등 가능성은 낮다.</p>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">2. 입지 평가 요약</div></div>
+<h3>2-1. 입지 종합 점수</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>점수 (5점)</th>
+<th>가중치</th>
+<th>가중 점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>교통</td>
+<td>4.5</td>
+<td>25%</td>
+<td>1.125</td>
+</tr>
+<tr>
+<td>학군</td>
+<td>2.5</td>
+<td>20%</td>
+<td>0.500</td>
+</tr>
+<tr>
+<td>생활 인프라</td>
+<td>4.0</td>
+<td>20%</td>
+<td>0.800</td>
+</tr>
+<tr>
+<td>개발 호재</td>
+<td>5.0</td>
+<td>20%</td>
+<td>1.000</td>
+</tr>
+<tr>
+<td>자연환경</td>
+<td>3.0</td>
+<td>15%</td>
+<td>0.450</td>
+</tr>
+<tr>
+<td><strong>종합</strong></td>
+<td><strong>3.87 / 5.0</strong></td>
+<td>100%</td>
+<td><strong>3.875</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>2-2. 핵심 강점</h3>
+<p><strong>교통 (4.5점)</strong>: 삼각지역(4·6호선) 도보 4~5분, 신용산역(4호선) 도보 5~7분, 용산역(1호선·KTX·경의중앙선) 도보 8~10분 — 4개 노선 초역세권. 시청 10~15분, 여의도 15~20분, 강남 28~37분의 광역 접근성 최우수.</p>
+<p><strong>개발 호재 (5.0점)</strong>: 서울 내 최대 개발 밀집 지역. 5대 호재 동시 집중.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>호재</th>
+<th>단계</th>
+<th>예상 완료</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>용산서울코어 (용산국제업무지구)</td>
+<td>착공 (2025.11 기공식)</td>
+<td>기반시설 2028년, 건물 2031년 이후</td>
+</tr>
+<tr>
+<td>GTX-B 용산역 정차</td>
+<td>확정·착공</td>
+<td>2030년 개통 목표</td>
+</tr>
+<tr>
+<td>한남뉴타운 재개발</td>
+<td>진행 중</td>
+<td>2구역 2027~2028년 입주 예상</td>
+</tr>
+<tr>
+<td>경부선 지하화</td>
+<td>기본구상 단계</td>
+<td>미정 (10년 이상 소요)</td>
+</tr>
+<tr>
+<td>용산공원 전면 조성</td>
+<td>부분 개방</td>
+<td>전면 개원 시기 미정</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2-3. 핵심 약점</h3>
+<ul>
+<li><strong>학군 열세 (2.5점)</strong>: 5학군(중부교육지원청) 소속. 강남 8학군·목동 대비 학원가 규모·명문 진학 실적 열위. 학령기 자녀 보유 실수요층의 선호도 낮음.</li>
+<li><strong>소음 이중 노출</strong>: 경부선 철도(서측 200~400m) + 한강대로(접면) 이중 소음. 경부선 지하화 완료 전(10년 이상 소요 추정)까지 지속.</li>
+</ul>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">3. 수익성 요약</div></div>
+<h3>3-1. 투자 구조</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>금액</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>추정 매입가</td>
+<td>8억 5,000만원</td>
+</tr>
+<tr>
+<td>취득 부대비용</td>
+<td>4,675만원</td>
+</tr>
+<tr>
+<td>총 취득비용</td>
+<td>8억 9,675만원</td>
+</tr>
+<tr>
+<td>대출 (LTV 50%)</td>
+<td>4억 2,500만원</td>
+</tr>
+<tr>
+<td>전세 보증금 활용</td>
+<td>3억 5,000만원 (전세가율 41.2% 적용)</td>
+</tr>
+<tr>
+<td>잔여 대출 (전세 활용 후)</td>
+<td>7,500만원</td>
+</tr>
+<tr>
+<td><strong>실질 자기자본 투입</strong></td>
+<td><strong>약 1억 2,175만원</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>3-2. 시나리오별 투자 성과</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>낙관 (5%/년)</th>
+<th>중립 (3.5%/년)</th>
+<th>비관 (1%/년)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7년 후 예상 매도가</td>
+<td>11억 9,604만원</td>
+<td>10억 8,146만원</td>
+<td>9억 1,129만원</td>
+</tr>
+<tr>
+<td>세후 매도 순차익</td>
+<td>1억 3,468만원</td>
+<td>9,235만원</td>
+<td>872만원</td>
+</tr>
+<tr>
+<td>7년 보유 비용 누계</td>
+<td>7,084만원</td>
+<td>7,084만원</td>
+<td>7,084만원</td>
+</tr>
+<tr>
+<td><strong>최종 실현 순이익 (다주택 중과)</strong></td>
+<td><strong>6,384만원</strong></td>
+<td><strong>2,151만원</strong></td>
+<td><strong>-6,212만원</strong></td>
+</tr>
+<tr>
+<td><strong>자기자본 IRR</strong></td>
+<td><strong>22.8%</strong></td>
+<td><strong>13.6%</strong></td>
+<td><strong>0.8%</strong></td>
+</tr>
+<tr>
+<td><strong>NPV (할인율 4.5%)</strong></td>
+<td><strong>+18,742만원</strong></td>
+<td><strong>+9,624만원</strong></td>
+<td><strong>-6,238만원</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>1세대 1주택 비과세 적용 시</strong>: 중립 순이익 2,151만원 → <strong>9,235만원</strong> (4.3배 개선), 낙관 순이익 6,384만원 → <strong>2억 2,845만원</strong>으로 증가.</p>
+</blockquote>
+<h3>3-3. 수익성 핵심 판단</h3>
+<ul>
+<li>연 3.5% 이상 시세 상승이 실현되어야 최소한의 의미 있는 수익 달성 (Hurdle Rate 2.8%/년)</li>
+<li>다주택 중과세 적용 시 중립 시나리오 순이익 2,151만원은 7년 정기예금 수준에도 미치지 못함</li>
+<li>1주택 비과세 충족 시 수익성이 대폭 개선되어 투자 타당성 성립</li>
+<li>전세 레버리지 활용으로 자기자본 IRR이 높아 보이나, 절대 수익 금액은 크지 않음</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">4. 리스크 요약</div></div>
+<h3>4-1. 종합 리스크 등급: <strong>상(高) ★★★</strong></h3>
+<h3>4-2. 리스크 매트릭스 (Top 5)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>순위</th>
+<th>리스크 항목</th>
+<th>발생 확률</th>
+<th>영향도</th>
+<th>위험도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>다주택 양도세 중과 (유효세율 50~55%)</td>
+<td>高</td>
+<td>大</td>
+<td><strong>★★★ 치명적</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>물건 유형 미확인 (건축물대장 미열람, ±3억 편차)</td>
+<td>高</td>
+<td>大</td>
+<td><strong>★★★ 치명적</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>전세 보증금 반환 의무 + 유동성 리스크 복합</td>
+<td>中~高</td>
+<td>大</td>
+<td><strong>★★★ 치명적</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>비아파트 환금성 열위 (매도 3~6개월 소요)</td>
+<td>高</td>
+<td>中</td>
+<td><strong>★★☆ 높음</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2030년 이후 공급 충격 (용산국제업무지구 1.3만호)</td>
+<td>中</td>
+<td>中~大</td>
+<td><strong>★★☆ 높음</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>4-3. 스트레스 테스트 결과</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th>자기자본 손실률</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>가격 -20% 하락</td>
+<td>약 -46%</td>
+</tr>
+<tr>
+<td>급매 강제처분 (할인 15%)</td>
+<td>약 -37%</td>
+</tr>
+<tr>
+<td>복합 최악 (가격 -20% + 공실 6개월 + 급매 -15%)</td>
+<td>약 -43.4% (-2억 460만원)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">5. 시나리오별 투자 성과 비교</div></div>
+<h3>5-1. 세금 적용 방식별 성과 비교</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>다주택 중과 (50~55%)</th>
+<th>1주택 비과세 (조건 충족 시)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>낙관 (5%/년) 순이익</td>
+<td>6,384만원</td>
+<td>2억 2,845만원</td>
+</tr>
+<tr>
+<td>중립 (3.5%/년) 순이익</td>
+<td>2,151만원</td>
+<td>9,235만원</td>
+</tr>
+<tr>
+<td>비관 (1%/년) 순이익</td>
+<td>-6,212만원</td>
+<td>-5,630만원</td>
+</tr>
+<tr>
+<td>중립 IRR</td>
+<td>13.6%</td>
+<td>약 18~20% (추정)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5-2. 시기별 투자 창(Window) 분석</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>시기</th>
+<th>시장 예상</th>
+<th>판단</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026~2028</td>
+<td>공급 제한, 개발 가시화 전</td>
+<td>취득 최적 시기</td>
+</tr>
+<tr>
+<td>2029~2031</td>
+<td>GTX-B·용산서울코어 기반시설 완공 접근, 최적 매도 창</td>
+<td><strong>매도 목표 시기</strong></td>
+</tr>
+<tr>
+<td>2032~2033</td>
+<td>용산국제업무지구 주거 공급 물량 개시</td>
+<td>매도 지연 위험 구간</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>핵심</strong>: 7년 후(2033년) 만기 매도는 공급 충격 구간과 겹친다. <strong>2030~2031년 선제 매도</strong> 전략이 위험 관리상 유리하다.</p>
+</blockquote>
+<h3>5-3. 대안 자산 대비 성과</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>자산</th>
+<th>연수익률</th>
+<th>7년 누계 수익 (4.7억 기준)</th>
+<th>특성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>정기예금</td>
+<td>3.3%</td>
+<td>약 1억 2,283만원</td>
+<td>무위험, 즉시 환금</td>
+</tr>
+<tr>
+<td>국채 (10년물)</td>
+<td>2.8%</td>
+<td>약 1억 106만원</td>
+<td>저위험</td>
+</tr>
+<tr>
+<td>KOSPI ETF</td>
+<td>6~8%</td>
+<td>약 2억 3,588~3억 3,494만원</td>
+<td>고변동성</td>
+</tr>
+<tr>
+<td>이 물건 (중립, 다주택 중과)</td>
+<td>IRR 13.6%</td>
+<td><strong>2,151만원 (절대 수익)</strong></td>
+<td>비유동, 고세금</td>
+</tr>
+<tr>
+<td>이 물건 (중립, 1주택 비과세)</td>
+<td>IRR 18~20%</td>
+<td><strong>9,235만원 (절대 수익)</strong></td>
+<td>비유동, 저세금</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>주의</strong>: 부동산 IRR은 레버리지(1.2억 실투입) 기준으로 높아 보이나, 절대 순이익 금액은 ETF 대비 소규모. 7년 비유동성 락업 비용까지 감안하면 1주택 비과세 조건 미충족 시 정기예금 대비 우위가 불분명하다.</p>
+</blockquote>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">08</span><div class="sess-title">6. 투자 의견 상세</div></div>
+<h3>투자 의견: <strong>Conditional Hold (조건부 보류)</strong></h3>
+<h3>긍정 요인</h3>
+<p><strong>1. 교통 접근성 최우수</strong>
+삼각지역(4·6호선) 도보 4~5분, 신용산역 도보 5~7분, 용산역 도보 8~10분의 4개 노선 초역세권. 서울 내에서 이 수준의 다중 역세권은 희소하다. GTX-B 개통(2030년 목표) 시 광역교통망 혁신으로 입지 가치가 추가 상승한다.</p>
+<p><strong>2. 서울 최대 개발 호재 집중</strong>
+용산서울코어(착공), GTX-B(확정·착공), 한남뉴타운(진행 중)의 3대 확정·진행 호재가 반경 1~2km 내 집중. 특히 용산서울코어(총 사업비 14.3조원, 2025.11 기공식)는 서울 도심 내 최대 개발 프로젝트로, 직주근접 수요와 랜드마크 프리미엄을 장기적으로 견인할 것으로 평가된다.</p>
+<p><strong>3. 전세 레버리지 구조의 자기자본 수익 극대화</strong>
+전세 보증금 3.5억 활용 시 실질 자기자본 투입이 약 1.2억으로 압축되어 IRR이 중립 시나리오에서도 13.6%에 달한다. 1세대 1주택 비과세 요건 충족 + 연 3.5% 이상 상승 실현 시, 동일 자본으로 ETF보다 높은 레버리지 수익이 가능하다.</p>
+<h3>부정 요인</h3>
+<p><strong>1. 다주택 양도세 중과 — 수익 잠식의 핵심 리스크</strong>
+2주택 이상 다주택자 기준 양도세 유효세율 50~55% 적용 시, 중립 시나리오(연 3.5% 상승)에서도 7년 최종 순이익은 약 2,151만원에 불과하다. 이는 7년 정기예금 수익(약 1억 2,283만원)에 크게 못 미친다. 세금 구조 설계가 이 투자의 핵심 변수다.</p>
+<p><strong>2. 물건 유형 미확인 — 분석 전제 자체의 불확실성</strong>
+건축물대장 미열람 상태에서 매입가 추정 편차가 ±3억원에 달한다. 상업용 건물일 경우 취득세율(4.6%)이 주거용(3.3%)보다 높아 취득 비용이 추가 발생한다. 위반 건축물·공유 지분·용도 제한 등 숨겨진 리스크가 해소되지 않은 상태다. 현재 모든 수익성·리스크 분석은 "주거 복합 소형 건물" 추정에 기반한 가정치다.</p>
+<p><strong>3. 학군 약점 + 소음 이중 노출 — 가격 상단 제약</strong>
+5학군 소속으로 학령기 자녀 동반 실수요층의 수요 기반이 취약하다. 경부선 철도(서측 200~400m) + 한강대로 이중 소음은 주거 선호도를 떨어뜨리며, 지하화 완료까지 10년 이상 소요 예상으로 7년 투자 기간 내 해소 불가능하다. 이 두 요인은 인근 대단지 아파트 대비 가격 할인 요인으로 작용하여 시세 상승의 상단을 제약한다.</p>
+<h3>종합 판단</h3>
+<p>이 물건은 입지와 개발 호재 측면에서 서울 내 최상위권에 속하는 장기 시세차익 후보지다. 그러나 현재 상태에서는 두 가지 핵심 정보가 비어 있어 투자 결정의 근거가 충분하지 않다.</p>
+<p><strong>첫째, 건축물대장 미확인</strong>은 분석의 토대 자체를 흔드는 리스크다. 매입가, 취득세율, 용도 제한, 리모델링 가능성 등 모든 수치가 가정 위에 세워져 있다.</p>
+<p><strong>둘째, 세제 조건 미결</strong>은 수익성의 결정적 변수다. 1세대 1주택 비과세 충족 여부에 따라 세후 순이익이 최대 4~5배 차이나며, 다주택 중과 적용 시 이 투자의 기회비용 대비 수익성은 크게 훼손된다.</p>
+<p><strong>결론</strong>: 현 시점에서는 즉각 투자보다 <strong>체크리스트 6개 항목을 전부 해소한 후 재평가</strong>를 권고한다. 조건이 충족되면 투자 의견은 <strong>Conditional Buy</strong>로 전환될 수 있다.</p>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">09</span><div class="sess-title">7. 투자 전 체크리스트</div></div>
+<p>다음 6개 항목이 전부 확인되어야 최종 투자 결정이 가능하다.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>순위</th>
+<th>항목</th>
+<th>확인 방법</th>
+<th>미확인 시 리스크</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>★★★ 1</td>
+<td><strong>건축물대장 열람</strong> — 건물 용도·면적·준공일·위반 건축물 여부 확인</td>
+<td>정부24(gov.kr) 또는 세움터(cloud.eais.go.kr)</td>
+<td>±3억 매입가 편차, 취득세율 차이, 불법 건축물 위험</td>
+</tr>
+<tr>
+<td>★★★ 2</td>
+<td><strong>등기부등본 권리 확인</strong> — 근저당·가압류·가처분·신탁·공유 지분 여부</td>
+<td>대법원 인터넷등기소(iros.go.kr)</td>
+<td>소유권 하자, 경매 위험</td>
+</tr>
+<tr>
+<td>★★★ 3</td>
+<td><strong>1세대 1주택 전환 가능 여부 검토</strong> — 기존 주택 처분 선행 또는 증여 계획 수립</td>
+<td>세무사 상담 (양도세·취득세 시뮬레이션)</td>
+<td>다주택 중과 적용 시 수익성 급감</td>
+</tr>
+<tr>
+<td>★★☆ 4</td>
+<td><strong>실거주 2년 이행 가능 여부 확인</strong> — 규제지역 실거주 의무 준수 가능성 판단</td>
+<td>투자자 본인 거주 계획 확인</td>
+<td>비과세 요건 미충족 → 세후 수익 대폭 감소</td>
+</tr>
+<tr>
+<td>★★☆ 5</td>
+<td><strong>현장 소음 수준 직접 확인</strong> — 주간·야간 경부선·한강대로 소음 체감</td>
+<td>현장 방문 (야간 포함 2회 이상 권장)</td>
+<td>주거 쾌적성·임차인 유치 어려움·매도 가격 협상 열위</td>
+</tr>
+<tr>
+<td>★★☆ 6</td>
+<td><strong>비상 유동성 1억 이상 별도 보유</strong> — 전세 공실·역전세·급매 대비 안전망 확보</td>
+<td>본인 자산 현황 점검</td>
+<td>공실 6개월 발생 시 현금 압박, 급매 손실 확대</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>우선 실행 3단계</strong>:
+1. 건축물대장 + 등기부등본 열람 (당일 온라인 처리 가능, 비용 1,000원 내외)
+2. 세무사 상담 — 현재 주택 보유 현황 기준 취득세·양도세 시뮬레이션
+3. 현장 방문 (야간 포함) — 소음 체감, 층수별 조망 확인, 주변 개발 현장 확인</p>
+</blockquote>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">10</span><div class="sess-title">8. 분석 한계 및 유의사항</div></div>
+<h3>8-1. 분석 전제의 한계</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>한계 내용</th>
+<th>영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매입가 추정</td>
+<td>건축물대장 미확인 상태의 인근 사례 기반 추정 (±3억 편차)</td>
+<td>모든 수익성 수치가 가정치</td>
+</tr>
+<tr>
+<td>물건 유형 추정</td>
+<td>주거/상업 복합 추정 — 실제 용도 미확인</td>
+<td>취득세율·임대 전략·규제 적용 여부 달라질 수 있음</td>
+</tr>
+<tr>
+<td>전세가 추정</td>
+<td>용산구 전세가율 39.9% 적용 — 비아파트 실제 전세 가능 여부 미확인</td>
+<td>전세 임대 전략 자체가 불가능할 수 있음</td>
+</tr>
+<tr>
+<td>개발 일정</td>
+<td>호재는 확정·진행·추진 단계 혼재 — 지연·취소 가능성 존재</td>
+<td>개발 프리미엄 선반영 후 조정 리스크</td>
+</tr>
+<tr>
+<td>세금 시뮬레이션</td>
+<td>투자자 개인 세제 조건(주택 보유 수, 소득 수준 등) 미반영</td>
+<td>실제 세부담은 개인 상황에 따라 상이</td>
+</tr>
+</tbody>
+</table></div>
+<h3>8-2. 에이전트 분석 간 교차 검토 결과</h3>
+<p>본 보고서는 4개 에이전트 분석을 교차 검토하여 모순을 제거하였으나, 다음 항목에서 주의가 필요하다.</p>
+<ul>
+<li><strong>시장조사 ↔ 수익성 분석 교차</strong>: 전세가율 39.9%가 하락 추세임을 시장조사가 경고하고 있으나, 수익성 분석의 전세 보증금 3.5억 추정은 현재 시점 기준임. 투자 기간 중 전세가율이 35% 이하로 하락하면 전세 레버리지 구조 자체가 약화된다.</li>
+<li><strong>입지분석 ↔ 리스크 평가 교차</strong>: 입지분석은 개발 호재를 5.0점(최고점)으로 평가하나, 리스크 평가는 개발 지연·공급 과잉 리스크를 동시에 제시. 개발 호재는 현 매매가에 이미 상당 부분 선반영되어 있을 가능성이 있다.</li>
+<li><strong>수익성 ↔ 리스크 교차</strong>: 중립 시나리오 IRR 13.6%는 레버리지 효과가 포함된 자기자본 수익률로, 절대 금액 기준(세후 순이익 2,151만원)으로는 기회비용 대비 낮다. IRR 수치만 보고 투자 의사결정을 내리는 것은 위험하다.</li>
+</ul>
+<h3>8-3. 법적 고지</h3>
+<p>본 보고서는 시장조사·입지분석·수익성 분석·리스크 평가 에이전트가 공개 데이터 및 웹 검색 정보를 바탕으로 작성한 참고 자료입니다. 다음 사항을 반드시 확인하십시오.</p>
+<ul>
+<li>본 보고서의 모든 수치(매입가·전세가·세금·수익률 등)는 추정치이며, 실제와 다를 수 있습니다.</li>
+<li>최종 투자 결정 전 반드시 <strong>감정평가사(가치 평가), 세무사(세금 구조), 법무사(권리 분석)</strong> 3자의 전문가 자문을 받으십시오.</li>
+<li>부동산 투자에는 원금 손실 위험이 있으며, 과거 시세 상승이 미래 수익을 보장하지 않습니다.</li>
+</ul>
+<hr />
+<p><em>작성일: 2026년 6월 26일</em>
+<em>분석 팀: market-researcher / location-analyst / profitability-analyst / risk-assessor / report-writer</em>
+<em>산출물 경로: <code>ko/96-real-estate-analyst/_workspace/05_investment_report.md</code></em></p></section></div></div></body></html>

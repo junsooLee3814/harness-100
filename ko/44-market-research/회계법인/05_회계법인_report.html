@@ -1,0 +1,459 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>종합 리서치 보고서 — 국내 회계법인 시장</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">국내 회계법인 시장 조사</div><h1>종합 리서치 보고서 — 국내 회계법인 시장</h1></header><div class="intro"><blockquote>
+<p><strong>작성일</strong>: 2026-06-24 | <strong>작성자</strong>: 리서치 검증자(Research Reviewer Agent)
+<strong>검증 대상</strong>: 01_industry_analysis.md / 02_competitor_analysis.md / 03_consumer_analysis.md / 04_trend_analysis.md</p>
+</blockquote>
+<hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">종합 평가</div></div>
+<ul>
+<li><strong>리서치 완성도</strong>: 🟢 완료</li>
+<li><strong>총평</strong>: 4개 분석 보고서 모두 금융감독원 공식 통계(2025.11 발표)를 공통 데이터 원으로 삼아 수치 일관성이 높으며, 분석 간 논리 흐름이 체계적으로 연결된다. 일부 수치 표기 방식 차이(소수점·원 단위)와 1차 조사(인터뷰·설문) 미실시로 인한 정성 데이터 한계가 존재하나, 전략 의사결정에 활용하기 충분한 완성도를 갖추고 있다.</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">Executive Summary</div></div>
+<p>국내 회계법인 시장은 2024사업연도 총 매출 6조 281억 원(전년비 +3.8%)으로 성장 둔화 국면에 진입한 가운데, 구조적 전환이 가속화되고 있다. 빅4(삼일·삼정·안진·한영)가 전체 매출의 49%를 점유하는 과점 구조이나, 삼일 독주와 안진·한영 역성장이 동시 진행되며 '빅4 단일 그룹' 프레임이 해체되고 있다. 핵심 변화 방향은 세 가지다: ① 비감사 수익(세무+경영자문 65.3%) 역전 — 감사보수 3년 연속 하락(-4.5%)과 대비되어 세무·컨설팅이 성장 주력 엔진으로 부상, ② AI 내재화 경쟁 가속 — 삼일 AX노드, 안진 Zora AI, 삼정 Kaigen 등 빅4의 AI 플랫폼 외부 판매가 본격화되며 AI가 수익 모델로 전환 중, ③ ESG 보증 신시장 출현 — 2028년 코스피 대형사 ESG 공시 의무화를 앞두고 2026~2027년이 시장 선점 골든타임. 기업 클라이언트는 '가성비화'(감사+세무+자문 번들 요구)와 AI 서비스의 실질적 체감 증명을 요구하고 있으며, 중견법인은 산업전문성 기반 지정감사 인센티브 제도를 활용한 틈새 확장이 현실적 성장 경로다. 시장은 삼일 독주 빅4 그룹 / 산업전문성 특화 중견법인 / 합병·퇴출 소형법인의 3층 구조로 재편이 진행 중이다.</p>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">발견 사항</div></div>
+<h3>🔴 필수 수정</h3>
+<p>없음 — 4개 보고서 모두 핵심 수치가 금감원 공식 데이터에서 일관되게 도출되었으며, 치명적 논리 오류나 상충 주장이 발견되지 않음.</p>
+<hr />
+<h3>🟡 권장 수정</h3>
+<ol>
+<li>
+<p><strong>[소비자 분석 ↔ 트렌드 분석] 비감사 비중 수치 표기 불일치</strong>
+   - 산업 분석: "세무(29.5%) + 경영자문(32.8%) = 62.3%가 비감사"
+   - 트렌드 분석: "비감사 수익 비중 65.3%"
+   - 원인: 트렌드 분석의 65.3%는 기타(3.0%) 포함 계산(62.3%+3.0%=65.3%)으로 추정되나, 기타 항목을 '비감사'로 분류하는 기준 명시 필요. 두 보고서에서 동일한 기준으로 정의할 것을 권장.</p>
+</li>
+<li>
+<p><strong>[경쟁 분석] 삼덕회계법인 매출 수치 표현 정밀화 권장</strong>
+   - 경쟁 분석: "약 1,800억 원(2024사업연도 추정; 전년 1,741억 원 확인)"으로 추정치임을 명시했으나, 산업 분석의 "삼덕 1,800억 추정"과 함께 추정 근거(전년비 성장률 적용 등)를 각주로 보완하면 신뢰도 강화 가능.</p>
+</li>
+<li>
+<p><strong>[소비자 분석] ESG 공시 의무화 일정 표현 보완 필요</strong>
+   - 소비자 분석: "2025년부터 코스피 대형사 ESG 공시 의무화 시작"으로 기술
+   - 트렌드 분석: "2028년 자산 30조원+ 코스피 58개사 시작"으로 금융위 확정 로드맵(2026.02) 반영
+   - 소비자 분석 작성 시점과 로드맵 확정 시점의 차이로 발생한 불일치. 소비자 분석의 해당 내용을 트렌드 분석 기준(2028년 의무화)으로 업데이트 권장.</p>
+</li>
+<li>
+<p><strong>[경쟁 분석 ↔ 트렌드 분석] M&amp;A 시장 회복률 근거 추가 권장</strong>
+   - 트렌드 분석: "2025년 국내 M&amp;A 거래금액 전년 대비 30% 증가"로 명시
+   - 경쟁 분석: M&amp;A 회복을 언급하나 구체적 수치 미포함 → 경쟁 분석에 동일 수치 참조 각주 추가 권장.</p>
+</li>
+</ol>
+<hr />
+<h3>🟢 참고 사항</h3>
+<ol>
+<li>
+<p><strong>1차 조사(인터뷰·설문) 미실시</strong>: 소비자 분석이 조사 방법론 제안까지 포함한 완성도 높은 구조이나, 실제 고객 인터뷰 없이 2차 데이터 기반으로 작성됨. 페르소나의 인용문은 합성(Synthetic) 발언으로, 향후 인터뷰 검증이 권장됨.</p>
+</li>
+<li>
+<p><strong>HHI 추정치 기재</strong>: 경쟁 분석의 HHI ≈ 1,250은 공식 미공시 추정치로 명기되어 있으며, 방법론을 투명하게 제시한 것은 적절함.</p>
+</li>
+<li>
+<p><strong>중견법인 비감사 전환 진행 상황</strong>: 트렌드 분석에서 중견법인 감사 의존도를 "약 50%"로 기술했으나, 경쟁 분석의 개별 법인 데이터(삼덕 56%, 대주 56%, 한울 43%)와 평균 수준 차이 존재 — 샘플 기준임을 주석으로 명시 권장.</p>
+</li>
+</ol>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">정합성 매트릭스</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>검증 항목</th>
+<th>상태</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>산업 ↔ 경쟁: 시장 규모·점유율</td>
+<td>✅</td>
+<td>총 매출 6조 281억 원, CR4 49.0% 일치</td>
+</tr>
+<tr>
+<td>산업 ↔ 경쟁: 경쟁사 매출·성장률</td>
+<td>✅</td>
+<td>빅4 개별 매출 수치 일치 (삼일 1.1조, 삼정 8,755억, 안진 5,074억, 한영 4,645억)</td>
+</tr>
+<tr>
+<td>경쟁 ↔ 소비자: 세그먼트 정의</td>
+<td>✅</td>
+<td>대형 상장사(자산 2조+), 중형 상장사(1천억~2조), 비상장 중견, IPO, 공공기관 — 산업·소비자 분석 일치</td>
+</tr>
+<tr>
+<td>소비자 ↔ 트렌드: AI 도입률 데이터</td>
+<td>✅</td>
+<td>AI 도입률 17%(2024)→28%(2025), AI 필요성 인식 95% — 동일 EY 조사 인용으로 일치</td>
+</tr>
+<tr>
+<td>소비자 ↔ 트렌드: 감사보수 하락</td>
+<td>✅</td>
+<td>평균 4,680만 원(-4.5%, 2024년) — 모든 보고서에서 일관 인용</td>
+</tr>
+<tr>
+<td>트렌드 ↔ 산업: 세그먼트별 성장률</td>
+<td>✅</td>
+<td>세무 +6.6%, 감사 +3.2%, 경영자문 +3.1% 일치</td>
+</tr>
+<tr>
+<td>데이터 일관성: 비감사 비중</td>
+<td>⚠️</td>
+<td>62.3% vs 65.3% 기재 차이(기타 항목 분류 기준 불명확) — 권장 수정 항목</td>
+</tr>
+<tr>
+<td>데이터 일관성: ESG 공시 의무화 일정</td>
+<td>⚠️</td>
+<td>소비자 분석 "2025년"  vs 트렌드 분석 "2028년" 불일치 — 권장 수정 항목</td>
+</tr>
+<tr>
+<td>논리 흐름: 성장률→기회→전략</td>
+<td>✅</td>
+<td>감사 성장 둔화→비감사 전환→AI·ESG 투자 권고 논리 일관</td>
+</tr>
+<tr>
+<td>논리 흐름: 소비자 니즈→차별화 기회</td>
+<td>✅</td>
+<td>번들 가치 요구, 산업 전문성 수요 → 경쟁 분석 화이트스페이스와 정합</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">통합 인사이트</div></div>
+<h3>핵심 발견</h3>
+<ol>
+<li>
+<p><strong>"감사는 플랫폼, 수익은 번들"이 산업 표준으로 전환 중</strong> (산업 분석 × 트렌드 분석 × 소비자 분석 교차)
+   감사보수 3년 연속 하락(-4.5%), 비감사 비중 65.3% 역전, 소비자의 "도장 이상의 가치" 요구가 동시 신호를 보낸다. 감사 계약은 세무·컨설팅·ESG 보증 크로스셀의 입점 채널로 재정의되고 있으며, 이 패키지를 구성하지 못한 법인은 보수 경쟁에서 이길 수 없는 구조다. 삼일이 경영자문 +13.8%를 달성한 것과 중견법인 대표이사가 "세금 아낄 방법 하나라도 알려줘야 진짜 서비스"라고 요구하는 것은 동일한 시장 압력의 양면이다.</p>
+</li>
+<li>
+<p><strong>AI 경쟁의 1라운드 승자는 이미 정해졌으나 2라운드 틈새는 남아 있다</strong> (경쟁 분석 × 트렌드 분석 × 소비자 분석 교차)
+   빅4의 AI 플랫폼(Zora AI, Kaigen, AX노드, EY AI Hub)은 내부 효율화를 넘어 외부 B2B SaaS 수익화 단계로 진입했다. 소비자의 AI 서비스 체감 불만(95% 필요성 인식 vs. 실제 체감 낮음)은 중견법인이 '저렴한 AI 자문'으로 침투할 수 있는 2라운드 기회다. 특히 중견·중소기업 대상 AI 전환(AX) 자문은 빅4가 수익성 문제로 소홀한 공백 지대다.</p>
+</li>
+<li>
+<p><strong>지정감사 산업전문성 제도가 시장 재편의 핵심 변수</strong> (산업 분석 × 경쟁 분석 × 트렌드 분석 교차)
+   2024~2025년 단계적 시행된 지정감사 산업전문성 기준(11개 업종)은 단순 규제 변화가 아니라 중견법인의 빅4 침투 허용 창구다. 산업 분석의 KSF(핵심 성공 요인) 4번, 경쟁 분석의 SWOT SO전략, 트렌드 분석의 '소형법인 틈새 부상'이 모두 동일 결론을 가리킨다. 이 제도를 먼저 활용하는 중견법인이 2026~2027년 수임 확대에서 수혜를 입는다.</p>
+</li>
+<li>
+<p><strong>소비자 Pain Point가 경쟁 화이트스페이스와 정확히 일치</strong> (소비자 분석 × 경쟁 분석 교차)
+   소비자 분석의 7대 불만족(파트너 잦은 교체, 산업 이해도 부족, AI 기대-현실 간극 등)이 경쟁 분석 화이트스페이스 3개(AI 자문 특화, 스타트업 원스톱 서비스, ESG 중소기업 특화)와 1:1 대응된다. 이는 차별화 기회가 이미 시장에서 명시적으로 요구되고 있음을 의미하며, 선점 법인에 실질적 수임 전환으로 연결될 가능성이 높다.</p>
+</li>
+<li>
+<p><strong>ESG 보증 시장은 2026~2027년 선점이 2030년까지의 시장을 결정</strong> (트렌드 분석 × 소비자 분석 × 경쟁 분석 교차)
+   KSSB 공시기준서 의결(2026.02)로 2028년 코스피 대형사 의무화가 확정되었으나, 즉시 대응 가능 기업은 13%에 불과하다(EY 조사). 87%의 미준비 기업은 지금부터 외부 자문을 탐색하는 시점이며, 이 수요를 먼저 잠근 법인이 10년 고객을 확보한다. 삼정KPMG의 MSCI 독점과 ESG 크레덴셜 400건+은 이미 격차 형성의 증거다.</p>
+</li>
+<li>
+<p><strong>M&amp;A 시장 회복의 수혜 불균형이 빅4 내부 서열을 재편</strong> (경쟁 분석 × 트렌드 분석 교차)
+   2025년 M&amp;A 재무자문 1위 삼일(24조 원), 2위 삼정(13.8조 원)과 안진(-17.2%)·한영(-5.3%) 역성장의 극명한 대비는 단기 부진이 아닌 구조적 역량 차이를 반영한다. M&amp;A 자문 역량이 없는 법인은 비감사 수익 성장의 가장 큰 동력원을 갖지 못한 채 세무·컨설팅 경쟁만으로 싸우는 구조다. 중견법인의 현실적 대안은 빅4가 소홀한 중소기업 M&amp;A 자문(거래 규모 500억 원 이하) 특화다.</p>
+</li>
+<li>
+<p><strong>인력 구조 재편이 서비스 품질 위협이자 비용 기회</strong> (트렌드 분석 × 소비자 분석 × 산업 분석 교차)
+   빅4 신입 채용 40% 감소(2019년 1,100명→2025년 700명대)와 수습 미취업 600명+ 누적은 이중 신호다. 소비자가 불만하는 '파트너 잦은 교체'와 '산업 이해도 부족'은 인력 이탈 가속의 결과이며, 동시에 수습 회계사 공급 과잉은 중소·중견법인이 상대적으로 저렴하게 인력을 확보할 수 있는 단기 기회창이다. 인력 업스킬링(AI 역량)이 2027년 이후 서비스 품질 차별화의 핵심 변수가 된다.</p>
+</li>
+</ol>
+<hr />
+<h3>전략적 권고</h3>
+<div class="tbl-wrap"><table style="min-width:920px">
+<thead>
+<tr>
+<th>권고</th>
+<th>근거 분석</th>
+<th>우선순위</th>
+<th>예상 효과</th>
+<th>리스크</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. 감사-세무-컨설팅-ESG 번들 상품 설계 및 장기계약 전환</strong></td>
+<td>산업(감사보수 하락), 소비자(번들 가치 요구), 트렌드(비감사 역전)</td>
+<td>P0 즉시</td>
+<td>감사 단가 하락 상쇄, 고객 이탈 방지, 비감사 수익 비중 70%+ 달성</td>
+<td>번들 가격 설계 오류 시 역마진 위험; 서비스 품질 동시 보장 부담</td>
+</tr>
+<tr>
+<td><strong>2. ESG 보증 전담팀 신설 및 KSSB/ISSA 5000 방법론 선점</strong></td>
+<td>트렌드(2028년 의무화), 소비자(J7 ESG 니즈), 경쟁(삼정 독주 견제)</td>
+<td>P0 즉시~2027년</td>
+<td>2028~2030년 ESG 보증 시장 선점; 잠재 규모 2,000억~5,000억 원</td>
+<td>ESG 의무화 일정 지연 또는 약화 가능성(비관 시나리오 25%); 전문 인력 양성 시간 필요</td>
+</tr>
+<tr>
+<td><strong>3. 산업전문성 기반 지정감사 인센티브 선점 (11개 업종 파트너 라인업)</strong></td>
+<td>산업(KSF 4번), 경쟁(SO전략), 트렌드(중견 틈새 부상)</td>
+<td>P1 단기</td>
+<td>지정감사 수임 확대, 업종별 레퍼런스 구축, 중견법인은 빅4 경쟁 회피 가능</td>
+<td>특정 업종 집중으로 경기 사이클 리스크 노출; 파트너 영입 비용 상승</td>
+</tr>
+<tr>
+<td><strong>4. 중견·중소기업 대상 AI 자문 특화 포지셔닝 (B2C·B2B AX 자문)</strong></td>
+<td>경쟁(화이트스페이스 1번), 소비자(AI 기대-현실 간극), 트렌드(AI 구조화)</td>
+<td>P1 단기</td>
+<td>빅4 미공략 중견·중소기업 AX 시장 선점; AI 자문 매출 신규 창출</td>
+<td>빅4의 AI 솔루션 가격 인하 공세 시 경쟁력 약화; 자체 AI 역량 부족 리스크</td>
+</tr>
+<tr>
+<td><strong>5. 스타트업·IPO 준비 기업 원스톱 서비스 패키지화</strong></td>
+<td>소비자(S4 페르소나, J3 재무 신뢰성), 경쟁(화이트스페이스 2번), 트렌드(CFO 세대 교체)</td>
+<td>P1 단기</td>
+<td>IPO 이후 대형 고객으로 성장하는 장기 파이프라인 확보; 연간 100~200개사 잠재 수요</td>
+<td>상장 실패 기업의 미회수 서비스 비용; 바이오 등 기술 업종 감사 전문성 선투자 필요</td>
+</tr>
+<tr>
+<td><strong>6. 파트너 연속성 보장 약정 도입 및 고객 만족도 관리 시스템 구축</strong></td>
+<td>소비자(이탈 3대 원인: 파트너 교체·보수 인상·소통 부재), 산업(KSF 1번 인재 유지)</td>
+<td>P2 중기</td>
+<td>고객 이탈률 감소, 갱신 계약 비중 확대, NPS 개선</td>
+<td>파트너 이직 의사 차단 어려움; 고정 파트너 배치 시 인력 운영 유연성 저하</td>
+</tr>
+<tr>
+<td><strong>7. M&amp;A 딜 자문 틈새 포지셔닝 (중소기업 M&amp;A 500억 이하)</strong></td>
+<td>트렌드(M&amp;A 회복 2025~2027년), 경쟁(안진·한영 역성장, 중견법인 기회)</td>
+<td>P2 중기</td>
+<td>M&amp;A 시장 회복 사이클 수혜; 중소기업 딜 자문은 빅4가 수익성 이유로 소극적</td>
+<td>M&amp;A 딜 자문 인력 영입 경쟁 심화; 거래 성사 실패 시 수임료 일부 리스크</td>
+</tr>
+<tr>
+<td><strong>8. 소형법인 합병 또는 공공·비영리 특화 생존 전략</strong></td>
+<td>트렌드(감사보수 하락+AI 충격, 비관 시나리오 30~40개 폐업), 산업(소형법인 규모 경제 불가)</td>
+<td>P2 중기</td>
+<td>합병을 통한 규모 확대로 지정감사 경쟁력 확보; 틈새 특화로 가격 경쟁 회피</td>
+<td>합병 협상 복잡성 및 문화 통합 비용; 틈새 시장 규모 제한</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">최종 산출물 체크리스트</div></div>
+<ul>
+<li class="check checked">산업 분석 보고서 완성</li>
+<li class="check checked">경쟁 분석 보고서 완성</li>
+<li class="check checked">소비자 분석 보고서 완성</li>
+<li class="check checked">트렌드 분석 보고서 완성</li>
+<li class="check checked">통합 인사이트 도출 (7개 핵심 발견, 8개 전략 권고)</li>
+<li class="check checked">데이터 일관성 검증 완료 (정합성 매트릭스 10개 항목)</li>
+<li class="check checked">필수 수정 사항 검토 완료 (필수 수정 없음, 권장 수정 4건 도출)</li>
+<li class="check checked">종합 리서치 보고서(05_review_report.md) 저장 완료</li>
+</ul>
+<hr />
+<p><em>작성일: 2026-06-24 | 리서치 검증자(Research Reviewer Agent)</em>
+<em>검증 데이터 기준: 금융감독원 「2024사업연도 회계법인 사업보고서 분석」(2025.11.24), 금융위원회 ESG 공시 로드맵(2026.02), EY Korea AI 활용 조사(2025.08), 딜사이트 M&amp;A 리그테이블(2025)</em></p></section></div></div></body></html>

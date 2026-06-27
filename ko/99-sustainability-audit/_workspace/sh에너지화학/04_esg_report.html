@@ -1,0 +1,2338 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>SH에너지화학 ESG 보고서 2026</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">SH에너지화학 · ESG 보고서 2026</div><h1>SH에너지화학 ESG 보고서 2026</h1></header><div class="intro"><blockquote>
+<p><strong>보고 기준</strong>: GRI Standards 2021 (Universal Standards + Topic Standards), TCFD (보완 적용)
+<strong>보고 기간</strong>: 제69기 1분기 (2026년 1월 1일 ~ 2026년 3월 31일)
+<strong>데이터 기준일</strong>: 2026년 3월 31일
+<strong>보고서 발간일</strong>: 2026년 6월 25일
+<strong>표기 원칙</strong>: (실측) = 분기보고서 기재 데이터 / (추정) = 추론·추정 데이터 / (미공시) = 미공시 항목</p>
+</blockquote>
+<hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">표지 및 보고 개요</div></div>
+<h3>보고서 소개</h3>
+<p>본 보고서는 주식회사 SH에너지화학(이하 "회사")의 제69기 1분기(2026년 1월~3월) ESG(환경·사회·거버넌스) 경영 현황을 GRI Standards 2021에 따라 작성한 최초의 공개 지속가능경영 보고서입니다.</p>
+<p>본 보고서는 회사의 환경(E)·사회(S)·거버넌스(G) 각 영역에 대한 실측 데이터, 추정 데이터, 공시 공백을 명확히 구분하여 투명하게 보고하는 것을 원칙으로 합니다. 일부 데이터는 이번 보고 기간 동안 체계적 측정 체계가 미구축된 관계로 미공시 또는 추정치로 표기됩니다. 이는 향후 개선의 출발점으로 삼을 것입니다.</p>
+<h3>보고 범위</h3>
+<ul>
+<li><strong>조직 경계</strong>: 주식회사 SH에너지화학 (전라북도 군산시 외항7길 20 사업장)</li>
+<li><strong>재무 경계</strong>: 별도 재무제표 기준 (해외 자회사 SH Energy USA Inc. 등 연결 자회사의 환경·사회 데이터는 별도 표기)</li>
+<li><strong>GRI 기준</strong>: GRI Standards 2021 (Universal Standards: GRI 1, GRI 2, GRI 3; Topic Standards: GRI 302, 303, 305, 306, 401, 403, 404, 405, 412, 413)</li>
+</ul>
+<h3>이해관계자 참여</h3>
+<p>본 보고서는 주주, 기관 투자자, 고객사, 협력업체, 지역사회(군산시 소룡동 인근), 임직원, 감독 당국을 주요 이해관계자로 식별하였습니다. 이해관계자별 구체적 소통 채널 및 참여 프로그램은 제10절 부록을 참조하십시오.</p>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">1. CEO 메시지</div></div>
+<p>주식회사 SH에너지화학 임직원, 주주, 고객, 지역사회 이해관계자 여러분께</p>
+<p>저는 본 보고서를 통해 회사의 현재 상황을 솔직하게 보고드리는 동시에, 앞으로 나아갈 방향을 밝히고자 합니다.</p>
+<p>2025년과 2026년 1분기, 회사는 어려운 경영 환경에 처해 있습니다. 합성수지 시장의 구조적 공급 과잉과 원가 상승이 맞물리며 2년 연속 영업손실을 기록하였고, 1분기 가동률도 47.7% 수준에 머물렀습니다. 또한 2025년 4월에는 전북지방환경청으로부터 대기오염물질 관련 과태료 처분 및 경고를 받은 사실을 이 자리에서 명확히 밝힙니다. 이는 회사 내부 환경 관리 체계의 미흡함에서 비롯된 것으로, 경영진으로서 이에 대한 책임을 무겁게 인식하고 있습니다.</p>
+<p>그러나 이러한 어려운 상황 속에서도 회사가 주목해야 할 방향은 명확합니다. 1958년 창업 이래 68년의 역사를 지닌 회사로서, 군산 지역사회와 함께 성장해 온 책임을 잊지 않겠습니다. 151명 임직원의 고용을 안정적으로 유지하며 지역 경제에 기여하는 것이 회사의 첫 번째 사회적 책임입니다.</p>
+<p>ESG 경영 측면에서 회사는 아직 초기 단계에 있음을 솔직히 인정합니다. 본 보고서는 회사 역사상 처음으로 발간하는 ESG 보고서입니다. 공시 데이터가 충분하지 않고, 일부 지표에서 공백이 있는 것도 사실입니다. 그럼에도 불구하고 "없는 것은 없다고, 부족한 것은 부족하다고" 정직하게 보고하는 것이 신뢰 회복의 출발점이라고 믿습니다.</p>
+<p>앞으로 회사는 다음 세 가지 방향으로 ESG 경영을 강화해 나가겠습니다.</p>
+<p><strong>첫째, 환경 관리 체계 강화.</strong> 2025년 환경 위반 재발 방지를 위해 배관 설비 전면 점검 및 환경 모니터링 시스템을 구축하고, 단계적으로 GHG 배출량 측정 체계와 에너지 데이터 관리 시스템을 도입하겠습니다.</p>
+<p><strong>둘째, 투명한 ESG 공시.</strong> 본 보고서를 시작으로 연간 ESG 보고서를 정기 발간하고, GRI 인덱스 공시 항목을 매년 확대해 나가겠습니다.</p>
+<p><strong>셋째, 거버넌스 개선.</strong> 이사회 다양성 강화와 ESG 경영 감독 체계 구축을 위해 관련 논의를 이사회 수준에서 시작하겠습니다.</p>
+<p>어렵고 불확실한 시기일수록 기본으로 돌아가겠습니다. 임직원의 안전을 최우선에 두고, 환경법을 준수하며, 이해관계자에게 정직하게 소통하는 것이 SH에너지화학의 지속 가능한 미래를 위한 첫걸음임을 확신합니다.</p>
+<p>2026년 6월
+주식회사 SH에너지화학 대표이사 <strong>정케빈규봉</strong></p>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">2. 기업 소개</div></div>
+<h3>2.1 일반 현황</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>법인명</td>
+<td>주식회사 SH에너지화학 (SH Energy &amp; Chemical Co., Ltd.)</td>
+</tr>
+<tr>
+<td>대표이사</td>
+<td>정케빈규봉</td>
+</tr>
+<tr>
+<td>설립일</td>
+<td>1958년 5월 9일</td>
+</tr>
+<tr>
+<td>상장일</td>
+<td>1985년 12월 23일 (코스피)</td>
+</tr>
+<tr>
+<td>본점 소재지</td>
+<td>전라북도 군산시 외항7길 20 (소룡동)</td>
+</tr>
+<tr>
+<td>업종</td>
+<td>합성수지 제조업</td>
+</tr>
+<tr>
+<td>주요 제품</td>
+<td>EPS레진 (발포폴리스티렌 원료), Nylon-12 Fine Powder</td>
+</tr>
+<tr>
+<td>종업원 수</td>
+<td>151명 (실측, 2026.03.31 기준)</td>
+</tr>
+<tr>
+<td>자산 총계</td>
+<td>1,007억원 (실측)</td>
+</tr>
+<tr>
+<td>매출액</td>
+<td>986억원 (2025년, 실측)</td>
+</tr>
+<tr>
+<td>영업손익</td>
+<td>△123억원 (2025년, 실측)</td>
+</tr>
+<tr>
+<td>부채비율</td>
+<td>45.3% (실측)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.2 사업 개요</h3>
+<p>SH에너지화학은 1958년 설립 이래 합성수지 제조 분야에서 68년의 역사를 보유한 코스피 상장 기업입니다.</p>
+<p><strong>주요 사업 영역</strong>:</p>
+<ul>
+<li><strong>EPS레진(발포폴리스티렌 원료)</strong>: 스티렌모노머(SM)를 주원료로 사용하여 발포폴리스티렌(EPS)의 원료가 되는 EPS레진을 제조합니다. 건축 단열재, 포장 완충재, 식품 용기 등 다양한 분야에 사용됩니다.</li>
+<li>DUOPOL: 준불연 등급 EPS (건축 화재 안전 강화 제품) (실측)</li>
+<li>ZEROPOL: 고단열 성능 EPS (실측)</li>
+<li><strong>Nylon-12 Fine Powder</strong>: ANYBES 브랜드의 Nylon-12 미세분말로 화장품 원료, 코팅재 등에 활용됩니다 (실측).</li>
+</ul>
+<p><strong>생산 능력 및 가동률</strong>:</p>
+<ul>
+<li>1분기 생산 가능 능력: 21,875MT (실측)</li>
+<li>1분기 실제 생산량: 10,429MT (실측)</li>
+<li><strong>가동률: 47.7%</strong> (실측) — 합성수지 시장 공급 과잉에 따른 저가동 상태</li>
+</ul>
+<p><strong>해외 자회사</strong>:</p>
+<ul>
+<li>SH Energy USA Inc. (미국 Arkansas, 셰일가스 자원개발) — 화석연료 자산 보유 (실측)</li>
+<li>㈜리얼티어드바이저스코리아 (국내, 경영컨설팅) (실측)</li>
+</ul>
+<h3>2.3 재무 현황</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>2023년</th>
+<th>2024년</th>
+<th>2025년</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출액</td>
+<td>(미공시)</td>
+<td>(미공시)</td>
+<td>986억원 (실측)</td>
+</tr>
+<tr>
+<td>영업손익</td>
+<td>(미공시)</td>
+<td>△97억원 (실측)</td>
+<td>△123억원 (실측)</td>
+</tr>
+<tr>
+<td>자산 총계</td>
+<td>(미공시)</td>
+<td>(미공시)</td>
+<td>1,007억원 (실측)</td>
+</tr>
+<tr>
+<td>부채비율</td>
+<td>(미공시)</td>
+<td>(미공시)</td>
+<td>45.3% (실측)</td>
+</tr>
+<tr>
+<td>배당</td>
+<td>무배당 (실측)</td>
+<td>무배당 (실측)</td>
+<td>무배당 (실측)</td>
+</tr>
+</tbody>
+</table></div>
+<p>※ 회사는 3년 연속 영업손실 상태이나, 자본 692억원(추정) 수준으로 단기 유동성 위기 리스크는 제한적입니다.</p>
+<h3>2.4 지배구조 개요</h3>
+<pre><code>MAY REALTY HOLDINGS, INC. (미국)
+        ↓
+Realty Advisors, Inc. (미국 Texas) — 최대주주 31.06% (실측)
+        ↓
+주식회사 SH에너지화학 (코스피 상장)
+    ├── SH Energy USA Inc. (100% 자회사, 미국 Arkansas)
+    └── ㈜리얼티어드바이저스코리아 (종속기업)
+</code></pre>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">3. 지속가능경영 전략</div></div>
+<h3>3.1 중대성 평가 개요 (이중 중대성 평가)</h3>
+<p>GRI Standards 2021 및 EU ESRS의 이중 중대성(Double Materiality) 원칙에 따라, 본 보고서는 두 가지 관점에서 중요 이슈를 식별하였습니다.</p>
+<ul>
+<li><strong>재무적 중대성(Financial Materiality)</strong>: ESG 이슈가 기업 가치·재무 성과에 미치는 영향</li>
+<li><strong>영향 중대성(Impact Materiality)</strong>: 회사 활동이 환경·사회에 미치는 실제 영향</li>
+</ul>
+<p>이중 중대성 매트릭스는 제8절에 상세 기재하였습니다.</p>
+<h3>3.2 ESG 중대 이슈 TOP 5</h3>
+<p>합성수지 제조업 특성 및 회사 내부 현황을 반영한 최우선 중대 이슈:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>순위</th>
+<th>중대 이슈</th>
+<th>재무적 중대성</th>
+<th>영향 중대성</th>
+<th>관련 GRI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>화학물질 안전 관리 (SM 취급 안전)</td>
+<td>높음 (사고 시 막대한 배상·영업 중단)</td>
+<td>높음 (인근 주민·생태계 피해)</td>
+<td>403, 306</td>
+</tr>
+<tr>
+<td>2</td>
+<td>온실가스 배출 및 기후 전환 리스크</td>
+<td>높음 (탄소 규제 강화 시 원가 상승)</td>
+<td>중간 (Scope 1+2 소규모, Scope 3 대규모)</td>
+<td>305</td>
+</tr>
+<tr>
+<td>3</td>
+<td>EPS 플라스틱 규제 대응</td>
+<td>매우 높음 (핵심 사업 구조적 위협)</td>
+<td>중간 (폐EPS 환경 문제)</td>
+<td>3-3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>중대재해 예방 및 산업안전</td>
+<td>높음 (중대재해처벌법 위반 시 형사 책임)</td>
+<td>높음 (임직원 생명·신체 피해)</td>
+<td>403</td>
+</tr>
+<tr>
+<td>5</td>
+<td>이사회 다양성 및 ESG 거버넌스</td>
+<td>중간 (기관 투자자 ESG 평가 하락)</td>
+<td>중간 (의사결정 편향·투명성 결여)</td>
+<td>2-9~2-29</td>
+</tr>
+</tbody>
+</table></div>
+<h3>3.3 ESG 경영 비전 및 목표 (수립 예정)</h3>
+<p>현재 회사는 공식적인 ESG 비전 및 중장기 목표를 수립하지 않은 상태입니다 (미공시). 이는 본 보고서에서 최우선 개선 과제로 식별되었으며, 2026년 하반기 중 이사회 논의를 통해 ESG 비전 및 2030년 목표를 수립할 계획입니다.</p>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">4. 환경(E) 성과 (GRI 300 시리즈)</div></div>
+<p><strong>E 등급: D</strong></p>
+<p>환경 데이터 공시율이 GRI 표준 25개 지표 중 약 4%(실질 공시 1건 미만)에 불과하며, 2025년 환경 법규 위반이 실측 확인됩니다. 이하 각 소절은 가용한 실측 데이터와 추정 데이터를 명확히 구분하여 보고합니다.</p>
+<h3>4.1 에너지 관리 (GRI 302)</h3>
+<h4>에너지 사용 현황</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 지표</th>
+<th>항목</th>
+<th>현황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 302-1</td>
+<td>조직 내 에너지 소비량</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 302-2</td>
+<td>조직 외부 에너지 소비량</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 302-3</td>
+<td>에너지 집약도</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 302-4</td>
+<td>에너지 소비 감축량</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 302-5</td>
+<td>제품·서비스의 에너지 요구량 감축</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h4>공정 특성 분석 (추정)</h4>
+<p>EPS레진 제조 공정은 스팀 집약 공정으로, 주요 에너지 수요원은 다음과 같이 추정됩니다:</p>
+<ul>
+<li>스팀: 발포 공정(pre-expansion, 몰드 성형 가열), 건조 공정 (추정)</li>
+<li>전력: 압축기, 반응기 교반기, 냉각수 펌프, 냉동기 (추정)</li>
+<li>에너지 원단위 참고: 국내 EPS 업계 평균 약 0.5~0.8 GJ/MT 수준 (추정 + 업계 평균 참조, 회사 자체 데이터 미공시)</li>
+</ul>
+<p><strong>1분기 가동률 47.7%(실측)는 최적 가동률 대비 현저히 낮은 수준으로, 단위 에너지 원단위가 정상 가동 시보다 높게 나타날 가능성이 있습니다 (추정).</strong></p>
+<h4>에너지 경영 이니셔티브</h4>
+<ul>
+<li>ISO 50001 에너지경영시스템 인증: <strong>(미공시)</strong> — 미인증 추정</li>
+<li>재생에너지 사용(PPA, REC): <strong>(미공시)</strong></li>
+<li>에너지 절감 목표 및 달성 현황: <strong>(미공시)</strong></li>
+</ul>
+<hr />
+<h3>4.2 온실가스 배출 (GRI 305)</h3>
+<h4>Scope별 배출 현황</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>배출 구분</th>
+<th>수량</th>
+<th>공시 여부</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope 1</td>
+<td>직접 배출 (연소·공정)</td>
+<td><strong>(미공시)</strong></td>
+<td>공시 없음</td>
+</tr>
+<tr>
+<td>Scope 2</td>
+<td>간접 배출 (구입 전력·스팀)</td>
+<td><strong>(미공시)</strong></td>
+<td>공시 없음</td>
+</tr>
+<tr>
+<td>Scope 1+2 합산</td>
+<td>목표관리제 기준 간접 확인</td>
+<td><strong>15,000 tCO2eq 미만</strong> (실측)</td>
+<td>목표관리제 제외 기준으로 간접 확인</td>
+</tr>
+<tr>
+<td>Scope 3</td>
+<td>원료 조달·제품 처분 단계</td>
+<td>75,000~100,000 tCO2eq 추정</td>
+<td><strong>(미공시, 추정)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h4>목표관리제 현황 (실측)</h4>
+<p>2022년부터 온실가스·에너지 목표관리제 지정 업체에서 <strong>제외</strong>되었습니다. 이는 Scope 1+2 합산 배출량이 목표관리 기준치 15,000 tCO2eq/년 미만임을 의미합니다 (실측 확인). 절대 배출 규모는 소규모 배출원에 해당합니다.</p>
+<h4>Scope 3 추정 (추정)</h4>
+<p>SM 원료 조달 관련 상류 Scope 3 배출량:</p>
+<ul>
+<li>추정 근거: 연간 생산 추정량 약 41,717MT(가동률 47.7% 기준, 추정) × SM 투입비율 약 90~95% × SM 제조 탄소발자국 약 2.0~2.5 tCO2eq/MT-SM (업계 평균 참조)</li>
+<li>추정 결과: <strong>약 75,000~100,000 tCO2eq/년</strong> — Scope 1+2의 <strong>5~7배</strong> 수준 (추정, 검증 필요)</li>
+</ul>
+<h4>탄소 관련 목표</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>현황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>탄소중립 2050 목표</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>SBTi 목표 설정</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>내부 GHG 감축 목표</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>K-ETS 적용</td>
+<td>배출량 기준 미만으로 현재 미적용</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>4.3 수자원 (GRI 303)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 지표</th>
+<th>항목</th>
+<th>현황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 303-1</td>
+<td>수원별 취수 및 관련 영향</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 303-2</td>
+<td>취수 관련 영향 관리</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 303-3</td>
+<td>취수량</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 303-4</td>
+<td>방류량</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 303-5</td>
+<td>물 소비량</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>입지 특성 분석</strong>: 전라북도 군산시 임해 산업단지 위치로 냉각용 해수 이용 가능성이 있으며, 새만금·금강 유역에 인접하여 방류 수질 관리의 중요성이 높습니다 (추정 + 입지 특성 참조). 수자원 관련 전체 공시가 부재한 상태로, 향후 취수·방류 데이터 측정 체계 구축이 필요합니다.</p>
+<hr />
+<h3>4.4 폐기물 (GRI 306)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 지표</th>
+<th>항목</th>
+<th>현황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 306-1</td>
+<td>폐기물 발생 및 중요 영향</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 306-2</td>
+<td>폐기물 관련 영향 관리</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 306-3</td>
+<td>폐기물 발생량</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 306-4</td>
+<td>비매립 폐기물</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 306-5</td>
+<td>매립 폐기물</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>주요 예상 폐기물 (추정)</strong>:</p>
+<ul>
+<li>폐발포 EPS 스크랩 (재활용 가능, 처리 현황 미공시)</li>
+<li>폐수 슬러지 (SM 중합 반응 후 폐수 처리 과정)</li>
+<li>유기용제 함유 폐액 (지정 폐기물 해당 가능성)</li>
+<li>VOC 처리 폐촉매·흡착제</li>
+</ul>
+<hr />
+<h3>4.5 화학물질·환경 규제 준수</h3>
+<h4>2025년 환경 제재 현황 (실측)</h4>
+<p>2025년 4월, 전북지방환경청에 의해 다음 3건의 위반이 동시 적발되었습니다:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>처분 일시</th>
+<th>위반 내용</th>
+<th>처분 종류</th>
+<th>금액</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025년 4월</td>
+<td>이송배관 마모로 대기오염물질 누출</td>
+<td>과태료</td>
+<td>2,000,000원</td>
+</tr>
+<tr>
+<td>2025년 4월</td>
+<td>배출시설 가동시간 기록 불일치</td>
+<td>과태료</td>
+<td>3,000,000원</td>
+</tr>
+<tr>
+<td>2025년 4월</td>
+<td>시료채취 위치 기준 미준수</td>
+<td>경고</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>합계</strong></td>
+<td></td>
+<td><strong>과태료 2건 + 경고 1건</strong></td>
+<td><strong>5,000,000원</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>위반의 의미</strong>: 단순 과태료 금액(5백만원, 연매출 대비 0.005%)은 직접 재무 영향이 미미하나, 실제 오염물질 대기 중 누출, 기록 관리 부실, 시료채취 기준 위반이 동시 적발된 것은 내부 환경 관리 체계의 구조적 취약성을 시사합니다.</p>
+<h4>주요 취급 화학물질</h4>
+<ul>
+<li><strong>스티렌모노머(SM, CAS 100-42-5)</strong>: 발암성 2군(IARC), 생식독성 물질, 유해화학물질(유독물질) 지정 — 취급 신고 의무 대상 (실측)</li>
+<li><strong>화관법·화평법 이행 현황</strong>: <strong>(미공시)</strong></li>
+</ul>
+<hr />
+<h3>4.6 TCFD 기후 리스크</h3>
+<h4>거버넌스 (Governance)</h4>
+<p>이사회 및 경영진의 기후 리스크 감독 체계: <strong>(미공시)</strong>. 현재 ESG 위원회 미설치 상태로 기후 관련 이사회 감독 구조가 부재합니다.</p>
+<h4>전환 리스크 (Transition Risk)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>리스크 유형</th>
+<th>내용</th>
+<th>시계</th>
+<th>중요도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>시장 규제</td>
+<td>EPS 제품 플라스틱 규제 강화 (일회용 EPS 용기·포장재 제한)</td>
+<td>단기~중기</td>
+<td><strong>매우 높음</strong></td>
+</tr>
+<tr>
+<td>평판</td>
+<td>석유화학 기반 EPS 이미지 하락, 친환경 대체재(EPP, 종이 완충재) 침투</td>
+<td>단기~중기</td>
+<td><strong>높음</strong></td>
+</tr>
+<tr>
+<td>정책·규제</td>
+<td>CBAM 적용 범위 확대 시 합성수지 수출 원가 상승</td>
+<td>중기</td>
+<td>중간</td>
+</tr>
+<tr>
+<td>기술</td>
+<td>바이오 기반 SM, 재활용 EPS(r-EPS) 전환 수요 증가</td>
+<td>중기</td>
+<td>중간</td>
+</tr>
+</tbody>
+</table></div>
+<h4>물리적 리스크 (Physical Risk)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>리스크 유형</th>
+<th>내용</th>
+<th>시계</th>
+<th>중요도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>만성</td>
+<td>서해안 기온 상승·해수면 상승 — 임해 공단 침수·설비 손상</td>
+<td>장기</td>
+<td>중간</td>
+</tr>
+<tr>
+<td>급성</td>
+<td>태풍·집중호우 빈도 증가 → 군산 항만 물류 차질</td>
+<td>단기~중기</td>
+<td>중간</td>
+</tr>
+</tbody>
+</table></div>
+<h4>기후 관련 지표 및 목표</h4>
+<p>기후 관련 정량 지표 및 목표 일체: <strong>(미공시)</strong>. 기후 시나리오 분석, 1.5°C 정합성 평가 등이 미수행된 상태입니다.</p>
+<p><strong>핵심 전략적 경고</strong>: 회사의 핵심 제품인 EPS레진은 EU SUP(Single-Use Plastics) Directive 및 국내 자원재활용법 개정에 따른 일회용 EPS 제품 제한 규제의 직접 영향권에 있습니다. 이에 대한 전략적 대응 계획이 공시되지 않은 것은 중대한 공시 공백으로 평가됩니다.</p>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">5. 사회(S) 성과 (GRI 400 시리즈)</div></div>
+<p><strong>S 등급: C</strong></p>
+<p>고용 안정성과 급여 수준, 중대재해 미발생이라는 실측 강점을 보유하고 있으나, GRI 사회 표준 18개 지표 중 약 89%가 미공시 상태입니다.</p>
+<h3>5.1 고용 (GRI 401)</h3>
+<h4>인력 구성 (실측, 2026.03.31 기준)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>인원</th>
+<th>비율</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>총 직원</td>
+<td>151명</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>정규직 (사무직)</td>
+<td>37명</td>
+<td>24.5%</td>
+</tr>
+<tr>
+<td>정규직 (생산직)</td>
+<td>112명</td>
+<td>74.2%</td>
+</tr>
+<tr>
+<td>기간제</td>
+<td>2명</td>
+<td>1.3%</td>
+</tr>
+<tr>
+<td>남성</td>
+<td>140명</td>
+<td>92.7%</td>
+</tr>
+<tr>
+<td>여성</td>
+<td>11명</td>
+<td>7.3%</td>
+</tr>
+<tr>
+<td>평균 근속연수</td>
+<td>11.8년</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>고용 안정성</strong>: 정규직 비율 98.7%는 동종 제조업 대비 높은 수준으로, 고용 안정성 측면에서 양호합니다 (실측).</p>
+<h4>급여 현황 (실측)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>수치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1인 평균 연봉</td>
+<td>약 6,900만원</td>
+</tr>
+<tr>
+<td>연간 급여 총액 (연환산)</td>
+<td>약 100억원</td>
+</tr>
+<tr>
+<td>미등기 임원 평균 연봉 (6명)</td>
+<td>약 213백만원/인</td>
+</tr>
+</tbody>
+</table></div>
+<p>1인 평균 연봉 약 6,900만원은 제조업 평균(약 4,500~5,000만원 추정) 대비 높은 수준으로 급여 경쟁력이 양호합니다 (추정 + 고용노동부 사업체노동력조사 참조). 성별 임금 격차(GRI 405-2)는 <strong>(미공시)</strong>입니다.</p>
+<h4>GRI 401 공시 현황</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>내용</th>
+<th>공시 여부</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 401-1</td>
+<td>신규 채용 및 이직 건수</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 401-2</td>
+<td>정규직 복리후생</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 401-3</td>
+<td>육아휴직 (사용자 수)</td>
+<td>부분 공시 (복귀율 미공시)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>1분기 육아휴직 현황 (실측)</strong>:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>1분기 실적</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>남성 육아휴직</td>
+<td>1명</td>
+</tr>
+<tr>
+<td>배우자 출산휴가</td>
+<td>4명</td>
+</tr>
+<tr>
+<td>여성 육아휴직</td>
+<td>0명</td>
+</tr>
+<tr>
+<td>시차출퇴근제</td>
+<td>2명</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>5.2 산업안전보건 (GRI 403)</h3>
+<h4>중대재해 현황 (실측)</h4>
+<ul>
+<li><strong>2026년 1분기 중대재해</strong>: 해당사항 없음 (실측). 중대재해처벌법상 중대산업재해 발생 기록 없음.</li>
+<li>중대재해처벌법 적용 대상: 해당 (상시 근로자 151명, 50인 이상 기업) (실측)</li>
+</ul>
+<h4>GRI 403 공시 현황</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>내용</th>
+<th>공시 여부</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 403-1</td>
+<td>안전보건 경영 시스템</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 403-2</td>
+<td>위험 식별 및 사고 조사</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 403-9</td>
+<td>산업재해 (LTIR, 사망, 부상)</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 403-10</td>
+<td>업무 관련 질병</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>ISO 45001 인증</strong>: <strong>(미공시)</strong> — 인증 여부 확인 불가</p>
+<p><strong>안전 관련 핵심 이슈</strong>: EPS 제조 공정에서 취급하는 스티렌모노머(SM)는 인화성 액체(인화점 31~32°C)로 화재·폭발 리스크가 있으며, 흡입 독성 물질입니다. 공정안전관리(PSM) 프로그램 운영 여부가 <strong>(미공시)</strong>인 것은 화학 제조업 특성상 중요한 공시 공백입니다.</p>
+<hr />
+<h3>5.3 교육·훈련 (GRI 404)</h3>
+<h4>R&amp;D 투자 현황 (실측)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1분기 실적</th>
+<th>연환산 추정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R&amp;D 비용</td>
+<td>337백만원</td>
+<td>약 1,348백만원</td>
+</tr>
+<tr>
+<td>매출 대비 R&amp;D 비율</td>
+<td>1.1%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>주요 R&amp;D 과제</td>
+<td>DUOPOL, ZEROPOL, ANYBES</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h4>인력 교육·훈련 공시</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>내용</th>
+<th>공시 여부</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 404-1</td>
+<td>1인당 평균 연간 교육 시간</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 404-2</td>
+<td>역량 개발·전환 프로그램</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 404-3</td>
+<td>정기 성과 평가 비율</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>생산직 비율이 74.2%인 화학 제조 현장에서 안전·기술 교육 체계화는 필수적이나, 관련 공시가 전무한 상태입니다.</p>
+<hr />
+<h3>5.4 다양성·포용 (GRI 405)</h3>
+<h4>성별 다양성 현황</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>현황</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>전체 여성 비율</td>
+<td>7.3% (11명/151명)</td>
+<td>제조업 평균(25~30%) 대비 현저히 낮음 (추정 비교)</td>
+</tr>
+<tr>
+<td>이사회 여성 임원</td>
+<td><strong>0명</strong></td>
+<td>2026.03.30 여성 이사 전원 퇴임 후</td>
+</tr>
+<tr>
+<td>미등기 임원 여성 비율</td>
+<td><strong>(미공시)</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>성별 임금 격차 (GRI 405-2)</td>
+<td><strong>(미공시)</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>이사회 여성 임원 현황</strong>: 전 사내이사 서미혜, 박수진이 2026년 3월 30일 중도사임함에 따라 현재 이사회 7명 전원이 남성입니다 (실측). 자본시장법상 법적 의무(자산 2조원 이상)는 해당되지 않으나, ESG 관점에서 이사회 다양성 측면의 심각한 공백입니다.</p>
+<h4>비차별·포용 정책</h4>
+<ul>
+<li>비차별 정책 (GRI 406): <strong>(미공시)</strong></li>
+<li>DEI(다양성·형평성·포용) 정책: <strong>(미공시)</strong></li>
+<li>장애인 고용 현황: <strong>(미공시)</strong></li>
+</ul>
+<hr />
+<h3>5.5 인권·공급망 (GRI 412~414)</h3>
+<h4>인권 정책 현황</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>내용</th>
+<th>공시 여부</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 412-1</td>
+<td>인권 영향 평가 대상 사업장·공급업체</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 412-2</td>
+<td>인권 정책 관련 직원 교육</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 414-1</td>
+<td>공급망 사회 기준 신규 공급업체 선별</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>유엔 기업과 인권 이행원칙(UNGP) 기반 인권정책이 미수립 또는 미공시 상태입니다. EU CSDDD(공급망 실사지침) 등 국제 공급망 관리 요건에 대한 대응 체계도 확인되지 않습니다.</p>
+<h4>공급망 현황</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>공급망 영역</th>
+<th>현황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>주원료 SM (한화토탈에너지스 등 국내 대기업)</td>
+<td>협력사 ESG 평가: <strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>수입 원료 (LRL 등 해외)</td>
+<td>공급망 관리: <strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>미국 Arkansas 셰일가스 자회사 (SH Energy USA)</td>
+<td>현지 노동·환경 기준 준수: <strong>(미공시)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>특이 리스크</strong>: 미국 셰일가스 개발 자회사 운영은 현지 원주민 토지권, 지하수 오염 등 잠재적 인권·환경 리스크를 내포하나 관련 정보 공개가 전무합니다 (GRI 413, 412 연계).</p>
+<hr />
+<h3>5.6 지역사회 기여 (GRI 413)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>내용</th>
+<th>공시 여부</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 413-1</td>
+<td>지역사회 참여·개발 프로그램</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 413-2</td>
+<td>지역사회에 중대한 부정적 영향</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>지역사회 기여 (추정)</strong>: 군산시 소룡동 임해 산업단지 내 주요 제조 사업장으로, 151명 직접 고용 외 협력업체·물류 등 간접 고용 기여가 추정됩니다 (추정). 군산 지역의 제조업 기반 유지에 기여하고 있으나, 공식적인 지역사회 투자 및 사회공헌 활동 공시가 전무합니다.</p>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">6. 거버넌스(G) 성과 (GRI 2 시리즈)</div></div>
+<p><strong>G 등급: C-</strong></p>
+<p>법적 최소 의무 사항은 형식적으로 충족하나, 이사회 독립성·다양성·ESG 거버넌스 체계 전반에서 현저한 공백이 있습니다.</p>
+<h3>6.1 이사회 구성 및 운영</h3>
+<h4>이사회 구성 (실측, 2026.03.31 기준)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>직위</th>
+<th>이름</th>
+<th>임기</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사내이사 (대표이사)</td>
+<td>정케빈규봉</td>
+<td>2024~2027</td>
+<td>이사회 의장 겸직</td>
+</tr>
+<tr>
+<td>사내이사</td>
+<td>최찬욱</td>
+<td>2026~2029</td>
+<td>2026.03.30 신규 선임</td>
+</tr>
+<tr>
+<td>사외이사</td>
+<td>이준수</td>
+<td>2021~2026 (재선임)</td>
+<td>감사위원</td>
+</tr>
+<tr>
+<td>사외이사</td>
+<td>한상원</td>
+<td>2024~2027</td>
+<td>감사위원회 대표</td>
+</tr>
+<tr>
+<td>사외이사</td>
+<td>SONG JAMES JAE</td>
+<td>2024~2027</td>
+<td>감사위원</td>
+</tr>
+<tr>
+<td>기타비상무이사</td>
+<td>성원모</td>
+<td>2023~2026</td>
+<td>감사위원</td>
+</tr>
+<tr>
+<td>기타비상무이사</td>
+<td>이남녕</td>
+<td>2026~2029</td>
+<td>2026.03.30 신규 선임</td>
+</tr>
+</tbody>
+</table></div>
+<h4>이사회 독립성 평가</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>현황</th>
+<th>평가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사외이사 비율</td>
+<td>42.9% (3/7)</td>
+<td>법적 요건(1/4) 충족</td>
+</tr>
+<tr>
+<td>이사회 의장</td>
+<td>대표이사 겸직</td>
+<td>독립성 취약 (의장-CEO 미분리)</td>
+</tr>
+<tr>
+<td>여성 이사 비율</td>
+<td>0%</td>
+<td>이사회 다양성 완전 부재</td>
+</tr>
+<tr>
+<td>사외이사 이준수 장기 재직</td>
+<td>6년 이상</td>
+<td>독립성 희석 우려</td>
+</tr>
+<tr>
+<td>선임사외이사(LID)</td>
+<td>미운영 (미공시)</td>
+<td>의장-CEO 겸직 보완 장치 부재</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>이사회 의장-대표이사 겸직</strong>: 정케빈규봉 대표이사가 이사회 의장을 겸임함으로써 경영진에 대한 이사회의 독립적 감독 기능이 구조적으로 제약됩니다. OECD 기업지배구조 원칙 및 한국 기업지배구조 모범규준은 의장-CEO 분리를 권고합니다.</p>
+<h4>GRI 2-9~2-29 공시 현황 (요약)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 지표</th>
+<th>공시 여부</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 2-9 (지배 구조 현황)</td>
+<td>부분 공시</td>
+</tr>
+<tr>
+<td>GRI 2-10 (최고 지배 기구 지명)</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 2-11 (최고 지배 기구 의장)</td>
+<td>부분 공시</td>
+</tr>
+<tr>
+<td>GRI 2-12 (ESG 목표 감독)</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 2-13~2-18</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 2-19~2-21 (보수 체계)</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>GRI 2-22~2-29 (윤리·이해관계자)</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>공시 충족률</strong>: 21개 항목 중 완전 공시 0건, 부분 공시 3건 → <strong>14.3%</strong></p>
+<hr />
+<h3>6.2 감사위원회</h3>
+<h4>감사위원회 구성 (실측)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>현황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>위원 수</td>
+<td>4명</td>
+</tr>
+<tr>
+<td>사외이사</td>
+<td>3명 (이준수, 한상원, SONG JAMES JAE)</td>
+</tr>
+<tr>
+<td>사외이사 비율</td>
+<td>75% (법적 요건 2/3 이상 충족)</td>
+</tr>
+<tr>
+<td>감사위원회 대표</td>
+<td>한상원 (사외이사)</td>
+</tr>
+<tr>
+<td>기타비상무이사 포함</td>
+<td>성원모 1인</td>
+</tr>
+</tbody>
+</table></div>
+<p>법적 구성 요건(상법 §542-11)을 충족하며, Big 4 감사법인인 삼일회계법인의 외부 감사의견이 적정으로 확인됩니다 (실측).</p>
+<p><strong>유의사항</strong>: 기타비상무이사 성원모의 최대주주 추천 여부가 불명확하여 실질적 독립성에 대한 우려가 있습니다.</p>
+<hr />
+<h3>6.3 윤리경영·컴플라이언스</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>현황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>윤리강령·행동규범</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>부패방지 정책</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>내부 제보 채널 (Whistleblowing)</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>반부패 교육</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>공정거래 자율준수 프로그램 (CP)</td>
+<td><strong>(미공시)</strong></td>
+</tr>
+<tr>
+<td>준법지원인</td>
+<td>법적 의무 미해당 (자산 5천억 미만)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>특이사항</strong>: 2026년 3월 정기주총에서 정관의 준법지원인 설치 의무 조항을 삭제하였습니다 (실측). 법적 의무 미해당이더라도, 이는 컴플라이언스 체계 강화보다 완화 방향으로의 전환으로 해석될 수 있습니다.</p>
+<hr />
+<h3>6.4 주주권 보호</h3>
+<h4>주주 현황</h4>
+<ul>
+<li><strong>최대주주</strong>: Realty Advisors, Inc. (미국 Texas) — 31.06% (실측)</li>
+<li><strong>자기주식</strong>: 2,961,075주 (2.66%) 보유 (실측)</li>
+<li><strong>배당 이력</strong>: 3년 연속 무배당 (실측)</li>
+</ul>
+<h4>주주권 관련 제도</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>제도</th>
+<th>현황</th>
+<th>평가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>전자투표제</td>
+<td>도입 (실측)</td>
+<td>양호</td>
+</tr>
+<tr>
+<td>서면투표제</td>
+<td>미도입 (실측)</td>
+<td>부재</td>
+</tr>
+<tr>
+<td>집중투표제</td>
+<td>정관상 배제 (실측)</td>
+<td>소수주주 보호 취약</td>
+</tr>
+<tr>
+<td>주식 액면병합</td>
+<td>10:1 (500원→5,000원) 결의 (실측)</td>
+<td>유동성 영향 모니터링 필요</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>집중투표제 배제</strong>: 소수주주가 이사 선임 과정에서 영향력을 행사할 수 없으며, 최대주주(31.06%)의 이사회 지배력이 구조적으로 강화됩니다. 3년 연속 무배당 상황에서 소수주주 이익 보호 장치가 제한적입니다.</p>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">08</span><div class="sess-title">7. ESG 종합 성과 및 등급</div></div>
+<h3>7.1 ESG 등급 요약</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>등급</th>
+<th>핵심 사유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>환경 (E)</td>
+<td><strong>D</strong></td>
+<td>GRI 환경 공시율 4%, 환경 위반 3건 동시 적발, 탄소중립 목표·환경경영시스템 전무</td>
+</tr>
+<tr>
+<td>사회 (S)</td>
+<td><strong>C</strong></td>
+<td>고용 안정·급여 양호·중대재해 미발생이나 GRI 사회 공시율 11%, DEI·인권·공급망 체계 부재</td>
+</tr>
+<tr>
+<td>거버넌스 (G)</td>
+<td><strong>C-</strong></td>
+<td>법적 최소 의무 형식 충족, 의장-CEO 겸직·여성 이사 0·ESG위원회 미설치·GRI G 공시율 14.3%</td>
+</tr>
+<tr>
+<td><strong>종합 ESG</strong></td>
+<td><strong>D+</strong></td>
+<td>공시 체계 전반적 부재, 환경 위반 실측, 지속가능경영 거버넌스 초기 단계</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.2 ESG 강점 및 개선 기회</h3>
+<h4>강점 (실측 확인 사항)</h4>
+<ol>
+<li>고용 안정성 우수: 정규직 98.7%, 평균 근속 11.8년</li>
+<li>급여 경쟁력: 1인 평균 연봉 약 6,900만원 (제조업 평균 초과 추정)</li>
+<li>GHG 배출 소규모: 목표관리제 기준치 미만 (15,000 tCO2eq 미만)</li>
+<li>중대재해 미발생: 1분기 중대산업재해 없음</li>
+<li>감사 품질: 삼일회계법인 외부 감사 적정 의견</li>
+<li>재무 건전성: 부채비율 45.3% 양호 (영업손실에도 자본 충분)</li>
+<li>R&amp;D 투자: 매출 대비 1.1% R&amp;D 비용으로 제품 혁신 지속</li>
+</ol>
+<h4>핵심 개선 과제</h4>
+<ol>
+<li>ESG 데이터 측정·관리 체계 구축 (에너지, GHG, 물, 폐기물)</li>
+<li>환경경영시스템(ISO 14001) 구축 및 환경 모니터링 강화</li>
+<li>ESG 보고서 정기 발간 체계 확립</li>
+<li>이사회 다양성 강화 (여성 이사 선임)</li>
+<li>ESG 위원회 설치 및 이사회 ESG 감독 체계 구축</li>
+<li>안전보건 거버넌스 공시 강화 (LTIR, ISO 45001)</li>
+<li>EPS 플라스틱 규제 대응 전략 수립 및 공시</li>
+</ol>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">09</span><div class="sess-title">8. 이중 중대성 평가 결과</div></div>
+<h3>8.1 이중 중대성 매트릭스</h3>
+<p>본 평가는 GRI Standards 2021 GRI 3(Material Topics) 및 EU ESRS 이중 중대성 원칙을 준용하여, 재무적 중대성(기업 가치 영향)과 영향 중대성(외부 환경·사회 영향)의 두 축으로 주요 이슈를 평가하였습니다.</p>
+<pre><code>영향 중대성 (↑ 높음)
+     |
+[매우높음]  화학물질 안전
+     |       중대재해 예방
+[높음]    | 온실가스 배출·기후 리스크
+     |     EPS 플라스틱 규제
+[중간]    | 이사회 다양성·ESG 거버넌스
+     |     공급망 관리
+     |     Scope 3 배출 (원료 조달)
+[낮음]    | 수자원 관리
+     |     지역사회 기여
+     +----+----+----+----+----→ 재무적 중대성 (→ 높음)
+        낮음  중간  높음  매우높음
+</code></pre>
+<h3>8.2 중대 이슈별 상세 평가</h3>
+<h4>이슈 1: 화학물질 안전 관리</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>재무적 중대성</td>
+<td><strong>매우 높음</strong> — 화학사고 발생 시 조업 중단, 막대한 배상, 형사 책임</td>
+</tr>
+<tr>
+<td>영향 중대성</td>
+<td><strong>높음</strong> — SM 누출 시 인근 주민·생태계 피해 발생</td>
+</tr>
+<tr>
+<td>현재 대응 수준</td>
+<td>취약 (2025년 누출 적발, PSM 운영 여부 미공시)</td>
+</tr>
+<tr>
+<td>관련 GRI</td>
+<td>GRI 403, GRI 306</td>
+</tr>
+</tbody>
+</table></div>
+<h4>이슈 2: 온실가스 배출 및 기후 전환 리스크</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>재무적 중대성</td>
+<td><strong>높음</strong> — EPS 플라스틱 규제가 핵심 사업에 직접 영향</td>
+</tr>
+<tr>
+<td>영향 중대성</td>
+<td><strong>중간</strong> — Scope 1+2 소규모이나 Scope 3 (원료 조달) 대규모</td>
+</tr>
+<tr>
+<td>현재 대응 수준</td>
+<td>미흡 (탄소중립 목표·GHG 측정 체계 전무)</td>
+</tr>
+<tr>
+<td>관련 GRI</td>
+<td>GRI 305, TCFD</td>
+</tr>
+</tbody>
+</table></div>
+<h4>이슈 3: EPS 플라스틱 규제 대응</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>재무적 중대성</td>
+<td><strong>매우 높음</strong> — 핵심 사업 모델에 구조적 위협</td>
+</tr>
+<tr>
+<td>영향 중대성</td>
+<td><strong>중간</strong> — 폐EPS 환경 문제, 소비자 안전 우려</td>
+</tr>
+<tr>
+<td>현재 대응 수준</td>
+<td>미공시 (DUOPOL 준불연 제품 개발이 부분 대응이나 전략 미공시)</td>
+</tr>
+<tr>
+<td>관련 GRI</td>
+<td>GRI 3-3, GRI 416</td>
+</tr>
+</tbody>
+</table></div>
+<h4>이슈 4: 중대재해 예방 및 산업안전</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>재무적 중대성</td>
+<td><strong>높음</strong> — 중대재해처벌법 위반 시 대표이사 형사 책임</td>
+</tr>
+<tr>
+<td>영향 중대성</td>
+<td><strong>높음</strong> — 임직원 생명·신체에 미치는 직접적 영향</td>
+</tr>
+<tr>
+<td>현재 대응 수준</td>
+<td>부분 (1분기 중대재해 미발생이나 안전 거버넌스 미공시)</td>
+</tr>
+<tr>
+<td>관련 GRI</td>
+<td>GRI 403</td>
+</tr>
+</tbody>
+</table></div>
+<h4>이슈 5: 이사회 다양성 및 ESG 거버넌스</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>재무적 중대성</td>
+<td><strong>중간</strong> — 기관 투자자 ESG 평가 하락, 자본 조달 비용 증가</td>
+</tr>
+<tr>
+<td>영향 중대성</td>
+<td><strong>중간</strong> — 의사결정 편향, 이해관계자 신뢰 저하</td>
+</tr>
+<tr>
+<td>현재 대응 수준</td>
+<td>미흡 (여성 이사 0, ESG위원회 미설치)</td>
+</tr>
+<tr>
+<td>관련 GRI</td>
+<td>GRI 2-9~2-29</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">10</span><div class="sess-title">9. GRI 인덱스 (Content Index)</div></div>
+<blockquote>
+<p>GRI Standards 2021 기준. 본 보고서는 GRI Standards에 따라 작성되었으나 외부 검증은 수행되지 않았습니다.</p>
+</blockquote>
+<h3>GRI 1: Foundation 2021</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 1</td>
+<td>기초 원칙 사용</td>
+<td>공시</td>
+<td>표지 및 보고 개요</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 2: General Disclosures 2021</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 2-1</td>
+<td>조직 세부 정보</td>
+<td>공시</td>
+<td>제2절 2.1항</td>
+</tr>
+<tr>
+<td>GRI 2-2</td>
+<td>보고에 포함된 실체</td>
+<td>부분 공시</td>
+<td>표지 보고 범위</td>
+</tr>
+<tr>
+<td>GRI 2-3</td>
+<td>보고 기간·빈도·연락처</td>
+<td>부분 공시</td>
+<td>표지 및 보고 개요</td>
+</tr>
+<tr>
+<td>GRI 2-4</td>
+<td>정보 재기재</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-5</td>
+<td>외부 검증</td>
+<td>미공시</td>
+<td>외부 검증 미수행</td>
+</tr>
+<tr>
+<td>GRI 2-6</td>
+<td>활동, 가치사슬</td>
+<td>부분 공시</td>
+<td>제2절 2.2항</td>
+</tr>
+<tr>
+<td>GRI 2-7</td>
+<td>직원</td>
+<td>공시</td>
+<td>제5절 5.1항</td>
+</tr>
+<tr>
+<td>GRI 2-8</td>
+<td>임직원 외 근로자</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-9</td>
+<td>지배 구조 현황</td>
+<td>부분 공시</td>
+<td>제6절 6.1항</td>
+</tr>
+<tr>
+<td>GRI 2-10</td>
+<td>최고 지배 기구 지명 및 선정</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-11</td>
+<td>최고 지배 기구 의장</td>
+<td>부분 공시</td>
+<td>제6절 6.1항 (의장-CEO 겸직 확인)</td>
+</tr>
+<tr>
+<td>GRI 2-12</td>
+<td>ESG 목표 달성 감독</td>
+<td>미공시</td>
+<td>ESG 위원회 미설치</td>
+</tr>
+<tr>
+<td>GRI 2-13</td>
+<td>지속가능성 역할 위임</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-14</td>
+<td>지속가능성 보고 역할</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-15</td>
+<td>이해충돌</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-16</td>
+<td>중요 우려 사항 소통</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-17</td>
+<td>최고 지배 기구 집합적 지식</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-18</td>
+<td>최고 지배 기구 성과 평가</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-19</td>
+<td>보수 정책</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-20</td>
+<td>보수 결정 절차</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-21</td>
+<td>연간 총 보상 비율</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-22</td>
+<td>지속가능발전 전략 선언</td>
+<td>부분 공시</td>
+<td>제1절 CEO 메시지</td>
+</tr>
+<tr>
+<td>GRI 2-23</td>
+<td>정책 약속</td>
+<td>미공시</td>
+<td>윤리강령 미공시</td>
+</tr>
+<tr>
+<td>GRI 2-24</td>
+<td>정책 약속 실행</td>
+<td>부분 공시</td>
+<td>내부회계관리제도 (제6절 6.2항)</td>
+</tr>
+<tr>
+<td>GRI 2-25</td>
+<td>부정적 영향 교정</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-26</td>
+<td>지침 및 우려 제기 메커니즘</td>
+<td>미공시</td>
+<td>내부 제보 채널 미공시</td>
+</tr>
+<tr>
+<td>GRI 2-27</td>
+<td>법규 준수</td>
+<td>부분 공시</td>
+<td>제4절 4.5항 (환경 제재 공시)</td>
+</tr>
+<tr>
+<td>GRI 2-28</td>
+<td>회원 단체</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-29</td>
+<td>이해관계자 접근 방식</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 2-30</td>
+<td>단체협약</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 3: Material Topics 2021</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 3-1</td>
+<td>중대 토픽 결정 절차</td>
+<td>부분 공시</td>
+<td>제8절 이중 중대성 평가</td>
+</tr>
+<tr>
+<td>GRI 3-2</td>
+<td>중대 토픽 목록</td>
+<td>부분 공시</td>
+<td>제3절 3.2항, 제8절</td>
+</tr>
+<tr>
+<td>GRI 3-3</td>
+<td>중대 토픽 관리</td>
+<td>부분 공시</td>
+<td>각 섹션별 기재</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 302: 에너지 2016</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 302-1</td>
+<td>조직 내 에너지 소비</td>
+<td>미공시</td>
+<td>측정 체계 미구축</td>
+</tr>
+<tr>
+<td>GRI 302-2</td>
+<td>조직 외부 에너지 소비</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 302-3</td>
+<td>에너지 집약도</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 302-4</td>
+<td>에너지 소비 감축</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 302-5</td>
+<td>제품·서비스 에너지 요구량 감축</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 303: 수자원 및 폐수 2018</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 303-1</td>
+<td>수원별 취수 및 관련 영향</td>
+<td>미공시</td>
+<td>제4절 4.3항</td>
+</tr>
+<tr>
+<td>GRI 303-2</td>
+<td>취수 관련 영향 관리</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 303-3</td>
+<td>취수량</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 303-4</td>
+<td>방류량</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 303-5</td>
+<td>물 소비량</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 305: 배출 2016</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 305-1</td>
+<td>직접(Scope 1) GHG 배출</td>
+<td>부분 공시</td>
+<td>15,000 tCO2eq 미만 간접 확인 (실측)</td>
+</tr>
+<tr>
+<td>GRI 305-2</td>
+<td>에너지 간접(Scope 2) GHG 배출</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 305-3</td>
+<td>기타 간접(Scope 3) GHG 배출</td>
+<td>미공시 (추정)</td>
+<td>75,000~100,000 tCO2eq 추정</td>
+</tr>
+<tr>
+<td>GRI 305-4</td>
+<td>GHG 배출 집약도</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 305-5</td>
+<td>GHG 배출량 감축</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 305-6</td>
+<td>오존층파괴물질(ODS) 배출</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 305-7</td>
+<td>질소산화물 등 대기오염물질</td>
+<td>미공시</td>
+<td>위반 적발 사실만 공시</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 306: 폐기물 2020</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 306-1</td>
+<td>폐기물 발생 및 중요 영향</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 306-2</td>
+<td>폐기물 관련 영향 관리</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 306-3</td>
+<td>폐기물 발생량</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 306-4</td>
+<td>비매립 폐기물 처리 방법</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 306-5</td>
+<td>매립 폐기물 처리량</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 401: 고용 2016</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 401-1</td>
+<td>신규 채용 및 이직</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 401-2</td>
+<td>정규직 복리후생</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 401-3</td>
+<td>육아휴직</td>
+<td>부분 공시</td>
+<td>제5절 5.1항 (사용자 수만 공시)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 403: 산업안전보건 2018</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 403-1</td>
+<td>안전보건 경영 시스템</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 403-2</td>
+<td>위험 식별·평가·사고 조사</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 403-3</td>
+<td>산업보건 서비스</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 403-4</td>
+<td>안전보건 근로자 참여</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 403-5</td>
+<td>안전보건 관련 근로자 교육</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 403-6</td>
+<td>근로자 건강 증진</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 403-7</td>
+<td>비즈니스 관계 안전보건 영향 방지</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 403-8</td>
+<td>안전보건 경영 시스템 적용 근로자</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 403-9</td>
+<td>산업재해</td>
+<td>미공시</td>
+<td>LTIR 등 핵심 지표 없음</td>
+</tr>
+<tr>
+<td>GRI 403-10</td>
+<td>업무 관련 질병</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 404: 교육과 훈련 2016</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 404-1</td>
+<td>1인당 평균 교육 시간</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 404-2</td>
+<td>역량 개발 및 전환 프로그램</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 404-3</td>
+<td>정기 성과 평가 비율</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 405: 다양성과 기회균등 2016</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 405-1</td>
+<td>지배 기구 및 직원 다양성</td>
+<td>부분 공시</td>
+<td>성별 구성만 공시 (실측)</td>
+</tr>
+<tr>
+<td>GRI 405-2</td>
+<td>기본급 및 보수의 성별 비율</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 412: 인권 평가 2016</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 412-1</td>
+<td>인권 영향 평가 대상 사업장</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 412-2</td>
+<td>인권 정책 관련 직원 교육</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 412-3</td>
+<td>인권 조항 투자 협약·계약</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 413: 지역사회 2016</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 413-1</td>
+<td>지역사회 참여·개발·영향 평가</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 413-2</td>
+<td>지역사회에 부정적 영향이 있는 사업장</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>GRI 414: 공급업체 사회 평가 2016</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>GRI 표준</th>
+<th>공시 제목</th>
+<th>공시 여부</th>
+<th>위치/내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRI 414-1</td>
+<td>사회 기준으로 선별된 신규 공급업체</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GRI 414-2</td>
+<td>공급망 부정적 사회 영향</td>
+<td>미공시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">11</span><div class="sess-title">10. 부록: 이해관계자 참여 및 보고 범위</div></div>
+<h3>10.1 이해관계자 식별 및 소통</h3>
+<p>본 보고서 기준, 회사의 주요 이해관계자 및 현재 소통 채널은 다음과 같습니다:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>이해관계자 그룹</th>
+<th>주요 관심사</th>
+<th>현재 소통 채널</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>주주·기관 투자자</td>
+<td>재무성과, ESG 등급, 배당</td>
+<td>주주총회, IR 공시 (전자공시)</td>
+</tr>
+<tr>
+<td>임직원</td>
+<td>고용 안정, 급여, 안전</td>
+<td>내부 커뮤니케이션 (공시 없음)</td>
+</tr>
+<tr>
+<td>고객사</td>
+<td>제품 품질, 환경 규제 대응</td>
+<td>영업 채널 (공시 없음)</td>
+</tr>
+<tr>
+<td>협력사·공급업체</td>
+<td>거래 공정성, 대금 지급</td>
+<td>계약 관계 (공시 없음)</td>
+</tr>
+<tr>
+<td>지역사회 (군산시)</td>
+<td>환경 안전, 고용 유지</td>
+<td>규제 당국 신고·보고 외 공식 채널 없음</td>
+</tr>
+<tr>
+<td>규제 당국</td>
+<td>환경법·안전법·자본시장법 준수</td>
+<td>행정 보고, 분기보고서 공시</td>
+</tr>
+<tr>
+<td>금융기관</td>
+<td>신용도, 재무 건전성</td>
+<td>기업 IR</td>
+</tr>
+</tbody>
+</table></div>
+<p>이해관계자 참여 프로그램 (GRI 2-29): <strong>(미공시)</strong> — 공식적인 이해관계자 참여 정책 및 체계적 소통 프로그램이 미수립된 상태입니다.</p>
+<h3>10.2 보고 범위 및 한계</h3>
+<p><strong>포함 범위</strong>:</p>
+<ul>
+<li>주식회사 SH에너지화학 군산 사업장 (전라북도 군산시 외항7길 20)</li>
+<li>보고 기간: 제69기 1분기 (2026년 1월~3월)</li>
+</ul>
+<p><strong>제외 범위</strong>:</p>
+<ul>
+<li>SH Energy USA Inc. (미국 Arkansas 셰일가스 자회사) — 환경·사회 데이터 별도 공시 필요</li>
+<li>㈜리얼티어드바이저스코리아</li>
+</ul>
+<p><strong>데이터 한계</strong>:
+본 보고서에 포함된 다수의 데이터가 미측정 또는 미공시 상태입니다. 이는 회사의 ESG 데이터 관리 체계가 초기 단계임을 반영하며, 향후 측정 및 공시 체계 구축을 통해 개선할 계획입니다.</p>
+<p><strong>외부 검증</strong>: 본 보고서는 외부 독립 검증(third-party assurance)을 받지 않았습니다. 향후 ESG 보고 성숙도 향상에 따라 외부 검증 도입을 검토할 예정입니다.</p>
+<h3>10.3 연락처 및 피드백</h3>
+<p>본 보고서에 관한 문의 또는 피드백은 아래로 연락하시기 바랍니다:</p>
+<ul>
+<li><strong>법인명</strong>: 주식회사 SH에너지화학</li>
+<li><strong>주소</strong>: 전라북도 군산시 외항7길 20 (소룡동)</li>
+<li><strong>홈페이지</strong>: (미공시)</li>
+<li><strong>담당 부서</strong>: (ESG 담당 부서 미공시 — 향후 지정 필요)</li>
+</ul>
+<hr />
+<p><em>본 보고서는 제69기 1분기 분기보고서(2026.05.15 공시), 전북지방환경청 행정처분 정보, 공개된 사업보고서 및 업계 데이터를 기반으로 작성되었습니다.</em></p>
+<p><em>"(실측)" 표기는 분기보고서 등 공개 자료에서 확인된 데이터이며, "(추정)" 표기는 업계 평균 또는 공개 데이터를 기반으로 한 분석가 추정치로 기업 검증을 받지 않은 수치입니다. "(미공시)"는 해당 정보가 공개 자료에 존재하지 않음을 의미합니다.</em></p>
+<p><em>본 보고서는 투자 권유 또는 법적 조언을 목적으로 하지 않습니다.</em></p></section></div></div></body></html>

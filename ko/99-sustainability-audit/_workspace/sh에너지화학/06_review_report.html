@@ -1,0 +1,792 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>ESG 감사 교차 검증 보고서 — SH에너지화학</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">SH에너지화학 · ESG 감사 교차 검증</div><h1>ESG 감사 교차 검증 보고서 — SH에너지화학</h1></header><div class="intro"><blockquote>
+<p>검증 기준: GRI Standards 2021, 분기보고서 실측 데이터 정합성
+검증 일시: 2026-06-25 (제69기 1분기 기준)
+오케스트레이터 직접 수행 — E/S/G 평가 → 보고서 → 개선 계획 전체 정합성 점검</p>
+</blockquote>
+<hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">1. 검증 범위 및 방법</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>검증 항목</th>
+<th>방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>실측 데이터 일관성</td>
+<td>분기보고서 ↔ E/S/G 평가 ↔ 보고서 ↔ 개선 계획 4방향 비교</td>
+</tr>
+<tr>
+<td>등급 근거 타당성</td>
+<td>평가 기준과 데이터 간 논리 정합성 검토</td>
+</tr>
+<tr>
+<td>규제 적용 정확성</td>
+<td>상법·환경법·노동법 적용 여부 확인</td>
+</tr>
+<tr>
+<td>미공시/추정 표기 일관성</td>
+<td>실측과 추정 혼용 여부 확인</td>
+</tr>
+<tr>
+<td>개선 계획 실행 가능성</td>
+<td>재무 제약 하 비용-효과 합리성</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">2. 실측 데이터 정합성 검증</div></div>
+<h3>2.1 핵심 수치 일관성</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>분기보고서 원본</th>
+<th>E/S/G 평가 반영</th>
+<th>불일치 여부</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>직원 수</td>
+<td>151명 (남140/여11)</td>
+<td>151명, 남140/여11 (S평가)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>평균 근속</td>
+<td>11.8년</td>
+<td>11.8년 (S평가)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>온실가스</td>
+<td>목표관리제 미대상(15,000 미만)</td>
+<td>15,000 tCO2eq 미만 (E평가)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>환경 과태료</td>
+<td>5백만원 (2025년 4월)</td>
+<td>5백만원 + 경고 3건 (E평가)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>이사회 구성</td>
+<td>7명(사내2+사외3+기타비상무2)</td>
+<td>7명 구성 동일 (G평가)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>사외이사 비율</td>
+<td>3/7 = 42.9%</td>
+<td>42.9% (G평가)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>부채비율</td>
+<td>45.3%</td>
+<td>45.3% (G평가)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>1분기 매출</td>
+<td>308억원</td>
+<td>986억(연간 기준 정상 활용)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>R&amp;D 비용</td>
+<td>337백만원/분기</td>
+<td>337백만원/분기 (S평가)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>최대주주 지분</td>
+<td>31.06%</td>
+<td>31.06% (G평가)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>육아휴직</td>
+<td>남1명/여0명 (1분기)</td>
+<td>남1명/여0명 (S평가)</td>
+<td>✓ 일치</td>
+</tr>
+<tr>
+<td>배우자 출산휴가</td>
+<td>4명 (1분기)</td>
+<td>4명 (S평가)</td>
+<td>✓ 일치</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>→ 핵심 실측 수치 12/12 항목 일치. 데이터 정합성 양호.</strong></p>
+<h3>2.2 데이터 표기 원칙 준수 여부</h3>
+<ul>
+<li><strong>(실측)</strong> 표기: E/S/G 보고서 모두 분기보고서 기재 항목에 적절히 적용 ✓</li>
+<li><strong>(추정)</strong> 표기: Scope 3 배출량 추정(E), 이직률 추정(S), 최대주주 추천 추정(G) 등 근거 명시 ✓</li>
+<li><strong>(미공시)</strong> 표기: 미공시 항목은 명확히 표기하고 추정으로 대체하지 않음 ✓</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">3. ESG 등급 타당성 검증</div></div>
+<h3>3.1 환경(E) — D 등급</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>검증 항목</th>
+<th>판정</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D 등급 근거 충분성</td>
+<td>✓ 타당</td>
+<td>GRI 공시율 4%, 환경 위반 3건, ISO 14001 미인증</td>
+</tr>
+<tr>
+<td>C 등급 배제 근거</td>
+<td>✓ 적절</td>
+<td>"일부 공시" 기준도 미달 (공시 전면 부재)</td>
+</tr>
+<tr>
+<td>E 등급 배제 근거</td>
+<td>✓ 적절</td>
+<td>형사 처벌·조업 정지 없음, 환경오염 대형사고 없음</td>
+</tr>
+<tr>
+<td>과태료 5백만원의 D→E 상향 검토</td>
+<td>✓ 불필요</td>
+<td>소액 과태료, 형사 처벌 아님 → D 유지 타당</td>
+</tr>
+<tr>
+<td>셰일가스 자회사 리스크 반영</td>
+<td>✓ 적절</td>
+<td>좌초자산·Scope 3 리스크로 분류</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>→ E:D 등급 타당. 유지.</strong></p>
+<h3>3.2 사회(S) — C 등급</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>검증 항목</th>
+<th>판정</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C 등급 근거 충분성</td>
+<td>✓ 타당</td>
+<td>중대재해 없음(D 배제), 공시율 11%(B 미달)</td>
+</tr>
+<tr>
+<td>B 등급 배제 근거</td>
+<td>✓ 적절</td>
+<td>안전 KPI 전무, DEI 취약, 인권 체계 미구축</td>
+</tr>
+<tr>
+<td>정규직 98.7%, 평균연봉 6,900만원 강점 반영</td>
+<td>✓ 균형</td>
+<td>긍정 요소 인정하되 공시 부재로 C 유지</td>
+</tr>
+<tr>
+<td>중대재해 1분기 기준 한계</td>
+<td>△ 주의</td>
+<td>연간 데이터 아님 — 보고서에 1분기 한정 명시 필요</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>→ S:C 등급 타당. "1분기 기준 중대재해 미발생"으로 표현 제한 적절.</strong></p>
+<h3>3.3 거버넌스(G) — C- 등급</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>검증 항목</th>
+<th>판정</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C- 등급 적절성</td>
+<td>✓ 타당</td>
+<td>법적 의무 5/5 충족(C 이상 근거) + 복합 취약점(C- 하향 근거)</td>
+</tr>
+<tr>
+<td>D 등급 배제 근거</td>
+<td>✓ 적절</td>
+<td>감사의견 적정, Big 4 감사인, 내부회계관리제도 유효</td>
+</tr>
+<tr>
+<td>의장=CEO 겸직의 C- 영향</td>
+<td>✓ 적절</td>
+<td>이사회 독립성 구조 결함 → C- 요인</td>
+</tr>
+<tr>
+<td>준법지원인 조항 삭제 평가</td>
+<td>✓ 적절</td>
+<td>의무 미해당 사실과 컴플라이언스 후퇴 의도 구분하여 리스크로 반영</td>
+</tr>
+<tr>
+<td>여성이사 0명 법적 면제 반영</td>
+<td>✓ 적절</td>
+<td>자산 2조 미만으로 법적 의무 없으나 ESG 취약점으로 기재</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>→ G:C- 등급 타당. 유지.</strong></p>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">4. GRI Standards 적용 정확성 검증</div></div>
+<h3>4.1 Universal Standards (GRI 2) 적용</h3>
+<ul>
+<li>GRI 2-9 이사회 구성: 분기보고서 이사회 명단 정확 반영 ✓</li>
+<li>GRI 2-11 의장 현황: 의장=대표이사 겸직 실측 ✓</li>
+<li>GRI 2-24 내부통제: 내부회계관리제도 운영 사실 실측 ✓</li>
+<li>GRI 2-27 법규 준수: 환경 제재 3건 실측 반영 ✓</li>
+</ul>
+<h3>4.2 Topic Standards 적용</h3>
+<ul>
+<li>GRI 305 배출: 목표관리제 제외 사실로 15,000 tCO2eq 미만 간접 확인 — 부분 공시로 적절 분류 ✓</li>
+<li>GRI 401 고용: 인원·성비·근속·급여 실측 반영 ✓</li>
+<li>GRI 403 안전: 중대재해 없음 실측 + 체계 미공시 구분 ✓</li>
+<li>GRI 405 다양성: 여성 비율 7.3%, 이사회 여성 0명 실측 ✓</li>
+</ul>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">5. 한국 규제 적용 검증</div></div>
+<h3>5.1 환경 규제</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>규제</th>
+<th>적용 판단</th>
+<th>검증 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>온실가스·에너지 목표관리제</td>
+<td>미대상 (15,000 tCO2eq 미만)</td>
+<td>✓ 분기보고서 기재 사실과 일치</td>
+</tr>
+<tr>
+<td>배출권거래제(K-ETS)</td>
+<td>미대상 (목표관리 제외 = ETS 대상 아님)</td>
+<td>✓ 적절 적용</td>
+</tr>
+<tr>
+<td>대기환경보전법 위반</td>
+<td>2025년 4월 확인</td>
+<td>✓ 3건 모두 반영</td>
+</tr>
+<tr>
+<td>화관법 SM 취급</td>
+<td>적용 가능성 언급</td>
+<td>✓ "공시 없음"으로 적절 처리</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.2 지배구조 규제</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>규제</th>
+<th>적용 판단</th>
+<th>검증 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사외이사 1/4 이상 (자산 2조 미만)</td>
+<td>의무 충족 (42.9%)</td>
+<td>✓ 정확</td>
+</tr>
+<tr>
+<td>감사위원회 사외이사 2/3 이상</td>
+<td>의무 충족 (75%)</td>
+<td>✓ 정확</td>
+</tr>
+<tr>
+<td>여성임원 의무화 (자산 2조 이상)</td>
+<td>미해당 (자산 1,007억)</td>
+<td>✓ 정확</td>
+</tr>
+<tr>
+<td>기업지배구조보고서 (자산 1조 이상)</td>
+<td>미해당 (자산 1,007억)</td>
+<td>✓ 정확</td>
+</tr>
+<tr>
+<td>준법지원인 (자산 5천억 이상)</td>
+<td>미해당</td>
+<td>✓ 정확</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.3 노동 규제</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>규제</th>
+<th>적용 판단</th>
+<th>검증 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>중대재해처벌법</td>
+<td>적용 (상시 50인 이상 = 151명)</td>
+<td>✓ 정확</td>
+</tr>
+<tr>
+<td>장애인고용촉진법 의무고용 (3.1%)</td>
+<td>적용 가능 (미공시)</td>
+<td>✓ 미공시로 적절 처리</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">6. 개선 계획 실행 가능성 검증</div></div>
+<h3>6.1 비용 적정성</h3>
+<ul>
+<li><strong>총 5개년 투자 1.5억~2.8억원</strong>: 자본 692억 대비 0.02~0.04% — 영업손실 기업으로서 감내 가능한 수준 ✓</li>
+<li><strong>P0 긴급 과제 (배관 교체 + 안전체계)</strong>: 환경 위반 재발 시 조업 정지 리스크 vs 예방 비용 — ROI 타당 ✓</li>
+<li><strong>정부 지원 활용 제안</strong>: 고용노동부·환경부·중소기업진흥공단 지원 사업 언급 — 현실적 ✓</li>
+</ul>
+<h3>6.2 우선순위 타당성</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>우선순위</th>
+<th>과제</th>
+<th>타당성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0 긴급</td>
+<td>노후 배관 교체</td>
+<td>✓ 2025년 실제 위반 → 재발 방지 최우선</td>
+</tr>
+<tr>
+<td>P0 긴급</td>
+<td>중대재해 안전체계</td>
+<td>✓ 대표이사 형사처벌 리스크 → 즉시 필요</td>
+</tr>
+<tr>
+<td>P0 긴급</td>
+<td>ESG 보고서 발간</td>
+<td>✓ 비용 최소, 효과 최대 (최우선 공시 과제)</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>GHG 측정 체계</td>
+<td>✓ ISO 14001 전단계, 비용 低</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>여성 임원 선임</td>
+<td>✓ 주총 시기와 연동 — 타이밍 적절</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>ESG 위원회</td>
+<td>✓ 이사회 개편과 연동 가능</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>집중투표제 재검토</td>
+<td>✓ 지배주주 동의 필요 — 장기 과제 적절</td>
+</tr>
+</tbody>
+</table></div>
+<h3>6.3 KPI 체계 적절성</h3>
+<ul>
+<li>측정 가능한 지표 설정 (GHG 배출량, 안전재해율, 여성 비율, 공시율 등) ✓</li>
+<li>기준치 = 현재 실측치 활용 ✓</li>
+<li>목표치가 과도하지 않고 달성 가능한 수준 ✓</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">7. 불일치 발견 및 조치 사항</div></div>
+<h3>7.1 Minor Issues (경미한 사항)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>번호</th>
+<th>발견 사항</th>
+<th>영향도</th>
+<th>조치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-1</td>
+<td>S평가에서 "중대재해 없음"이 전사 연간 기준이 아닌 1분기 기준임을 명시 필요</td>
+<td>낮음</td>
+<td>보고서 내 "1분기 기준" 표기로 충분 — 수정 없이 진행</td>
+</tr>
+<tr>
+<td>M-2</td>
+<td>E평가 Scope 3 추정치(75,000~100,000 tCO2eq)가 보고서에서 범위로만 표기됨</td>
+<td>낮음</td>
+<td>추정치 범위 표기는 적절 — 유지</td>
+</tr>
+<tr>
+<td>M-3</td>
+<td>G평가에서 기타비상무이사 2명의 최대주주 추천 여부를 "추정"으로 처리</td>
+<td>낮음</td>
+<td>분기보고서 미공시 사항 → 추정 표기 정당</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.2 Major Discrepancy</h3>
+<p><strong>발견 없음</strong> — E/S/G 3개 평가 결과, 보고서, 개선 계획 간 중대한 불일치 없음.</p>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">08</span><div class="sess-title">8. 종합 ESG 등급 및 총평</div></div>
+<h3>8.1 ESG 종합 평가</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>등급</th>
+<th>핵심 근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>환경(E)</td>
+<td><strong>D</strong></td>
+<td>GRI 공시 4%, 환경 위반 3건, 탄소 목표 전무</td>
+</tr>
+<tr>
+<td>사회(S)</td>
+<td><strong>C</strong></td>
+<td>중대재해 없음, 고용 안정, 공시율 11%</td>
+</tr>
+<tr>
+<td>거버넌스(G)</td>
+<td><strong>C−</strong></td>
+<td>법적 의무 충족, 의장=CEO, 여성이사 0명, ESG위 없음</td>
+</tr>
+<tr>
+<td><strong>ESG 통합</strong></td>
+<td><strong>C/D</strong></td>
+<td>E 취약이 전체 등급을 끌어내림</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>통합 의견</strong>: SH에너지화학은 법적 최소 의무를 형식적으로 충족하고 있으나, KOSPI 상장사로서의 ESG 정보 공개 의무와 기관 투자자의 공시 수요에는 크게 미달하는 수준이다. 3년 연속 영업손실과 시장 점유율 하락이라는 재무·사업적 압박 하에서 ESG 투자 여력이 제한적이나, 제시된 최소 비용(연 3,000만원 수준) 개선 과제부터 우선 이행하는 것이 기관 투자자 이탈 방지와 규제 리스크 감소 양면에서 합리적이다.</p>
+</blockquote>
+<h3>8.2 교차 검증 최종 판정</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>검증 항목</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>데이터 정합성 (12/12 핵심 수치)</td>
+<td><strong>통과</strong></td>
+</tr>
+<tr>
+<td>E/S/G 등급 타당성</td>
+<td><strong>통과</strong></td>
+</tr>
+<tr>
+<td>GRI Standards 적용 정확성</td>
+<td><strong>통과</strong></td>
+</tr>
+<tr>
+<td>한국 규제 적용 정확성</td>
+<td><strong>통과</strong></td>
+</tr>
+<tr>
+<td>개선 계획 실행 가능성</td>
+<td><strong>통과</strong></td>
+</tr>
+<tr>
+<td>중대 불일치 여부</td>
+<td><strong>없음</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>→ 전체 ESG 감사 교차 검증 통과. 산출물 6개 확정.</strong></p>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">09</span><div class="sess-title">9. 감사 산출물 최종 목록</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>파일</th>
+<th>내용</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_workspace/00_input.md</code></td>
+<td>실측 데이터 기반 입력 정보</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td><code>_workspace/01_environmental_assessment.md</code></td>
+<td>환경(E) 평가 — 등급 D</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td><code>_workspace/02_social_assessment.md</code></td>
+<td>사회(S) 평가 — 등급 C</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td><code>_workspace/03_governance_assessment.md</code></td>
+<td>거버넌스(G) 평가 — 등급 C-</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td><code>_workspace/04_esg_report.md</code></td>
+<td>GRI 통합 ESG 보고서</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td><code>_workspace/05_improvement_plan.md</code></td>
+<td>ESG 개선 로드맵 (5개년)</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td><code>_workspace/06_review_report.md</code></td>
+<td>교차 검증 보고서</td>
+<td>✅ 완료</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>본 교차 검증 보고서는 제69기 1분기 분기보고서(2026.05.15 제출)를 1차 사실관계 출처로 사용하였습니다. 현장 감사, 경영진 인터뷰, 제3자 검증 등은 이 감사 범위에 포함되지 않습니다.</em></p></section></div></div></body></html>
