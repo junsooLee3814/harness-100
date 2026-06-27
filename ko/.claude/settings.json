@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:/Users/juncp/00_claudecode/01_Harness_100/ko/03-newsletter-engine/_workspace\")",
+      "WebSearch",
+      "Bash(python C:/Users/juncp/.claude/skills/html-pastel-style/scripts/build_html.py c:/Users/juncp/00_claudecode/01_Harness_100/ko/03-newsletter-engine/_workspace/newsletter_clean.md c:/Users/juncp/00_claudecode/01_Harness_100/ko/03-newsletter-engine/_workspace/newsletter.html '월드컵 현장 브리핑 · Vol.1')",
+      "Bash(start \"c:/Users/juncp/00_claudecode/01_Harness_100/ko/03-newsletter-engine/_workspace/newsletter.html\")",
+      "Bash(git commit *)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\juncp\\00_claudecode\\01_Harness_100\\ko\\03-newsletter-engine"
+    ]
+  }
+}
