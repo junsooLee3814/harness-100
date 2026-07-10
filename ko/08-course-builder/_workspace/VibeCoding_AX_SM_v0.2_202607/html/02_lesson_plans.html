@@ -1,0 +1,1443 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>교안/강의노트 — VibeCoding_AX_SM (v0.2)</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">선명AG · AX 3차 · VibeCoding_AX_SM v0.2</div><h1>교안/강의노트 — VibeCoding_AX_SM (v0.2)</h1></header><div class="intro"><blockquote>
+<p>SSOT: <code>00_input.md</code> · 설계서: <code>01_curriculum.md</code>
+자매 문서: 퀴즈 문항 전문은 <code>03_quizzes.md</code>, 실습 스타터·힌트·루브릭·안전게이트 전문은 <code>04_labs.md</code>에 있다. <strong>본 교안은 중복을 피해 "강의 흐름 · 강사 시연 스크립트 · 학습자 따라하기 · 배포자료 안내 · 슬라이드 구성 · 강사 노트 · 안전수칙 삽입 지점 · 타임라인"에 집중</strong>한다. 퀴즈가 필요한 지점은 <code>[→ 03_quizzes Qx-y]</code>, 실습 스타터가 필요한 지점은 <code>[→ 04_labs]</code>로 포인터만 건다.</p>
+</blockquote></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">이 교안을 읽는 법 (강사용)</div></div>
+<ul>
+<li>모든 실습 블록은 <strong>3단 구조</strong>로 고정한다 → ① <strong>강사 시연</strong>(완성본 먼저: 대사 + 화면 흐름) → ② <strong>학습자 따라하기</strong>(스켈레톤/스니펫에서 출발, 절대 백지 아님) → ③ <strong>배포자료 안내</strong>(그 블록에서 나눠줄 템플릿·스켈레톤·스니펫).</li>
+<li><strong>3대 설계원칙</strong>은 각 블록 상단에 아이콘으로 표기: <strong>⓵ 백지금지</strong> · <strong>⓶ 데모먼저</strong> · <strong>⓷ 강사+조교</strong>.</li>
+<li><strong>🛡 안전수칙 삽입 지점</strong>은 본문에 인라인으로 박아 두었다. 강사는 이 지점에서 반드시 말로 짚고 넘어간다(건너뛰기 금지).</li>
+<li><strong>가네 9단계</strong> 태그를 블록별로 표기: [가네1 주의] [가네3 선행상기] [가네4 자극] [가네6 수행유도] [가네9 전이] 등.</li>
+<li>타임라인은 <strong>[120분 표준]</strong> + <strong>[100분 압축]</strong> 두 버전을 각 강 끝에 제공한다.</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">배포자료 패키지 개요 (강사 사전 준비물)</div></div>
+<p>강사·조교는 강 시작 전 아래 폴더를 학습자에게 배포(또는 공유드라이브/USB)한다. <strong>내용은 채워 넣기·고치기용 빈칸/스켈레톤 상태</strong>로 배포한다(완성본은 강사 시연용으로만 별도 보관).</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>강</th>
+<th>배포 폴더</th>
+<th>핵심 내용물</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0강</td>
+<td><code>00강_온보딩킷/</code> (킷)</td>
+<td>도구 10종 설치 체크리스트, I/P/O 워크시트(예시행 1개 채워짐), 진단 미니체크</td>
+</tr>
+<tr>
+<td>1강</td>
+<td><code>01강_템플릿_landing-page/</code></td>
+<td>랜딩페이지 HTML 스켈레톤(섹션 주석 뚫림), 배포 절차 카드(빈칸), 프롬프트 스니펫 3장</td>
+</tr>
+<tr>
+<td>2강</td>
+<td><code>02강_템플릿_content-engine/</code></td>
+<td>블로그 프롬프트 템플릿(빈칸), 유튜브 세트 프롬프트, 사실검증 체크리스트</td>
+</tr>
+<tr>
+<td>3강</td>
+<td><code>03강_템플릿_skill-mcp/</code></td>
+<td>SKILL.md 스켈레톤, MCP 설정 스니펫(<code>.mcp.json</code>), 7개념 지형도 카드</td>
+</tr>
+<tr>
+<td>4강</td>
+<td><code>04강_스켈레톤_news-insight-team/</code></td>
+<td>4역할 에이전트 스켈레톤, 하네스 결선 골격, 미러링 워크시트</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>완성본(참조본)은 조교가 미리 배포/실행해 두고, 시연 때만 화면에 띄운다.</strong> 학습자에게 완성본 소스를 처음부터 주면 "따라 치기"만 하고 사고가 멈춘다 — 스켈레톤 배포 원칙(⓵)의 핵심 이유.</p>
+</blockquote>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">용어집</div></div>
+<p>전문용어는 <strong>첫 등장 강</strong>에서 1줄 정의 + 업무 비유로 소개한다. 강사는 이 표를 슬라이드 하단 각주로도 노출한다.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>용어</th>
+<th>1줄 정의</th>
+<th>업무 비유</th>
+<th>첫 등장</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>바이브코딩</td>
+<td>자연어로 지시해 결과물을 만들고, 검증은 사람이 하는 방식</td>
+<td>"받아쓰게 하고, 결재는 내가"</td>
+<td>0강</td>
+</tr>
+<tr>
+<td>I/P/O</td>
+<td>입력(Input)→처리(Process)→출력(Output)으로 업무를 3토막 내는 사고틀</td>
+<td>서류 접수→검토→발송</td>
+<td>0강</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>자연어를 이해·생성하는 대규모 언어모델(Claude·GPT·Gemini·Grok 등)</td>
+<td>말귀 알아듣는 만능 신입</td>
+<td>1강</td>
+</tr>
+<tr>
+<td>스켈레톤</td>
+<td>뼈대만 있고 빈칸이 뚫린 시작 파일</td>
+<td>결재양식 빈 서식</td>
+<td>1강</td>
+</tr>
+<tr>
+<td>배포(Deploy)</td>
+<td>만든 페이지를 인터넷에 올려 URL로 접속 가능하게 하는 것</td>
+<td>문서를 사내 게시판에 게시</td>
+<td>1강</td>
+</tr>
+<tr>
+<td>anon 키 / service_role 키</td>
+<td>anon=공개용 열쇠(밖에 노출 OK) / service_role=관리자 마스터키(절대 노출 금지)</td>
+<td>로비 출입증 vs 마스터키</td>
+<td>1강</td>
+</tr>
+<tr>
+<td>Claude 3계층</td>
+<td>chat(대화)·cowork(문서·작업 협업)·code(개발환경) 세 가지 사용 층</td>
+<td>메신저 / 협업문서 / 작업실</td>
+<td>2강</td>
+</tr>
+<tr>
+<td>MCP</td>
+<td>LLM이 외부 데이터·도구에 접속하는 표준 연결구</td>
+<td>만능 신입에게 쥐여주는 외부 전화기</td>
+<td>3강</td>
+</tr>
+<tr>
+<td>스킬</td>
+<td>특정 작업을 하도록 미리 짜둔 재사용 지시서</td>
+<td>업무 매뉴얼 1건</td>
+<td>3강</td>
+</tr>
+<tr>
+<td>에이전트</td>
+<td>목표를 받아 스스로 판단·실행하는 AI 일꾼</td>
+<td>담당 하나 붙인 대리</td>
+<td>3강</td>
+</tr>
+<tr>
+<td>에이전트팀</td>
+<td>역할 나눈 여러 에이전트가 협업하는 구성</td>
+<td>수집·분석·검증·요약 4인 TF</td>
+<td>4강</td>
+</tr>
+<tr>
+<td>하네스</td>
+<td>에이전트팀을 재실행 가능하게 묶은 자동화 틀</td>
+<td>버튼 누르면 도는 결재라인</td>
+<td>4강</td>
+</tr>
+<tr>
+<td>미러링</td>
+<td>공통 프로젝트를 본인 업무로 복제·개조하는 것</td>
+<td>표준양식을 우리 팀용으로 개조</td>
+<td>4강</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">전 강 관통 예시 — 좌착 공통 프로젝트</div></div>
+<p><strong>글로벌 증시·뉴스 인사이트 에이전트팀</strong>을 0강부터 4강까지 "우리가 함께 만드는 배(실습선)"로 일관 등장시킨다. 강마다 이 프로젝트의 한 부품이 완성된다.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>강</th>
+<th>공통 프로젝트에서 만드는 부품</th>
+<th>직군별 미러링(4강에서 각자 복제)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1강</td>
+<td>인사이트를 보여줄 <strong>랜딩페이지(출력 채널)</strong></td>
+<td>회계=상담접수 폼 / 법무=상담예약 / MICE=행사 사전등록</td>
+</tr>
+<tr>
+<td>2강</td>
+<td>브리핑을 담을 <strong>콘텐츠 포맷(블로그·유튜브)</strong></td>
+<td>미디어=기사 초안 / 투자=시황 코멘트</td>
+</tr>
+<tr>
+<td>3강</td>
+<td>수집·분석에 쓸 <strong>스킬·MCP 부품</strong></td>
+<td>회계=마감 체크 스킬 / 법무=판례 요약 스킬</td>
+</tr>
+<tr>
+<td>4강</td>
+<td>4역할 <strong>에이전트팀 하네스</strong></td>
+<td>각자 0강 I/P/O 시나리오로 미러링</td>
+</tr>
+</tbody>
+</table></div>
+<p>강사는 매 강 도입 데모에서 "지난 강에 만든 부품이 이 프로젝트의 어디에 꽂히는지"를 한 장의 조립도로 상기시킨다(가네3 선행학습 자극).</p>
+<hr />
+</section><div class="day-divider"><span class="d-badge">0강: 사전 온보딩 (비대면 60~90분)</span><span class="d-title">"출발선 정렬"</span></div><div class="intro"><p><strong>모듈 학습목표</strong> (커리큘럼 인용)</p>
+<ul>
+<li>(이해) 바이브코딩이 "코딩이 아니라 지시와 검증"임을 설명할 수 있다.</li>
+<li>(적용) 도구 10종을 설치·로그인하고 체크리스트를 완료할 수 있다.</li>
+<li>(적용) 본인 업무 2~3개를 입력→처리→출력 형식으로 기술할 수 있다.</li>
+</ul>
+<p><strong>준비물(학습자)</strong>: 노트북, 해외결제 가능 카드(Claude Pro용), 안정적 인터넷, 조용한 공간.
+<strong>준비물(강사·조교)</strong>: <code>00강_온보딩킷/</code>, 화면공유 회의룸, 조교별 원격지원 대기, 조교 백업 계정.</p>
+<hr /></div><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">블록 0-1 — 과정 오리엔테이션 · 바이브코딩 개념 (강의 15분) ⓶</div></div>
+<p>[가네1 주의] [가네2 목표고지]</p>
+<h3>강의 흐름</h3>
+<ul>
+<li><strong>도입(3분)</strong>: [가네1] "오늘부터 8시간 뒤, 여러분은 코드 한 줄 못 짜도 <strong>본인 업무를 자동화하는 AI 팀</strong>을 갖게 됩니다." — 4강 완성 하네스 30초 영상 먼저 재생(완성본 먼저·⓶).</li>
+<li><strong>핵심 개념 1: 바이브코딩이란(6분)</strong></li>
+<li>정의(용어집): "코딩하지 않고 자연어로 지시하며, <strong>검증은 사람이 한다</strong>."</li>
+<li>강조 대사: "AI가 <strong>지시를 받아 만들고</strong>, 사람이 <strong>결과를 검증한다</strong>. 이 역할 분담이 오늘의 전부입니다."</li>
+<li>🛡 <strong>안전수칙 삽입 지점</strong>: "AI는 그럴듯한 거짓(숫자·출처·법조항)을 만들 수 있습니다. 그래서 검증이 직무입니다." (2강·4강 검증수칙의 복선)</li>
+<li><strong>핵심 개념 2: 8시간 여정 지도(4분)</strong></li>
+<li>누적 부품 이월 지도(1강 배포→2강 포맷→3강 부품→4강 하네스)를 한 장으로.</li>
+<li>3대 설계원칙 예고: ⓵ 백지금지 ⓶ 데모먼저 ⓷ 강사+조교.</li>
+<li><strong>능동 학습</strong>: [→ 03_quizzes Q0-1] 바이브코딩 정의 객관식(구두 손들기).</li>
+</ul>
+<h3>슬라이드 구성안 (1메시지/1슬라이드)</h3>
+<ol>
+<li>(표지) "코딩 0줄, 자동화 100% — VibeCoding_AX"</li>
+<li>완성 하네스 데모 GIF + "2일 뒤 당신의 결과물"</li>
+<li>바이브코딩 정의: <strong>지시=AI / 검증=사람</strong> (좌우 2분할 그림)</li>
+<li>8시간 여정 지도(0→1→2→3→4→클리닉)</li>
+<li>3대 설계원칙 아이콘 3개</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>예상 질문 "코딩 진짜 안 배워도 되나요?" → "문법은 안 배웁니다. 대신 <strong>좋은 지시</strong>와 <strong>날카로운 검증</strong>을 배웁니다. 그게 여러분 직무 강점과 직결됩니다."</li>
+<li>불안한 초보자용 한마디: "오늘 막히는 건 정상이고, 그래서 조교가 옆에 있습니다."</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">블록 0-2 — 계정 5종 개설 + 결제 (시연→실습 25분) ⓵⓶⓷</div></div>
+<p>[가네4 자극] [가네6 수행유도]</p>
+<h3>① 강사 시연 스크립트 (완성본 먼저 · 8분)</h3>
+<ul>
+<li>화면 흐름: 강사가 <strong>이미 로그인된 5개 탭</strong>(Claude Pro·GitHub·Vercel·Supabase·타LLM)을 순서대로 보여준다 → "이게 오늘 끝에 여러분 화면입니다."</li>
+<li>대사: "지금부터 저를 따라 <strong>한 탭씩</strong> 엽니다. 앞서가지 말고 제 속도에 맞추세요. 막히면 손 들면 조교가 화면 공유로 붙습니다."(⓷)</li>
+<li>Claude Pro 결제 시연 시: 카드 정보 입력란은 <strong>블러 처리</strong>하고 "여러분 카드는 여러분만 봅니다"라고 짚음.</li>
+</ul>
+<h3>② 학습자 따라하기 (12분)</h3>
+<ol>
+<li>체크리스트(배포자료) 1행씩 따라 계정 생성·로그인.</li>
+<li>각 계정 로그인 성공 화면을 <strong>체크박스에 표시</strong>(스크린샷 규칙은 아래 안전수칙 준수).</li>
+<li>조교는 3인 1조 중 1명이라도 특정 단계에서 3분 이상 멈추면 즉시 개입[가네7 피드백].</li>
+</ol>
+<p>🛡 <strong>안전수칙 삽입 지점(필수 구두 강조)</strong>:</p>
+<ul>
+<li>"<strong>service_role 등 비밀키는 스크린샷에도 넣지 않습니다.</strong> 캡처 전 키가 화면에 없는지 확인하세요." [→ 03_quizzes Q0-3 안전 시나리오와 연결]</li>
+<li>"Claude Pro는 해외결제 카드가 필요합니다. 카드가 없으면 지금 조교에게 알려 대안을 잡습니다."</li>
+</ul>
+<h3>③ 배포자료 안내</h3>
+<ul>
+<li><code>00강_온보딩킷/도구10종_체크리스트.pdf</code> — 계정 5종 + 설치 6종(0-3에서 이어서)을 한 장에.</li>
+<li>각 계정 가입 URL·주의점이 적힌 <strong>원클릭 링크 카드</strong>.</li>
+</ul>
+<h3>강사 노트</h3>
+<ul>
+<li>결제 실패(해외카드 거절) 다발 지점 → 조교 백업 계정으로 임시 진행, 개인 결제는 쉬는시간에 원격지원.</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">블록 0-3 — 설치 6종 (시연→실습 20분) ⓵⓶⓷</div></div>
+<p>[가네4 자극] [가네6 수행유도]</p>
+<h3>① 강사 시연 스크립트 (완성본 먼저 · 7분)</h3>
+<ul>
+<li>화면 흐름: 강사 터미널에서 <code>claude</code> 입력 → 실행 성공 화면을 <strong>먼저</strong> 보여줌. "여기 이 화면이 20분 뒤 여러분 목표입니다."(⓶)</li>
+<li>설치 순서 시연: Node.js → Git → VS Code → Claude Code(CLI) → Claude 데스크톱 → [Antigravity 선택].</li>
+<li>대사: "설치는 다운로드→다음→다음이 대부분입니다. <strong>버전 숫자</strong>가 보이면 성공입니다."</li>
+</ul>
+<h3>② 학습자 따라하기 (13분)</h3>
+<ol>
+<li>체크리스트대로 6종 설치.</li>
+<li><strong>성공 판정 명령</strong>을 그대로 입력(따라치기 OK 구간): <code>node -v</code>, <code>git --version</code>, 그리고 최종 <code>claude</code> 실행.</li>
+<li><code>claude</code>가 뜨면 체크리스트에 ✅.</li>
+</ol>
+<p>🛡 <strong>안전수칙 삽입 지점</strong>: "설치 파일은 <strong>공식 사이트에서만</strong> 받습니다. 검색 광고 링크·재배포 사이트 금지."</p>
+<h3>③ 배포자료 안내</h3>
+<ul>
+<li><code>00강_온보딩킷/설치_성공판정_명령카드.txt</code> — OS별(Win/Mac) 복붙용 확인 명령 모음.</li>
+<li>자주 나는 오류 3종 자가진단표(권한/경로/버전).</li>
+</ul>
+<h3>강사 노트</h3>
+<ul>
+<li>Windows 경로·권한 오류가 가장 잦음 → 조교는 관리자 권한 실행·PATH 확인을 우선 점검.</li>
+<li>이 블록은 "성공 판정 명령"은 이해 없이 따라 쳐도 된다고 명시(외재적 부하 최소화). 개념 학습은 1강부터.</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">08</span><div class="sess-title">블록 0-4 — 진단 미니체크 + 사전과제 안내 (실습 15분) ⓵</div></div>
+<p>[가네6 수행유도] [가네9 전이 준비]</p>
+<h3>① 강사 시연 스크립트 (완성본 먼저 · 4분)</h3>
+<ul>
+<li><strong>채워진 I/P/O 워크시트 예시 1행</strong>을 화면에 띄운다.</li>
+<li>예시(공통): "입력=관심 지수·기업명 → 처리=관련 뉴스 수집·핵심 요약 → 출력=아침 브리핑 카드"</li>
+<li>직군 예시: 회계 "입력=거래 원장 → 처리=계정 분류·이상치 표시 → 출력=마감 점검표" / 법무 "입력=사건 키워드 → 처리=유사 판례 검색·요약 → 출력=판례 메모".</li>
+</ul>
+<h3>② 학습자 따라하기 (11분)</h3>
+<ol>
+<li>워크시트 예시행을 보고, <strong>본인 업무 2~3개</strong>를 I/P/O로 작성(백지 아님·예시행 제공·⓵).</li>
+<li>진단 미니체크 문항에 응답(현재 도구 숙련도 자가 진단) [→ 03_quizzes 0강 형성평가].</li>
+<li>완성 워크시트를 지정 경로에 저장·제출 [→ 04_labs 0강 사전과제, 저장경로 <code>내문서/vibecoding/00_ipo_sheet.md</code>].</li>
+</ol>
+<p>🛡 <strong>안전수칙 삽입 지점</strong>: "워크시트에 <strong>실제 고객명·주민번호·계좌</strong>를 쓰지 마세요. '고객A', '000-0000' 같은 가명으로."</p>
+<h3>③ 배포자료 안내</h3>
+<ul>
+<li><code>00강_온보딩킷/IPO_워크시트.md</code> — 예시행 1개 채워진 상태 + 빈 3행.</li>
+<li>이 워크시트는 <strong>버리는 과제가 아니라 4강 미러링의 씨앗</strong>임을 붉은 글씨로 명기.</li>
+</ul>
+<h3>강사 노트</h3>
+<ul>
+<li>"잘 못 쓰겠다"는 학습자에게 → "완벽하지 않아도 됩니다. 4강에서 함께 다듬습니다." 제출률이 완성도보다 중요.</li>
+</ul>
+<h3>마무리 (전체 공지)</h3>
+<ul>
+<li>핵심 요약 3줄: ① 바이브코딩=지시(AI)+검증(사람) ② 도구 10종 준비 완료 ③ 내 업무 I/P/O 확보.</li>
+<li>다음 강 예고: "1강에서는 <strong>2시간 만에 진짜 웹페이지를 인터넷에 배포</strong>합니다."</li>
+<li>🛡 강 시작 전까지 체크리스트 100% + 워크시트 제출. 미완료자는 조교가 개별 보정.</li>
+</ul>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">09</span><div class="sess-title">0강 타임라인</div></div>
+<p><strong>[90분 표준]</strong>
+| 시각 | 블록 | 분 |
+|------|------|----|
+| 00:00 | 0-1 오리엔테이션·개념 | 15 |
+| 00:15 | 0-2 계정 5종 + 결제 | 25 |
+| 00:40 | (쉬는시간) | 5 |
+| 00:45 | 0-3 설치 6종 | 20 |
+| 01:05 | 0-4 진단+사전과제 | 15 |
+| 01:20 | 마무리·개별 보정 예고 | 10 |</p>
+<p><strong>[60분 압축]</strong> — 계정/설치는 사전 영상으로 선(先)학습, 세션은 확인·보정 중심.
+| 시각 | 블록 | 분 |
+|------|------|----|
+| 00:00 | 0-1 개념(압축) | 10 |
+| 00:10 | 0-2/0-3 설치·계정 <strong>점검</strong>(사전영상 시청 전제) | 25 |
+| 00:35 | 0-4 사전과제 | 15 |
+| 00:50 | 마무리·미완료자 원격지원 안내 | 10 |</p>
+<hr />
+</section><div class="day-divider"><span class="d-badge">1강: 진화된 대화 거점 (대면 2h)</span><span class="d-title">"처음부터 배포까지"</span></div><div class="intro"><p><strong>모듈 학습목표</strong> (커리큘럼 인용)</p>
+<ul>
+<li>(이해) LLM 4종의 지형도와 강약점을 비교·설명할 수 있다.</li>
+<li>(적용) 강사 스켈레톤에서 출발해 자연어 지시로 랜딩페이지 프론트를 완성할 수 있다.</li>
+<li>(창조) GitHub→Vercel 배포 + Supabase 연동으로 실동작 페이지를 배포할 수 있다.</li>
+</ul>
+<p><strong>준비물</strong>: 0강 완료(하드 선수조건), <code>01강_템플릿_landing-page/</code>, 조교 배포 완성본 URL 1개.
+<strong>새 개념 3개 이하</strong>: ① LLM 4종 지형도 ② 스켈레톤 채우기 ③ 배포 3종 세트.</p>
+<hr /></div><section class="card card--mint"><div class="sess-head"><span class="sess-no">10</span><div class="sess-title">블록 1-1 — 도입: 완성 랜딩페이지 데모 (시연 10분) ⓶</div></div>
+<p>[가네1 주의] [가네3 선행학습 자극]</p>
+<h3>강사 시연 스크립트 (완성본 먼저)</h3>
+<ul>
+<li>화면 흐름: 조교가 미리 배포해 둔 <strong>실제 URL</strong>을 강사가 브라우저에서 연다 → 폼에 "홍길동 / 문의합니다" 입력·전송 → <strong>Supabase 테이블에 방금 그 줄이 쌓이는 화면</strong>으로 전환.</li>
+<li>대사: "지금 보신 이 페이지, <strong>2시간 뒤 여러분 각자의 URL로</strong> 존재합니다. 백지에서 시작하지 않습니다. 제가 뼈대를 드리고, 여러분은 <strong>채우고 배포</strong>만 합니다."(⓵⓶)</li>
+<li>[가네3] 0강 상기: "0강에서 만든 도구 10종이 지금 다 쓰입니다. GitHub·Vercel·Supabase 기억하시죠?"</li>
+</ul>
+<h3>슬라이드 구성안</h3>
+<ol>
+<li>(표지) "오늘의 목표: 내 이름이 붙은 진짜 URL"</li>
+<li>완성 데모 스크린샷 + 화살표(폼→DB 저장)</li>
+<li>"우리는 뼈대를 받고 → 채우고 → 배포한다" 3스텝</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>이 10분이 1강 동기의 전부. <strong>반드시 실제 저장되는 장면</strong>까지 보여줄 것(정적 페이지만 보이면 감흥 반감).</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">11</span><div class="sess-title">블록 1-2 — LLM 4종 지형도 (강의 20분)</div></div>
+<p>[가네4 자극] [가네5 학습안내]</p>
+<h3>강의 흐름</h3>
+<ul>
+<li><strong>핵심 개념: LLM 4종 비교(10분)</strong> — Claude / GPT / Gemini / Grok.</li>
+<li>용어집: LLM = "말귀 알아듣는 만능 신입". 4종은 성격이 다른 신입 4명.</li>
+<li>비교 축: 강점·대표 용도·이 과정에서의 역할(Claude가 메인 작업, 나머지는 교차검증·대안)·접속 URL.</li>
+<li>슬라이드 비유: "회의에 4명 부르되, <strong>오늘 실습 메인 드라이버는 Claude</strong>, 나머지는 크로스체크용."</li>
+<li><strong>과금체계 비교(4분)</strong> — 구독(월 정액) vs API(종량제). "정기 업무는 구독, 자동화·대량 호출은 API."</li>
+<li><strong>능동 학습(6분)</strong>: [→ 03_quizzes 1강 Q — LLM 4종 구분] 매칭 퀴즈 구두 진행.</li>
+</ul>
+<h3>슬라이드 구성안 (1메시지/슬라이드)</h3>
+<ol>
+<li>"LLM = 성격 다른 만능 신입 4명"</li>
+<li><strong>4종 비교표(강점/용도/역할/URL)</strong> — 한 슬라이드에 표 1개만 (아래 표 A)</li>
+<li><strong>과금체계 표(구독/API·API URL)</strong> — 한 슬라이드에 표 1개만 (아래 표 B)</li>
+<li>"왜 여러 개를 아나?" → 교차검증·대체(안전수칙 복선)</li>
+<li>오늘의 선택: 메인=Claude, 검증축=택1</li>
+</ol>
+<h4>표 A — LLM 4종 지형도 (강점 / 대표 용도 / 이 과정 역할 / 접속 URL)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>모델(제작사)</th>
+<th>강점</th>
+<th>대표 용도</th>
+<th>이 과정에서의 역할</th>
+<th>접속 URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude</strong> (Anthropic)</td>
+<td>긴 문맥·정교한 지시 따르기·코딩/에이전트에 강함</td>
+<td>문서작업·코딩·업무 자동화 에이전트</td>
+<td><strong>메인 드라이버</strong> — 전 실습의 기본 도구</td>
+<td>claude.ai</td>
+</tr>
+<tr>
+<td><strong>GPT</strong> (OpenAI)</td>
+<td>범용성·가장 큰 생태계·이미지 생성</td>
+<td>범용 대화·아이디어 발상·이미지</td>
+<td>교차검증·대안</td>
+<td>chatgpt.com</td>
+</tr>
+<tr>
+<td><strong>Gemini</strong> (Google)</td>
+<td>구글 서비스 연동·멀티모달·긴 문맥</td>
+<td>검색 연계·문서·이미지 처리</td>
+<td>대안·교차검증</td>
+<td>gemini.google.com</td>
+</tr>
+<tr>
+<td><strong>Grok</strong> (xAI)</td>
+<td>실시간 X(옛 트위터) 데이터·최신 이슈 반영</td>
+<td>실시간 트렌드·시사 확인</td>
+<td>실시간 검증축</td>
+<td>grok.com</td>
+</tr>
+</tbody>
+</table></div>
+<h4>표 B — 과금체계 (구독 vs API)</h4>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>모델</th>
+<th>개인 구독(월 정액)</th>
+<th>API(종량제·개발자용)</th>
+<th>API 콘솔·문서 URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude</strong></td>
+<td>Claude Pro 약 $20/월 (상위 Max 플랜 별도)</td>
+<td>토큰 사용량만큼 종량 과금</td>
+<td>console.anthropic.com</td>
+</tr>
+<tr>
+<td><strong>GPT</strong></td>
+<td>ChatGPT Plus 약 $20/월 (상위 Pro 플랜 별도)</td>
+<td>토큰 사용량만큼 종량 과금</td>
+<td>platform.openai.com</td>
+</tr>
+<tr>
+<td><strong>Gemini</strong></td>
+<td>Google AI Pro 약 $19.99/월</td>
+<td>무료 티어 + 종량 과금</td>
+<td>aistudio.google.com</td>
+</tr>
+<tr>
+<td><strong>Grok</strong></td>
+<td>X Premium+ / SuperGrok 약 $30~/월</td>
+<td>토큰 사용량만큼 종량 과금</td>
+<td>console.x.ai</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>과금 한 줄 정리</strong>: 구독 = "정액 무제한 느낌, 사람이 직접 대화" / API = "쓴 만큼 과금, 자동화·프로그램이 호출". 이 과정 실습은 <strong>Claude 구독(Pro)</strong> 기준, 4강 하네스에서 자동화를 붙일 때 API 개념이 등장한다.</p>
+</blockquote>
+<h3>강사 노트</h3>
+<ul>
+<li>초보자는 "뭐가 제일 좋아요?"를 반드시 물음 → "작업에 따라 다릅니다. <strong>하나에 올인하지 않는 습관</strong>이 곧 검증 습관입니다."</li>
+<li>특정 모델 비하·과장 금지(중립 비교). <strong>가격·플랜명·성능 수치는 모두 강의 시점(2026년) 기준이며 수시 변동</strong> → 강사가 당일 공식 페이지에서 재확인 후 진행.</li>
+<li>URL은 "구독용 웹앱(표 A)"과 "API 콘솔(표 B)"이 다르다는 점을 짚기 — 초보자가 헷갈리는 지점.</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">12</span><div class="sess-title">블록 1-3 — 바이브코딩 첫 지시: 스켈레톤 채우기 (강사 시연 15분) ⓵⓶</div></div>
+<p>[가네4 자극] [가네5 학습안내]</p>
+<h3>강사 시연 스크립트 (완성본 먼저 → 과정 시범)</h3>
+<ul>
+<li>화면 흐름:
+  1. <code>01강_템플릿_landing-page/</code>의 <strong>스켈레톤 HTML</strong>을 연다(섹션이 <code>&lt;!-- 여기에 히어로 --&gt;</code>처럼 주석으로 뚫려 있음).
+  2. Claude에 자연어 지시 시범: "이 히어로 섹션에 '글로벌 증시 인사이트, 매일 아침 한 장'이라는 헤드라인과 이메일 구독 폼을 넣어줘." → 코드 생성 → 미리보기.
+  3. 생성 결과를 <strong>눈으로 검증</strong>하는 시범: "글자가 맞나? 폼이 보이나? 안 맞으면 다시 지시."</li>
+<li>대사: "지시 → 생성 → <strong>미리보기로 눈 검증</strong> → 재지시. 이 4박자가 바이브코딩입니다. 코드는 안 읽어도 됩니다. <strong>결과 화면을 읽으세요.</strong>"</li>
+</ul>
+<h3>슬라이드 구성안</h3>
+<ol>
+<li>바이브코딩 4박자: 지시→생성→눈검증→재지시 (순환 화살표)</li>
+<li>"좋은 지시문 3요소": 무엇을 / 어디에 / 어떤 느낌으로</li>
+<li>스켈레톤 주석 = "여기 채우세요" 표지판</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>첫 지시는 <strong>일부러 살짝 어긋난 결과</strong>를 뽑아 보여주고 재지시로 고치는 장면을 연출 → "AI도 틀린다, 그래서 눈 검증"을 체감시킴(2강 검증수칙 예열).</li>
+<li>프롬프트는 배포자료 스니펫으로도 제공하되, 시연에서는 강사가 <strong>즉석 작성</strong>해 "이 정도면 된다"는 눈높이를 보여줌.</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">13</span><div class="sess-title">블록 1-4 — 랜딩페이지 프론트 제작 (조별 따라하기 35분) ⓵⓷</div></div>
+<p>[가네6 수행유도] [가네7 피드백]</p>
+<h3>② 학습자 따라하기 (스켈레톤에서 출발)</h3>
+<ol>
+<li>각 조 스켈레톤 HTML 열기(백지 아님).</li>
+<li>배포자료 <strong>프롬프트 스니펫 3장</strong>(히어로/소개 섹션/문의 폼)을 참고해, 본인·공통 소재로 자연어 지시 → 섹션 채우기.</li>
+<li>3분 막히면 3단 힌트 시스템 발동 [→ 04_labs 0.3 힌트 시스템].</li>
+<li><code>[최소 통과선]</code> 히어로 + 폼 1개 동작 / <code>[확장 과제]</code> 소개 섹션·색테마 추가 [→ 04_labs 1강].</li>
+</ol>
+<h3>배포자료 안내</h3>
+<ul>
+<li><code>01강_템플릿_landing-page/skeleton.html</code> — 섹션 4곳 주석 뚫림.</li>
+<li><code>.../prompt_snippets.md</code> — 섹션별 예시 지시문 3장(빈칸 <code>[여기에 우리 문구]</code>).</li>
+<li><code>.../checklist.md</code> — "폼이 보이나 / 버튼 눌리나" 눈검증 체크.</li>
+</ul>
+<p>🛡 <strong>안전수칙 삽입 지점</strong>: "폼 예시 데이터에 <strong>실제 개인정보 금지</strong>. '홍길동/test@example.com' 같은 가짜만."</p>
+<h3>강사·조교 노트 [가네7]</h3>
+<ul>
+<li>⓷ 조별 신호: 한 명이라도 미리보기가 안 뜨면 조 전체 정지 → 조교 즉시 개입.</li>
+<li>진도 편차: 빠른 조는 확장 과제로 유도해 느린 조를 기다리지 않게 함(강사는 전체 진도를 최소 통과선 기준으로 운영).</li>
+</ul>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">14</span><div class="sess-title">블록 1-5 — 배포 3종 세트: GitHub→Vercel + Supabase (시연→실습 30분) ⓵⓶⓷</div></div>
+<p>[가네6 수행유도] [가네7 피드백] — <strong>1강의 창조(배포) 클라이맥스</strong></p>
+<h3>① 강사 시연 스크립트 (완성본 먼저 · 12분)</h3>
+<ul>
+<li>화면 흐름:
+  1. 완성 repo를 GitHub에 올리는 장면(커밋→푸시) — "저장소=클라우드 백업 + 배포 방아쇠."
+  2. Vercel이 repo를 감지해 <strong>URL을 뱉는 장면</strong> — "여기 뜬 주소가 전 세계에서 접속됩니다."
+  3. Supabase 테이블 연결 → 폼 전송 시 <strong>행이 쌓이는 장면</strong>.</li>
+<li>대사: "배포는 마법이 아니라 <strong>3칸 연결</strong>입니다. GitHub(보관)→Vercel(공개)→Supabase(데이터). 순서대로 카드 따라만 오세요."</li>
+</ul>
+<h3>② 학습자 따라하기 (18분)</h3>
+<ol>
+<li>배포 절차 카드(빈칸)를 <strong>한 칸씩</strong> 채우며 진행 [→ 04_labs 1강 배포 절차].</li>
+<li>본인 URL 접속 성공 → 체크.</li>
+<li>폼 전송 → Supabase에 행 확인 → 체크.</li>
+</ol>
+<p>🛡 <strong>안전수칙 삽입 지점(1강 최중요·필수 강조)</strong>:</p>
+<ul>
+<li>"<strong>페이지·코드에는 <code>anon</code> 공개키만.</strong> <code>service_role</code>(마스터키)은 절대 프론트에 넣지 않습니다." (용어집 비유: 로비 출입증 vs 마스터키) [→ 03_quizzes 1강 anon vs service_role 필수문항]</li>
+<li>"환경변수/키를 GitHub 공개 repo에 커밋하지 않습니다."</li>
+</ul>
+<h3>③ 배포자료 안내</h3>
+<ul>
+<li><code>01강_템플릿_landing-page/deploy_card.md</code> — GitHub·Vercel·Supabase 3단 절차(빈칸).</li>
+<li><code>.../supabase_snippet.md</code> — anon 키로 연결하는 스니펫(service_role 자리는 "❌ 넣지 말 것" 경고 주석).</li>
+</ul>
+<h3>강사·조교 노트</h3>
+<ul>
+<li>배포 실패 다발: Vercel 빌드 오류·환경변수 누락 → 조교 백업 계정으로라도 <strong>전원 1URL 성취</strong> 보장(첫 창조 경험 사수).</li>
+<li>"URL이 떴다!" 순간을 조별로 소리내어 공유 → 성취감 증폭(정서적 앵커).</li>
+</ul>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">15</span><div class="sess-title">블록 1-6 — URL 공유 · 안전 점검 · 회고 (발표 10분)</div></div>
+<p>[가네8 수행평가] [가네9 전이]</p>
+<h3>강의 흐름</h3>
+<ul>
+<li>조별로 <strong>본인 URL을 채팅/보드에 공유</strong>, 서로 접속해 폼 테스트.</li>
+<li>🛡 안전 자기점검(구두 거수): "내 페이지 코드에 service_role 키 없다 → 손." [→ 04_labs 0.5 안전게이트]</li>
+<li>[가네9] 전이 한마디: "오늘 이 URL이 <strong>4강 에이전트팀의 출력/배포 채널</strong>이 됩니다. 버리지 마세요."</li>
+<li>다음 강 예고: "2강에서는 이 페이지에 실을 <strong>콘텐츠(블로그·유튜브)</strong>를 AI로 만들고, <strong>사실은 사람이 검증</strong>합니다."</li>
+</ul>
+<h3>학습자 핸드아웃 (A4 1장 요약)</h3>
+<ul>
+<li>오늘 한 일: 스켈레톤 채우기 → 3종 배포 → 데이터 저장 확인.</li>
+<li>4박자: 지시→생성→눈검증→재지시.</li>
+<li>🛡 키 안전: anon만 공개 OK / service_role 절대 금지.</li>
+<li>내 산출물: 배포 URL <code>__________</code> (여기 적어 4강까지 보관).</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">16</span><div class="sess-title">1강 타임라인</div></div>
+<p><strong>[120분 표준]</strong>
+| 시각 | 블록 | 유형 | 분 |
+|------|------|------|----|
+| 00:00 | 1-1 완성 데모 | 시연 | 10 |
+| 00:10 | 1-2 LLM 4종 지형도 | 강의 | 20 |
+| 00:30 | 1-3 스켈레톤 채우기 시연 | 시연 | 15 |
+| 00:45 | (쉬는시간) | — | 5 |
+| 00:50 | 1-4 프론트 제작 | 실습 | 35 |
+| 01:25 | 1-5 배포 3종 세트 | 시연→실습 | 30 |
+| 01:55 | 1-6 공유·안전·회고 | 발표 | 10 |</p>
+<p><strong>[100분 압축]</strong> — LLM 지형도 축약, 확장과제 생략, 최소 통과선(히어로+폼+배포)에 집중.
+| 시각 | 블록 | 분 |
+|------|------|----|
+| 00:00 | 1-1 데모 | 8 |
+| 00:08 | 1-2 LLM 4종(핵심만) | 12 |
+| 00:20 | 1-3 스켈레톤 시연 | 12 |
+| 00:32 | 1-4 프론트(최소 통과선) | 28 |
+| 01:00 | 1-5 배포 3종 | 30 |
+| 01:30 | 1-6 공유·안전·회고 | 10 |</p>
+<hr />
+</section><div class="day-divider"><span class="d-badge">2강: 작업환경 &amp; 콘텐츠 엔진 (대면 2h)</span><span class="d-title">"일하는 3계층과 결과물"</span></div><div class="intro"><p><strong>모듈 학습목표</strong> (커리큘럼 인용)</p>
+<ul>
+<li>(이해) Claude 3계층(chat/cowork/code)의 차이와 코딩환경 3종의 용도를 구분할 수 있다.</li>
+<li>(적용) 코딩환경을 열어 콘텐츠 생성 파이프라인을 실행할 수 있다.</li>
+<li>(창조) 블로그 글 1편 + 유튜브 세트를 생성·게시하고 사실 근거를 사람이 검증할 수 있다.</li>
+</ul>
+<p><strong>준비물</strong>: 1강 완료(배포 URL 보유), <code>02강_템플릿_content-engine/</code>, 조교 배포 완성 블로그 글·유튜브 세트 참조본.
+<strong>새 개념 3개 이하</strong>: ① Claude 3계층 ② 코딩환경 3종 ③ 콘텐츠 생성-검증 루프.</p>
+<hr /></div><section class="card card--orange"><div class="sess-head"><span class="sess-no">17</span><div class="sess-title">블록 2-1 — 도입: 완성 블로그·유튜브 세트 데모 (시연 10분) ⓶</div></div>
+<p>[가네1 주의] [가네3 선행학습 자극]</p>
+<h3>강사 시연 스크립트 (완성본 먼저)</h3>
+<ul>
+<li>화면 흐름: 조교가 미리 게시해 둔 <strong>완성 블로그 글 1편</strong>(실제 게시 URL)과 <strong>유튜브 세트</strong>(제목·설명·썸네일 문구)를 보여준다 → "AI가 초안을 뽑고, <strong>숫자·사실은 사람이 확인</strong>해 게시한 것입니다."</li>
+<li>[가네3] 1강 상기: "1강의 배포 URL 기억하죠? 오늘 만드는 콘텐츠가 그런 채널에 실릴 재료입니다."</li>
+</ul>
+<h3>슬라이드 구성안</h3>
+<ol>
+<li>(표지) "오늘의 결과물: 게시된 글 1편 + 유튜브 세트"</li>
+<li>완성 블로그·유튜브 스크린샷</li>
+<li>"AI=초안 / 사람=사실검증" 2분할</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>반드시 <strong>실제 게시된 글</strong>을 보여줄 것. "만들 수 있다"보다 "이미 올라가 있다"가 동기부여에 강함.</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">18</span><div class="sess-title">블록 2-2 — Claude 3계층 (chat / cowork / code) 지형 (강의 20분)</div></div>
+<p>[가네4 자극] [가네5 학습안내]</p>
+<h3>강의 흐름</h3>
+<ul>
+<li><strong>핵심 개념: 3계층(14분)</strong></li>
+<li>용어집: chat=대화(빠른 질의응답) / cowork=문서·작업 협업(초안·정리) / code=개발환경(파일·배포).</li>
+<li>업무 비유: "메신저(chat) / 협업문서(cowork) / 작업실(code)" — 같은 Claude, 쓰는 자리만 다르다.</li>
+<li>상황 매핑: "빠른 질문=chat, 보고서 초안=cowork, 페이지 수정·배포=code."</li>
+<li><strong>능동 학습(6분)</strong>: [→ 03_quizzes 2강 Q — 3계층 구분] 업무 상황을 계층에 매칭.</li>
+</ul>
+<h3>슬라이드 구성안</h3>
+<ol>
+<li>"같은 Claude, 세 개의 자리"</li>
+<li>3계층 비교표(용도/입출력/대표 작업) — 표 1개</li>
+<li>상황→계층 매핑 예시 3개(질문/초안/배포)</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>혼동 포인트: "chat이랑 cowork 뭐가 달라요?" → "chat은 <strong>대화</strong>, cowork는 <strong>결과 문서를 같이 만드는 것</strong>. 산출물이 남으면 cowork."</li>
+<li>초보자는 계층 이름 암기보다 "이 일은 어디서?"를 판단하는 게 목표임을 강조.</li>
+</ul>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">19</span><div class="sess-title">블록 2-3 — 코딩환경 3종 (강의→시연 20분) ⓶</div></div>
+<p>[가네4 자극] [가네5 학습안내]</p>
+<h3>강의 흐름 + 강사 시연 스크립트</h3>
+<ul>
+<li><strong>개념(8분)</strong>: Claude Code(CLI·터미널 작업실) / Claude 데스크톱(커넥터·앱) / [Antigravity 선택].</li>
+<li>비유: "CLI=전문 작업실, 데스크톱=편한 사무실 앱, Antigravity=보조 도구."</li>
+<li><strong>시연(12분·완성본 먼저)</strong>: 강사가 <strong>같은 콘텐츠 작업을 두 환경에서</strong> 잠깐씩 열어 보여줌 → "환경이 달라도 <strong>지시-검증 원리는 같다</strong>."</li>
+</ul>
+<h3>슬라이드 구성안</h3>
+<ol>
+<li>코딩환경 3종 아이콘 + 한 줄 역할</li>
+<li>"언제 무엇을?" 선택 가이드 표</li>
+<li>"환경은 달라도 4박자는 같다"(1강 콜백)</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>초보자가 CLI(터미널)에 겁먹음 → "검은 화면은 무섭지만, 오늘 쓰는 명령은 몇 개뿐입니다. 배포자료에 다 있습니다."(외재적 부하 완화)</li>
+</ul>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">20</span><div class="sess-title">블록 2-4 — 콘텐츠 엔진 시연: 블로그 초안 생성 (시연 15분) ⓵⓶</div></div>
+<p>[가네4 자극] [가네5 학습안내]</p>
+<h3>강사 시연 스크립트 (완성본 먼저 → 과정 시범)</h3>
+<ul>
+<li>화면 흐름:
+  1. <code>02강_템플릿_content-engine/</code>의 <strong>블로그 프롬프트 템플릿(빈칸)</strong>을 연다.
+  2. 빈칸을 소재로 채워 지시 → 초안 생성.
+  3. <strong>사실검증 루프 시범</strong>: 초안 속 숫자·통계·인용을 강사가 손으로 짚으며 "이 수치 출처 있나? 없으면 삭제하거나 사람이 확인." [🛡 안전 시연]</li>
+<li>대사: "AI는 <strong>문장</strong>을 잘 만듭니다. <strong>사실 근거는 여러분이 줍니다.</strong> 이 루프가 오늘의 핵심입니다."</li>
+</ul>
+<h3>슬라이드 구성안</h3>
+<ol>
+<li>콘텐츠 엔진: 템플릿→초안→<strong>사람 검증</strong>→게시 (순환)</li>
+<li>"AI가 잘 틀리는 3곳": 숫자·인용·법조항</li>
+<li>사실검증 체크 3문항 미리보기</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>일부러 <strong>그럴듯한 가짜 통계</strong>가 든 초안을 뽑아 "이게 왜 위험한지" 보여줌(할루시네이션 실물 교육).</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">21</span><div class="sess-title">블록 2-5 — 블로그 글 1편 작성·게시 (조별 30분) ⓵⓷</div></div>
+<p>[가네6 수행유도] [가네7 피드백] — <strong>2강 창조 블록</strong></p>
+<h3>② 학습자 따라하기 (템플릿에서 출발)</h3>
+<ol>
+<li>블로그 프롬프트 템플릿(빈칸)에 <strong>본인 직군 소재</strong> 채우기(백지 아님·⓵).
+   - 직군 예: 회계=절세 팁 / 법무=계약서 유의점 / 미디어=업계 트렌드 / MICE=행사 준비 체크 / 투자=시황 코멘트.</li>
+<li>초안 생성 → <strong>사실검증 체크리스트</strong>로 숫자·인용 검증(사람이) → 수정.</li>
+<li>게시 → URL 확보 [→ 04_labs 2강, 저장경로 <code>내문서/vibecoding/02_content_format.md</code>].</li>
+<li><code>[최소 통과선]</code> 검증 완료한 글 1편 게시 / <code>[확장 과제]</code> 이미지 문구·SEO 제목 추가.</li>
+</ol>
+<h3>배포자료 안내</h3>
+<ul>
+<li><code>02강_템플릿_content-engine/blog_prompt.md</code> — 소재·톤·길이 빈칸 템플릿.</li>
+<li><code>.../fact_check.md</code> — "숫자 출처? 인용 실재? 법조항 정확?" 3문항 체크리스트.</li>
+</ul>
+<p>🛡 <strong>안전수칙 삽입 지점(2강 최중요·필수)</strong>:</p>
+<ul>
+<li>"<strong>AI는 문장, 사실 근거는 사람이 준다.</strong> 검증 안 된 숫자·법조항은 게시하지 않습니다." [→ 03_quizzes 2강 허위 숫자·법조항 필수문항]</li>
+<li>"고객정보·미공개 내부정보를 프롬프트에 넣지 않습니다."</li>
+</ul>
+<h3>강사·조교 노트 [가네7]</h3>
+<ul>
+<li>⓷ 조별 신호: 게시 단계에서 플랫폼 로그인·붙여넣기 막힘 다발 → 조교 개입.</li>
+<li>검증을 건너뛰고 "그냥 게시"하려는 조 발견 시 즉시 정지시키고 fact_check 통과 확인.</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">22</span><div class="sess-title">블록 2-6 — 유튜브 콘텐츠 세트 제작 (조별 15분) ⓵</div></div>
+<p>[가네6 수행유도]</p>
+<h3>② 학습자 따라하기</h3>
+<ol>
+<li>유튜브 세트 프롬프트로 <strong>제목·설명·썸네일 문구</strong> 세트 생성(블로그 소재 재활용).</li>
+<li>과장·허위 표현 자기점검(예: "무조건 수익" 류 금지).</li>
+</ol>
+<h3>배포자료 안내</h3>
+<ul>
+<li><code>02강_템플릿_content-engine/youtube_set.md</code> — 제목/설명/썸네일 문구 빈칸 3종.</li>
+</ul>
+<h3>강사 노트</h3>
+<ul>
+<li>시간이 부족하면 이 블록은 <strong>제목·설명만</strong> 최소 통과선으로. 썸네일 문구는 확장 과제로 이월.</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">23</span><div class="sess-title">블록 2-7 — 사실검증 수칙 · 공유 · 회고 (발표 10분)</div></div>
+<p>[가네8 수행평가] [가네9 전이]</p>
+<h3>강의 흐름</h3>
+<ul>
+<li>조별 게시 URL 공유 + 서로 <strong>사실검증 상호 점검</strong>(짝 검토): "이 숫자 출처 있어요?"</li>
+<li>🛡 안전 자기점검: "내 글에 검증 안 된 숫자·법조항 없다 → 손." [→ 04_labs 0.5 안전게이트 '검증 단계 수행']</li>
+<li>[가네9] 전이: "오늘 만든 <strong>콘텐츠 포맷</strong>이 4강 <strong>요약 에이전트의 산출 포맷</strong>이 됩니다."</li>
+<li>다음 강 예고: "3강에서는 이 작업들을 <strong>재사용 부품(스킬·MCP)</strong>으로 만듭니다."</li>
+</ul>
+<h3>학습자 핸드아웃 (A4 1장)</h3>
+<ul>
+<li>3계층: chat=대화 / cowork=문서작업 / code=개발.</li>
+<li>콘텐츠 루프: 템플릿→초안→<strong>사람 검증</strong>→게시.</li>
+<li>🛡 AI는 문장, 근거는 사람 / 고객정보 프롬프트 금지.</li>
+<li>내 산출물: 블로그 URL <code>______</code> (4강까지 보관).</li>
+</ul>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">24</span><div class="sess-title">2강 타임라인</div></div>
+<p><strong>[120분 표준]</strong>
+| 시각 | 블록 | 유형 | 분 |
+|------|------|------|----|
+| 00:00 | 2-1 완성 데모 | 시연 | 10 |
+| 00:10 | 2-2 Claude 3계층 | 강의 | 20 |
+| 00:30 | 2-3 코딩환경 3종 | 강의→시연 | 20 |
+| 00:50 | (쉬는시간) | — | 5 |
+| 00:55 | 2-4 블로그 초안 시연 | 시연 | 15 |
+| 01:10 | 2-5 블로그 작성·게시 | 실습 | 30 |
+| 01:40 | 2-6 유튜브 세트 | 실습 | 15 |
+| 01:55 | 2-7 검증·공유·회고 | 발표 | 10 |</p>
+<p><strong>[100분 압축]</strong> — 3종 환경 시연 축약, 유튜브는 제목·설명만.
+| 시각 | 블록 | 분 |
+|------|------|----|
+| 00:00 | 2-1 데모 | 8 |
+| 00:08 | 2-2 3계층 | 15 |
+| 00:23 | 2-3 환경 3종(핵심) | 12 |
+| 00:35 | 2-4 초안 시연 | 12 |
+| 00:47 | 2-5 블로그(최소 통과선) | 28 |
+| 01:15 | 2-6 유튜브(제목·설명) | 10 |
+| 01:25 | 2-7 검증·공유·회고 | 10 |</p>
+<hr />
+</section><div class="day-divider"><span class="d-badge">3강: 부품화 (대면 2h)</span><span class="d-title">"자동화 생태계를 부품으로 나눈다"</span></div><div class="intro"><p><strong>모듈 학습목표</strong> (커리큘럼 인용)</p>
+<ul>
+<li>(분석) 자동화 생태계 7개념(스킬·에이전트·에이전트팀·MCP·커넥터·플러그인·프로젝트·하네스)을 구분하고 관계를 설명할 수 있다.</li>
+<li>(창조) 동작하는 스킬 2~3개를 제작할 수 있다.</li>
+<li>(적용) MCP를 연결해 외부 데이터/도구를 호출할 수 있다.</li>
+</ul>
+<p><strong>준비물</strong>: 2강 완료, <code>03강_템플릿_skill-mcp/</code>, 조교 배포 완성 스킬·MCP 연결 참조본.
+<strong>새 개념 3개 이하(청킹)</strong>: 7개념을 한꺼번에 주지 않고 <strong>"부품 3그룹"</strong>으로 나눠 인지부하 관리 → ① 만드는 것(스킬·에이전트·에이전트팀) ② 연결하는 것(MCP·커넥터·플러그인) ③ 묶는 것(프로젝트·하네스).</p>
+<hr /></div><section class="card card--mint"><div class="sess-head"><span class="sess-no">25</span><div class="sess-title">블록 3-1 — 도입: 부품이 조립돼 움직이는 데모 (시연 10분) ⓶</div></div>
+<p>[가네1 주의] [가네3 선행학습 자극]</p>
+<h3>강사 시연 스크립트 (완성본 먼저)</h3>
+<ul>
+<li>화면 흐름: 조교가 준비한 <strong>작은 조립 데모</strong>를 보여준다 — "스킬 1개 + MCP 1개"가 붙어 실제로 웹에서 데이터를 가져와 정리하는 장면.</li>
+<li>대사: "지금까지는 손으로 지시했죠. 오늘은 그 지시를 <strong>재사용 부품</strong>으로 굳힙니다. 한 번 만들면 계속 씁니다."</li>
+<li>[가네3] 2강 상기: "2강에서 반복한 콘텐츠 작업, 그걸 <strong>스킬</strong>로 만들면 매번 다시 안 써도 됩니다."</li>
+</ul>
+<h3>슬라이드 구성안</h3>
+<ol>
+<li>(표지) "손으로 하던 걸 부품으로"</li>
+<li>조립 데모 스크린샷(스킬+MCP→결과)</li>
+<li>오늘의 큰 그림: 부품 3그룹(만들기/연결/묶기)</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>3강은 개념 밀도가 가장 높다. 도입에서 "오늘은 <strong>7개를 외우는 게 아니라 3그룹으로 이해</strong>하는 날"이라고 못박아 불안 완화.</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">26</span><div class="sess-title">블록 3-2 — 7개념 지형도 (강의 25분)</div></div>
+<p>[가네4 자극] [가네5 학습안내] — <strong>분석(블룸4) 핵심 블록</strong></p>
+<h3>강의 흐름 — "부품 3그룹 청킹"</h3>
+<ul>
+<li><strong>그룹1 만드는 것(9분)</strong>: 스킬(재사용 지시서)·에이전트(스스로 판단·실행하는 일꾼)·에이전트팀(역할 나눈 협업).</li>
+<li>용어집·비유: 스킬=업무 매뉴얼 1건 / 에이전트=담당 대리 / 에이전트팀=TF.</li>
+<li><strong>그룹2 연결하는 것(8분)</strong>: MCP(외부 접속 표준구)·커넥터(앱 연동)·플러그인(기능 확장).</li>
+<li>비유: MCP=신입에게 쥐여주는 외부 전화기.</li>
+<li><strong>그룹3 묶는 것(5분)</strong>: 프로젝트(작업 묶음)·하네스(재실행 틀).</li>
+<li><strong>능동 학습(3분)</strong>: [→ 03_quizzes 3강 7개념 매칭 필수문항] 개념-비유 짝맞추기.</li>
+</ul>
+<h3>슬라이드 구성안 (그룹당 1슬라이드 + 종합 1)</h3>
+<ol>
+<li>부품 3그룹 지도(만들기/연결/묶기) — 한 장 전체 조망</li>
+<li>그룹1 만드는 것(스킬/에이전트/팀)</li>
+<li>그룹2 연결하는 것(MCP/커넥터/플러그인)</li>
+<li>그룹3 묶는 것(프로젝트/하네스)</li>
+<li>7개념 상호관계 화살표 도식(부품→조립→하네스)</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>초보자 최대 혼동: "스킬 vs 에이전트?" → "스킬은 <strong>매뉴얼(수동적 지시서)</strong>, 에이전트는 그 매뉴얼을 <strong>들고 스스로 일하는 사람</strong>." / "MCP vs 커넥터?" → "MCP는 표준 규격, 커넥터는 그 규격으로 특정 앱을 꽂는 것."</li>
+<li>7개 정의를 완벽 암기시키려 하지 말 것. <strong>분류(어느 그룹인가)</strong> 능력이 학습목표(블룸 분석).</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">27</span><div class="sess-title">블록 3-3 — 스킬 제작 시연 (템플릿에서 출발, 시연 15분) ⓵⓶</div></div>
+<p>[가네4 자극] [가네5 학습안내]</p>
+<h3>강사 시연 스크립트 (완성본 먼저 → 구조 해설)</h3>
+<ul>
+<li>화면 흐름:
+  1. <code>03강_템플릿_skill-mcp/</code>의 <strong>SKILL.md 스켈레톤</strong>을 연다(이름·설명·트리거·본문 빈칸).
+  2. 완성된 스킬 1개를 먼저 실행해 결과를 보여준 뒤, 스켈레톤의 어느 칸이 무슨 역할인지 짚는다.
+  3. <strong>트리거</strong> 개념 시범: "이 문장이 나오면 이 스킬이 발동한다"를 실제로 발동시켜 보여줌.</li>
+<li>대사: "스킬은 빈 SKILL.md에서 시작하지 않습니다. <strong>스켈레톤의 빈칸을 채우는 것</strong>입니다. 이름·설명·트리거·할 일, 네 칸만 채우면 됩니다."(⓵)</li>
+</ul>
+<h3>슬라이드 구성안</h3>
+<ol>
+<li>SKILL.md 4칸 구조: 이름/설명/트리거/할 일</li>
+<li>"트리거=발동 조건" 비유(자동문 센서)</li>
+<li>스켈레톤 빈칸 채우기 전/후 비교</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>"트리거"를 초보자가 어려워함 → "<strong>언제 이 매뉴얼을 꺼낼지</strong> 정하는 것"이라고 풀이.</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">28</span><div class="sess-title">블록 3-4 — 스킬 2~3개 제작 (조별 30분) ⓵⓷</div></div>
+<p>[가네6 수행유도] [가네7 피드백] — <strong>3강 창조 블록</strong></p>
+<h3>② 학습자 따라하기 (스켈레톤에서 출발)</h3>
+<ol>
+<li>SKILL.md 스켈레톤 4칸을 <strong>본인/공통 업무 소재</strong>로 채우기(백지 아님·⓵).
+   - 공통 프로젝트 소재: "뉴스 요약 스킬", "숫자 검증 스킬".
+   - 직군 소재: 회계=마감 점검 스킬 / 법무=판례 요약 스킬 / MICE=일정 수집 스킬.</li>
+<li>스킬 발동 테스트 → 결과 확인 → 안 되면 3단 힌트 [→ 04_labs 3강].</li>
+<li><code>[최소 통과선]</code> 동작 스킬 1개 / <code>[확장 과제]</code> 2~3개 + 서로 연동.</li>
+</ol>
+<h3>배포자료 안내</h3>
+<ul>
+<li><code>03강_템플릿_skill-mcp/SKILL_skeleton.md</code> — 4칸 빈칸 + 주석 가이드.</li>
+<li><code>.../skill_examples/</code> — 완성 스킬 2개(참조·모방용, 그대로 복붙 아닌 개조용).</li>
+</ul>
+<p>🛡 <strong>안전수칙 삽입 지점</strong>:</p>
+<ul>
+<li>"스킬 본문·예시에 <strong>고객정보를 프롬프트로 넣지 않습니다.</strong>"</li>
+<li>"키·토큰을 스킬 파일에 <strong>하드코딩하지 않습니다.</strong>" [→ 03_quizzes 3강 안전문항]</li>
+</ul>
+<h3>강사·조교 노트 [가네7]</h3>
+<ul>
+<li>⓷ 조별 신호: 스킬이 "발동은 하는데 결과가 이상"할 때 다발 → 조교가 트리거/본문 지시 명료화 지원.</li>
+<li>완벽한 스킬보다 <strong>동작하는 스킬 1개</strong>가 목표(최소 통과선 우선).</li>
+</ul>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">29</span><div class="sess-title">블록 3-5 — MCP 연결 시연 + 실습 (시연→실습 25분) ⓵⓶⓷</div></div>
+<p>[가네4 자극] [가네6 수행유도]</p>
+<h3>① 강사 시연 스크립트 (완성본 먼저 · 10분)</h3>
+<ul>
+<li>화면 흐름:
+  1. <strong>웹검색 MCP</strong>가 연결된 상태에서 "오늘 ○○ 지수 뉴스 찾아줘" → 외부에서 실제 데이터를 가져오는 장면.
+  2. <code>.mcp.json</code> 설정 스니펫을 열어 "여기 이 몇 줄이 외부 전화기를 꽂는 부분"이라고 짚음.</li>
+<li>대사: "MCP는 AI에게 <strong>바깥 세상 전화기</strong>를 쥐여줍니다. 단, <strong>어디로 전화가 가는지</strong> 우리가 알아야 합니다."(🛡 복선)</li>
+</ul>
+<h3>② 학습자 따라하기 (15분)</h3>
+<ol>
+<li>MCP 설정 스니펫을 붙여 웹검색 MCP 연결(백지 아님·스니펫 제공·⓵).</li>
+<li>외부 데이터 1건 가져오기 테스트 [→ 04_labs 3강 MCP 설정].</li>
+</ol>
+<p>🛡 <strong>안전수칙 삽입 지점(3강 최중요·필수)</strong>:</p>
+<ul>
+<li>"<strong>MCP가 데이터를 어디로 보내는지 확인합니다.</strong> 출처·전송처가 불분명한 MCP는 붙이지 않습니다." [→ 03_quizzes 3강 MCP 데이터 이동 확인 필수문항]</li>
+<li>"고객정보·기밀을 MCP를 통해 외부로 흘리지 않습니다."</li>
+</ul>
+<h3>③ 배포자료 안내</h3>
+<ul>
+<li><code>03강_템플릿_skill-mcp/mcp_config_snippet.json</code> — 웹검색 MCP 연결 스니펫(키 자리는 환경변수 참조로, 하드코딩 금지 주석).</li>
+</ul>
+<h3>강사·조교 노트</h3>
+<ul>
+<li>MCP 연결 실패(경로·권한) 다발 → 조교 백업 설정 파일로라도 전원 1회 외부 데이터 취득 경험 보장.</li>
+</ul>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">30</span><div class="sess-title">블록 3-6 — 프로젝트로 묶기 · 데이터 흐름 안전점검 · 회고 (발표 15분)</div></div>
+<p>[가네8 수행평가] [가네9 전이]</p>
+<h3>강의 흐름</h3>
+<ul>
+<li>만든 스킬·MCP를 <strong>프로젝트 폴더로 묶기</strong> 시범/실습 [→ 04_labs 저장경로 <code>~/.claude/skills/*</code> + <code>.mcp.json</code>].</li>
+<li>🛡 데이터 흐름 안전점검(조별 발표): "내 MCP는 데이터를 <strong>어디서→어디로</strong> 보내는가?" 1문장으로 설명 [→ 04_labs 0.5 안전게이트].</li>
+<li>[가네9] 전이: "오늘 만든 <strong>스킬·MCP가 4강 4역할 에이전트의 부품 재료</strong>가 됩니다."</li>
+<li>다음 강 예고: "4강에서 이 부품들을 <strong>팀으로, 팀을 하네스로</strong> 묶습니다."</li>
+</ul>
+<h3>학습자 핸드아웃 (A4 1장)</h3>
+<ul>
+<li>부품 3그룹: 만들기(스킬/에이전트/팀) · 연결(MCP/커넥터/플러그인) · 묶기(프로젝트/하네스).</li>
+<li>스킬 4칸: 이름/설명/트리거/할 일.</li>
+<li>🛡 MCP 데이터 행선지 확인 / 키 하드코딩 금지 / 고객정보 금지.</li>
+<li>내 산출물: 스킬 <code>__개</code> + MCP 연결(4강 부품).</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">31</span><div class="sess-title">3강 타임라인</div></div>
+<p><strong>[120분 표준]</strong>
+| 시각 | 블록 | 유형 | 분 |
+|------|------|------|----|
+| 00:00 | 3-1 조립 데모 | 시연 | 10 |
+| 00:10 | 3-2 7개념 지형도(3그룹) | 강의 | 25 |
+| 00:35 | 3-3 스킬 제작 시연 | 시연 | 15 |
+| 00:50 | (쉬는시간) | — | 5 |
+| 00:55 | 3-4 스킬 2~3개 제작 | 실습 | 30 |
+| 01:25 | 3-5 MCP 연결 시연+실습 | 시연→실습 | 25 |
+| 01:50 | 3-6 프로젝트 묶기·안전·회고 | 발표 | 15 |</p>
+<p><strong>[100분 압축]</strong> — 7개념은 3그룹 조망만, 스킬은 최소 1개, MCP는 시연 위주.
+| 시각 | 블록 | 분 |
+|------|------|----|
+| 00:00 | 3-1 데모 | 8 |
+| 00:08 | 3-2 7개념(3그룹 조망) | 18 |
+| 00:26 | 3-3 스킬 시연 | 12 |
+| 00:38 | 3-4 스킬(최소 1개) | 25 |
+| 01:03 | 3-5 MCP(시연+최소 연결) | 22 |
+| 01:25 | 3-6 묶기·안전·회고 | 12 |</p>
+<hr />
+</section><div class="day-divider"><span class="d-badge">4강: 오케스트레이션 (대면 2h)</span><span class="d-title">"부품을 팀으로, 팀을 하네스로"</span></div><div class="intro"><p><strong>모듈 학습목표</strong> (커리큘럼 인용)</p>
+<ul>
+<li>(창조) 4역할(수집·분석·검증·요약) 에이전트를 하나의 에이전트팀으로 오케스트레이션할 수 있다.</li>
+<li>(창조) 재실행 가능한 하네스로 패키징할 수 있다.</li>
+<li>(전이) 공통 프로젝트를 본인 업무 시나리오로 미러링(복제·개조)할 수 있다.</li>
+<li>(평가) 산출물을 수료 루브릭 3기준으로 자기 판정할 수 있다.</li>
+</ul>
+<p><strong>준비물</strong>: 3강 완료(스킬·MCP 보유) + 0강 I/P/O 시트 + 1강 배포 URL + 2강 콘텐츠 포맷, <code>04강_스켈레톤_news-insight-team/</code>, 조교 배포 완성 하네스 참조본.
+<strong>부품 집결</strong>: 1강 배포채널 + 2강 산출포맷 + 3강 스킬·MCP → 여기서 하네스로 결선.
+<strong>새 개념 3개 이하</strong>: ① 오케스트레이션(4역할 연동) ② 하네스 결선 ③ 미러링(전이).</p>
+<hr /></div><section class="card card--orange"><div class="sess-head"><span class="sess-no">32</span><div class="sess-title">블록 4-1 — 도입: 완성된 뉴스 인사이트 에이전트팀 데모 (시연 10분) ⓶</div></div>
+<p>[가네1 주의] [가네3 선행학습 자극]</p>
+<h3>강사 시연 스크립트 (완성본 먼저 — 과정의 클라이맥스 데모)</h3>
+<ul>
+<li>화면 흐름: 조교가 준비한 <strong>완성 하네스</strong>를 1번 실행 → 수집(뉴스 가져옴)→분석(패턴 도출)→검증(숫자·출처 교차확인)→요약(브리핑 카드 생성)이 <strong>연쇄로 흐르는 장면</strong> → 1강에서 만든 배포 URL/2강 포맷에 최종 브리핑이 담기는 것까지.</li>
+<li>대사: "지금 4명(수집·분석·검증·요약)이 <strong>차례로 협업</strong>해 아침 브리핑을 만들었습니다. 이게 오늘 여러분이 조립하고, <strong>본인 업무로 복제</strong>할 것입니다."</li>
+<li>[가네3] 전 강 부품 집결도 상기: "1강 URL·2강 포맷·3강 스킬·MCP가 <strong>지금 전부 여기 꽂힙니다.</strong>"</li>
+</ul>
+<h3>슬라이드 구성안</h3>
+<ol>
+<li>(표지) "4명이 만든 아침 브리핑"</li>
+<li>4역할 파이프라인 애니메이션(수집→분석→검증→요약)</li>
+<li>부품 집결도: 1강+2강+3강 → 4강 하네스</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>이 데모가 전 과정의 <strong>정점 동기부여</strong>. 반드시 실행이 <strong>처음부터 끝까지 완주</strong>하는 장면을 보여줄 것(중간 실패 화면 금지 — 조교가 사전 리허설).</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">33</span><div class="sess-title">블록 4-2 — 오케스트레이션 개념 + 4역할 구조 (강의 15분)</div></div>
+<p>[가네4 자극] [가네5 학습안내]</p>
+<h3>강의 흐름</h3>
+<ul>
+<li><strong>핵심 개념: 오케스트레이션(9분)</strong> — "여러 에이전트를 <strong>지휘자처럼 순서·연동</strong>시키는 것."</li>
+<li>
+<p>4역할·연동 부품 매핑:
+    | 역할 | 하는 일 | 붙는 부품(3강 산출) |
+    |------|---------|--------------------|
+    | 수집 | 지수·기업 뉴스 수집 | 웹검색 MCP |
+    | 분석 | 전조·패턴·숨은 인사이트 | 분석 스킬 |
+    | 검증 | 사실·숫자·출처 교차검증 | 검증 스킬 |
+    | 요약 | 의사결정용 브리핑·카드 | 요약 스킬 |</p>
+</li>
+<li>
+<p><strong>능동 학습(6분)</strong>: [→ 03_quizzes 4강 오케스트레이션 문항] 역할↔부품 매칭.</p>
+</li>
+</ul>
+<h3>슬라이드 구성안</h3>
+<ol>
+<li>"오케스트레이션=AI들의 지휘"</li>
+<li>4역할 파이프라인 + 각 역할에 붙는 부품</li>
+<li>"검증은 뺄 수 없는 칸"(🛡 강조)</li>
+</ol>
+<h3>강사 노트</h3>
+<ul>
+<li>🛡 검증 역할을 "선택"이 아니라 <strong>필수 칸</strong>으로 각인: "수집·분석·요약만 있으면 빠르지만, <strong>검증 없는 브리핑은 위험한 브리핑</strong>입니다."</li>
+</ul>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">34</span><div class="sess-title">블록 4-3 — 공통 프로젝트 조립: 수집·분석 에이전트 (조별 25분) ⓵⓶⓷</div></div>
+<p>[가네6 수행유도] [가네7 피드백]</p>
+<h3>① 강사 시연 스크립트 (완성본 먼저 · 8분)</h3>
+<ul>
+<li>화면 흐름: <code>04강_스켈레톤_news-insight-team/</code>의 <strong>수집·분석 에이전트 스켈레톤</strong>을 열어, 3강 웹검색 MCP·분석 스킬을 <strong>어느 칸에 꽂는지</strong> 시범 → 수집→분석까지 반쪽 파이프라인 동작 확인.</li>
+</ul>
+<h3>② 학습자 따라하기 (17분)</h3>
+<ol>
+<li>스켈레톤의 "부품 연결 칸"에 3강 MCP·스킬을 연결(백지 아님·⓵).</li>
+<li>수집→분석 절반 파이프라인 실행 → 뉴스가 들어와 분석 결과가 나오는지 확인.</li>
+<li>막히면 3단 힌트 [→ 04_labs 4강].</li>
+<li><code>[최소 통과선]</code> 수집→분석 1회 동작 / <code>[확장 과제]</code> 소스 2개 이상.</li>
+</ol>
+<h3>③ 배포자료 안내</h3>
+<ul>
+<li><code>04강_스켈레톤_news-insight-team/agents_skeleton/</code> — 4역할 스켈레톤(부품 연결 칸 주석).</li>
+<li><code>.../wiring_guide.md</code> — "3강 어떤 부품을 어디에" 결선 안내.</li>
+</ul>
+<p>🛡 <strong>안전수칙 삽입 지점</strong>: "수집 소재에 <strong>고객 식별정보·기밀을 넣지 않습니다.</strong> 공개 데이터만."</p>
+<h3>강사·조교 노트</h3>
+<ul>
+<li>⓷ 조별 신호: 부품 연결 경로 오류 다발 → 조교가 wiring_guide 해당 줄로 안내.</li>
+</ul>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">35</span><div class="sess-title">블록 4-4 — 검증·요약 에이전트 + 하네스 결선 (조별 30분) ⓵⓶⓷</div></div>
+<p>[가네6 수행유도] [가네7 피드백] — <strong>캡스톤 창조 블록</strong></p>
+<h3>① 강사 시연 스크립트 (완성본 먼저 · 10분)</h3>
+<ul>
+<li>화면 흐름: 검증 스킬·요약 스킬을 뒤쪽 두 칸에 붙여 <strong>4역할 전체를 하나의 하네스로 결선</strong> → "재실행 버튼"을 눌러 <strong>같은 입력으로 2번</strong> 돌려 동일 품질이 나오는지 시범(재현성).</li>
+<li>대사: "여기서 핵심은 <strong>검증 칸을 절대 빼지 않는 것</strong>, 그리고 <strong>재실행 가능하게 묶는 것</strong>입니다. 그래야 하네스입니다."</li>
+</ul>
+<h3>② 학습자 따라하기 (20분)</h3>
+<ol>
+<li>검증·요약 스킬 연결 → 4역할 완결 → 하네스 결선 골격에 묶기 [→ 04_labs 4강, 저장경로 <code>내문서/vibecoding/harness/</code>].</li>
+<li><strong>재실행 2회</strong> 해보고 결과 품질 비교(재현성 자가확인).</li>
+<li><code>[최소 통과선]</code> 4역할 1회 완주 + 재실행 동작 / <code>[확장 과제]</code> 브리핑 포맷을 1강 URL/2강 포맷에 자동 게시.</li>
+</ol>
+<h3>③ 배포자료 안내</h3>
+<ul>
+<li><code>04강_스켈레톤_news-insight-team/harness_wiring.md</code> — 4역할→하네스 결선 골격.</li>
+<li><code>.../rerun_check.md</code> — 재실행 2회 재현성 확인 절차.</li>
+</ul>
+<p>🛡 <strong>안전수칙 삽입 지점(4강 최중요·필수)</strong>:</p>
+<ul>
+<li>"<strong>검증 단계를 생략하지 않습니다.</strong> 출처 없는 주장은 브리핑에서 배제합니다." [→ 03_quizzes 4강 검증 단계 생략 금지 필수문항]</li>
+<li>"<strong>최종 확인은 사람</strong>이 합니다. 하네스가 뽑은 브리핑도 사람이 눈으로 결재."</li>
+</ul>
+<h3>강사·조교 노트</h3>
+<ul>
+<li>⓷ 조별 신호: 하네스 결선 후 "한 칸이 안 도는" 문제 다발 → 조교가 파이프라인 어느 칸에서 끊기는지 함께 추적.</li>
+<li>검증 칸을 빼고 빠르게 끝내려는 조 즉시 개입 → 안전 게이트 위반은 산출물 반려 사유임을 상기.</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">36</span><div class="sess-title">블록 4-5 — 본인 업무로 미러링 (조별/개인 25분) ⓵⓷</div></div>
+<p>[가네9 파지·전이] — <strong>전이(Transfer) 핵심 블록</strong></p>
+<h3>① 강사 시연 스크립트 (미러링 1례 시범 · 5분)</h3>
+<ul>
+<li>화면 흐름: 0강 I/P/O 시트 예시 1건(예: 회계 마감 점검)을 열어, 공통 하네스의 4역할을 <strong>본인 업무 입력·처리·출력으로 치환</strong>하는 시범.</li>
+<li>미러링 매핑 예: 수집=거래 원장 수집 / 분석=계정 분류·이상치 / 검증=합계·근거 대사 / 요약=마감 점검표.</li>
+</ul>
+<h3>② 학습자 따라하기 (20분)</h3>
+<ol>
+<li>0강 <strong>본인 I/P/O 시트</strong>를 꺼내 하네스 4역할에 대입(백지 아님·기존 부품 복제·⓵).</li>
+<li>직군별 미러링 예시 참고:
+   - 회계=마감 자동화 / 법무=판례 요약 / 미디어=기사 모니터링 / MICE=행사 일정 수집 / 투자=시황 브리핑.</li>
+<li>본인 데이터로 1회 실행 → 결과 확인.</li>
+<li><code>[최소 통과선]</code> 본인 시나리오로 4역할 중 3역할 이상 치환·동작 / <code>[확장 과제]</code> 4역할 완전 미러링 + 재실행.</li>
+</ol>
+<h3>③ 배포자료 안내</h3>
+<ul>
+<li><code>04강_스켈레톤_news-insight-team/mirroring_worksheet.md</code> — 공통 하네스 칸↔본인 I/P/O 대응표(빈칸).</li>
+</ul>
+<p>🛡 <strong>안전수칙 삽입 지점</strong>: "본인 업무 미러링에서도 <strong>실고객 식별정보·기밀 입력 금지.</strong> 가명·합성 데이터로 시연."</p>
+<h3>강사·조교 노트</h3>
+<ul>
+<li>미러링이 막히는 학습자 → "4개 다 못 바꿔도 됩니다. <strong>한 역할이라도 본인 업무로 도는 것</strong>을 30일 클리닉에서 완성합니다."(부담 완화·전이 지속)</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">37</span><div class="sess-title">블록 4-6 — 루브릭 자기판정 · 수료 발표 · 30일 클리닉 안내 (발표 15분)</div></div>
+<p>[가네8 수행평가] [가네9 전이]</p>
+<h3>강의 흐름</h3>
+<ul>
+<li>
+<p><strong>루브릭 3기준 자기판정</strong>(구두/체크): [→ 04_labs 캡스톤 루브릭 · 03_quizzes 4강 루브릭 자기판정 필수문항]
+  | 기준 | 자문 | 판정 |
+  |------|------|------|
+  | ⓵ 실데이터 동작 | 실제 본인/공통 데이터로 도는가 | 통과/보완 |
+  | ⓶ 결과 지향 | "응답"이 아니라 "결과물"이 나오는가 | 통과/보완 |
+  | ⓷ 재현성 | 2회 실행 시 동일 품질인가 | 통과/보완 |</p>
+</li>
+<li>
+<p>🛡 <strong>안전 게이트 최종 확인</strong>: 비밀키 노출 0 · 고객정보 입력 0 · 검증 단계 수행 [→ 04_labs 0.5].</p>
+</li>
+<li>조별 하네스 <strong>수료 발표</strong>(재실행 장면 시연 + 미러링 1례 공유).</li>
+<li><strong>30일 클리닉 안내</strong>: 보완 판정 항목은 클리닉에서 마무리. 수료 증명 = 배포 데모 URL + 동작 하네스 기록/영상.</li>
+</ul>
+<h3>학습자 핸드아웃 (A4 1장 — 과정 총정리)</h3>
+<ul>
+<li>오늘 완성: 4역할 하네스 + 본인 업무 미러링.</li>
+<li>루브릭 3기준: 실데이터·결과지향·재현성.</li>
+<li>🛡 검증 생략 금지 / 최종 확인은 사람 / 키·고객정보 0.</li>
+<li>부품 집결 지도(1강 URL + 2강 포맷 + 3강 스킬·MCP → 4강 하네스).</li>
+<li>30일 뒤 클리닉에서 볼 것: 실사용 회고 + 보완 마무리 + 스킬 저장소 기여.</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">38</span><div class="sess-title">4강 타임라인</div></div>
+<p><strong>[120분 표준]</strong>
+| 시각 | 블록 | 유형 | 분 |
+|------|------|------|----|
+| 00:00 | 4-1 완성 하네스 데모 | 시연 | 10 |
+| 00:10 | 4-2 오케스트레이션·4역할 | 강의 | 15 |
+| 00:25 | 4-3 수집·분석 조립 | 시연→실습 | 25 |
+| 00:50 | (쉬는시간) | — | 5 |
+| 00:55 | 4-4 검증·요약+하네스 결선 | 시연→실습 | 30 |
+| 01:25 | 4-5 본인 업무 미러링 | 실습 | 25 |
+| 01:50 | 4-6 루브릭 자기판정·수료·클리닉 안내 | 발표 | 15 |</p>
+<p><strong>[100분 압축]</strong> — 미러링은 "1역할 치환"까지를 최소선으로, 나머지는 클리닉 이월.
+| 시각 | 블록 | 분 |
+|------|------|----|
+| 00:00 | 4-1 데모 | 8 |
+| 00:08 | 4-2 오케스트레이션 | 12 |
+| 00:20 | 4-3 수집·분석 | 22 |
+| 00:42 | 4-4 검증·요약+결선 | 28 |
+| 01:10 | 4-5 미러링(1역할 최소선) | 18 |
+| 01:28 | 4-6 루브릭·수료·안내 | 12 |</p>
+<hr />
+</section><div class="day-divider"><span class="d-badge">30일 팔로업 클리닉 (수료 30일 후, 대면/온라인 90분)</span><span class="d-title">"정착과 확산"</span></div><div class="intro"><p><strong>모듈 학습목표</strong> (커리큘럼 인용)</p>
+<ul>
+<li>(평가) 30일간 실사용 결과를 루브릭으로 재점검할 수 있다.</li>
+<li>(창조/전이) 막힌 부분을 개선하고 팀 스킬 저장소에 기여할 수 있다.</li>
+</ul>
+<p><strong>준비물(학습자)</strong>: 30일간 실사용 기록(무엇을 돌렸고 무엇이 막혔는지), 본인 하네스.
+<strong>준비물(강사·조교)</strong>: 조교 1:1 트러블슈팅 대기, 사내 스킬 공유 저장소 접근.</p>
+<hr /></div><section class="card card--amber"><div class="sess-head"><span class="sess-no">39</span><div class="sess-title">블록 C-1 — 30일 실사용 회고 + 루브릭 재판정 (발표 25분)</div></div>
+<p>[가네9 전이] [가네8 재평가]</p>
+<h3>진행 흐름</h3>
+<ul>
+<li>각자 30일 실사용 사례 1건 공유: "무엇을 자동화했고, 결과가 어땠는가."</li>
+<li>루브릭 3기준 <strong>재판정</strong>(4강 보완 항목 마무리 확인): 실데이터·결과지향·재현성.</li>
+<li>🛡 안전 게이트 재확인: 30일 운영 중 키 노출·고객정보 입력 사고 없었는지 점검.</li>
+</ul>
+<h3>강사 노트</h3>
+<ul>
+<li>"안 쓰고 있다"는 학습자 다수 예상 → 비난 금지. <strong>"어디서 멈췄는지"를 C-2 클리닉 소재로</strong> 전환.</li>
+</ul>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">40</span><div class="sess-title">블록 C-2 — 막힘 클리닉 (조교 1:1 트러블슈팅, 실습 35분) ⓷</div></div>
+<p>[가네6 수행유도] [가네7 피드백]</p>
+<h3>진행 흐름</h3>
+<ul>
+<li>개별 하네스 오류를 조교와 1:1 진단·수정(화면 공유).</li>
+<li>자주 나는 정착 실패 유형 대응표를 조교가 지참:</li>
+<li>"MCP가 이제 데이터를 안 가져와요" → 설정·키 만료 점검.</li>
+<li>"결과 품질이 들쭉날쭉" → 지시문 구체화·검증 칸 강화.</li>
+<li>"본인 업무에 아직 적용 못함" → 4-5 미러링 워크시트 재개.</li>
+</ul>
+<p>🛡 <strong>안전수칙 삽입 지점</strong>: 30일간 코드·설정에 키가 하드코딩돼 쌓였는지 함께 점검·정리.</p>
+<h3>강사·조교 노트</h3>
+<ul>
+<li>최소 목표: 클리닉 종료 시 <strong>전원 하네스 1회 정상 재실행</strong> + 보완 판정자 수료 확정.</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">41</span><div class="sess-title">블록 C-3 — 스킬 공유 저장소 기여 + 확산 계획 (발표 30분)</div></div>
+<p>[가네9 전이·파지]</p>
+<h3>진행 흐름</h3>
+<ul>
+<li>재사용 가치가 있는 본인 스킬 1개를 <strong>사내 스킬 공유 저장소에 등재</strong>(이름·설명·트리거·사용법).</li>
+<li>팀 확산 계획 1장 작성: "우리 팀 어디에 이 하네스를 붙일까."</li>
+<li>우수 사례 조별 발표 → 상호 벤치마킹.</li>
+</ul>
+<h3>강사 노트</h3>
+<ul>
+<li>확산의 열쇠는 "혼자 쓰는 것"→"팀 자산화". 저장소 등재를 <strong>수료의 마지막 관문</strong>으로 의미부여.</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">42</span><div class="sess-title">30일 클리닉 타임라인 (90분)</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>시각</th>
+<th>블록</th>
+<th>유형</th>
+<th>분</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00:00</td>
+<td>C-1 실사용 회고·루브릭 재판정</td>
+<td>발표</td>
+<td>25</td>
+</tr>
+<tr>
+<td>00:25</td>
+<td>C-2 막힘 클리닉(1:1)</td>
+<td>실습</td>
+<td>35</td>
+</tr>
+<tr>
+<td>01:00</td>
+<td>C-3 저장소 기여·확산 계획</td>
+<td>발표</td>
+<td>30</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>평가</strong>: 0강~4강 보완 항목 마무리 → 최종 수료 확정(배포 데모 URL + 동작 하네스 기록/영상).</p>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">43</span><div class="sess-title">부록 A — 3대 설계원칙 준수 자가 점검 (강사용)</div></div>
+<p>강 시작 전 각 실습 블록이 아래를 만족하는지 확인한다.</p>
+<ul>
+<li class="check"><strong>⓵ 백지금지</strong>: 이 블록에 채울 스켈레톤/스니펫/템플릿이 배포되는가? "빈 화면에서 시작" 지시가 없는가?</li>
+<li class="check"><strong>⓶ 데모먼저</strong>: 학습자 따라하기 전에 강사(또는 조교 참조본) 완성본 시연이 배치됐는가?</li>
+<li class="check"><strong>⓷ 강사+조교</strong>: 조별 개입 신호가 명시됐고, 3단 힌트 시스템으로 연결되는가?</li>
+<li class="check"><strong>새 개념 3개 이하</strong>: 블록당 새 개념이 3개를 넘지 않는가?</li>
+<li class="check"><strong>🛡 안전수칙</strong>: 해당 강 안전수칙이 이 블록 어딘가에서 구두로 짚이는가?</li>
+</ul>
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">44</span><div class="sess-title">부록 B — 강별 🛡 안전수칙 요약 (교안 삽입 지점 색인)</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>강</th>
+<th>핵심 안전수칙</th>
+<th>교안 삽입 블록</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0강</td>
+<td>비밀키(service_role) 스크린샷·업로드 금지 · 해외카드 · 공식 설치 · 가명 데이터</td>
+<td>0-1, 0-2, 0-3, 0-4</td>
+</tr>
+<tr>
+<td>1강</td>
+<td>anon 공개키만, service_role 금지 · 폼에 개인정보 금지</td>
+<td>1-3, 1-5, 1-6</td>
+</tr>
+<tr>
+<td>2강</td>
+<td>AI는 문장·근거는 사람 · 허위 숫자·법조항 금지 · 고객정보 프롬프트 금지</td>
+<td>2-4, 2-5, 2-7</td>
+</tr>
+<tr>
+<td>3강</td>
+<td>MCP 데이터 행선지 확인 · 키 하드코딩 금지 · 고객정보 프롬프트 금지</td>
+<td>3-4, 3-5, 3-6</td>
+</tr>
+<tr>
+<td>4강</td>
+<td>검증 단계 생략 금지 · 출처 없는 주장 배제 · 최종 확인은 사람 · 고객·기밀 입력 금지</td>
+<td>4-2, 4-4, 4-5, 4-6</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>교안 끝. 퀴즈 문항은 <code>03_quizzes.md</code>, 실습 스타터·루브릭은 <code>04_labs.md</code> 참조.</em></p></section></div></div></body></html>

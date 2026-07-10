@@ -1,0 +1,758 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>경쟁 분석 보고서 — 국내 알뜰폰(MVNO) 시장 (자사 관점: 프리티/프리텔레콤)</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">44 마켓리서치 · 알뜰폰(MVNO) 시장 조사 — 프리티/프리텔레콤</div><h1>경쟁 분석 보고서 — 국내 알뜰폰(MVNO) 시장 (자사 관점: 프리티/프리텔레콤)</h1></header><div class="intro"><ul>
+<li>작성: competitor-analyst · 작성일 2026-07-05</li>
+<li>자사 정의: <strong>㈜프리티(KOSPI 006490, 구 인스코비 — 2026.6.19 상호 '프리티'로 변경 적용, LGU+망) + ㈜프리텔레콤(SKT·KT망, 100% 종속회사) = 통합 브랜드 '프리티(FreeT)'</strong> (출처: 톱스타뉴스 상호변경 공시 보도, freet.co.kr 회사소개)</li>
+<li>데이터: 웹 공개 자료(과기정통부 사업자별 통계 인용 자료, 감사보고서 기반 기업정보 플랫폼, 언론 보도 2024.12~2026.6). DART 원문 열람은 OpenAPI 키 부재로 미완 — <strong>감사보고서를 원천으로 하는 기업정보 플랫폼(캐치 등)·언론 인용치로 대체 검증</strong>했으며 해당 사실을 각 수치에 명기.</li>
+</ul>
+<hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">0. 핵심 요약 (사용자 질문 ①②에 대한 답)</div></div>
+<p><strong>① 주요 참가자</strong>: (1) 이통 3사 자회사 5사 — KT엠모바일(1위, 170만), 미디어로그(104만), SK텔링크(78만), LG헬로비전(75만), KT스카이라이프(42만) — 휴대폰 회선 기준 합산 약 47~49% 과점. (2) 금융권 — KB리브모바일(43.7만), 토스모바일(약 20만), 우리WON모바일(약 3만) 합계 약 66만. (3) 독립계 — 유니컴즈(47만), 프리티 통합(약 56만), 큰사람커넥트(29만), 아이즈비전(23만) 등 수십 개사 롱테일. (4) 간접 경쟁 — MNO 3사 온라인 다이렉트 브랜드(SKT 에어·KT 요고·LGU+ 너겟).</p>
+<p><strong>② 프리티/프리텔레콤 시장점유율(추정)</strong>: 통합 브랜드 기준 <strong>가입자 약 56만 회선(프리텔레콤 34.2만 + 프리티 22.2만, 과기정통부 사업자별 통계 인용 자료) → 알뜰폰 휴대폰 회선(1,011만, 2025.6)의 약 5.3~5.6%</strong>. 모요 소개 기준 "약 70만"까지 잡으면 상단 6.9%. <strong>중심 추정 5~6%, 범위 5~7%</strong>. 매출 기준(MVNO 부문 931.6억/시장 2.0~2.2조)으로는 <strong>약 4.2~4.7%</strong>. 순위: <strong>통합 브랜드 기준 알뜰폰 전체 5위권(자회사 4사 다음), 독립계 후불 브랜드 중 1~2위</strong>.</p>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">1. 경쟁 구도 개요</div></div>
+<h3>1.1 경쟁 강도: 매우 높음</h3>
+<ul>
+<li>산업 분석(01) Porter 5F 평균 4.2/5. 등록 사업자 수십 개(활동 기준 약 54개사, 머니투데이 2025.3.29)가 동일 망·유사 요금제로 <strong>가격 단일 축 경쟁</strong>.</li>
+<li>2026.4~5월 시장 전체가 2개월 연속 순유출(아주경제 2026.6.2) — 파이 축소 국면에서 제로섬 경쟁으로 전환 중.</li>
+</ul>
+<h3>1.2 시장 집중도 (휴대폰 회선 기준, 2024.12~2025.4 과기정통부 통계 인용)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>수치</th>
+<th>산출 근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CR1 (KT엠모바일)</td>
+<td>약 17%</td>
+<td>170.4만 / 1,011만 (2024.6 기준 KT엠모바일 단독 17.1%와 정합, 딜사이트)</td>
+</tr>
+<tr>
+<td><strong>CR3</strong> (KT엠 + 미디어로그 + SK텔링크)</td>
+<td><strong>약 35%</strong></td>
+<td>(170.4+103.7+77.7)만 / 1,011만</td>
+</tr>
+<tr>
+<td><strong>CR5</strong> (자회사 4사 + 유니컴즈)</td>
+<td><strong>약 47%</strong></td>
+<td>+ LG헬로 74.5만 + 유니컴즈 46.8만</td>
+</tr>
+<tr>
+<td>이통 3사 자회사 5사 합산</td>
+<td><strong>약 47~49%</strong></td>
+<td>2024.6 기준 47.0%(딜사이트), IoT 제외 기준 약 49%(2024.11, 네이트뉴스)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>판정: <strong>중상위 집중(중집중 과점)</strong> — 상위는 자회사가 과점하되, 잔여 약 50%를 50개사 가까이가 나눠 갖는 극단적 롱테일. HHI는 상위권 집중에도 롱테일 탓에 1,000 미만 추정(자체 추정) → 형식상 경쟁적이나 실질은 "자회사 과점 + 나머지 소모전".</li>
+</ul>
+<h3>1.3 주요 경쟁 차원</h3>
+<ol>
+<li><strong>가격/데이터 단가</strong> (제1 차원 — 비교 플랫폼 모요·알뜰폰Hub에서 정렬 경쟁)</li>
+<li><strong>원가 구조</strong> (도매대가 선구매 협상력, 전파사용료 감면 자격 — 중소 지위 여부가 원가를 가름)</li>
+<li><strong>브랜드 신뢰·CS</strong> (자회사 프리미엄 vs 중소 불신 — SKT 해킹 사고(2025) 이후 보안·신뢰 가중치 상승)</li>
+<li><strong>유통·플랫폼 노출</strong> (모요 랭킹, 금융앱, 자사몰)</li>
+<li><strong>리텐션 설계</strong> (단통법 폐지 후 이탈 방어 — 결합·장기할인·멤버십)</li>
+<li><strong>신사업 확장</strong> (eSIM·로밍·IoT/B2B — ARPU 다변화)</li>
+</ol>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">2. 경쟁사 매핑 (11개사 + 간접경쟁)</div></div>
+<p>가입자: 과기정통부 사업자별 통계 인용 자료(2024.12~2025.4 시점, 머니투데이 2025.3.29·알뜰폰 커뮤니티 집계), 점유율은 휴대폰 회선 1,011만(2025.6) 대비 자체 산출 추정.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>사업자</th>
+<th>유형</th>
+<th>가입자(만)</th>
+<th>점유율(추정)</th>
+<th>핵심 상품</th>
+<th>타깃</th>
+<th>강점</th>
+<th>약점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KT엠모바일</strong></td>
+<td>KT 자회사</td>
+<td>170.4</td>
+<td>~17%</td>
+<td>LTE 무제한·5G 중저가, 모두다 맘껏 시리즈</td>
+<td>2030 자급제</td>
+<td>압도적 규모, KT 유통·AS 연계, 흑자(2024 영업이익 95.8억)</td>
+<td>전파사용료 전액 부담, 점유율 규제 리스크</td>
+</tr>
+<tr>
+<td><strong>미디어로그(U+유모바일)</strong></td>
+<td>LGU+ 자회사</td>
+<td>103.7</td>
+<td>~10%</td>
+<td>유모바일 저가 LTE</td>
+<td>온라인 실속형</td>
+<td>LGU+망 도매 우대, 규모 2위</td>
+<td><strong>2024 적자 전환·손실폭 확대</strong>(머니투데이 2025.3.16), 브랜드평판 하위(2026.6 14위)</td>
+</tr>
+<tr>
+<td><strong>SK텔링크(SK세븐모바일)</strong></td>
+<td>SKT 자회사</td>
+<td>77.7</td>
+<td>~7.7%</td>
+<td>세븐모바일 LTE·시니어 특화</td>
+<td>시니어·안정 추구</td>
+<td>SKT 브랜드 후광, 국제전화 겸업</td>
+<td>알뜰폰 매출 역성장(2024 1,447억), SKT 해킹 여파, 구조조정 비용(뉴스웨이 2026.6.22)</td>
+</tr>
+<tr>
+<td><strong>LG헬로비전(헬로모바일)</strong></td>
+<td>LGU+ 자회사</td>
+<td>74.5</td>
+<td>~7.4%</td>
+<td>헬로모바일, 케이블 결합</td>
+<td>지역·가족 결합</td>
+<td>케이블TV 결합판매, 오프라인 접점</td>
+<td>본업(케이블) 축소, MVNO 성장 정체</td>
+</tr>
+<tr>
+<td><strong>KT스카이라이프</strong></td>
+<td>KT 자회사</td>
+<td>42.2</td>
+<td>~4.2%</td>
+<td>위성TV+모바일 결합</td>
+<td>가족 결합</td>
+<td>TV 결합 할인</td>
+<td>모바일 단독 경쟁력 약함</td>
+</tr>
+<tr>
+<td><strong>KB리브모바일</strong></td>
+<td>금융권(KB국민은행)</td>
+<td>43.7 (2025.6)</td>
+<td>~4.3%</td>
+<td>금융 결합 할인 요금제</td>
+<td>KB 주거래 고객</td>
+<td>은행 신뢰도+자본력, 앱 통합 관리</td>
+<td><strong>5년 누적 적자 600억+, 2년간 순증 1만 명 정체</strong>(디지털포스트 2026)</td>
+</tr>
+<tr>
+<td><strong>토스모바일</strong></td>
+<td>금융권(비바리퍼블리카)</td>
+<td>~20</td>
+<td>~2%</td>
+<td>토스앱 개통·캐시백 요금제</td>
+<td>토스 MAU 2030</td>
+<td>앱 UX·2,000만 트래픽</td>
+<td>요금 자체는 비싼 편("편리하지만 알뜰하진 않다" — 디지털데일리 사용기), 수익성 미검증</td>
+</tr>
+<tr>
+<td><strong>유니컴즈(모빙)</strong></td>
+<td>독립계</td>
+<td>46.8</td>
+<td>~4.6%</td>
+<td>모빙 저가 LTE</td>
+<td>온라인 실속형</td>
+<td>독립계 최대급 규모</td>
+<td>브랜드 인지도·자본력 한계</td>
+</tr>
+<tr>
+<td><strong>프리티(FreeT) 통합</strong> ★자사</td>
+<td>독립계</td>
+<td><strong>약 56 (34.2+22.2)</strong></td>
+<td><strong>약 5.5% (5~7%)</strong></td>
+<td>3사망 통합 요금제·eSIM·선불</td>
+<td>실속형+외국인+B2B</td>
+<td><strong>국내 유일 3사망</strong>, 브랜드평판 1위(2026.6), 자체 빌링, 전파사용료 90% 감면 대상</td>
+<td>누적결손 1,337.7억·계속기업 불확실성, 1Q26 영업적자</td>
+</tr>
+<tr>
+<td><strong>큰사람커넥트(이야기모바일)</strong></td>
+<td>독립계</td>
+<td>29.0</td>
+<td>~2.9%</td>
+<td>이야기 알뜰폰 저가</td>
+<td>온라인 실속형</td>
+<td>흑자 유지(2025 영업이익 7억, 투자요청서 — 미검증), 감면 수혜</td>
+<td>규모 열위, 차별화 부족</td>
+</tr>
+<tr>
+<td><strong>아이즈비전(아이즈모바일)</strong></td>
+<td>독립계</td>
+<td>22.7</td>
+<td>~2.2%</td>
+<td>아이즈모바일 저가·선불</td>
+<td>실속형·외국인</td>
+<td>감면 수혜, 선불 노하우</td>
+<td>규모 열위, 브랜드평판 중하위(2026.6 13위)</td>
+</tr>
+<tr>
+<td>(참고) 에스원</td>
+<td>IoT 특수</td>
+<td>81 (IoT 90%+)</td>
+<td>휴대폰 기준 미미</td>
+<td>보안 관제 회선</td>
+<td>B2B</td>
+<td>—</td>
+<td>소매 경쟁과 무관</td>
+</tr>
+<tr>
+<td>(참고) 한국케이블텔레콤(KCT)</td>
+<td>독립계</td>
+<td>42.5</td>
+<td>~4.2%</td>
+<td>티플러스</td>
+<td>실속형</td>
+<td>브랜드평판 4위(2026.6 티플러스)</td>
+<td>자본력 한계</td>
+</tr>
+</tbody>
+</table></div>
+<h3>간접 경쟁: MNO 3사 온라인 다이렉트 브랜드 (알뜰폰의 최대 대체재)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>브랜드</th>
+<th>사업자</th>
+<th>포지션</th>
+<th>알뜰폰 대비 위협 요인</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>에어(AIR)</strong></td>
+<td>SKT (2025.10 출시)</td>
+<td>자급제 전용 디지털 요금제</td>
+<td>3사 다이렉트 "삼각 구도" 완성(다음/헤럴드 2025.10.26). SKT 브랜드로 알뜰폰 상단 가격대 직접 타격</td>
+</tr>
+<tr>
+<td><strong>요고</strong></td>
+<td>KT</td>
+<td>온라인 무약정 3만원대 5G</td>
+<td>유튜브 프리미엄·OTT 구독 혜택 결합 — 실효 요금 격차 축소</td>
+</tr>
+<tr>
+<td><strong>너겟</strong></td>
+<td>LGU+</td>
+<td>온라인 무약정·데이터 슬라이싱</td>
+<td>네이버포인트 페이백 등 즉시 혜택, 앱 UX 우위(비즈한국)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>공통 구조: "알뜰폰보다 비싸지만 매장 요금제보다 싼" <strong>시장 한가운데 침투</strong>. 단통법 폐지(2025.7)로 보조금까지 더해져 알뜰폰 교체 예정자 48%가 조건부 이탈 의향(더스쿠프 2026.5.26) → 2026.4~5월 순유출로 현실화.</li>
+</ul>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">3. 프리티/프리텔레콤 시장점유율 진단 ★사용자 핵심 질문</div></div>
+<h3>3.1 결론</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>기준</th>
+<th>추정치</th>
+<th>순위 추정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가입자 (통합 브랜드)</strong></td>
+<td><strong>약 56만 회선 → 휴대폰 회선의 약 5.3~5.6% (범위 5~7%)</strong></td>
+<td>알뜰폰 전체 <strong>5위권</strong> (KT엠·미디어로그·SK텔링크·LG헬로 다음, IoT 특수 에스원 제외 시), <strong>독립계 후불 브랜드 1~2위</strong> (유니컴즈 46.8만과 선두 경합)</td>
+</tr>
+<tr>
+<td>가입자 (법인별)</td>
+<td>프리텔레콤 34.2만(약 3.4%) / 프리티(구 인스코비) 22.2만(약 2.2%)</td>
+<td>법인 단독으로는 각각 10위권·14위권</td>
+</tr>
+<tr>
+<td><strong>매출 (MVNO 부문)</strong></td>
+<td>931.6억(2025, 투자요청서·연결감사 기준) ÷ 시장 2.0~2.2조 = <strong>약 4.2~4.7%</strong></td>
+<td>매출 기준 점유율이 가입자 기준보다 낮음 → 평균 ARPU가 시장 평균 이하(선불·저가 비중 높음 시사)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>3.2 추정 방법론 (공표 점유율 부재 — 3가지 방법 교차)</h3>
+<ol>
+<li><strong>과기정통부 사업자별 통계 인용 자료</strong> (1순위): 사업자별 가입자 수는 과기정통부가 개별 공표하지 않으나, 국회 제출·언론 취재로 유통되는 통계가 존재. 머니투데이(2025.3.29, 2024.12 기준)에서 프리텔레콤 34만·큰사람 29만 확인, 알뜰폰 커뮤니티 집계(2025.4, 과기정통부 자료 기준 명기)에서 프리텔레콤 34.2만 + 인스코비(프리티) 22.2만 확인 → <strong>합산 56.4만</strong>. 분모를 휴대폰 회선 1,011만(2025.6)으로 두면 5.6%. (주의: 사업자별 수치에 선불·일부 IoT 포함 가능성 — 분모 정합성 오차 ±0.5%p 감안)</li>
+<li><strong>운영사 자기 공표</strong> (상단 검증): 모요 프리티 소개 페이지 "약 70만 가입자" → 상단 6.9%. 선불·휴면 회선 포함 마케팅 수치일 가능성이 높아 상단으로만 채택.</li>
+<li><strong>매출 역산</strong> (하단 검증): MVNO 매출 931.6억 ÷ 12 ÷ 시장 ARPU 1.6만원 = <strong>약 48.5만 회선 상당</strong>. 실제 가입자(56만)보다 낮게 나오는 것은 프리티 평균 ARPU(약 1.37만원 역산)가 시장 평균보다 낮기 때문으로 해석 — 방법 1과 정합적.</li>
+</ol>
+<p><strong>종합 판정: 가입자 기준 5~7% (중심 5.5%), 매출 기준 4~5%.</strong> 투자요청서가 점유율을 명시하지 않은 것은 타당하며, 대외적으로는 "휴대폰 회선 기준 약 5% 중반, 독립계 선두권"으로 기술하는 것이 방어 가능한 표현.</p>
+<h3>3.3 재무 수치 검증 결과 (산업 분석가 요청 사항)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>투자요청서</th>
+<th>공개 데이터 검증</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KT엠모바일 매출 7,909억(2025)</td>
+<td>7,909억·영업이익 391억</td>
+<td><strong>2024 매출 3,455.8억(+15.0%)·영업이익 95.8억(+15.9%)</strong> — 감사보고서 기반 기업정보 플랫폼(캐치). 2023년 "매출 3,000억 달성" 보도와 정합</td>
+<td><strong>검증 실패 — 2배 이상 과대</strong>. 1년 만에 매출 2.3배는 비현실적. 그룹 내 타사 합산 또는 오기(투자요청서의 SK텔링크 3,459억이 KT엠모바일 실제 3,456억과 거의 일치 — 행 밀림 오류 가능성) 의심. <strong>투자요청서의 경쟁사 수익성 표 전체를 신뢰 불가로 취급 권고</strong></td>
+</tr>
+<tr>
+<td>SK텔링크 매출 3,459억(2025)</td>
+<td>3,459억·94억</td>
+<td>2024 <strong>알뜰폰 부문 매출 1,446.9억(역성장)</strong>, 영업이익 급감(구조조정 일회성 비용, SKT 해킹 여파 — 뉴스웨이 2026.6.22)</td>
+<td><strong>검증 실패</strong> (전사 매출 기준이라 해도 국제전화 포함 구분 필요)</td>
+</tr>
+<tr>
+<td>미디어로그 3,277억·5억(2025)</td>
+<td>3,277억·5억</td>
+<td>2024년 <strong>3년 만에 적자 전환, 손실폭 전년 대비 약 869% 확대</strong>(머니투데이 2025.3.16, 시사저널e)</td>
+<td><strong>부분 불일치</strong> — 매출 규모는 그럴듯하나 2025 흑자 5억은 급반전 주장, 원문 확인 필요</td>
+</tr>
+<tr>
+<td>프리티 MVNO 영업이익률 9.2%</td>
+<td>931.6억·86억</td>
+<td>연결 감사 대상 수치라 자체 신뢰도는 상대적으로 높으나, 업계 1위 KT엠모바일(2.8%)의 3배가 넘는 이익률 — 부문 배부 기준(공통비 배부 전 부문이익일 가능성) 확인 필요</td>
+<td><strong>보류</strong> — 검증자(research-reviewer)가 프리티 1Q26 분기보고서 주석의 부문별 손익 확인 요망</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>시사점: 투자요청서의 "경쟁사 대비 프리티 수익성 우위" 논거는 비교 대상 수치가 부정확하므로 <strong>재구성 필요</strong>. 다만 실제 공개 데이터로 다시 비교해도(KT엠 2.8%, SK텔링크 급감, 미디어로그 적자, KB 누적적자) "자회사·금융권 다수가 박리 또는 적자인 시장에서 프리티 MVNO 부문 흑자는 상대적 우위"라는 방향 자체는 유지 가능.</li>
+</ul>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">4. 상세 경쟁사 프로파일 (핵심 6개사)</div></div>
+<h3>4.1 KT엠모바일 — 규모의 제왕, 그러나 박리</h3>
+<ul>
+<li><strong>규모</strong>: 가입자 170.4만(2024.12, MVNO 최초 170만 달성). 매출 3,455.8억·영업이익 95.8억(2024, 영업이익률 2.8%).</li>
+<li><strong>보이는 전략</strong>: "압도적 1등 알뜰폰" 브랜딩, 공식 다이렉트몰 중심 온라인 판매, LTE 대용량+5G 중저가 풀라인업, 브랜드평판 1~2위 상시 유지.</li>
+<li><strong>보이지 않는 역량</strong>: KT그룹 전산·망 도매 내부거래 우위, KT 오프라인 AS 인프라 공유, 대규모 선구매 물량 협상력. 반면 <strong>전파사용료 전액 부담 + 점유율 60% 규제 입법 리스크</strong>가 구조적 족쇄 — 공격적 순증 드라이브를 걸기 어려운 국면.</li>
+<li><strong>프리티에 주는 시사점</strong>: 정면 가격전 회피 대상. KT엠모바일이 규제로 성장을 자제하는 구간이 독립계의 순증 기회.</li>
+</ul>
+<h3>4.2 SK텔링크(SK세븐모바일) — 흔들리는 2강</h3>
+<ul>
+<li>가입자 77.7만. 2024 알뜰폰 매출 1,446.9억 역성장, 구조조정 일회성 비용으로 이익 급감(뉴스웨이 2026.6.22). <strong>SKT 해킹 사고(2025)의 직격탄</strong> — SKT망 신뢰 훼손이 세븐모바일 가입에 전이.</li>
+<li>시니어·안정 추구층 특화(오프라인 제휴, 상담 중심). 국제전화 00700 겸업으로 알뜰폰 단독 손익 방어.</li>
+<li>시사점: SKT망 신뢰 이슈 국면에서 <strong>프리티의 '3사망 선택권'(KT·LGU+망 대안 제시)이 직접적 전환 유인</strong>으로 작동 가능.</li>
+</ul>
+<h3>4.3 미디어로그(U+유모바일) — 외형 2위, 수익성 최약체</h3>
+<ul>
+<li>가입자 103.7만으로 외형 2위이나 <strong>2024년 3년 만에 적자 전환, 손실폭 869% 확대</strong>(머니투데이 2025.3.16). 브랜드평판 14위(2026.6)로 규모 대비 브랜드 자산 최약.</li>
+<li>보이지 않는 구조: LGU+의 알뜰폰 이원화(미디어로그=온라인 저가 공격, LG헬로비전=결합·지역) 중 공격수 역할 — <strong>모회사 의지에 따라 출혈 마케팅을 지속할 수 있는 자본 뒷배</strong>가 최대 위협.</li>
+<li>시사점: 프리티(LGU+망 법인)와 같은 망에서 저가 경쟁하는 최인접 경쟁자. 가격 매칭보다 신뢰·CS 차별화로 대응해야 소모전 회피.</li>
+</ul>
+<h3>4.4 KB리브모바일 — 자본은 크지만 성장은 멈춤</h3>
+<ul>
+<li>가입자 43.7만(2025.6). <strong>5년 연속 적자, 누적 600억+ / 2023년 40만 돌파 후 2년간 순증 약 1만 명에 그침</strong>(디지털포스트 2026). 은행 부수업무 인정으로 제도 안착했으나 금융 결합 할인만으로는 확장 한계 노출.</li>
+<li>보이지 않는 역량: KB스타뱅킹 3,000만 계좌 기반 크로스셀, 자본력. 반면 은행 리스크 관리 문화상 출혈 마케팅에 소극적.</li>
+<li>시사점: 금융권은 "자본은 있으나 통신업 운영 역량·의지가 제한적" — <strong>프리티의 위협이라기보다 잠재적 제휴처/위탁운영(MVNE) 고객</strong> 후보.</li>
+</ul>
+<h3>4.5 토스모바일 — UX는 최강, 가격은 비싸다</h3>
+<ul>
+<li>가입자 약 20만. 토스앱 개통 UX·캐시백으로 화제성은 높으나 "편리하지만 알뜰하진 않다"(디지털데일리 사용기)는 평가처럼 <strong>가격 경쟁력 자체는 열위</strong>. 수익성 미검증.</li>
+<li>시사점: 2030 UX 기대 수준을 끌어올린 존재 — 프리티 자사몰·앱의 셀프서비스(사용량 조회 등) 수준이 상대 비교당하는 기준점.</li>
+</ul>
+<h3>4.6 아이즈비전(아이즈모바일) — 독립계 동병상련</h3>
+<ul>
+<li>가입자 22.7만. 선불·외국인 특화 노하우, 전파사용료 감면 수혜 대상. 브랜드평판 13위(2026.6). 규모·자본 열위로 단독 생존 압박 — <strong>독립계 통폐합 국면의 잠재적 피인수/제휴 후보</strong>.</li>
+<li>시사점: 프리티가 독립계 통합(consolidation)의 주체가 될 경우 1차 검토 대상군(아이즈비전·에넥스·스마텔·세종 등 15~25만 규모대).</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">5. 전략 그룹 분석</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>전략 그룹</th>
+<th>구성원</th>
+<th>전략 변수(범위/자원)</th>
+<th>원가 지위</th>
+<th>이동 장벽</th>
+<th>현재 성과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A. MNO 자회사</strong></td>
+<td>KT엠모바일, SK텔링크, LG헬로, 미디어로그, KT스카이라이프</td>
+<td>전국 브랜드·풀라인업·그룹 유통</td>
+<td>도매 내부거래 우위, 단 전파사용료 전액 부담</td>
+<td>높음(그룹 자본) — 단 점유율 규제가 성장 상한</td>
+<td>외형 1위군이나 이익률 0~3%, 일부 적자</td>
+</tr>
+<tr>
+<td><strong>B. 금융권</strong></td>
+<td>KB리브, 토스, 우리WON</td>
+<td>금융앱 결합·데이터 확보 목적</td>
+<td>원가 열위(위탁 전산), 자본으로 보전</td>
+<td>중간(규제샌드박스·부수업무 인가)</td>
+<td>전원 적자 추정, 성장 정체</td>
+</tr>
+<tr>
+<td><strong>C. 독립계 대형 (프리티 소속)</strong></td>
+<td><strong>프리티 통합</strong>, 유니컴즈, KCT, 큰사람</td>
+<td>저가+니치(선불·외국인·eSIM), 자체 빌링 보유사 존재</td>
+<td><strong>감면·도매대가 정책 수혜 — 구조적 원가 우위</strong></td>
+<td>낮음(자본 열위) — 자체 전산이 유일한 장벽</td>
+<td>소폭 흑자~손익분기 (프리티 MVNO 부문 흑자)</td>
+</tr>
+<tr>
+<td><strong>D. 독립계 소형/선불 특화</strong></td>
+<td>아이즈비전, 에넥스, 스마텔, 세종(스노우맨), 코드모바일 등 40여 사</td>
+<td>초저가·선불·외국인</td>
+<td>감면 수혜하나 규모 미달</td>
+<td>매우 낮음</td>
+<td>상당수 영업적자(과기정통부 2026.6 언급) — 통폐합 압력</td>
+</tr>
+<tr>
+<td><strong>E. IoT 특수</strong></td>
+<td>에스원, 현대차·기아</td>
+<td>B2B 계약 기반</td>
+<td>대량 회선 단가</td>
+<td>높음(본업 종속)</td>
+<td>소매 경쟁과 분리</td>
+</tr>
+<tr>
+<td><strong>F. (간접) MNO 다이렉트</strong></td>
+<td>SKT 에어, KT 요고, LGU+ 너겟</td>
+<td>중간 가격+구독 혜택+브랜드</td>
+<td>MNO 원가 그 자체</td>
+<td>— (그룹 내 브랜드)</td>
+<td>알뜰폰 상단 수요 흡수 중</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>그룹 간 역학</strong>: D그룹의 붕괴(적자 누적 → 매물화)가 진행 중이며, 그 가입자·주파수 아닌 회선 자산이 A·C그룹으로 재배분될 전망. C그룹 내에서 <strong>자체 전산 + 3사망 + 브랜드평판을 모두 가진 곳은 프리티가 유일</strong> — D그룹 통합의 자연스러운 구심점. 반면 F그룹의 침투는 A~D 모든 그룹의 상단 고객을 깎는 공통 위협.</p>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">6. 포지셔닝 맵</div></div>
+<ul>
+<li><strong>X축: 가격 공격성</strong> (좌: 프리미엄/혜택형 ← → 우: 초저가 공격)</li>
+<li><strong>Y축: 브랜드 신뢰·서비스 폭</strong> (하: 단순 재판매/저신뢰 ← → 상: 풀서비스/고신뢰)</li>
+</ul>
+<pre><code> 브랜드 신뢰·서비스 폭 (高)
+        │
+        │  [SKT에어/KT요고/LGU+너겟]        [KT엠모바일]
+        │   (MNO 다이렉트: 고신뢰·중간가격)     (고신뢰·중저가·풀라인업)
+        │
+        │  [KB리브모바일]                [SK세븐모바일]
+        │   (은행 신뢰·금융결합)  [LG헬로/스카이라이프]
+        │  [토스모바일]            (결합형)
+        │   (UX 신뢰·가격은 중간)
+        │                    ★[프리티 통합]
+        │                      (평판 1위·3사망·중저가) ← 화이트스페이스 인접
+        │
+        │            [유니컴즈/큰사람/KCT]   [미디어로그]
+        │             (중간 신뢰·저가)        (저브랜드·저가 공격)
+        │
+        │                         [아이즈/에넥스/스마텔 등 D그룹]
+        │                          (저신뢰·초저가 소모전)
+        └────────────────────────────────────────────
+                                        가격 공격성 (高)
+</code></pre>
+<p><strong>화이트스페이스 판독</strong>:</p>
+<ol>
+<li><strong>"고신뢰 × 고가격공격성" 우상단 공백</strong>: 자회사는 규제·원가로, 독립계는 신뢰 부족으로 비어 있는 영역. 프리티는 평판 1위(2026.6) + 감면 원가 우위로 <strong>이 공백에 가장 근접한 유일 사업자</strong> — "믿을 수 있는 최저가" 포지션 선점 가능.</li>
+<li><strong>"망 선택권" 축의 부재</strong>: 어떤 경쟁사도 복수망을 단일 브랜드로 제공하지 못함(자회사는 자사망 종속, 금융권·독립계 대부분 1~2개망). SKT 해킹 이후 "망을 갈아탈 수 있는 통신사"는 맵에 없는 제3의 차별화 축.</li>
+<li><strong>시니어 오프라인 공백</strong>: SK세븐·우체국 외 시니어 대면 채널 희소 — 단 투자 대비 효율은 검증 필요(소비자 분석가 확인 요청).</li>
+</ol>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">08</span><div class="sess-title">7. SWOT 분석 (프리티/프리텔레콤 관점)</div></div>
+<h3>7.1 SWOT</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>긍정</th>
+<th>부정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>내부</strong></td>
+<td><strong>S1</strong> 국내 유일 통신 3사망 통합 브랜드(망 선택권·망 리스크 헤지) <strong>S2</strong> 알뜰폰 브랜드평판 1위(2026.6, 한국기업평판연구소 — 커뮤니티지수 강세) <strong>S3</strong> 자체 IT·빌링 시스템(상품 설계 유연성, MVNE 확장 잠재력) <strong>S4</strong> MVNO 부문 흑자(2025 영업이익 86억 주장 — 부문 배부 기준 검증 중) <strong>S5</strong> 중소 지위 → 전파사용료 90% 감면('27~, 연 27억 절감 추정) + 도매대가 보호 대상 <strong>S6</strong> eSIM·해외유심·선불·B2B/M2M 니치 포트폴리오, 모요 평점 4.3(1,604건)</td>
+<td><strong>W1</strong> ★<strong>누적결손 1,337.7억 + 계속기업 불확실성(감사보고서 강조사항) — 자본시장 신뢰·조달 비용에 직결되는 최대 약점</strong> <strong>W2</strong> 1Q26 영업적자 -15.1억(마케팅 확대) — 성장-수익 트레이드오프 재진입 <strong>W3</strong> 규모 열위: 통합 56만 vs KT엠 170만 — 고정비 흡수·선구매 물량 협상력 한계 <strong>W4</strong> CB 잔액 108억 예상 + 최대주주 변경(2026.4, KS인더스트리 13.71%) — 오버행·지배구조 불확실성 <strong>W5</strong> 5G·중고가 요금제 라인업 얇음(저ARPU 1.37만 역산 — 시장 평균 이하) <strong>W6</strong> 앱·셀프서비스 편의성 열위(모요 리뷰: 사용량 조회 불편, 할인기간 짧음) <strong>W7</strong> 법인 이원화(프리티/프리텔레콤)로 브랜드·전산·마케팅 중복 비용</td>
+</tr>
+<tr>
+<td><strong>외부</strong></td>
+<td><strong>O1</strong> 도매대가 최대 52% 인하(2025.1) — 20~30GB 중용량 설계 여지 <strong>O2</strong> 전파사용료 90% 감면 3년 연장('27 시행) — 자회사 대비 구조적 원가 격차 <strong>O3</strong> 점유율 60% 제한법(법사위 계류) — 자회사 성장 상한 시 독립계 반사이익 <strong>O4</strong> 중소사 적자 누적 → 매물화: 독립계 통합(M&amp;A) 주도 기회 <strong>O5</strong> SKT 해킹 후 '망 신뢰' 이슈 — 3사망 선택권의 가치 부상 <strong>O6</strong> 외국인·eSIM·세컨드심·B2B IoT 수요 성장</td>
+<td><strong>T1</strong> 단통법 폐지(2025.7) 보조금 경쟁 — 시장 2개월 연속 순유출, 이용자 48% 조건부 이탈 의향 <strong>T2</strong> MNO 다이렉트 3브랜드(에어·요고·너겟) — 구독 혜택으로 실효 요금 격차 축소, 알뜰폰 상단 수요 잠식 <strong>T3</strong> 도매대가 사전→사후규제 전환 시 협상력 약한 중소사 원가 악화 <strong>T4</strong> 미디어로그 등 자본 뒷배 있는 저가 공격수와의 소모전 <strong>T5</strong> 금융권 자본의 마케팅 재점화 가능성 <strong>T6</strong> 감면·중소 지위 요건 변경(정책 리스크) — 원가 우위의 원천이 정부 정책</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.2 SO/WO/ST/WT 전략 매트릭스</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>S (강점 활용)</strong></th>
+<th><strong>W (약점 보완)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>O (기회)</strong></td>
+<td><strong>SO1</strong> "망 갈아타기 보장" 상품화: 3사망(S1)+해킹 후 신뢰 수요(O5) → 위약금 없이 망 변경 가능한 유일 브랜드 캠페인 <strong>SO2</strong> 감면 원가(S5)+도매대가 인하(O1)를 재원으로 20~30GB 5G 중용량 '믿을 수 있는 최저가' 라인 출시 — 우상단 화이트스페이스 선점 <strong>SO3</strong> 자체 빌링(S3)+중소사 매물화(O4) → 독립계 통합 플랫폼: 소형사 인수·MVNE 위탁으로 규모 임계점(100만) 도달</td>
+<td><strong>WO1</strong> 규모 열위(W3)를 O4(인수)+O3(자회사 규제)로 만회 — 유기적 순증만으로는 자회사 추월 불가, 비유기적 성장 병행 <strong>WO2</strong> 저ARPU(W5)를 O1·O6으로 개선: 중용량 5G·eSIM 듀얼심·B2B 회선으로 ARPU 믹스 상향 <strong>WO3</strong> 법인 이원화 비용(W7) 해소: 전산·CS 통합으로 감면+도매대가 효과를 원가 절감으로 온전히 전환</td>
+</tr>
+<tr>
+<td><strong>T (위협)</strong></td>
+<td><strong>ST1</strong> 리텐션 방어(T1·T2 대응): 감면 재원(S5)을 신규 보조금이 아닌 <strong>장기고객 자동 할인·평판 1위(S2) 기반 멤버십</strong>에 투입 — 이탈 48% 국면에서 잔존율이 곧 이익 <strong>ST2</strong> 미디어로그 저가 공세(T4)에 가격 매칭 대신 3사망·CS 신뢰(S1·S2)로 비가격 대응 — 소모전 회피 <strong>ST3</strong> 사후규제 전환(T3) 대비: 자체 전산(S3) 기반 선구매 물량 커밋 능력 축적 + 업계 공동 협상 주도</td>
+<td><strong>WT1</strong> ★재무 최우선: 계속기업 불확실성(W1)+시장 역풍(T1)이 겹치면 조달 창구가 닫힘 — 101억 투자 유치 시 <strong>용처를 마케팅이 아닌 손익분기 방어·전산 통합에 우선 배분</strong>, 분기 흑자 조기 복귀로 감사 강조사항 해소가 모든 전략의 전제 <strong>WT2</strong> 1Q26식 공격 마케팅(W2)을 T1 국면에서 반복 금지 — CAC 회수기간 상한(예: 12개월) 규율 도입 <strong>WT3</strong> CB 오버행(W4) 관리: 실적 가시성 확보 전 추가 전환성 조달 자제</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">09</span><div class="sess-title">8. 경쟁 우위 기회 (차별화 기회)</div></div>
+<ol>
+<li><strong>"국내 유일 3사망" 신뢰 포지셔닝 — 망 선택권의 상품화</strong>: SKT 해킹(2025) 이후 소비자가 처음으로 '망 자체의 리스크'를 인식. 위약금 없는 망 전환 보장, 망별 품질 비교 공시 등으로 "통신사가 아니라 프리티를 선택하면 망은 언제든 바꿀 수 있다"는 카테고리 재정의. 경쟁사 중 모방 가능한 곳이 구조적으로 없음(자회사는 자사망 종속).</li>
+<li><strong>감면 원가를 '리텐션'에 재투자하는 장기고객 우대 모델</strong>: '27년 전파사용료 90% 감면(연 27억 추정)은 자회사가 못 갖는 원가 격차. 이를 신규 유치 출혈이 아닌 <strong>장기 사용 자동 할인·위약 없는 락인</strong>에 투입하면, 이탈 의향 48% 국면에서 순유출 방어와 이익률을 동시에 지키는 유일한 수. (신규 CAC 경쟁은 미디어로그·MNO 보조금과 정면 충돌 — 회피)</li>
+<li><strong>독립계 통합(consolidation) 주도자</strong>: 중소 40여 사 상당수 적자(과기정통부 2026.6) → 매물화 진행. 자체 빌링·개통 전산을 가진 프리티는 소형사 가입자 이관·위탁운영(MVNE)의 최적 인수 플랫폼. 15~25만 규모 2~3개사 통합 시 100만 회선(점유율 10%)에 도달해 자회사와 협상 테이블이 달라짐. 단, W1(재무) 해소가 선행 조건.</li>
+<li><strong>외국인·eSIM·B2B 니치의 ARPU 상향</strong>: 선불·해외유심 노하우 + eSIM 듀얼심(세컨드 회선) + B2B/M2M은 MNO 다이렉트가 침투하지 않는 저경합 구간. 저ARPU 체질(1.37만 역산) 개선의 현실적 경로.</li>
+<li><strong>금융권과의 적대 아닌 제휴</strong>: KB(성장 정체)·토스(수익성 부담)는 통신 운영 역량이 필요 — 프리티 전산·운영을 백엔드로 제공하는 B2B2C 제휴는 경쟁을 매출로 전환하는 옵션.</li>
+</ol>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">10</span><div class="sess-title">9. 소비자 분석가 전달 사항 (경쟁사별 고객 평판·불만 포인트)</div></div>
+<ol>
+<li><strong>프리티(자사)</strong>: 모요 평점 4.3(리뷰 1,604건) — "가성비" 긍정 지배적이나, <strong>사용량 조회 등 셀프서비스 불편·프로모션 할인 기간 짧음(만료 후 이탈)</strong>이 반복 불만. 브랜드평판 1위(2026.6)는 커뮤니티지수(305,309)가 견인 — 커뮤니티 화제성과 실사용 만족의 괴리 여부 검증 요망. 프로모션 만료 시점 이탈률과 CS(망별 3개 고객센터 분산) 경험을 집중 조사해 주세요.</li>
+<li><strong>자회사군</strong>: KT엠모바일은 '안정 품질·AS 연계'로 평판 최상위 상시권(2026.4 1위) — 다만 "알뜰폰치고 비싸다"는 가격 불만 존재. SK세븐모바일은 <strong>SKT 해킹 여파로 신뢰 훼손</strong> 전이 여부(세븐모바일 이탈 → 어디로 갔는지)가 핵심 조사 포인트. 미디어로그는 규모 2위인데 브랜드평판 14위(2026.6) — 저가 유치 후 만족도 관리 실패 가설 검증 요망.</li>
+<li><strong>금융권·MNO 다이렉트</strong>: 토스모바일은 "편리하지만 알뜰하진 않다"(디지털데일리 사용기) — UX 만족 vs 가격 불만 공존, 2030의 UX 기대 기준점. KB리브는 금융 결합 조건 복잡성 불만 여부 확인 요망. MNO 다이렉트(에어·요고·너겟)는 유튜브 프리미엄·OTT·포인트 혜택의 <strong>체감 가치가 알뜰폰 가격 격차를 상쇄하는지</strong>(48% 이탈 의향의 실제 트리거)를 정량 확인해 주세요.</li>
+</ol>
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">11</span><div class="sess-title">10. 트렌드 분석가 전달 사항 (경쟁사 전략 변화·진입/철수 동향)</div></div>
+<ol>
+<li><strong>MNO의 협공 구도 완성 — 추적 최우선</strong>: 2025.10 SKT '에어' 출시로 3사 다이렉트 브랜드(에어·요고·너겟) 삼각 구도 완성 + 단통법 폐지 보조금. MNO가 '위(보조금 단말 결합)'와 '아래(다이렉트 요금제)' 양쪽에서 알뜰폰을 협공하는 구조가 2026년 순유출의 원인 — 다이렉트 3브랜드의 가입자 성장 속도와 요금 인하 추가 여부를 추적해 주세요.</li>
+<li><strong>자회사·금융권의 성장 의지 약화 신호</strong>: KT엠모바일 외 자회사 전반 수익성 악화(SK텔링크 구조조정, 미디어로그 적자 확대), KB리브 2년간 순증 1만 명 정체·누적 적자 600억. 점유율 60% 제한법(법사위 계류) 처리 결과와 맞물려 <strong>자회사군이 '점유율 방어 모드'로 전환하는지</strong>가 독립계 기회의 크기를 결정 — 입법 경과와 자회사 마케팅 강도를 함께 추적 요망.</li>
+<li><strong>독립계 구조조정·통폐합 개시 여부</strong>: 중소사 상당수 적자(과기정통부 2026.6 공식 언급) + 전파사용료 90% 감면('27)이라는 상반된 힘. 감면 시행 전(2026 하반기)이 소형사 매물이 가장 싸게 나오는 구간일 수 있음 — 사업자 등록 반납·M&amp;A·가입자 이관 사례, 그리고 프리티 최대주주 변경(KS인더스트리) 이후 자본 전략 방향을 모니터링해 주세요.</li>
+</ol>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">12</span><div class="sess-title">부록: 데이터 제한 고지</div></div>
+<ul>
+<li>사업자별 가입자 수는 과기정통부가 정기 공표하지 않아 언론(머니투데이 2025.3.29)·커뮤니티 집계(2025.4, 과기정통부 자료 명기)를 사용 — 시점 혼재(2024.12~2025.4) 및 선불/IoT 포함 범위 불확실성 존재. 점유율 추정 오차 ±1%p 감안.</li>
+<li>DART 원문 직접 대조는 미완(OpenAPI 키 부재). KT엠모바일·SK텔링크 수치는 감사보고서를 원천으로 하는 기업정보 플랫폼(캐치)·언론 인용. research-reviewer가 DART에서 KT엠모바일·SK텔링크·미디어로그 2025 감사보고서(2026.3~4 공시분) 및 프리티 1Q26 분기보고서 부문 손익을 최종 확인 권장.</li>
+<li>토스모바일·우리WON 가입자는 2024말~2025 상반기 보도 기준, 이후 변동 가능.</li>
+</ul>
+<h3>주요 출처</h3>
+<ul>
+<li>가입자: 머니투데이(2025.3.29, 54개사 분석), 알뜰폰 커뮤니티 집계(2025.4, 과기정통부 자료 기준), 아시아투데이(2025.7.23, KB 43.7만), 아이티데일리(금융권 66만)</li>
+<li>재무: 캐치 KT엠모바일 재무평가(2024 감사 기준 3,455.8억·95.8억), 뉴스웨이(2026.6.22, SK텔링크), 머니투데이(2025.3.16, 미디어로그 적자), 디지털포스트(KB 누적적자 600억)</li>
+<li>프리티: freet.co.kr, 모요 프리티 페이지(평점 4.3·약 70만), 톱스타뉴스(상호변경), 아시아경제(2024.5.22), 일간투데이·이넷뉴스(2026.6 브랜드평판 1위)</li>
+<li>간접경쟁: 다음/헤럴드(2025.10.26, 에어·요고·너겟), 비즈한국(너겟 분석), 유진투자증권(2025.2.4 통신서비스)</li>
+<li>시장: 딜사이트(자회사 47.0%), 아주경제(2026.6.2 순유출), 더스쿠프(2026.5.26 이탈 의향 48%)</li>
+</ul></section></div></div></body></html>

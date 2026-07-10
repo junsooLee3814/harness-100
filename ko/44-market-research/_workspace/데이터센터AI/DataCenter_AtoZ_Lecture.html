@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>데이터센터 A to Z — 투자심사역 입문 강의교재</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04),0 14px 32px rgba(20,30,60,.07);
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA;--orange-bg2:#F9D8BC;--orange-bd:#F5CDA6;--orange-ac:#EA6A17;--orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+  --tab-h:52px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── TAB BAR ── */
+.tabbar-wrap{
+  position:sticky; top:0; z-index:50;
+  background:#fff; border-bottom:2px solid var(--navy);
+  box-shadow:0 2px 12px rgba(20,40,80,.10);
+}
+.tabbar{
+  display:flex; overflow-x:auto; scrollbar-width:none;
+  max-width:960px; margin:0 auto; padding:0 10px;
+}
+.tabbar::-webkit-scrollbar{display:none}
+.tab-btn{
+  flex:0 0 auto; display:inline-flex; align-items:center; gap:6px;
+  height:var(--tab-h); padding:0 14px;
+  border:0; border-bottom:3px solid transparent; background:none; cursor:pointer;
+  font-family:inherit; font-size:13px; font-weight:700; color:var(--muted);
+  white-space:nowrap; letter-spacing:-.01em;
+  transition:color .15s, border-color .15s, background .15s;
+  margin-bottom:-2px;
+}
+.tab-btn:hover{ color:var(--navy); background:var(--navy-bg); }
+.tab-btn.active{ color:var(--navy); border-bottom-color:var(--navy); background:var(--navy-bg); }
+.tab-num{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:20px; height:20px; border-radius:6px;
+  font-size:11px; font-weight:800; flex:0 0 auto;
+}
+.tab-btn.active .tab-num{ background:var(--navy); color:#fff; }
+.tab-btn:not(.active) .tab-num{ background:var(--line); color:var(--muted); }
+
+/* ── PANEL WRAPPER ── */
+.panels{ max-width:960px; margin:0 auto; padding:28px 18px 80px; }
+.panel{ display:none; animation:fadeIn .2s ease; }
+.panel.active{ display:block; }
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ── COVER ── */
+.cover{
+  background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:32px 36px 28px; margin:0 0 20px;
+}
+.eyebrow{ font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--navy); margin-bottom:16px; }
+.cover h1{ font-size:clamp(26px,4.5vw,42px); line-height:1.12; font-weight:800; color:var(--navy); margin:0 0 7px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(14px,2.2vw,17px); font-weight:700; color:var(--navy); margin-bottom:13px; }
+.cover-lede{ font-size:clamp(13.5px,1.9vw,15.5px); color:var(--muted); font-weight:500; margin:0 0 20px; max-width:58ch; }
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:7px; background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:7px; }
+.cm{ border-radius:12px; padding:11px 13px; display:flex; flex-direction:column; gap:3px; border:1px solid transparent; }
+.cm-k{ font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+.cm-v{ font-size:13px; font-weight:800; }
+.cm:nth-child(4n+1){background:var(--sky-bg);border-color:var(--sky-bd);color:var(--sky-dp)}
+.cm:nth-child(4n+2){background:var(--orange-bg);border-color:var(--orange-bd);color:var(--orange-dp)}
+.cm:nth-child(4n+3){background:var(--violet-bg);border-color:var(--violet-bd);color:var(--violet-dp)}
+.cm:nth-child(4n+4){background:var(--amber-bg);border-color:var(--amber-bd);color:var(--amber-dp)}
+
+/* ── SECTION HEADER ── */
+.sec-head{
+  display:flex; align-items:flex-start; gap:14px; margin:0 0 18px;
+  padding:18px 22px; background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:14px;
+}
+.sec-badge{
+  flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center;
+  min-width:44px; height:44px; border-radius:12px; padding:0 10px;
+  background:var(--navy); color:#fff; font-size:12px; font-weight:800; letter-spacing:.03em;
+}
+.sec-info{ flex:1; }
+.sec-info h2{ margin:0 0 3px; font-size:clamp(17px,2.5vw,21px); font-weight:800; color:var(--navy); line-height:1.2; }
+.sec-info p{ margin:0; font-size:13.5px; color:var(--muted); font-weight:500; }
+
+/* ── CARD ── */
+.card{
+  --c-bg:#fff;--c-bg2:#F4F6FB;--c-bd:var(--line);--c-ac:var(--accent);--c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:22px 24px 20px; margin:14px 0;
+  box-shadow:var(--shadow-md); overflow:hidden;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); }
+.card--sky   {--c-bg:var(--sky-bg);   --c-bg2:var(--sky-bg2);   --c-bd:var(--sky-bd);   --c-ac:var(--sky-ac);   --c-dp:var(--sky-dp)}
+.card--orange{--c-bg:var(--orange-bg);--c-bg2:var(--orange-bg2);--c-bd:var(--orange-bd);--c-ac:var(--orange-ac);--c-dp:var(--orange-dp)}
+.card--violet{--c-bg:var(--violet-bg);--c-bg2:var(--violet-bg2);--c-bd:var(--violet-bd);--c-ac:var(--violet-ac);--c-dp:var(--violet-dp)}
+.card--amber {--c-bg:var(--amber-bg); --c-bg2:var(--amber-bg2); --c-bd:var(--amber-bd); --c-ac:var(--amber-ac); --c-dp:var(--amber-dp)}
+.card--mint  {--c-bg:var(--mint-bg);  --c-bg2:var(--mint-bg2);  --c-bd:var(--mint-bd);  --c-ac:var(--mint-ac);  --c-dp:var(--mint-dp)}
+
+.card-title{ font-size:16px; font-weight:800; color:var(--c-dp); margin:0 0 12px; }
+
+/* ── TYPOGRAPHY ── */
+h3{ font-size:15.5px; font-weight:800; color:var(--c-dp,var(--ink)); letter-spacing:-.01em; margin:20px 0 9px; line-height:1.35; }
+p{ margin:0 0 11px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.85em; background:var(--accent-soft); color:var(--accent-ink); padding:.14em .45em; border-radius:5px; font-weight:600; }
+
+/* ── MODULE HEAD ── */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac); border-radius:9px; padding:9px 13px; margin:12px 0 7px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:14.5px; color:var(--ink); }
+
+/* ── LISTS ── */
+ul,ol{ margin:5px 0 13px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:20px; margin:6px 0; line-height:1.65; }
+ul>li::before{ content:""; position:absolute; left:4px; top:.67em; width:6px; height:6px; border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol>li{ padding-left:28px; counter-increment:li; }
+ol>li::before{ content:counter(li); position:absolute; left:0; top:.06em; width:20px; height:20px; background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:4px 0 3px; }
+li ul>li{ padding-left:17px; }
+li ul>li::before{ width:5px; height:5px; background:var(--faint); top:.63em; }
+ul>li.check{ padding-left:26px; }
+ul>li.check::before{ content:""; left:1px; top:.3em; width:14px; height:14px; border-radius:4px; border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ── TABLES ── */
+.tbl-wrap{ overflow:hidden; margin:11px 0 15px; border:1px solid var(--c-bd,var(--line)); border-radius:11px; background:#fff; box-shadow:var(--shadow-sm); overflow-x:auto; }
+table{ width:100%; border-collapse:collapse; font-size:13.5px; min-width:480px; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800; text-align:left; font-size:12px; padding:10px 12px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:9px 12px; border-bottom:1px solid var(--line2); vertical-align:top; line-height:1.58; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); white-space:nowrap; }
+
+/* ── CALLOUTS ── */
+.callout{ display:flex; gap:10px; align-items:flex-start; margin:12px 0; padding:12px 14px; border-radius:11px; font-size:14px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:21px; height:21px; border-radius:6px; color:#fff; font-size:12px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:2px; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody p{ margin:0 0 5px; } .callout .cbody p:last-child{ margin:0; }
+.callout.info{ background:var(--sky-bg); border-color:var(--sky-bd); color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{ background:var(--amber-bg); border-color:var(--amber-bd); color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{ background:var(--mint-bg); border-color:var(--mint-bd); color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg); border-color:var(--peach-bd); color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* ── BADGE ROW ── */
+.badge-row{ display:flex; flex-wrap:wrap; gap:7px; margin:9px 0; }
+.badge{ display:inline-flex; align-items:center; padding:5px 11px; border-radius:18px; font-size:12.5px; font-weight:700; border:1px solid transparent; }
+.badge.sky{background:var(--sky-bg);border-color:var(--sky-bd);color:var(--sky-dp)}
+.badge.orange{background:var(--orange-bg);border-color:var(--orange-bd);color:var(--orange-dp)}
+.badge.violet{background:var(--violet-bg);border-color:var(--violet-bd);color:var(--violet-dp)}
+.badge.amber{background:var(--amber-bg);border-color:var(--amber-bd);color:var(--amber-dp)}
+.badge.mint{background:var(--mint-bg);border-color:var(--mint-bd);color:var(--mint-dp)}
+
+/* ── BLOCK LABEL ── */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp); margin:16px 0 7px; display:flex; align-items:center; gap:6px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* ── STAT GRID ── */
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:9px; margin:12px 0; }
+.stat-box{ background:rgba(255,255,255,.7); border:1px solid var(--c-bd); border-radius:11px; padding:13px 14px; }
+.stat-box .sk{ font-size:11px; font-weight:800; letter-spacing:.04em; color:var(--muted); text-transform:uppercase; margin-bottom:3px; }
+.stat-box .sv{ font-size:clamp(18px,2.8vw,26px); font-weight:900; color:var(--c-dp); line-height:1; }
+.stat-box .sd{ font-size:12px; color:var(--text); margin-top:3px; font-weight:500; }
+
+/* ── CHAIN FLOW ── */
+.chain{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:12px 0; }
+.chain-step{ background:#fff; border:1px solid var(--c-bd); border-radius:9px; padding:7px 13px; font-size:13px; font-weight:700; color:var(--c-dp); }
+.chain-arrow{ color:var(--c-ac); font-weight:800; font-size:16px; }
+
+/* ── NAV ARROWS (prev / next) ── */
+.panel-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:28px; padding-top:20px; border-top:1px solid var(--line); gap:10px; }
+.nav-btn{ display:inline-flex; align-items:center; gap:6px; padding:10px 18px; border:1px solid var(--navy-bd); border-radius:10px; background:var(--navy-bg); color:var(--navy); font-family:inherit; font-size:13.5px; font-weight:700; cursor:pointer; transition:background .14s,box-shadow .14s; }
+.nav-btn:hover{ background:var(--navy-bg2); box-shadow:0 2px 8px rgba(20,40,80,.12); }
+.nav-btn:disabled{ opacity:.3; cursor:default; pointer-events:none; }
+.nav-btn.next{ margin-left:auto; }
+.nav-pos{ font-size:12.5px; color:var(--muted); font-weight:600; }
+
+/* ── SCROLL TOP ── */
+.to-top{ position:fixed; right:20px; bottom:20px; width:44px; height:44px; border:0; border-radius:50%; cursor:pointer; background:var(--navy); color:#fff; font-size:18px; font-weight:800; line-height:1; box-shadow:0 4px 14px rgba(20,40,90,.28); opacity:0; visibility:hidden; transform:translateY(6px); transition:opacity .2s,transform .2s,visibility .2s; z-index:60; }
+.to-top.show{ opacity:1; visibility:visible; transform:translateY(0); }
+
+@media(max-width:680px){
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .panels{ padding:18px 12px 64px; }
+  .tab-btn{ padding:0 10px; font-size:12px; }
+}
+@media print{
+  .tabbar-wrap{ position:static; box-shadow:none; }
+  .panel{ display:block !important; }
+  .panel-nav,.to-top{ display:none; }
+  .panels{ padding:0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ TAB BAR ══════════════ -->
+<div class="tabbar-wrap">
+  <div class="tabbar" role="tablist">
+    <button class="tab-btn active" data-tab="0" role="tab"><span class="tab-num">★</span>표지</button>
+    <button class="tab-btn" data-tab="1" role="tab"><span class="tab-num">1</span>DC란?</button>
+    <button class="tab-btn" data-tab="2" role="tab"><span class="tab-num">2</span>일반 vs AI</button>
+    <button class="tab-btn" data-tab="3" role="tab"><span class="tab-num">3</span>밸류체인</button>
+    <button class="tab-btn" data-tab="4" role="tab"><span class="tab-num">4</span>전력·냉각</button>
+    <button class="tab-btn" data-tab="5" role="tab"><span class="tab-num">5</span>비즈니스</button>
+    <button class="tab-btn" data-tab="6" role="tab"><span class="tab-num">6</span>국내 시장</button>
+    <button class="tab-btn" data-tab="7" role="tab"><span class="tab-num">7</span>메가프로젝트</button>
+    <button class="tab-btn" data-tab="8" role="tab"><span class="tab-num">8</span>플레이어</button>
+    <button class="tab-btn" data-tab="9" role="tab"><span class="tab-num">9</span>체크리스트</button>
+    <button class="tab-btn" data-tab="10" role="tab"><span class="tab-num">10</span>리스크·전략</button>
+    <button class="tab-btn" data-tab="11" role="tab"><span class="tab-num">사</span>용어 사전</button>
+  </div>
+</div>
+
+<!-- ══════════════ PANELS ══════════════ -->
+<div class="panels">
+
+<!-- ────────── 탭 0: 표지 + TL;DR ────────── -->
+<div class="panel active" data-panel="0">
+  <div class="cover">
+    <div class="eyebrow">투자심사역 입문 강의교재 · 2026년 7월</div>
+    <h1>데이터센터 A to Z</h1>
+    <p class="cover-sub">고등학생도 이해할 수 있는 핵심 개념 → 실전 투자심사 체크리스트까지 10강 완성</p>
+    <p class="cover-lede">일반 데이터센터와 AI 데이터센터의 차이, 국내 시장 현황, 삼성·SK 4,755조원 3대 메가프로젝트 분석, 그리고 투자심사역이 반드시 알아야 할 체크리스트를 한 권에 담았습니다.</p>
+    <div class="cover-meta">
+      <div class="cm"><span class="cm-k">대상</span><span class="cm-v">투자심사역 · 입문자</span></div>
+      <div class="cm"><span class="cm-k">강의 수</span><span class="cm-v">10강 + 용어사전</span></div>
+      <div class="cm"><span class="cm-k">레퍼런스</span><span class="cm-v">메가프로젝트 4,755조</span></div>
+      <div class="cm"><span class="cm-k">기준일</span><span class="cm-v">2026. 07. 01</span></div>
+    </div>
+  </div>
+
+  <div class="sec-head">
+    <span class="sec-badge">TL;DR</span>
+    <div class="sec-info"><h2>이 교재의 핵심 메시지 3가지</h2><p>10강 전체를 관통하는 요점 요약</p></div>
+  </div>
+  <div class="card card--sky">
+    <ol>
+      <li><strong>데이터센터 = 인터넷의 심장</strong>. 카카오톡 메시지 하나, 유튜브 영상 하나 뒤에는 모두 데이터센터가 있다. AI가 등장하면서 이 심장의 크기와 전력 소비가 10~100배 커졌다.</li>
+      <li><strong>일반 DC와 AI DC는 근본적으로 다르다</strong>. 같은 '데이터센터'지만 쓰는 칩·전력량·냉각 방식·사업 모델이 완전히 다르다. 투자심사 시 반드시 구분해야 한다.</li>
+      <li><strong>한국은 AI DC 투자 역사상 최대 사이클에 진입했다</strong>. 삼성·SK 4,755조원 메가프로젝트와 AI DC 1단계 550조 착공이 2026~2029년에 집중된다. <em>전력기기 → 반도체 장비 → AI 인프라</em> 순서로 투자 기회가 열린다.</li>
+    </ol>
+    <div class="callout tip"><span class="ico">→</span><div class="cbody"><p>탭을 클릭하거나 하단 <strong>다음 강 →</strong> 버튼으로 이동하세요. 9강 체크리스트는 실전에서 바로 꺼내 쓸 수 있습니다.</p></div></div>
+  </div>
+
+  <div class="card card--amber">
+    <p class="card-title">📋 강의 구성 한눈에 보기</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>강</th><th>제목</th><th>핵심 내용</th></tr></thead>
+      <tbody>
+        <tr><td>1강</td><td>데이터센터란?</td><td>쉬운 비유, 6대 구성요소, 3가지 유형</td></tr>
+        <tr><td>2강</td><td>일반 DC vs AI DC</td><td>비교표, GPU 설명, 전력 규모 체감</td></tr>
+        <tr><td>3강</td><td>산업 밸류체인</td><td>반도체 → 서버 → 인프라 → 운영 → 서비스</td></tr>
+        <tr><td>4강</td><td>전력·냉각·부지</td><td>PUE, 액침냉각, 부지 선정 6대 조건</td></tr>
+        <tr><td>5강</td><td>비즈니스 모델</td><td>코로케이션·하이퍼스케일·BTO, 핵심 KPI</td></tr>
+        <tr><td>6강</td><td>국내 시장 현황</td><td>2025→2030 성장 전망, 주요 사업자</td></tr>
+        <tr><td>7강</td><td>3대 메가프로젝트</td><td>삼성 2,655조 + SK 2,100조, AI DC 로드맵</td></tr>
+        <tr><td>8강</td><td>핵심 플레이어 지도</td><td>6개 카테고리, 단계별 수혜 기업</td></tr>
+        <tr><td>9강</td><td>투자심사 체크리스트</td><td>6개 영역 40항목 (전력·수요·재무·규제)</td></tr>
+        <tr><td>10강</td><td>리스크 &amp; 투자 아이디어</td><td>5대 리스크, 3단계 트리거 전략</td></tr>
+        <tr><td>부록</td><td>용어 사전 30선</td><td>랙·GW·PUE·HBM·CAPEX 등</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" disabled>← 이전</button>
+    <span class="nav-pos">표지 / 12</span>
+    <button class="nav-btn next" data-go="1">1강: 데이터센터란? →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 1: 데이터센터란? ────────── -->
+<div class="panel" data-panel="1">
+  <div class="sec-head">
+    <span class="sec-badge">1강</span>
+    <div class="sec-info"><h2>데이터센터란 무엇인가?</h2><p>고등학생도 이해할 수 있는 기초 개념</p></div>
+  </div>
+
+  <div class="card card--orange">
+    <p class="card-title">쉬운 비유 — 디지털 도시의 발전소</p>
+    <div class="callout info"><span class="ico">📦</span><div class="cbody">
+      <p><strong>데이터센터(DC) = 인터넷의 창고 + 공장 + 발전소</strong><br>
+      우리가 카카오톡 메시지를 보내면 그 메시지를 받아서 처리하고, 저장하고, 상대방에게 보내는 컴퓨터가 필요하다. 그 컴퓨터(서버)들이 수천~수만 대 모여 있는 건물이 데이터센터다.</p>
+    </div></div>
+    <div class="badge-row">
+      <span class="badge sky">📱 우리 앱 → 서버 요청</span>
+      <span class="badge orange">🏭 서버가 처리</span>
+      <span class="badge violet">💾 저장 후 응답</span>
+      <span class="badge mint">✅ 화면에 표시</span>
+    </div>
+  </div>
+
+  <div class="card card--sky">
+    <p class="card-title">데이터센터 안에 있는 것들</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>구성 요소</th><th>역할</th><th>쉬운 비유</th></tr></thead>
+      <tbody>
+        <tr><td>서버(Server)</td><td>계산·처리·저장 담당 컴퓨터</td><td>공장의 기계</td></tr>
+        <tr><td>스토리지(Storage)</td><td>데이터 장기 보관 장치</td><td>공장의 창고</td></tr>
+        <tr><td>네트워크 장비</td><td>데이터를 고속으로 주고받는 장치</td><td>공장의 고속도로</td></tr>
+        <tr><td>전력 설비(UPS·변압기)</td><td>서버에 안정적 전기 공급</td><td>공장의 전기실</td></tr>
+        <tr><td>냉각 설비(공조기·냉각탑)</td><td>뜨거워지는 서버를 식힘</td><td>공장의 에어컨</td></tr>
+        <tr><td>보안 시스템</td><td>물리적·사이버 침입 차단</td><td>공장의 경비실</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card card--violet">
+    <p class="card-title">규모별 3가지 유형</p>
+    <ul>
+      <li><strong>엔터프라이즈 DC</strong> — 기업이 자체 건물에 직접 구축·운영. 삼성전자 사내 전산실이 대표적.</li>
+      <li><strong>코로케이션(Colo) DC</strong> — DC 사업자가 건물·전력·냉각을 제공하고, 고객이 자기 서버를 가져와 설치. KT IDC, 에퀴닉스가 대표. <em>호텔에서 방을 임대해 주는 것</em>과 같음.</li>
+      <li><strong>하이퍼스케일 DC</strong> — 아마존(AWS)·구글·마이크로소프트·네이버가 수십만 대의 서버를 직접 운영. 한 건물이 서울 월드컵경기장보다 크기도 함.</li>
+    </ul>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="0">← 표지</button>
+    <span class="nav-pos">1강 / 12</span>
+    <button class="nav-btn next" data-go="2">2강: 일반 vs AI DC →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 2: 일반 DC vs AI DC ────────── -->
+<div class="panel" data-panel="2">
+  <div class="sec-head">
+    <span class="sec-badge">2강</span>
+    <div class="sec-info"><h2>일반 DC vs AI 데이터센터</h2><p>같은 이름, 완전히 다른 동물</p></div>
+  </div>
+
+  <div class="card card--violet">
+    <div class="callout note"><span class="ico">💡</span><div class="cbody">
+      <p><strong>핵심 차이 한 줄:</strong> 일반 DC는 "데이터를 저장·전달"하는 창고, AI DC는 "AI를 학습·실행"하는 초전력 공장. GPU 한 장이 소비하는 전기가 에어컨 10대와 맞먹는다.</p>
+    </div></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>구분</th><th>일반 데이터센터</th><th>AI 데이터센터</th></tr></thead>
+      <tbody>
+        <tr><td>핵심 칩</td><td>CPU (인텔·AMD)</td><td>GPU·NPU (엔비디아·삼성·리벨리온)</td></tr>
+        <tr><td>주요 용도</td><td>웹서버, 이메일, 앱 서비스, DB</td><td>AI 학습(Training), AI 추론(Inference)</td></tr>
+        <tr><td>전력 밀도</td><td>5~10kW / 랙</td><td>100~400kW / 랙 (20~80배!)</td></tr>
+        <tr><td>총 전력 규모</td><td>5MW~100MW</td><td>100MW~수GW (도시급)</td></tr>
+        <tr><td>냉각 방식</td><td>공랭 (에어컨)</td><td>수랭·액침냉각 (물·오일에 서버를 담금)</td></tr>
+        <tr><td>투자 규모</td><td>수백억~수천억원</td><td>수조~수십조원</td></tr>
+        <tr><td>건설 기간</td><td>1~2년</td><td>3~5년 (전력망 구축 포함)</td></tr>
+        <tr><td>수익 모델</td><td>랙·용량 임대 ($/kW)</td><td>GPU 클러스터 임대 ($/GPU·시간)</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card card--sky">
+    <p class="card-title">GPU란 무엇인가? — 문과생을 위한 설명</p>
+    <div class="module-head"><strong>CPU vs GPU 비유</strong> — CPU는 영리한 교수님 1명, GPU는 평범한 학생 1만 명</div>
+    <ul>
+      <li><strong>CPU</strong>: 복잡한 계산을 순서대로 빠르게 처리. 엑셀·워드·웹브라우저 전부 CPU 담당.</li>
+      <li><strong>GPU</strong>: 단순한 계산을 동시에 수만 개 병렬 처리. 원래 게임 그래픽용이었으나, AI 학습이 "단순 계산을 엄청나게 반복"하는 작업이라 GPU가 딱 맞음.</li>
+      <li><strong>엔비디아 H100 1장 가격</strong>: 약 3,000~5,000만원. ChatGPT 학습에 H100 수만 장 필요.</li>
+      <li><strong>HBM(고대역폭메모리)</strong>: GPU 옆에 붙는 초고속 메모리. SK하이닉스 세계 1위. AI DC의 핵심 부품.</li>
+    </ul>
+  </div>
+
+  <div class="card card--amber">
+    <p class="card-title">AI DC 전력 규모 체감</p>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="sk">AI DC 1GW 소비 전력</div><div class="sv">서울 70만 세대</div><div class="sd">가정집 전기 기준</div></div>
+      <div class="stat-box"><div class="sk">SK 계획 AI DC</div><div class="sv">2029년 5GW</div><div class="sd">한국 총 전력의 ~8%</div></div>
+      <div class="stat-box"><div class="sk">PUE 목표</div><div class="sv">1.2 이하</div><div class="sd">1.0 = 완벽, 1.5 = 낭비</div></div>
+      <div class="stat-box"><div class="sk">서버 1랙 전력 (AI)</div><div class="sv">최대 400kW</div><div class="sd">가정 40세대 사용량</div></div>
+    </div>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="1">← 1강: DC란?</button>
+    <span class="nav-pos">2강 / 12</span>
+    <button class="nav-btn next" data-go="3">3강: 밸류체인 →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 3: 산업 밸류체인 ────────── -->
+<div class="panel" data-panel="3">
+  <div class="sec-head">
+    <span class="sec-badge">3강</span>
+    <div class="sec-info"><h2>산업 밸류체인 전도</h2><p>돈은 어디서 어떻게 흐르는가? — 5단계 구조</p></div>
+  </div>
+
+  <div class="card card--sky">
+    <div class="chain">
+      <div class="chain-step">① 반도체·칩</div><div class="chain-arrow">→</div>
+      <div class="chain-step">② 서버·장비</div><div class="chain-arrow">→</div>
+      <div class="chain-step">③ DC 인프라</div><div class="chain-arrow">→</div>
+      <div class="chain-step">④ DC 운영사</div><div class="chain-arrow">→</div>
+      <div class="chain-step">⑤ AI 서비스</div>
+    </div>
+
+    <div class="block-label">① 반도체·칩 — 데이터센터의 두뇌</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>품목</th><th>세계 주요 플레이어</th><th>한국 플레이어</th><th>특이사항</th></tr></thead>
+      <tbody>
+        <tr><td>GPU (AI 학습용)</td><td>엔비디아(90%+), AMD</td><td>리벨리온, 퓨리오사AI (초기)</td><td>엔비디아 사실상 독점</td></tr>
+        <tr><td>HBM (고대역폭메모리)</td><td>SK하이닉스·삼성·마이크론</td><td>SK하이닉스(세계 1위), 삼성전자</td><td>AI DC 없이는 불가능한 부품</td></tr>
+        <tr><td>일반 DRAM·SSD</td><td>삼성·SK하이닉스·마이크론</td><td>삼성전자, SK하이닉스</td><td>DC 전반에 필수</td></tr>
+        <tr><td>NPU (추론 전용칩)</td><td>구글(TPU), 애플, AWS</td><td>삼성엑시노스, 리벨리온</td><td>추론 DC에서 비중 증가</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="block-label">② 서버·네트워크 장비</div>
+    <ul>
+      <li><strong>서버 제조사</strong>: 슈퍼마이크로(미국), 델, HPE, 레노버. GPU 서버는 슈퍼마이크로 강세.</li>
+      <li><strong>네트워크 장비</strong>: 시스코, 주니퍼, 멜라녹스(엔비디아 인수). 서버 간 초고속 통신 담당.</li>
+      <li><strong>광모듈</strong>: 코히런트, 라이브 옵틱스. AI DC 내부 초고속 광통신에 필수.</li>
+    </ul>
+
+    <div class="block-label">③ DC 인프라 — 전력·냉각·건설</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>인프라 종류</th><th>세부 품목</th><th>국내 수혜 기업 (예시)</th></tr></thead>
+      <tbody>
+        <tr><td>전력 설비</td><td>변압기·배전반·UPS·케이블</td><td>현대일렉트릭, LS일렉트릭, LS전선, 대한전선</td></tr>
+        <tr><td>냉각 설비</td><td>공조기·냉각탑·액침냉각 장비</td><td>삼화에이스, 에스피지, 에버온</td></tr>
+        <tr><td>ESS</td><td>배터리 저장·방전</td><td>삼성SDI, LG에너지솔루션, SK온</td></tr>
+        <tr><td>건설(EPC)</td><td>설계·조달·시공 일괄</td><td>현대건설, 삼성물산, 지주SK(034730)</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="block-label">④ DC 운영사 — 직접 돈 버는 곳</div>
+    <ul>
+      <li><strong>하이퍼스케일러</strong>: AWS·Azure·GCP·네이버클라우드 — 클라우드 서비스로 판매.</li>
+      <li><strong>AI DC 개발·운영사</strong>: SK텔레콤, GS AI인프라, KT 클라우드.</li>
+      <li><strong>코로케이션 운영사</strong>: 에퀴닉스·디지털리얼티(미국 상장 DC REIT).</li>
+    </ul>
+
+    <div class="block-label">⑤ AI 서비스 — 최종 수요자</div>
+    <ul>
+      <li>생성AI: OpenAI(ChatGPT), 앤트로픽(클로드), 구글(제미나이), 네이버(하이퍼클로바X)</li>
+      <li>기업 AI 고객: 자율주행·바이오·금융·제조 AI를 개발하는 기업들</li>
+    </ul>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="2">← 2강: 일반 vs AI</button>
+    <span class="nav-pos">3강 / 12</span>
+    <button class="nav-btn next" data-go="4">4강: 전력·냉각·부지 →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 4: 전력·냉각·부지 ────────── -->
+<div class="panel" data-panel="4">
+  <div class="sec-head">
+    <span class="sec-badge">4강</span>
+    <div class="sec-info"><h2>전력·냉각·부지</h2><p>AI DC의 3대 핵심 인프라 — 전력 없으면 AI DC도 없다</p></div>
+  </div>
+
+  <div class="card card--amber">
+    <p class="card-title">① 전력 — AI DC 최대 병목</p>
+    <div class="callout warn"><span class="ico">⚡</span><div class="cbody">
+      <p>AI DC 1GW = 서울 가정집 약 70만 세대의 전력. SK텔레콤 2029년 목표 5GW는 한국 총 발전량의 약 8%다.</p>
+    </div></div>
+    <ul>
+      <li><strong>전력망 포화</strong>: 수도권은 이미 한전 공급 한계. 새 AI DC를 짓고 싶어도 전력을 공급받지 못하는 상황.</li>
+      <li><strong>PPA</strong>: 태양광·풍력 발전소와 직접 장기 전력 구매 계약. 전기값 고정 가능.</li>
+      <li><strong>SMR</strong>: 소형 원전(Small Modular Reactor). 일부 AI DC는 자체 SMR 도입 검토 중.</li>
+      <li><strong>ESS</strong>: 에너지저장장치. 야간에 전기 저장했다가 낮에 DC에 공급.</li>
+      <li><strong>정부 대응</strong>: 2030년 재생에너지 100GW 목표, AI DC 전용 차등 전기요금제 추진.</li>
+    </ul>
+  </div>
+
+  <div class="card card--sky">
+    <p class="card-title">② 냉각 — AI DC의 숨은 핵심 기술</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>냉각 방식</th><th>원리</th><th>장점</th><th>단점</th></tr></thead>
+      <tbody>
+        <tr><td>공랭</td><td>에어컨으로 서버룸 공기 냉각</td><td>저렴, 쉬움</td><td>고밀도 AI DC 부적합</td></tr>
+        <tr><td>수랭</td><td>서버에 직접 물 파이프 연결</td><td>효율 높음</td><td>누수 리스크</td></tr>
+        <tr><td>직접액침냉각</td><td>서버를 절연유(오일)에 통째로 담금</td><td>최고 효율</td><td>비쌈, 유지보수 어려움</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><strong>PUE(전력효율지수)</strong>: <code>총 입력 전력 ÷ IT 장비 전력</code>. 1.0이 완벽, 1.5는 전기의 33%를 냉각에 낭비.</li>
+      <li>글로벌 최신 AI DC 목표: <strong>PUE 1.1~1.2</strong></li>
+    </ul>
+  </div>
+
+  <div class="card card--mint">
+    <p class="card-title">③ 부지 — 아무 땅에나 세울 수 없다</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>조건</th><th>이유</th><th>한국 현황</th></tr></thead>
+      <tbody>
+        <tr><td>충분한 전력 공급</td><td>수GW 전력 연결 필수</td><td>수도권 포화, 비수도권 대안 부상</td></tr>
+        <tr><td>광케이블 접근성</td><td>초저지연 통신 필수</td><td>서울·수도권 유리</td></tr>
+        <tr><td>냉각용 용수</td><td>냉각탑에 대량 물 사용</td><td>가평(GS), 용인(삼성·SK)</td></tr>
+        <tr><td>지진·재해 안전</td><td>데이터 손실 방지</td><td>한반도 북부·내륙 선호</td></tr>
+        <tr><td>기후·기온</td><td>낮은 기온 → 냉각비 절감</td><td>강원도 선호 요인</td></tr>
+        <tr><td>인허가·용도지구</td><td>준공업지역·특수용도 필요</td><td>규제 완화 추진 중</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="3">← 3강: 밸류체인</button>
+    <span class="nav-pos">4강 / 12</span>
+    <button class="nav-btn next" data-go="5">5강: 비즈니스 모델 →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 5: 비즈니스 모델 ────────── -->
+<div class="panel" data-panel="5">
+  <div class="sec-head">
+    <span class="sec-badge">5강</span>
+    <div class="sec-info"><h2>비즈니스 모델과 수익 구조</h2><p>DC 사업에서 돈은 어떻게 버는가?</p></div>
+  </div>
+
+  <div class="card card--mint">
+    <p class="card-title">모델 ① 코로케이션 (Colo) — 방 임대업</p>
+    <ul>
+      <li><strong>원리</strong>: DC 건물과 전력·냉각을 제공하고, 고객이 서버를 직접 들고 와서 설치. 호텔이 방을 임대해 주는 것과 같음.</li>
+      <li><strong>수익</strong>: 랙 단위 임대료 (1랙 = 월 수백만~수천만원), 전력 사용료, 부가 서비스</li>
+      <li><strong>EBITDA 마진</strong>: 글로벌 평균 약 40~50%</li>
+      <li><strong>대표 기업</strong>: 에퀴닉스(미국), 디지털리얼티(미국), KT 클라우드(국내)</li>
+    </ul>
+  </div>
+
+  <div class="card card--sky">
+    <p class="card-title">모델 ② 하이퍼스케일 / 클라우드 — 서비스 판매업</p>
+    <ul>
+      <li><strong>원리</strong>: DC를 직접 짓고 운영하면서, 서버·스토리지·AI 컴퓨팅을 클라우드 서비스로 판매.</li>
+      <li><strong>수익</strong>: 클라우드 요금 (시간당·용량당 과금)</li>
+      <li><strong>대표 기업</strong>: AWS(아마존), Azure(마이크로소프트), GCP(구글), 네이버클라우드</li>
+    </ul>
+  </div>
+
+  <div class="card card--violet">
+    <p class="card-title">모델 ③ BTO / Pre-Leased AI DC — 수요 확보 후 건설</p>
+    <ul>
+      <li><strong>원리</strong>: 대형 AI 기업이 수요를 미리 확정해 주면, DC 개발사가 건설 후 장기 임대. 리스크 가장 낮음.</li>
+      <li><strong>수익</strong>: MW당 연 임대료 (글로벌 $3~8M/MW/년)</li>
+      <li><strong>대표 사례</strong>: SK텔레콤 AI DC — AWS·네이버클라우드와 공동 개발·임차</li>
+    </ul>
+  </div>
+
+  <div class="card card--amber">
+    <p class="card-title">투자심사 핵심 KPI 6종</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>KPI</th><th>의미</th><th>벤치마크</th></tr></thead>
+      <tbody>
+        <tr><td>설비 용량(MW)</td><td>DC가 공급할 수 있는 총 전력</td><td>대형=100MW+, AI DC=1GW+</td></tr>
+        <tr><td>가동률(Utilization)</td><td>실제 임차 비율</td><td>안정적 운영 = 80%+ 목표</td></tr>
+        <tr><td>MW당 임대 수익</td><td>1MW 전력 공급당 연 매출</td><td>글로벌 $3~8M/MW/년</td></tr>
+        <tr><td>EBITDA 마진</td><td>영업 현금 창출 능력</td><td>코로케이션 40~50%</td></tr>
+        <tr><td>임차인 만기 프로필</td><td>계약 잔여 기간 분포</td><td>장기(5~15년) 비중 높을수록 우량</td></tr>
+        <tr><td>PUE</td><td>전력 효율 지수</td><td>1.2 이하 = 우수</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="4">← 4강: 전력·냉각</button>
+    <span class="nav-pos">5강 / 12</span>
+    <button class="nav-btn next" data-go="6">6강: 국내 시장 →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 6: 국내 시장 ────────── -->
+<div class="panel" data-panel="6">
+  <div class="sec-head">
+    <span class="sec-badge">6강</span>
+    <div class="sec-info"><h2>국내 시장 현황</h2><p>얼마나 크고 어떻게 성장하는가?</p></div>
+  </div>
+
+  <div class="card card--orange">
+    <div class="stat-grid">
+      <div class="stat-box"><div class="sk">2025년 국내 DC 시장</div><div class="sv">~6조원</div><div class="sd">코로케이션 + 클라우드 포함</div></div>
+      <div class="stat-box"><div class="sk">2030년 전망</div><div class="sv">~20조원</div><div class="sd">연 20%+ 성장률</div></div>
+      <div class="stat-box"><div class="sk">AI DC 1단계 (2029)</div><div class="sv">8.4GW · 550조</div><div class="sd">SK·GS·네이버 합산</div></div>
+      <div class="stat-box"><div class="sk">AI DC 2단계 (2035)</div><div class="sv">18.4GW · 1,000조+</div><div class="sd">SK 15GW로 확장</div></div>
+    </div>
+  </div>
+
+  <div class="card card--sky">
+    <p class="card-title">국내 주요 AI DC 사업자</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>사업자</th><th>주요 입지</th><th>규모 목표</th><th>특이사항</th></tr></thead>
+      <tbody>
+        <tr><td>SK텔레콤(SK데이터넥서스)</td><td>수도권 2GW·인천 1GW·호남 1GW·중부 1GW</td><td>2029년 5GW → 2035년 15GW</td><td>AWS 공동, '인천 AI 팩토리'</td></tr>
+        <tr><td>GS그룹(GS AI인프라)</td><td>가평 태데 부지 2단지</td><td>2029년 2.4GW</td><td>직접 투자 30조+장비 120조</td></tr>
+        <tr><td>네이버(각 세종)</td><td>인천 중심</td><td>1GW 이상</td><td>자체 클라우드 연계</td></tr>
+        <tr><td>KT 클라우드</td><td>천안, 목천, 서울</td><td>기존 DC 고도화</td><td>통신사 기반 코로케이션 강세</td></tr>
+        <tr><td>삼성SDS</td><td>화성, 전남</td><td>그룹 내부 + 외부</td><td>'서번트 AI' 연계</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card card--mint">
+    <p class="card-title">왜 지금인가? — AI DC 수요 급증 배경</p>
+    <ul>
+      <li><strong>ChatGPT 충격(2022.11)</strong>: AI 서비스의 대중화 → GPU 클러스터 수요 폭발</li>
+      <li><strong>생성AI 경쟁 심화</strong>: OpenAI·구글·메타·네이버 모두 자체 LLM 개발 → GPU 무한 경쟁</li>
+      <li><strong>AI 추론 수요</strong>: 학습만큼이나 '추론(사용자 질문 처리)'도 엄청난 컴퓨팅 필요</li>
+      <li><strong>기업 AI 전환</strong>: 모든 기업이 AI 도입 → B2B AI 서비스 수요도 급증</li>
+    </ul>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="5">← 5강: 비즈니스</button>
+    <span class="nav-pos">6강 / 12</span>
+    <button class="nav-btn next" data-go="7">7강: 메가프로젝트 →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 7: 3대 메가프로젝트 ────────── -->
+<div class="panel" data-panel="7">
+  <div class="sec-head">
+    <span class="sec-badge">7강</span>
+    <div class="sec-info"><h2>3대 메가프로젝트 — 삼성·SK 4,755조원</h2><p>2026.06.29~30 발표 — 사상 최대 민간 투자 로드맵</p></div>
+  </div>
+
+  <div class="card card--violet">
+    <div class="callout info"><span class="ico">📌</span><div class="cbody">
+      <p>정부·삼성·SK가 발표한 '3대 메가프로젝트'는 <strong>반도체·피지컬AI·AI 데이터센터</strong> 3개 축. 삼성그룹 2,655조원 + SK그룹 2,100조원 = 합산 <strong>4,755조원</strong>. 연간 정부 예산의 약 6.5배, GDP의 약 2배에 해당한다.</p>
+    </div></div>
+
+    <h3>① 삼성그룹 2,655조원</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>분야</th><th>투자 규모</th><th>주요 입지</th><th>완공 목표</th></tr></thead>
+      <tbody>
+        <tr><td>반도체 (삼성전자)</td><td>약 2,100조원</td><td>용인 국가산단(6기), 기흥·화성</td><td>2040년 (DART 공시)</td></tr>
+        <tr><td>디스플레이 (삼성디스플레이)</td><td>약 67조원</td><td>아산·충남</td><td>XR 마이크로디스플레이</td></tr>
+        <tr><td>배터리 (삼성SDI)</td><td>충남 천안</td><td>차세대 배터리</td><td>—</td></tr>
+        <tr><td>AI DC (삼성SDS)</td><td>일부 포함</td><td>구미·전남·해외</td><td>서번트 AI 연계</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>② SK그룹 2,100조원</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>분야</th><th>투자 규모</th><th>주요 입지</th><th>특이사항</th></tr></thead>
+      <tbody>
+        <tr><td>SK하이닉스 반도체</td><td>약 1,100조원</td><td>용인 600조·청주 100조·호남 400조</td><td>용인 1기 첫 클린룸 가동 <strong>2027년 2월</strong></td></tr>
+        <tr><td>AI DC (SK텔레콤)</td><td>약 1,000조원</td><td>수도권·인천·호남·중부권</td><td>1단계 5GW·2029년</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout warn"><span class="ico">⚠</span><div class="cbody">
+      <p><strong>주의: 확정 투자 아님.</strong> DART 공시 기준도 "이사회 미승인·변동 가능한 가이드라인". 이사회 공식 승인 → 착공 → 완공 순서로 불확실성이 점차 해소된다.</p>
+    </div></div>
+  </div>
+
+  <div class="card card--amber">
+    <p class="card-title">③ AI DC 단계별 로드맵 (SK·GS·네이버)</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>단계</th><th>시기</th><th>규모</th><th>주요 플레이어</th></tr></thead>
+      <tbody>
+        <tr><td>1단계</td><td>~2029년</td><td>8.4GW · 550조원</td><td>SK 5GW + GS 2.4GW + 네이버 1GW</td></tr>
+        <tr><td>2단계</td><td>~2035년</td><td>18.4GW · 1,000조원+</td><td>SK 5GW→15GW 확장 포함</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>GS그룹 AI DC — 주목해야 할 이유</h3>
+    <ul>
+      <li>가평 태데 부지 2단지 2.4GW: 2028년 1.2GW + 2029년 1.2GW 순차 공급</li>
+      <li>직접 투자 약 30조원, GPU·HBM 등 장비 포함 시 약 120조원</li>
+      <li>법인명 'GS AI인프라' — 재벌 그룹 중 DC에 직접 뛰어든 이례적 사례</li>
+    </ul>
+  </div>
+
+  <div class="card card--mint">
+    <p class="card-title">연도별 타임라인</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>연도</th><th>핵심 이벤트</th><th>수혜 섹터</th></tr></thead>
+      <tbody>
+        <tr><td>2026</td><td>착공, 반도체특별법 시행(8월), 용인 부지조성 착공 목표</td><td>EPC·전력기기·전선</td></tr>
+        <tr><td>2027</td><td>SK 용인 1기 첫 클린룸 가동(2월)</td><td>반도체 전공정 장비·소재</td></tr>
+        <tr><td>2028</td><td>GS 가평 1.2GW 준공, 수도권 10대 허브 적용</td><td>DC 전력·냉각·로봇</td></tr>
+        <tr><td>2029</td><td>AI DC 1단계 8.4GW·550조 완료 목표</td><td>변압기·HVAC·ESS·GPU 밸류체인</td></tr>
+        <tr><td>2030</td><td>호남 반도체 팹 완공 목표, 재생에너지 100GW</td><td>파운드리·후공정 장비</td></tr>
+        <tr><td>2035</td><td>AI DC 2단계 18.4GW·1,000조, SK 그룹 로드맵 종료</td><td>통합 밸류체인</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="6">← 6강: 국내 시장</button>
+    <span class="nav-pos">7강 / 12</span>
+    <button class="nav-btn next" data-go="8">8강: 플레이어 지도 →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 8: 플레이어 지도 ────────── -->
+<div class="panel" data-panel="8">
+  <div class="sec-head">
+    <span class="sec-badge">8강</span>
+    <div class="sec-info"><h2>핵심 플레이어 지도</h2><p>AI DC 생태계 6개 카테고리</p></div>
+  </div>
+
+  <div class="card card--amber">
+    <p class="card-title">A. 수요자 (AI DC 고객·앵커테넌트)</p>
+    <div class="badge-row">
+      <span class="badge sky">AWS Korea</span><span class="badge sky">Microsoft Azure</span>
+      <span class="badge sky">네이버클라우드</span><span class="badge sky">삼성SDS</span>
+      <span class="badge sky">카카오클라우드</span><span class="badge sky">KT 클라우드</span>
+    </div>
+
+    <p class="card-title" style="margin-top:16px">B. AI DC 개발·운영사</p>
+    <div class="badge-row">
+      <span class="badge orange">SK텔레콤(SK데이터넥서스)</span><span class="badge orange">GS AI인프라</span>
+      <span class="badge orange">KT 클라우드</span><span class="badge orange">LGU+ IDC</span>
+      <span class="badge orange">에퀴닉스 Korea</span>
+    </div>
+  </div>
+
+  <div class="card card--sky">
+    <p class="card-title">C. 전력 기기·전선 — 1단계 최대 수혜</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>기업</th><th>주력 품목</th><th>AI DC 연관성</th></tr></thead>
+      <tbody>
+        <tr><td>현대일렉트릭</td><td>대형 변압기</td><td>AI DC 수전 설비의 핵심</td></tr>
+        <tr><td>LS일렉트릭</td><td>변압기·배전 솔루션</td><td>국내 DC 전력 인프라 독과점 수준</td></tr>
+        <tr><td>LS전선·대한전선</td><td>초고압 케이블</td><td>DC~전력망 연결 케이블</td></tr>
+        <tr><td>지주SK(034730)</td><td>비상장 EPC 자회사 지분</td><td>용인 EPC 수주 모멘텀</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card card--violet">
+    <p class="card-title">D. 반도체 장비·소재 — 2단계(2027~) 수혜</p>
+    <div class="badge-row">
+      <span class="badge violet">한미반도체 (TC본더·HBM4)</span>
+      <span class="badge violet">이오테크닉스 (레이저·유리기판)</span>
+      <span class="badge violet">HPSP (고압수소어닐링)</span>
+      <span class="badge violet">주성엔지니어링</span>
+      <span class="badge violet">원익IPS</span>
+      <span class="badge violet">솔브레인 (소재)</span>
+      <span class="badge violet">동진쎄미켐 (소재)</span>
+    </div>
+
+    <p class="card-title" style="margin-top:16px">E. 냉각·ESS·로봇 — 3단계(2028~) 수혜</p>
+    <div class="badge-row">
+      <span class="badge mint">LG에너지솔루션 (ESS)</span>
+      <span class="badge mint">삼성SDI (ESS)</span>
+      <span class="badge mint">현대로보틱스</span>
+      <span class="badge mint">두산로보틱스</span>
+      <span class="badge mint">레인보우로보틱스</span>
+    </div>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="7">← 7강: 메가프로젝트</button>
+    <span class="nav-pos">8강 / 12</span>
+    <button class="nav-btn next" data-go="9">9강: 체크리스트 →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 9: 투자심사 체크리스트 ────────── -->
+<div class="panel" data-panel="9">
+  <div class="sec-head">
+    <span class="sec-badge">9강</span>
+    <div class="sec-info"><h2>투자심사 체크리스트 — 실전편</h2><p>6개 영역 40항목 — 바로 꺼내 쓰는 체크리스트</p></div>
+  </div>
+
+  <div class="callout ok"><span class="ico">✅</span><div class="cbody">
+    <p>DC 개발사 직접 투자(지분·메자닌)와 밸류체인 기업 주식 투자 두 상황 모두 활용 가능. 개발사 심사 시 A~D 중점, 밸류체인 기업 심사 시 E~F와 C 일부를 중점 적용.</p>
+  </div></div>
+
+  <div class="card card--sky">
+    <p class="card-title">A. 기본 현황 파악</p>
+    <ul>
+      <li class="check">사업자 유형: 하이퍼스케일? 코로케이션? BTO 개발사? 혼합형?</li>
+      <li class="check">입지 명확성: 부지 확보 여부 (소유권 vs 임차권), 용도지구·인허가 상태</li>
+      <li class="check">총 용량 계획: 현재 운영 MW vs 건설 중 MW vs 계획 중 MW 구분</li>
+      <li class="check">가동 이력: 기존 DC 운영 경험이 있는가? 첫 번째 DC인가?</li>
+      <li class="check">지배구조: 최대 주주·경영진 이력 및 이해관계 파악</li>
+    </ul>
+  </div>
+
+  <div class="card card--orange">
+    <p class="card-title">B. 수요·임차인 리스크</p>
+    <ul>
+      <li class="check">앵커테넌트 확보: 주요 임차인이 MOU 이상 계약 상태인가?</li>
+      <li class="check">계약 형태: 단기(1~2년) vs 장기(5~15년) — 장기일수록 안정</li>
+      <li class="check">임차인 신용등급: 투자등급(BBB-) 이상인가?</li>
+      <li class="check">임차인 집중도: 1개 고객 비중 30% 이상이면 단일 집중 위험</li>
+      <li class="check">수요 예측 근거: 용량 예측의 기반 데이터/분석 제시 여부</li>
+    </ul>
+  </div>
+
+  <div class="card card--violet">
+    <p class="card-title">C. 공급·건설 리스크</p>
+    <div class="callout note"><span class="ico">★</span><div class="cbody">
+      <p><strong>가장 중요한 단일 항목</strong>: "전력 인허가 완료 여부". 국내 AI DC 사업에서 전력 연계가 지연되면 모든 일정이 도미노식으로 무너진다.</p>
+    </div></div>
+    <ul>
+      <li class="check"><strong>전력 인허가: 한전 연계 승인 완료 여부 — 국내 최대 병목</strong></li>
+      <li class="check">전력 용량 계약: PPA 계약 규모 및 상대방 신용도</li>
+      <li class="check">EPC 계약: 시공사 선정 및 도급 방식(총액 vs 실비 정산)</li>
+      <li class="check">냉각 방식 결정: 공랭·수랭·액침 선택 완료 여부 및 PUE 목표</li>
+      <li class="check">용수 확보: 냉각탑 용수 공급원 및 지자체 허가 여부</li>
+      <li class="check">건설 일정: 착공·1단계 완공·전체 완공 일정 현실성</li>
+      <li class="check">설계 유연성: GPU 세대 변화에 따른 랙 밀도 업그레이드 가능 구조인가?</li>
+    </ul>
+  </div>
+
+  <div class="card card--amber">
+    <p class="card-title">D. 재무 검토</p>
+    <ul>
+      <li class="check">총사업비 및 자기자본 비율: LTV 70% 이하 권고 (금리 민감도 관리)</li>
+      <li class="check">EBITDA 마진 전망: 코로케이션 40~50%, AI DC GPU 임대 마진 별도 확인</li>
+      <li class="check">IRR 목표: 레버리지 포함 국내 8~12%, 해외 12~18%</li>
+      <li class="check">금리 민감도: 기준금리 ±1% 시 IRR 변동폭 제시 여부</li>
+      <li class="check">운영비 구조: 전기요금 비중 (AI DC는 OPEX의 40~60%가 전기)</li>
+      <li class="check">CAPEX 집행 계획: 연도별 투자 vs 자금 조달 스케줄 매칭</li>
+    </ul>
+  </div>
+
+  <div class="card card--mint">
+    <p class="card-title">E. 기술·시장 리스크 (밸류체인 기업 심사)</p>
+    <ul>
+      <li class="check">GPU 세대 교체 주기: 엔비디아 B200→B300 전환 시 교체 부담 누가?</li>
+      <li class="check">냉각 기술 전환 비용: 공랭→수랭 전환 시 기존 인프라 매몰비용</li>
+      <li class="check">중국 반도체 추격: HBM·DRAM CXMT 성장 속도 모니터링</li>
+      <li class="check">엔비디아 의존도: 특정 공급사 집중도 및 대체 조달 계획</li>
+      <li class="check">AI 수요 지속성: 버블 조기 붕괴 시나리오에서의 하방 보호 장치</li>
+    </ul>
+  </div>
+
+  <div class="card card--sky">
+    <p class="card-title">F. 규제·정책 리스크</p>
+    <ul>
+      <li class="check">데이터 주권 규제: 금융·의료 데이터의 국외 반출 제한 여부</li>
+      <li class="check">재생에너지 의무: RE100 또는 정부 의무 비율 충족 계획</li>
+      <li class="check">개인정보보호법·GDPR: 글로벌 고객 유치 시 해외 규제 적용 여부</li>
+      <li class="check">이사회 승인 여부: 메가프로젝트 참여 계획이 이사회 결의를 거쳤는가?</li>
+      <li class="check">지원 정책 지속성: DC 특화 전기요금, 세액공제 정책의 지속 가능성</li>
+    </ul>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="8">← 8강: 플레이어</button>
+    <span class="nav-pos">9강 / 12</span>
+    <button class="nav-btn next" data-go="10">10강: 리스크·전략 →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 10: 리스크 & 전략 ────────── -->
+<div class="panel" data-panel="10">
+  <div class="sec-head">
+    <span class="sec-badge">10강</span>
+    <div class="sec-info"><h2>핵심 리스크 &amp; 단계별 투자 아이디어</h2><p>5대 리스크 + 3단계 트리거 전략</p></div>
+  </div>
+
+  <div class="card card--orange">
+    <p class="card-title">5대 핵심 리스크</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>#</th><th>리스크</th><th>내용</th><th>모니터링 지표</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>전력 확보 실패</td><td>한전 연계 지연 → DC 개발 무산</td><td>한전 전력 연계 승인 공고</td></tr>
+        <tr><td>2</td><td>금리 상승</td><td>CAPEX 집약형 → 금융비용 급증, IRR 훼손</td><td>기준금리 추이, PF 금리</td></tr>
+        <tr><td>3</td><td>AI 버블 붕괴</td><td>AI 수요 과대 추정 → GPU 가동률 하락</td><td>하이퍼스케일러 CAPEX 가이던스</td></tr>
+        <tr><td>4</td><td>중국 반도체 추격</td><td>CXMT HBM·DRAM 공급과잉 → 마진 훼손</td><td>CXMT 시장 점유율 분기별 추적</td></tr>
+        <tr><td>5</td><td>앵커테넌트 이탈</td><td>주요 임차인 재무 악화 → 공실률 급등</td><td>테넌트 신용등급·실적 모니터링</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card card--sky">
+    <p class="card-title">단계별 투자 아이디어 — 트리거 포함</p>
+    <div class="module-head"><strong>1단계 (즉시~2027): 착공 수혜 — EPC·전력기기·전선</strong></div>
+    <ul>
+      <li>착공이 가장 먼저 매출로 잡히는 섹터. 전력기기·전선·EPC가 즉시 수혜.</li>
+      <li>핵심 종목: 현대일렉트릭, LS일렉트릭, LS전선, 대한전선, 지주SK(034730)</li>
+      <li><strong>트리거</strong>: 용인 부지조성 착공(2026년 내), 반도체특별법 8월 시행, 전력망 허충 2단계 확정</li>
+    </ul>
+
+    <div class="module-head"><strong>2단계 (2027~2030): 클린룸 가동 수혜 — 반도체 장비·소재</strong></div>
+    <ul>
+      <li>팹 가동기 장비 발주 사이클. HBM·파운드리 증설에 연동.</li>
+      <li>핵심 종목: 한미반도체(TC본더·HBM4), 이오테크닉스, HPSP, 주성엔지니어링, 원익IPS, 솔브레인</li>
+      <li><strong>트리거</strong>: SK하이닉스 용인 1기 가동(2027.2), 호남 팹 착공, 메모리 CAPEX +30% YoY</li>
+    </ul>
+
+    <div class="module-head"><strong>3단계 (2028~2035): DC 본격 가동 — ESS·냉각·로봇·인프라</strong></div>
+    <ul>
+      <li>AI DC 단계 완료마다 ESS·변압기·버스덕트·이중바닥·케이블 순차 수요.</li>
+      <li>피지컬AI(로봇): 현대로보틱스, 두산로보틱스, 레인보우로보틱스, LG에너지솔루션(AIDC ESS)</li>
+      <li><strong>트리거</strong>: GS 가평 1.2GW 준공(2028), SK AI DC 단계 완료, NPU 국산화 전용요금 시행</li>
+    </ul>
+  </div>
+
+  <div class="card card--violet">
+    <div class="callout tip"><span class="ico">💼</span><div class="cbody">
+      <p><strong>투자심사역 실전 조언</strong>: 3대 메가프로젝트는 현재 '이사회 미승인 가이드라인'이다. 이사회 공식 승인 → 착공 → 1단계 완공 순서로 <strong>각 사건이 발생할 때마다 해당 밸류체인 수혜를 확인하는 이벤트 드리븐 접근</strong>이 효과적이다.</p>
+    </div></div>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="9">← 9강: 체크리스트</button>
+    <span class="nav-pos">10강 / 12</span>
+    <button class="nav-btn next" data-go="11">부록: 용어 사전 →</button>
+  </div>
+</div>
+
+<!-- ────────── 탭 11: 용어 사전 ────────── -->
+<div class="panel" data-panel="11">
+  <div class="sec-head">
+    <span class="sec-badge">부록</span>
+    <div class="sec-info"><h2>핵심 용어 사전 30선</h2><p>AI DC 투자심사에 자주 나오는 용어 완전 정리</p></div>
+  </div>
+
+  <div class="card card--amber">
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>용어</th><th>뜻</th><th>실전 활용 포인트</th></tr></thead>
+      <tbody>
+        <tr><td>GPU</td><td>그래픽처리장치. AI 학습·추론 전용 칩. 엔비디아가 사실상 독점.</td><td>AI DC의 핵심 수익 자산</td></tr>
+        <tr><td>HBM</td><td>고대역폭메모리. GPU에 붙는 초고속 메모리. SK하이닉스 세계 1위.</td><td>AI DC 없이는 HBM 수요도 없음</td></tr>
+        <tr><td>NPU</td><td>신경처리장치. AI 추론에 최적화. GPU보다 저전력.</td><td>추론 AI DC 확산 시 GPU 대체 가능</td></tr>
+        <tr><td>랙(Rack)</td><td>서버를 꽂는 철제 선반 (약 1.8m 높이). DC 수익의 기본 단위.</td><td>코로케이션 매출 = 랙 임대료</td></tr>
+        <tr><td>MW</td><td>메가와트. DC 규모 측정 단위. 1MW = 가정집 약 700세대.</td><td>DC 규모 비교의 기준</td></tr>
+        <tr><td>GW</td><td>기가와트. 1GW = 1,000MW. 대형 AI DC 단위.</td><td>국내 AI DC 계획 단위로 사용</td></tr>
+        <tr><td>PUE</td><td>전력효율지수. 총 입력 전력 ÷ IT 장비 전력. 낮을수록 효율적.</td><td>1.2 이하 = 우수, 1.5 이상 = 비효율</td></tr>
+        <tr><td>코로케이션(Colo)</td><td>DC 공간·전력을 빌려주고 임대료 수취.</td><td>가장 일반적인 DC 수익 모델</td></tr>
+        <tr><td>하이퍼스케일러</td><td>AWS·Azure·GCP·네이버 등 초대형 클라우드 사업자.</td><td>AI DC 최대 고객군</td></tr>
+        <tr><td>앵커테넌트</td><td>DC 임차인 중 가장 큰 비중을 차지하는 주요 고객.</td><td>미확보 시 사업 리스크 극대</td></tr>
+        <tr><td>PPA</td><td>재생에너지 발전사와 장기 전력 직접 구매 계약.</td><td>DC 전기요금 고정화·RE100 달성 수단</td></tr>
+        <tr><td>ESS</td><td>에너지저장장치. 야간 전기를 저장했다가 낮에 방전.</td><td>AI DC 전력 안정성·비용 절감</td></tr>
+        <tr><td>SMR</td><td>소형 모듈 원자로. AI DC 전력 해법으로 주목.</td><td>장기 DC 전력 전략의 와일드카드</td></tr>
+        <tr><td>액침냉각</td><td>서버를 절연유에 담가 냉각. 가장 효율적.</td><td>GPU AI DC에서 빠르게 채택 중</td></tr>
+        <tr><td>CAPEX</td><td>자본적 지출. 건물·서버·전력 설비 등 장기 자산 투자.</td><td>DC는 CAPEX 집약형 → 금리 민감</td></tr>
+        <tr><td>OPEX</td><td>운영적 지출. 인건비·전기료·유지보수 등 일상 운영 비용.</td><td>AI DC OPEX의 40~60%가 전기료</td></tr>
+        <tr><td>EBITDA 마진</td><td>영업이익+감가상각 ÷ 매출. DC 수익성 핵심 지표.</td><td>코로케이션 평균 40~50%</td></tr>
+        <tr><td>IRR</td><td>내부수익률. 투자 대비 연간 수익률.</td><td>AI DC 목표 IRR 8~15%</td></tr>
+        <tr><td>BTO</td><td>Build-Transfer-Operate. 건설 후 소유권 이전 방식.</td><td>선수요확보형 AI DC에 주로 적용</td></tr>
+        <tr><td>EPC</td><td>설계(Engineering)·조달(Procurement)·시공(Construction) 일괄 계약.</td><td>DC 건설에서 가장 큰 비용 항목</td></tr>
+        <tr><td>Training</td><td>AI 모델이 데이터를 보고 패턴을 배우는 과정. GPU 집약적.</td><td>학습 AI DC = 초대형 전력 소비</td></tr>
+        <tr><td>Inference</td><td>학습된 AI가 실제 질문에 답하는 과정. NPU 효율적.</td><td>추론 DC = 24시간 서비스 DC</td></tr>
+        <tr><td>LLM</td><td>대형언어모델(Large Language Model). ChatGPT·클로드 등.</td><td>AI DC 수요 폭발의 직접 원인</td></tr>
+        <tr><td>클러스터</td><td>수천~수만 개의 GPU가 연결된 AI 컴퓨팅 단위.</td><td>AI DC의 핵심 투자 단위</td></tr>
+        <tr><td>DC REIT</td><td>데이터센터를 기초자산으로 한 리츠(부동산투자신탁).</td><td>에퀴닉스·디지털리얼티 = 미국 상장</td></tr>
+        <tr><td>Tier 등급</td><td>DC 가용성 등급. Tier 4 = 연간 가동률 99.995%</td><td>금융·의료 DC는 Tier 3~4 필수</td></tr>
+        <tr><td>메자닌</td><td>주식과 채권의 중간 성격 투자 (CB·BW·우선주 등).</td><td>DC 개발사 초기 투자에 자주 활용</td></tr>
+        <tr><td>앵커DC</td><td>지역의 첫 번째 대형 DC로, 후속 투자를 유인.</td><td>정부가 지방 AI DC에 기대하는 역할</td></tr>
+        <tr><td>LTV</td><td>Loan-To-Value. 담보 대비 대출 비율.</td><td>DC 프로젝트 파이낸싱 안정성 지표</td></tr>
+        <tr><td>MOU→LOI→계약</td><td>업무협약→투자의향서→정식 계약. DC는 MOU 단계가 많음.</td><td>MOU와 확정 계약은 투자 확신도가 다름</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="panel-nav">
+    <button class="nav-btn prev" data-go="10">← 10강: 리스크·전략</button>
+    <span class="nav-pos">부록 / 12</span>
+    <button class="nav-btn next" data-go="0">↩ 처음으로</button>
+  </div>
+</div>
+
+</div><!-- /panels -->
+
+<button id="toTop" class="to-top" aria-label="맨 위로">↑</button>
+
+<script>
+(function(){
+  var tabs = [].slice.call(document.querySelectorAll('.tab-btn'));
+  var panels = [].slice.call(document.querySelectorAll('.panel'));
+  var tabbar = document.querySelector('.tabbar');
+
+  function activate(idx){
+    idx = +idx;
+    tabs.forEach(function(t){ t.classList.toggle('active', +t.dataset.tab === idx); });
+    panels.forEach(function(p){ p.classList.toggle('active', +p.dataset.panel === idx); });
+    // scroll tab into view
+    var active = tabbar.querySelector('.tab-btn.active');
+    if(active) active.scrollIntoView({inline:'nearest', behavior:'smooth'});
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ activate(t.dataset.tab); });
+  });
+
+  // nav arrow buttons
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-go]');
+    if(btn) activate(btn.dataset.go);
+  });
+
+  // scroll-to-top
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){ toTop.classList.toggle('show', window.scrollY > 400); }, {passive:true});
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+})();
+</script>
+</body>
+</html>

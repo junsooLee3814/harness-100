@@ -1,0 +1,551 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>과정 품질 리뷰 보고서 — VibeCoding_AX_SM (v0.2)</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">선명AG · AX 3차 · VibeCoding_AX_SM v0.2</div><h1>과정 품질 리뷰 보고서 — VibeCoding_AX_SM (v0.2)</h1></header><div class="intro"><blockquote>
+<p>검증자: course-reviewer (과정검증자 QA)
+검증 대상: <code>00_input.md</code>(SSOT) · <code>01_curriculum.md</code> · <code>02_lesson_plans.md</code> · <code>03_quizzes.md</code> · <code>04_labs.md</code>
+검증일: 2026-07-10</p>
+</blockquote>
+<hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">✅ 수정 반영 로그 (오케스트레이터, 2026-07-10)</div></div>
+<ul>
+<li><strong>🔴 필수수정 1건 — 해결 완료</strong>: 안전 게이트 항목 수를 <strong>4항목으로 통일</strong>했다. <code>01_curriculum.md</code>(안전 루브릭), <code>04_labs.md</code>(0.5 게이트·4-3 자기판정표·B 게이트 표) 모두 quizzes 기준(① 비밀키 · ② 개인정보 · ③ 검증 단계 · ④ 데이터 흐름·최종 확인)에 맞춰 4항목·"4개 전부 ✅" 규칙으로 수정. 수료 판정 기준 문서 간 모순 해소.</li>
+<li><strong>🟡 권장 1건 — 해결 완료</strong>: <code>03_quizzes.md</code> S2 정답 보기 C의 게이트 표기 오류(<code>②·③·③, 그리고 ②</code>)를 해설과 일치하는 <strong><code>각각 ②·③·①</code></strong>로 정정.</li>
+<li><strong>🟡 잔여(경미, 선택 정정)</strong>: 120분 표준 타임라인 합계 라벨(125분 표기), 1·2강 블룸 분포 수치 미세 불일치, "도구 10종" 명명 vs 항목 11개 — 배포·운영에 지장 없는 표기 수준이라 보류. 필요 시 추가 정정.</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">종합 평가</div></div>
+<ul>
+<li><strong>과정 준비 상태</strong>: 🟡 <strong>수정 후 진행</strong> (소규모 정합성 정정 후 배포 가능)</li>
+<li><strong>총평</strong>: 학습목표 커버리지·3대 설계원칙·안전수칙 3중 반영·누적 부품 이월이 4개 문서에 걸쳐 매우 일관되게 구현된 배포 가능 수준의 과정이다. 다만 <strong>"안전 게이트 항목 수(3 vs 4)"가 퀴즈 문서와 실습/커리큘럼 문서 간에 불일치</strong>하여 수료 판정 기준이 문서마다 달라지는 결함이 1건 있으므로, 이 항목만 통일하면 수료 파이프라인으로 배포 가능하다.</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">학습목표 커버리지 매트릭스</div></div>
+<blockquote>
+<p>LO ID = <code>LO-{강}-{순번}</code>. 교안=<code>02</code>, 퀴즈=<code>03</code>, 실습=<code>04</code> 반영 여부.
+✅ 직접 반영 / △ 부분·간접(이해·분석 목표라 hands-on 실습이 없어도 교육학적으로 허용) / ❌ 누락</p>
+</blockquote>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>학습목표 ID</th>
+<th>내용(요약)</th>
+<th>블룸</th>
+<th>교안</th>
+<th>퀴즈</th>
+<th>실습</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LO-0-1</td>
+<td>바이브코딩=지시(AI)+검증(사람) 설명</td>
+<td>이해</td>
+<td>✅ 0-1</td>
+<td>✅ Q0-1·Q0-2</td>
+<td>△ 개념실습 없음</td>
+<td>완전(이해목표)</td>
+</tr>
+<tr>
+<td>LO-0-2</td>
+<td>도구 10종 설치·로그인·체크리스트</td>
+<td>적용</td>
+<td>✅ 0-2·0-3</td>
+<td>✅ Q0-4</td>
+<td>✅ 0-A</td>
+<td>완전</td>
+</tr>
+<tr>
+<td>LO-0-3</td>
+<td>본인 업무 I/P/O 기술</td>
+<td>적용</td>
+<td>✅ 0-4</td>
+<td>✅ Q0-2</td>
+<td>✅ 0-B</td>
+<td>완전</td>
+</tr>
+<tr>
+<td>LO-1-1</td>
+<td>LLM 4종 지형도 비교·설명</td>
+<td>이해</td>
+<td>✅ 1-2</td>
+<td>✅ Q1-1</td>
+<td>△ 실습 무</td>
+<td>완전(이해목표)</td>
+</tr>
+<tr>
+<td>LO-1-2</td>
+<td>스켈레톤→랜딩 프론트 완성</td>
+<td>적용</td>
+<td>✅ 1-4</td>
+<td>✅ Q1-2</td>
+<td>✅ 1-1</td>
+<td>완전</td>
+</tr>
+<tr>
+<td>LO-1-3</td>
+<td>GitHub→Vercel+Supabase 배포</td>
+<td>창조</td>
+<td>✅ 1-5</td>
+<td>✅ Q1-2·Q1-3·Q1-5</td>
+<td>✅ 1-2</td>
+<td>완전</td>
+</tr>
+<tr>
+<td>LO-2-1</td>
+<td>Claude 3계층+코딩환경 3종 구분</td>
+<td>이해</td>
+<td>✅ 2-2·2-3</td>
+<td>✅ Q2-1·Q2-2</td>
+<td>△ 구분실습 무</td>
+<td>완전(이해목표)</td>
+</tr>
+<tr>
+<td>LO-2-2</td>
+<td>코딩환경 열어 콘텐츠 파이프라인 실행</td>
+<td>적용</td>
+<td>✅ 2-4</td>
+<td>△ 직접문항 약함</td>
+<td>✅ 2-1</td>
+<td>양호</td>
+</tr>
+<tr>
+<td>LO-2-3</td>
+<td>블로그+유튜브 세트 생성·게시+사람검증</td>
+<td>창조</td>
+<td>✅ 2-5·2-6·2-7</td>
+<td>✅ Q2-3·Q2-4</td>
+<td>✅ 2-1·2-2</td>
+<td>완전</td>
+</tr>
+<tr>
+<td>LO-3-1</td>
+<td>7개념 구분·관계 설명</td>
+<td>분석</td>
+<td>✅ 3-2</td>
+<td>✅ Q3-1·Q3-2</td>
+<td>△ 분류실습 무</td>
+<td>완전(분석은 퀴즈로)</td>
+</tr>
+<tr>
+<td>LO-3-2</td>
+<td>동작 스킬 2~3개 제작</td>
+<td>창조</td>
+<td>✅ 3-3·3-4</td>
+<td>△ Q3-1(개념)</td>
+<td>✅ 3-1</td>
+<td>양호</td>
+</tr>
+<tr>
+<td>LO-3-3</td>
+<td>MCP 연결·외부 데이터 호출</td>
+<td>적용</td>
+<td>✅ 3-5</td>
+<td>✅ Q3-3</td>
+<td>✅ 3-2</td>
+<td>완전</td>
+</tr>
+<tr>
+<td>LO-4-1</td>
+<td>4역할 에이전트팀 오케스트레이션</td>
+<td>창조</td>
+<td>✅ 4-2·4-3·4-4</td>
+<td>✅ Q4-1</td>
+<td>✅ 4-1</td>
+<td>완전</td>
+</tr>
+<tr>
+<td>LO-4-2</td>
+<td>재실행 가능한 하네스 패키징</td>
+<td>창조</td>
+<td>✅ 4-4</td>
+<td>✅ Q4-3·S1</td>
+<td>✅ 4-1</td>
+<td>완전</td>
+</tr>
+<tr>
+<td>LO-4-3</td>
+<td>본인 업무 미러링(전이)</td>
+<td>전이</td>
+<td>✅ 4-5</td>
+<td>✅ S3</td>
+<td>✅ 4-2</td>
+<td>완전</td>
+</tr>
+<tr>
+<td>LO-4-4</td>
+<td>루브릭 3기준 자기판정</td>
+<td>평가</td>
+<td>✅ 4-6</td>
+<td>✅ Q4-3·S1·총괄루브릭</td>
+<td>✅ 4-3</td>
+<td>완전</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>커버리지 요약</strong>: 전 16개 학습목표가 교안·퀴즈·실습 3영역에서 추적 가능. △ 표시(LO-1-1, LO-2-1, LO-3-1)는 <strong>이해·분석 수준 목표</strong>로, hands-on 실습 대신 교안 강의 + 퀴즈 판단문항으로 평가하는 것이 교육학적으로 타당하다(실습은 적용·창조 목표에 집중). <strong>완전 누락(❌)은 없음.</strong></p>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">중점 검증 항목별 판정</div></div>
+<h3>1. 학습목표 커버리지 → 🟢 양호</h3>
+<ul>
+<li>16개 LO 전부 최소 2영역 이상 반영, 창조·적용·전이 목표는 3영역 모두 반영.</li>
+<li>캡스톤(4-1~4-3)이 LO-4-1~4-4를 통합 평가하도록 명시적으로 매핑(<code>04_labs</code> line 540~544).</li>
+</ul>
+<h3>2. 3대 설계원칙 준수 → 🟢 양호</h3>
+<ul>
+<li><strong>⓵ 백지 시작 금지</strong>: 전 실습에 스켈레톤/템플릿/스니펫 배포 명시(교안 배포자료 개요, <code>04_labs</code> 0.1). 실습 1-1(HTML TODO), 3-1(SKILL.md 4칸), 4-1(agents 스켈레톤+run.yaml) 모두 실제 스타터 코드 첨부. 부록 A 자가점검 체크리스트 존재.</li>
+<li><strong>⓶ 데모 먼저</strong>: 모든 실습 블록이 "① 강사 시연(완성본 먼저) → ② 따라하기 → ③ 배포자료" 3단 구조로 고정. 각 강 도입 블록(1-1·2-1·3-1·4-1)이 완성본 데모.</li>
+<li><strong>⓷ 강사+조교 배석</strong>: 전 실습에 <code>[조교 개입 신호]</code> + 3단 힌트 시스템(<code>04_labs</code> 0.3) 명시. 3분 규칙·최소통과선/확장과제로 조별 편차 흡수.</li>
+</ul>
+<h3>3. 누적 부품 이월 → 🟢 양호 (가장 강한 축)</h3>
+<ul>
+<li>0강 I/P/O → 1강 URL → 2강 콘텐츠 포맷 → 3강 스킬·MCP → 4강 하네스 집결이 4개 문서에서 동일하게 서술:</li>
+<li>커리큘럼: "누적 부품 이월 지도"(line 48~61)</li>
+<li>교안: "전 강 관통 예시" 표(line 54~65) + 각 강 회고의 전이 멘트</li>
+<li>실습: "0.4 누적 부품 이월 대장"(고정 저장경로까지 지정) + "캡스톤 부품 집결도"</li>
+<li>저장 경로까지 일치(<code>내문서/vibecoding/00_ipo_sheet.md</code>, <code>02_content_format.md</code>, <code>~/.claude/skills/*</code>, <code>harness/</code>). 조교 매 강 종료 시 이월 점검 루브릭(D) 존재.</li>
+</ul>
+<h3>4. 안전수칙 커버리지 → 🟢 양호 (교안 삽입·퀴즈·실습 게이트 3중 반영)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>강</th>
+<th>핵심 안전수칙</th>
+<th>교안 삽입</th>
+<th>퀴즈 문항</th>
+<th>실습 게이트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0강</td>
+<td>비밀키 스크린샷·업로드 금지·가명</td>
+<td>0-2·0-4</td>
+<td>Q0-3</td>
+<td>0-A 안전서약·0.5</td>
+</tr>
+<tr>
+<td>1강</td>
+<td>anon만 공개·service_role 금지·개인정보 금지</td>
+<td>1-5·1-6</td>
+<td>Q1-3·Q1-4</td>
+<td>1-2 게이트</td>
+</tr>
+<tr>
+<td>2강</td>
+<td>AI는 문장·근거는 사람·허위 숫자/법조항 금지</td>
+<td>2-4·2-5·2-7</td>
+<td>Q2-3·Q2-4</td>
+<td>2-1 검증 게이트</td>
+</tr>
+<tr>
+<td>3강</td>
+<td>MCP 데이터 행선지 확인·키 하드코딩 금지</td>
+<td>3-5·3-6</td>
+<td>Q3-3·Q3-4</td>
+<td>3-2 게이트</td>
+</tr>
+<tr>
+<td>4강</td>
+<td>검증 생략 금지·출처 없는 주장 배제·최종 확인 사람</td>
+<td>4-2·4-4·4-6</td>
+<td>Q4-2·Q4-4·S2</td>
+<td>4-1 게이트·캡스톤</td>
+</tr>
+</tbody>
+</table></div>
+<p>전 강 안전수칙이 교안 삽입지점·퀴즈 필수문항·실습 게이트 3곳에 모두 걸려 있음. 오답지에 "위험 행동"을 그럴듯하게 배치하라는 출제 원칙도 준수(Q0-3 A/B, Q1-3 A 등).</p>
+<h3>5. 수료 루브릭 3기준 정합성 → 🟢 양호(단 안전 게이트 항목 수는 6번 참조)</h3>
+<ul>
+<li>실데이터 동작·결과 지향·재현성 3기준이 SSOT→커리큘럼→교안 4-6→퀴즈 총괄 A→실습 A에서 동일 정의·동일 통과/보완 표현으로 일치.</li>
+<li>수료 증명("배포 데모 URL + 동작 하네스 영상/기록")도 4개 문서 일치.</li>
+</ul>
+<h3>6. 난이도 정합성(인지부하) → 🟡 권장</h3>
+<ul>
+<li>블록당 새 개념 3개 이하 원칙: 1~4강 모두 "새 개념 3개 이하" 명시적 선언, 3강은 7개념을 "부품 3그룹"으로 청킹하여 인지부하 관리 → 양호.</li>
+<li><strong>타임라인 산정에 경미한 오차</strong>(아래 🟡 항목 참조): 대면 4강 [120분 표준] 표가 실제로는 125분(콘텐츠 120 + 쉬는시간 5)으로 합산되어 2시간 슬롯을 5분 초과. 100분 압축본은 2강 95분·3강 97분으로 라벨과 소폭 불일치.</li>
+</ul>
+<h3>7. 문서 간 모순/중복 → 🟡 권장 (아래 발견 사항)</h3>
+<ul>
+<li>교안이 퀴즈·실습 전문을 포인터(<code>[→ 03_quizzes]</code>, <code>[→ 04_labs]</code>)로만 참조해 <strong>중복을 의도적으로 회피</strong> → 중복 문제 거의 없음(양호).</li>
+<li>다만 안전 게이트 항목 수·일부 블룸 분포 수치·"10종" 명명에서 문서 간 소규모 불일치 존재.</li>
+</ul>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">발견 사항</div></div>
+<h3>🔴 필수 수정</h3>
+<ol>
+<li><strong>[03_quizzes vs 04_labs/01_curriculum] 안전 게이트 항목 수가 3개 vs 4개로 불일치 — 수료 판정 기준이 문서마다 달라짐</strong>
+   - 현재:<ul>
+<li><code>03_quizzes.md</code> 총괄평가 B(line 414~423): 안전 게이트 <strong>4항목</strong>(①비밀키 ②개인/고객정보 ③사실검증 ④데이터 흐름·최종 확인), 합격 규칙 "4항목 전부 ✅".</li>
+<li><code>04_labs.md</code> 0.5(line 54~60) 및 B(line 708~715), 그리고 <code>01_curriculum.md</code>(line 296): 안전 게이트 <strong>3항목</strong>(비밀키·개인정보·검증 단계 수행).</li>
+<li><code>04_labs.md</code> 4-3 자기판정표(line 685~686)도 체크박스 <strong>3개</strong>뿐.</li>
+<li>문제: 실습(labs)만 따르면 3게이트를 통과해도 수료 조건을 충족하지만, 퀴즈 문서 기준으로는 4번째 게이트("MCP 데이터 흐름 확인 + 최종 사람 확인") 미체크로 불충족. <strong>수료 게이트의 통과 규칙이 문서 간에 literal하게 모순</strong>된다.</li>
+<li>제안: 두 문서의 게이트 목록·개수·통과 규칙을 <strong>하나로 통일</strong>한다. 권장은 04_labs·커리큘럼도 4항목으로 승격(④ 데이터 흐름·최종 확인을 별도 게이트로 명시)하여 quizzes와 일치시키는 것. 이 경우 04_labs 0.5·B·4-3 자기판정표 체크박스도 4개로 수정.</li>
+</ul>
+</li>
+</ol>
+<h3>🟡 권장 수정</h3>
+<ol>
+<li>
+<p><strong>[03_quizzes.md S2 line 466] 정답 보기 C의 게이트 매핑 표기 오류</strong>
+   - 현재: "세 가지 모두 안전 게이트 위반(<strong>②·③·③, 그리고 ②</strong>)이므로…"
+   - 문제: (1)개인정보=②, (2)출처없는 주장=③, (3)API키=① 인데 보기 텍스트가 "②·③·③, 그리고 ②"로 garbled. 해설(line 470)은 "②·③·①"로 올바르게 서술되어 보기와 상충.
+   - 제안: 보기 C를 "…안전 게이트 위반(②·③·①)이므로…"로 정정.</p>
+</li>
+<li>
+<p><strong>[02_lesson_plans.md 각 강 타임라인] [120분 표준] 라벨이 실제 125분(+쉬는시간 5)</strong>
+   - 현재: 1~4강 [120분 표준] 표가 콘텐츠 120분 + 쉬는시간 5분 = 총 125분으로 종료(예: 1강 00:00→02:05).
+   - 문제: "2h(120분)" 슬롯을 5분 초과. 초보자 대상 현실성 측면에서 라벨과 실제가 불일치.
+   - 제안: 헤더를 "[120분+쉬는시간 5분]" 또는 "[125분]"으로 명확화하거나, 한 블록을 5분 축소해 쉬는시간 포함 120분에 맞춘다. 100분 압축본도 2강(95분)·3강(97분) 합산을 라벨과 일치시킴.</p>
+</li>
+<li>
+<p><strong>[03_quizzes.md 블룸 분포 수치 불일치]</strong>
+   - 현재: 1강 헤더 "이해 50%/적용 30%/분석 20%"이나 실제 문항 분포는 이해2·적용2·분석1(40/40/20). 2강 헤더 "이해 50%/적용 30%/평가 20%"이나 실제는 적용 문항이 없고 이해3·평가1. 문항 통계표(line 501·502)의 수치도 실제 문항 블룸 라벨과 미세 불일치.
+   - 제안: 헤더·통계표 수치를 실제 출제 문항 블룸에 맞춰 재산정하거나, 목표 분포에 맞게 문항을 1개 조정(특히 2강 "적용" 문항 1개 보강 검토).</p>
+</li>
+<li>
+<p><strong>["도구 10종" 명명 vs 명명 항목 수 불일치]</strong>
+   - 현재: 전 문서가 "도구 10종"으로 부르나, 명명 항목은 계정 5 + 설치 6 = 11개(Antigravity 포함). Antigravity가 "선택"이라 제외하면 10개.
+   - 제안: "필수 10종(+Antigravity 선택)"처럼 표기해 산술적 혼동 제거. (Q0-4 해설이 "계정 5 + 설치 6, Antigravity는 선택"으로 이미 부분 해소하나, "5+6"과 "10종"이 병기되어 여전히 혼란 소지.)</p>
+</li>
+</ol>
+<h3>🟢 참고 사항</h3>
+<ol>
+<li>교안이 퀴즈·실습 전문을 포인터로만 연결해 3문서 중복을 성공적으로 제거한 점은 우수한 문서 설계다. 유지 권장.</li>
+<li>EEC(Evidence→Effect→Change) 피드백 공식이 전 오답 피드백에 일관 적용되어 형성평가 품질이 높다.</li>
+<li>직군별(회계·법무·미디어·MICE·투자) 미러링 예시가 0강 시드부터 4강 캡스톤까지 전 문서에 동일 5직군으로 일관 제공되어 전이(transfer) 설계가 견고하다.</li>
+<li>안전 게이트를 점수가 아닌 "무관용 반려제"로 둔 것은 안전 최우선 원칙에 부합.</li>
+</ol>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">최종 산출물 체크리스트</div></div>
+<ul>
+<li class="check checked">커리큘럼 완성 (<code>01_curriculum.md</code>)</li>
+<li class="check checked">교안 완성 (<code>02_lesson_plans.md</code>)</li>
+<li class="check checked">퀴즈 완성 (<code>03_quizzes.md</code>, 형성 21 + 총괄 3문항 + 루브릭/게이트)</li>
+<li class="check checked">실습과제 완성 (<code>04_labs.md</code>, 0강 사전과제 → 강별 실습 → 4강 캡스톤)</li>
+<li class="check checked">리뷰 보고서 완성 (본 문서)</li>
+</ul>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">종합 판정</div></div>
+<p><strong>수료 파이프라인으로서 배포 가능 — 단, 🔴 필수 수정 1건(안전 게이트 항목 수 통일) 선행 필요.</strong></p>
+<p>커버리지·설계원칙·안전 3중 반영·부품 이월·루브릭 정합성이 모두 배포 수준이며 완전 누락된 학습목표가 없다. 유일한 배포 차단 요소는 <strong>수료 게이트의 통과 규칙이 문서 간에 3항목 vs 4항목으로 모순되는 점</strong>으로, 이는 실제 수료 판정에서 학습자마다 다른 결과를 낳을 수 있으므로 배포 전 반드시 통일해야 한다. 나머지(🟡 4건)는 배포와 병행 정정 가능한 경미 사항이다.</p></section></div></div></body></html>

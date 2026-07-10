@@ -1,0 +1,637 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>트렌드 분석 보고서 — 국내 알뜰폰(MVNO) 시장</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">44 마켓리서치 · 알뜰폰(MVNO) 시장 조사 — 프리티/프리텔레콤</div><h1>트렌드 분석 보고서 — 국내 알뜰폰(MVNO) 시장</h1></header><div class="intro"><ul>
+<li>작성: trend-analyst · 작성일 2026-07-05</li>
+<li>자사 관점: <strong>프리티/프리텔레콤 (통합 브랜드 '프리티 FreeT', 가입자 약 56만·점유율 약 5.5%)</strong></li>
+<li>입력: 01_산업분석(성장기 말~성숙기, 정책 의존형) · 02_경쟁분석(자회사 과점+금융권+MNO 다이렉트 협공) · 03_소비자분석(만족도의 금융화·보안 변수화·회전문 세그먼트) + 웹 최신 조사(2025.1~2026.7)</li>
+<li>판정 기준: <strong>[진행 중]</strong> 복수 데이터로 확인된 구조적 트렌드 / <strong>[초기 신호]</strong> 방향은 확인되나 규모 미확정 / <strong>[약한 시그널]</strong> 단발 사건·주장 수준. "트렌드 vs 일시적 유행" 구분을 각 항목에 명기.</li>
+<li>⚠️ 본 보고서의 확률·전망치는 공개 데이터 기반 자체 추정이며, 투자 판단의 단독 근거로 사용 불가.</li>
+</ul>
+<hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">1. PESTLE 분석</div></div>
+<p>영향도: 1(미미)~5(결정적), 프리티 관점. 시간 프레임: 단기(~1년)/중기(1~3년)/장기(3년+).</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>트렌드</th>
+<th>속도 판정</th>
+<th>영향도</th>
+<th>시간 프레임</th>
+<th>기회/위협</th>
+<th>프리티 관점 요지</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P (정치·정책)</strong></td>
+<td>도매대가 <strong>사후규제 전환 정착</strong>('25.3~) — 첫 자율협상(SKT vs 16개사, 2025.12 개시)에서 <strong>종량제(RM)만 인하, 수익배분(RS) 동결</strong>. 업계·과기정통부 모두 "사전규제 부활" 목소리 (뉴스후플러스·이뉴스투데이·비즈니스포스트 2026)</td>
+<td>진행 중</td>
+<td><strong>5</strong></td>
+<td>단~중기</td>
+<td><strong>위협</strong> (제도 향방에 따라 기회 반전 가능)</td>
+<td>원가 개선의 엔진이 정부 협상에서 사업자 협상력으로 이동 — 규모 열위 독립계에 구조적 불리. 사전규제 부활 입법이 최대 반전 카드</td>
+</tr>
+<tr>
+<td>P</td>
+<td><strong>대기업·금융권 점유율 60% 제한법</strong> — 2024.12 과방위 통과 후 <strong>2025.1.7 법사위 계류, 이후 처리 확인 불가(입법 교착 지속)</strong> (뉴시스·ZDNet 2025.1.7, 이후 진전 보도 부재)</td>
+<td>초기 신호(교착)</td>
+<td>3</td>
+<td>중기</td>
+<td>기회(성립 시)</td>
+<td>성립 시 자회사 성장 상한 → 독립계 반사이익. 단 60% 상한은 현 수준(자회사 ~49%+금융권) 대비 여유 있어 실효성 제한적 — "성립돼도 게임체인저는 아님"이 냉정한 판정</td>
+</tr>
+<tr>
+<td>P</td>
+<td><strong>전파사용료 90% 감면 확대 + 3년 연장</strong> (중소 한정, 2026.6.26 발표, 2027 시행 예정 — 당초 '26년 50%→'27년 100% 부담 일정을 막판 뒤집은 구제책) (전자신문 2026.6.26)</td>
+<td>진행 중 (시행령 개정 남음)</td>
+<td>4</td>
+<td>중기</td>
+<td><strong>기회</strong></td>
+<td>자회사·금융권이 못 갖는 구조적 원가 격차. 프리티 연 약 27억 절감 추정 — 이 재원의 용처(신규 CAC vs 리텐션)가 전략 갈림길</td>
+</tr>
+<tr>
+<td>P</td>
+<td><strong>단통법 폐지(2025.7.22) 1년</strong> — 갤럭시 S26 보조금(최대 70만·일부 0원폰) 집중 시기와 알뜰폰 순유출 동조 확인 (더스쿠프 2026.5.26, 아주경제 2026.6.2). 정치권 일각 "보조금 양극화·알뜰폰 위축" 보완책 논의 (4th.kr 2026)</td>
+<td>진행 중</td>
+<td><strong>5</strong></td>
+<td>단~중기</td>
+<td><strong>위협</strong></td>
+<td>알뜰폰 최대 단일 역풍. 보완 입법(장려금 공시 등) 여부가 2026 하반기 관전 포인트</td>
+</tr>
+<tr>
+<td><strong>E (경제)</strong></td>
+<td>고물가·통신비 절감 수요 지속 — "짠테크" 담론으로 알뜰폰 낙인 소멸 (03 §6)</td>
+<td>진행 중</td>
+<td>3</td>
+<td>장기</td>
+<td>기회</td>
+<td>수요 기반 자체는 견고. 문제는 수요를 MNO 통합요금제·다이렉트가 가로채는 구조</td>
+</tr>
+<tr>
+<td>E</td>
+<td><strong>MNO 통합요금제·중저가 공세</strong> — LGU+ 2만원대 5G 통합요금제(2026.6), SKT·KT 중저가 요금제 7.1 출시 (아주경제 2026.6.2) — 알뜰폰과의 가격 격차 역대 최소 구간 진입</td>
+<td>진행 중</td>
+<td><strong>5</strong></td>
+<td>단기</td>
+<td><strong>위협</strong></td>
+<td>"알뜰폰 = 반값" 공식 붕괴 중. 가격 단일 축 사업자부터 침식</td>
+</tr>
+<tr>
+<td>E</td>
+<td>중소 사업자 수익성 붕괴 → <strong>철수 도미노</strong> — 세종텔레콤(협회 회장사, 12년 만에 철수, '스노우맨' 아이즈비전 매각 추진)·여유모바일·씨엔커뮤니케이션·오파스넷·서경모바일 등 10개사+ (글로벌이코노믹 2025.2.25, 에너지경제 2025.1, 아시아타임 2026.5.5)</td>
+<td>진행 중</td>
+<td>4</td>
+<td>단~중기</td>
+<td><strong>기회</strong>(통합 주도 시) / 위협(산업 신뢰 훼손)</td>
+<td>매물화 가속 = 프리티가 자체 전산 기반 통합(consolidation) 주체가 될 수 있는 창. 감면 시행('27) 전인 2026 하반기가 매물 최저가 구간일 개연성</td>
+</tr>
+<tr>
+<td><strong>S (사회)</strong></td>
+<td><strong>만족도 순위의 금융화</strong> — 컨슈머인사이트 1위: 리브('24)→프리티('25하)→우리WON('26상 735점). 은행 자본이 프로모션으로 순위를 "구매" (부산일보 2026.6.2)</td>
+<td>진행 중</td>
+<td>4</td>
+<td>중기</td>
+<td>위협</td>
+<td>프리티의 "만족도 1위" 자산은 방어 수단 없는 임차 자산 — 자본전 아닌 신뢰 서사로 전선 이동 필요</td>
+</tr>
+<tr>
+<td>S</td>
+<td><strong>보안·개인정보의 선택 변수화</strong> — SKT 유심 해킹(2025) 후 SKT 만족도 최하위(545점), 유심교체 문의 폭증. "싸고 안전하다"로 기준 이동 (03 §8)</td>
+<td>진행 중</td>
+<td>4</td>
+<td>중기</td>
+<td><strong>기회</strong>(선점 시)</td>
+<td>알뜰폰 업계에 보안 신뢰 서사 보유자 부재 — 3사망(망 갈아타기) + 보안 마케팅 결합 시 선점 가능. 금융권이 은행 신뢰로 선점할 위험과 경주</td>
+</tr>
+<tr>
+<td>S</td>
+<td>신규 유입의 <strong>2030·자급제(87~90%)·eSIM 극단 편중</strong> + 잔존은 전 연령 — 회전문(2030) vs 침전(4050+) 이중 시장화 (03 §1)</td>
+<td>진행 중</td>
+<td>4</td>
+<td>중~장기</td>
+<td>중립(설계 문제)</td>
+<td>획득과 유지의 전략을 분리해야 함. 순유출은 회전문에서 먼저 발생 — 플래그십 사이클 월별 추적 필요</td>
+</tr>
+<tr>
+<td><strong>T (기술)</strong></td>
+<td><strong>eSIM 개통 보편화</strong> — 셀프개통 표준화(개통비 2,750원 균일), 신규 가입 주 경로화. 듀얼심 세컨드 회선 수요 동반 성장</td>
+<td>진행 중</td>
+<td>3</td>
+<td>중기</td>
+<td>기회</td>
+<td>유심 배송 1~3일 → 즉시 개통으로 CAC·이탈 방어 모두 개선. 프리티 기 보유 역량 — 전면화가 과제</td>
+</tr>
+<tr>
+<td>T</td>
+<td><strong>AICC(AI 콜센터) 확산</strong> — 통신 3사가 공급자로 공격 확장(KT 에이센 등), 국내 시장 연 23.7% 성장 전망, 금융권 1차 구축 완료 (굿모닝경제·전자신문 2025.2). 알뜰폰 도입 사례는 아직 미확인</td>
+<td>초기 신호(알뜰폰 기준)</td>
+<td>3</td>
+<td>중기</td>
+<td>기회</td>
+<td>프리티 최다 불만 = 고객센터 연결(3원화). 구독형 AICC로 저비용 개선 가능 — 불만 1위 항목을 기술로 지우는 레버</td>
+</tr>
+<tr>
+<td>T</td>
+<td><strong>풀MVNO 육성 정책 vs 현실 괴리</strong> — 정부 육성 표방(2025.1)이나 설비 수백억 필요, 투자 여력 보유 사업자 "단 한 곳" 평가 (디지털데일리 2025.1.17, 글로벌이코노믹 2025.7.9)</td>
+<td>약한 시그널</td>
+<td>2</td>
+<td>장기</td>
+<td>중립</td>
+<td>국내 풀MVNO 1호는 당분간 미출현 전망. 프리티는 '부분 자체설비(빌링·IT)' 고도화가 현실적 경로 — 풀MVNO 베팅은 시기상조</td>
+</tr>
+<tr>
+<td>T</td>
+<td>5G 알뜰폰 확대 — 1만원대 20GB 5G 요금제 출시(이야기모바일 18,700원 등)에도 <strong>알뜰폰 5G 회선 오히려 감소</strong>(2025.12 36.6만, 전월 -6,291) (파이낸셜뉴스 2025.1, 머니투데이 2025.2)</td>
+<td>초기 신호(역풍 속)</td>
+<td>3</td>
+<td>중기</td>
+<td>중립</td>
+<td>LTE 93% 편중 구조에서 5G 전환은 MNO 통합요금제와 정면 충돌 구간 — 단독 승부처 아닌 방어적 라인업</td>
+</tr>
+<tr>
+<td><strong>L (법률)</strong></td>
+<td><strong>금융권 알뜰폰 부수업무 정식화</strong> — 금융위, 2025.4 알뜰폰을 은행 부수업무 공식 승인 → 별도 인가 없이 전 은행 진입 가능. 우리WON모바일 2025.4.18 출시 (뉴스1·아시아경제 2025.4.18)</td>
+<td>진행 중</td>
+<td>4</td>
+<td>중기</td>
+<td><strong>위협</strong></td>
+<td>진입장벽 소멸 — 신한·하나 등 후속 진입 리스크 상존. 단 KB 사례(누적적자 600억+·순증 정체)가 보여주듯 자본≠운영 역량 — 위탁운영(MVNE) 수요 발생 가능성은 프리티의 기회</td>
+</tr>
+<tr>
+<td>L</td>
+<td>계속기업 불확실성 공시 기업에 대한 자본시장 규율 강화(일반론)</td>
+<td>진행 중</td>
+<td>3</td>
+<td>단기</td>
+<td>위협</td>
+<td>프리티 W1(누적결손 1,337억)과 결합 — 시장 역풍기에 조달 창구 협소화</td>
+</tr>
+<tr>
+<td><strong>E (환경)</strong></td>
+<td>중고폰·자급제 재사용 확산(자원 순환), ESG 통신 소비 담론</td>
+<td>약한 시그널</td>
+<td>1</td>
+<td>장기</td>
+<td>중립</td>
+<td>자급제 87~90% 구조와 시너지 — 마케팅 소재 수준, 전략 변수 아님</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>PESTLE 총평</strong>: 결정적 변수(영향도 5)는 모두 <strong>P·E에 집중</strong> — ① 단통법 폐지發 MNO 협공(위협) ② MNO 통합요금제(위협) ③ 도매대가 사후규제(위협→반전 가능). 즉 2026~2027 알뜰폰의 운명은 기술이 아니라 <strong>정책과 MNO의 전략적 선택</strong>이 결정한다. 프리티가 통제 가능한 변수는 S·T 영역(보안 신뢰 선점, eSIM/AICC, 리텐션 설계)에 있다.</p>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">2. 핵심 트렌드 심층 분석 (6개)</div></div>
+<h3>트렌드 1. 시장 성숙화의 고착 — "1,000만 정점" 이후 구조적 순유출 [진행 중 · 트렌드]</h3>
+<ul>
+<li><strong>설명</strong>: 2025.6 휴대폰 회선 1,011만 정점 → 2026.4월 -7,353, 5월 -11,211 두 달 연속 순유출. 1Q26 순증도 전년 동기의 절반. 단순 계절성이 아니라 <strong>3중 협공 구조</strong>가 원인: ① 단통법 폐지 후 보조금(위) ② MNO 통합요금제·중저가 5G(가운데 — LGU+ 2만원대 통합요금제 2026.6, SKT·KT 7.1 후속) ③ MNO 다이렉트 3브랜드 에어·요고·너겟(아래). 알뜰폰의 가격 우위 공간이 상·중·하 전방위에서 압착.</li>
+<li><strong>근거 데이터</strong>: 아주경제 2026.6.2(순유출·통합요금제), 더스쿠프 2026.5.26(교체 예정자 48% 조건부 이탈 의향, 갤럭시 S26 보조금 시기 유출 가속), 02 §2(다이렉트 삼각 구도).</li>
+<li><strong>성숙도</strong>: 정점 통과 확인 — 성숙기 진입 확정적. 단 "순유출의 추세화 vs 단통법 초기 충격" 판별은 2026 하반기 데이터 필요(월별 추적 항목 1호).</li>
+<li><strong>영향 범위</strong>: 전 사업자. 특히 가격 단일 축·저ARPU 사업자(프리티 ARPU 1.37만 역산 — 시장 평균 이하)일수록 타격 큼.</li>
+<li><strong>시장 영향</strong>: 파이 축소 → 제로섬 전환. 신규 CAC 상승, 회전문 세그먼트(2030)의 이탈 가속, 사업자 간 소모전 심화.</li>
+<li><strong>So What? (프리티)</strong>: <strong>성장 전략의 축을 '신규 획득'에서 '순유출 방어(리텐션)'로 즉시 전환해야 한다.</strong> 1Q26식 공격 마케팅(-15.1억 적자)은 순유출 국면에서 회수 불가능한 베팅 — 감면 재원은 장기고객 자동할인·가족결합 등 잔존 유인에 투입하고, CAC 회수기간 상한 규율(예: 12개월)을 도입할 것. 갤럭시 플래그십 출시 캘린더와 자사 해지 데이터의 동조화를 월별 계기판으로 만들 것.</li>
+</ul>
+<h3>트렌드 2. 도매대가 거버넌스의 구조 변화 — 정부 협상에서 자율 협상으로 [진행 중 · 트렌드, 단 역회전 가능]</h3>
+<ul>
+<li><strong>설명</strong>: 원가의 결정 메커니즘 자체가 바뀌었다. '25.3 사후규제 전환 후 첫 자율협상(2025.12 개시, SKT vs 16개사)은 <strong>종량제(RM)만 인하·수익배분(RS) 동결</strong>로 종결 — 정부 주도기(2025.1, 최대 52% 인하)와 비교하면 인하 폭·범위 모두 급감. 전환 1년간 개별 협상은 사실상 진척 없음(비즈니스포스트). 업계는 물론 <strong>과기정통부까지 사전규제 부활 필요 입장</strong>을 표명해 제도 역회전 가능성이 열려 있음.</li>
+<li><strong>근거 데이터</strong>: 뉴스후플러스·이뉴스투데이(2026, RM만 인하·정부 신고 수리 완료), 머니투데이 2025.12.8~9(첫 자율협상), 일요신문("자율협상이 되레 독"), 디지털투데이(과기정통부 사전규제 부활 입장).</li>
+<li><strong>성숙도</strong>: 제도 전환은 완료(진행 중), 정착 여부는 미정 — <strong>사전규제 부활 입법이 2026~2027 최대 정책 변곡점</strong> (60% 제한법과 패키지로 움직일 가능성: 여당안이 '자회사 50%+사전규제 부활' 구조).</li>
+<li><strong>영향 범위</strong>: 전 MVNO — 단 협상력 격차로 비대칭. 대량 선구매 커밋이 가능한 자회사·대형사에 유리, 소형사에 치명적.</li>
+<li><strong>시장 영향</strong>: RS 동결로 중·고가 요금제(RS 기반) 원가 개선 정지 → 5G 중용량 확대 전략의 원가 전제가 흔들림. 원가 격차가 사업자 서열을 재편.</li>
+<li><strong>So What? (프리티)</strong>: <strong>"협상력 = 물량 + 연합"의 시대.</strong> 단독 56만 회선으로는 SKT 테이블에서 열위 — ① 3사망 복수 소싱을 지렛대로 망사별 경쟁 입찰 구도 조성 ② 독립계 공동 협상(협회 채널) 주도 ③ 통폐합으로 물량 자체를 키우는 것(트렌드 3)이 도매 원가 전략과 직결됨을 인식할 것. 동시에 사전규제 부활 입법 動向을 대관 최우선 순위로 추적.</li>
+</ul>
+<h3>트렌드 3. 중소 사업자 철수 도미노와 통폐합의 개막 [진행 중 · 트렌드]</h3>
+<ul>
+<li><strong>설명</strong>: 협회 회장사 세종텔레콤이 12년 만에 철수하며('스노우맨' 아이즈비전 매각 추진) 상징적 신호탄. 여유모바일·씨엔커뮤니케이션·오파스넷·서경모바일 등 10개사 이상 철수 확인. 원인: 0원 경쟁 후유증 + 전파사용료 정상화 예고(당시 '26년 50% 부담) + 순유출. 2026.6.26 감면 90% 확대 발표로 급한 불은 껐으나, <strong>감면 시행('27) 전까지의 2026 하반기는 "버티기 vs 매각" 의사결정이 몰리는 구간</strong>.</li>
+<li><strong>근거 데이터</strong>: 글로벌이코노믹 2025.2.25(철수 지속), ZDNet 2025.1.6(줄도산 우려), 에너지경제 2025.1.13, 아시아타임 2026.5.5(생존 위기 고조), 전자신문 2026.6.26(감면 확대).</li>
+<li><strong>성숙도</strong>: 철수는 진행 중, <strong>본격 M&amp;A 물결은 초기 신호</strong> — 스노우맨 매각이 첫 대형 사례. 감면 확대가 매물 공급을 늦출 수 있어 속도 재평가 필요.</li>
+<li><strong>영향 범위</strong>: D그룹(독립계 소형 40여 사) 직접, C그룹(독립계 대형 — 프리티 포함)은 인수자 포지션.</li>
+<li><strong>시장 영향</strong>: 15~25만 규모대 가입자 자산의 재배분. 자회사는 점유율 규제 리스크로 인수에 소극적일 수밖에 없어 <strong>인수 주체는 사실상 독립계 대형 또는 신규 자본</strong>으로 좁혀짐.</li>
+<li><strong>So What? (프리티)</strong>: <strong>국내에서 자체 빌링·전산 + 3사망 + 브랜드평판을 모두 가진 유일한 독립계로서, 통폐합 국면의 자연스러운 구심점.</strong> 15~25만 규모 2~3개사 통합 시 100만 회선(점유율 ~10%)으로 도매 협상 테이블이 달라진다(트렌드 2와 연결). 단 전제 조건이 명확함 — W1(계속기업 불확실성) 해소 없이는 인수 주체가 아니라 매물로 분류된다. 101억 조달의 용처 설계가 이 갈림길을 결정. 현금 인수 여력이 없다면 가입자 이관 계약·MVNE 위탁운영 등 경자산 방식부터.</li>
+</ul>
+<h3>트렌드 4. 금융권의 정식 진입 시대 — 자본 공세의 상시화 [진행 중 · 트렌드]</h3>
+<ul>
+<li><strong>설명</strong>: 2025.4 금융위가 알뜰폰을 은행 부수업무로 공식 승인 — KB의 '규제샌드박스 특례'가 '전 은행 개방'으로 제도화. 우리WON모바일 출시(2025.4.18, 우리WON뱅킹 인앱·청소년 비대면 셀프개통) 직후 컨슈머인사이트 '26상 만족도 1위(735점) 등극 — <strong>"만족도 순위의 금융화"(03 §8)가 제도 기반까지 갖춤</strong>. 반면 KB 리브모바일은 누적적자 600억+·2년 순증 1만 명 정체로 "자본≠성장" 반증도 병존.</li>
+<li><strong>근거 데이터</strong>: 뉴스1·아시아경제·비바100(2025.4.18 출시·부수업무 승인), 부산일보 2026.6.2(우리WON 1위), 디지털포스트(KB 정체), 02 §4.4.</li>
+<li><strong>성숙도</strong>: 제도화 완료·진행 중. <strong>신한·하나 등 후속 진입은 초기 신호 단계</strong>(공식 발표 미확인) — 부수업무 정식화로 진입 결정만 남은 상태.</li>
+<li><strong>영향 범위</strong>: 만족도·평판 순위 경쟁 전체, 특히 프로모션 민감 2030 회전문 세그먼트.</li>
+<li><strong>시장 영향</strong>: 프로모션 자본력이 순위(=플랫폼 노출=신규 유입)를 결정하는 구조 고착. 독립계의 만족도 상위권 유지 가능성 추세적 하락. 단 금융권의 목적은 통신 수익이 아닌 금융 데이터·락인이라 <strong>출혈은 깊지만 운영 헌신은 얕음</strong>.</li>
+<li><strong>So What? (프리티)</strong>: <strong>자본전 정면 대응 금지 — 전선을 바꿔라.</strong> ① 만족도 순위 경쟁 대신 "3사망·보안·장기 신뢰" 축으로 브랜드 서사 전환(트렌드 5와 결합) ② 금융권의 약점(통신 운영 역량 부재)을 수익화 — KB·우리·후속 진입 은행 대상 MVNE/위탁운영 B2B 제안은 경쟁을 매출로 바꾸는 유일한 수. 신한·하나의 진입 발표를 조기 감지해 "직접 구축보다 위탁이 싸다"를 선제 영업할 것.</li>
+</ul>
+<h3>트렌드 5. 보안·신뢰의 선택 변수화 — "싸다"에서 "싸고 안전하다"로 [진행 중 · 트렌드]</h3>
+<ul>
+<li><strong>설명</strong>: SKT 유심 해킹(2025)이 소비자 선택 기준을 영구적으로 바꾼 사건. SKT 체감 만족도 최하위(545점) 추락, 유심교체 문의 폭증(프리티 FAQ 공지로 실측 확인), SK텔링크(SKT망 자회사)로의 신뢰 훼손 전이. 통신 선택에서 '망 자체의 리스크'가 처음으로 인식됨 — 이는 유행이 아니라 <strong>한 번 열리면 닫히지 않는 인식의 문</strong>.</li>
+<li><strong>근거 데이터</strong>: 03 §8(SKT 545점·기준 이동), 02 §4.2(SK텔링크 타격), 프리티 공식 FAQ(유심 문의 폭증). 해외 유사 사례: 미국 T-Mobile 해킹(2021) 후 보안 마케팅이 통신 광고의 상수가 된 경로 — 한국 적용 시차 없이 이미 진행.</li>
+<li><strong>성숙도</strong>: 인식 전환은 진행 중, <strong>"보안 신뢰 브랜드"의 자리는 아직 공석</strong> — 금융권(은행 신뢰 이식)이 가장 근접, 알뜰폰 진영에는 부재.</li>
+<li><strong>영향 범위</strong>: 전 세그먼트, 특히 가족 총무형(4050 — 부모 회선 안전 민감)과 시니어 대리 결정자.</li>
+<li><strong>시장 영향</strong>: 초저가 단일 소구의 한계 도달. CS·보안 사고가 곧 이탈 트리거가 되는 시장으로 이행.</li>
+<li><strong>So What? (프리티)</strong>: <strong>국내 유일 3사망은 이 트렌드에서만 '기능'하는 차별화 자산이다</strong> — "특정 망에 사고가 나도 위약금 없이 망을 갈아탈 수 있는 유일한 통신 브랜드"는 경쟁사가 구조적으로 모방 불가(자회사는 자사망 종속). 보안 서사(유심보호 서비스 기본 탑재, 망 전환 보장 프로그램)와 결합해 "믿을 수 있는 최저가" 포지션을 금융권보다 먼저 선점할 것. 단, 고객센터 3원화라는 운영 복잡성(최다 불만)을 방치하면 신뢰 서사가 자가당착에 빠짐 — 통합 CS 접점(트렌드 6의 AICC)이 전제 조건.</li>
+</ul>
+<h3>트렌드 6. 디지털 개통·운영의 세대 교체 — eSIM 보편화 + AICC + 회전문 대응 [진행 중(eSIM) / 초기 신호(AICC) · 트렌드]</h3>
+<ul>
+<li><strong>설명</strong>: (a) <strong>eSIM</strong>: 셀프개통 프로세스 표준화(전 사업자 개통비 2,750원 균일), 신규 유입의 주 경로화 — 모요發 신규의 ~70%가 2030·자급제(87~90%)·eSIM 친화층. 듀얼심 세컨드 회선(월 0~5천원)이 회선 수 방어의 신규 시장. (b) <strong>AICC</strong>: 국내 시장 연 23.7% 성장 전망, 금융권 1차 구축 완료, 통신 3사가 구독형 공급자로 확장(KT 에이센 등) — <strong>알뜰폰 도입 사례는 아직 미확인 = 선행자 공백</strong>. (c) 이 둘은 회전문 세그먼트(2030)의 획득 비용과 전 세그먼트의 유지 비용을 동시에 낮추는 운영 기술 스택.</li>
+<li><strong>근거 데이터</strong>: 모요·사업자 개통 페이지(2026), 03 §1(신규 유입 편중), 굿모닝경제·전자신문 2025.2(AICC), 경향신문 2026.4(콜센터 AI 대체 가속 — 비용 절감 실증).</li>
+<li><strong>성숙도</strong>: eSIM 진행 중(비중 통계는 미공표 — 데이터 제한), AICC는 알뜰폰 기준 초기 신호. 풀MVNO 설비는 약한 시그널(장기 관망).</li>
+<li><strong>영향 범위</strong>: 전 사업자의 원가 구조와 CS 품질. 자체 전산 보유 사업자(프리티)가 도입 속도에서 유리.</li>
+<li><strong>시장 영향</strong>: 운영 자동화 격차가 손익분기 가입자 수를 가른다 — 저ARPU 시장에서 CS 1건당 비용이 마진을 잠식하는 구조이므로, AICC·셀프서비스 완성도가 곧 원가 경쟁력.</li>
+<li><strong>So What? (프리티)</strong>: <strong>최다 불만(고객센터 연결·3원화)과 최대 기회(운영 원가 절감)가 같은 지점에 있다.</strong> ① 구독형 AICC로 3원화된 고객센터를 단일 AI 접점+콜백으로 통합(자체 구축 아닌 구독 — CAPEX 회피) ② eSIM 즉시개통 전면화 + 개통 상태 실시간 알림으로 회전문 세그먼트의 개통 경험 최적화 ③ 프로모션 종료 시점(M+7 절벽)에 AI 아웃바운드로 착지 요금제 선제 제안 — 이탈 트리거를 리텐션 접점으로 역전. 풀MVNO 설비 투자는 보류(정부 육성책과 현장 괴리 확인됨), 부분 자체설비(빌링·IT) 고도화가 정답.</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">3. 기술 트렌드 로드맵</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>기술</th>
+<th>현재 위치(2026)</th>
+<th>단기(~2027)</th>
+<th>중기(~2029)</th>
+<th>프리티 채택 판단</th>
+<th>투자 규모 감</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>eSIM/디지털 개통</strong></td>
+<td>신규 가입 주 경로화, 개통비 2,750원 표준. 비중 통계 미공표</td>
+<td>즉시개통 기본값화, 듀얼심 세컨드 회선 시장 확대</td>
+<td>단말 eSIM-only 전환(해외 선행) 시 유심 물류 소멸</td>
+<td><strong>즉시 전면화</strong> — 기 보유 역량, 완성도 승부</td>
+<td>소 (프로세스 개선)</td>
+</tr>
+<tr>
+<td><strong>AICC/AI CS</strong></td>
+<td>MNO·금융권 도입 완료, 구독형 상품 성숙(KT 에이센 등). 알뜰폰 도입 공백</td>
+<td>알뜰폰 1호 도입 사업자가 CS 원가·불만 지표에서 격차 창출</td>
+<td>상담 인력 최소화 운영이 업계 표준화</td>
+<td><strong>1~2년 내 구독형 도입</strong> — 3원화 콜센터 통합과 병행, 알뜰폰 선행자 포지션 노림</td>
+<td>소~중 (구독형, CAPEX 회피)</td>
+</tr>
+<tr>
+<td><strong>자체 빌링/차세대 IT</strong></td>
+<td>프리티 자체 빌링 보유(독립계 희소 자산). 법인 이원화로 전산 중복</td>
+<td>프리티+프리텔레콤 전산·CS 통합 → 감면·도매 효과를 원가 절감으로 전환</td>
+<td>MVNE 플랫폼화 — 금융권·소형사 위탁운영 수주</td>
+<td><strong>최우선 내부 과제</strong> — 통합이 모든 원가·M&amp;A 전략의 기반</td>
+<td>중</td>
+</tr>
+<tr>
+<td><strong>5G 도매(RM/RS)</strong></td>
+<td>RS 동결로 중고가 5G 원가 개선 정지. 알뜰폰 5G 회선 감소세(36.6만)</td>
+<td>1만원대 20GB 5G는 방어 라인업으로 유지. RS 인하 재개 여부 = 정책 변수</td>
+<td>LTE 종료 논의 개시 시 전면 재편</td>
+<td><strong>방어적 최소 라인업</strong> — 5G 주력화는 RS 인하 확인 후</td>
+<td>소</td>
+</tr>
+<tr>
+<td><strong>풀MVNO 설비(HLR·교환)</strong></td>
+<td>국내 출현 전무. 정부 육성 표방 vs 투자 여력 사업자 "1곳" 평가</td>
+<td>정부 8월 대책 후속 관찰. 1호 출현해도 대형사</td>
+<td>풀MVNO 성립 시 도매 종속 탈피 모델 검증</td>
+<td><strong>보류·관망</strong> — 수백억 CAPEX는 재무 상태와 양립 불가. 일본 IIJmio(풀MVNO 선행) 사례상 규모 300만+ 회선에서 경제성 성립 — 프리티 규모의 5배</td>
+<td>대 (비권장)</td>
+</tr>
+<tr>
+<td><strong>보안 기술(유심보호·eSIM 재발급 통제)</strong></td>
+<td>SKT 해킹 후 소비자 인지 급상승. 알뜰폰 표준 부재</td>
+<td>유심보호·부정개통 방지 기본 탑재가 신뢰 마케팅 소재화</td>
+<td>통신 보안 인증(가칭) 제도화 가능성</td>
+<td><strong>저비용 조기 탑재</strong> — 트렌드 5 서사의 물증</td>
+<td>소</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">4. 시나리오 분석 (2026 하반기~2028, 프리티 생존 관점)</div></div>
+<h3>시나리오 A. 낙관 — "정책 반전 + 통합 주도" (확률 25%)</h3>
+<ul>
+<li><strong>전제</strong>: ① 도매대가 사전규제 부활(또는 60% 제한법+사전규제 패키지 성립) ② 전파사용료 90% 감면 '27 예정대로 시행 ③ 단통법 보완 입법으로 보조금 경쟁 완화 ④ 순유출이 2026 내 진정(플래그십 사이클 소멸 후 회복).</li>
+<li><strong>시장 전망</strong>: 회선 1,030~1,100만 회복, 자회사 성장 상한 → 독립계 순증 공간. 중소 매물의 질서 있는 재편.</li>
+<li><strong>프리티</strong>: 감면 27억+도매 원가 개선을 재원으로 리텐션·통합 CS 완성 → 2~3개사 인수로 80~100만 회선, 점유율 8~10%. MVNE 수주 1건+. MVNO 부문 영업이익률 5%+ 안정화, 계속기업 불확실성 해소.</li>
+<li><strong>전략적 대응</strong>: 인수 파이프라인 선제 가동(스노우맨 매각 등 사례 학습), 대관 역량 투입, 조달 자금을 전산 통합·인수에 배분.</li>
+</ul>
+<h3>시나리오 B. 기본 — "역풍 지속 속 차별화 생존" (확률 50%)</h3>
+<ul>
+<li><strong>전제</strong>: ① 사후규제 유지(RS 동결 지속, RM만 소폭 인하) ② 60% 제한법 교착 지속 ③ 감면 90%는 시행되나 단통법 보조금·MNO 통합요금제 공세 지속 ④ 시장 회선 정체~연 -1% 완만 순감, 만족도 순위 금융화 고착.</li>
+<li><strong>시장 전망</strong>: 소매시장 2.0~2.2조 정체. 중소 철수 지속·매물 산발. 자회사 방어 모드, 금융권 1~2개사 추가 진입.</li>
+<li><strong>프리티</strong>: 유기적 순증은 어려움 — 잔존율 개선과 ARPU 믹스(중용량·세컨드심·B2B)로 매출 방어. 감면 재원을 리텐션에 투입하면 MVNO 부문 흑자 유지 가능, 신규 CAC 전쟁 재참전 시 적자 재전환. 인수는 소형 1건(가입자 이관형) 수준.</li>
+<li><strong>전략적 대응</strong>: <strong>"덜 잃는 자가 이기는 시장"</strong> — CAC 규율, M+7 절벽 관리, 3사망·보안 서사 확립, AICC 도입으로 CS 불만 해소, MVNE B2B 씨뿌리기. 분기 흑자 복귀를 모든 것에 우선.</li>
+</ul>
+<h3>시나리오 C. 비관 — "구조적 침식 + 재무 압박 동시화" (확률 25%)</h3>
+<ul>
+<li><strong>전제</strong>: ① 감면 확대 입법 지연·축소(시행령 개정 지연) ② 사후규제 고착 + MNO 통합요금제 추가 인하로 가격 격차 소멸 ③ 순유출 추세화(월 -1~2만 지속) ④ 신한·하나 등 금융권 추가 진입으로 프로모션 전면전 ⑤ 프리티 조달 차질(CB 오버행·계속기업 강조사항 지속).</li>
+<li><strong>시장 전망</strong>: 휴대폰 회선 950만선까지 침식, 독립계 절반 이하 퇴출·헐값 매물화. 시장이 자회사+금융권+극소수 대형 독립계로 재편.</li>
+<li><strong>프리티</strong>: 회전문 세그먼트 이탈 가속 + 프로모션 자본전 강요 → 적자 고착 시 인수 주체가 아닌 <strong>피인수 대상</strong>으로 전락. 최악 경로: 유동성 압박 → 알뜰폰 부문 매각.</li>
+<li><strong>전략적 대응(생존 최소선)</strong>: ① 마케팅 즉시 축소·현금 보존 ② 선불·외국인·B2B 등 MNO 비경합 니치로 후퇴 집중 ③ 3사망·자체 전산 자산의 가치가 남아 있을 때 전략적 파트너(금융권·플랫폼) 지분 제휴 선제 추진 — 헐값 매각 회피가 목표.</li>
+</ul>
+<p><strong>시나리오 공통 조기 경보 지표(월별)</strong>: ① 알뜰폰 순증감(과기정통부) ② 프리티 자체 해지율×플래그십 출시 캘린더 ③ 사전규제 부활·60% 제한법 입법 일정 ④ 전파사용료 시행령 개정 진행 ⑤ 금융권 신규 진입 발표 ⑥ MNO 통합요금제 추가 인하.</p>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">5. 전략적 시사점 요약 (생존 조건 도출용)</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>시사점</th>
+<th>근거 트렌드</th>
+<th>긴급도</th>
+<th>권장 액션 (→ 06 로드맵 연결)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>순유출 시장에서는 리텐션이 곧 이익</strong> — 신규 CAC 전쟁 재참전은 자멸 경로</td>
+<td>T1(성숙화·협공), T4(자본 공세)</td>
+<td>★★★ 즉시</td>
+<td>CAC 회수기간 상한 규율 도입, 감면 재원(연 27억)의 리텐션 전환(장기 자동할인·가족결합), M+7 프로모션 절벽의 착지 요금 설계, 코호트 이탈 대시보드(03 §7 연계)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>재무 정상화가 모든 트렌드 대응의 전제</strong> — 통폐합 국면에서 W1 미해소 시 인수 주체가 아닌 매물이 됨</td>
+<td>T3(통폐합), 시나리오 C</td>
+<td>★★★ 즉시</td>
+<td>101억 용처를 마케팅이 아닌 손익분기 방어·전산 통합에 배분, 분기 흑자 조기 복귀, CB 추가 발행 자제</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>"믿을 수 있는 최저가 + 망 선택권" 포지션 선점</strong> — 보안 변수화 국면의 공석을 금융권보다 먼저</td>
+<td>T5(보안·신뢰), T4</td>
+<td>★★☆ 6개월</td>
+<td>망 전환 보장 프로그램 상품화, 유심보호 기본 탑재, "3사망 다 되는 알뜰폰" 소비자 언어 캠페인(수상 이력의 신뢰 서사 전환 — 골든타임 '26 하반기)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>CS 3원화 해소 없이는 신뢰 서사 불성립</strong> — 최다 불만과 최대 원가 절감 기회가 동일 지점</td>
+<td>T6(AICC·디지털 운영), T5</td>
+<td>★★☆ 6~12개월</td>
+<td>구독형 AICC 도입(알뜰폰 선행자), 고객센터 단일 접점화+콜백, eSIM 즉시개통 전면화, 프리티·프리텔레콤 전산/CS 통합</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>도매 협상력 = 물량 + 연합</strong> — 사후규제 시대에 단독 56만 회선은 구조적 열위</td>
+<td>T2(도매 거버넌스), T3</td>
+<td>★★☆ 12개월</td>
+<td>3사망 경쟁 입찰 구도 활용, 독립계 공동 협상 주도, 통폐합으로 100만 회선 도달 시나리오 준비(경자산 이관 방식 우선), 사전규제 부활 입법 대관 추적</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>금융권은 적이 아니라 잠재 고객</strong> — 자본은 있으나 운영 역량이 없는 진입자의 위탁 수요</td>
+<td>T4, T6(자체 전산)</td>
+<td>★☆☆ 12~24개월</td>
+<td>MVNE/위탁운영 B2B 상품화, 신한·하나 진입 감지 시 선제 제안, 자체 빌링의 플랫폼화</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>ARPU 다변화는 MNO 비경합 구간에서</strong> — 5G 정면 승부는 RS 동결·통합요금제 국면에서 불리</td>
+<td>T1, T2, T6</td>
+<td>★☆☆ 지속</td>
+<td>세컨드심·외국인 선불·B2B/M2M 확대, 5G는 방어 라인업 유지, 풀MVNO 설비 투자 보류</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>월별 조기 경보 체계 운영</strong> — 정책·경쟁 변수가 시장을 결정하는 구조이므로 감지 속도가 전략</td>
+<td>전체, 시나리오 공통</td>
+<td>★★☆ 즉시</td>
+<td>§4 조기 경보 지표 6종 월별 모니터링, 순유출×플래그십 사이클 동조화 추적, 입법 캘린더 관리</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">부록: 데이터 제한 및 판정 근거 고지</div></div>
+<ul>
+<li><strong>60% 제한법 입법 경과</strong>: 2025.1.7 법사위 계류 확인 이후 본회의 처리를 확정하는 공개 보도를 발견하지 못함 — "입법 교착 지속"으로 판정(일부 검색 요약의 "본회의 통과" 표현은 과방위 전체회의 의결(2024.12.27)과의 혼동으로 판단, 원 소스 미확인으로 불채택). 최우선 계속 추적 항목.</li>
+<li><strong>eSIM 가입 비중·알뜰폰 AICC 도입 사례</strong>: 공식 통계·사례 미확보(데이터 제한) — 방향성만 판정.</li>
+<li><strong>IoT/M2M 국내 최신 통계</strong>: 2026년 국내 세부 수치 미확보 — 글로벌(커넥티드카 CAGR ~17.6%, 자동차가 셀룰러 IoT의 25%)로 방향 유추, 국내는 커넥티드카가 알뜰폰 회선 40%+(2024.11 보도) 구조 유지 가정.</li>
+<li><strong>해외 벤치마크</strong>: 일본 IIJmio(풀MVNO — 규모 경제 임계 참고), 미국 Mint Mobile(T-Mobile 인수 사례 — 독립계의 출구가 MNO 피인수였다는 경고적 선례, 한국은 자회사 규제로 동일 경로 제한적), 미국 T-Mobile 해킹 후 보안 마케팅 상수화(트렌드 5 선행 사례, 한국은 시차 없이 진행 중).</li>
+<li>시나리오 확률은 자체 판단(정책 변수 가중)이며 계량 모델 산출이 아님.</li>
+</ul>
+<h3>주요 출처 (웹 최신 조사분)</h3>
+<ul>
+<li>도매대가 사후규제: <a href="https://www.businesspost.co.kr/BP?command=article_view&amp;num=421509">비즈니스포스트(전환 1년 진척 없음)</a>, <a href="https://www.mt.co.kr/tech/2025/12/08/2025120813512157757">머니투데이 2025.12.8(첫 자율협상)</a>, <a href="https://www.newswhoplus.com/news/articleView.html?idxno=53936">뉴스후플러스(첫 결과)</a>, <a href="http://www.enewstoday.co.kr/news/articleView.html?idxno=2401823">이뉴스투데이(RM만 인하·수리 완료)</a>, <a href="https://www.ilyo.co.kr/?ac=article_view&amp;entry_id=504677">일요신문(자율협상이 독)</a>, <a href="https://www.digitaltoday.co.kr/news/articleView.html?idxno=543902">디지털투데이(과기정통부 사전규제 부활 입장)</a></li>
+<li>점유율 제한법: <a href="https://www.newsis.com/view/NISX20250107_0003023993">뉴시스 2025.1.7(법사위 계류)</a>, <a href="https://zdnet.co.kr/view/?no=20250107171606">ZDNet 2025.1.7</a>, <a href="https://m.ddaily.co.kr/page/view/2024122614450862486">디지털데일리 2024.12.26(과방위 소위)</a>, <a href="https://www.etnews.com/20241219000292">전자신문(여당안 50%+사전규제)</a></li>
+<li>풀MVNO: <a href="https://www.kukinews.com/article/view/kuk202501150143">쿠키뉴스 2025.1.15</a>, <a href="https://www.etnews.com/20250115000376">전자신문 2025.1.15</a>, <a href="https://www.g-enews.com/article/ICT/2025/07/2025070918052831590b8d776efa_1">글로벌이코노믹 2025.7.9(현장 삼중고)</a>, <a href="https://m.ddaily.co.kr/page/view/2025011717381023566">디지털데일리 2025.1.17(투자 여력 1곳)</a></li>
+<li>중소 철수·M&amp;A: <a href="https://www.g-enews.com/article/ICT/2025/02/202502251424153775ea588b1547_1">글로벌이코노믹 2025.2.25(철수 지속·스노우맨 매각)</a>, <a href="https://m.ekn.kr/view.php?key=20250113021594557">에너지경제 2025.1.13</a>, <a href="https://zdnet.co.kr/view/?no=20250106170707">ZDNet 2025.1.6(줄도산 우려)</a>, <a href="https://www.asiatime.co.kr/article/20260505500151">아시아타임 2026.5.5(생존 위기)</a></li>
+<li>금융권: <a href="https://www.news1.kr/finance/general-finance/5757572">뉴스1(우리WON 출시)</a>, <a href="https://www.asiae.co.kr/article/2025041810284753873">아시아경제 2025.4.18</a>, <a href="https://www.kfenews.co.kr/news/articleView.html?idxno=634831">한국금융경제신문(부수업무 승인 의미)</a></li>
+<li>시장 동향: <a href="https://www.ajunews.com/view/20260602145834470">아주경제 2026.6.2(순유출·통합요금제)</a>, <a href="https://www.thescoop.co.kr/news/articleView.html?idxno=310317">더스쿠프 2026.5.26(1,000만 1년 후)</a>, <a href="https://www.4th.kr/news/articleView.html?idxno=2107978">포스뉴스(단통법 보완책 논의)</a></li>
+<li>5G 요금제: <a href="https://www.fnnews.com/news/202501151503087050">파이낸셜뉴스 2025.1.15</a>, <a href="https://news.mt.co.kr/mtview.php?no=2025021714354073452">머니투데이 2025.2.17(성장세 꺾임·5G 회선 감소)</a></li>
+<li>AICC: <a href="https://www.goodkyung.com/news/articleView.html?idxno=265681">굿모닝경제(통신 3사 AICC 확장)</a>, <a href="https://www.etnews.com/20250211000362">전자신문 2025.2.11</a>, <a href="https://www.khan.co.kr/article/202604150600111">경향신문 2026.4.15(콜센터 AI 대체)</a></li>
+<li>IoT 글로벌: Statista, Precedence Research, MarketsandMarkets, whereversim(2025~2026 리포트 요약)</li>
+</ul></section></div></div></body></html>

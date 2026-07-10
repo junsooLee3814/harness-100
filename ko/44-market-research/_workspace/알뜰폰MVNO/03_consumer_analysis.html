@@ -1,0 +1,835 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>소비자 분석 보고서 — 국내 알뜰폰(MVNO) 시장</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">44 마켓리서치 · 알뜰폰(MVNO) 시장 조사 — 프리티/프리텔레콤</div><h1>소비자 분석 보고서 — 국내 알뜰폰(MVNO) 시장</h1></header><div class="intro"><ul>
+<li>작성: consumer-analyst · 작성일 2026-07-05</li>
+<li>조사 방법: 2차 데이터 기반 — 컨슈머인사이트 이동통신 기획조사(반기), 한국기업평판연구소 브랜드평판지수(월간), 모요(모두의요금제) 리뷰·가입 통계, 언론 보도(2024~2026.6), 프리티 공식 채널. 모든 수치에 출처·기준시점 명기.</li>
+<li>⚠️ 1차 조사(설문·FGI) 미실시 — 본 보고서는 공개 2차 데이터로 작성했으며, 표본·기간이 상이한 자료 간 비교에는 한계가 있음. 데이터 미확보 영역은 "데이터 제한"으로 표기.</li>
+<li>⚠️ 프리티 투자요청서(2026.07.03)의 "브랜드 평판 1위" 주장은 §5에서 독립 검증함 — <strong>사실이나 중요한 단서 조항 있음</strong>.</li>
+</ul>
+<hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">1. 고객 세그먼테이션</div></div>
+<h3>1.1 알뜰폰 이용자 기초 구조 (검증된 공개 데이터)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>수치</th>
+<th>기준시점</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>연령 구성(이용자)</td>
+<td>20대 25% / 30대 24% / 40대 21% / 50대+ 25% / 10대 5%</td>
+<td>2024</td>
+<td>컨슈머인사이트 인용 보도(한국경제 2024.8.26)</td>
+</tr>
+<tr>
+<td>2030 비중</td>
+<td>약 49% (이용자 기준)</td>
+<td>2023 하반기</td>
+<td>컨슈머인사이트 인용 보도(한국경제)</td>
+</tr>
+<tr>
+<td>신규 가입 연령(플랫폼)</td>
+<td>20대 34.3% + 30대 35.6% = <strong>약 70%</strong></td>
+<td>2024.4~5 모요 신규 가입</td>
+<td>뉴스천지(newscj) 2024</td>
+</tr>
+<tr>
+<td>자급제 단말 비율</td>
+<td>신규 가입자의 <strong>87~90%</strong> (1년 전 77%)</td>
+<td>2024~2022</td>
+<td>정보통신신문, 디지털데일리 2022.1.17</td>
+</tr>
+<tr>
+<td>ARPU</td>
+<td>약 1.6만 원/월 (MNO 3.6만 원의 44%)</td>
+<td>2023</td>
+<td>KISDI 인용 보도(산업 분석 §2 참조)</td>
+</tr>
+<tr>
+<td>이탈 리스크</td>
+<td>교체 예정자 48% "보조금 많으면 이통사 이동"</td>
+<td>2026.5</td>
+<td>더스쿠프 2026.5.26</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>시사점</strong>: 알뜰폰의 유입은 2030(신규의 ~70%)이 끌고, 잔존(스톡)은 전 연령에 고르게 분포(50대+ 25%). 즉 <strong>"신규 획득 시장"과 "유지 시장"의 얼굴이 다르다</strong> — 획득 전략은 2030 온라인, 유지 전략은 4050/시니어까지 포괄해야 함.</p>
+<h3>1.2 세그먼트 평가표</h3>
+<p>매력도 = 성장성·접근성(획득 용이성)·수익성(ARPU·잔존)의 종합. ●높음 ◐중간 ○낮음.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>규모 추정(휴대폰 회선 1,011만 기준)</th>
+<th>특성</th>
+<th>핵심 니즈</th>
+<th>성장성</th>
+<th>접근성</th>
+<th>수익성</th>
+<th>매력도·우선순위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 2030 실속형</strong> (자급제+온라인)</td>
+<td>약 490~500만 (이용자의 49%)</td>
+<td>모요 비교→셀프개통, 자급제 87~90%, 무약정 선호, 프로모션 민감·체리피킹</td>
+<td>최저가 데이터 요금제, eSIM·빠른 개통, 앱/UX</td>
+<td>◐ (유입은 크나 이탈도 최다)</td>
+<td>● (온라인·플랫폼)</td>
+<td>○~◐ (0원 요금제 체리피커 혼재)</td>
+<td><strong>높음·1순위</strong> — 볼륨의 원천, 단 CAC·리텐션 관리 전제</td>
+</tr>
+<tr>
+<td><strong>② 4050 가족 총무형</strong></td>
+<td>약 210만+ (40대 21%, 가구 단위로는 배수 효과)</td>
+<td>본인+부모+자녀 회선을 묶어 관리, 신뢰·안정성 중시, 한 번 정착 시 장기 잔존</td>
+<td>복수 회선 관리 편의, 망 선택권(부모=SKT/KT 선호), 청구서 통합·가족 혜택</td>
+<td>◐</td>
+<td>◐ (온라인+구전)</td>
+<td>● (다회선·장기 잔존)</td>
+<td><strong>높음·2순위</strong> — 프리티 3사망 통합 강점과 정합성 최고</td>
+</tr>
+<tr>
+<td><strong>③ 시니어(60+)</strong></td>
+<td>50대+ 25%에 포함, 60+ 단독 수백만 추정(세부 데이터 제한)</td>
+<td>우체국·자녀 대리가입 의존, 셀프개통 장벽, 콜센터 의존도 높음</td>
+<td>전화 상담, 간단 요금제, 오프라인/우체국 접점</td>
+<td>◐ (고령화로 구조적 성장)</td>
+<td>○ (온라인 셀프개통 장벽 — 산업 분석 §8 지적)</td>
+<td>◐ (저ARPU이나 이탈 극히 낮음)</td>
+<td>중간·3순위 — CS 역량 없인 역효과(불만 증폭)</td>
+</tr>
+<tr>
+<td><strong>④ 세컨드폰/듀얼심</strong></td>
+<td>데이터 제한 (eSIM 확산으로 증가 추세, 정확한 회선 통계 부재)</td>
+<td>업무/개인 번호 분리, 중고폰 활용, 월 0~5천 원대 최저가 유지</td>
+<td>eSIM 즉시 개통, 초저가 유지비, 번호 2개 관리</td>
+<td>● (eSIM 보편화)</td>
+<td>● (온라인)</td>
+<td>○ (초저가·저용량)</td>
+<td>중간·4순위 — 마진 낮지만 회선 수 방어·교차판매 기반</td>
+</tr>
+<tr>
+<td><strong>⑤ 외국인·단기체류(선불)</strong></td>
+<td>데이터 제한 (선불 회선 통계 미분리 확보)</td>
+<td>편의점 유심·공항 채널, 언어 장벽, 체류기간 종속</td>
+<td>즉시 개통, 다국어 CS, 선불 충전 편의</td>
+<td>◐ (외국인 인구 증가)</td>
+<td>◐ (특수 채널 필요)</td>
+<td>◐ (선불 선수금·부실 없음)</td>
+<td>중간·5순위 — 프리티 해외유심·eSIM 신사업과 연계 여지</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>참고: B2B/IoT(커넥티드카 등)는 소비자 세그먼트가 아니므로 제외 — 산업 분석 §2.5 참조.</p>
+</blockquote>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">2. 고객 페르소나 (프리티 타깃 관점)</div></div>
+<h3>페르소나 A — "요금제 유목민" 김세민 (29, 직장 3년차, 서울)</h3>
+<ul>
+<li><strong>상황</strong>: 자급제 갤럭시 사용. 통신비를 고정비로 보고 연 1회 요금제를 갈아탐. 모요 알림을 켜 두고 0원/반값 프로모션을 추적.</li>
+<li><strong>Job</strong>: "월 통신비를 1만 원 이하로 묶고, 약정에 묶이지 않은 상태를 유지하고 싶다."</li>
+<li><strong>행동 특성</strong>: 셀프개통 30분 내 완료 기대, 고객센터에 전화할 일 자체를 만들기 싫어함. 프로모션 종료 시점(예: 7개월)을 캘린더에 기록해 두고 이탈.</li>
+<li><strong>프리티에 주는 의미</strong>: 볼륨은 만들지만 충성도는 없음. 이 세그먼트에서 이기는 방법은 브랜드가 아니라 <strong>모요 노출 순위 + 프로모션 후 요금의 착지점 설계</strong>(예: 24,200원으로 튀지 않는 완만한 정상화 커브).</li>
+</ul>
+<h3>페르소나 B — "가족 통신 총무" 박정훈 (47, 자영업, 경기)</h3>
+<ul>
+<li><strong>상황</strong>: 본인(LGU+망)·아내·중학생 자녀·모친(폴더폰, SKT망 선호) 4회선을 관리. 단통법 폐지 후 "갤럭시 S26 0원" 광고를 보고 흔들렸으나, 가족 전체를 옮기는 건 번거로움.</li>
+<li><strong>Job</strong>: "가족 회선을 한 곳에서, 각자 맞는 망으로, 사고 없이 관리하고 싶다."</li>
+<li><strong>행동 특성</strong>: 가격보다 "문제가 생겼을 때 전화가 되는가"를 중시. 청구서 4장을 1장으로 만들고 싶어 함.</li>
+<li><strong>프리티에 주는 의미</strong>: <strong>국내 유일 3사망 통합 브랜드라는 구조적 강점이 유일하게 '기능'하는 세그먼트.</strong> 망별로 고객센터 번호가 다른 현 구조(SKT망 1661-2207 / KT망 1577-4551 / LGU+망 1588-3615 — 프리티 공식)는 이 페르소나에게 오히려 감점 요인 — 통합 접점 설계가 과제.</li>
+</ul>
+<h3>페르소나 C — "자녀가 바꿔준" 이순자 (68, 은퇴, 부산)</h3>
+<ul>
+<li><strong>상황</strong>: 딸이 "엄마 요금 3만 원은 사기"라며 알뜰폰으로 변경해 줌. 본인은 통신사 이름도 정확히 모름. 문제가 생기면 딸 또는 114에 전화.</li>
+<li><strong>Job</strong>: "지금처럼 쓰되, 자녀에게 미안하지 않은 요금이면 된다. 뭔가 바뀌는 것 자체가 싫다."</li>
+<li><strong>행동 특성</strong>: 이탈 의사결정도 본인이 아닌 자녀가 함 — 실질 고객은 자녀(페르소나 A/B).</li>
+<li><strong>프리티에 주는 의미</strong>: 시니어 마케팅의 실제 타깃은 시니어가 아니라 <strong>"대리 결정자"인 2040 자녀</strong>. 콜센터 응대 품질이 나쁘면 자녀 커뮤니티(맘카페·뽐뿌)에서 브랜드 평판이 깎이는 경로로 작동.</li>
+</ul>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">3. 구매 여정 맵 (알뜰폰 특유 여정)</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>인지</th>
+<th>고려</th>
+<th>구매(개통)</th>
+<th>사용</th>
+<th>추천/이탈</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>주요 접점</strong></td>
+<td>모요·커뮤니티(뽐뿌·클리앙)·유튜브 절약 콘텐츠·지인 구전, (시니어) 우체국</td>
+<td>모요 요금제 비교·리뷰 1,604건(프리티)·"모요 지수", 통신사 자사몰, 0원 프로모션 목록</td>
+<td>자사몰/모요 연동 셀프개통 — 유심 배송(1~3일) 또는 eSIM 즉시, 번호이동 인증</td>
+<td>셀프서비스 앱(사용량 조회), 고객센터(망별 상이), 자동납부</td>
+<td>프로모션 종료 알림(본인 캘린더/모요), 커뮤니티 후기 작성, 재비교</td>
+</tr>
+<tr>
+<td><strong>고객 심리</strong></td>
+<td>"통신비가 아깝다" / "단통법 폐지로 폰 싸게 준다는데?"</td>
+<td>"어디가 제일 싸지? 망은 어디 게 좋지? 개통 사고 안 나나?"</td>
+<td>"빨리, 실패 없이 끝나길" — 개통 실패 메시지에 극도로 민감</td>
+<td>"평소엔 존재감 없길 바람" — 접촉 필요 자체가 부정 경험</td>
+<td>"더 싼 곳 나왔네" vs "옮기기 귀찮다"</td>
+</tr>
+<tr>
+<td><strong>주요 페인포인트</strong></td>
+<td>브랜드 인지도 부족 — 알뜰폰 브랜드를 구분 못 함</td>
+<td>프로모션 조건 복잡(7개월 후 24,200원 등 요금 점프 — 블로그위키 지적), 망별 차이 이해 어려움</td>
+<td>개통 지연·유심 배송 대기, 신분증 인증 실패, (2025 SKT 유심 사태 후) 유심교체 문의 폭증으로 상담 지연(프리티 공식 FAQ 공지)</td>
+<td><strong>고객센터 연결 어려움(프리티 최다 불만 테마)</strong>, 사용량 조회 오류(모요 리뷰), 평일 09~18시만 운영·주말 휴무</td>
+<td>해지·번호이동 절차 안내 부족, 위약금 없어 이탈 장벽 zero</td>
+</tr>
+<tr>
+<td><strong>프리티 기회</strong></td>
+<td>브랜드평판·품질만족도 수상 이력의 소비자 언어 번역("1위"보다 "3사망 다 되는 알뜰폰")</td>
+<td>프로모션 종료 후 요금 착지 설계 투명화 — 리뷰 신뢰 확보</td>
+<td>eSIM 즉시 개통 전면화, 개통 상태 실시간 알림</td>
+<td>콜백 예약·챗봇 선처리로 연결률 개선, 사용량 조회 안정화</td>
+<td>장기고객 락인(가족결합·데이터 선물·장기할인) — 현재 사실상 부재</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>여정의 구조적 특징</strong>: 알뜰폰 여정은 "모요에서 시작해 모요로 돌아오는 루프"다. 인지~고려의 지배 접점이 비교 플랫폼이므로 <strong>브랜드가 여정의 앞단을 통제하지 못하며</strong>, 차별화 기회는 개통·사용·이탈 방어의 뒷단에만 남아 있다(산업 분석 KSF ⑤·⑥과 정합).</p>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">4. 프리티(FreeT) 소비자 반응 진단 ★</div></div>
+<h3>4.1 정량 지표 요약</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>수치</th>
+<th>기준시점</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>모요 통신사 리뷰 평점</td>
+<td><strong>4.3 / 5.0 (1,604건)</strong></td>
+<td>2026.7 열람</td>
+<td>모요 프리티 페이지</td>
+</tr>
+<tr>
+<td>컨슈머인사이트 체감 만족도</td>
+<td><strong>716점 / 1,000점 — 알뜰폰 3위</strong> ('25하 719점 1위에서 2계단 하락)</td>
+<td>2026 상반기(3~4월 조사, n=30,226)</td>
+<td>부산일보 2026.6.2, 컨슈머인사이트</td>
+</tr>
+<tr>
+<td>브랜드평판지수</td>
+<td>714,399 — <strong>1위</strong> (2026.4 697,217 2위 대비 +2.46%)</td>
+<td>2026.6</td>
+<td>한국기업평판연구소(일간투데이 2026.6)</td>
+</tr>
+<tr>
+<td>2025 한국품질만족도</td>
+<td>알뜰폰 전문 브랜드 부문 <strong>1위</strong></td>
+<td>2025.11</td>
+<td>매거진한경 2025.11</td>
+</tr>
+<tr>
+<td>구글플레이/앱스토어 앱 평점</td>
+<td><strong>데이터 제한</strong> — 스토어 페이지에서 수치 직접 확인 실패</td>
+<td>—</td>
+<td>(앱명 "알뜰폰은 프리티–소비자선호도 1위" 확인, 평점 미노출)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.2 긍정 리뷰 테마 (출처: 모요 리뷰, 컨슈머인사이트)</h3>
+<ol>
+<li><strong>가성비·요금 만족</strong> — "가성비 좋아요", "아주 만족합니다"(모요). 컨슈머인사이트도 상위권 알뜰폰의 공통점으로 "요금 만족도"를 지목(아이티데일리 2026.1.6). 프리티의 719점 1위('25하)도 요금 축이 견인.</li>
+<li><strong>3사망 선택권</strong> — 국내 유일 SKT·KT·LGU+ 3사망 통합 브랜드로, 망 품질 선호가 있는 가입자(특히 부모 회선)까지 수용 가능. 단, 이 강점이 소비자 리뷰에서 명시적으로 언급되는 빈도는 낮음(데이터 제한) — 인지 자산으로 충분히 전환되지 못한 상태로 판단.</li>
+<li><strong>프로모션 경쟁력</strong> — 0원/할인 요금제로 모요 등 플랫폼 상위 노출 빈도 높음. 1Q26 영업적자(-15.1억, 공격적 마케팅)와 동전의 양면.</li>
+</ol>
+<h3>4.3 부정 리뷰 테마 (출처 명시)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>테마</th>
+<th>구체 내용</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 고객센터 연결 어려움 (최다)</strong></td>
+<td>"고객센터 연결이 쉽지 않으며, 여타 알뜰폰 대비 연결이 더 어렵다는 후기가 많음"</td>
+<td>블로그위키(프리티 단점 정리), 커뮤니티 후기 다수</td>
+</tr>
+<tr>
+<td><strong>② 접점 구조 복잡</strong></td>
+<td>망별 고객센터 번호 3개로 분리(SKT망 1661-2207 / KT망 1577-4551 / LGU+망 1588-3615), 평일 09~18시만 운영·주말 휴무</td>
+<td>프리티 공식(freet.co.kr)</td>
+</tr>
+<tr>
+<td><strong>③ 프로모션 종료 후 요금 점프</strong></td>
+<td>데이터 안심무제한: 7개월 0원 → 이후 24,200원 청구 구조에 대한 불만</td>
+<td>블로그위키</td>
+</tr>
+<tr>
+<td><strong>④ 앱/셀프서비스 품질</strong></td>
+<td>"사용량 조회가 잘 안됨"</td>
+<td>모요 리뷰</td>
+</tr>
+<tr>
+<td><strong>⑤ 상담 지연 (일시적)</strong></td>
+<td>유심 교체 문의 폭증으로 1:1 문의 답변 지연 공지(2025 SKT 유심 해킹 사태 여파로 추정 — SKT망 재판매 사업자로서 간접 타격)</td>
+<td>프리티 공식 FAQ 공지</td>
+</tr>
+<tr>
+<td><strong>⑥ 체리피킹 이탈</strong></td>
+<td>"할인기간 끝나면 비교적 싼 곳으로 옮김" — 프로모션 종료 = 이탈 트리거</td>
+<td>모요 리뷰</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.4 진단 종합</h3>
+<ul>
+<li><strong>평점 구조는 "요금 만족 vs CS 불만"의 전형적 알뜰폰 프로파일</strong>이며, 프리티는 요금 축에서는 업계 최상위(만족도 1~3위 반복), CS 축에서는 업계 평균 이하 신호(연결 어려움이 반복 언급)로 <strong>비대칭</strong>.</li>
+<li>4.3/5.0(모요)은 알뜰폰 상위권으로 양호하나, 리뷰 텍스트가 짧고 프로모션 직후 작성 편중 가능성이 있어 절대치 해석은 보수적으로 할 것.</li>
+<li><strong>구조적 취약점</strong>: 프리티의 핵심 자산(3사망)이 만들어내는 운영 복잡성(고객센터 3원화)이 그대로 최다 불만으로 전이되고 있음. 자산과 불만의 뿌리가 같다 — 통합 CS 접점 없이는 3사망 강점이 순가치를 못 냄.</li>
+<li><strong>커뮤니티 정성 데이터 제한</strong>: 뽐뿌·네이버 카페 개별 게시글 수준의 체계적 크롤링은 본 조사에서 미실시. 방향성(고객센터 불만 우세)은 복수 소스로 교차 확인되나, 빈도 계량화는 §7 조사 설계로 보완 필요.</li>
+</ul>
+<hr />
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">5. 브랜드 매력도 평가 ★</div></div>
+<h3>5.1 "브랜드 평판 1위" 주장 검증 (한국기업평판연구소)</h3>
+<p><strong>결론: 사실이나, 2026년 6월 단월 기준이며 직전까지 KT엠모바일에 뒤진 2위였음. "1위 등극"의 상당 부분은 프리티의 상승(+2.46%)이 아니라 경쟁사의 급락(KT엠모바일 -31.04%)에 기인.</strong></p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>시점</th>
+<th>프리티 순위</th>
+<th>프리티 지수</th>
+<th>1위 브랜드(지수)</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025.4</td>
+<td>4위</td>
+<td>—</td>
+<td>KT엠모바일</td>
+<td>더페어 2025.4, 브리코리아</td>
+</tr>
+<tr>
+<td>2025.7</td>
+<td>2위</td>
+<td>—</td>
+<td>KT엠모바일</td>
+<td>더페어·에너지신문 2025.7</td>
+</tr>
+<tr>
+<td>2026.4</td>
+<td>2위</td>
+<td>697,217</td>
+<td>KT엠모바일(851,827)</td>
+<td>파이낸스투데이·일간투데이 2026.4</td>
+</tr>
+<tr>
+<td><strong>2026.6</strong></td>
+<td><strong>1위</strong></td>
+<td><strong>714,399</strong> (+2.46%)</td>
+<td>프리티 (2위 KT엠모바일 587,398, <strong>-31.04%</strong>)</td>
+<td>일간투데이·이넷뉴스 2026.6</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>평판지수의 방법론적 한계 (반드시 병기할 것)</strong>:</p>
+<ol>
+<li>참여지수+소통지수+커뮤니티지수 = <strong>빅데이터 "언급량" 기반 지표</strong>로, 긍·부정을 정밀 구분하지 않음 — 프로모션·이슈로 언급이 늘면 지수가 오르는 구조. 소비자 선호·구매의향과의 상관은 검증되지 않음.</li>
+<li><strong>월별 변동성 극심</strong> — KT엠모바일이 두 달 새 -31% 급락한 데서 보듯, 단월 순위는 마케팅 이벤트에 좌우됨. "1위"를 지속 역량으로 해석하면 안 됨.</li>
+<li>투자요청서가 이 지표를 핵심 강점으로 내세운 것은 <strong>낙관 편향 사례</strong> — "2026.6 단월 1위(직전 2위, 경쟁사 급락 반사효과 포함)"로 정정 인용해야 함.</li>
+</ol>
+<h3>5.2 소비자 체감 만족도 (컨슈머인사이트 — 더 신뢰할 지표)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>시점</th>
+<th>프리티</th>
+<th>알뜰폰 내 순위</th>
+<th>1위(점수)</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024 하반기</td>
+<td>—</td>
+<td>2위</td>
+<td>리브모바일</td>
+<td>아이티데일리</td>
+</tr>
+<tr>
+<td>2025 상반기</td>
+<td>700점</td>
+<td>5위</td>
+<td>리브모바일(705) — 8반기 연속 1위 종료 직전</td>
+<td>비즈니스포스트 2025.6</td>
+</tr>
+<tr>
+<td>2025 하반기</td>
+<td><strong>719점</strong></td>
+<td><strong>1위 (사상 첫)</strong></td>
+<td>프리티</td>
+<td>아이티데일리 2026.1.6</td>
+</tr>
+<tr>
+<td>2026 상반기</td>
+<td>716점</td>
+<td>3위</td>
+<td>우리WON모바일(735), 2위 티플러스(728)</td>
+<td>부산일보 2026.6.2</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>실이용자 30,226명(14세+) 10점 척도 체감 만족도 조사로 <strong>평판지수보다 소비자 실태를 잘 반영</strong>. 프리티는 4반기 연속 상위권(2→5→1→3위)으로 <strong>"꾸준한 상위권, 확고한 1위는 아님"</strong>이 정확한 위치.</li>
+<li>부산일보가 지적하듯 이 순위조차 "프로모션 따라 춤춘다" — 우리WON(우리은행)의 공격적 마케팅으로 1위 교체, 리브모바일은 마케팅 제동 후 7위로 추락. <strong>만족도 상위권의 실체가 상당 부분 '가격 프로모션 만족'</strong>이라는 뜻으로, 자본력 열위인 프리티에겐 지속가능성 리스크.</li>
+</ul>
+<h3>5.3 경쟁 브랜드 대비 위치</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>평가 축</th>
+<th>프리티 위치</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>인지도</strong></td>
+<td>중상 — 언급량(평판지수) 기준 KT엠모바일과 1~2위 경합, 그러나 보조인지(브랜드명 자체 인지)는 자회사 브랜드 대비 열위 추정(데이터 제한 — 비보조 인지도 조사 부재)</td>
+<td>평판연구소 2025~2026</td>
+</tr>
+<tr>
+<td><strong>신뢰도</strong></td>
+<td>중 — 품질만족도 1위(2025 한경) 수상에도, 고객센터 불만·계속기업 불확실성(공시)이 신뢰 자산 축적을 제약. 금융권(우리WON·리브)은 은행 신뢰를 이식받는 구조라 이 축에서 구조적 우위</td>
+<td>§4.3, 부산일보</td>
+</tr>
+<tr>
+<td><strong>차별성</strong></td>
+<td><strong>유일한 실질 차별점 = 3사망 통합</strong> (경쟁 알뜰폰 대부분 1~2개망). 단, 소비자 인지 전환 미흡 + CS 3원화 부작용 동반(§4.4)</td>
+<td>프리티 공식, 00_input</td>
+</tr>
+<tr>
+<td><strong>가격 포지션</strong></td>
+<td>최상위권 경쟁력 — 만족도 1위('25하)의 견인축, 모요 상위 노출</td>
+<td>컨슈머인사이트</td>
+</tr>
+<tr>
+<td><strong>충성도/NPS</strong></td>
+<td>데이터 제한 — 공개 NPS 부재. 대용 지표인 "할인 종료 시 이탈" 리뷰와 업계 48% 조건부 이탈 의향을 감안하면 낮을 것으로 추정</td>
+<td>모요 리뷰, 더스쿠프 2026.5.26</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.4 브랜드 매력도 종합 판정</h3>
+<ul>
+<li><strong>프리티는 "가격 성과 브랜드"이지 아직 "신뢰 자산 브랜드"가 아니다.</strong> 수상 실적(평판 1위·만족도 1위·품질만족도 1위)은 모두 사실이나, ① 단월/단반기 성격 ② 프로모션 의존성 ③ CS 불만이라는 3중 단서가 붙는다.</li>
+<li>매력도 스코어(자체 평가, 5점): 가격 4.5 / 차별성(잠재) 4.0 / 인지도 3.0 / 신뢰도 2.5 / 충성도 2.0 → <strong>종합 3.2/5, "상위권 진입은 했으나 방어 수단이 없는 브랜드"</strong>.</li>
+<li>전략 함의: 2026.6 평판 1위·'25하 만족도 1위는 <strong>지금이 브랜드 자산화(수상 이력→신뢰 서사 전환)의 마지막 골든타임</strong>임을 의미. 프로모션이 끊기는 순간 순위가 빠지는 구조(우리WON·리브 사례)를 프리티도 그대로 답습할 위험이 큼.</li>
+</ul>
+<hr />
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">6. JTBD(Jobs-to-be-Done) 분석</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Job 유형</th>
+<th>Job 서술 ("~하고 싶다")</th>
+<th>현재 해결책</th>
+<th>불완전한 점 (기회)</th>
+<th>관련 세그먼트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기능적</td>
+<td>매달 나가는 통신비를 절반 이하로 줄이고 싶다</td>
+<td>알뜰폰 최저가 요금제(모요 비교)</td>
+<td>프로모션 종료 후 요금 점프로 재탐색 비용 발생</td>
+<td>①②③ 전체</td>
+</tr>
+<tr>
+<td>기능적</td>
+<td>약정·위약금 없이 언제든 갈아탈 자유를 갖고 싶다</td>
+<td>무약정 알뜰폰 + 자급제(신규의 87~90%)</td>
+<td>자유 = 사업자엔 이탈 리스크. "머물 이유"는 아무도 안 줌</td>
+<td>①</td>
+</tr>
+<tr>
+<td>기능적</td>
+<td>가족 회선을 망 상관없이 한 곳에서 관리하고 싶다</td>
+<td>사실상 부재 (통신사별 분산 관리)</td>
+<td><strong>프리티 3사망이 유일하게 풀 수 있는 미충족 Job</strong> — 통합 청구·가족 혜택 미비</td>
+<td>②</td>
+</tr>
+<tr>
+<td>기능적</td>
+<td>부모님 폰을 사고 없이, 싸게, 대신 관리해 드리고 싶다</td>
+<td>자녀 대리가입 + 우체국</td>
+<td>대리 결정자용 UI/위임 관리 기능 부재</td>
+<td>②③</td>
+</tr>
+<tr>
+<td>기능적</td>
+<td>업무용/개인용 번호를 싸게 분리하고 싶다</td>
+<td>듀얼심(eSIM)+월 0~5천 원 요금제</td>
+<td>eSIM 즉시개통·관리 UX 미성숙</td>
+<td>④</td>
+</tr>
+<tr>
+<td>기능적</td>
+<td>한국 체류 기간만 쓸 회선을 즉시 만들고 싶다</td>
+<td>편의점 선불유심</td>
+<td>다국어 CS·충전 편의 부족</td>
+<td>⑤</td>
+</tr>
+<tr>
+<td>감정적</td>
+<td>통신사에 "호구 잡히지 않았다"는 통제감을 느끼고 싶다</td>
+<td>알뜰폰 전환 자체</td>
+<td>개통 사고·CS 불통 시 통제감이 배신감으로 반전</td>
+<td>①②</td>
+</tr>
+<tr>
+<td>감정적</td>
+<td>(SKT 해킹 후) 내 유심·개인정보가 안전하다고 느끼고 싶다</td>
+<td>유심 교체, 통신사 이동</td>
+<td>알뜰폰은 보안 신뢰 서사가 전무 — 금융권 브랜드가 선점 중</td>
+<td>전체</td>
+</tr>
+<tr>
+<td>사회적</td>
+<td>알뜰하지만 없어 보이지 않게 소비하고 싶다</td>
+<td>"짠테크" 담론의 확산으로 낙인 소멸 중</td>
+<td>시니어층엔 "싸구려" 잔상 일부 잔존</td>
+<td>③</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>핵심 통찰</strong>: 시장의 지배적 Job("싸게")은 완전 상향평준화되어 차별화 여지가 없다. 프리티가 소유할 수 있는 미충족 Job은 <strong>"가족 회선 통합 관리"(3사망 독점 자산)와 "프로모션 종료 후에도 재탐색이 필요 없는 요금 설계"</strong> 두 가지다.</p>
+<hr />
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">7. 조사 방법론 제안 (프리티 자체 실행용)</div></div>
+<h3>7.1 정량 (내부 데이터 우선 — 비용 최소)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>조사</th>
+<th>설계</th>
+<th>산출물</th>
+<th>예상 비용/기간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>코호트 이탈 분석</strong></td>
+<td>가입월×프로모션 유형별 코호트의 M+1~M+12 잔존율. 특히 "0원 종료 시점(M+7)" 절벽 계량화</td>
+<td>프로모션별 LTV/CAC, 요금 착지점 설계 근거</td>
+<td>내부 DB, 2주</td>
+</tr>
+<tr>
+<td><strong>NPS 트래킹</strong></td>
+<td>개통 D+7(개통 경험)·D+90(사용 경험)·해지 시 3포인트 문자 서베이(11점 척도+주관식 1문항)</td>
+<td>분기 NPS 추이, 경쟁사(컨슈머인사이트 공개치) 벤치마크</td>
+<td>문자 발송비 수준, 상시</td>
+</tr>
+<tr>
+<td><strong>해지자 서베이</strong></td>
+<td>번호이동 이탈자 대상 이탈 사유 5지선다(보조금/요금/CS/품질/기타)+전입 통신사</td>
+<td>단통법 폐지發 이탈의 실제 구성비 — 산업 분석가가 요청한 "48% 의향→실제 전환율" 갭 측정</td>
+<td>저비용, 1개월</td>
+</tr>
+<tr>
+<td><strong>VOC 텍스트 분류</strong></td>
+<td>고객센터·1:1문의 로그를 월별 카테고리 자동 분류(개통/청구/유심/앱/해지)</td>
+<td>CS 불만 Top 이슈 대시보드 — §4.3 가설 검증</td>
+<td>내부, 2주</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.2 정성</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>조사</th>
+<th>설계</th>
+<th>목적</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FGI 2그룹</strong></td>
+<td>① 2030 프로모션 이탈 경험자 6~8명 ② 4050 가족 3회선+ 총무 6~8명</td>
+<td>"가족 통합 관리" 상품 컨셉 수용도, 요금 착지점 심리 저항선</td>
+</tr>
+<tr>
+<td><strong>리뷰 텍스트마이닝</strong></td>
+<td>모요 1,604건+앱스토어 리뷰 크롤링, 토픽모델링(분기 반복)</td>
+<td>경쟁사(KT엠모바일·티플러스·우리WON) 대비 불만 테마 점유율</td>
+</tr>
+<tr>
+<td><strong>미스터리 콜</strong></td>
+<td>자사+경쟁 4사 고객센터 시간대별 연결 시간 측정(월 1회)</td>
+<td>"연결 어려움" 불만의 객관 계량화·개선 KPI화</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.3 우선순위</h3>
+<p>1순위: 코호트 이탈 분석 + 해지자 서베이 (순유출 국면의 출혈 지점 특정 — 즉시) → 2순위: NPS 트래킹 상시화 → 3순위: FGI(가족 상품 개발 착수 시).</p>
+<hr />
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">08</span><div class="sess-title">8. 트렌드 분석가 전달 사항</div></div>
+<ol>
+<li><strong>"만족도 순위의 금융화"</strong>: 컨슈머인사이트 알뜰폰 만족도 1위가 리브모바일(8반기 연속)→프리티('25하)→우리WON('26상)으로 교체 — 은행계 사업자가 프로모션 자본력으로 만족도 순위 자체를 구매하는 패턴이 확립되는 중(부산일보 2026.6.2). 독립계의 만족도 상위권 유지 가능성은 추세적으로 하락 — 금융권 3사(KB·토스·우리)의 마케팅 투입 강도를 추적 지표로 권장.</li>
+<li><strong>보안이 통신 선택 변수로 부상</strong>: SKT 유심 해킹 여파로 SKT 만족도 최하위(545점, '25상)·유심 교체 문의 폭증(프리티 FAQ 공지로도 확인). "싸다"에서 "싸고 안전하다"로 선택 기준이 이동할 조짐 — 알뜰폰(특히 SKT망 재판매)에 2차 파급 가능. 보안 신뢰를 선점하는 브랜드(금융권 유리)가 차기 승자 후보.</li>
+<li><strong>획득-잔존 인구의 세대 분화 + 이탈의 상방 경직성</strong>: 신규 유입은 2030·자급제·eSIM(모요 신규의 ~70%)으로 극단 편중되는 반면 잔존 스톡은 전 연령 균등(50대+ 25%) — 시장이 "회전문 세그먼트(2030)"와 "침전 세그먼트(4050+)"로 갈라지는 중. 단통법 폐지 후 순유출(2026.4~5월)은 회전문 쪽에서 먼저 발생 — 갤럭시 S26 보조금(최대 70만 원, 일부 0원폰) 같은 플래그십 출시 사이클과 알뜰폰 순유출의 동조화 여부를 월별로 추적 요망. 아울러 세대별 특성: 10~30대는 "짠테크 놀이"로서의 요금제 갈아타기(낙인 소멸), 4050은 가족 단위 총무 소비, 60+는 대리 결정(자녀) 구조 — 마케팅 메시지의 실수신자가 세대마다 다름.</li>
+</ol>
+<hr />
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">09</span><div class="sess-title">부록: 데이터 제한 고지</div></div>
+<ul>
+<li>구글플레이·앱스토어 프리티 앱 평점 수치: 스토어 페이지 직접 확인 실패 — <strong>데이터 제한</strong> (앱 존재 및 명칭 "알뜰폰은 프리티–소비자선호도 1위–평생 아껴줄게요"만 확인).</li>
+<li>뽐뿌·네이버 카페 등 커뮤니티 게시글의 체계적 수집(빈도 계량) 미실시 — 불만 테마 방향성만 복수 소스 교차 확인.</li>
+<li>세컨드폰/듀얼심·외국인 선불 세그먼트의 회선 규모 공식 통계 미확보.</li>
+<li>비보조 브랜드 인지도·NPS 공개 조사 부재 — §7 자체 조사로 보완 권장.</li>
+<li>2026.5월 브랜드평판 순위(4월과 6월 사이)는 공개 검색으로 미확인.</li>
+</ul>
+<h3>주요 출처</h3>
+<ul>
+<li>한국기업평판연구소 알뜰폰 브랜드평판: 일간투데이(2026.6 — 프리티 1위 714,399), 파이낸스투데이·핀포인트뉴스·비즈니스코리아(2026.4 — KT엠모바일 1위), 더페어(2025.4, 2025.7), 이넷뉴스(2026.4/6)</li>
+<li>컨슈머인사이트 만족도: 아이티데일리(2026.1.6 — '25하 프리티 719점 1위), 부산일보(2026.6.2 — '26상 우리WON 735 1위·프리티 716 3위, "프로모션 따라 춤추는" 지적), 비즈니스포스트(2025.6 — '25상 리브 705·프리티 700), 농민신문(2025.6.24 — SKT 545점 최하위)</li>
+<li>프리티 리뷰·불만: 모요 프리티 페이지(평점 4.3, 리뷰 1,604건), 블로그위키(단점 4가지 — 고객센터·요금 점프), 프리티 공식 freet.co.kr(고객센터 체계·FAQ 유심교체 지연 공지)</li>
+<li>수상: 매거진한경(2025.11 — 2025 한국품질만족도 알뜰폰 전문 브랜드 1위)</li>
+<li>이용자 구조: 한국경제(2024.8.26 — 2030 49%·연령 분포), 뉴스천지(모요 신규 가입 연령), 정보통신신문(자급제 87%), 디지털데일리(2022.1.17 — 자급제 90%)</li>
+<li>이탈·시장: 더스쿠프(2026.5.26 — 48% 이탈 의향, 0원 마케팅), 아주경제(2026.6.2 — 2개월 연속 순유출), 다음뉴스/파이낸셜(2026.4.5 — 1Q26 순증 반토막, 갤럭시 S26 보조금 70만 원)</li>
+</ul></section></div></div></body></html>

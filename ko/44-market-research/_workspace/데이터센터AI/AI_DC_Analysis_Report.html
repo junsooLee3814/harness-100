@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 데이터센터 산업분석 — 투자심사역 리서치 보고서 2026</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --ink:#19223C;--text:#37415C;--muted:#6C748C;--faint:#9AA1B4;
+  --bg:#F3F5FB;--card:#FFF;--line:#E6E9F2;
+  --accent:#2F55C6;--accent-soft:#E9EFFD;
+  --navy:#16386E;--navy-bg:#EAF1FB;--navy-bg2:#D9E6F6;--navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-md:0 1px 2px rgba(20,30,60,.04),0 14px 32px rgba(20,30,60,.07);
+  --sky-bg:#EAF2FE;--sky-bg2:#D7E7FD;--sky-bd:#CBDDFB;--sky-ac:#3D7BEA;--sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA;--orange-bg2:#F9D8BC;--orange-bd:#F5CDA6;--orange-ac:#EA6A17;--orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9;--amber-bg2:#F6E8BC;--amber-bd:#F0E0AE;--amber-ac:#D2A11C;--amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;--mint-bg2:#D2EEDE;--mint-bd:#C8E7D7;--mint-ac:#2C9F70;--mint-dp:#1C744E;
+  --peach-bg:#FDEEE6;--peach-bg2:#FADFCF;--peach-bd:#F8D6C5;--peach-ac:#E0784C;--peach-dp:#B0512B;
+  --red-bg:#FDECEC;--red-bd:#F7CECE;--red-ac:#D63B3B;--red-dp:#9B1C1C;
+  --tab-h:52px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px;line-height:1.72;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+
+/* TAB BAR */
+.tabbar-wrap{position:sticky;top:0;z-index:50;background:#fff;border-bottom:2px solid var(--navy);box-shadow:0 2px 12px rgba(20,40,80,.10)}
+.tabbar{display:flex;overflow-x:auto;scrollbar-width:none;max-width:1040px;margin:0 auto;padding:0 10px}
+.tabbar::-webkit-scrollbar{display:none}
+.tab-btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;height:var(--tab-h);padding:0 14px;
+  border:0;border-bottom:3px solid transparent;background:none;cursor:pointer;
+  font-family:inherit;font-size:13px;font-weight:700;color:var(--muted);
+  white-space:nowrap;letter-spacing:-.01em;transition:color .15s,border-color .15s,background .15s;margin-bottom:-2px}
+.tab-btn:hover{color:var(--navy);background:var(--navy-bg)}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--navy);background:var(--navy-bg)}
+.tab-num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;font-size:11px;font-weight:800;flex:0 0 auto}
+.tab-btn.active .tab-num{background:var(--navy);color:#fff}
+.tab-btn:not(.active) .tab-num{background:var(--line);color:var(--muted)}
+
+/* PANELS */
+.panels{max-width:1040px;margin:0 auto;padding:28px 18px 80px}
+.panel{display:none;animation:fadeIn .2s ease}
+.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* COVER */
+.cover{background:var(--navy-bg);border:1px solid var(--navy-bd);border-radius:16px;padding:32px 36px 28px;margin:0 0 20px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:16px}
+.cover h1{font-size:clamp(24px,4vw,40px);line-height:1.12;font-weight:800;color:var(--navy);margin:0 0 7px;letter-spacing:-.022em}
+.cover-sub{font-size:clamp(14px,2.2vw,17px);font-weight:700;color:var(--navy);margin-bottom:13px}
+.cover-lede{font-size:clamp(13.5px,1.9vw,15.5px);color:var(--muted);font-weight:500;margin:0 0 20px;max-width:60ch}
+.cover-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;background:#fff;border:1px solid var(--navy-bd);border-radius:12px;padding:7px}
+.cm{border-radius:12px;padding:11px 13px;display:flex;flex-direction:column;gap:3px;border:1px solid transparent}
+.cm-k{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.cm-v{font-size:13px;font-weight:800}
+.cm:nth-child(4n+1){background:var(--sky-bg);border-color:var(--sky-bd);color:var(--sky-dp)}
+.cm:nth-child(4n+2){background:var(--orange-bg);border-color:var(--orange-bd);color:var(--orange-dp)}
+.cm:nth-child(4n+3){background:var(--violet-bg);border-color:var(--violet-bd);color:var(--violet-dp)}
+.cm:nth-child(4n+4){background:var(--amber-bg);border-color:var(--amber-bd);color:var(--amber-dp)}
+
+/* SEC HEADER */
+.sec-head{display:flex;align-items:flex-start;gap:14px;margin:0 0 18px;padding:18px 22px;background:var(--navy-bg);border:1px solid var(--navy-bd);border-radius:14px}
+.sec-badge{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;border-radius:12px;padding:0 10px;background:var(--navy);color:#fff;font-size:11px;font-weight:800;letter-spacing:.03em}
+.sec-info{flex:1}
+.sec-info h2{margin:0 0 3px;font-size:clamp(17px,2.5vw,21px);font-weight:800;color:var(--navy);line-height:1.2}
+.sec-info p{margin:0;font-size:13.5px;color:var(--muted);font-weight:500}
+
+/* CARD */
+.card{--c-bg:#fff;--c-bg2:#F4F6FB;--c-bd:var(--line);--c-ac:var(--accent);--c-dp:var(--ink);
+  position:relative;background:var(--c-bg);border:1px solid var(--c-bd);
+  border-radius:var(--radius);padding:22px 24px 20px;margin:14px 0;
+  box-shadow:var(--shadow-md);overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--c-ac)}
+.card--sky{--c-bg:var(--sky-bg);--c-bg2:var(--sky-bg2);--c-bd:var(--sky-bd);--c-ac:var(--sky-ac);--c-dp:var(--sky-dp)}
+.card--orange{--c-bg:var(--orange-bg);--c-bg2:var(--orange-bg2);--c-bd:var(--orange-bd);--c-ac:var(--orange-ac);--c-dp:var(--orange-dp)}
+.card--violet{--c-bg:var(--violet-bg);--c-bg2:var(--violet-bg2);--c-bd:var(--violet-bd);--c-ac:var(--violet-ac);--c-dp:var(--violet-dp)}
+.card--amber{--c-bg:var(--amber-bg);--c-bg2:var(--amber-bg2);--c-bd:var(--amber-bd);--c-ac:var(--amber-ac);--c-dp:var(--amber-dp)}
+.card--mint{--c-bg:var(--mint-bg);--c-bg2:var(--mint-bg2);--c-bd:var(--mint-bd);--c-ac:var(--mint-ac);--c-dp:var(--mint-dp)}
+.card--peach{--c-bg:var(--peach-bg);--c-bg2:var(--peach-bg2);--c-bd:var(--peach-bd);--c-ac:var(--peach-ac);--c-dp:var(--peach-dp)}
+.card--red{--c-bg:var(--red-bg);--c-bd:var(--red-bd);--c-ac:var(--red-ac);--c-dp:var(--red-dp)}
+.card-title{font-size:16px;font-weight:800;color:var(--c-dp);margin:0 0 12px}
+.card-title small{font-size:12px;font-weight:600;opacity:.7;margin-left:6px}
+.card p{margin:0 0 10px;font-size:14.5px}
+.card p:last-child{margin-bottom:0}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:14px 0}
+@media(max-width:700px){.g2,.g3{grid-template-columns:1fr}.cover-meta{grid-template-columns:1fr 1fr}}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{background:var(--navy);color:#fff;padding:10px 13px;text-align:left;font-weight:700;font-size:12px;letter-spacing:.03em;white-space:nowrap}
+td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--text)}
+tr:last-child td{border-bottom:0}
+tr:nth-child(even) td{background:#FAFBFD}
+td:first-child{font-weight:700;color:var(--ink)}
+
+/* STAT GRID */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:14px 0}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow-md)}
+.stat-v{font-size:clamp(22px,4vw,32px);font-weight:800;line-height:1;color:var(--c-dp,var(--navy));margin-bottom:4px}
+.stat-k{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+
+/* INSIGHT BOX */
+.insight{display:flex;gap:14px;background:var(--navy-bg);border:1px solid var(--navy-bd);border-radius:14px;padding:18px 20px;margin:14px 0}
+.insight-ic{font-size:28px;flex:0 0 auto;line-height:1}
+.insight-body{flex:1}
+.insight-body b{display:block;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.insight-body p{margin:0;font-size:13.5px;color:var(--muted)}
+
+/* CHECKLIST */
+.check-list{list-style:none;margin:12px 0;padding:0;display:grid;gap:8px}
+.check-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;padding:10px 14px;background:var(--c-bg,#fff);border:1px solid var(--c-bd,var(--line));border-radius:10px}
+.check-list li::before{content:"☐";font-size:16px;color:var(--c-ac,var(--accent));flex:0 0 auto;line-height:1.4}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11.5px;font-weight:700;letter-spacing:.03em;white-space:nowrap}
+.badge--sky{background:var(--sky-bg);color:var(--sky-dp);border:1px solid var(--sky-bd)}
+.badge--orange{background:var(--orange-bg);color:var(--orange-dp);border:1px solid var(--orange-bd)}
+.badge--violet{background:var(--violet-bg);color:var(--violet-dp);border:1px solid var(--violet-bd)}
+.badge--mint{background:var(--mint-bg);color:var(--mint-dp);border:1px solid var(--mint-bd)}
+.badge--amber{background:var(--amber-bg);color:var(--amber-dp);border:1px solid var(--amber-bd)}
+.badge--red{background:var(--red-bg);color:var(--red-dp);border:1px solid var(--red-bd)}
+.badge--navy{background:var(--navy);color:#fff}
+
+/* SCENARIO */
+.scen{border-radius:14px;padding:20px 22px;margin:14px 0;border:1px solid transparent}
+.scen--opt{background:var(--mint-bg);border-color:var(--mint-bd)}
+.scen--base{background:var(--sky-bg);border-color:var(--sky-bd)}
+.scen--pes{background:var(--red-bg);border-color:var(--red-bd)}
+.scen h4{margin:0 0 10px;font-size:15px;font-weight:800}
+.scen--opt h4{color:var(--mint-dp)}.scen--base h4{color:var(--sky-dp)}.scen--pes h4{color:var(--red-dp)}
+
+/* NAV */
+.nav-row{display:flex;justify-content:space-between;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:10px;
+  background:var(--navy-bg);border:1px solid var(--navy-bd);color:var(--navy);font-family:inherit;
+  font-size:13px;font-weight:700;cursor:pointer;transition:background .15s}
+.nav-btn:hover{background:var(--navy-bg2)}
+.nav-btn:disabled{opacity:.3;cursor:default}
+
+/* FORCE SCORE */
+.force-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.force-row:last-child{border-bottom:0}
+.force-name{font-size:13.5px;font-weight:700;color:var(--ink);flex:0 0 180px}
+.force-bar{flex:1;height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.force-fill{height:100%;border-radius:5px;background:var(--navy)}
+.force-score{font-size:13px;font-weight:800;color:var(--navy);flex:0 0 36px;text-align:right}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:26px;margin:14px 0}
+.timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--navy-bd)}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-dot{position:absolute;left:-22px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--navy);border:2px solid #fff;box-shadow:0 0 0 2px var(--navy-bd)}
+.tl-year{font-size:12px;font-weight:800;color:var(--navy);letter-spacing:.06em;margin-bottom:4px}
+.tl-body{font-size:13.5px;color:var(--text)}
+
+/* ALERT */
+.alert{display:flex;gap:12px;padding:14px 18px;border-radius:12px;margin:12px 0;border:1px solid transparent}
+.alert--green{background:var(--mint-bg);border-color:var(--mint-bd)}
+.alert--yellow{background:var(--amber-bg);border-color:var(--amber-bd)}
+.alert--red{background:var(--red-bg);border-color:var(--red-bd)}
+.alert-ic{font-size:18px;flex:0 0 auto;line-height:1.4}
+.alert-body{flex:1;font-size:13.5px}
+.alert-body b{display:block;font-weight:800;margin-bottom:3px;font-size:14px}
+
+h3{font-size:16px;font-weight:800;color:var(--ink);margin:22px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--line)}
+h4{font-size:14.5px;font-weight:800;color:var(--navy);margin:16px 0 8px}
+ul,ol{margin:8px 0;padding-left:20px}
+li{font-size:14px;margin-bottom:4px}
+strong{font-weight:800;color:var(--ink)}
+.muted{color:var(--muted);font-size:13px}
+.text-center{text-align:center}
+</style>
+</head>
+<body>
+
+<!-- TAB BAR -->
+<div class="tabbar-wrap">
+  <nav class="tabbar" role="tablist">
+    <button class="tab-btn active" onclick="activate(0)" role="tab">
+      <span class="tab-num">★</span> 표지·요약
+    </button>
+    <button class="tab-btn" onclick="activate(1)" role="tab">
+      <span class="tab-num">01</span> 산업분석
+    </button>
+    <button class="tab-btn" onclick="activate(2)" role="tab">
+      <span class="tab-num">02</span> 경쟁분석
+    </button>
+    <button class="tab-btn" onclick="activate(3)" role="tab">
+      <span class="tab-num">03</span> 소비자분석
+    </button>
+    <button class="tab-btn" onclick="activate(4)" role="tab">
+      <span class="tab-num">04</span> 트렌드분석
+    </button>
+    <button class="tab-btn" onclick="activate(5)" role="tab">
+      <span class="tab-num">05</span> 종합검증
+    </button>
+    <button class="tab-btn" onclick="activate(6)" role="tab">
+      <span class="tab-num">✓</span> 투자 체크리스트
+    </button>
+  </nav>
+</div>
+
+<div class="panels">
+
+<!-- ══════════════════════════════════════════
+  TAB 0: 표지·요약
+══════════════════════════════════════════ -->
+<div class="panel active" id="p0">
+  <div class="cover">
+    <div class="eyebrow">Market Research Report · 2026-07-01</div>
+    <h1>AI 데이터센터 & 일반 DC<br>산업 종합 분석 보고서</h1>
+    <div class="cover-sub">5-Agent 풀 리서치 파이프라인 완성본</div>
+    <p class="cover-lede">국내 AI DC·일반 DC 시장의 산업·경쟁·소비자·트렌드를 5개 전문 에이전트가 교차 분석하고 투자심사역 관점의 전략 권고를 도출한 종합 보고서입니다.</p>
+    <div class="cover-meta">
+      <div class="cm"><span class="cm-k">조사 기준일</span><span class="cm-v">2026.07.01</span></div>
+      <div class="cm"><span class="cm-k">시장 규모(2025)</span><span class="cm-v">약 8조 원</span></div>
+      <div class="cm"><span class="cm-k">목표 시장(2030)</span><span class="cm-v">18~24조 원</span></div>
+      <div class="cm"><span class="cm-k">AI DC CAGR</span><span class="cm-v">58~65%</span></div>
+      <div class="cm"><span class="cm-k">분석 에이전트</span><span class="cm-v">5개 풀파이프라인</span></div>
+      <div class="cm"><span class="cm-k">경쟁사 분석</span><span class="cm-v">12개+ 플레이어</span></div>
+      <div class="cm"><span class="cm-k">트렌드 시나리오</span><span class="cm-v">낙관/기본/비관 3개</span></div>
+      <div class="cm"><span class="cm-k">투자 체크리스트</span><span class="cm-v">6개 도메인</span></div>
+    </div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-badge">EXEC<br>SUM</div>
+    <div class="sec-info">
+      <h2>Executive Summary — 투자 의사결정권자 5분 요약</h2>
+      <p>산업·경쟁·소비자·트렌드 4개 분석의 교차 검증 결론</p>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat card--sky"><div class="stat-v" style="color:var(--sky-dp)">8조→24조</div><div class="stat-k">국내 DC 시장 2025→2030</div></div>
+    <div class="stat card--orange"><div class="stat-v" style="color:var(--orange-dp)">58~65%</div><div class="stat-k">AI DC 세그먼트 CAGR</div></div>
+    <div class="stat card--violet"><div class="stat-v" style="color:var(--violet-dp)">4,755조</div><div class="stat-k">삼성+SK 메가프로젝트 총액</div></div>
+    <div class="stat card--mint"><div class="stat-v" style="color:var(--mint-dp)">36~48개월</div><div class="stat-k">수전계약 대기 기간</div></div>
+  </div>
+
+  <div class="card card--sky">
+    <div class="card-title">시장 결론</div>
+    <p>국내 DC 시장은 <strong>2025년 8조 → 2030년 18~24조 원</strong>(CAGR 22%)으로 성장하며, AI DC 세그먼트는 현재 전체의 15%(1.2조)에서 2030년 50% 이상(12조+)으로 역전된다. 삼성·SK 4,755조 메가프로젝트(1단계 8.4GW·550조, 2단계 18.4GW·1,000조+)가 핵심 성장 촉매다.</p>
+  </div>
+
+  <div class="card card--orange">
+    <div class="card-title">경쟁 구도 핵심</div>
+    <p><strong>전력 내재화 능력</strong>을 보유한 사업자가 시장 과점으로 가는 유일한 경로를 점하고 있다. GS AI인프라(GS에너지 자체 발전 + GS건설 EPC)가 비대칭 우위 보유, SK데이터넥서스(HBM + AWS 파트너십)가 글로벌 연계 우위로 대항한다. 하이퍼스케일러(AWS·Azure·GCP)는 <strong>최대 고객이자 잠재 경쟁자</strong>라는 이중 역할을 수행한다.</p>
+  </div>
+
+  <div class="card card--violet">
+    <div class="card-title">수요자 핵심 발견</div>
+    <p>수요의 60~70%를 점하는 하이퍼스케일러의 구매 결정 기준 1순위는 <strong>수전계약서 한 장</strong>이다. "전력 = 테넌트(Power is the Tenant)"가 입증된 법칙이다. 하이퍼스케일러 1건(10년 계약)은 AI 스타트업 100건 합산 이상의 안정성을 제공한다. 최적 포트폴리오: 하이퍼스케일러 70%+ / 금융·공공 20% / AI 스타트업 ≤15%.</p>
+  </div>
+
+  <h3>최우선 투자 액션 3가지</h3>
+  <div class="g3">
+    <div class="card card--mint">
+      <div class="card-title">① 전력 선점 <small>★★★★★</small></div>
+      <p>2026 H2 내 비수도권 154kV 수전계약 선점. 이 시기를 놓치면 2028년 착공 자체 불가능.</p>
+    </div>
+    <div class="card card--amber">
+      <div class="card-title">② 냉각 혁신 <small>★★★★★</small></div>
+      <p>2027년 이전 액침냉각 파일럿(10~20MW) 구축. Rubin Ultra 600kW/랙 대응 미비 시 AI DC 임대 자격 박탈.</p>
+    </div>
+    <div class="card card--peach">
+      <div class="card-title">③ 앵커 계약 <small>★★★★★</small></div>
+      <p>하이퍼스케일러 BTS 장기 계약(10년+) 2027년 이전 1건 이상 체결. 2028~2029 공급 충격 구간 공실 리스크 차단.</p>
+    </div>
+  </div>
+
+  <div class="alert alert--red">
+    <div class="alert-ic">⚠️</div>
+    <div class="alert-body">
+      <b>2028~2029년 공급 충격의 창 — 핵심 리스크</b>
+      대규모 신규 공급 동시 준공 + AI 버블 조정 가능성(스타트업 수요 40~60% 취소) 교차 시 공실률 20%+ 발생 가능. 장기 BTS 계약 + 전력 내재화 + 포트폴리오 다각화로 버텨낸 사업자가 2030년 이후 과점 지위 획득.
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn" disabled>← 이전</button>
+    <button class="nav-btn" data-go="1" onclick="activate(1)">산업분석 →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  TAB 1: 산업분석
+══════════════════════════════════════════ -->
+<div class="panel" id="p1">
+  <div class="sec-head">
+    <div class="sec-badge">01<br>IND</div>
+    <div class="sec-info">
+      <h2>산업 분석 — 시장 규모·밸류체인·Porter 5 Forces</h2>
+      <p>국내 AI DC·일반 DC 산업 구조, TAM/SAM/SOM, 규제 환경, KSF</p>
+    </div>
+  </div>
+
+  <h3>시장 규모 (TAM/SAM/SOM)</h3>
+  <div class="stat-grid">
+    <div class="stat"><div class="stat-v">8조</div><div class="stat-k">TAM 국내 DC 2025년</div></div>
+    <div class="stat"><div class="stat-v">18~24조</div><div class="stat-k">TAM 국내 DC 2030년</div></div>
+    <div class="stat"><div class="stat-v">22%</div><div class="stat-k">전체 DC CAGR</div></div>
+    <div class="stat"><div class="stat-v">58~65%</div><div class="stat-k">AI DC 세그먼트 CAGR</div></div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>구분</th><th>2025년</th><th>2028년</th><th>2030년</th><th>CAGR</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>전체 DC 시장</td><td>약 8조 원</td><td>약 14조 원</td><td>18~24조 원</td><td>22%</td><td>Top-Down·Bottom-Up 오차 &lt;6%</td></tr>
+        <tr><td>AI DC 세그먼트</td><td>1.2조 원 (15%)</td><td>6~8조 원</td><td>12조 원+ (50%+)</td><td>58~65%</td><td>광의 정의(AI 워크로드 DC)</td></tr>
+        <tr><td>일반 DC(Colo+Cloud)</td><td>6.8조 원 (85%)</td><td>6~8조 원</td><td>6~12조 원</td><td>5~12%</td><td>클라우드 전환으로 성장 둔화</td></tr>
+        <tr><td>국내 전력 수요(DC)</td><td>4,461MW</td><td>6,175MW</td><td>—</td><td>+11%</td><td>IDC Korea 기준</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Porter's 5 Forces 산업 매력도</h3>
+  <div class="card card--sky">
+    <div style="padding:8px 0">
+      <div class="force-row"><span class="force-name">공급자 교섭력</span><div class="force-bar"><div class="force-fill" style="width:100%"></div></div><span class="force-score">5/5</span></div>
+      <div class="force-row"><span class="force-name">구매자 교섭력</span><div class="force-bar"><div class="force-fill" style="width:60%"></div></div><span class="force-score">3/5</span></div>
+      <div class="force-row"><span class="force-name">대체재 위협</span><div class="force-bar"><div class="force-fill" style="width:40%"></div></div><span class="force-score">2/5</span></div>
+      <div class="force-row"><span class="force-name">신규 진입 위협</span><div class="force-bar"><div class="force-fill" style="width:40%"></div></div><span class="force-score">2/5</span></div>
+      <div class="force-row"><span class="force-name">경쟁 강도</span><div class="force-bar"><div class="force-fill" style="width:60%"></div></div><span class="force-score">3/5</span></div>
+    </div>
+    <p class="muted">종합 매력도: <strong style="color:var(--sky-dp)">매우 높음</strong> — 공급자 교섭력(GPU·전력·부지)이 5/5로 최대 병목. 신규 진입 장벽은 초기 CAPEX+수전계약으로 낮음에서 중간 수준이나 전력 병목이 실질적 장벽 역할.</p>
+  </div>
+
+  <h3>밸류체인 단계별 이익 구조</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>단계</th><th>주요 플레이어</th><th>영업이익률</th><th>한국 경쟁력</th><th>병목</th></tr></thead>
+      <tbody>
+        <tr><td>① 반도체/칩</td><td>삼성전자, SK하이닉스, NVIDIA</td><td>30~50%</td><td>⭐⭐⭐⭐⭐ HBM 세계 1위</td><td>HBM4 공급 부족, 수출 통제</td></tr>
+        <tr><td>② AI 서버/장비</td><td>Dell, HPE, 삼성SDS, LG CNS</td><td>8~15%</td><td>⭐⭐ 국산화 3.3%</td><td>NVIDIA GPU 의존, 공급망 집중</td></tr>
+        <tr><td>③ DC 인프라</td><td>GS건설, 현대건설, LS일렉트릭</td><td>5~12%</td><td>⭐⭐⭐⭐ EPC 강점</td><td>전력·냉각·부지 동시 병목</td></tr>
+        <tr><td>④ DC 운영/임대</td><td>KT, SKT, LG U+, GS AI인프라</td><td>20~35%</td><td>⭐⭐⭐ 경험 축적 중</td><td>전력비 구조적 열위(172.99원/kWh)</td></tr>
+        <tr><td>⑤ AI 서비스</td><td>네이버, 카카오, AWS, Azure</td><td>15~40%</td><td>⭐⭐⭐ 국내 시장 한정</td><td>글로벌 플랫폼과의 경쟁</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>핵심 성공 요인 (KSF Top 5)</h3>
+  <div class="g2">
+    <div class="card card--orange">
+      <div class="card-title">KSF 1. 전력 확보 ★★★★★</div>
+      <p>수전계약 대기 36~48개월. 비수도권 154kV 계약 또는 자체 발전 보유 여부가 사업 착공 전제 조건. 전력 내재화 = 테넌트 유치 독점 경로.</p>
+    </div>
+    <div class="card card--violet">
+      <div class="card-title">KSF 2. 하이퍼스케일러 계약 ★★★★★</div>
+      <p>BTS(Build-to-Suit) 사전 계약이 없으면 착공 리스크 과대. 하이퍼스케일러 1건 = 스타트업 100건 가치. 계약 없는 DC는 2028~2029 공실 리스크 직격.</p>
+    </div>
+    <div class="card card--amber">
+      <div class="card-title">KSF 3. 냉각 기술 ★★★★☆</div>
+      <p>2027년 Rubin Ultra(600kW/랙)로 공랭 DC의 AI 워크로드 수용 불가 판정. 액침냉각 또는 고밀도 DLC 보유 여부가 AI-Ready 자격 조건.</p>
+    </div>
+    <div class="card card--mint">
+      <div class="card-title">KSF 4. ESG·RE100 ★★★☆☆</div>
+      <p>글로벌 하이퍼스케일러 RE100 의무화 확산. PUE 1.3 이하 · 재생에너지 PPA 미비 시 글로벌 입찰 탈락 리스크. EU PUE ≤1.2 규제 국내 영향 선제 대응 필요.</p>
+    </div>
+  </div>
+
+  <h3>3대 메가프로젝트 로드맵</h3>
+  <div class="card card--sky">
+    <div class="card-title">삼성·SK 4,755조 AI·반도체 메가프로젝트</div>
+    <div class="tbl-wrap" style="margin:8px -4px">
+      <table>
+        <thead><tr><th>단계</th><th>규모</th><th>전력</th><th>기간</th><th>핵심 내용</th></tr></thead>
+        <tbody>
+          <tr><td>AI DC 1단계</td><td>550조</td><td>8.4GW</td><td>~2029</td><td>SK·GS·네이버 합산, 액침냉각·Rubin 대응</td></tr>
+          <tr><td>AI DC 2단계</td><td>1,000조+</td><td>18.4GW</td><td>~2035</td><td>SMR·해상풍력 전력 확보 전제</td></tr>
+          <tr><td>삼성 반도체</td><td>2,655조</td><td>—</td><td>2025~2040</td><td>HBM4·차세대 파운드리 수직통합</td></tr>
+          <tr><td>SK 하이닉스</td><td>2,100조</td><td>—</td><td>2025~2038</td><td>HBM4e·AI 서버 내재화 추진</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn" onclick="activate(0)">← 표지</button>
+    <button class="nav-btn" onclick="activate(2)">경쟁분석 →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  TAB 2: 경쟁분석
+══════════════════════════════════════════ -->
+<div class="panel" id="p2">
+  <div class="sec-head">
+    <div class="sec-badge">02<br>COM</div>
+    <div class="sec-info">
+      <h2>경쟁 분석 — 플레이어 매핑·전략군·SWOT</h2>
+      <p>12개+ 경쟁사, 4개 전략군, 포지셔닝 맵, 핵심 경쟁 인사이트</p>
+    </div>
+  </div>
+
+  <h3>경쟁사 전략군 분류</h3>
+  <div class="g2">
+    <div class="card card--sky">
+      <div class="card-title">전략군 A — 전력+서비스 통합형 <span class="badge badge--sky">최강 포지션</span></div>
+      <ul>
+        <li><strong>GS AI인프라</strong> — GS에너지 자체 발전 + GS건설 EPC 내재화 → 전력 비대칭 우위</li>
+        <li><strong>SK데이터넥서스</strong> — SK하이닉스 HBM 밸류체인 + AWS 파트너십</li>
+      </ul>
+    </div>
+    <div class="card card--orange">
+      <div class="card-title">전략군 B — 하이퍼스케일러 직접 운영 <span class="badge badge--orange">이중 역할</span></div>
+      <ul>
+        <li><strong>AWS Korea</strong> — 서울 리전 확장, Trainium3 자체 칩 내재화</li>
+        <li><strong>Google Cloud</strong> — TPU Ironwood, 부산 리전 추가</li>
+        <li><strong>Microsoft Azure</strong> — 두 리전 운영, Maia 200 내부 전용</li>
+      </ul>
+    </div>
+    <div class="card card--violet">
+      <div class="card-title">전략군 C — 통신사 코로케이션 <span class="badge badge--violet">공공 강점</span></div>
+      <ul>
+        <li><strong>KT클라우드</strong> — 국내 최초 D2C 액체냉각 상용화, 공공 CSAP 최강</li>
+        <li><strong>SK브로드밴드</strong> — 통신망 번들, IDC 17개소</li>
+        <li><strong>LG유플러스 IDC</strong> — 상암·안양 주요 거점</li>
+      </ul>
+    </div>
+    <div class="card card--mint">
+      <div class="card-title">전략군 D — 신규 특화형 <span class="badge badge--mint">고성장</span></div>
+      <ul>
+        <li><strong>네이버클라우드</strong> — 세종 메가DC, 하이퍼클로바X AI 자체 운영</li>
+        <li><strong>카카오엔터프라이즈</strong> — 안산 IDC, KakaoI 기반</li>
+        <li><strong>현대차 AI DC</strong> — 6.3조 독자 AI 인프라 추진</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>핵심 경쟁 인사이트</h3>
+  <div class="insight">
+    <div class="insight-ic">⚡</div>
+    <div class="insight-body">
+      <b>GS AI인프라의 전력 비대칭 우위</b>
+      <p>GS에너지 그룹사 전력 직접 보유로 수전계약 없이 선착공 가능 → 하이퍼스케일러 BTS 계약 협상에서 유일한 즉시 실행 레버리지 보유. 단, 앵커테넌트(하이퍼스케일러) 1건 미확보가 현재 최대 취약점.</p>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-ic">🔄</div>
+    <div class="insight-body">
+      <b>하이퍼스케일러 이중 역할 딜레마</b>
+      <p>AWS·Google·Microsoft는 최대 임차인이자 잠재 경쟁자. 2026~2027년이 코로케이션 사업자의 최대 협상 레버리지 기간 — 자체 칩(Trainium3, TPU) 내재화가 완성되기 전 BTS 계약 체결이 핵심.</p>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-ic">📈</div>
+    <div class="insight-body">
+      <b>KT클라우드의 냉각 선점 역설</b>
+      <p>현재 규모·매출에서 후순위이지만, 국내 최초 D2C 액체냉각 상용화 역량이 2027년 이후 600kW/랙 시대에 AI DC 진입 장벽으로 역할 전환. 냉각 기술 = 2027년 이후 신규 경쟁 차원 #1.</p>
+    </div>
+  </div>
+
+  <h3>경쟁사 비교 매트릭스</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>플레이어</th><th>전력 확보</th><th>냉각 기술</th><th>HCS 계약</th><th>공공 CSAP</th><th>자금력</th><th>종합 경쟁력</th></tr></thead>
+      <tbody>
+        <tr><td>GS AI인프라</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐ (미확보)</td><td>⭐⭐</td><td>⭐⭐⭐⭐</td><td>🥇 전력 비대칭 우위</td></tr>
+        <tr><td>SK데이터넥서스</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐ (AWS)</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>🥈 글로벌 연계 우위</td></tr>
+        <tr><td>KT클라우드</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>🥉 냉각·공공 선도</td></tr>
+        <tr><td>네이버클라우드</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>AI 자체 운영 강점</td></tr>
+        <tr><td>AWS Korea</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>自社</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>자체 칩 내재화 진행</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>2028~2029 공급 과잉 리스크</h3>
+  <div class="alert alert--yellow">
+    <div class="alert-ic">⚡</div>
+    <div class="alert-body">
+      <b>공급 급증 구간 진입 예고 (2028~2029)</b>
+      현재 계획된 AI DC 프로젝트들이 2027~2028년에 동시 준공 → 공급 급증 + AI 수요 조정 교차 시 공실률 15~25% 가능. 장기 BTS 계약 없는 사업자가 첫 번째 타격 대상.
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn" onclick="activate(1)">← 산업분석</button>
+    <button class="nav-btn" onclick="activate(3)">소비자분석 →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  TAB 3: 소비자분석
+══════════════════════════════════════════ -->
+<div class="panel" id="p3">
+  <div class="sec-head">
+    <div class="sec-badge">03<br>CUS</div>
+    <div class="sec-info">
+      <h2>소비자(테넌트) 분석 — 세그먼트·WTP·구매여정</h2>
+      <p>6개 수요 세그먼트, 3개 페르소나, WTP 분석, B2B 구매여정 7단계</p>
+    </div>
+  </div>
+
+  <h3>수요 세그먼트 6개</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>세그먼트</th><th>수요 비중</th><th>WTP ($/kW/월)</th><th>계약 유형</th><th>핵심 구매 기준</th><th>버블 리스크</th></tr></thead>
+      <tbody>
+        <tr><td>하이퍼스케일러 (AWS·GCP·Azure)</td><td><strong>60~70%</strong></td><td>$400~700</td><td>BTS 5~15년</td><td>전력 확보증빙 → 위치 → 냉각</td><td>🟢 낮음</td></tr>
+        <tr><td>대기업 IT·금융</td><td>10~15%</td><td>$150~300</td><td>Colo 3~5년</td><td>보안 인증, 위치, SLA 99.99%</td><td>🟢 낮음</td></tr>
+        <tr><td>통신·미디어</td><td>5~8%</td><td>$120~200</td><td>장기 임대</td><td>레이턴시, 망 연동, 대역폭</td><td>🟡 중간</td></tr>
+        <tr><td>AI 스타트업</td><td><strong>5~7%</strong> (현재)</td><td>$300~600</td><td>단기 1~2년</td><td>GPU 가용성, 즉시 입주, 유연성</td><td>🔴 높음</td></tr>
+        <tr><td>공공·국방·의료</td><td>5~8%</td><td>$100~200</td><td>장기 5~10년</td><td>CSAP 인증, 국내 데이터 주권</td><td>🟢 매우 낮음</td></tr>
+        <tr><td>중소기업 (SME)</td><td>3~5%</td><td>$80~150</td><td>단기 1~3년</td><td>비용, 접근성, 간편 계약</td><td>🟡 중간</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card card--sky">
+    <div class="card-title">핵심 발견: "전력 = 테넌트 (Power is the Tenant)"</div>
+    <p>하이퍼스케일러의 구매 의사결정 1순위는 <strong>수전계약서 제출 가능 여부</strong>다. 36~48개월 수전 대기 현실에서 전력 확보 사업자만 하이퍼스케일러를 유치할 수 있다. 하이퍼스케일러 1건 10년 계약 &gt; AI 스타트업 100건 단기 계약 합산.</p>
+  </div>
+
+  <h3>최적 포트폴리오 구성</h3>
+  <div class="g3">
+    <div class="card card--mint">
+      <div class="card-title">하이퍼스케일러 70%+</div>
+      <p>매출 안정성의 핵. BTS 장기 계약으로 2028~2029 공실 리스크 차단. WTP $400~700/kW/월.</p>
+    </div>
+    <div class="card card--violet">
+      <div class="card-title">금융·공공 앵커 20%</div>
+      <p>구조적 안정 수요. CSAP 인증 필수. 경기 하강기에도 해지 없는 안전판 역할.</p>
+    </div>
+    <div class="card card--amber">
+      <div class="card-title">AI 스타트업 ≤15%</div>
+      <p>WTP 높지만(버블 시) 취소 변동성 극대. 비관 시나리오 수요 40~60% 취소 가능. 상한 15% 엄격 관리.</p>
+    </div>
+  </div>
+
+  <h3>B2B 구매여정 7단계 (하이퍼스케일러 기준)</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1단계 — 요건 정의</div><div class="tl-body">전력 용량(MW), 냉각 방식, 위치, 타임라인 내부 확정. <strong>핵심 진입 자격: 수전계약 보유 여부</strong></div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2단계 — 시장 조사</div><div class="tl-body">전력 확보 가능 사업자 숏리스트(3~5개). 전력 없는 사업자는 이 단계에서 탈락.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">3단계 — RFP 발송</div><div class="tl-body">기술 사양(PUE, 냉각, 네트워크), 재무 구조(BTS vs Colo), 계약 기간 명시</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">4단계 — 평가</div><div class="tl-body">실사(전력 인프라 현장 방문), 재무 건전성 검토, ESG/RE100 요건 확인</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">5단계 — 협상</div><div class="tl-body">임대 단가, 계약 기간(10~15년), 전력비 패스-스루 구조, 확장 옵션 협의</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">6단계 — 구축·입주</div><div class="tl-body">설계·시공 감리, 인수 테스트(PAT), 초기 운영 안정화</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">7단계 — 갱신/이탈</div><div class="tl-body">갱신율: 전력 확보·SLA 충족 시 90%+. 이탈 원인 1위: 전력 증설 불가.</div></div>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn" onclick="activate(2)">← 경쟁분석</button>
+    <button class="nav-btn" onclick="activate(4)">트렌드분석 →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  TAB 4: 트렌드분석
+══════════════════════════════════════════ -->
+<div class="panel" id="p4">
+  <div class="sec-head">
+    <div class="sec-badge">04<br>TRD</div>
+    <div class="sec-info">
+      <h2>트렌드 분석 — PESTLE·5대 트렌드·기술 로드맵·시나리오</h2>
+      <p>거시 환경 변화, 핵심 트렌드 심층 분석, 2026~2030 시나리오 3개</p>
+    </div>
+  </div>
+
+  <h3>PESTLE 핵심 요약</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>영역</th><th>핵심 트렌드</th><th>영향도</th><th>기회/위협</th></tr></thead>
+      <tbody>
+        <tr><td>Political</td><td>AI DC 특별법 시행(2026.5) — 인허가 패스트트랙, 비수도권 전력평가 면제</td><td>★★★★★</td><td>기회: 인허가 1/3 단축</td></tr>
+        <tr><td>Economic</td><td>하이퍼스케일러 2026 CAPEX $7,250억(YoY +77%), 한국 전기요금 172.99원/kWh 비경쟁</td><td>★★★★★</td><td>기회: 수요 폭발 / 위협: 운영비 구조 열위</td></tr>
+        <tr><td>Social</td><td>수도권 전력·수자원 갈등 심화, ESG·탄소중립 요구 가속</td><td>★★★★</td><td>위협: 수도권 규제 강화</td></tr>
+        <tr><td>Technological</td><td>GPU 연간 아키텍처 출시 주기화 / 냉각 혁명 / NPU 자체칩 부상</td><td>★★★★★</td><td>기회: 선도 기술 차별화 / 위협: 인프라 조기 진부화</td></tr>
+        <tr><td>Legal</td><td>AI 기본법 시행(2026.1.22) / 개인정보보호법 개정(2026.9.11) — 데이터 국내화 수요 ↑</td><td>★★★★</td><td>기회: 준법 DC 프리미엄</td></tr>
+        <tr><td>Environmental</td><td>재생에너지 의무화 vs AI DC 전력 급증(8.2TWh→18TWh 2030), PUE 규제 강화</td><td>★★★★★</td><td>위협: RE100 비용 급등</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5대 핵심 트렌드 심층</h3>
+
+  <div class="card card--sky">
+    <div class="card-title">트렌드 ① AI DC 전력 위기 <span class="badge badge--sky">메인스트림</span></div>
+    <p>상위 10개 AI DC 프로젝트 총 용량(5.26GW)이 정부 2038년 허용분(4.4GW)을 <strong>이미 초과</strong>. 수전계약 대기 36~48개월. 2026 H2가 사실상 마지막 선점 기회.</p>
+    <p><strong>So What?</strong> 전력 확보 능력 = 테넌트 확보 능력. GS AI인프라의 전력 내재화가 가장 강력한 경쟁 해자.</p>
+  </div>
+
+  <div class="card card--orange">
+    <div class="card-title">트렌드 ② GPU 세대교체 가속 <span class="badge badge--orange">성장 중</span></div>
+    <p>B200(2025) → B300 Blackwell Ultra(2026 H2) → Vera Rubin NVL72(2026 H2) → Rubin Ultra NVL576(2027, <strong>랙당 600kW</strong>) → Feynman(2028). 10년간 랙당 전력 15kW → 600kW, 40배 폭증.</p>
+    <p><strong>So What?</strong> 2025년 공랭 설계 DC는 2027년 Rubin Ultra 수용 불가. 냉각 인프라 재투자 주기 = GPU 세대 교체 빈도.</p>
+  </div>
+
+  <div class="card card--violet">
+    <div class="card-title">트렌드 ③ 냉각 혁명 <span class="badge badge--violet">초기~성장</span></div>
+    <p>공랭(PUE 1.5+) → 직접수랭 DLC(200kW/랙) → 액침냉각(200kW+/랙). 글로벌 액침냉각 시장 $287M(2025) → $13.3B(2035), CAGR 34%. PUE 독일 ≤1.2 의무화(2026.7), 한국 ≤1.4 권장.</p>
+    <p><strong>So What?</strong> 2027년 이전 액침냉각 상용화 사업자 → 5~7년 프리미엄 임대 포지션 확보.</p>
+  </div>
+
+  <div class="card card--mint">
+    <div class="card-title">트렌드 ④ AI DC REIT화 <span class="badge badge--mint">성장~메인스트림</span></div>
+    <p>Blackstone BXDC REIT IPO $17.5억(2025~2026), $250억 파이프라인. Equinix·Digital Realty 12개월 수익률 +39~41%. AI DC가 기관투자자 장기 포트폴리오 편입 자산으로 격상.</p>
+    <p><strong>So What?</strong> 운영 레퍼런스 확보 후 K-REIT 구조화로 자본 조달 비용 획기적 절감 가능. 국내 2028~2030년 타임라인.</p>
+  </div>
+
+  <div class="card card--amber">
+    <div class="card-title">트렌드 ⑤ NPU/자체칩 부상 <span class="badge badge--amber">약한 시그널</span></div>
+    <p>하이퍼스케일러 자체 ASIC 출하 성장률 44.6% vs GPU 16.1%(2026). Google Ironwood, AWS Trainium3, Microsoft Maia 200 — 그러나 전부 내부 전용. CUDA 미지원으로 외부 GPU 클라우드 대체 2028년 이전 불가.</p>
+    <p><strong>So What?</strong> 단기 외부 DC 수요 대체 없음. HBM4 수요는 GPU든 NPU든 유지 → 삼성·SK에 기회.</p>
+  </div>
+
+  <h3>기술 로드맵 2026~2032</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>기술</th><th>현재 성숙도</th><th>상용화 시점</th><th>랙당 전력</th><th>대응 전략</th></tr></thead>
+      <tbody>
+        <tr><td>B200/B300 Blackwell</td><td>메인스트림</td><td>現在 (B300 2026 H2)</td><td>1,400W/chip</td><td>냉각·전력 인프라 선행 확보</td></tr>
+        <tr><td>Vera Rubin NVL72</td><td>초기 (2026 H2)</td><td>2026 H2</td><td>수랭 필수</td><td>수랭 대응 랙 설계 표준화</td></tr>
+        <tr><td>Rubin Ultra NVL576</td><td>약한 시그널</td><td>2027 H2</td><td><strong>600kW</strong></td><td>액침냉각 또는 고밀도 DLC 필수</td></tr>
+        <tr><td>직접수랭 (DLC)</td><td>성장</td><td>現在~2027</td><td>200kW 이하</td><td>신규 DC 기본 사양 채택</td></tr>
+        <tr><td>액침냉각 (Immersion)</td><td>초기</td><td>2027~2030</td><td>200kW+</td><td>2027 이전 파일럿 구축</td></tr>
+        <tr><td>SMR (소형원전)</td><td>약한 시그널</td><td>2029~2032</td><td>100MW+ 블록</td><td>2027 이전 장기 PPA 협약</td></tr>
+        <tr><td>AI DC REIT (국내)</td><td>초기</td><td>2028~2030</td><td>—</td><td>운영 레퍼런스 확보 후 K-REIT 설계</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>시나리오 분석 (2026~2030)</h3>
+  <div class="scen scen--opt">
+    <h4>시나리오 1 — 낙관 (확률 30%)</h4>
+    <p><strong>전제:</strong> 전력 규제 조기 완화 + AI 수요 지속 + 글로벌 REIT 자본 유입 + 금리 인하</p>
+    <p><strong>결과:</strong> 2030년 국내 전체 DC <strong>30조+ / AI DC 20조+</strong>, CAGR 60%+ 유지</p>
+    <p><strong>전략:</strong> 비수도권 메가캠퍼스 2~3개 조기 착공, K-REIT 자금 유치, 2027 이전 액침냉각 PUE 1.2 달성</p>
+  </div>
+  <div class="scen scen--base">
+    <h4>시나리오 2 — 기본 (확률 50%)</h4>
+    <p><strong>전제:</strong> 전력 부분 완화 + AI 완만 성장 + 2028~2029 공급 급증 구간 일부 과잉</p>
+    <p><strong>결과:</strong> 2030년 국내 전체 DC <strong>18~24조 / AI DC 12~18조</strong>, CAGR 35~50%</p>
+    <p><strong>전략:</strong> HCS BTS 계약 선제 확보, GPU-as-a-Service 단기 임대 운영, PUE 1.3 이하 투자</p>
+  </div>
+  <div class="scen scen--pes">
+    <h4>시나리오 3 — 비관 (확률 20%)</h4>
+    <p><strong>전제:</strong> AI 버블 붕괴(스타트업 40~60% 수요 취소) + 전력 미확보 지속 + 금리 급등</p>
+    <p><strong>결과:</strong> 2030년 국내 전체 DC <strong>12~15조 / 공실률 15~25%</strong></p>
+    <p><strong>전략:</strong> 장기 임대 비중 최대화, 전력 내재화 원가 확정화, Distressed M&A 기회 포착</p>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn" onclick="activate(3)">← 소비자분석</button>
+    <button class="nav-btn" onclick="activate(5)">종합검증 →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  TAB 5: 종합검증
+══════════════════════════════════════════ -->
+<div class="panel" id="p5">
+  <div class="sec-head">
+    <div class="sec-badge">05<br>REV</div>
+    <div class="sec-info">
+      <h2>종합 검증 — 정합성 매트릭스·교차 인사이트·전략 권고</h2>
+      <p>Research Reviewer Agent가 4개 보고서를 교차 검증하여 도출한 신규 인사이트</p>
+    </div>
+  </div>
+
+  <h3>정합성 매트릭스</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>검증 항목</th><th>상태</th><th>핵심 발견</th></tr></thead>
+      <tbody>
+        <tr><td>산업 ↔ 경쟁</td><td style="color:#1C744E;font-weight:800">✅ 정합</td><td>Porter 5 Forces 공급자 교섭력 5/5(전력)가 경쟁사 전략 그룹 A(전력+서비스 통합)의 우위로 정확 연결</td></tr>
+        <tr><td>경쟁 ↔ 소비자</td><td style="color:#1C744E;font-weight:800">✅ 정합</td><td>GS 앵커테넌트 미확보 약점 + "HCS 1건=스타트업 100건" → GS의 최우선 실행 과제 명확화</td></tr>
+        <tr><td>소비자 ↔ 트렌드</td><td style="color:#1C744E;font-weight:800">✅ 정합</td><td>"전력=구매 결정 1순위"(소비자) ↔ "전력이 모든 것을 지배한다"(트렌드) 완전 부합</td></tr>
+        <tr><td>데이터 일관성</td><td style="color:#D2A11C;font-weight:800">⚠️ 경미 불일치</td><td>핵심 수치 일관. AI 스타트업 비중 정의(5~7% 현재 vs 15% 권고 상한) 혼재, WTP 단위 혼재 — 의사결정 왜곡 없음</td></tr>
+        <tr><td>논리적 일관성</td><td style="color:#1C744E;font-weight:800">✅ 정합</td><td>산업 성장 → 공급 병목 → 선점 경쟁 → 2028~2029 공급 충격 → 생존자 과점의 체인 단절 없음</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert--green">
+    <div class="alert-ic">🟢</div>
+    <div class="alert-body">
+      <b>🔴 필수 수정 없음</b>
+      4개 보고서에서 치명적 수치 불일치, 논리 모순, 결론 무력화 오류 미발견. 현 상태에서 투자 의사결정 참고 활용 가능.
+    </div>
+  </div>
+
+  <h3>교차점에서 발견한 5대 신규 인사이트</h3>
+
+  <div class="insight">
+    <div class="insight-ic">🔗</div>
+    <div class="insight-body">
+      <b>인사이트 A: GS AI인프라의 5단계 가치 체인 설계도</b>
+      <p>①자체 발전 → ②수전계약 없이 선착공 → ③하이퍼스케일러 BTS 계약 → ④장기 임대 현금흐름 → ⑤K-REIT 구조화. 개별 보고서에서는 각 단계가 독립 언급. 연결 시 GS AI인프라가 국내 유일한 실현 가능 플레이어로 부상. <strong>단, 앵커테넌트 미확보가 이 체인 전체의 단일 취약점.</strong></p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-ic">❄️</div>
+    <div class="insight-body">
+      <b>인사이트 B: 2027년 냉각 역량 = 신규 진입 장벽으로 역할 전환</b>
+      <p>GPU 로드맵(600kW/랙) + KT 액냉 선도 + KSF 냉각 3위 교차 → 2027년 이후 액침냉각 기술 보유 여부가 AI DC 임대 자격의 전제 조건. 현재 2순위 플레이어(KT클라우드)가 2027년 이후 기술 장벽 선점자로 역할 전환되는 역설.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-ic">⏰</div>
+    <div class="insight-body">
+      <b>인사이트 C: 하이퍼스케일러 협상 최적 창 = 2026 H2~2027 H1</b>
+      <p>경쟁 분석(이중 역할) + 소비자 분석(HCS 60~70%) + 트렌드 분석(NPU 2028년 외부 시장 진입) 교차 → <strong>하이퍼스케일러가 국내 Colo에 의존하는 황금 기간이 2026~2027년까지만 유효.</strong> 이 시기에 BTS 계약 체결이 최대 레버리지 활용 타이밍.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-ic">💰</div>
+    <div class="insight-body">
+      <b>인사이트 D: 2028~2029 공급 충격 = Distressed M&A 황금기</b>
+      <p>비관 시나리오(20%) + 공급 급증 리스크 + AI 스타트업 40~60% 취소 교차 → 공실률 20%+ 환경에서 AI 스타트업 의존도 높은 소규모 DC 유동성 위기 발생 예상. 전력 내재화 + 장기 계약 보유 사업자에게 경쟁사 부실 자산 저가 인수 기회 집중.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-ic">⚡</div>
+    <div class="insight-body">
+      <b>인사이트 E: 전기요금 172.99원/kWh = 마진 압축의 구조적 원인, SMR이 유일한 해소책</b>
+      <p>트렌드(전기요금 비경쟁) + 산업(DC 운영 20~35% 영업이익률) + 소비자(HCS WTP $4~7M/MW) 교차 → 전기요금 70~90원/kWh 고가 구조가 DC 사업자 순마진을 구조적으로 압축. 단기: 재생에너지 PPA, 중기: SMR 계약(2027 이전 협약)이 유일한 해결 경로.</p>
+    </div>
+  </div>
+
+  <h3>전략적 권고 6개 (우선순위 순)</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>권고 액션</th><th>근거 (교차)</th><th>우선순위</th><th>핵심 리스크</th></tr></thead>
+      <tbody>
+        <tr><td><strong>① 2026 H2 비수도권 154kV 수전계약 선점</strong></td><td>산업(전력 KSF 1위) + 소비자(36~48개월 대기) + 트렌드(마지막 선점 기회)</td><td>★★★★★</td><td>수전 거절/지연 시 전체 사업 계획 붕괴</td></tr>
+        <tr><td><strong>② 2027년 이전 액침냉각 파일럿(10~20MW) 구축</strong></td><td>트렌드(Rubin Ultra 600kW) + 산업(냉각 KSF 3위) + 경쟁(KT 기술 격차 확대)</td><td>★★★★★</td><td>NVIDIA 공식 액침 인증 지연 불확실성</td></tr>
+        <tr><td><strong>③ 하이퍼스케일러 BTS 10년+ 계약 2027 이전 체결</strong></td><td>소비자(HCS=스타트업 100개) + 트렌드(협상 황금 창 2026~2027) + 경쟁(이중 역할)</td><td>★★★★★</td><td>HCS 자체 DC 직접 구축 전환 시 협상 결렬</td></tr>
+        <tr><td><strong>④ 포트폴리오: HCS 70%+ / 금융·공공 20% / 스타트업 ≤15%</strong></td><td>소비자(세그먼트 버블 리스크) + 트렌드(비관 시나리오 40~60% 취소)</td><td>★★★★☆</td><td>HCS 자체 전환 시 70% 기반 이탈 (장기 계약으로 단기 보호)</td></tr>
+        <tr><td><strong>⑤ 2028~2029 Distressed M&A 자금 예비 (CAPEX 15~20%)</strong></td><td>트렌드(비관 20%) + 경쟁(공급 급증) + 소비자(스타트업 고변동)</td><td>★★★☆☆</td><td>Distressed 자산 기술 노후화(공랭 DC 인수 시 추가 리노베이션 비용)</td></tr>
+        <tr><td><strong>⑥ SMR 또는 해상풍력 PPA 2027 이전 협약 (전력비 확정화)</strong></td><td>트렌드(전기요금 구조 열위) + 인사이트 E(SMR = 유일 해소책)</td><td>★★★☆☆</td><td>SMR 건설·인허가 지연(2032년 이후 가능성)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn" onclick="activate(4)">← 트렌드분석</button>
+    <button class="nav-btn" onclick="activate(6)">투자 체크리스트 →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  TAB 6: 투자 체크리스트
+══════════════════════════════════════════ -->
+<div class="panel" id="p6">
+  <div class="sec-head">
+    <div class="sec-badge">✓<br>CHK</div>
+    <div class="sec-info">
+      <h2>투자심사역 최종 체크리스트</h2>
+      <p>6개 도메인, 실사 현장에서 바로 활용 가능한 확인 항목</p>
+    </div>
+  </div>
+
+  <div class="card card--sky">
+    <div class="card-title">A. 시장 규모 확인</div>
+    <ul class="check-list" style="--c-bg:var(--sky-bg);--c-bd:var(--sky-bd);--c-ac:var(--sky-ac)">
+      <li>국내 DC 시장 기준 수치(8조/2025, 18~24조/2030)를 복수 기관 교차 검증 완료 여부</li>
+      <li>AI DC CAGR 수치 정의(광의 58~65% vs 협의 28.3%) 중 어느 기준으로 사업계획 작성했는지 확인</li>
+      <li>삼성·SK 4,755조 메가프로젝트 1단계(550조) 집행 속도 분기별 점검 체계 수립 여부</li>
+      <li>글로벌 하이퍼스케일러 2026 CAPEX $7,250억 — 한국 투자 배분 비중 별도 추정 완료 여부</li>
+    </ul>
+  </div>
+
+  <div class="card card--orange">
+    <div class="card-title">B. 경쟁 우위 확인</div>
+    <ul class="check-list" style="--c-bg:var(--orange-bg);--c-bd:var(--orange-bd);--c-ac:var(--orange-ac)">
+      <li><strong>[필수]</strong> 수전계약서 또는 전력사용계획 승인서 제출 여부 — 미보유 시 사업 불가 판정</li>
+      <li>2027년 Rubin Ultra NVL576 (600kW/랙) 수용 가능 냉각 설계 채택 여부 (액침 또는 고밀도 DLC)</li>
+      <li>하이퍼스케일러 1개 이상 LOI/MOU 체결 여부 — 미체결 시 2028~2029 공실 리스크 가중치 상향</li>
+      <li>EPC 역량 내재화 또는 AI DC 특화 EPC 경험 보유 시공사 확약 여부</li>
+      <li>NVIDIA GPU 직접 공급 계약 또는 파트너십 확약 (1년+ 선주문 없으면 준공 후 공실 리스크)</li>
+    </ul>
+  </div>
+
+  <div class="card card--violet">
+    <div class="card-title">C. 수요자 집중도 리스크</div>
+    <ul class="check-list" style="--c-bg:var(--violet-bg);--c-bd:var(--violet-bd);--c-ac:var(--violet-ac)">
+      <li>최대 테넌트 단일 고객 매출 비중 50% 이상 시 이탈 리스크 가중 평가 (계약 기간 확인 필수)</li>
+      <li>AI 스타트업 비중: 전체 임대 계약 중 15% 초과 시 AI 버블 리스크 경고 발동</li>
+      <li>공공·금융 합산 최소 20% 이상 확보 여부 (구조적 수요 안정화 기반)</li>
+      <li>전체 계약의 30% 이상이 동일 연도 만기인 집중 구조 여부 확인 (갱신 리스크 분산 필요)</li>
+    </ul>
+  </div>
+
+  <div class="card card--amber">
+    <div class="card-title">D. 기술·인프라 리스크</div>
+    <ul class="check-list" style="--c-bg:var(--amber-bg);--c-bd:var(--amber-bd);--c-ac:var(--amber-ac)">
+      <li>현재 랙 전력 밀도 한계 30kW/랙 미만 설계 DC → AI 워크로드 수용 불가, 냉각 리노베이션 비용 반영 여부</li>
+      <li>2027년 준공 DC: Rubin Ultra (600kW/랙) 수용 설계 여부 (액침냉각 또는 DLC 채택 확인)</li>
+      <li>PUE 목표: EU 기준(PUE ≤1.3) 충족 여부 — 1.4 이상 설계 시 글로벌 HCS 입찰 탈락 가능</li>
+      <li>RE100 대응 계획: 재생에너지 PPA 계약 보유 비율 및 달성 타임라인 (미비 시 해외 HCS 입찰 탈락)</li>
+    </ul>
+  </div>
+
+  <div class="card card--mint">
+    <div class="card-title">E. 재무·투자 판단</div>
+    <ul class="check-list" style="--c-bg:var(--mint-bg);--c-bd:var(--mint-bd);--c-ac:var(--mint-ac)">
+      <li>IRR 민감도: 금리 1%p 상승 → IRR 2~3%p 하락. 현 금리 기준 최소 IRR 12~15% 충족 여부</li>
+      <li>전력비 고정화 비율: PPA 또는 자체 발전으로 고정화된 비율 50% 이상 여부 (전력비 = 운영비 40~60%)</li>
+      <li>2028~2029 유동성 준비: 공실률 15~25% 시나리오 대비 12개월 이상 운영비 충당 현금 또는 크레딧 라인</li>
+      <li>K-REIT 또는 인프라펀드 편입 가능성: 장기 임대 + 영업이익률 20%+ DC 자산 확보 후 자본 재순환 설계</li>
+    </ul>
+  </div>
+
+  <div class="card card--peach">
+    <div class="card-title">F. 규제·정책 항목</div>
+    <ul class="check-list" style="--c-bg:var(--peach-bg);--c-bd:var(--peach-bd);--c-ac:var(--peach-ac)">
+      <li>AI DC 특별법 인허가 패스트트랙(90일 자동승인) 적용 가능 요건 충족 여부 확인</li>
+      <li>비수도권 인센티브 수혜: 전력계통영향평가 면제, 용도지역 완화 등 특별법 조항 적용 가능성</li>
+      <li>CSAP 인증 현황: 공공·금융 수요 유치 시 입찰 참가 자격 — 미취득 시 해당 세그먼트 원천 배제</li>
+      <li>미국 EAR 수출통제 연동 리스크: GPU 수입 및 AI 서비스 적용 범위 법무 검토 완료 여부</li>
+      <li>개인정보보호법 개정(2026.9.11) 대응: 데이터 국외 이전 제한 강화에 따른 데이터 로컬라이제이션 수혜 확인</li>
+    </ul>
+  </div>
+
+  <div class="alert alert--yellow">
+    <div class="alert-ic">📋</div>
+    <div class="alert-body">
+      <b>리서치 완성도: 🟢 완료</b>
+      산업·경쟁·소비자·트렌드 4개 에이전트 보고서 교차 검증 완료. 🔴 필수 수정 0건. 핵심 수치 일관성 확인. 본 보고서는 투자 의사결정의 참고 자료이며, 최종 판단은 추가 실사를 통해 확인하시기 바랍니다.
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn" onclick="activate(5)">← 종합검증</button>
+    <button class="nav-btn" onclick="activate(0)">표지로 →</button>
+  </div>
+</div>
+
+</div><!-- /panels -->
+
+<script>
+const tabs = document.querySelectorAll('.tab-btn');
+const panels = document.querySelectorAll('.panel');
+function activate(idx){
+  tabs.forEach((t,i)=>t.classList.toggle('active',i===idx));
+  panels.forEach((p,i)=>p.classList.toggle('active',i===idx));
+  const t=tabs[idx]; if(t) t.scrollIntoView({inline:'nearest',block:'nearest'});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

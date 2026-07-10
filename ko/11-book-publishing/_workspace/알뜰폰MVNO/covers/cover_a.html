@@ -1,0 +1,107 @@
+<meta charset="utf-8">
+<title>알뜰폰의 다음 10년 — 표지 A안</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 800px; height: 1280px; overflow: hidden; }
+  body {
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, 'Malgun Gothic', sans-serif;
+    background: linear-gradient(168deg, #0a1526 0%, #0d1e36 52%, #0a1930 100%);
+    color: #eef2f7;
+    position: relative;
+  }
+  /* 은은한 데이터 그리드 */
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(148,178,215,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148,178,215,0.055) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+  .chart { position: absolute; left: 0; right: 0; bottom: 0; height: 660px; }
+  .content { position: absolute; inset: 0; padding: 84px 72px 60px; display: flex; flex-direction: column; }
+
+  .overline {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 20px; font-weight: 600; letter-spacing: 6px;
+    color: #8fa4c0;
+  }
+  .overline::before { content: ""; width: 42px; height: 2px; background: #f2a93b; }
+
+  .title {
+    margin-top: 168px;
+    font-size: 128px; font-weight: 800; line-height: 1.12;
+    letter-spacing: -3px; color: #f7f9fc;
+  }
+  .title .accent { color: #f2a93b; }
+
+  .subtitle {
+    margin-top: 40px;
+    display: inline-flex; align-items: center; gap: 16px;
+    font-size: 40px; font-weight: 700; letter-spacing: -0.5px; color: #f2a93b;
+  }
+  .subtitle .bar { width: 8px; height: 44px; background: #f2a93b; border-radius: 2px; flex: none; }
+
+  .sub2 {
+    margin-top: 22px;
+    font-size: 23px; font-weight: 400; line-height: 1.55; color: #aebdd2;
+    max-width: 600px; letter-spacing: -0.2px;
+  }
+
+  .peak-label {
+    position: absolute; right: 72px; top: 668px; text-align: right;
+    font-size: 19px; font-weight: 600; letter-spacing: 1px; color: #f2c069;
+  }
+  .peak-label small { display: block; font-size: 15px; font-weight: 400; color: #8fa4c0; letter-spacing: 2px; margin-top: 4px; }
+
+  .footer {
+    margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between;
+  }
+  .author { font-size: 22px; font-weight: 700; color: #dfe7f1; letter-spacing: 0.5px; white-space: nowrap; }
+  .author small { display: block; font-size: 16px; font-weight: 400; color: #7f94b0; letter-spacing: 4px; margin-bottom: 8px; }
+  .badge {
+    font-size: 13px; font-weight: 600; letter-spacing: 1px; color: #9db1ca; white-space: nowrap;
+    border: 1px solid rgba(157,177,202,0.55); border-radius: 4px; padding: 9px 16px;
+  }
+</style>
+
+<div class="grid"></div>
+
+<svg class="chart" viewBox="0 0 800 660" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2a93b" stop-opacity="0.34"/>
+      <stop offset="60%" stop-color="#f2a93b" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#f2a93b" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f2a93b" stop-opacity="0.25"/>
+      <stop offset="55%" stop-color="#f2a93b" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f2a93b" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <!-- 상승 → 정점(x=560) → 완만한 하강 곡선 -->
+  <path d="M -10 640 C 180 610, 340 480, 460 250 C 505 165, 535 120, 560 118 C 590 116, 650 150, 810 210 L 810 660 L -10 660 Z" fill="url(#fill)"/>
+  <path d="M -10 640 C 180 610, 340 480, 460 250 C 505 165, 535 120, 560 118 C 590 116, 650 150, 810 210" fill="none" stroke="url(#stroke)" stroke-width="5" stroke-linecap="round"/>
+  <!-- 정점 마커 -->
+  <line x1="560" y1="118" x2="560" y2="640" stroke="#f2a93b" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="3 7"/>
+  <circle cx="560" cy="118" r="16" fill="#f2a93b" fill-opacity="0.18"/>
+  <circle cx="560" cy="118" r="7" fill="#f2a93b"/>
+</svg>
+
+<div class="content">
+  <div class="overline">한국 MVNO 시장 분석서</div>
+
+  <h1 class="title">알뜰폰의<br>다음 <span class="accent">10년</span></h1>
+
+  <div class="subtitle"><span class="bar"></span>1,000만 회선 이후의 생존 전략</div>
+
+  <p class="sub2">한국 MVNO 시장의 성숙, 참가자, 소비자,<br>그리고 독립계의 생존 조건</p>
+
+  <div class="peak-label">1,011만 · 정점<small>2025. 06</small></div>
+
+  <div class="footer">
+    <div class="author"><small>SMRC · SUNMYUNG RESEARCH CENTER</small>선명리서치센터</div>
+    <div class="badge">내부 자료 · 대외 배포 금지</div>
+  </div>
+</div>

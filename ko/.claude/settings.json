@@ -9,10 +9,28 @@
       "Bash(git remote *)",
       "Bash(git push *)",
       "PowerShell(if \\(-not \\(Test-Path \"C:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\08-course-builder\\\\_workspace\"\\)\\) { New-Item -ItemType Directory -Force \"C:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\08-course-builder\\\\_workspace\" } Get-ChildItem \"C:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\08-course-builder\\\\\" -ErrorAction SilentlyContinue)",
-      "PowerShell(if \\(-not $?\\) { \"Directory not found\" })"
+      "PowerShell(if \\(-not $?\\) { \"Directory not found\" })",
+      "Bash(mkdir -p \"c:/Users/juncp/00_claudecode/01_Harness_100/ko/44-market-research/_workspace/데이터센터AI\")",
+      "WebFetch(domain:www.pwcconsulting.co.kr)",
+      "WebFetch(domain:tech.ktcloud.com)",
+      "WebFetch(domain:news.skecoplant.com)",
+      "WebFetch(domain:www.pwc.com)",
+      "Skill(deep-research)",
+      "Skill(deep-research:*)",
+      "WebFetch(domain:www.morningstar.com)",
+      "WebFetch(domain:www.costar.com)",
+      "WebFetch(domain:zdnet.co.kr)",
+      "WebFetch(domain:www.dataeconomy.co.kr)",
+      "WebFetch(domain:www.spheron.network)",
+      "WebFetch(domain:www.tomshardware.com)",
+      "WebFetch(domain:vrlatech.com)",
+      "WebFetch(domain:angelinvestorsnetwork.com)",
+      "WebFetch(domain:www.eroun.net)",
+      "PowerShell($f = \"c:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\44-market-research\\\\_workspace\\\\데이터센터AI\\\\04_trend_analysis.md\"; \\(Get-Item $f\\).Length; \\(Get-Content $f | Measure-Object -Line\\).Lines)"
     ],
     "additionalDirectories": [
-      "c:\\Users\\juncp\\00_claudecode\\01_Harness_100\\ko\\03-newsletter-engine"
+      "c:\\Users\\juncp\\00_claudecode\\01_Harness_100\\ko\\03-newsletter-engine",
+      "c:\\Users\\juncp\\00_claudecode\\01_Harness_100\\ko\\44-market-research\\_workspace"
     ]
   }
 }

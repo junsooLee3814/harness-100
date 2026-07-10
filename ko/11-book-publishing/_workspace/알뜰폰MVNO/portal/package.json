@@ -1,0 +1,27 @@
+{
+  "name": "mvno-ebook-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "알뜰폰의 다음 10년 — 내부 제한 열람 포털 (선명리서치쎈터)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "extract:book": "node scripts/extract_book.mjs",
+    "upload:ebooks": "node scripts/upload_ebooks.mjs",
+    "add:reader": "node scripts/add_reader.mjs"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.4",
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "typescript": "^5.8.3"
+  }
+}

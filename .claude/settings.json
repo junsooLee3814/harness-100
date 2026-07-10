@@ -17,7 +17,33 @@
       "WebFetch(domain:www.aptrank.com)",
       "WebFetch(domain:ko.tradingeconomics.com)",
       "WebFetch(domain:land.seoul.go.kr)",
-      "PowerShell(python \"C:\\\\Users\\\\juncp\\\\.claude\\\\skills\\\\html-pastel-style\\\\scripts\\\\build_html.py\" \"c:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\96-real-estate-analyst\\\\_workspace\\\\05_investment_report.md\" \"c:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\96-real-estate-analyst\\\\_workspace\\\\05_investment_report.html\" \"�ε��� ���� �м� �� ��걸 �Ѱ���� 208-57\")"
+      "PowerShell(python \"C:\\\\Users\\\\juncp\\\\.claude\\\\skills\\\\html-pastel-style\\\\scripts\\\\build_html.py\" \"c:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\96-real-estate-analyst\\\\_workspace\\\\05_investment_report.md\" \"c:\\\\Users\\\\juncp\\\\00_claudecode\\\\01_Harness_100\\\\ko\\\\96-real-estate-analyst\\\\_workspace\\\\05_investment_report.html\" \"�ε��� ���� �м� �� ��걸 �Ѱ���� 208-57\")",
+      "WebFetch(domain:ace2025.kr)",
+      "Read(//c/Users/juncp/00_claudework/04_01_부동산_T스토리블로그/부동산수집&카드뉴스/**)",
+      "Read(//c/Users/juncp/00_claudework/00_GSNI/**)",
+      "WebFetch(domain:www.kimchang.com)",
+      "WebFetch(domain:m.dcinside.com)",
+      "WebFetch(domain:www.mt.co.kr)",
+      "WebFetch(domain:www.moyoplan.com)",
+      "WebFetch(domain:www.busan.com)",
+      "WebFetch(domain:play.google.com)",
+      "WebFetch(domain:gall.dcinside.com)",
+      "Bash(python -c ' *)",
+      "Bash(python -m playwright install chromium)",
+      "PowerShell(python \"C:\\\\Users\\\\juncp\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-juncp-00-claudecode-01-Harness-100\\\\0509eb99-dddc-40ae-8734-6d9cdabc06f6\\\\scratchpad\\\\shot_covers.py\")",
+      "Bash(pandoc --version)",
+      "Bash(python -c \"import playwright, pypdf; print\\('playwright OK, pypdf OK'\\)\")",
+      "Bash(mkdir -p build)",
+      "Bash(python -)",
+      "Bash(python -m pip install --quiet pypandoc-binary)",
+      "Bash(python -c \"import pypandoc; print\\('pypandoc', pypandoc.get_pandoc_version\\(\\)\\)\")",
+      "Bash(python \"C:/Users/juncp/.claude/skills/html-pastel-style/scripts/build_html.py\" book_body.md book.html \"선명그룹 리서치 · 내부 배포용\")",
+      "Bash(PYTHONIOENCODING=utf-8 python -)",
+      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\juncp\\00_claudework\\04_01_부동산_T스토리블로그\\부동산수집&카드뉴스",
+      "c:\\Users\\juncp\\00_claudework\\00_GSNI"
     ]
   }
 }

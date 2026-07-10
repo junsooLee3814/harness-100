@@ -1,0 +1,30 @@
+---
+title:
+- type: main
+  text: "알뜰폰의 다음 10년 — 1,000만 회선 이후의 생존 전략"
+- type: subtitle
+  text: "한국 MVNO 시장의 성숙, 참가자, 소비자, 그리고 독립계의 생존 조건"
+creator:
+- role: author
+  text: 선명리서치센터(SMRC SunMyung Research Center)
+publisher: 선명리서치센터
+language: ko
+date: "2026-07-05"
+identifier:
+- scheme: UUID
+  text: "urn:uuid:e14c68a2-e3be-410d-9c95-35dcbee82762"
+rights: "© 2026 선명리서치센터(SMRC SunMyung Research Center). All rights reserved. 본서는 내부·제한 배포용으로, 발행처의 사전 동의 없는 외부 유통·복제·인용을 금합니다. 본서는 정보 제공 목적이며 특정 기업 또는 특정 종목에 대한 투자 권유가 아닙니다."
+description: "2025년 6월 1,011만 회선으로 정점을 찍고 열 달 만에 사상 첫 연속 순유출을 맞은 한국 알뜰폰 시장. 산업 구조·경쟁 참가자·소비자·트렌드를 공개 데이터로 해부하고, 독립계 사업자 사례 연구로 \"1,000만 회선 이후\"의 생존 조건 7가지와 3단계 로드맵을 제시하는 내부 시장 분석서. 결론은 하나다 — 덜 잃는 자가 이긴다."
+subject:
+- 알뜰폰
+- MVNO
+- 통신시장
+- 도매대가
+- 단통법 폐지
+- 산업분석
+- 생존전략
+- 프리티
+- 시장 성숙기
+- 시나리오 플래닝
+belongs-to-collection: 선명리서치센터 산업 분석
+---
