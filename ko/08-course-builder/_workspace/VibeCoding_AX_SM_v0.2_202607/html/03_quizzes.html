@@ -221,471 +221,389 @@ hr{ border:0; height:1px; background:transparent; margin:26px 0; }
 .callout .cbody strong{ color:inherit; }
 /* intro prose between cover and first card */
 .intro{ margin:4px 0 6px; }
-</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">선명AG · AX 3차 · VibeCoding_AX_SM v0.2</div><h1>퀴즈/평가 문항 — VibeCoding_AX_SM (v0.2)</h1></header><div class="intro"><blockquote>
-<p>SSOT: <code>00_input.md</code> · 설계서: <code>01_curriculum.md</code>
-구성: <strong>형성평가</strong>(0강~4강, 강별 3~5문항) + <strong>총괄평가</strong>(4강 캡스톤 = 수료 루브릭 3기준 판정 + 안전 게이트 체크리스트)
-대상: <strong>전원 초보자</strong>. 코드 문법 암기가 아니라 <strong>개념 이해·상황 판단</strong>을 물음. 무의미 어설션형 문항 없음.
-안전수칙: 각 강 안전수칙을 <strong>최소 1문항</strong> 필수 반영(오답지에 "위험 행동"을 그럴듯하게 배치).
-피드백 공식: EEC(Evidence 무엇이 문제인지 → Effect 그러면 어떻게 되는지 → Change 무엇을 하면 되는지).</p>
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">선명AG · AX 3차 · VibeCoding_AX_SM v0.2 (갱신본)</div><h1>퀴즈/평가 문항 — VibeCoding_AX_SM (v0.2)</h1><p class="cover-sub">형성평가(강별) + 총괄평가(4강 캡스톤 루브릭·안전 게이트)</p><p class="cover-lede">전원 초보자 대상. 코드 문법 암기가 아니라 개념 이해·상황 판단을 묻는다. 각 강 안전수칙을 최소 1문항 필수 반영하고, 오답지에는 "위험 행동"을 그럴듯하게 배치한다.</p><span class="sync-badge">SSOT: <code>01_curriculum.md</code>(갱신 확정본) · 입력: <code>00_input.md</code></span></header>
+<div class="intro"><blockquote>
+<p><strong>구성</strong>: 형성평가(0~4강, 강별 4~5문항) + 총괄평가(4강 캡스톤 = 수료 루브릭 3기준 + 안전 게이트 4항목 + 판정 3문항). <strong>피드백 공식 EEC</strong>: Evidence(무엇이 문제) → Effect(그러면 어떻게 되나) → Change(무엇을 하면 되나).<br />
+<strong>v0.2 갱신</strong>: ① 0강 "해외결제 카드" 문항 삭제 · ② 3강 <strong>자동화 개념 8종(스킬 + 스킬 외 7종)</strong>으로 확장 + 회의록 에이전트 구성 문항 추가 · ③ 4강 <strong>Claude Code CLI·에신Lite</strong> 도구 이해 문항 추가.</p>
 </blockquote>
-<hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">형성평가 (강별)</div></div>
-<p>형성평가는 <strong>부담 없는 연습</strong>이다. 재응시 무제한, 즉시 피드백. 목표 정답률 80% 이상.
-문항 유형: 객관식 · 상황판단(시나리오) · O/X · 짝맞추기(매칭)로 다양화.</p>
+<hr /></div>
+
+<section class="card card--sky"><div class="sess-head"><span class="sess-no">PART 1</span><div class="sess-title">형성평가 (강별)</div></div>
+<p>형성평가는 <strong>부담 없는 연습</strong>이다. 재응시 무제한, 즉시 피드백. 목표 정답률 80% 이상. 문항 유형: 객관식 · 상황판단(시나리오) · O/X · 짝맞추기(매칭)로 다양화.</p>
 <hr />
+
 <h3>0강 형성평가 — "출발선 정렬"</h3>
-<p><strong>학습목표 매핑</strong>: (이해) 바이브코딩이 "코딩이 아니라 지시와 검증"임을 설명한다 · (적용) 도구 10종 설치·체크리스트 완료 · (적용) 본인 업무를 I/P/O로 기술한다.
-<strong>블룸 분포</strong>: 기억·이해 70% / 적용 30%.</p>
-<hr />
+<div class="module-head"><strong>학습목표 매핑</strong>: (이해) 바이브코딩 = "코딩이 아니라 지시와 검증" · (적용) 계정 5종·설치 6종 체크리스트 완료 · (분석) 본인 업무 I/P/O 분해. <em>블룸 분포: 기억·이해 70% / 적용 30%.</em></div>
+
 <p><strong>Q0-1</strong> [객관식 | 블룸: 이해 | 난이도: 하]</p>
 <p>이 과정이 정의하는 <strong>"바이브코딩"</strong>을 가장 정확히 설명한 것은?</p>
-<p>A) 코드를 한 줄도 몰라도 되며, AI가 만든 결과는 자동으로 정확하므로 사람이 확인할 필요가 없다
-B) <strong>자연어로 하고 싶은 일을 지시해 결과물을 만들되, 사실·품질 검증은 사람이 한다</strong>
-C) 개발자가 빠르게 코딩하기 위한 단축키와 자동완성 기법의 모음이다
+<p>A) 코드를 한 줄도 몰라도 되며, AI가 만든 결과는 자동으로 정확하므로 사람이 확인할 필요가 없다<br />
+B) <strong>자연어로 하고 싶은 일을 지시해 결과물을 만들되, 사실·품질 검증은 사람이 한다</strong><br />
+C) 개발자가 빠르게 코딩하기 위한 단축키와 자동완성 기법의 모음이다<br />
 D) 프로그래밍 언어를 문법부터 순서대로 암기해 직접 코드를 작성하는 학습법이다</p>
-<p><strong>정답</strong>: B
-<strong>해설</strong>: 과정의 한 줄 정의는 "코딩하지 않고 자연어로 지시하며, 검증은 사람이 한다". <strong>지시는 AI, 검증은 사람</strong>이라는 역할 분담이 핵심이다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: B</strong> — 과정 표어는 "코딩하지 않고 자연어로 지시하며, 검증은 사람이 한다". <strong>지시는 AI, 검증은 사람</strong>이라는 역할 분담이 핵심이다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) "검증할 필요가 없다"고 본 점이 문제입니다. (E) AI는 그럴듯한 허위(숫자·출처)를 만들 수 있어, 검증을 생략하면 잘못된 산출물이 그대로 나갑니다. (C) 과정 표어의 뒷부분 "검증은 사람이 한다"를 다시 확인하세요. — 0-1 오리엔테이션</li>
-<li>C 선택 시: (E) 개발자용 코딩 보조로 오해했습니다. (E) 그러면 "코딩 무경험 전제"라는 이 과정 대상과 맞지 않습니다. (C) 바이브코딩은 코드를 짜는 게 아니라 자연어로 지시하는 방식임을 확인하세요.</li>
-<li>D 선택 시: (E) 문법 암기 학습으로 오해했습니다. (E) 이 과정은 문법을 외우지 않습니다. (C) "코딩하지 않고 자연어로"가 출발점입니다.</li>
+<li>A 선택 시: (E) "검증할 필요가 없다"고 본 점이 문제. (E) AI는 그럴듯한 허위(숫자·출처)를 만들 수 있어, 검증을 생략하면 잘못된 산출물이 그대로 나갑니다. (C) 표어 뒷부분 "검증은 사람이 한다"를 확인하세요.</li>
+<li>C 선택 시: (E) 개발자용 코딩 보조로 오해. (E) "코딩 무경험 전제"인 이 과정 대상과 맞지 않습니다. (C) 바이브코딩은 자연어로 지시하는 방식입니다.</li>
+<li>D 선택 시: (E) 문법 암기 학습으로 오해. (E) 이 과정은 문법을 외우지 않습니다. (C) "코딩하지 않고 자연어로"가 출발점입니다.</li>
 </ul>
 <hr />
+
 <p><strong>Q0-2</strong> [O/X | 블룸: 이해 | 난이도: 하]</p>
 <p>사전과제로 요구되는 "본인 업무를 <strong>I/P/O(입력→처리→출력)</strong> 형식으로 적기"는, 나중에 4강에서 <strong>본인 업무를 자동화하는 미러링(복제·개조)의 재료</strong>로 쓰인다.</p>
-<p><strong>정답</strong>: O (참)
-<strong>해설</strong>: 0강 사전과제(I/P/O 시트)는 4강 4-5 블록 "본인 업무로 미러링"의 시드가 된다. 입력·처리·출력으로 쪼개 두면, 어떤 부분을 자동화할지 명확해진다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: O (참)</strong> — 0강 사전과제(I/P/O 시트)는 4강 4-5 "본인 업무로 미러링"의 시드다. 입력·처리·출력으로 쪼개 두면 어디를 자동화할지 명확해진다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>X 선택 시: (E) 사전과제를 단순 워밍업으로 보았습니다. (E) 그러면 4강에서 미러링할 소재가 없어 본인 업무 자동화가 막힙니다. (C) 사전과제는 버리는 게 아니라 4강까지 이어지는 부품임을 기억하세요. — 누적 부품 이월 지도</li>
+<li>X 선택 시: (E) 사전과제를 단순 워밍업으로 봄. (E) 그러면 4강에서 미러링할 소재가 없어 자동화가 막힙니다. (C) 사전과제는 4강까지 이어지는 부품입니다. — 누적 부품 이월 지도</li>
 </ul>
 <hr />
-<p><strong>Q0-3</strong> [상황판단 | 블룸: 적용 | 난이도: 중] ★ 안전수칙 필수</p>
-<p>당신은 0강에서 Supabase 설정을 마쳤습니다. 조교에게 "설정 잘 됐나요?" 물어보려고 <strong>화면 전체를 스크린샷</strong>해 조별 단체 채팅방에 올리려 합니다. 그런데 그 화면에는 <code>service_role</code> 키(비밀키) 값이 그대로 보입니다. 가장 올바른 행동은?</p>
-<p>A) 조원들끼리만 보는 방이니 그대로 올려도 안전하다
-B) 키 값은 나중에 어차피 바뀌니 지금은 신경 쓰지 않고 올린다
-C) <strong><code>service_role</code> 등 비밀키가 보이는 부분을 가리거나 제외하고, 필요한 부분만 캡처해 올린다</strong>
+
+<p><strong>Q0-3</strong> [상황판단 | 블룸: 적용 | 난이도: 중] <strong>★ 안전수칙 필수 (비밀키 안전)</strong></p>
+<p>0강에서 Supabase 설정을 마쳤습니다. 조교에게 "설정 잘 됐나요?" 물어보려고 <strong>화면 전체를 스크린샷</strong>해 조별 단체 채팅방에 올리려 합니다. 그런데 그 화면에 <code>service_role</code> 키(비밀키) 값이 그대로 보입니다. 가장 올바른 행동은?</p>
+<p>A) 조원들끼리만 보는 방이니 그대로 올려도 안전하다<br />
+B) 키 값은 나중에 어차피 바뀌니 지금은 신경 쓰지 않고 올린다<br />
+C) <strong><code>service_role</code> 등 비밀키가 보이는 부분을 가리거나 제외하고, 필요한 부분만 캡처해 올린다</strong><br />
 D) 스크린샷 대신 키 값을 텍스트로 복사해 채팅방에 붙여넣으면 안전하다</p>
-<p><strong>정답</strong>: C
-<strong>해설</strong>: 0강 안전수칙 — <strong><code>service_role</code> 등 비밀키는 어디에도(스크린샷 포함) 올리지 않는다</strong>. 비밀키는 DB 전체를 제어할 수 있는 "마스터 키"라, 소규모 채팅방이라도 노출되면 유출로 간주해야 한다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout warn"><span class="ico">!</span><div class="cbody"><p><strong>정답: C</strong> — 0강 안전수칙: <strong><code>service_role</code> 등 비밀키는 어디에도(스크린샷 포함) 올리지 않는다</strong>. 비밀키는 DB 전체를 제어하는 "마스터 키"라, 소규모 채팅방이라도 노출되면 유출로 간주한다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) "우리끼리니까 괜찮다"는 판단이 위험합니다. (E) 채팅방은 캡처·전달·유출 경로가 많아 통제 불가입니다. (C) 방 크기와 무관하게 비밀키는 노출 금지입니다.</li>
-<li>B 선택 시: (E) "곧 바뀐다"는 근거가 틀렸습니다. (E) 노출된 순간 이미 유출이며, 재발급 전까지 악용될 수 있습니다. (C) 노출 자체를 막는 게 원칙입니다.</li>
-<li>D 선택 시: (E) 스크린샷만 위험하다고 오해했습니다. (E) 텍스트 붙여넣기도 동일한 노출입니다. (C) 형식과 무관하게 비밀키 값 자체를 공유하지 마세요.</li>
+<li>A 선택 시: (E) "우리끼리니까 괜찮다"는 판단이 위험. (E) 채팅방은 캡처·전달 경로가 많아 통제 불가입니다. (C) 방 크기와 무관하게 비밀키는 노출 금지.</li>
+<li>B 선택 시: (E) "곧 바뀐다"는 근거가 틀림. (E) 노출된 순간 이미 유출이며 재발급 전까지 악용될 수 있습니다. (C) 노출 자체를 막는 게 원칙.</li>
+<li>D 선택 시: (E) 스크린샷만 위험하다고 오해. (E) 텍스트 붙여넣기도 동일한 노출입니다. (C) 형식과 무관하게 비밀키 값 자체를 공유하지 마세요.</li>
 </ul>
 <hr />
+
 <p><strong>Q0-4</strong> [객관식 | 블룸: 기억 | 난이도: 하]</p>
 <p>0강에서 <strong>미리 완료해야 하는 준비물</strong>로 묶은 것 중, 이 과정이 요구하지 <strong>않는</strong> 것은?</p>
-<p>A) Claude Pro(유료·해외결제 카드) 계정 개설
-B) GitHub · Vercel · Supabase 계정 개설
-C) Node.js · Git · VS Code · Claude Code(CLI) 설치
+<p>A) Claude Pro(유료 구독) 계정 개설<br />
+B) GitHub · Vercel · Supabase 계정 개설<br />
+C) Node.js · Git · VS Code · Claude Code(CLI) 설치<br />
 D) <strong>본인 노트북에 대형 데이터베이스 서버를 직접 구축·운영</strong></p>
-<p><strong>정답</strong>: D
-<strong>해설</strong>: 0강 준비물은 계정 5종 + 설치 6종이며, DB는 <strong>Supabase(무료 클라우드)</strong>를 사용한다. 초보자가 서버를 직접 구축·운영할 필요는 전혀 없다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: D</strong> — 0강 준비물은 계정 5종 + 설치 6종이며, DB는 <strong>Supabase(무료 클라우드)</strong>를 쓴다. 초보자가 서버를 직접 구축·운영할 필요는 없다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A/B/C 선택 시: (E) 실제 0강 체크리스트 항목을 "요구하지 않는 것"으로 골랐습니다. (E) 이 3가지는 1강 배포부터 바로 쓰이므로 반드시 완료해야 합니다. (C) 0강 도구 10종 체크리스트(계정 5 + 설치 6, Antigravity는 선택)를 다시 확인하세요.</li>
+<li>A/B/C 선택 시: (E) 실제 0강 체크리스트 항목을 "요구하지 않는 것"으로 골랐습니다. (E) 이 3가지는 1강 배포부터 바로 쓰입니다. (C) 0강 체크리스트(계정 5종 + 설치 6종, Antigravity는 선택)를 확인하세요.</li>
 </ul>
 <hr />
-<h3>1강 형성평가 — "처음부터 배포까지"</h3>
-<p><strong>학습목표 매핑</strong>: (이해) LLM 4종 비교 · (적용) 스켈레톤에서 프론트 완성 · (창조) GitHub→Vercel + Supabase로 배포.
-<strong>블룸 분포</strong>: 이해 50% / 적용 30% / 분석 20%.</p>
-<hr />
+
+<h3>1강 형성평가 — "트렌드를 잡고 처음부터 배포까지"</h3>
+<div class="module-head"><strong>학습목표 매핑</strong>: (분석) LLM 트렌드·4종 비교·상황별 선택 · (적용) 스켈레톤에서 풀스택 완성 · (창조) GitHub→Vercel + Supabase로 배포·게시. <em>블룸 분포: 이해 50% / 적용 30% / 분석 20%.</em></div>
+
 <p><strong>Q1-1</strong> [객관식 | 블룸: 이해 | 난이도: 하]</p>
 <p>1강에서 배운 <strong>LLM 4종 지형도</strong>에 해당하는 조합은?</p>
-<p>A) Claude · Word · Excel · PowerPoint
-B) <strong>Claude · GPT(ChatGPT) · Gemini · Grok</strong>
-C) GitHub · Vercel · Supabase · Node.js
+<p>A) Claude · Word · Excel · PowerPoint<br />
+B) <strong>Claude · GPT(ChatGPT) · Gemini · Grok</strong><br />
+C) GitHub · Vercel · Supabase · Node.js<br />
 D) Chat · Cowork · Code · Console</p>
-<p><strong>정답</strong>: B
-<strong>해설</strong>: LLM(대형 언어모델) 4종은 Claude / GPT / Gemini / Grok이다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: B</strong> — LLM 4종은 Claude / GPT / Gemini / Grok. 메인 드라이버는 Claude, 나머지는 교차검증·대안·실시간 검증축.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) 오피스 프로그램과 혼동했습니다. (E) 이들은 LLM이 아닙니다. (C) LLM은 자연어로 대화·생성하는 AI 모델임을 확인하세요.</li>
-<li>C 선택 시: (E) 배포 도구(GitHub·Vercel·Supabase)와 혼동했습니다. (E) 이들은 AI 모델이 아니라 코드 저장·배포·DB 도구입니다. (C) 1-2(LLM 지형도)와 1-5(배포 3종)를 구분하세요.</li>
-<li>D 선택 시: (E) 2강의 Claude 3계층(chat/cowork/code)과 혼동했습니다. (E) 이는 LLM 종류가 아니라 Claude의 사용 층위입니다. (C) "4종 모델"과 "3계층 사용법"은 다른 개념입니다.</li>
+<li>A 선택 시: (E) 오피스 프로그램과 혼동. (E) 이들은 LLM이 아닙니다. (C) LLM은 자연어로 대화·생성하는 AI 모델입니다.</li>
+<li>C 선택 시: (E) 배포 도구와 혼동. (E) GitHub·Vercel·Supabase는 저장·배포·DB 도구입니다. (C) 1-2(LLM 지형도)와 1-5(배포 3종)를 구분하세요.</li>
+<li>D 선택 시: (E) 2강 Claude 3계층(chat/cowork/code)과 혼동. (E) 이는 LLM 종류가 아니라 사용 층위입니다. (C) "4종 모델"과 "3계층 사용법"은 다른 개념.</li>
 </ul>
 <hr />
-<p><strong>Q1-2</strong> [상황판단 | 블룸: 적용 | 난이도: 중]</p>
-<p>당신은 스켈레톤(반쯤 완성된 페이지 틀)을 받아 랜딩페이지를 만들고, 실제 인터넷 주소(URL)로 공개하려 합니다. 이 과정이 가르친 <strong>배포 흐름의 순서</strong>로 가장 올바른 것은?</p>
-<p>A) Supabase에 코드를 올린다 → Vercel에서 DB를 만든다 → GitHub에서 주소를 받는다
-B) <strong>자연어로 스켈레톤을 채운다 → GitHub에 코드를 올린다 → Vercel로 배포해 URL을 얻는다 → Supabase에 폼 데이터를 저장한다</strong>
-C) 먼저 URL을 구매한다 → 코드를 직접 손으로 작성한다 → 이메일로 파일을 보낸다
+
+<p><strong>Q1-2</strong> [객관식 | 블룸: 분석 | 난이도: 중]</p>
+<p>1강 LLM 지형도에서 <strong>"구독(월 정액)"과 "API(종량제)"의 차이</strong>를 바르게 이해한 것은?</p>
+<p>A) 구독용 웹앱 주소와 API 콘솔 주소는 같으므로 아무 데나 로그인하면 된다<br />
+B) <strong>개인이 매달 정액으로 쓰는 구독(예: Claude Pro)과, 사용한 토큰만큼 과금되는 개발자용 API는 서로 다른 접속 경로를 쓴다</strong><br />
+C) API는 무조건 무료이고 구독은 무조건 유료다<br />
+D) 구독을 하면 API 요금이 자동으로 0원이 된다</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: B</strong> — 개인 구독(월 정액, 예: Claude Pro 약 $20/월)과 API(종량제, 토큰 과금)는 성격도 접속 주소도 다르다. 구독 웹앱(claude.ai 등)과 API 콘솔(console.anthropic.com 등)은 별개 주소.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
+<ul>
+<li>A 선택 시: (E) 두 주소를 같다고 봄. (E) 구독 웹앱에서 API 키를 찾으려 하면 헤맵니다. (C) 구독=웹앱, API=콘솔로 주소가 다릅니다. — 표 A/표 B</li>
+<li>C 선택 시: (E) 가격 구조를 단순화. (E) API도 사용량이 있으면 과금되고(일부 무료 티어 예외), 구독은 정액입니다. (C) "정액 vs 종량"이 핵심.</li>
+<li>D 선택 시: (E) 구독이 API를 무료화한다고 오해. (E) 둘은 별도 청구 체계입니다. (C) 구독과 API 요금은 별개.</li>
+</ul>
+<hr />
+
+<p><strong>Q1-3</strong> [상황판단 | 블룸: 적용 | 난이도: 중]</p>
+<p>스켈레톤(반쯤 완성된 페이지 틀)을 받아 <strong>풀스택 랜딩페이지</strong>를 만들고 실제 URL로 공개(게시)하려 합니다. 이 과정이 가르친 <strong>배포·게시 흐름의 순서</strong>로 가장 올바른 것은?</p>
+<p>A) Supabase에 코드를 올린다 → Vercel에서 DB를 만든다 → GitHub에서 주소를 받는다<br />
+B) <strong>자연어로 스켈레톤을 채운다 → GitHub에 코드를 올린다 → Vercel로 배포·게시해 URL을 얻는다 → Supabase에 폼 데이터를 저장한다</strong><br />
+C) 먼저 URL을 구매한다 → 코드를 직접 손으로 작성한다 → 이메일로 파일을 보낸다<br />
 D) VS Code에서 페이지를 그림으로 그린다 → 스크린샷을 Vercel에 업로드한다</p>
-<p><strong>정답</strong>: B
-<strong>해설</strong>: 1-4에서 자연어로 스켈레톤을 채우고, 1-5에서 GitHub(코드 저장) → Vercel(배포·URL 생성) → Supabase(폼 데이터 저장) 순으로 연결한다. 각 도구의 역할이 다르다: GitHub=저장, Vercel=배포, Supabase=데이터.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: B</strong> — 1-4에서 자연어로 스켈레톤을 채우고, 1-5에서 GitHub(저장) → Vercel(배포·게시·URL) → Supabase(폼 데이터 저장) 순으로 연결. 프론트+DB가 함께 도는 것이 "풀스택". GitHub=저장, Vercel=배포·게시, Supabase=데이터.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) 도구 역할을 뒤섞었습니다. (E) Vercel은 DB를 만드는 곳이 아니고, 주소는 Vercel이 줍니다. (C) 저장(GitHub)→배포(Vercel)→데이터(Supabase) 역할을 다시 확인하세요. — 1-5</li>
-<li>C 선택 시: (E) "코드를 손으로 작성"이 이 과정 방식과 반대입니다. (E) 바이브코딩은 자연어 지시로 코드를 생성합니다. (C) 원칙⓵ 백지 시작 금지 — 스켈레톤에서 출발합니다.</li>
-<li>D 선택 시: (E) 페이지를 이미지로 오해했습니다. (E) 랜딩페이지는 그림이 아니라 실제 동작하는 웹페이지입니다. (C) 배포는 스크린샷 업로드가 아니라 코드 게시임을 확인하세요.</li>
+<li>A 선택 시: (E) 도구 역할을 뒤섞음. (E) Vercel은 DB를 만드는 곳이 아니고, 주소는 Vercel이 줍니다. (C) 저장→배포·게시→데이터 순서를 확인하세요. — 1-5</li>
+<li>C 선택 시: (E) "코드를 손으로 작성"은 이 과정과 반대. (E) 바이브코딩은 자연어로 코드를 생성합니다. (C) 원칙⓵ 백지 시작 금지 — 스켈레톤에서 출발.</li>
+<li>D 선택 시: (E) 페이지를 이미지로 오해. (E) 랜딩페이지는 실제 동작하는 웹페이지입니다. (C) 배포·게시는 스크린샷 업로드가 아니라 코드 게시입니다.</li>
 </ul>
 <hr />
-<p><strong>Q1-3</strong> [상황판단 | 블룸: 분석 | 난이도: 중] ★ 안전수칙 필수 (anon vs service_role)</p>
-<p>Supabase는 두 종류의 키를 줍니다: <strong><code>anon</code>(공개용) 키</strong>와 <strong><code>service_role</code>(비밀·전권) 키</strong>. 배포한 랜딩페이지 코드에 <strong>웹에 공개되어도 되는 키</strong>는 무엇이며, 그 이유로 옳은 것은?</p>
-<p>A) <code>service_role</code> 키 — 전권이 있어 어떤 기능이든 되므로 편리하다
-B) 두 키 모두 넣어야 페이지가 정상 동작한다
-C) <strong><code>anon</code> 키 — 제한된 권한만 있어 공개를 전제로 설계된 키이기 때문</strong>
+
+<p><strong>Q1-4</strong> [상황판단 | 블룸: 분석 | 난이도: 중] <strong>★ 안전수칙 필수 (anon vs service_role)</strong></p>
+<p>Supabase는 두 종류의 키를 줍니다: <strong><code>anon</code>(공개용) 키</strong>와 <strong><code>service_role</code>(비밀·전권) 키</strong>. 배포·게시한 랜딩페이지 코드에 <strong>웹에 공개되어도 되는 키</strong>는 무엇이며, 그 이유로 옳은 것은?</p>
+<p>A) <code>service_role</code> 키 — 전권이 있어 어떤 기능이든 되므로 편리하다<br />
+B) 두 키 모두 넣어야 페이지가 정상 동작한다<br />
+C) <strong><code>anon</code> 키 — 제한된 권한만 있어 공개를 전제로 설계된 키이기 때문</strong><br />
 D) 어떤 키도 페이지에 넣으면 안 되고, 매번 손으로 입력해야 한다</p>
-<p><strong>정답</strong>: C
-<strong>해설</strong>: 1강 안전수칙 — <strong><code>anon</code> 공개키만 페이지에, <code>service_role</code> 키는 절대 금지</strong>. <code>anon</code>은 애초에 브라우저 노출을 전제로 권한이 제한된 키이고, <code>service_role</code>은 DB 전권을 가진 마스터 키라 웹페이지(누구나 소스를 볼 수 있음)에 넣으면 즉시 유출된다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout warn"><span class="ico">!</span><div class="cbody"><p><strong>정답: C</strong> — 1강 안전수칙: <strong><code>anon</code> 공개키만 페이지에, <code>service_role</code> 키는 절대 금지</strong>. <code>anon</code>은 브라우저 노출 전제로 권한이 제한된 키, <code>service_role</code>은 DB 전권 마스터 키라 웹페이지(누구나 소스를 봄)에 넣으면 즉시 유출.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) "편리하다"를 기준으로 골랐습니다. (E) 전권 키를 공개 페이지에 넣으면 누구나 DB를 삭제·탈취할 수 있습니다. (C) 편리함이 아니라 "공개 전제 여부"로 판단하세요. <code>anon</code>만 공개 가능합니다.</li>
-<li>B 선택 시: (E) 둘 다 필요하다고 오해했습니다. (E) <code>service_role</code>을 넣는 순간 전체 DB가 위험해집니다. (C) 공개 페이지에는 <code>anon</code> 하나면 됩니다.</li>
-<li>D 선택 시: (E) 안전을 위해 아무 키도 안 넣는다고 판단했습니다. (E) <code>anon</code> 키가 없으면 페이지가 DB와 연결되지 않아 폼 저장이 안 됩니다. (C) <code>anon</code>은 넣어도 되는 공개키임을 구분하세요.</li>
+<li>A 선택 시: (E) "편리하다"를 기준으로 골랐습니다. (E) 전권 키를 공개 페이지에 넣으면 누구나 DB를 삭제·탈취할 수 있습니다. (C) "공개 전제 여부"로 판단 — <code>anon</code>만 공개 가능.</li>
+<li>B 선택 시: (E) 둘 다 필요하다고 오해. (E) <code>service_role</code>을 넣는 순간 전체 DB가 위험합니다. (C) 공개 페이지에는 <code>anon</code> 하나면 됩니다.</li>
+<li>D 선택 시: (E) 아무 키도 안 넣는다고 판단. (E) <code>anon</code>이 없으면 폼 저장이 안 됩니다. (C) <code>anon</code>은 넣어도 되는 공개키입니다.</li>
 </ul>
 <hr />
-<p><strong>Q1-4</strong> [O/X | 블룸: 적용 | 난이도: 하] ★ 안전수칙</p>
-<p>랜딩페이지의 문의 폼을 <strong>예시로 채울 때</strong>, 실제 고객의 실명·전화번호·주민번호 같은 개인정보를 넣어 시연해도 된다.</p>
-<p><strong>정답</strong>: X (거짓)
-<strong>해설</strong>: 1강 안전수칙 — <strong>개인정보를 폼 예시에 넣지 않는다</strong>. 배포된 페이지는 공개되고 데이터가 Supabase에 저장되므로, 예시에는 "홍길동 / 010-0000-0000"처럼 가짜/더미 값만 쓴다.
-<strong>오답 피드백</strong>:</p>
-<ul>
-<li>O 선택 시: (E) 실제 개인정보를 예시로 써도 된다고 보았습니다. (E) 공개 배포 + DB 저장이라, 실개인정보를 넣으면 유출·법적 문제가 됩니다. (C) 예시는 항상 더미 데이터로만 채우세요.</li>
-</ul>
-<hr />
+
 <p><strong>Q1-5</strong> [짝맞추기 | 블룸: 이해 | 난이도: 중]</p>
-<p>1강에서 배포에 쓰는 <strong>3종 도구의 역할</strong>을 알맞게 연결하세요.</p>
+<p>1강에서 배포·게시에 쓰는 <strong>3종 도구의 역할</strong>을 알맞게 연결하세요.</p>
 <div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>도구</th>
-<th></th>
-<th>역할</th>
-</tr>
-</thead>
+<thead><tr><th>도구</th><th></th><th>역할</th></tr></thead>
 <tbody>
-<tr>
-<td>① GitHub</td>
-<td></td>
-<td>㉮ 코드를 실제 URL로 배포(공개)한다</td>
-</tr>
-<tr>
-<td>② Vercel</td>
-<td></td>
-<td>㉯ 코드를 저장·버전관리하는 창고</td>
-</tr>
-<tr>
-<td>③ Supabase</td>
-<td></td>
-<td>㉰ 폼 데이터·로그인·저장소(DB) 담당</td>
-</tr>
+<tr><td>① GitHub</td><td></td><td>㉮ 코드를 실제 URL로 배포·게시(공개)한다</td></tr>
+<tr><td>② Vercel</td><td></td><td>㉯ 코드를 저장·버전관리하는 창고</td></tr>
+<tr><td>③ Supabase</td><td></td><td>㉰ 폼 데이터·로그인·저장소(DB) 담당</td></tr>
 </tbody>
 </table></div>
-<p><strong>정답</strong>: ① - ㉯, ② - ㉮, ③ - ㉰
-<strong>해설</strong>: GitHub=코드 창고(저장), Vercel=배포(URL 생성), Supabase=데이터베이스. 이 3개가 한 세트로 "저장→배포→데이터"를 이룬다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: ① - ㉯, ② - ㉮, ③ - ㉰</strong> — GitHub=코드 창고(저장), Vercel=배포·게시(URL 생성), Supabase=DB. 3개가 "저장→배포·게시→데이터" 한 세트.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>①과 ②를 바꾼 경우: (E) 저장소와 배포를 혼동했습니다. (E) GitHub은 주소를 만들지 않고, URL은 Vercel이 만듭니다. (C) "깃허브=창고, 버셀=배포"로 기억하세요.</li>
-<li>③을 다른 것과 바꾼 경우: (E) 데이터 담당을 놓쳤습니다. (E) 폼 저장이 어디로 가는지 모르면 데이터 흐름을 통제할 수 없습니다. (C) Supabase=DB(데이터·로그인·저장소)로 고정하세요.</li>
+<li>①과 ②를 바꾼 경우: (E) 저장소와 배포를 혼동. (E) GitHub은 주소를 만들지 않고 URL은 Vercel이 만듭니다. (C) "깃허브=창고, 버셀=배포·게시".</li>
+<li>③을 다른 것과 바꾼 경우: (E) 데이터 담당을 놓침. (E) 폼 저장이 어디로 가는지 모르면 데이터 흐름을 통제 못 합니다. (C) Supabase=DB로 고정.</li>
 </ul>
 <hr />
+
 <h3>2강 형성평가 — "일하는 3계층과 결과물"</h3>
-<p><strong>학습목표 매핑</strong>: (이해) Claude 3계층·코딩환경 3종 구분 · (적용) 콘텐츠 파이프라인 실행 · (창조) 블로그·유튜브 세트 생성 + 사람 검증.
-<strong>블룸 분포</strong>: 이해 50% / 적용 30% / 평가 20%.</p>
-<hr />
+<div class="module-head"><strong>학습목표 매핑</strong>: (이해) Claude 3계층·코딩환경 3종 구분 · (적용) 콘텐츠 파이프라인 실행 · (창조) 블로그·유튜브 세트 생성·게시 + 사람 검증. <em>블룸 분포: 이해 50% / 적용 30% / 평가 20%.</em></div>
+
 <p><strong>Q2-1</strong> [짝맞추기 | 블룸: 이해 | 난이도: 중]</p>
 <p>Claude <strong>3계층(chat / cowork / code)</strong>을 업무 상황에 맞게 연결하세요. (개념 구분 목적 — 정확한 제품 경계보다 "층위가 다르다"는 이해가 핵심)</p>
 <div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>계층</th>
-<th></th>
-<th>대표 쓰임</th>
-</tr>
-</thead>
+<thead><tr><th>계층</th><th></th><th>대표 쓰임</th></tr></thead>
 <tbody>
-<tr>
-<td>① chat(대화)</td>
-<td></td>
-<td>㉮ 파일·프로젝트를 놓고 함께 작업물을 만드는 협업 층</td>
-</tr>
-<tr>
-<td>② cowork(협업)</td>
-<td></td>
-<td>㉯ 빠르게 묻고 답을 얻는 가벼운 대화 층</td>
-</tr>
-<tr>
-<td>③ code(코드)</td>
-<td></td>
-<td>㉰ 실제 환경에서 코드·자동화를 실행하는 개발 층</td>
-</tr>
+<tr><td>① chat(대화)</td><td></td><td>㉮ 파일·프로젝트를 놓고 함께 작업물을 만드는 협업 층</td></tr>
+<tr><td>② cowork(협업)</td><td></td><td>㉯ 빠르게 묻고 답을 얻는 가벼운 대화 층</td></tr>
+<tr><td>③ code(코드)</td><td></td><td>㉰ 실제 환경에서 코드·자동화를 실행하는 개발 층</td></tr>
 </tbody>
 </table></div>
-<p><strong>정답</strong>: ① - ㉯, ② - ㉮, ③ - ㉰
-<strong>해설</strong>: chat=가벼운 질의응답, cowork=문서·프로젝트 협업, code=실제 코드·자동화 실행. "무엇을 하려는가"에 따라 층을 골라 쓴다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: ① - ㉯, ② - ㉮, ③ - ㉰</strong> — chat=가벼운 질의응답, cowork=문서·프로젝트 협업, code=코드·자동화 실행. "무엇을 하려는가"에 따라 층을 고른다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>①과 ③을 바꾼 경우: (E) 가벼운 대화와 코드 실행을 뒤바꿨습니다. (E) 층을 잘못 고르면 간단한 질문에 무거운 환경을 켜거나, 자동화를 대화창에서 하려다 막힙니다. (C) chat=가장 가벼움, code=가장 무거움(실행)으로 순서를 기억하세요. — 2-2</li>
+<li>①과 ③을 바꾼 경우: (E) 가벼운 대화와 코드 실행을 뒤바꿈. (E) 층을 잘못 고르면 간단한 질문에 무거운 환경을 켜거나, 자동화를 대화창에서 하려다 막힙니다. (C) chat=가장 가벼움, code=가장 무거움(실행). — 2-2</li>
 </ul>
 <hr />
+
 <p><strong>Q2-2</strong> [객관식 | 블룸: 이해 | 난이도: 하]</p>
 <p>2강이 소개한 <strong>코딩환경 3종</strong>에 해당하지 <strong>않는</strong> 것은?</p>
-<p>A) Claude Code(CLI)
-B) Claude 데스크톱(커넥터)
-C) Antigravity(선택)
+<p>A) Claude Code(CLI)<br />
+B) Claude 데스크톱(커넥터)<br />
+C) Antigravity(선택)<br />
 D) <strong>Microsoft Excel 매크로 편집기</strong></p>
-<p><strong>정답</strong>: D
-<strong>해설</strong>: 코딩환경 3종은 Claude Code(CLI) · Claude 데스크톱 · Antigravity(선택)이다. Excel 매크로는 이 과정의 작업 무대가 아니다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: D</strong> — 코딩환경 3종은 Claude Code(CLI) · Claude 데스크톱 · Antigravity(선택). Excel 매크로는 이 과정의 작업 무대가 아니다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A/B/C 선택 시: (E) 실제 3종 중 하나를 "아닌 것"으로 골랐습니다. (E) 이 환경들이 3·4강의 작업 무대가 되므로 익혀 두어야 합니다. (C) 2-3의 코딩환경 3종 목록을 다시 확인하세요.</li>
+<li>A/B/C 선택 시: (E) 실제 3종 중 하나를 "아닌 것"으로 골랐습니다. (E) 이 환경들이 3·4강의 작업 무대가 됩니다. (C) 2-3의 코딩환경 3종 목록을 확인하세요.</li>
 </ul>
 <hr />
-<p><strong>Q2-3</strong> [상황판단 | 블룸: 평가 | 난이도: 중] ★ 안전수칙 필수 (허위 숫자·법조항 금지)</p>
+
+<p><strong>Q2-3</strong> [상황판단 | 블룸: 평가 | 난이도: 중] <strong>★ 안전수칙 필수 (허위 숫자·법조항 금지)</strong></p>
 <p>AI에게 회계 블로그 초안을 맡겼더니 "2024년 개정 세법 <strong>제37조의5</strong>에 따라 공제율이 <strong>정확히 18.7%</strong> 상향되었습니다"라는 문장을 만들어 왔습니다. 게시 전 가장 올바른 조치는?</p>
-<p>A) AI가 구체적 조항·숫자까지 썼으니 신뢰도가 높아 그대로 게시한다
-B) 문장이 자연스러우니 숫자만 반올림해 "약 19%"로 고쳐 게시한다
-C) <strong>조항 번호와 공제율 수치가 실재하는지 사람이 1차 출처로 확인하고, 확인 전에는 게시하지 않는다</strong>
+<p>A) AI가 구체적 조항·숫자까지 썼으니 신뢰도가 높아 그대로 게시한다<br />
+B) 문장이 자연스러우니 숫자만 반올림해 "약 19%"로 고쳐 게시한다<br />
+C) <strong>조항 번호와 공제율 수치가 실재하는지 사람이 1차 출처로 확인하고, 확인 전에는 게시하지 않는다</strong><br />
 D) 독자가 알아서 판단할 것이므로 검증 없이 게시하되 댓글로 정정한다</p>
-<p><strong>정답</strong>: C
-<strong>해설</strong>: 2강 안전수칙 — <strong>AI는 문장을 쓰고, 사실 근거는 사람이 준다. 허위 숫자·법조항 금지</strong>. LLM은 존재하지 않는 조항·통계를 그럴듯하게 지어낼 수 있으므로, 법조항·수치는 반드시 사람이 원출처로 대조한 뒤 게시한다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout warn"><span class="ico">!</span><div class="cbody"><p><strong>정답: C</strong> — 2강 안전수칙: <strong>AI는 문장을 쓰고, 사실 근거는 사람이 준다. 허위 숫자·법조항 금지</strong>. LLM은 존재하지 않는 조항·통계를 그럴듯하게 지어내므로, 법조항·수치는 반드시 사람이 원출처로 대조 후 게시한다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) "구체적일수록 신뢰"라는 착각이 문제입니다. (E) AI는 가짜 조항·숫자도 매우 구체적으로 지어냅니다. 구체성은 사실성의 근거가 아닙니다. (C) 조항·수치는 원출처 대조 후에만 게시하세요.</li>
-<li>B 선택 시: (E) 검증 없이 숫자를 손봤습니다. (E) 애초에 그 조항·수치가 허위면 반올림해도 여전히 허위입니다. (C) 반올림이 아니라 "실재 확인"이 필요합니다.</li>
-<li>D 선택 시: (E) 검증을 독자에게 떠넘겼습니다. (E) 잘못된 세법 정보는 회사 신뢰와 법적 책임 문제로 이어집니다. (C) 게시 전 사람이 검증하는 것이 원칙입니다.</li>
+<li>A 선택 시: (E) "구체적일수록 신뢰"라는 착각. (E) AI는 가짜 조항·숫자도 매우 구체적으로 지어냅니다. 구체성은 사실성의 근거가 아닙니다. (C) 원출처 대조 후에만 게시.</li>
+<li>B 선택 시: (E) 검증 없이 숫자를 손봄. (E) 조항·수치가 허위면 반올림해도 여전히 허위입니다. (C) 반올림이 아니라 "실재 확인"이 필요.</li>
+<li>D 선택 시: (E) 검증을 독자에게 떠넘김. (E) 잘못된 세법 정보는 회사 신뢰·법적 책임 문제로 이어집니다. (C) 게시 전 사람이 검증.</li>
 </ul>
 <hr />
-<p><strong>Q2-4</strong> [O/X | 블룸: 이해 | 난이도: 하] ★ 안전수칙</p>
+
+<p><strong>Q2-4</strong> [O/X | 블룸: 이해 | 난이도: 하] <strong>★ 안전수칙</strong></p>
 <p>"<strong>AI는 문장, 사실 근거는 사람이 준다</strong>"는 원칙에 따르면, AI가 만든 유려한 글이라도 <strong>사실·숫자·출처의 최종 책임은 그것을 게시하는 사람</strong>에게 있다.</p>
-<p><strong>정답</strong>: O (참)
-<strong>해설</strong>: 콘텐츠 생성-검증 루프의 핵심이다. AI는 표현(문장)을 담당하고, 사실 검증과 게시 책임은 사람에게 있다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: O (참)</strong> — 콘텐츠 생성-검증 루프의 핵심. AI는 표현(문장)을 담당하고, 사실 검증과 게시 책임은 사람에게 있다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>X 선택 시: (E) 책임이 AI에 있다고 보았습니다. (E) 그러면 허위 정보가 그대로 대외 공개되어도 걸러낼 사람이 없습니다. (C) 검증과 최종 책임은 항상 사람에게 있음을 기억하세요.</li>
+<li>X 선택 시: (E) 책임이 AI에 있다고 봄. (E) 그러면 허위 정보가 그대로 대외 공개돼도 걸러낼 사람이 없습니다. (C) 검증과 최종 책임은 항상 사람에게.</li>
 </ul>
 <hr />
-<h3>3강 형성평가 — "자동화 생태계를 부품으로"</h3>
-<p><strong>학습목표 매핑</strong>: (분석) 7개념 분류·관계 설명 · (창조) 스킬 2~3개 제작 · (적용) MCP 연결·외부 데이터 호출.
-<strong>블룸 분포</strong>: 이해 40% / 분석 40% / 적용 20%.</p>
-<hr />
-<p><strong>Q3-1</strong> [짝맞추기 | 블룸: 분석 | 난이도: 중] ★ 필수 (7개념 매칭)</p>
-<p>자동화 생태계 <strong>7개념</strong> 중 아래 5개를 정의와 연결하세요.</p>
+
+<h3>3강 형성평가 — "부품을 이해하고, 첫 에이전트를 세운다"</h3>
+<div class="module-head"><strong>학습목표 매핑</strong>: (분석) 자동화 개념 8종(스킬 + "스킬 외 7종") 분류·관계 · (창조) 단일 책임 스킬 2~3개 제작 · (종합) 스킬 + 메일 MCP로 회의록 에이전트 결선. <em>블룸 분포: 이해 40% / 분석 40% / 적용 20%.</em></div>
+
+<p><strong>Q3-1</strong> [짝맞추기 | 블룸: 분석 | 난이도: 중] <strong>★ 필수 (자동화 개념 8종 매칭)</strong></p>
+<p>자동화 개념 <strong>8종(스킬 + "스킬 외 7종")</strong>을 정의와 연결하세요.</p>
 <div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>개념</th>
-<th></th>
-<th>정의</th>
-</tr>
-</thead>
+<thead><tr><th>개념</th><th></th><th>정의</th></tr></thead>
 <tbody>
-<tr>
-<td>① 스킬(Skill)</td>
-<td></td>
-<td>㉮ 여러 에이전트를 하나의 팀으로 묶어 협업시키는 것</td>
-</tr>
-<tr>
-<td>② 에이전트(Agent)</td>
-<td></td>
-<td>㉯ 특정 작업을 수행하도록 정의한 재사용 가능한 능력 단위</td>
-</tr>
-<tr>
-<td>③ 에이전트팀</td>
-<td></td>
-<td>㉰ 외부 데이터·도구를 표준 방식으로 연결하는 통로</td>
-</tr>
-<tr>
-<td>④ MCP</td>
-<td></td>
-<td>㉱ 스킬·도구를 갖고 목표를 향해 일하는 자율 작업자</td>
-</tr>
-<tr>
-<td>⑤ 하네스(Harness)</td>
-<td></td>
-<td>㉲ 팀 전체를 재실행 가능하게 패키징한 재생산 틀</td>
-</tr>
+<tr><td>① 스킬(Skill)</td><td></td><td>㉮ 스킬·도구를 갖고 목표를 향해 일하는 자율 작업자</td></tr>
+<tr><td>② 에이전트(Agent)</td><td></td><td>㉯ 단일 작업을 수행하도록 만든 재사용 가능한 능력 부품</td></tr>
+<tr><td>③ 에이전트팀</td><td></td><td>㉰ 여러 에이전트를 하나로 묶어 협업시키는 단위</td></tr>
+<tr><td>④ MCP</td><td></td><td>㉱ 외부 데이터·도구(웹검색·메일 등)로 나가는 표준 통로</td></tr>
+<tr><td>⑤ 커넥터</td><td></td><td>㉲ 외부 앱·서비스를 켜서 잇는 연결 스위치</td></tr>
+<tr><td>⑥ 플러그인</td><td></td><td>㉳ 기존 도구에 기능을 덧붙여 확장하는 부가 장치</td></tr>
+<tr><td>⑦ 프로젝트</td><td></td><td>㉴ 관련 부품·맥락을 한데 모아 두는 작업 공간</td></tr>
+<tr><td>⑧ 하네스(Harness)</td><td></td><td>㉵ 전체를 반복 가능하게 패키징한 재생산 틀</td></tr>
 </tbody>
 </table></div>
-<p><strong>정답</strong>: ① - ㉯, ② - ㉱, ③ - ㉮, ④ - ㉰, ⑤ - ㉲
-<strong>해설</strong>: 스킬=능력 단위, 에이전트=자율 작업자, 에이전트팀=협업 묶음, MCP=외부 연결 통로, 하네스=재실행 패키징. "만드는 것(스킬)→일하는 것(에이전트·팀)→연결하는 것(MCP)→묶는 것(하네스)"의 흐름으로 이해한다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: ① - ㉯, ② - ㉮, ③ - ㉰, ④ - ㉱, ⑤ - ㉲, ⑥ - ㉳, ⑦ - ㉴, ⑧ - ㉵</strong> — 8종은 3그룹으로 청킹: <strong>만드는 것</strong>(스킬) → <strong>묶는 것</strong>(에이전트·에이전트팀·프로젝트·하네스) → <strong>연결하는 것</strong>(MCP·커넥터·플러그인). 연결 3종은 "외부와 잇는다"는 공통점으로 묶어 기억.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>①과 ②를 바꾼 경우: (E) "능력"과 "작업자"를 혼동했습니다. (E) 스킬은 도구/능력이고, 에이전트는 그 능력을 들고 일하는 주체입니다. (C) 스킬=망치, 에이전트=목수로 비유해 구분하세요. — 3-2</li>
-<li>④를 다른 것과 바꾼 경우: (E) MCP의 역할(외부 연결)을 놓쳤습니다. (E) MCP를 모르면 웹검색 등 외부 데이터를 어떻게 가져오는지 설명할 수 없습니다. (C) MCP=외부 데이터·도구로 나가는 표준 통로로 고정하세요.</li>
-<li>⑤를 ③과 바꾼 경우: (E) 팀과 하네스를 혼동했습니다. (E) 팀은 "지금 협업하는 구성", 하네스는 "그 구성을 다시 돌릴 수 있게 만든 틀"입니다. (C) 하네스=재현성/재실행 패키징으로 기억하세요.</li>
+<li>①과 ②를 바꾼 경우: (E) "능력"과 "작업자"를 혼동. (E) 스킬은 도구/능력, 에이전트는 그 능력을 들고 일하는 주체입니다. (C) 스킬=망치, 에이전트=목수로 구분. — 3-2</li>
+<li>④⑤⑥(연결 3종)을 서로 바꾼 경우: (E) 세 부품이 모두 "연결"이라 헷갈립니다. (E) 세부는 달라도 그룹이 같으니 우선 "연결하는 것" 묶음으로 기억. (C) MCP=표준 통로, 커넥터=앱 연결 스위치, 플러그인=기능 확장.</li>
+<li>③과 ⑧을 바꾼 경우: (E) 팀과 하네스를 혼동. (E) 팀은 "지금 협업하는 구성", 하네스는 "다시 돌릴 수 있게 만든 틀". (C) 하네스=재현성/재실행 패키징.</li>
 </ul>
 <hr />
-<p><strong>Q3-2</strong> [객관식 | 블룸: 분석 | 난이도: 중]</p>
-<p>3강은 7개념을 <strong>"부품 3그룹"</strong>으로 청킹해 가르칩니다. 다음 분류가 올바른 것은?</p>
-<p>A) 만드는 것 / 파는 것 / 버리는 것
-B) <strong>만드는 것(스킬·에이전트) / 연결하는 것(MCP·커넥터) / 묶는 것(프로젝트·하네스)</strong>
-C) 쉬운 것 / 어려운 것 / 불가능한 것
+
+<p><strong>Q3-2</strong> [객관식 | 블룸: 분석 | 난이도: 중] <strong>★ 필수 (8개념 3그룹 청킹)</strong></p>
+<p>3강은 자동화 개념 8종을 <strong>"부품 3그룹"</strong>으로 청킹해 가르칩니다. 다음 분류가 올바른 것은?</p>
+<p>A) 만드는 것 / 파는 것 / 버리는 것<br />
+B) <strong>만드는 것(스킬) / 연결하는 것(MCP·커넥터·플러그인) / 묶는 것(에이전트·에이전트팀·프로젝트·하네스)</strong><br />
+C) 쉬운 것 / 어려운 것 / 불가능한 것<br />
 D) 무료인 것 / 유료인 것 / 선택인 것</p>
-<p><strong>정답</strong>: B
-<strong>해설</strong>: 인지부하를 줄이기 위해 7개념을 "만드는 것 / 연결하는 것 / 묶는 것" 3그룹으로 묶어 이해한다. 기능적 역할 기준의 분류다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: B</strong> — 인지부하를 줄이려 8종을 "만드는 것 / 연결하는 것 / 묶는 것" 3그룹으로 묶는다. 기능적 역할 기준: 스킬은 만들고, MCP·커넥터·플러그인은 외부와 잇고, 에이전트·팀·프로젝트·하네스는 부품을 묶는다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A/C/D 선택 시: (E) 기능이 아닌 엉뚱한 기준(판매/난이도/가격)으로 분류했습니다. (E) 그러면 어떤 부품을 언제 쓸지 판단할 수 없습니다. (C) "무엇을 하는 부품인가(만들기·연결·묶기)"로 묶는 것이 핵심입니다. — 3-2 청킹</li>
+<li>A/C/D 선택 시: (E) 기능이 아닌 엉뚱한 기준(판매/난이도/가격)으로 분류. (E) 그러면 어떤 부품을 언제 쓸지 판단 못 합니다. (C) "무엇을 하는 부품인가(만들기·연결·묶기)"로 묶으세요. — 3-2 청킹</li>
 </ul>
 <hr />
-<p><strong>Q3-3</strong> [상황판단 | 블룸: 적용 | 난이도: 중] ★ 안전수칙 필수 (MCP 데이터 흐름)</p>
-<p>당신은 웹검색 MCP를 연결해 뉴스를 가져오려 합니다. 조교가 "그 MCP를 붙이기 전에 반드시 확인할 것이 있다"고 합니다. <strong>가장 먼저 확인해야 할 것</strong>은?</p>
-<p>A) MCP 아이콘 색깔이 예쁜지
-B) <strong>그 MCP가 내 데이터를 어디로(어떤 외부 서버로) 보내고 무엇을 가져오는지</strong>
-C) MCP 이름이 외우기 쉬운지
+
+<p><strong>Q3-3</strong> [상황판단 | 블룸: 이해 | 난이도: 중]</p>
+<p>3강에서 만드는 <strong>회의록 에이전트</strong>는 여러 부품이 순서대로 연결되어 동작합니다. 강사가 시연한 <strong>회의록 에이전트의 일 흐름</strong>으로 가장 올바른 것은?</p>
+<p>A) 메일을 먼저 보낸다 → 회의록을 생성한다 → 문서로 정리한다<br />
+B) <strong>회의록을 생성한다(스킬) → 문서로 정리한다(스킬) → 메일로 발송한다(메일 MCP/커넥터)</strong><br />
+C) 회의록 생성만 하면 끝이고, 문서화·메일은 사람이 전부 손으로 한다<br />
+D) MCP 하나만 붙이면 생성·문서화·발송이 자동으로 다 된다</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: B</strong> — 회의록 에이전트 = <strong>생성 스킬 → 문서화 스킬 → 메일 발송 MCP/커넥터</strong> 결선. "만드는 부품(스킬 2~3개)"에 "연결하는 부품(메일 MCP)"을 이어 하나의 동작하는 에이전트를 만든다. 3강 산출물이 이 완성 에이전트 1개.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
+<ul>
+<li>A 선택 시: (E) 순서를 뒤집음. (E) 생성·정리도 안 된 회의록을 먼저 메일로 보낼 수 없습니다. (C) 생성→문서화→발송 순서. — 3-3</li>
+<li>C 선택 시: (E) 자동화 범위를 너무 좁게 봄. (E) 문서화·발송까지 잇는 것이 3강 목표입니다. (C) "생성부터 발송까지" 이어진 흐름.</li>
+<li>D 선택 시: (E) MCP 하나로 전부 된다고 오해. (E) MCP는 "연결 통로"일 뿐 생성·문서화는 스킬이 합니다. (C) 스킬(만들기)과 MCP(연결)의 역할 구분.</li>
+</ul>
+<hr />
+
+<p><strong>Q3-4</strong> [상황판단 | 블룸: 적용 | 난이도: 중] <strong>★ 안전수칙 필수 (MCP 데이터 행선지)</strong></p>
+<p>웹검색·메일 MCP를 연결해 회의록 에이전트를 완성하려 합니다. 조교가 "그 MCP를 붙이기 전에 반드시 확인할 것이 있다"고 합니다. <strong>가장 먼저 확인해야 할 것</strong>은?</p>
+<p>A) MCP 아이콘 색깔이 예쁜지<br />
+B) <strong>그 MCP가 내 데이터를 어디로(어떤 외부 서버로) 보내고 무엇을 가져오는지</strong><br />
+C) MCP 이름이 외우기 쉬운지<br />
 D) 다른 조가 같은 MCP를 쓰는지</p>
-<p><strong>정답</strong>: B
-<strong>해설</strong>: 3강 안전수칙 — <strong>MCP가 데이터를 어디로 보내는지 확인</strong>한다. MCP는 외부와 연결되는 통로이므로, 내 입력이 어느 외부 서버로 나가고 무엇이 돌아오는지 모르면 고객정보·기밀이 의도치 않게 유출될 수 있다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout warn"><span class="ico">!</span><div class="cbody"><p><strong>정답: B</strong> — 3강 안전수칙: <strong>MCP가 데이터를 어디로 보내는지 확인</strong>. MCP는 외부 연결 통로이므로, 내 입력(회의 내용 등)이 어느 외부 서버로 나가고 무엇이 돌아오는지 모르면 고객정보·기밀이 의도치 않게 유출될 수 있다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A/C 선택 시: (E) 겉모습·이름 같은 무관한 기준을 골랐습니다. (E) 데이터가 어디로 가는지 모른 채 연결하면 정보 유출 위험을 통제할 수 없습니다. (C) MCP는 "데이터 흐름(어디로/무엇을)"을 먼저 확인하세요.</li>
-<li>D 선택 시: (E) 남이 쓰는지를 안전 근거로 삼았습니다. (E) 다른 조가 쓴다고 내 데이터가 안전한 것은 아닙니다. (C) 남의 사용 여부가 아니라 "내 데이터의 이동 경로"를 직접 확인하세요.</li>
+<li>A/C 선택 시: (E) 겉모습·이름 같은 무관한 기준을 골랐습니다. (E) 데이터 행선지를 모른 채 연결하면 유출 위험을 통제 못 합니다. (C) MCP는 "데이터 흐름(어디로/무엇을)"을 먼저 확인.</li>
+<li>D 선택 시: (E) 남이 쓰는지를 안전 근거로 삼음. (E) 다른 조가 쓴다고 내 데이터가 안전한 건 아닙니다. (C) "내 데이터의 이동 경로"를 직접 확인.</li>
 </ul>
 <hr />
-<p><strong>Q3-4</strong> [O/X | 블룸: 이해 | 난이도: 하] ★ 안전수칙</p>
+
+<p><strong>Q3-5</strong> [O/X | 블룸: 이해 | 난이도: 하] <strong>★ 안전수칙</strong></p>
 <p>스킬이나 코드를 만들 때, 편의를 위해 API 키·비밀번호를 <strong>코드 안에 직접 적어(하드코딩)</strong> 두어도 나중에 지우면 되므로 괜찮다.</p>
-<p><strong>정답</strong>: X (거짓)
-<strong>해설</strong>: 3강 안전수칙 — <strong>키를 코드에 하드코딩 금지</strong>. 코드에 박은 키는 GitHub 등에 올라가는 순간 이력에 영구히 남고, 지워도 과거 버전에서 복원될 수 있다. 키는 코드가 아니라 환경변수·비밀 저장소에 둔다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout warn"><span class="ico">!</span><div class="cbody"><p><strong>정답: X (거짓)</strong> — 3강 안전수칙: <strong>키를 코드에 하드코딩 금지</strong>. 코드에 박은 키는 GitHub 등에 올라가는 순간 이력에 영구히 남고 지워도 과거 버전에서 복원될 수 있다. 키는 코드가 아니라 환경변수·비밀 저장소에 둔다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>O 선택 시: (E) "나중에 지우면 된다"고 보았습니다. (E) 버전관리(GitHub) 이력에 남아 삭제 후에도 노출될 수 있습니다. (C) 키는 코드에 넣지 말고 환경변수로 분리하세요. (0강 비밀키 원칙과 동일 맥락)</li>
+<li>O 선택 시: (E) "나중에 지우면 된다"고 봄. (E) 버전관리 이력에 남아 삭제 후에도 노출될 수 있습니다. (C) 키는 환경변수로 분리. (0강 비밀키 원칙과 동일 맥락)</li>
 </ul>
 <hr />
+
 <h3>4강 형성평가 — "부품을 팀으로, 팀을 하네스로"</h3>
-<p><strong>학습목표 매핑</strong>: (창조) 4역할 에이전트팀 오케스트레이션 · (창조) 하네스 패키징 · (전이) 본인 업무 미러링 · (평가) 루브릭 3기준 자기판정.
-<strong>블룸 분포</strong>: 분석 30% / 평가 40% / 창조 30%.</p>
-<hr />
+<div class="module-head"><strong>학습목표 매핑</strong>: (종합) 4역할 에이전트팀 오케스트레이션 · (창조) Claude Code CLI·에신Lite로 하네스 패키징·게시 · (전이) 본인 업무 미러링 · (평가) 루브릭 3기준 자기판정. <em>블룸 분포: 분석 30% / 평가 40% / 창조 30%.</em></div>
+
 <p><strong>Q4-1</strong> [짝맞추기 | 블룸: 분석 | 난이도: 중]</p>
-<p>공통 프로젝트(뉴스 인사이트 에이전트팀)의 <strong>4역할</strong>을 하는 일과 연결하세요.</p>
+<p>공통 프로젝트(글로벌 증시·뉴스 인사이트 에이전트팀)의 <strong>4역할</strong>을 하는 일과 연결하세요.</p>
 <div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>역할</th>
-<th></th>
-<th>하는 일</th>
-</tr>
-</thead>
+<thead><tr><th>역할</th><th></th><th>하는 일</th></tr></thead>
 <tbody>
-<tr>
-<td>① 수집 에이전트</td>
-<td></td>
-<td>㉮ 사실·숫자·출처를 교차검증한다</td>
-</tr>
-<tr>
-<td>② 분석 에이전트</td>
-<td></td>
-<td>㉯ 지수·기업 뉴스를 모아 온다</td>
-</tr>
-<tr>
-<td>③ 검증 에이전트</td>
-<td></td>
-<td>㉰ 의사결정용 브리핑·카드로 정리한다</td>
-</tr>
-<tr>
-<td>④ 요약 에이전트</td>
-<td></td>
-<td>㉱ 전조·패턴·숨은 인사이트를 도출한다</td>
-</tr>
+<tr><td>① 수집 에이전트</td><td></td><td>㉮ 사실·숫자·출처를 교차검증한다</td></tr>
+<tr><td>② 분석 에이전트</td><td></td><td>㉯ 지수·기업 뉴스를 모아 온다</td></tr>
+<tr><td>③ 검증 에이전트</td><td></td><td>㉰ 의사결정용 브리핑·카드로 정리한다</td></tr>
+<tr><td>④ 요약 에이전트</td><td></td><td>㉱ 전조·패턴·숨은 인사이트를 도출한다</td></tr>
 </tbody>
 </table></div>
-<p><strong>정답</strong>: ① - ㉯, ② - ㉱, ③ - ㉮, ④ - ㉰
-<strong>해설</strong>: 수집(모으기)→분석(인사이트)→검증(사실 확인)→요약(브리핑)의 순서로 흐른다. 특히 <strong>검증</strong>이 요약 앞에 있는 것이 핵심 — 확인되지 않은 내용이 브리핑으로 나가면 안 된다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: ① - ㉯, ② - ㉱, ③ - ㉮, ④ - ㉰</strong> — 수집(모으기)→분석(인사이트)→검증(사실 확인)→요약(브리핑). 특히 <strong>검증이 요약 앞</strong>에 있는 게 핵심 — 확인 안 된 내용이 브리핑으로 나가면 안 된다.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>③과 ④를 바꾼 경우: (E) 검증과 요약의 순서·역할을 혼동했습니다. (E) 검증 없이 요약부터 하면 허위가 그대로 브리핑됩니다. (C) "검증 → 요약" 순서를 고정하세요. — 4-2</li>
-<li>①과 ②를 바꾼 경우: (E) 수집과 분석을 뒤집었습니다. (E) 모으기 전에 분석할 대상이 없습니다. (C) 수집=원재료, 분석=가공으로 구분하세요.</li>
+<li>③과 ④를 바꾼 경우: (E) 검증과 요약의 순서·역할을 혼동. (E) 검증 없이 요약부터 하면 허위가 그대로 브리핑됩니다. (C) "검증 → 요약" 순서 고정. — 4-2</li>
+<li>①과 ②를 바꾼 경우: (E) 수집과 분석을 뒤집음. (E) 모으기 전에 분석할 대상이 없습니다. (C) 수집=원재료, 분석=가공.</li>
 </ul>
 <hr />
-<p><strong>Q4-2</strong> [상황판단 | 블룸: 평가 | 난이도: 상] ★ 안전수칙 필수 (검증 단계 생략 금지)</p>
+
+<p><strong>Q4-2</strong> [객관식 | 블룸: 이해 | 난이도: 중]</p>
+<p>4강에서 4역할 에이전트팀을 <strong>구성·게시</strong>하는 데 쓰는 도구를 바르게 짝지은 것은?</p>
+<p>A) Microsoft Excel 매크로와 파워포인트 슬라이드쇼<br />
+B) <strong>Claude Code CLI(터미널에서 프로젝트를 다루는 개발 도구)와 에신Lite(에이전트 구성을 돕는 경량 도구)</strong><br />
+C) 카카오톡과 문자메시지<br />
+D) 종이 체크리스트와 계산기</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: B</strong> — 4강은 <strong>Claude Code CLI</strong>(명령줄에서 프로젝트·파일·에이전트를 다룸)와 <strong>에신Lite</strong>(에이전트팀 구성을 돕는 경량 도구)로 공통 프로젝트를 완성하고 하네스로 패키징·게시한다. 3강까지 만든 부품이 이 무대에서 4역할 팀으로 결선.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
+<ul>
+<li>A/C/D 선택 시: (E) 4강 실습 도구가 아닌 것을 골랐습니다. (E) 엉뚱한 도구로는 에이전트팀을 구성·게시할 수 없습니다. (C) 4강 도구는 Claude Code CLI·에신Lite. — 4-4</li>
+</ul>
+<hr />
+
+<p><strong>Q4-3</strong> [상황판단 | 블룸: 평가 | 난이도: 상] <strong>★ 안전수칙 필수 (검증 단계 생략 금지)</strong></p>
 <p>시연에서 하네스가 잘 돌아가는 걸 봤습니다. 시간이 촉박해 조원이 "<strong>검증 에이전트를 빼고 수집→분석→요약만 연결하면 더 빨리 브리핑이 나온다</strong>"고 제안합니다. 가장 올바른 판단은?</p>
-<p>A) 속도가 중요하니 검증을 빼고 진행한 뒤, 문제가 생기면 그때 넣는다
-B) 검증은 형식적 단계이므로 요약 에이전트가 알아서 걸러줄 것이다
-C) <strong>검증 단계를 빼면 안 된다. 검증은 사실·숫자·출처를 거르는 핵심 단계이며, 최종 확인은 사람이 한다</strong>
+<p>A) 속도가 중요하니 검증을 빼고 진행한 뒤, 문제가 생기면 그때 넣는다<br />
+B) 검증은 형식적 단계이므로 요약 에이전트가 알아서 걸러줄 것이다<br />
+C) <strong>검증 단계를 빼면 안 된다. 검증은 사실·숫자·출처를 거르는 핵심 단계이며, 최종 확인은 사람이 한다</strong><br />
 D) 검증 대신 수집 에이전트가 가져온 것을 그대로 믿고 요약한다</p>
-<p><strong>정답</strong>: C
-<strong>해설</strong>: 4강 안전수칙 — <strong>검증 단계 생략 금지 · 출처 없는 주장 배제 · 최종 확인은 사람</strong>. 검증 에이전트는 이 과정의 정체성("검증은 사람이 한다")을 자동화 파이프라인에 심은 장치다. 속도를 위해 빼는 것은 산출물 신뢰를 통째로 버리는 것이다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout warn"><span class="ico">!</span><div class="cbody"><p><strong>정답: C</strong> — 4강 안전수칙: <strong>검증 단계 생략 금지 · 출처 없는 주장 배제 · 최종 확인은 사람</strong>. 검증 에이전트는 과정의 정체성("검증은 사람이 한다")을 파이프라인에 심은 장치다. 속도를 위해 빼는 것은 산출물 신뢰를 통째로 버리는 것.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) 속도를 검증보다 앞세웠습니다. (E) 검증 없이 나간 허위 브리핑은 의사결정을 오도하며, "문제 생긴 뒤"엔 이미 늦습니다. (C) 검증은 사후가 아니라 파이프라인 상시 단계입니다.</li>
-<li>B 선택 시: (E) 요약이 검증을 대신한다고 오해했습니다. (E) 요약은 정리일 뿐 사실 확인 기능이 없어, 허위가 더 깔끔하게 포장될 뿐입니다. (C) 검증과 요약은 별개 역할입니다.</li>
-<li>D 선택 시: (E) 수집 결과를 무검증 신뢰했습니다. (E) 수집된 뉴스에 오류·허위가 섞일 수 있습니다. (C) 출처 없는 주장은 배제하고 교차검증을 거치세요.</li>
+<li>A 선택 시: (E) 속도를 검증보다 앞세움. (E) 검증 없이 나간 허위 브리핑은 의사결정을 오도하고, "문제 생긴 뒤"엔 이미 늦습니다. (C) 검증은 상시 단계.</li>
+<li>B 선택 시: (E) 요약이 검증을 대신한다고 오해. (E) 요약은 정리일 뿐 사실 확인 기능이 없어 허위가 더 깔끔하게 포장될 뿐입니다. (C) 검증과 요약은 별개 역할.</li>
+<li>D 선택 시: (E) 수집 결과를 무검증 신뢰. (E) 수집된 뉴스에 오류·허위가 섞일 수 있습니다. (C) 출처 없는 주장은 배제하고 교차검증.</li>
 </ul>
 <hr />
-<p><strong>Q4-3</strong> [객관식 | 블룸: 평가 | 난이도: 중] ★ 필수 (루브릭 자기판정)</p>
+
+<p><strong>Q4-4</strong> [객관식 | 블룸: 평가 | 난이도: 중] <strong>★ 필수 (루브릭 자기판정)</strong></p>
 <p>수료 루브릭 <strong>3기준</strong>은 실데이터 동작 · 결과 지향 · 재현성입니다. 다음 중 <strong>"결과 지향(⓶)" 기준을 통과</strong>한 사례는?</p>
-<p>A) 하네스를 돌리니 "처리 완료"라는 응답 메시지가 떴다
-B) <strong>하네스를 돌리니 실제로 오늘자 뉴스 브리핑 카드 1장이 파일로 만들어졌다</strong>
-C) 에이전트가 에러 없이 실행되었고 로그가 출력됐다
+<p>A) 하네스를 돌리니 "처리 완료"라는 응답 메시지가 떴다<br />
+B) <strong>하네스를 돌리니 실제로 오늘자 뉴스 브리핑 카드 1장이 파일로 만들어졌다</strong><br />
+C) 에이전트가 에러 없이 실행되었고 로그가 출력됐다<br />
 D) 같은 입력을 넣으니 매번 다른 형식의 응답이 나왔다</p>
-<p><strong>정답</strong>: B
-<strong>해설</strong>: 기준⓶ 결과 지향 = "'응답이 있다'가 아니라 '결과가 만들어진다'". 브리핑 카드라는 <strong>실산출물</strong>이 생겨야 통과다. (참고: A·C는 "응답/실행"에 그침, D는 재현성⓷ 위반.)
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: B</strong> — 기준⓶ 결과 지향 = "'응답이 있다'가 아니라 '결과가 만들어진다'". 브리핑 카드라는 <strong>실산출물</strong>이 생겨야 통과. (A·C는 "응답/실행"에 그침, D는 재현성⓷ 위반.)</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) "응답 메시지"를 결과로 착각했습니다. (E) 메시지만 뜨고 산출물이 없으면 업무에 쓸 것이 없습니다. (C) 기준⓶는 "만들어진 결과물"을 봅니다.</li>
-<li>C 선택 시: (E) "에러 없이 실행"을 결과로 보았습니다. (E) 실행 성공과 결과물 생성은 다릅니다. (C) 로그가 아니라 산출물이 나왔는지 확인하세요.</li>
-<li>D 선택 시: (E) 이는 결과 지향이 아니라 재현성(⓷) 실패 사례입니다. (E) 같은 입력에 매번 다른 결과면 신뢰할 수 없습니다. (C) 재현성 기준을 별도로 점검하세요.</li>
+<li>A 선택 시: (E) "응답 메시지"를 결과로 착각. (E) 메시지만 뜨고 산출물이 없으면 업무에 쓸 것이 없습니다. (C) ⓶는 "만들어진 결과물"을 봅니다.</li>
+<li>C 선택 시: (E) "에러 없이 실행"을 결과로 봄. (E) 실행 성공과 결과물 생성은 다릅니다. (C) 로그가 아니라 산출물이 나왔는지 확인.</li>
+<li>D 선택 시: (E) 이는 재현성(⓷) 실패 사례. (E) 같은 입력에 매번 다른 결과면 신뢰 불가. (C) 재현성 기준을 별도 점검.</li>
 </ul>
 <hr />
-<p><strong>Q4-4</strong> [O/X | 블룸: 평가 | 난이도: 하] ★ 안전수칙</p>
+
+<p><strong>Q4-5</strong> [O/X | 블룸: 평가 | 난이도: 하] <strong>★ 안전수칙</strong></p>
 <p>에이전트팀이 자동으로 브리핑을 만들어 주더라도, <strong>대외로 내보내기 전 최종 사실·기밀 확인은 사람이</strong> 해야 한다.</p>
-<p><strong>정답</strong>: O (참)
-<strong>해설</strong>: 4강 안전수칙 — <strong>최종 확인은 사람 · 고객 식별정보/기밀 입력 금지</strong>. 자동화가 아무리 매끄러워도 마지막 게이트는 사람이며, 이것이 과정 전체의 표어("검증은 사람이 한다")와 일치한다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: O (참)</strong> — 4강 안전수칙: <strong>최종 확인은 사람 · 고객 식별정보/기밀 입력 금지</strong>. 자동화가 아무리 매끄러워도 마지막 게이트는 사람이며, 이것이 과정 표어("검증은 사람이 한다")와 일치.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>X 선택 시: (E) 자동화를 최종 승인자로 보았습니다. (E) 사람 확인을 건너뛰면 허위·기밀 유출이 그대로 대외로 나갑니다. (C) 자동화는 초안까지, 최종 확인은 사람이 담당합니다.</li>
+<li>X 선택 시: (E) 자동화를 최종 승인자로 봄. (E) 사람 확인을 건너뛰면 허위·기밀 유출이 그대로 대외로 나갑니다. (C) 자동화는 초안까지, 최종 확인은 사람.</li>
 </ul>
-<hr />
-</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">총괄평가 (4강 캡스톤) — 수료 루브릭 3기준 판정</div></div>
-<blockquote>
-<p>성격: <strong>총괄평가(Summative)</strong>. 학습 완료 후 성취를 측정한다. 형성평가와 달리 <strong>자기판정 + 안전 게이트 통과</strong>를 함께 요구한다.
-합격 기준: <strong>루브릭 3기준 모두 통과 + 안전 게이트 4항목 모두 통과</strong> → 수료. 하나라도 미충족 시 30일 클리닉에서 보완 후 마무리.
-목표 정답률/통과율: 총괄평가 70% 이상.
-학습자에게 <strong>사전 공개</strong>한다(평가 전 루브릭을 보여준다 — 학습 방향 설정).</p>
-</blockquote>
-<hr />
-<h3>A. 수료 루브릭 (분석적 루브릭 — 3기준)</h3>
+</section>
+
+<section class="card card--violet"><div class="sess-head"><span class="sess-no">PART 2</span><div class="sess-title">총괄평가 (4강 캡스톤) — 수료 루브릭 3기준 판정</div></div>
+<div class="sess-meta"><strong>성격</strong>: 총괄평가(Summative) — 학습 완료 후 성취 측정. 자기판정 + 안전 게이트 통과를 함께 요구. <strong>합격</strong>: 루브릭 3기준 모두 통과 + 안전 게이트 4항목 모두 통과 → 수료. 하나라도 미충족 시 30일 클리닉 보완. <strong>목표 통과율 70% 이상</strong>. 루브릭은 학습자에게 <strong>사전 공개</strong>한다.</div>
+
+<div class="block-label">A. 수료 루브릭 (분석적 루브릭 — 3기준)</div>
 <div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>기준</th>
-<th>확인 질문</th>
-<th>✅ 통과 (관찰 가능한 증거)</th>
-<th>⚠️ 보완</th>
-</tr>
-</thead>
+<thead><tr><th>기준</th><th>확인 질문</th><th>✅ 통과 (관찰 가능한 증거)</th><th>⚠️ 보완</th></tr></thead>
 <tbody>
-<tr>
-<td><strong>⓵ 실데이터 동작</strong></td>
-<td>실제 본인/공통 업무 데이터로 동작하는가</td>
-<td>더미가 아닌 <strong>실제 업무 데이터</strong>(예: 오늘자 뉴스, 본인 부서 실사례)로 하네스가 끝까지 실행됨</td>
-<td>샘플/가짜 데이터에서만 돌고 실데이터에서 멈춤</td>
-</tr>
-<tr>
-<td><strong>⓶ 결과 지향</strong></td>
-<td>"응답이 있다"가 아니라 "결과가 만들어진다"인가</td>
-<td>실행 후 <strong>사용 가능한 산출물</strong>(브리핑 카드·파일·게시물 등)이 생성됨</td>
-<td>"완료" 메시지·로그만 있고 산출물 없음</td>
-</tr>
-<tr>
-<td><strong>⓷ 재현성</strong></td>
-<td>같은 입력 2회 실행 시 동일 품질인가</td>
-<td>동일 입력으로 <strong>2회 실행 → 동등 품질·형식</strong>의 결과가 재현됨</td>
-<td>실행마다 형식·품질이 들쭉날쭉함</td>
-</tr>
+<tr><td>⓵ 실데이터 동작</td><td>실제 본인/공통 업무 데이터로 동작하는가</td><td>더미가 아닌 <strong>실제 업무 데이터</strong>(오늘자 뉴스, 본인 부서 실사례)로 하네스가 끝까지 실행됨</td><td>샘플/가짜 데이터에서만 돌고 실데이터에서 멈춤</td></tr>
+<tr><td>⓶ 결과 지향</td><td>"응답이 있다"가 아니라 "결과가 만들어진다"인가</td><td>실행 후 <strong>사용 가능한 산출물</strong>(브리핑 카드·파일·게시물 등)이 생성됨</td><td>"완료" 메시지·로그만 있고 산출물 없음</td></tr>
+<tr><td>⓷ 재현성</td><td>같은 입력 2회 실행 시 동일 품질인가</td><td>동일 입력 <strong>2회 실행 → 동등 품질·형식</strong> 재현</td><td>실행마다 형식·품질이 들쭉날쭉함</td></tr>
 </tbody>
 </table></div>
-<p><strong>수료 판정 규칙</strong>: ⓵·⓶·⓷ <strong>모두 ✅ + 아래 안전 게이트 통과</strong> = <strong>수료 확정</strong>. 하나라도 ⚠️면 <strong>보완</strong>(30일 클리닉 마무리).
-<strong>수료 증명</strong>: <strong>배포된 데모 URL + 동작하는 하네스 산출 영상/기록</strong>.</p>
-<hr />
-<h3>B. 안전 게이트 체크리스트 (전 실습 공통 — 하나라도 위반 시 산출물 반려)</h3>
-<blockquote>
-<p>4강 하네스 제출 전, 아래 4항목을 학습자가 <strong>직접 ✅ 체크</strong>한다. 이는 0~4강 안전수칙의 종합 점검이다.</p>
-</blockquote>
+<div class="callout info"><span class="ico">i</span><div class="cbody"><p><strong>수료 판정 규칙</strong>: ⓵·⓶·⓷ 모두 ✅ + 아래 안전 게이트 통과 = <strong>수료 확정</strong>. 하나라도 ⚠️면 보완(30일 클리닉). <strong>수료 증명</strong>: 배포·게시된 데모 URL + 동작하는 하네스 산출 영상/기록.</p></div></div>
+
+<div class="block-label">B. 안전 게이트 체크리스트 (전 실습 공통 — 하나라도 위반 시 산출물 반려)</div>
+<p>4강 하네스 제출 전, 아래 4항목을 학습자가 <strong>직접 ✅ 체크</strong>한다. 0~4강 안전수칙의 종합 점검이다.</p>
 <ul>
-<li class="check"><strong>① 비밀키 노출 0</strong> — <code>service_role</code> 등 비밀키가 코드·페이지·스크린샷·채팅 어디에도 없다. 공개 페이지엔 <code>anon</code> 공개키만 사용했다. <em>(0강·1강·3강)</em></li>
-<li class="check"><strong>② 개인/고객정보 입력 0</strong> — 실명·연락처·주민번호 등 고객 식별정보와 기밀을 프롬프트·폼 예시·MCP 입력에 넣지 않았다. <em>(1강·2강·3강·4강)</em></li>
-<li class="check"><strong>③ 사실 검증 수행</strong> — 산출물의 숫자·법조항·출처를 <strong>사람이</strong> 1차 출처로 확인했다. 허위 숫자·법조항·출처 없는 주장이 없다. <em>(2강·4강)</em></li>
-<li class="check"><strong>④ 데이터 흐름·최종 확인</strong> — MCP가 데이터를 어디로 보내는지 확인했고, 대외 산출 전 <strong>최종 확인을 사람이</strong> 했다. <em>(3강·4강)</em></li>
+<li class="check"><strong>① 비밀키 노출 0</strong> — <code>service_role</code> 등 비밀키가 코드·페이지·스크린샷·채팅 어디에도 없다. 공개 페이지엔 <code>anon</code> 공개키만 사용. <em>(0강·1강·3강)</em></li>
+<li class="check"><strong>② 개인/고객정보 입력 0</strong> — 실명·연락처·주민번호 등 고객 식별정보·기밀을 프롬프트·폼 예시·MCP 입력에 넣지 않음. <em>(1강·2강·3강·4강)</em></li>
+<li class="check"><strong>③ 사실 검증 수행</strong> — 산출물의 숫자·법조항·출처를 <strong>사람이</strong> 1차 출처로 확인. 허위 숫자·법조항·출처 없는 주장 없음. <em>(2강·4강)</em></li>
+<li class="check"><strong>④ 데이터 흐름·최종 확인</strong> — MCP가 데이터를 어디로 보내는지 확인, 대외 산출 전 <strong>최종 확인을 사람이</strong> 함. <em>(3강·4강)</em></li>
 </ul>
-<p><strong>게이트 규칙</strong>: 4항목 <strong>전부 ✅</strong>여야 제출 유효. 하나라도 미충족 시 <strong>반려 후 재실행</strong>.</p>
-<hr />
-<h3>C. 총괄 판정 문항 (시나리오 기반 — 루브릭·안전 적용 능력 측정)</h3>
+<div class="callout warn"><span class="ico">!</span><div class="cbody"><p><strong>게이트 규칙</strong>: 4항목 전부 ✅여야 제출 유효. 하나라도 미충족 시 반려 후 재실행.</p></div></div>
+
+<div class="block-label">C. 총괄 판정 문항 (시나리오 기반 — 루브릭·안전 적용 능력 측정)</div>
 <p>형성평가보다 상위(평가·창조) 수준. 각 문항은 <strong>루브릭 기준 또는 안전 게이트에 매핑</strong>된다.</p>
-<hr />
+
 <p><strong>S1</strong> [상황판단 | 블룸: 평가 | 난이도: 상] — 매핑: 루브릭 ⓶ 결과 지향 + ⓷ 재현성</p>
 <p>두 조가 하네스를 제출했습니다.</p>
 <ul>
@@ -693,114 +611,70 @@ D) 같은 입력을 넣으니 매번 다른 형식의 응답이 나왔다</p>
 <li><strong>나 조</strong>: 실행하면 오늘자 뉴스 브리핑 카드가 파일로 생성되고, 같은 입력을 다시 넣어도 같은 형식·품질의 카드가 나온다.</li>
 </ul>
 <p>루브릭 3기준에 비추어 옳은 판정은?</p>
-<p>A) 가 조는 "완료" 메시지가 뜨므로 결과 지향(⓶)을 통과했다
-B) <strong>나 조는 산출물 생성(⓶)과 2회 재현(⓷)을 만족한다. 가 조는 산출물이 없어 ⓶ 미충족으로 보완 대상이다</strong>
-C) 두 조 모두 실행이 되므로 자동 수료다
+<p>A) 가 조는 "완료" 메시지가 뜨므로 결과 지향(⓶)을 통과했다<br />
+B) <strong>나 조는 산출물 생성(⓶)과 2회 재현(⓷)을 만족한다. 가 조는 산출물이 없어 ⓶ 미충족으로 보완 대상이다</strong><br />
+C) 두 조 모두 실행이 되므로 자동 수료다<br />
 D) 가 조는 메시지가 더 빨리 떠서 재현성(⓷)이 우수하다</p>
-<p><strong>정답</strong>: B
-<strong>해설</strong>: 결과 지향(⓶)은 "응답"이 아니라 "산출물"을 본다 → 가 조 미충족. 재현성(⓷)은 2회 동일 품질 → 나 조 충족. 나 조 수료 요건 근접, 가 조는 보완.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: B</strong> — 결과 지향(⓶)은 "응답"이 아니라 "산출물"을 본다 → 가 조 미충족. 재현성(⓷)은 2회 동일 품질 → 나 조 충족. 나 조 수료 요건 근접, 가 조는 보완.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) 메시지를 결과로 오인했습니다. (E) 산출물 없는 완료 메시지는 업무 가치가 0입니다. (C) ⓶는 만들어진 결과물로 판정합니다.</li>
-<li>C 선택 시: (E) "실행됨"을 수료 기준으로 삼았습니다. (E) 실행과 결과·재현은 다른 층위입니다. (C) 3기준을 개별 확인하세요.</li>
-<li>D 선택 시: (E) 속도를 재현성으로 착각했습니다. (E) 재현성은 빠름이 아니라 "같은 입력→같은 품질"입니다. (C) ⓷의 정의를 다시 보세요.</li>
+<li>A 선택 시: (E) 메시지를 결과로 오인. (E) 산출물 없는 완료 메시지는 업무 가치가 0. (C) ⓶는 만들어진 결과물로 판정.</li>
+<li>C 선택 시: (E) "실행됨"을 수료 기준으로 삼음. (E) 실행과 결과·재현은 다른 층위. (C) 3기준을 개별 확인.</li>
+<li>D 선택 시: (E) 속도를 재현성으로 착각. (E) 재현성은 빠름이 아니라 "같은 입력→같은 품질". (C) ⓷의 정의를 다시 보세요.</li>
 </ul>
 <hr />
-<p><strong>S2</strong> [상황판단 | 블룸: 평가 | 난이도: 상] ★ 안전 게이트 종합 — 매핑: 게이트 ①②③④</p>
-<p>수료 발표 직전, 한 조의 하네스에서 다음이 발견됐습니다.
-(1) 데모용 폼 예시에 실제 고객 이름·전화번호가 들어가 있음
-(2) 요약 브리핑에 출처를 못 찾은 "업계 1위" 주장이 그대로 있음
-(3) 코드에 API 키가 직접 적혀 있음</p>
+
+<p><strong>S2</strong> [상황판단 | 블룸: 평가 | 난이도: 상] <strong>★ 안전 게이트 종합</strong> — 매핑: 게이트 ①②③④</p>
+<p>수료 발표 직전, 한 조의 하네스에서 다음이 발견됐습니다.</p>
+<ul>
+<li>(1) 데모용 폼 예시에 실제 고객 이름·전화번호가 들어가 있음</li>
+<li>(2) 요약 브리핑에 출처를 못 찾은 "업계 1위" 주장이 그대로 있음</li>
+<li>(3) 코드에 API 키가 직접 적혀 있음</li>
+</ul>
 <p>이 산출물에 대한 올바른 조치는?</p>
-<p>A) 동작은 하므로 일단 수료시키고 문제는 나중에 고친다
-B) (2)만 출처를 달면 나머지는 사소하므로 통과시킨다
-C) <strong>세 가지 모두 안전 게이트 위반(각각 ②·③·①)이므로 산출물을 반려하고, 개인정보 제거·출처 확인/삭제·키 분리 후 재실행한다</strong>
+<p>A) 동작은 하므로 일단 수료시키고 문제는 나중에 고친다<br />
+B) (2)만 출처를 달면 나머지는 사소하므로 통과시킨다<br />
+C) <strong>세 가지 모두 안전 게이트 위반(각각 ②·③·①)이므로 산출물을 반려하고, 개인정보 제거·출처 확인/삭제·키 분리 후 재실행한다</strong><br />
 D) (1)(3)은 우리 조만 보는 것이니 괜찮고 (2)만 고친다</p>
-<p><strong>정답</strong>: C
-<strong>해설</strong>: (1)은 게이트 ②(개인/고객정보 입력 0) 위반, (2)는 게이트 ③(사실 검증·출처 없는 주장 배제) 위반, (3)은 게이트 ①(비밀키 노출 0)/키 하드코딩 금지 위반. 안전 게이트는 <strong>하나라도 위반 시 반려 후 재실행</strong>이 규칙이다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout warn"><span class="ico">!</span><div class="cbody"><p><strong>정답: C</strong> — (1)은 게이트 ②(개인/고객정보 입력 0), (2)는 게이트 ③(사실 검증·출처 없는 주장 배제), (3)은 게이트 ①(비밀키 노출 0)/키 하드코딩 금지 위반. 안전 게이트는 <strong>하나라도 위반 시 반려 후 재실행</strong>이 규칙.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) 동작을 안전보다 앞세웠습니다. (E) 개인정보·비밀키 노출은 동작 여부와 무관하게 즉시 위험입니다. (C) 안전 게이트는 수료의 선결 조건입니다.</li>
-<li>B 선택 시: (E) 개인정보·키 노출을 "사소"로 보았습니다. (E) 이 둘은 법적·보안 사고로 직결됩니다. (C) 세 항목 모두 반드시 조치해야 합니다.</li>
-<li>D 선택 시: (E) "우리끼리"라는 0강에서 배운 그 오판을 반복했습니다. (E) 조 내부라도 개인정보·비밀키는 노출 금지입니다. (C) 게이트 ①②는 범위와 무관하게 적용됩니다.</li>
+<li>A 선택 시: (E) 동작을 안전보다 앞세움. (E) 개인정보·비밀키 노출은 동작 여부와 무관하게 즉시 위험. (C) 안전 게이트는 수료의 선결 조건.</li>
+<li>B 선택 시: (E) 개인정보·키 노출을 "사소"로 봄. (E) 이 둘은 법적·보안 사고로 직결. (C) 세 항목 모두 조치.</li>
+<li>D 선택 시: (E) "우리끼리"라는 0강의 그 오판을 반복. (E) 조 내부라도 개인정보·비밀키는 노출 금지. (C) 게이트 ①②는 범위와 무관하게 적용.</li>
 </ul>
 <hr />
-<p><strong>S3</strong> [상황판단 | 블룸: 전이·창조 | 난이도: 상] — 매핑: 과정목표 4(미러링) + 루브릭 ⓵ 실데이터 동작</p>
-<p>공통 프로젝트(뉴스 인사이트 하네스)를 완성한 뒤, 회계 담당인 당신은 이를 <strong>본인 업무(월 마감 자료 수집·정리)로 미러링(복제·개조)</strong>하려 합니다. 0강 사전과제의 I/P/O 시트를 활용할 때, 가장 올바른 접근은?</p>
-<p>A) 뉴스 하네스를 그대로 두고, 결과만 회계 자료인 척 이름을 바꾼다
-B) <strong>4역할 구조(수집·분석·검증·요약)는 유지하되, 수집 대상을 '뉴스'에서 '본인 마감 데이터'로, 검증 대상을 '기사 사실'에서 '수치 정합성'으로 바꿔 실데이터로 실행한다</strong>
-C) 처음부터 백지에서 새로 만들어 기존 부품을 버린다
+
+<p><strong>S3</strong> [상황판단 | 블룸: 전이·창조 | 난이도: 상] — 매핑: 과정목표 5(미러링) + 루브릭 ⓵ 실데이터 동작</p>
+<p>공통 프로젝트(증시·뉴스 인사이트 하네스)를 완성한 뒤, 회계 담당인 당신은 이를 <strong>본인 업무(월 마감 자료 수집·정리)로 미러링(복제·개조)</strong>하려 합니다. 0강 사전과제의 I/P/O 시트를 활용할 때, 가장 올바른 접근은?</p>
+<p>A) 뉴스 하네스를 그대로 두고, 결과만 회계 자료인 척 이름을 바꾼다<br />
+B) <strong>4역할 구조(수집·분석·검증·요약)는 유지하되, 수집 대상을 '뉴스'에서 '본인 마감 데이터'로, 검증 대상을 '기사 사실'에서 '수치 정합성'으로 바꿔 실데이터로 실행한다</strong><br />
+C) 처음부터 백지에서 새로 만들어 기존 부품을 버린다<br />
 D) 미러링은 4강 범위 밖이므로 공통 프로젝트만 제출한다</p>
-<p><strong>정답</strong>: B
-<strong>해설</strong>: 미러링 = 검증된 하네스 <strong>구조(4역할)는 재사용</strong>하고, 입력·검증 대상만 본인 업무로 치환하는 것. 이것이 원칙⓵(백지 시작 금지)과 전이 목표에 부합하며, 루브릭 ⓵(실데이터 동작)을 만족시키는 길이다.
-<strong>오답 피드백</strong>:</p>
+<div class="callout ok"><span class="ico">A</span><div class="cbody"><p><strong>정답: B</strong> — 미러링 = 검증된 하네스 <strong>구조(4역할)는 재사용</strong>하고, 입력·검증 대상만 본인 업무로 치환. 원칙⓵(백지 시작 금지)·전이 목표에 부합하며, 루브릭 ⓵(실데이터 동작)을 만족시키는 길.</p></div></div>
+<p><strong>오답 피드백</strong>:</p>
 <ul>
-<li>A 선택 시: (E) 이름만 바꾸는 것은 미러링이 아닙니다. (E) 실제 회계 데이터로 동작하지 않으면 루브릭 ⓵ 미충족입니다. (C) 입력·처리·검증을 본인 업무에 맞게 실제로 바꾸세요.</li>
-<li>C 선택 시: (E) 부품을 버리고 백지로 갔습니다. (E) 원칙⓵ 위반이며 시간도 낭비됩니다. (C) 검증된 구조를 재사용하고 내용만 치환하세요.</li>
-<li>D 선택 시: (E) 미러링을 범위 밖으로 오해했습니다. (E) 미러링(4-5)은 과정의 핵심 목표(전이)입니다. (C) 본인 업무 버전까지 만들어야 수료 취지에 맞습니다.</li>
+<li>A 선택 시: (E) 이름만 바꾸는 것은 미러링이 아님. (E) 실제 회계 데이터로 동작 안 하면 루브릭 ⓵ 미충족. (C) 입력·처리·검증을 본인 업무에 맞게 실제로 바꾸세요.</li>
+<li>C 선택 시: (E) 부품을 버리고 백지로 감. (E) 원칙⓵ 위반이며 시간 낭비. (C) 검증된 구조를 재사용하고 내용만 치환.</li>
+<li>D 선택 시: (E) 미러링을 범위 밖으로 오해. (E) 미러링(4-5)은 과정의 핵심 목표(전이). (C) 본인 업무 버전까지 만들어야 수료 취지에 맞음.</li>
 </ul>
-<hr />
-</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">문항 통계</div></div>
+</section>
+
+<section class="card card--amber"><div class="sess-head"><span class="sess-no">부록</span><div class="sess-title">문항 통계</div></div>
 <div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>구분</th>
-<th>총 문항</th>
-<th>유형 분포</th>
-<th>블룸 분포</th>
-<th>안전수칙 문항</th>
-</tr>
-</thead>
+<thead><tr><th>구분</th><th>총 문항</th><th>유형 분포</th><th>블룸 분포</th><th>안전수칙 문항</th></tr></thead>
 <tbody>
-<tr>
-<td>0강 형성</td>
-<td>4</td>
-<td>객관식2·O/X1·상황판단1</td>
-<td>이해2·적용1·기억1</td>
-<td>Q0-3(비밀키)</td>
-</tr>
-<tr>
-<td>1강 형성</td>
-<td>5</td>
-<td>객관식1·상황판단2·O/X1·짝맞추기1</td>
-<td>이해2·적용2·분석1</td>
-<td>Q1-3(anon/service_role)·Q1-4(개인정보)</td>
-</tr>
-<tr>
-<td>2강 형성</td>
-<td>4</td>
-<td>짝맞추기1·객관식1·상황판단1·O/X1</td>
-<td>이해2·평가2</td>
-<td>Q2-3(허위 숫자·법조항)·Q2-4(근거는 사람)</td>
-</tr>
-<tr>
-<td>3강 형성</td>
-<td>4</td>
-<td>짝맞추기1·객관식1·상황판단1·O/X1</td>
-<td>분석2·적용1·이해1</td>
-<td>Q3-3(MCP 데이터 흐름)·Q3-4(키 하드코딩)</td>
-</tr>
-<tr>
-<td>4강 형성</td>
-<td>4</td>
-<td>짝맞추기1·상황판단1·객관식1·O/X1</td>
-<td>분석1·평가3</td>
-<td>Q4-2(검증 생략 금지)·Q4-4(최종 확인 사람)</td>
-</tr>
-<tr>
-<td>총괄(캡스톤)</td>
-<td>루브릭 3기준 + 게이트 4항목 + 판정 3문항(S1·S2·S3)</td>
-<td>상황판단3·체크리스트</td>
-<td>평가·전이·창조</td>
-<td>S2(게이트 종합)·전 항목</td>
-</tr>
-<tr>
-<td><strong>합계</strong></td>
-<td><strong>형성 21 + 총괄 3문항 + 루브릭/게이트</strong></td>
-<td>6유형</td>
-<td>기억~창조 전 범위</td>
-<td><strong>강별 최소 1 이상 충족</strong></td>
-</tr>
+<tr><td>0강 형성</td><td>4</td><td>객관식2·O/X1·상황판단1</td><td>이해2·적용1·기억1</td><td>Q0-3(비밀키)</td></tr>
+<tr><td>1강 형성</td><td>5</td><td>객관식2·상황판단2·짝맞추기1</td><td>이해2·적용1·분석2</td><td>Q1-4(anon/service_role)</td></tr>
+<tr><td>2강 형성</td><td>4</td><td>짝맞추기1·객관식1·상황판단1·O/X1</td><td>이해2·평가2</td><td>Q2-3(허위 숫자·법조항)·Q2-4(근거는 사람)</td></tr>
+<tr><td>3강 형성</td><td>5</td><td>짝맞추기1·객관식1·상황판단2·O/X1</td><td>분석2·이해2·적용1</td><td>Q3-4(MCP 데이터 행선지)·Q3-5(키 하드코딩)</td></tr>
+<tr><td>4강 형성</td><td>5</td><td>짝맞추기1·객관식2·상황판단1·O/X1</td><td>분석1·이해1·평가3</td><td>Q4-3(검증 생략 금지)·Q4-5(최종 확인 사람)</td></tr>
+<tr><td>총괄(캡스톤)</td><td>루브릭 3 + 게이트 4 + 판정 3(S1·S2·S3)</td><td>상황판단3·체크리스트</td><td>평가·전이·창조</td><td>S2(게이트 종합)·전 항목</td></tr>
+<tr><td><strong>합계</strong></td><td><strong>형성 23 + 총괄 3 + 루브릭/게이트</strong></td><td>4유형</td><td>기억~창조 전 범위</td><td><strong>강별 최소 1 이상</strong></td></tr>
 </tbody>
 </table></div>
-<p><strong>난이도 밸런싱</strong>: 형성평가는 하→중 위주(자신감 구축), 총괄평가는 중→상(성취 측정). 강 후반으로 갈수록 블룸 수준 상승(0·1강 이해·적용 중심 → 3강 분석 → 4강·총괄 평가·창조).</p></section></div></div></body></html>
+<div class="callout note"><span class="ico">v</span><div class="cbody"><p><strong>난이도 밸런싱</strong>: 형성평가는 하→중(자신감 구축), 총괄은 중→상(성취 측정). 강 후반으로 갈수록 블룸 수준 상승(0·1강 이해·적용 → 3강 분석 → 4강·총괄 평가·창조).</p><p><strong>v0.2 갱신 요약</strong>: ① 0강 Q0-4 "해외결제 카드" 삭제(→"유료 구독"). ② 1강 LLM 트렌드·과금(구독 vs API) 문항(Q1-2) 추가. ③ 3강 <strong>자동화 개념 8종</strong> 매칭(Q3-1)·3그룹 청킹(Q3-2)으로 확장 + <strong>회의록 에이전트 구성(생성→문서화→메일)</strong> 문항(Q3-3) 신설. ④ 4강 <strong>Claude Code CLI·에신Lite</strong> 도구 문항(Q4-2) 추가. 강별 안전수칙 문항 전 강 유지.</p></div></div>
+</section>
+
+<p class="footer-note">VibeCoding_AX_SM v0.2 · 퀴즈/평가 문항 (갱신본) · SSOT <code>01_curriculum.md</code> 정렬 · quiz-maker 산출</p>
+</div></div></body></html>

@@ -221,233 +221,56 @@ hr{ border:0; height:1px; background:transparent; margin:26px 0; }
 .callout .cbody strong{ color:inherit; }
 /* intro prose between cover and first card */
 .intro{ margin:4px 0 6px; }
-</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">선명AG · AX 3차 · VibeCoding_AX_SM v0.2</div><h1>실습과제/캡스톤 — VibeCoding_AX_SM (v0.2)</h1></header><div class="intro"><blockquote>
-<p>SSOT: <code>00_input.md</code> · 커리큘럼: <code>01_curriculum.md</code>
-설계 도구: lab-designer 에이전트 + lab-scaffolding 스킬(5단계 피라미드·스타터코드·힌트 시스템) + assessment-engineering 스킬(분석적 루브릭).
-본 문서는 <strong>0강 사전과제 → 1~3강 강별 실습 → 4강 캡스톤(하네스)</strong>까지의 전 실습과 평가 루브릭을 정의한다.</p>
-</blockquote>
-<hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">0. 설계 관통 규약 (모든 실습에 강제 적용)</div></div>
-<h3>0.1 3대 설계원칙 준수 방식</h3>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>원칙</th>
-<th>본 실습설계 반영 방식</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>⓵ 백지 시작 금지</strong></td>
-<td>모든 실습에 <strong>스타터 파일(스켈레톤/템플릿/프롬프트 카드)</strong>를 배포한다. 학습자는 "채우기 → 고치기 → 확장하기"만 한다. 빈 화면·빈 파일에서 시작하라는 지시는 없다.</td>
-</tr>
-<tr>
-<td><strong>⓶ 데모 먼저</strong></td>
-<td>각 실습 시작 시 <strong>완성 산출물(참조본)</strong>을 먼저 제시한다. 학습자는 "무엇이 나오는지" 눈으로 본 뒤 손을 움직인다. 참조본은 조교가 미리 배포/실행해 둔다.</td>
-</tr>
-<tr>
-<td><strong>⓷ 강사+조교 배석</strong></td>
-<td>각 실습에 <strong>[조교 개입 신호]</strong>를 명시했다. 3인 1조 중 한 명이 막히면 조 전체가 멈추므로, 신호 발생 시 조교가 즉시 개입한다.</td>
-</tr>
-</tbody>
-</table></div>
-<h3>0.2 실습 유형 5단계 피라미드 배치</h3>
-<p>lab-scaffolding 피라미드를 8시간 압축과정에 맞춰 배치했다. 초보자 대상이므로 뒤로 갈수록 자율성을 서서히 올린다.</p>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>강</th>
-<th>실습</th>
-<th>피라미드 단계</th>
-<th>학습자 자율성</th>
-<th>스타터 형태</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0강</td>
-<td>사전과제</td>
-<td>1~2 (따라하기·워크시트)</td>
-<td>20%</td>
-<td>체크리스트 + I/P/O 워크시트(예시행 채워짐)</td>
-</tr>
-<tr>
-<td>1강</td>
-<td>랜딩페이지 배포</td>
-<td>2 (가이드 실습)</td>
-<td>20%</td>
-<td>HTML 스켈레톤 + 배포 절차 카드(빈칸)</td>
-</tr>
-<tr>
-<td>2강</td>
-<td>콘텐츠 엔진</td>
-<td>2→3 (가이드→챌린지)</td>
-<td>40%</td>
-<td>프롬프트 템플릿(빈칸) + 검증 체크리스트</td>
-</tr>
-<tr>
-<td>3강</td>
-<td>스킬·MCP 제작</td>
-<td>3 (챌린지·힌트)</td>
-<td>50%</td>
-<td>SKILL.md 스켈레톤 + MCP 설정 스니펫</td>
-</tr>
-<tr>
-<td>4강</td>
-<td>하네스 캡스톤</td>
-<td>4→5 (미니→캡스톤)</td>
-<td>80~95%</td>
-<td>4역할 에이전트 스켈레톤 + 하네스 결선 골격</td>
-</tr>
-</tbody>
-</table></div>
-<h3>0.3 3단 힌트 시스템 (전 실습 공통 — 조별 진도 편차 흡수)</h3>
+</style></head><body><div class="page"><div class="doc">
+<header class="cover">
+<div class="eyebrow">선명AG · AX 3차 · VibeCoding_AX_SM v0.2 갱신본</div>
+<h1>실습과제/캡스톤 — VibeCoding_AX_SM (v0.2)</h1>
+<div class="cover-sub">0강 사전과제 → 1·2강 강별 실습 → 3강 회의록 에이전트 → 4강 CLI·에신Lite 하네스 캡스톤</div>
+<p class="cover-lede">모든 실습은 스타터(스켈레톤·템플릿·스니펫)에서 출발하고, 완성 데모를 먼저 본 뒤 손을 움직인다. 난이도는 <strong>빈칸 채우기 → 수정 → 확장</strong> 순. 각 강 산출물은 다음 강의 부품으로 이월된다.</p>
+<div class="cover-meta"><div class="cm"><span class="cm-k">1강</span><span class="cm-v">풀스택 배포·게시</span></div><div class="cm"><span class="cm-k">2강</span><span class="cm-v">콘텐츠 엔진</span></div><div class="cm"><span class="cm-k">3강</span><span class="cm-v">회의록 에이전트</span></div><div class="cm"><span class="cm-k">4강</span><span class="cm-v">CLI·에신Lite 하네스</span></div></div>
+<span class="sync-badge">SSOT: md/01_curriculum.md(갱신 확정본) · 설계도구: lab-designer + lab-scaffolding + assessment-engineering</span>
+</header>
+<div class="intro"><div class="callout note"><div class="ico">i</div><div class="cbody"><p><strong>v0.2 갱신 반영</strong> — ① 3강을 "스킬 나열"에서 <strong>동작하는 회의록 에이전트 1개 구축</strong>으로 격상 · ② 4강 캡스톤을 <strong>Claude Code CLI·에신Lite</strong> 오케스트레이션으로 명시 · ③ 0강 체크리스트에서 "해외결제 카드" 문구 삭제 · ④ 1강을 <strong>풀스택(프론트+Supabase)</strong> 배포·게시로 표기 통일.</p></div></div><hr /></div>
+<section class="card card--sky"><div class="sess-head"><span class="sess-no">규약</span><div class="sess-title">0. 설계 관통 규약 (모든 실습에 강제 적용)</div></div>
+<div class="block-label">0.1 · 3대 설계원칙 준수 방식</div>
+<div class="tbl-wrap"><table><thead><tr><th>원칙</th><th>본 실습설계 반영 방식</th></tr></thead><tbody><tr><td><strong>⓵ 백지 시작 금지</strong></td><td>모든 실습에 <strong>스타터 파일(스켈레톤/템플릿/프롬프트 카드)</strong>를 배포한다. 학습자는 "채우기 → 고치기 → 확장하기"만 한다.</td></tr><tr><td><strong>⓶ 데모 먼저</strong></td><td>각 실습 시작 시 <strong>완성 산출물(참조본)</strong>을 먼저 제시한다. 참조본은 조교가 미리 배포/실행해 둔다.</td></tr><tr><td><strong>⓷ 강사+조교 배석</strong></td><td>각 실습에 <strong>[조교 개입 신호]</strong>를 명시했다. 3인 1조 중 한 명이 막히면 조 전체가 멈추므로 즉시 개입한다.</td></tr></tbody></table></div>
+<div class="block-label">0.2 · 실습 유형 5단계 피라미드 배치</div>
+<p>lab-scaffolding 피라미드를 8시간 압축과정에 맞춰 배치. 난이도는 전 과정 공통으로 <strong>"빈칸 채우기 → 수정 → 확장"</strong> 순.</p>
+<div class="tbl-wrap"><table><thead><tr><th>강</th><th>실습</th><th>피라미드 단계</th><th>자율성</th><th>스타터 형태</th></tr></thead><tbody><tr><td>0강</td><td>사전과제</td><td>1~2 (따라하기·워크시트)</td><td>20%</td><td>체크리스트 + I/P/O 워크시트(예시행)</td></tr><tr><td>1강</td><td>풀스택 랜딩페이지 배포·게시</td><td>2 (가이드 실습)</td><td>20%</td><td>HTML 스켈레톤 + Supabase·배포 절차 카드</td></tr><tr><td>2강</td><td>콘텐츠 엔진</td><td>2→3 (가이드→챌린지)</td><td>40%</td><td>프롬프트 템플릿 + 검증 체크리스트</td></tr><tr><td>3강</td><td><strong>회의록 에이전트 구축</strong></td><td>3→4 (챌린지→미니 조립)</td><td>55%</td><td>SKILL.md 스켈레톤 2종 + 메일 MCP 스니펫 + 결선 골격</td></tr><tr><td>4강</td><td>하네스 캡스톤</td><td>4→5 (미니→캡스톤)</td><td>80~95%</td><td>4역할 스켈레톤 + 하네스 골격(CLI·에신Lite)</td></tr></tbody></table></div>
+<div class="block-label">0.3 · 3단 힌트 시스템 (조별 진도 편차 흡수)</div>
 <p>막히면 아래 순서로만 개입한다. <strong>정답을 바로 주지 않는다.</strong></p>
 <pre><code>[스스로 시도]  ── 3분 경과 ──▶
 [힌트 1·방향]  &quot;이건 ○○ 개념이에요. 배포자료의 △△ 섹션을 보세요.&quot;  ── 3분 ──▶
 [힌트 2·접근]  &quot;이 프롬프트/설정을 여기에 붙여 보세요: (일부 공개)&quot;      ── 3분 ──▶
 [힌트 3·골격]  &quot;구조는 이래요: (코드/설정 스켈레톤 절반 공개)&quot;          ── 3분 ──▶
-[조교 1:1]    화면 공유로 함께 완성 → 반드시 &quot;왜 이렇게 되는지&quot; 1줄 회고
-</code></pre>
-<ul>
-<li><strong>빠른 조</strong>: 각 실습의 <code>[확장 과제]</code>로 상향(추가 제약·기능 1개).</li>
-<li><strong>느린 조</strong>: 각 실습의 <code>[최소 통과선]</code>만 달성하면 통과(다음 강 진입 자격 확보).</li>
-</ul>
-<h3>0.4 누적 부품 이월 대장 (Carryover Ledger)</h3>
-<p>각 실습 산출물은 <strong>다음 강에서 재사용 가능한 형태</strong>로 아래 고정 경로에 저장한다. 조교가 매 강 종료 시 저장 여부를 확인한다.</p>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>산출 강</th>
-<th>부품</th>
-<th>저장 형태·위치</th>
-<th>소비 강</th>
-<th>소비 방식</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0강</td>
-<td>본인 업무 I/P/O 시트</td>
-<td><code>내문서/vibecoding/00_ipo_sheet.md</code></td>
-<td>4강</td>
-<td>미러링 시드(4-5)</td>
-</tr>
-<tr>
-<td>0강</td>
-<td>도구 10종 체크리스트</td>
-<td>스크린샷 폴더</td>
-<td>1~4강</td>
-<td>환경 선수조건</td>
-</tr>
-<tr>
-<td>1강</td>
-<td>배포된 랜딩페이지 URL + repo</td>
-<td>Vercel URL + GitHub repo</td>
-<td>4강</td>
-<td>하네스 <strong>출력/배포 채널</strong></td>
-</tr>
-<tr>
-<td>2강</td>
-<td>콘텐츠 포맷(블로그·유튜브 세트)</td>
-<td><code>내문서/vibecoding/02_content_format.md</code></td>
-<td>4강</td>
-<td>요약 에이전트 <strong>산출 포맷</strong></td>
-</tr>
-<tr>
-<td>3강</td>
-<td>스킬 2~3개 + MCP 설정</td>
-<td><code>~/.claude/skills/*</code> + <code>.mcp.json</code></td>
-<td>4강</td>
-<td>4역할 <strong>부품 재료</strong></td>
-</tr>
-<tr>
-<td>4강</td>
-<td>에이전트팀 하네스</td>
-<td><code>내문서/vibecoding/harness/</code> 프로젝트 폴더</td>
-<td>클리닉</td>
-<td>정착·확산</td>
-</tr>
-</tbody>
-</table></div>
-<h3>0.5 안전 게이트 (전 실습 공통 — 위반 시 산출물 반려)</h3>
-<p>모든 실습은 제출 전 아래 4게이트를 <strong>자기점검 체크박스</strong>로 통과해야 한다. 하나라도 위반 시 반려 후 재실행.</p>
-<ul>
-<li class="check"><strong>① 비밀키 노출 0</strong>: <code>service_role</code>·API 키·토큰이 코드·화면·스크린샷·프롬프트 어디에도 없다. (공개키 <code>anon</code>만 허용)</li>
-<li class="check"><strong>② 고객/개인정보 입력 0</strong>: 실명·주민번호·계좌·연락처·고객 식별정보를 폼 예시·프롬프트·테스트 데이터에 넣지 않았다. (합성/가명 데이터만)</li>
-<li class="check"><strong>③ 검증 단계 수행</strong>: AI 생성 숫자·법조항·출처를 사람이 확인했다. (2강 이후 필수)</li>
-<li class="check"><strong>④ 데이터 흐름·최종 확인</strong>: MCP가 데이터를 어디로 보내는지 확인했고, 대외 산출 전 최종 확인을 사람이 했다. (3강·4강)</li>
-</ul>
-<hr />
-</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">실습 환경 요구사항 (0강에서 전원 세팅 완료 전제)</div></div>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>구분</th>
-<th>항목</th>
-<th>확인 방법</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>계정 5종</td>
-<td>Claude Pro(유료) · GitHub · Vercel · Supabase · 타 LLM 택1</td>
-<td>각 서비스 로그인 스크린샷</td>
-</tr>
-<tr>
-<td>설치 6종</td>
-<td>Node.js · Git · VS Code · Claude Code(CLI) · Claude 데스크톱 · [Antigravity 선택]</td>
-<td>터미널에서 <code>node -v</code>, <code>git --version</code>, <code>claude --version</code> 출력</td>
-</tr>
-<tr>
-<td>배포 3종</td>
-<td>GitHub → Vercel → Supabase(무료 티어)</td>
-<td>0강 계정 연동 완료</td>
-</tr>
-<tr>
-<td>실습 데이터</td>
-<td><strong>합성 데이터만</strong> 사용(고객정보 금지). 공통 프로젝트용 공개 뉴스·지수는 웹검색 MCP로 실시간 수집</td>
-<td>—</td>
-</tr>
-<tr>
-<td>백업</td>
-<td>조교용 백업 GitHub·Vercel·Supabase 계정 1세트(배포 실패 대비)</td>
-<td>강사 준비</td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p>환경이 불분명하거나 로컬 설치가 막히면: <strong>Claude Code CLI + GitHub Codespaces</strong>를 대체 환경으로 사용(일관 환경 보장). 데이터셋이 없으면 각 실습의 <strong>합성 데이터 스니펫</strong>을 사용한다.</p>
-</blockquote>
-<hr />
-</section><div class="day-divider"><span class="d-title">실습 상세</span></div><div class="intro"><hr /></div><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">0강 사전과제 — "본인 업무 I/P/O 시트 + 도구 정렬"</div></div>
-<h3>실습 0-A: 도구 10종 온보딩 체크리스트</h3>
-<p><strong>매핑 학습목표</strong>: (적용) 도구 10종을 설치·로그인하고 체크리스트를 완료할 수 있다. (0-2·0-3)
-<strong>예상 소요시간</strong>: 40분 (실습 0-B와 합쳐 60~90분)
-<strong>난이도</strong>: 초급 · <strong>피라미드 1단계(따라하기)</strong></p>
-<h4>시나리오</h4>
-<p>당신은 선명AG 정규직이며 코딩 경험이 전혀 없다. 본과정 첫 실습(1강 배포)에 들어가려면 그 전에 "연장"부터 손에 쥐어야 한다. 가이드 영상을 보며 계정·설치를 그대로 따라 완료한다.</p>
-<h4>과제 지시</h4>
-<ol>
-<li>배포된 <strong>체크리스트 워크시트</strong>(아래 스타터)를 연다.</li>
-<li>각 항목을 순서대로 완료하고, <strong>완료 증거</strong>(스크린샷 또는 CLI 출력)를 붙인다.</li>
-<li>마지막 CLI 항목에서 <code>claude</code> 실행이 성공하면 캡처한다.</li>
-<li>제출물: 완료된 체크리스트 + 증거 스크린샷 폴더.</li>
-</ol>
-<h4>스캐폴딩 (스타터 명세)</h4>
-<blockquote>
-<p><strong>채워둘 것</strong>: 항목·순서·확인 명령어·안전 경고가 이미 적힌 워크시트.
-<strong>빈칸</strong>: <code>[완료✅/미완❌]</code> 상태칸과 증거 링크칸만 학습자가 채운다.</p>
-</blockquote>
-<pre><code class="language-markdown"># 0강 도구 온보딩 체크리스트  (상태칸만 채우세요)
+[조교 1:1]    화면 공유로 함께 완성 → 반드시 &quot;왜 이렇게 되는지&quot; 1줄 회고</code></pre>
+<ul><li><strong>빠른 조</strong>: 각 실습 <code>[확장 과제]</code>로 상향(추가 제약·기능 1개).</li><li><strong>느린 조</strong>: 각 실습 <code>[최소 통과선]</code>만 달성하면 통과.</li></ul>
+<div class="block-label">0.4 · 누적 부품 이월 대장 (Carryover Ledger)</div>
+<div class="tbl-wrap"><table><thead><tr><th>산출 강</th><th>부품</th><th>저장 위치</th><th>소비 강</th><th>소비 방식</th></tr></thead><tbody><tr><td>0강</td><td>본인 업무 I/P/O 시트</td><td><code>내문서/vibecoding/00_ipo_sheet.md</code></td><td>4강</td><td>미러링 시드(4-2)</td></tr><tr><td>0강</td><td>도구 체크리스트(계정5·설치6)</td><td>스크린샷 폴더</td><td>1~4강</td><td>환경 선수조건</td></tr><tr><td>1강</td><td>배포·게시 <strong>풀스택 랜딩페이지</strong> URL+repo</td><td>Vercel URL + GitHub repo</td><td>4강</td><td>하네스 <strong>출력/게시 채널</strong></td></tr><tr><td>2강</td><td>콘텐츠 포맷(블로그·유튜브)</td><td><code>내문서/vibecoding/02_content_format.md</code></td><td>4강</td><td>요약 에이전트 <strong>산출 포맷</strong></td></tr><tr><td>3강</td><td><strong>동작하는 회의록 에이전트 1개</strong>(스킬2~3+메일MCP+프로젝트)</td><td><code>~/.claude/skills/*</code> + <code>.mcp.json</code> + <code>minutes_agent/</code></td><td>4강</td><td>4역할 <strong>부품·조립 노하우</strong>(요약 스킬 재사용)</td></tr><tr><td>4강</td><td>에이전트팀 하네스(CLI·에신Lite)</td><td><code>내문서/vibecoding/harness/</code></td><td>클리닉</td><td>정착·확산</td></tr></tbody></table></div>
+<div class="block-label">0.5 · 안전 게이트 (전 실습 공통 — 위반 시 반려)</div>
+<ul><li class="check"><strong>① 비밀키 노출 0</strong>: <code>service_role</code>·API키·토큰이 코드·화면·스크린샷·프롬프트 어디에도 없다. (공개키 <code>anon</code>만 허용)</li><li class="check"><strong>② 고객/개인정보 입력 0</strong>: 실명·주민번호·계좌·연락처를 폼 예시·프롬프트·테스트에 넣지 않았다. (합성/가명만)</li><li class="check"><strong>③ 검증 단계 수행</strong>: AI 생성 숫자·법조항·출처를 사람이 확인했다. (2강 이후, <strong>4강 검증 에이전트 생략 금지</strong>)</li><li class="check"><strong>④ 데이터 흐름·최종 확인</strong>: MCP가 데이터를 어디로 보내는지 확인했고, 대외 산출 전 <strong>최종 확인을 사람이</strong> 했다. (3강 메일 발송·4강 게시)</li></ul>
+</section>
+<section class="card card--orange"><div class="sess-head"><span class="sess-no">환경</span><div class="sess-title">실습 환경 요구사항 (0강에서 전원 세팅 완료 전제)</div></div>
+<div class="tbl-wrap"><table><thead><tr><th>구분</th><th>항목</th><th>확인 방법</th></tr></thead><tbody><tr><td>계정 5종</td><td>Claude Pro(유료) · GitHub · Vercel · Supabase · 타 LLM 택1</td><td>각 서비스 로그인 스크린샷</td></tr><tr><td>설치 6종</td><td>Node.js · Git · VS Code · Claude Code(CLI) · Claude 데스크톱 · [Antigravity 선택]</td><td><code>node -v</code>, <code>git --version</code>, <code>claude --version</code></td></tr><tr><td>배포 3종</td><td>GitHub → Vercel → Supabase(무료 티어)</td><td>0강 계정 연동 완료</td></tr><tr><td>에이전트 도구</td><td><strong>에신Lite</strong>(에이전트 제조 경량도구, 4강) · 웹검색 MCP · 메일 발송 MCP(3강)</td><td>강사 배포·연결 확인</td></tr><tr><td>실습 데이터</td><td><strong>합성 데이터만</strong> 사용. 공개 뉴스·지수는 웹검색 MCP로 실시간 수집</td><td>—</td></tr><tr><td>백업</td><td>조교용 백업 GitHub·Vercel·Supabase 1세트</td><td>강사 준비</td></tr></tbody></table></div>
+<div class="callout tip"><div class="ico">!</div><div class="cbody"><p>환경이 불분명하거나 로컬 설치가 막히면 <strong>Claude Code CLI + GitHub Codespaces</strong>를 대체 환경으로 사용. 데이터셋이 없으면 각 실습의 <strong>합성 데이터 스니펫</strong>을 사용한다.</p><p><strong>안전 원칙</strong>: 모든 키는 <code>service_role</code> 금지 · <code>anon</code> 공개키만 · MCP 키는 코드가 아니라 <strong>환경변수 참조</strong>로만.</p></div></div>
+</section>
+<div class="day-divider"><span class="d-badge">실습 상세</span><span class="d-title">0강 → 4강 전 실습 명세</span></div>
+<section class="card card--violet"><div class="sess-head"><span class="sess-no">0강</span><div class="sess-title">사전과제 — "본인 업무 I/P/O 시트 + 도구 정렬"</div></div>
+<h3>실습 0-A · 도구 온보딩 체크리스트 (계정 5종·설치 6종)</h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (적용) 계정 5종·설치 6종·결제를 각자 완료하고 체크리스트를 완료한다. (0-2) · <strong>소요</strong> 40분(0-B 합쳐 60~90분) · <strong>난이도</strong> 초급 · <em>피라미드 1단계(따라하기)</em></div>
+<div class="block-label">시나리오</div>
+<p>선명AG 정규직, 코딩 무경험. 첫 실습(1강 배포·게시)에 들어가려면 "연장"부터 손에 쥐어야 한다. 두 안내서(<code>프로그램 설치 안내서.html</code>)를 보며 계정·설치·결제를 그대로 따라 완료한다.</p>
+<div class="block-label">과제 지시</div>
+<ol><li>배포된 <strong>체크리스트 워크시트</strong>(아래 스타터)를 연다.</li><li>각 항목을 완료하고 <strong>완료 증거</strong>(스크린샷/CLI 출력)를 붙인다.</li><li>마지막 CLI 항목에서 <code>claude</code> 실행이 성공하면 캡처.</li><li>제출물: 완료된 체크리스트 + 증거 스크린샷 폴더.</li></ol>
+<div class="module-head"><strong>스캐폴딩 스타터</strong> — <em>채워둘 것</em>: 항목·순서·확인 명령·안전 경고 완비. <em>빈칸</em>: 상태칸·증거칸만.</div>
+<pre><code># 0강 도구 온보딩 체크리스트  (상태칸만 채우세요)
 ## A. 계정 5종
-
-- [ ] Claude Pro 결제 완료        증거: ____   ⚠️ 해외결제 카드 필요
+- [ ] Claude Pro 결제 완료        증거: ____
 - [ ] GitHub 가입·로그인          증거: ____
 - [ ] Vercel 가입(GitHub 연동)    증거: ____
 - [ ] Supabase 프로젝트 1개 생성   증거: ____
 - [ ] 타 LLM 택1(GPT/Gemini/Grok) 증거: ____
 ## B. 설치 6종  (터미널 출력 붙이기)
-
 - [ ] node -v      →  출력: ____   (v18 이상이면 OK)
 - [ ] git --version →  출력: ____
 - [ ] VS Code 실행  →  증거: ____
@@ -455,146 +278,47 @@ hr{ border:0; height:1px; background:transparent; margin:26px 0; }
 - [ ] Claude 데스크톱 로그인 → 증거: ____
 - [ ] (선택) Antigravity → 증거: ____
 ## C. 안전 서약 (반드시 읽고 체크)
-
-- [ ] service_role 등 비밀키는 화면·스크린샷·업로드 어디에도 올리지 않는다.
-</code></pre>
-<ul>
-<li><strong>힌트 1(방향)</strong>: "계정은 GitHub부터. Vercel·Supabase가 GitHub 로그인을 재사용해요."</li>
-<li><strong>힌트 2(접근)</strong>: "설치가 막히면 <code>claude</code> CLI만 되면 1강은 진입 가능. 나머지는 조교가 강 시작 전 보정."</li>
-<li><strong>힌트 3(골격)</strong>: 조교가 원격 화면공유로 설치 명령을 함께 실행.</li>
-</ul>
-<h4>[조교 개입 신호]</h4>
-<ul>
-<li>Claude Pro 결제 실패 / <code>claude --version</code>이 뜨지 않음 / Node 설치 후 <code>node -v</code> 미출력 → <strong>즉시 1:1 원격 지원</strong>. 강 시작 전 미완료자 0명이 목표.</li>
-</ul>
-<h4>완료 판정 기준 (동작 확인)</h4>
-<ul>
-<li>A·B 항목 전부 <code>✅</code> + 증거 첨부.</li>
-<li>터미널에서 <code>claude --version</code>이 버전 문자열을 출력한다(스크린샷 확인).</li>
-<li><strong>안전 게이트</strong>: 붙인 스크린샷 어디에도 키·토큰이 보이지 않는다.</li>
-</ul>
+- [ ] service_role 등 비밀키는 화면·스크린샷·업로드 어디에도 올리지 않는다.</code></pre>
+<ul><li><strong>힌트 1(방향)</strong>: "계정은 GitHub부터. Vercel·Supabase가 GitHub 로그인을 재사용."</li><li><strong>힌트 2(접근)</strong>: "<code>claude</code> CLI만 되면 1강 진입 가능. 나머지는 조교가 강 전 보정."</li><li><strong>힌트 3(골격)</strong>: 조교가 원격 화면공유로 설치 명령 함께 실행.</li></ul>
+<div class="callout warn"><div class="ico">!</div><div class="cbody"><p><strong>[조교 개입 신호]</strong> Claude Pro 결제 실패 / <code>claude --version</code> 미출력 / <code>node -v</code> 미출력 → <strong>즉시 1:1 원격 지원</strong>. 강 시작 전 미완료자 0명 목표.</p></div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정</strong> — A·B 전부 <code>✅</code>+증거 · <code>claude --version</code> 버전 문자열 출력 · <strong>안전 게이트</strong>: 스크린샷 어디에도 키·토큰 없음.</p></div></div>
 <hr />
-<h3>실습 0-B: 본인 업무 I/P/O 시트 (★ 4강 미러링 시드)</h3>
-<p><strong>매핑 학습목표</strong>: (적용) 본인 업무 2~3개를 입력→처리→출력 형식으로 기술할 수 있다. (0-4)
-<strong>예상 소요시간</strong>: 20분
-<strong>난이도</strong>: 초급 · <strong>피라미드 2단계(워크시트 빈칸 채우기)</strong></p>
-<h4>시나리오</h4>
-<p>4강에서 당신은 공통 프로젝트(뉴스 인사이트 에이전트팀)를 <strong>본인 업무로 복제</strong>한다. 그 복제의 원본 설계도를 지금 그린다. 반복적이고·규칙이 있고·결과물이 명확한 업무일수록 자동화가 잘 된다.</p>
-<h4>과제 지시</h4>
-<ol>
-<li>예시행이 채워진 <strong>I/P/O 워크시트</strong>(스타터)를 연다.</li>
-<li>본인 업무 <strong>2~3개</strong>를 골라 각 행의 <strong>입력(I)·처리(P)·출력(O)·현재 소요시간·반복주기</strong>를 채운다.</li>
-<li>자동화 우선순위 1순위 업무에 <code>★</code> 표시.</li>
-<li>제출물: <code>내문서/vibecoding/00_ipo_sheet.md</code>로 저장(4강까지 보관).</li>
-</ol>
-<h4>스캐폴딩 (스타터 명세)</h4>
-<blockquote>
-<p><strong>채워둘 것</strong>: 표 구조 + <strong>직군 예시행 1개</strong>(본인 직군에 맞는 것 참고).
-<strong>빈칸</strong>: 본인 업무 행 2~3개.</p>
-</blockquote>
-<pre><code class="language-markdown"># 내 업무 I/P/O 시트   (예시행 참고해 본인 업무 2~3개 채우기)
+<h3>실습 0-B · 본인 업무 I/P/O 시트 <em>(★ 4강 미러링 시드)</em></h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (분석) 본인 업무 2~3개를 입력→처리→출력으로 분해해 기술한다. (0-4) · <strong>소요</strong> 20분 · <strong>난이도</strong> 초급 · <em>피라미드 2단계(워크시트 빈칸)</em></div>
+<div class="block-label">시나리오</div>
+<p>4강에서 공통 프로젝트(글로벌 증시·뉴스 인사이트 에이전트팀)를 <strong>본인 업무로 복제(미러링)</strong>한다. 그 복제의 원본 설계도를 지금 그린다. 반복적·규칙적·결과물이 명확한 업무일수록 자동화가 잘 된다.</p>
+<div class="block-label">과제 지시</div>
+<ol><li>예시행이 채워진 <strong>I/P/O 워크시트</strong>(스타터)를 연다.</li><li>본인 업무 <strong>2~3개</strong>의 입력(I)·처리(P)·출력(O)·소요시간·반복주기를 채운다.</li><li>자동화 1순위 업무에 <code>★</code> 표시.</li><li>제출물: <code>내문서/vibecoding/00_ipo_sheet.md</code>로 저장(4강까지 보관).</li></ol>
+<div class="module-head"><strong>스캐폴딩 스타터</strong> — <em>채워둘 것</em>: 표 구조+직군 예시행 1개. <em>빈칸</em>: 본인 업무 2~3행.</div>
+<pre><code># 내 업무 I/P/O 시트   (예시행 참고해 본인 업무 2~3개 채우기)
 | ★ | 업무명 | 입력(I) | 처리(P) | 출력(O) | 현재 소요 | 반복주기 |
 |---|--------|---------|---------|---------|----------|----------|
 |   | (예·회계) 월마감 대사 | 은행거래내역 CSV | 전표와 대사·차이 표시 | 대사 결과표 | 3시간 | 매월 |
 | ★ | (내 업무1) ____ | ____ | ____ | ____ | ____ | ____ |
-|   | (내 업무2) ____ | ____ | ____ | ____ | ____ | ____ |
-</code></pre>
-<ul>
-<li><strong>힌트 1</strong>: "'입력이 뭐고 결과가 뭔지'가 명확한 업무를 고르세요. 판단이 100% 사람 몫인 업무는 부적합."</li>
-<li><strong>힌트 2</strong>: "처리(P)를 '수집→분석→검증→요약' 4동사로 쪼갤 수 있으면 4강 4역할에 딱 맞아요."</li>
-<li><strong>힌트 3</strong>: 직군별 예시행(아래 미러링표) 제시.</li>
-</ul>
-<h4>[조교 개입 신호]</h4>
-<ul>
-<li>"자동화할 업무가 없다"고 막힘 → 반복·규칙 업무 찾기 질문("매주 같은 자료 만드나요? 어디서 자료를 모으나요?").</li>
-</ul>
-<h4>완료 판정 기준</h4>
-<ul>
-<li>업무 2개 이상이 I·P·O 3열 모두 구체적 명사로 채워짐("잘 정리한다" 같은 모호어 금지).</li>
-<li>1순위 업무 <code>★</code> 1개 지정.</li>
-<li><strong>안전 게이트</strong>: 시트에 실제 고객명·계좌 등 개인정보 없음(가명·범주명만).</li>
-</ul>
-<h4>직군별 미러링 예시 (I/P/O 시드)</h4>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>직군</th>
-<th>예시 업무</th>
-<th>입력(I)</th>
-<th>처리(P)</th>
-<th>출력(O)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>회계·세무</td>
-<td>월마감 대사</td>
-<td>은행 CSV·전표</td>
-<td>대사·차이 검출</td>
-<td>대사 결과표</td>
-</tr>
-<tr>
-<td>법무</td>
-<td>판례 요약</td>
-<td>사건 키워드</td>
-<td>판례 수집·쟁점 추출·검증</td>
-<td>쟁점 요약 메모</td>
-</tr>
-<tr>
-<td>미디어</td>
-<td>산업 뉴스 큐레이션</td>
-<td>주제 키워드</td>
-<td>뉴스 수집·선별·팩트체크</td>
-<td>데스크 브리핑</td>
-</tr>
-<tr>
-<td>MICE</td>
-<td>행사 일정 수집</td>
-<td>업종·지역</td>
-<td>컨퍼런스/전시 검색·정리</td>
-<td>월간 행사 캘린더</td>
-</tr>
-<tr>
-<td>투자</td>
-<td>종목 동향 스캔</td>
-<td>관심 종목·지수</td>
-<td>뉴스·지표 수집·교차검증</td>
-<td>의사결정 카드</td>
-</tr>
-</tbody>
-</table></div>
-<hr />
-</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">1강 실습 — "스켈레톤에서 실배포 랜딩페이지까지"</div></div>
-<h3>실습 1-1: 랜딩페이지 프론트 채우기 (조별 따라하기)</h3>
-<p><strong>매핑 학습목표</strong>: (적용) 강사 스켈레톤에서 출발해 자연어 지시로 랜딩페이지 프론트를 완성한다. (1-4)
-<strong>예상 소요시간</strong>: 35분
-<strong>난이도</strong>: 초급 · <strong>피라미드 2단계(가이드 실습·빈칸 채우기)</strong></p>
-<h4>시나리오</h4>
-<p>당신은 본인 직무의 <strong>상담 접수 랜딩페이지</strong>를 만든다(회계=세무상담 접수, 법무=법률상담 접수 등). 강사가 방금 시연한 완성본이 참조본이다. 백지에서 만들지 않는다 — 제공된 스켈레톤의 <strong>TODO 자리</strong>를 자연어 지시로 채운다.</p>
-<h4>과제 지시</h4>
-<ol>
-<li>조교가 배포해 둔 <strong>완성 참조 페이지</strong>를 먼저 연다(⓶ 데모 먼저).</li>
-<li>스타터 repo를 열고 Claude Code에 자연어로 지시해 TODO 3곳을 채운다:
-   - TODO 1: 히어로 문구(본인 직무 소개)
-   - TODO 2: 상담 접수 폼 필드(이름·연락·상담유형·내용)
-   - TODO 3: 색·로고 등 브랜딩</li>
-<li>로컬 미리보기로 화면 확인.</li>
-<li>제출물: 완성된 프론트(다음 실습 1-2에서 배포).</li>
-</ol>
-<h4>스캐폴딩 (스타터 명세)</h4>
-<blockquote>
-<p><strong>채워둘 것</strong>: 실행되는 HTML/CSS 골격 + 헤더·푸터·레이아웃(학습 목표와 무관한 보일러플레이트 완비).
-<strong>빈칸(TODO)</strong>: 히어로 카피·폼 필드·브랜딩 3곳. 각 TODO에 <strong>채우기용 프롬프트 카드</strong> 동봉.</p>
-</blockquote>
-<pre><code class="language-html">&lt;!-- index.html  (스타터: 그대로 실행됨. TODO 3곳만 자연어로 채우기) --&gt;
+|   | (내 업무2) ____ | ____ | ____ | ____ | ____ | ____ |</code></pre>
+<ul><li><strong>힌트 1</strong>: "'입력이 뭐고 결과가 뭔지'가 명확한 업무를 고르세요. 판단 100% 사람 몫은 부적합."</li><li><strong>힌트 2</strong>: "처리(P)를 '수집→분석→검증→요약' 4동사로 쪼개면 4강 4역할에 딱 맞아요."</li><li><strong>힌트 3</strong>: 직군별 예시행(아래 미러링표) 제시.</li></ul>
+<div class="callout warn"><div class="ico">!</div><div class="cbody"><p><strong>[조교 개입 신호]</strong> "자동화할 업무가 없다"고 막힘 → 반복·규칙 업무 찾기 질문("매주 같은 자료 만드나요? 어디서 자료를 모으나요?").</p></div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정</strong> — 업무 2개+ I·P·O 3열 구체적 명사 · ★ 1개 지정 · <strong>안전 게이트</strong>: 실제 고객명·계좌 없음(가명·범주명만).</p></div></div>
+<div class="block-label">직군별 미러링 예시 (I/P/O 시드)</div>
+<div class="tbl-wrap"><table><thead><tr><th>직군</th><th>예시 업무</th><th>입력(I)</th><th>처리(P)</th><th>출력(O)</th></tr></thead><tbody><tr><td>회계·세무</td><td>월마감 대사</td><td>은행 CSV·전표</td><td>대사·차이 검출</td><td>대사 결과표</td></tr><tr><td>법무</td><td>판례 요약</td><td>사건 키워드</td><td>판례 수집·쟁점 추출·검증</td><td>쟁점 요약 메모</td></tr><tr><td>미디어</td><td>산업 뉴스 큐레이션</td><td>주제 키워드</td><td>뉴스 수집·선별·팩트체크</td><td>데스크 브리핑</td></tr><tr><td>MICE</td><td>행사 일정 수집</td><td>업종·지역</td><td>컨퍼런스/전시 검색·정리</td><td>월간 행사 캘린더</td></tr><tr><td>투자</td><td>종목 동향 스캔</td><td>관심 종목·지수</td><td>뉴스·지표 수집·교차검증</td><td>의사결정 카드</td></tr></tbody></table></div>
+</section>
+<section class="card card--amber"><div class="sess-head"><span class="sess-no">1강</span><div class="sess-title">실습 — "스켈레톤에서 실배포 풀스택 랜딩페이지까지"</div></div>
+<h3>실습 1-1 · 랜딩페이지 프론트 채우기 (조별 따라하기)</h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (적용) 스켈레톤에서 출발해 자연어 지시로 프론트를 완성한다. (1-4) · <strong>소요</strong> 35분 · <strong>난이도</strong> 초급 · <em>피라미드 2단계(가이드·빈칸)</em></div>
+<div class="block-label">시나리오</div>
+<p>본인 직무의 <strong>상담 접수 풀스택 랜딩페이지</strong>를 만든다(회계=세무상담, 법무=법률상담 등). 강사 완성본이 참조본. 백지에서 만들지 않고 스켈레톤의 <strong>TODO 자리</strong>를 자연어로 채운다. 프론트 먼저, 1-2에서 Supabase 백엔드를 붙여 풀스택 완성.</p>
+<div class="block-label">과제 지시</div>
+<ol><li>조교가 배포해 둔 <strong>완성 참조 페이지</strong>를 먼저 연다(⓶ 데모 먼저).</li><li>스타터 repo에서 Claude Code에 지시해 TODO 3곳(히어로 문구·상담 폼·브랜딩)을 채운다.</li><li>로컬 미리보기로 화면 확인.</li><li>제출물: 완성 프론트(1-2에서 배포·게시).</li></ol>
+<div class="module-head"><strong>스캐폴딩 스타터</strong> — <em>채워둘 것</em>: 실행되는 HTML/CSS 골격+헤더·푸터. <em>빈칸(TODO)</em>: 히어로·폼·브랜딩 3곳 + 프롬프트 카드.</div>
+<pre><code>&lt;!-- index.html  (스타터: 그대로 실행됨. TODO 3곳만 자연어로 채우기) --&gt;
 &lt;!DOCTYPE html&gt;&lt;html lang=&quot;ko&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;상담 접수&lt;/title&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;&lt;/head&gt;
 &lt;body&gt;
   &lt;header&gt;__(수정 금지: 로고 슬롯)__&lt;/header&gt;
 
   &lt;!-- TODO 1: 히어로 문구 --&gt;
-  &lt;!-- 프롬프트 카드 → &quot;이 히어로 섹션에 '○○ 직무 상담 접수' 헤드라인과
-       한 줄 부제를 넣어줘. 버튼 문구는 '상담 신청'.&quot; --&gt;
+  &lt;!-- 프롬프트 카드 → &quot;이 히어로 섹션에 &#x27;○○ 직무 상담 접수&#x27; 헤드라인과
+       한 줄 부제를 넣어줘. 버튼 문구는 &#x27;상담 신청&#x27;.&quot; --&gt;
   &lt;section class=&quot;hero&quot;&gt;&lt;/section&gt;
 
   &lt;!-- TODO 2: 상담 접수 폼 (name/phone/type/message) --&gt;
@@ -604,43 +328,19 @@ hr{ border:0; height:1px; background:transparent; margin:26px 0; }
 
   &lt;footer&gt;__(수정 금지)__&lt;/footer&gt;
   &lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;  &lt;!-- 1-2에서 Supabase 연결 --&gt;
-&lt;/body&gt;&lt;/html&gt;
-</code></pre>
-<ul>
-<li><strong>힌트 1(방향)</strong>: "히어로부터. 프롬프트 카드 문구를 Claude Code에 그대로 붙이고 직무만 바꾸세요."</li>
-<li><strong>힌트 2(접근)</strong>: "폼이 안 뜨면 '폼 필드 4개를 하나씩 만들어줘'로 쪼개서 지시."</li>
-<li><strong>힌트 3(골격)</strong>: 폼 HTML 절반 공개(input 2개까지) → 나머지 학습자 완성.</li>
-</ul>
-<h4>[조교 개입 신호]</h4>
-<ul>
-<li>미리보기가 흰 화면 / Claude가 파일 전체를 갈아엎음 / TODO 밖을 건드림 → 즉시 개입, "TODO 주석 사이만 바꿔달라고 지시"로 교정.</li>
-</ul>
-<h4>완료 판정 기준</h4>
-<ul>
-<li>로컬 미리보기에서 히어로 문구·상담 폼·브랜딩이 보인다.</li>
-<li>폼에 텍스트 입력이 가능하다(전송은 1-2에서 연결).</li>
-</ul>
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+<ul><li><strong>힌트 1(방향)</strong>: "히어로부터. 프롬프트 카드 문구를 그대로 붙이고 직무만 바꾸세요."</li><li><strong>힌트 2(접근)</strong>: "폼이 안 뜨면 '폼 필드 4개를 하나씩 만들어줘'로 쪼개서 지시."</li><li><strong>힌트 3(골격)</strong>: 폼 HTML 절반 공개(input 2개까지) → 나머지 학습자 완성.</li></ul>
+<div class="callout warn"><div class="ico">!</div><div class="cbody"><p><strong>[조교 개입 신호]</strong> 흰 화면 / Claude가 파일 전체를 갈아엎음 / TODO 밖을 건드림 → "TODO 주석 사이만 바꿔달라고 지시"로 교정.</p></div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정</strong> — 미리보기에 히어로·상담 폼·브랜딩 표시 · 폼에 텍스트 입력 가능(전송은 1-2).</p></div></div>
 <hr />
-<h3>실습 1-2: 배포 3종 세트 — GitHub → Vercel + Supabase (★ 부품: 배포 URL)</h3>
-<p><strong>매핑 학습목표</strong>: (창조) 실제 URL로 배포하고 폼 데이터를 Supabase에 저장한다. (1-5)
-<strong>예상 소요시간</strong>: 30분
-<strong>난이도</strong>: 중급 · <strong>피라미드 2단계(절차 카드 빈칸)</strong></p>
-<h4>시나리오</h4>
-<p>1-1에서 만든 페이지를 <strong>인터넷에 실배포</strong>하고, 폼 제출이 <strong>Supabase DB에 실제로 쌓이는지</strong> 확인한다. 이 URL은 4강 하네스의 출력/배포 채널로 재사용된다.</p>
-<h4>과제 지시</h4>
-<ol>
-<li>참조본이 이미 인터넷에 떠 있음을 확인(⓶).</li>
-<li><strong>배포 절차 카드</strong>의 빈칸 명령을 실행: GitHub push → Vercel import → 배포.</li>
-<li>Supabase에 <code>leads</code> 테이블을 만들고, 프론트에 <strong>anon 공개키만</strong> 연결.</li>
-<li>배포 URL에서 폼을 실제 제출 → Supabase 테이블에 행이 생기는지 확인.</li>
-<li>제출물: <strong>배포 URL</strong> + Supabase에 저장된 테스트 행 1개(가명 데이터).</li>
-</ol>
-<h4>스캐폴딩 (스타터 명세)</h4>
-<blockquote>
-<p><strong>채워둘 것</strong>: 단계별 명령·SQL·환경변수 자리 표시가 적힌 절차 카드 + <code>app.js</code>의 Supabase 클라이언트 골격.
-<strong>빈칸</strong>: 본인 Supabase <strong>프로젝트 URL</strong>과 <strong>anon 키</strong>(공개키), 배포 시 repo 이름.</p>
-</blockquote>
-<pre><code class="language-javascript">// app.js  (스타터: __빈칸__ 2곳만 본인 값으로. service_role 절대 금지)
+<h3>실습 1-2 · 풀스택 배포·게시 — GitHub → Vercel + Supabase <em>(★ 부품: 배포 URL)</em></h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (창조) 실제 URL로 배포·게시하고 폼 데이터를 Supabase에 저장한다. (1-5) · <strong>소요</strong> 30분 · <strong>난이도</strong> 중급 · <em>피라미드 2단계(절차 카드 빈칸)</em></div>
+<div class="block-label">시나리오</div>
+<p>1-1 프론트에 <strong>Supabase 백엔드를 붙여 풀스택으로 완성</strong>하고 <strong>인터넷에 실배포·게시</strong>한다. 폼 제출이 <strong>Supabase DB에 실제로 쌓이는지</strong> 확인. 이 URL은 4강 하네스 출력/게시 채널로 재사용.</p>
+<div class="block-label">과제 지시</div>
+<ol><li>참조본이 이미 인터넷에 떠 있음을 확인(⓶).</li><li><strong>배포 절차 카드</strong> 빈칸 명령 실행: GitHub push → Vercel import → 배포·게시.</li><li>Supabase에 <code>leads</code> 테이블 생성, 프론트에 <strong>anon 공개키만</strong> 연결.</li><li>게시 URL에서 폼 제출 → Supabase 테이블에 행 생성 확인.</li><li>제출물: <strong>게시 URL</strong> + 저장된 테스트 행 1개(가명).</li></ol>
+<div class="module-head"><strong>스캐폴딩 스타터</strong> — <em>빈칸</em>: Supabase <strong>프로젝트 URL</strong>·<strong>anon 키</strong>, repo 이름.</div>
+<pre><code>// app.js  (스타터: __빈칸__ 2곳만 본인 값으로. service_role 절대 금지)
 const SUPABASE_URL = &quot;__여기에_프로젝트_URL__&quot;;
 const SUPABASE_ANON_KEY = &quot;__여기에_anon_공개키__&quot;;   // ⚠️ anon만! service_role 넣으면 반려
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -650,726 +350,259 @@ document.getElementById(&quot;lead-form&quot;).addEventListener(&quot;submit&quo
   const f = e.target;
   // TODO: insert 한 줄 — 힌트: sb.from(&quot;leads&quot;).insert({...})
   //  name/phone/type/message 를 폼에서 읽어 넣기
-});
-</code></pre>
-<pre><code class="language-sql">-- Supabase SQL 에디터에 붙여 실행 (테이블 스타터)
+});</code></pre>
+<pre><code>-- Supabase SQL 에디터에 붙여 실행 (테이블 스타터)
 create table leads (
   id bigint generated always as identity primary key,
   name text, phone text, type text, message text,
   created_at timestamptz default now()
 );
 alter table leads enable row level security;
-create policy &quot;anon insert&quot; on leads for insert to anon with check (true);
-</code></pre>
-<ul>
-<li><strong>힌트 1</strong>: "URL/키는 Supabase → Project Settings → API. <code>anon public</code>이라 적힌 것만."</li>
-<li><strong>힌트 2</strong>: "insert가 안 되면 브라우저 콘솔 에러를 Claude에 붙여넣고 '고쳐줘'."</li>
-<li><strong>힌트 3</strong>: <code>sb.from("leads").insert({ name: f.name.value, ... })</code> 절반 공개.</li>
-</ul>
-<h4>[조교 개입 신호]</h4>
-<ul>
-<li>Vercel 빌드 실패 / 폼 제출 시 콘솔 401·RLS 에러 / <strong>service_role 키를 붙이려 함</strong> → 즉시 개입. 키 사고는 최우선 차단.</li>
-</ul>
-<h4>완료 판정 기준 (동작 확인)</h4>
-<ul>
-<li>배포 URL이 인터넷에서 열린다(조원 다른 PC/폰에서도 접속).</li>
-<li>폼에 가명 데이터 제출 → Supabase <code>leads</code> 테이블에 행 1개 생성 확인.</li>
-<li><strong>안전 게이트</strong>: 페이지 소스·repo에 <code>anon</code> 키만 있고 <code>service_role</code> 없음. 폼 예시에 실제 개인정보 없음.</li>
-</ul>
-<h4>[최소 통과선 / 확장 과제]</h4>
-<ul>
-<li><strong>최소 통과선</strong>: URL이 열리고 폼이 보인다(DB 저장은 조교 도움 허용).</li>
-<li><strong>확장 과제(빠른 조)</strong>: 제출 성공 시 "감사합니다" 토스트 추가 / 상담유형별 색상 배지 / 간단 관리자 목록 페이지(anon read 정책).</li>
-</ul>
-<h4>직군별 미러링 변형</h4>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>직군</th>
-<th>페이지 주제</th>
-<th>폼 필드 변형</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>회계·세무</td>
-<td>세무상담 접수</td>
-<td>상담유형(종소세·법인·부가세)·희망일</td>
-</tr>
-<tr>
-<td>법무</td>
-<td>법률상담 접수</td>
-<td>사건분야(민사·형사·가사)·긴급도</td>
-</tr>
-<tr>
-<td>미디어</td>
-<td>취재·제보 접수</td>
-<td>제보유형·매체</td>
-</tr>
-<tr>
-<td>MICE</td>
-<td>행사 문의 접수</td>
-<td>행사규모·희망시기·유형(전시·컨퍼런스)</td>
-</tr>
-<tr>
-<td>투자</td>
-<td>IR·투자문의 접수</td>
-<td>관심분야·투자규모대(범주)</td>
-</tr>
-</tbody>
-</table></div>
-<hr />
-</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">2강 실습 — "콘텐츠 엔진: 생성-검증 루프"</div></div>
-<h3>실습 2-1: 블로그 글 1편 작성·게시 + 사람 검증 (★ 부품: 콘텐츠 포맷)</h3>
-<p><strong>매핑 학습목표</strong>: (창조) 자기 직군 소재로 블로그 1편을 완성·게시하고 사실 근거를 사람이 검증한다. (2-5·2-7)
-<strong>예상 소요시간</strong>: 30분
-<strong>난이도</strong>: 중급 · <strong>피라미드 2→3단계(템플릿 채우기 → 검증 챌린지)</strong></p>
-<h4>시나리오</h4>
-<p>당신은 본인 직군 소재로 블로그 글 1편을 만든다. 핵심 훈련은 <strong>"AI는 문장, 사실 근거는 사람이 준다"</strong> — AI가 쓴 숫자·법조항·통계를 <strong>사람이 검증</strong>하는 루프를 몸에 익힌다. 이 콘텐츠 포맷은 4강 요약 에이전트의 산출 포맷이 된다.</p>
-<h4>과제 지시</h4>
-<ol>
-<li>완성 참조 블로그 글을 먼저 읽는다(⓶).</li>
-<li><strong>프롬프트 템플릿</strong>(스타터)의 빈칸(주제·독자·톤·핵심3)을 본인 직군으로 채워 초안 생성.</li>
-<li><strong>검증 체크리스트</strong>로 초안의 모든 숫자·법조항·인용을 <strong>사람이 확인</strong>(근거 없으면 삭제/수정).</li>
-<li>검증 통과본을 게시(사내 블로그/노션/GitHub Pages 중 택1).</li>
-<li>제출물: <strong>게시 URL</strong> + 검증 체크리스트(무엇을 확인/수정했는지).</li>
-</ol>
-<h4>스캐폴딩 (스타터 명세)</h4>
-<blockquote>
-<p><strong>채워둘 것</strong>: 역할·구조·톤 지시가 완비된 프롬프트 뼈대 + 검증 체크리스트.
-<strong>빈칸</strong>: 주제·타깃 독자·핵심 메시지 3개·금지어.</p>
-</blockquote>
-<pre><code class="language-text">[블로그 생성 프롬프트 템플릿 — 빈칸만 채우기]
+create policy &quot;anon insert&quot; on leads for insert to anon with check (true);</code></pre>
+<ul><li><strong>힌트 1</strong>: "URL/키는 Supabase → Project Settings → API. <code>anon public</code>이라 적힌 것만."</li><li><strong>힌트 2</strong>: "insert가 안 되면 브라우저 콘솔 에러를 Claude에 붙여 '고쳐줘'."</li><li><strong>힌트 3</strong>: <code>sb.from("leads").insert({ name: f.name.value, ... })</code> 절반 공개.</li></ul>
+<div class="callout warn"><div class="ico">!</div><div class="cbody"><p><strong>[조교 개입 신호]</strong> Vercel 빌드 실패 / 콘솔 401·RLS 에러 / <strong>service_role 키를 붙이려 함</strong> → 즉시 개입. 키 사고 최우선 차단.</p></div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정</strong> — 게시 URL이 다른 PC/폰에서도 열림 · 폼 제출→<code>leads</code> 행 1개 생성 · <strong>안전 게이트</strong>: <code>anon</code>만·<code>service_role</code> 없음·개인정보 없음.</p></div></div>
+<div class="callout info"><div class="ico">i</div><div class="cbody"><p><strong>[최소 통과선]</strong> URL이 열리고 폼이 보인다(DB 저장은 조교 도움 허용).</p><p><strong>[확장 과제·빠른 조]</strong> "감사합니다" 토스트 / 상담유형별 색상 배지 / 간단 관리자 목록(anon read).</p></div></div>
+<div class="block-label">직군별 미러링 변형</div>
+<div class="tbl-wrap"><table><thead><tr><th>직군</th><th>페이지 주제</th><th>폼 필드 변형</th></tr></thead><tbody><tr><td>회계·세무</td><td>세무상담 접수</td><td>상담유형(종소세·법인·부가세)·희망일</td></tr><tr><td>법무</td><td>법률상담 접수</td><td>사건분야(민사·형사·가사)·긴급도</td></tr><tr><td>미디어</td><td>취재·제보 접수</td><td>제보유형·매체</td></tr><tr><td>MICE</td><td>행사 문의 접수</td><td>행사규모·희망시기·유형</td></tr><tr><td>투자</td><td>IR·투자문의 접수</td><td>관심분야·투자규모대(범주)</td></tr></tbody></table></div>
+</section>
+<section class="card card--mint"><div class="sess-head"><span class="sess-no">2강</span><div class="sess-title">실습 — "콘텐츠 엔진: 생성-검증 루프"</div></div>
+<h3>실습 2-1 · 블로그 글 1편 작성·게시 + 사람 검증 <em>(★ 부품: 콘텐츠 포맷)</em></h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (창조) 자기 직군 소재로 블로그 1편 완성·게시 + 사실 근거를 사람이 검증. (2-5·2-7) · <strong>소요</strong> 30분 · <strong>난이도</strong> 중급 · <em>피라미드 2→3단계</em></div>
+<div class="block-label">시나리오</div>
+<p>본인 직군 소재로 블로그 1편. 핵심 훈련은 <strong>"AI는 문장, 사실 근거는 사람이 준다"</strong> — AI가 쓴 숫자·법조항·통계를 <strong>사람이 검증</strong>하는 루프를 몸에 익힌다. 이 포맷은 4강 요약 에이전트의 산출 포맷이 된다.</p>
+<div class="block-label">과제 지시</div>
+<ol><li>완성 참조 블로그 글을 먼저 읽는다(⓶).</li><li><strong>프롬프트 템플릿</strong> 빈칸(주제·독자·톤·핵심3)을 본인 직군으로 채워 초안 생성.</li><li><strong>검증 체크리스트</strong>로 모든 숫자·법조항·인용을 <strong>사람이 확인</strong>(근거 없으면 삭제/수정).</li><li>검증 통과본 게시(사내 블로그/노션/GitHub Pages).</li><li>제출물: <strong>게시 URL</strong> + 검증 체크리스트.</li></ol>
+<div class="module-head"><strong>스캐폴딩 스타터</strong> — <em>빈칸</em>: 주제·타깃 독자·핵심 3개·금지어.</div>
+<pre><code>[블로그 생성 프롬프트 템플릿 — 빈칸만 채우기]
 너는 __(직군)__ 실무자를 위한 블로그 작성자다.
 주제: __________
 독자: __________ (예: 중소기업 재무담당자)
 톤: 신뢰감 있고 쉬움. 전문용어는 1줄 정의.
 반드시 포함할 핵심 3가지: 1)___ 2)___ 3)___
 분량: 1,000~1,500자, 소제목 3개.
-⚠️ 확실하지 않은 통계·법조항·판례번호는 '[확인 필요]'로 표시하고 지어내지 마라.
-</code></pre>
-<pre><code class="language-markdown">[사실검증 체크리스트 — 게시 전 필수]
-
+⚠️ 확실하지 않은 통계·법조항·판례번호는 &#x27;[확인 필요]&#x27;로 표시하고 지어내지 마라.</code></pre>
+<pre><code>[사실검증 체크리스트 — 게시 전 필수]
 - [ ] 본문의 모든 숫자/통계에 출처를 확인했다 (없으면 삭제)
 - [ ] 법조항·판례번호·규정을 원문과 대조했다
-- [ ] '[확인 필요]' 표시가 남아있지 않다 (전부 검증 또는 삭제)
-- [ ] 고객·개인정보가 예시에 없다
-</code></pre>
-<ul>
-<li><strong>힌트 1</strong>: "핵심 3가지는 '독자가 이 글을 읽고 얻을 것' 3개로 잡으세요."</li>
-<li><strong>힌트 2</strong>: "AI가 '2023년 통계에 따르면…'이라 쓰면 그게 바로 검증 대상. 출처를 못 대면 지웁니다."</li>
-<li><strong>힌트 3</strong>: 검증된 문단 예시 1개 제시(전/후 비교).</li>
-</ul>
-<h4>[조교 개입 신호]</h4>
-<ul>
-<li>검증 없이 바로 게시하려 함 / '[확인 필요]'를 그대로 게시 → <strong>즉시 개입</strong>. 이 강의 핵심 원칙 위반이므로 반드시 잡는다.</li>
-</ul>
-<h4>완료 판정 기준 (동작 확인)</h4>
-<ul>
-<li>게시 URL이 열린다.</li>
-<li>검증 체크리스트 4항목 전부 <code>✅</code>이며, <strong>최소 1건 이상 실제 수정/삭제 흔적</strong>이 있다(무검증 통과 방지).</li>
-<li><strong>안전 게이트</strong>: 허위 숫자·법조항 0, 개인정보 0.</li>
-</ul>
-<h4>[최소 통과선 / 확장 과제]</h4>
-<ul>
-<li><strong>최소 통과선</strong>: 검증된 800자 글 게시.</li>
-<li><strong>확장 과제</strong>: 같은 소재로 2개 톤(격식/캐주얼) A/B 생성 후 비교 회고.</li>
-</ul>
+- [ ] &#x27;[확인 필요]&#x27; 표시가 남아있지 않다 (전부 검증 또는 삭제)
+- [ ] 고객·개인정보가 예시에 없다</code></pre>
+<ul><li><strong>힌트 1</strong>: "핵심 3가지는 '독자가 이 글을 읽고 얻을 것' 3개로."</li><li><strong>힌트 2</strong>: "AI가 '2023년 통계에 따르면…'이라 쓰면 그게 검증 대상. 출처 못 대면 지웁니다."</li><li><strong>힌트 3</strong>: 검증된 문단 예시 1개(전/후 비교).</li></ul>
+<div class="callout warn"><div class="ico">!</div><div class="cbody"><p><strong>[조교 개입 신호]</strong> 검증 없이 바로 게시 / '[확인 필요]'를 그대로 게시 → <strong>즉시 개입</strong>. 이 강 핵심 원칙 위반이므로 반드시 잡는다.</p></div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정</strong> — 게시 URL 열림 · 체크리스트 4항목 <code>✅</code>+<strong>최소 1건 실제 수정/삭제 흔적</strong> · <strong>안전 게이트</strong>: 허위 숫자·법조항 0·개인정보 0.</p></div></div>
+<div class="callout info"><div class="ico">i</div><div class="cbody"><p><strong>[최소 통과선]</strong> 검증된 800자 글 게시. <strong>[확장 과제]</strong> 같은 소재 2개 톤(격식/캐주얼) A/B 비교 회고.</p></div></div>
 <hr />
-<h3>실습 2-2: 유튜브 콘텐츠 세트 (제목·설명·썸네일 문구)</h3>
-<p><strong>매핑 학습목표</strong>: (적용) 제목·설명·썸네일 문구 세트를 생성한다. (2-6)
-<strong>예상 소요시간</strong>: 15분
-<strong>난이도</strong>: 초급 · <strong>피라미드 2단계</strong></p>
-<h4>과제 지시</h4>
-<ol>
-<li>2-1 블로그를 소재로 재사용.</li>
-<li><strong>세트 템플릿</strong> 빈칸을 채워 제목 3안·설명·썸네일 문구·해시태그 생성.</li>
-<li>제출물: <code>02_content_format.md</code>로 저장(블로그 URL + 유튜브 세트 = <strong>4강 산출 포맷 부품</strong>).</li>
-</ol>
-<h4>스캐폴딩</h4>
-<pre><code class="language-text">[유튜브 세트 프롬프트 — 빈칸 채우기]
+<h3>실습 2-2 · 유튜브 콘텐츠 세트 (제목·설명·썸네일 문구)</h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (적용) 제목·설명·썸네일 문구 세트를 생성한다. (2-6) · <strong>소요</strong> 15분 · <strong>난이도</strong> 초급 · <em>피라미드 2단계</em></div>
+<div class="block-label">과제 지시</div>
+<ol><li>2-1 블로그를 소재로 재사용.</li><li><strong>세트 템플릿</strong> 빈칸 채워 제목 3안·설명·썸네일 문구·해시태그 생성.</li><li>제출물: <code>02_content_format.md</code>로 저장(블로그 URL+유튜브 세트 = 4강 산출 포맷 부품).</li></ol>
+<pre><code>[유튜브 세트 프롬프트 — 빈칸 채우기]
 소재: (2-1 블로그 제목) __________
-
 - 클릭 유도 제목 3안 (과장·허위 금지)
 - 설명문 3~4줄 + 챕터 타임코드 자리
 - 썸네일 문구 6단어 이내 2안
 - 해시태그 5개
-⚠️ 조회수 유도라도 허위 정보·과장 수치 금지.
-</code></pre>
-<ul>
-<li><strong>힌트 1</strong>: "제목은 '무엇을 얻는가'를 6~12자로." · <strong>힌트 2</strong>: "썸네일 문구는 제목과 다른 각도로."</li>
-</ul>
-<h4>완료 판정 기준</h4>
-<ul>
-<li>제목 3안·설명·썸네일 2안·해시태그가 <code>02_content_format.md</code>에 저장됨.</li>
-<li><strong>안전 게이트</strong>: 허위·과장 수치 없음.</li>
-</ul>
-<h4>직군별 미러링 변형 (2강 공통)</h4>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>직군</th>
-<th>블로그·영상 소재 예시</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>회계·세무</td>
-<td>"연말정산 자주 틀리는 3가지"</td>
-</tr>
-<tr>
-<td>법무</td>
-<td>"계약서 서명 전 꼭 볼 5조항"</td>
-</tr>
-<tr>
-<td>미디어</td>
-<td>"이번 주 바이오 산업 브리핑"</td>
-</tr>
-<tr>
-<td>MICE</td>
-<td>"행사 기획 체크리스트 10"</td>
-</tr>
-<tr>
-<td>투자</td>
-<td>"초보가 오해하는 밸류에이션 3"</td>
-</tr>
-</tbody>
-</table></div>
+⚠️ 조회수 유도라도 허위 정보·과장 수치 금지.</code></pre>
+<ul><li><strong>힌트 1</strong>: "제목은 '무엇을 얻는가'를 6~12자로." · <strong>힌트 2</strong>: "썸네일 문구는 제목과 다른 각도로."</li></ul>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정</strong> — 제목 3안·설명·썸네일 2안·해시태그가 <code>02_content_format.md</code>에 저장 · <strong>안전 게이트</strong>: 허위·과장 수치 없음.</p></div></div>
+<div class="block-label">직군별 미러링 변형 (2강 공통)</div>
+<div class="tbl-wrap"><table><thead><tr><th>직군</th><th>블로그·영상 소재 예시</th></tr></thead><tbody><tr><td>회계·세무</td><td>"연말정산 자주 틀리는 3가지"</td></tr><tr><td>법무</td><td>"계약서 서명 전 꼭 볼 5조항"</td></tr><tr><td>미디어</td><td>"이번 주 바이오 산업 브리핑"</td></tr><tr><td>MICE</td><td>"행사 기획 체크리스트 10"</td></tr><tr><td>투자</td><td>"초보가 오해하는 밸류에이션 3"</td></tr></tbody></table></div>
+</section>
+<section class="card card--sky"><div class="sess-head"><span class="sess-no">3강</span><div class="sess-title">실습 — "부품을 이해하고, 첫 에이전트를 세운다: 회의록 에이전트 구축"</div></div>
+<div class="callout note"><div class="ico">↻</div><div class="cbody"><p><strong>v0.2 갱신 핵심</strong> — 구버전은 "스킬 2~3개 제작 + MCP 연결"을 각각 나열했으나, 갱신본은 이를 <strong>하나의 완성 목표 — 동작하는 회의록 에이전트 1개</strong>로 통합한다. 스킬(만드는 것)과 MCP(연결하는 것)를 <strong>에이전트(묶는 것)</strong>로 즉시 조립해 개념 8종의 추상성을 낮춘다. 소재는 <strong>전 직군 공통(회의록)</strong>.</p></div></div>
+<div class="block-label">미니 프로젝트 개요 · 동작하는 회의록 에이전트 1개</div>
+<p>회의 메모/녹취 텍스트를 넣으면 → <strong>구조화 회의록 생성</strong> → <strong>배포용 문서 정리</strong> → <strong>참석자에게 메일 발송</strong>. 3-1(스킬 제작) + 3-2(MCP 조립) 산출물이 합쳐져 회의록 에이전트 1개가 된다.</p>
+<pre><code>[회의록 에이전트 = 스킬 2~3개 + 메일 MCP + 프로젝트]
+회의 메모/녹취 ─▶ [스킬 A: 회의록 생성] ─▶ [스킬 B: 문서화] ─▶ [메일 발송 MCP] ─▶ 참석자 메일함
+                   (안건·결정·액션아이템)   (배포용 md/본문)   (Gmail 등)      (사람 최종확인 후 발송)
+                                    └ (확장) 스킬 C: 액션아이템 추출·검증</code></pre>
 <hr />
-</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">3강 실습 — "부품 제작: 스킬 2~3개 + MCP 연결"</div></div>
-<h3>실습 3-1: 동작하는 스킬 2~3개 제작 (★ 부품: 스킬 파일)</h3>
-<p><strong>매핑 학습목표</strong>: (창조) 본인/공통 업무용 동작 스킬을 제작·테스트한다. (3-4)
-<strong>예상 소요시간</strong>: 30분
-<strong>난이도</strong>: 중급 · <strong>피라미드 3단계(챌린지·힌트)</strong></p>
-<h4>시나리오</h4>
-<p>자동화의 "레고 블록"인 <strong>스킬</strong>을 직접 만든다. 4강 4역할 에이전트가 이 스킬들을 부품으로 쓴다. 최소 2개(요약 스킬 + 정리 스킬), 여유되면 3개(검증 스킬).</p>
-<h4>과제 지시</h4>
-<ol>
-<li>강사 시연 스킬(참조본)의 트리거·구조를 관찰(⓶).</li>
-<li><strong>SKILL.md 스켈레톤</strong>에서 출발해 스킬 2개를 완성:
-   - 스킬 A: <strong>요약 스킬</strong>(긴 텍스트 → 핵심 5줄) — 4강 요약 에이전트 부품
-   - 스킬 B: <strong>정리/추출 스킬</strong>(뉴스/문서 → 표 형태 데이터) — 4강 분석 에이전트 부품</li>
-<li>각 스킬을 <strong>실제 호출해 테스트</strong>(트리거 문구 → 원하는 출력 확인).</li>
-<li>(확장) 스킬 C: <strong>검증 스킬</strong>(숫자·출처 교차확인 체크리스트) — 4강 검증 에이전트 부품.</li>
-<li>제출물: <code>~/.claude/skills/</code> 아래 동작하는 스킬 2~3개.</li>
-</ol>
-<h4>스캐폴딩 (스타터 명세)</h4>
-<blockquote>
-<p><strong>채워둘 것</strong>: frontmatter 구조·섹션 헤더·트리거 슬롯이 있는 SKILL.md 뼈대.
-<strong>빈칸</strong>: <code>description</code>(트리거 문구), 처리 규칙 본문, 출력 형식.</p>
-</blockquote>
-<pre><code class="language-markdown">---
-name: summarize-5lines            # 스킬 A 예 (수정 금지 필드 구조)
-description: &quot;____ 할 때 사용. '요약해줘'·'핵심만' 트리거.&quot;   # ← 빈칸: 트리거
+<h3>실습 3-1 · 회의록 생성·문서화 스킬 제작 <em>(★ 부품: 스킬 파일 2~3개)</em></h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (창조) 단일 책임 원칙으로 회의록 생성·문서화 스킬을 직접 제작·테스트. (3-4) · <strong>소요</strong> 30분 · <strong>난이도</strong> 중급 · <em>피라미드 3단계(챌린지·힌트)</em></div>
+<div class="block-label">시나리오</div>
+<p>자동화의 "레고 블록"인 <strong>스킬</strong>을 직접 만든다. 회의록 에이전트의 두뇌가 될 스킬 2개(생성·문서화)를 제작하고 실제 회의 메모로 테스트. 이 스킬은 3-2에서 메일 MCP와 조립되고, <strong>요약 스킬 노하우는 4강 요약 에이전트로 재사용</strong>된다.</p>
+<div class="block-label">과제 지시</div>
+<ol><li>강사 시연 스킬(참조본)의 트리거·구조 관찰(⓶).</li><li><strong>SKILL.md 스켈레톤</strong>에서 스킬 2개 완성: <strong>A</strong> 회의록 생성(메모→안건·결정·액션아이템), <strong>B</strong> 문서화(회의록→배포용 md/메일 본문).</li><li>각 스킬을 <strong>실제 호출해 테스트</strong>.</li><li>(확장) 스킬 <strong>C</strong> 액션아이템 추출·검증(담당·기한 누락 점검) — 4강 검증 에이전트 부품.</li><li>제출물: <code>~/.claude/skills/</code> 아래 동작 스킬 2~3개.</li></ol>
+<div class="module-head"><strong>스캐폴딩 스타터</strong> — <em>빈칸</em>: <code>description</code>(트리거)·처리 규칙·출력 형식.</div>
+<pre><code>---
+name: make-minutes                # 스킬 A 예 (수정 금지 필드 구조)
+description: &quot;____ 할 때 사용. &#x27;회의록 만들어&#x27;·&#x27;회의 정리&#x27; 트리거.&quot;   # ← 빈칸: 트리거
 ---
-# 5줄 요약 스킬
+# 회의록 생성 스킬
 ## 언제 쓰나
-
-- ____ (빈칸: 발동 상황)
+- ____ (빈칸: 발동 상황 — 예: 회의 메모/녹취를 붙여넣었을 때)
 ## 처리 규칙
-
-1. 입력 텍스트에서 핵심 주장 5개 추출          # ← 규칙 채우기
-2. 각 1줄, 숫자·고유명사 보존
-3. 출처가 있으면 끝에 (출처) 표기
+1. 입력에서 &#x27;안건 → 논의 → 결정사항 → 액션아이템&#x27;을 분리     # ← 규칙 채우기
+2. 액션아이템은 &#x27;담당자·기한&#x27;을 반드시 표기 (없으면 [미정])
+3. 원문에 없는 결정·수치는 추가 금지 (환각 차단)
 ## 출력 형식
-
-- ____ (빈칸: 예) 불릿 5개 + 한줄 총평
+- ____ (빈칸: 예) ## 안건 / ## 결정사항 / ## 액션아이템(담당·기한) 표
 ## 안전 규칙
-
-- 원문에 없는 숫자·사실 추가 금지 (환각 차단)
-</code></pre>
-<ul>
-<li><strong>힌트 1(방향)</strong>: "<code>description</code>이 곧 트리거예요. '언제 이 스킬이 켜지길 원하나'를 문장으로."</li>
-<li><strong>힌트 2(접근)</strong>: "처리 규칙은 '입력 → 무엇을 → 어떻게 → 출력' 순서로 번호 매기기."</li>
-<li><strong>힌트 3(골격)</strong>: 요약 스킬 완성본 절반 공개 → 정리 스킬은 구조 복제해 학습자 완성.</li>
-</ul>
-<h4>[조교 개입 신호]</h4>
-<ul>
-<li>스킬이 트리거되지 않음 / 스킬이 원문에 없는 내용을 지어냄(환각) → 개입. <code>description</code> 트리거 문구 조정 + 안전 규칙 추가로 교정.</li>
-</ul>
-<h4>완료 판정 기준 (동작 확인)</h4>
-<ul>
-<li>트리거 문구 입력 → 스킬이 발동하고 <strong>정의한 출력 형식대로</strong> 결과 생성.</li>
-<li>요약 스킬: 임의의 뉴스 문단 입력 → 핵심 5줄 + 숫자 보존 확인.</li>
-<li>정리 스킬: 뉴스 3건 입력 → 표(제목·요지·출처) 생성 확인.</li>
-<li><strong>안전 게이트</strong>: 스킬 출력에 원문에 없는 수치가 삽입되지 않음(2건 테스트로 재현성 확인).</li>
-</ul>
-<h4>[최소 통과선 / 확장 과제]</h4>
-<ul>
-<li><strong>최소 통과선</strong>: 스킬 <strong>1개</strong>가 트리거·동작.</li>
-<li><strong>확장 과제</strong>: 검증 스킬 C 추가 / 스킬 간 연계(요약→정리 파이프).</li>
-</ul>
+- 참석자 실명·연락처는 이니셜/직책으로 마스킹</code></pre>
+<pre><code>---
+name: format-doc                  # 스킬 B (문서화)
+description: &quot;____ 트리거.&quot;        # ← 빈칸: 예) &#x27;문서로 정리해&#x27;·&#x27;메일 본문 만들어&#x27;
+---
+# 문서화 스킬
+## 처리 규칙
+1. 회의록 구조를 배포용 md + 메일 본문 2형식으로 변환
+2. 제목/일시/참석(직책)/요약 3줄을 상단에 배치
+## 출력 형식
+- ____ (빈칸: 메일 제목 1줄 + 본문 + 하단 액션아이템 표)</code></pre>
+<ul><li><strong>힌트 1(방향)</strong>: "<code>description</code>이 곧 트리거. '언제 켜지길 원하나'를 문장으로."</li><li><strong>힌트 2(접근)</strong>: "처리 규칙은 '입력 → 무엇을 → 어떻게 → 출력' 순 번호로."</li><li><strong>힌트 3(골격)</strong>: 회의록 생성 스킬 완성본 절반 공개 → 문서화 스킬은 구조 복제해 완성.</li></ul>
+<div class="callout warn"><div class="ico">!</div><div class="cbody"><p><strong>[조교 개입 신호]</strong> 스킬 미트리거 / 원문에 없는 결정·수치를 지어냄(환각) → <code>description</code> 트리거 조정 + 안전 규칙 추가로 교정.</p></div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정</strong> — 트리거→정의한 출력 형식대로 생성 · 생성 스킬: 회의 메모(합성)→안건·결정·액션(담당·기한) · 문서화 스킬: md+메일 본문 2형식 · <strong>안전 게이트</strong>: 없는 결정·수치 삽입 0(2건 테스트로 재현성)·참석자 실명 마스킹.</p></div></div>
+<div class="callout info"><div class="ico">i</div><div class="cbody"><p><strong>[최소 통과선]</strong> 회의록 생성 스킬 1개 트리거·동작(문서화·발송은 조교 도움). <strong>[확장 과제]</strong> 검증 스킬 C 추가 / 생성→문서화 연계 파이프.</p></div></div>
+<div class="block-label">직군별 회의 소재 예시 (합성 데이터)</div>
+<div class="tbl-wrap"><table><thead><tr><th>직군</th><th>회의 유형 예시</th><th>액션아이템 성격</th></tr></thead><tbody><tr><td>회계·세무</td><td>월마감 점검 회의</td><td>미결 전표 처리 담당·기한</td></tr><tr><td>법무</td><td>사건 대응 전략 회의</td><td>서면 제출·자료조사 담당·기한</td></tr><tr><td>미디어</td><td>편집 기획 회의</td><td>취재·마감 담당·기한</td></tr><tr><td>MICE</td><td>행사 운영 회의</td><td>부스·연사 컨펌 담당·기한</td></tr><tr><td>투자</td><td>딜 리뷰 회의</td><td>실사·검토 담당·기한</td></tr></tbody></table></div>
 <hr />
-<h3>실습 3-2: MCP 연결 — 외부 데이터 가져오기 (★ 부품: MCP 설정)</h3>
-<p><strong>매핑 학습목표</strong>: (적용) MCP를 연결해 외부 데이터를 가져온다. (3-5)
-<strong>예상 소요시간</strong>: 25분
-<strong>난이도</strong>: 중급 · <strong>피라미드 3단계</strong></p>
-<h4>시나리오</h4>
-<p>스킬이 "내가 만든 도구"라면 MCP는 "외부 세계로 난 창"이다. <strong>웹검색 MCP</strong>를 연결해 실시간 뉴스·지수를 가져온다. 이 연결은 4강 수집 에이전트의 손발이 된다. 동시에 <strong>"이 데이터가 어디로 가는지"</strong> 확인하는 안전 습관을 익힌다.</p>
-<h4>과제 지시</h4>
-<ol>
-<li>시연에서 MCP가 실시간 데이터를 물어오는 장면 관찰(⓶).</li>
-<li><strong>MCP 설정 스니펫</strong>(스타터)의 빈칸을 채워 웹검색 MCP를 연결.</li>
-<li>연결 후 "오늘 나스닥/코스피 주요 뉴스 3건 가져와" 등으로 <strong>실데이터 수집 테스트</strong>.</li>
-<li><strong>데이터 흐름 점검</strong>: 이 MCP가 무엇을 어디로 보내는지 1줄로 기록.</li>
-<li>제출물: 동작하는 <code>.mcp.json</code> + 수집 테스트 결과 캡처.</li>
-</ol>
-<h4>스캐폴딩 (스타터 명세)</h4>
-<blockquote>
-<p><strong>채워둘 것</strong>: MCP 설정 JSON 구조 + 서버 이름 슬롯.
-<strong>빈칸</strong>: 사용할 MCP 서버 지정, (필요 시) 키는 <strong>환경변수 참조</strong>로만.</p>
-</blockquote>
-<pre><code class="language-jsonc">// .mcp.json  (스타터: 서버명·env 참조만 채우기. 키를 직접 붙여넣지 말 것)
+<h3>실습 3-2 · 메일 발송 MCP 연결로 회의록 에이전트 완성 <em>(★ 부품: 동작하는 회의록 에이전트 1개)</em></h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (종합) 스킬 + 메일 발송 MCP/커넥터를 묶어 동작하는 회의록 에이전트로 결선. (3-5·3-6) · <strong>소요</strong> 25분 · <strong>난이도</strong> 중급 · <em>피라미드 3→4단계(조립 미니)</em></div>
+<div class="block-label">시나리오</div>
+<p>스킬이 "내가 만든 도구"라면 MCP는 "외부 세계로 난 창". <strong>메일 발송 MCP</strong>를 연결해 3-1 스킬이 만든 회의록을 <strong>참석자에게 메일로 발송</strong>한다. 이 조립으로 부품이 처음 <strong>하나의 에이전트</strong>가 된다. 동시에 <strong>"이 데이터가 어디로 가는지"(메일 행선지)</strong> 확인하는 안전 습관을 익힌다.</p>
+<div class="block-label">과제 지시</div>
+<ol><li>시연에서 스킬→MCP가 이어져 회의록이 메일로 나가는 장면 관찰(⓶).</li><li><strong>MCP 설정 스니펫</strong> 빈칸을 채워 메일 발송 MCP 연결.</li><li><strong>에이전트 결선 골격</strong>에 3-1 스킬 A·B와 메일 MCP를 지정해 조립.</li><li>합성 회의 메모로 실행 → 생성→문서화→<strong>(사람 최종확인)</strong>→본인 주소로 테스트 발송.</li><li><strong>데이터 흐름 점검</strong>: MCP가 무엇을 어디로 보내는지 1줄 기록.</li><li>제출물: 동작 <code>.mcp.json</code> + <code>minutes_agent/</code> + 발송 결과 캡처.</li></ol>
+<div class="module-head"><strong>스캐폴딩 스타터</strong> — <em>빈칸</em>: 메일 MCP 서버 지정·키는 환경변수 참조·에이전트가 쓸 스킬/MCP 지정.</div>
+<pre><code>// .mcp.json  (스타터: 서버명·env 참조만 채우기. 키를 직접 붙여넣지 말 것)
 {
   &quot;mcpServers&quot;: {
-    &quot;web-search&quot;: {
-      &quot;command&quot;: &quot;____&quot;,           // 빈칸: 웹검색 MCP 실행 명령
+    &quot;mail-send&quot;: {
+      &quot;command&quot;: &quot;____&quot;,           // 빈칸: 메일 발송 MCP 실행 명령
       &quot;args&quot;: [],
-      &quot;env&quot;: { &quot;SEARCH_API_KEY&quot;: &quot;${SEARCH_API_KEY}&quot; }  // ⚠️ 값이 아니라 참조!
+      &quot;env&quot;: { &quot;MAIL_API_KEY&quot;: &quot;${MAIL_API_KEY}&quot; }  // ⚠️ 값이 아니라 참조!
     }
   }
-}
-</code></pre>
-<pre><code class="language-markdown">[데이터 흐름 점검표 — 필수 기록]
-
-- 이 MCP가 보내는 것: (예) 검색 쿼리 문자열
-- 보내는 곳: (예) 검색 제공자 서버
-- 받아오는 것: (예) 뉴스 제목·URL·요약
-- 고객/기밀 정보를 쿼리에 넣지 않는다: [ ] 확인
-</code></pre>
-<ul>
-<li><strong>힌트 1</strong>: "MCP는 설정 후 Claude Code 재시작해야 잡혀요." · <strong>힌트 2</strong>: "키는 절대 JSON에 직접 X → <code>${환경변수}</code> 참조."</li>
-<li><strong>힌트 3</strong>: 동작하는 최소 설정 1개 공개.</li>
-</ul>
-<h4>[조교 개입 신호]</h4>
-<ul>
-<li>MCP 미인식 / <strong>키를 JSON에 하드코딩</strong> / 검색 쿼리에 고객정보 삽입 → 즉시 개입.</li>
-</ul>
-<h4>완료 판정 기준 (동작 확인)</h4>
-<ul>
-<li>MCP 연결 후 실제 웹 데이터(뉴스 3건)를 가져와 화면에 표시.</li>
-<li>데이터 흐름 점검표 4항목 기록 완료.</li>
-<li><strong>안전 게이트</strong>: 키 하드코딩 0(환경변수 참조만), 쿼리에 개인정보 0.</li>
-</ul>
-<h4>직군별 미러링 변형 (3강 공통)</h4>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>직군</th>
-<th>스킬 A(요약)</th>
-<th>스킬 B(정리/추출)</th>
-<th>MCP 수집 대상</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>회계·세무</td>
-<td>세법 개정문 요약</td>
-<td>개정사항 표 추출</td>
-<td>국세청·기재부 공지</td>
-</tr>
-<tr>
-<td>법무</td>
-<td>판례 핵심 요약</td>
-<td>쟁점·판시 표</td>
-<td>판례·입법예고</td>
-</tr>
-<tr>
-<td>미디어</td>
-<td>기사 5줄 요약</td>
-<td>산업뉴스 표</td>
-<td>산업 뉴스 검색</td>
-</tr>
-<tr>
-<td>MICE</td>
-<td>행사 개요 요약</td>
-<td>행사 일정 표</td>
-<td>컨퍼런스·전시 일정</td>
-</tr>
-<tr>
-<td>투자</td>
-<td>공시·리포트 요약</td>
-<td>지표·이벤트 표</td>
-<td>지수·종목 뉴스</td>
-</tr>
-</tbody>
-</table></div>
-<hr />
-</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">4강 캡스톤 — "부품을 팀으로, 팀을 하네스로" (총괄평가)</div></div>
-<h3>캡스톤 개요</h3>
-<p>전 과정의 부품을 집결시켜 <strong>글로벌 증시·뉴스 인사이트 에이전트팀 하네스</strong>를 완성하고, 이를 <strong>본인 업무로 미러링</strong>한다. 이것이 수료 증거물이다.</p>
+}</code></pre>
+<pre><code># minutes_agent/agent.md  (회의록 에이전트 결선 골격 — 슬롯만 채우기)
+---
+name: minutes-agent
+description: 회의 메모 → 회의록 생성·문서화 → 메일 발송
+skills: [____ , ____]        # ← 빈칸: 3-1의 스킬 A(생성), 스킬 B(문서화)
+tools:  [____]               # ← 빈칸: 메일 발송 MCP
+---
+파이프라인:
+1) make-minutes  로 회의록 구조화
+2) format-doc    로 메일 본문 생성
+3) (사람 최종확인)  ← 발송 전 반드시 사람이 확인      # 안전 게이트 ④
+4) mail-send MCP 로 참석자에게 발송
+안전: 참석자 실명 마스킹 · 발송 전 수신자 주소 재확인</code></pre>
+<pre><code>[데이터 흐름 점검표 — 필수 기록]
+- 이 MCP가 보내는 것: (예) 회의록 메일 본문·수신자 주소
+- 보내는 곳: (예) 메일 서비스 서버 → 참석자 메일함
+- 받아오는 것: (예) 발송 성공/실패 응답
+- 고객/기밀·미확인 회의록을 발송하지 않는다: [ ] 사람 최종확인 완료</code></pre>
+<ul><li><strong>힌트 1</strong>: "MCP는 설정 후 Claude Code 재시작해야 잡혀요." · <strong>힌트 2</strong>: "키는 절대 JSON에 직접 X → <code>${환경변수}</code> 참조."</li><li><strong>힌트 3</strong>: 동작하는 최소 설정 1개 + 결선 골격 스킬 슬롯 1개 공개.</li></ul>
+<div class="callout warn"><div class="ico">!</div><div class="cbody"><p><strong>[조교 개입 신호]</strong> MCP 미인식 / <strong>키 하드코딩</strong> / 회의록에 참석자 실명·기밀 방치 / <strong>사람 확인 없이 곧장 발송</strong> → 즉시 개입. 발송 행선지 미확인·무단 발송은 안전수칙 위반이므로 반드시 잡는다.</p></div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정</strong> — 1회 실행: 생성→문서화→(사람 확인)→<strong>본인 주소로 테스트 메일 1통 수신</strong> · 흐름 점검표 4항목 기록 · <strong>재현성</strong>: 같은 메모 2회 동일 품질 · <strong>안전 게이트</strong>: 키 하드코딩 0·실명 마스킹·발송 전 사람 최종확인.</p></div></div>
+<div class="callout info"><div class="ico">i</div><div class="cbody"><p><strong>[최소 통과선]</strong> 스킬 A+문서화까지 동작, 메일 발송은 조교와 함께 1회 성공. <strong>[확장 과제]</strong> 검증 스킬 C 삽입 / 발송 대신 초안(draft) 저장 모드 / 회의록을 1강 배포 페이지에 저장.</p></div></div>
+<div class="block-label">카운트다운 체크 (회의록 에이전트 완성 확인)</div>
+<ul><li class="check">스킬 A(생성) 동작</li><li class="check">스킬 B(문서화) 동작</li><li class="check">메일 MCP 연결·인식</li><li class="check">4단계 파이프라인 결선(생성→문서화→사람확인→발송)</li><li class="check">본인 주소 테스트 발송 성공</li><li class="check"><code>minutes_agent/</code> + <code>.mcp.json</code> 저장(→4강 조립 노하우 이월)</li></ul>
+</section>
+<div class="day-divider"><span class="d-badge">캡스톤</span><span class="d-title">4강 · 부품을 팀으로, 팀을 하네스로 (CLI·에신Lite)</span></div>
+<section class="card card--violet"><div class="sess-head"><span class="sess-no">4강</span><div class="sess-title">캡스톤 — "Claude Code CLI · 에신Lite 하네스" (총괄평가)</div></div>
+<div class="block-label">캡스톤 개요 · 부품 집결도</div>
+<p>전 과정 부품을 집결시켜 <strong>글로벌 증시·뉴스 인사이트 에이전트팀 하네스</strong>를 <strong>Claude Code CLI·에신Lite</strong>로 완성하고, 이를 <strong>본인 업무로 미러링</strong>한다. 이것이 수료 증거물이다.</p>
 <pre><code>[캡스톤 부품 집결도]
-0강 I/P/O 시트 ─────────────────────────▶ (4-3 미러링 시드)
-1강 배포 URL/Supabase ──┐
-2강 콘텐츠 포맷 ─────────┤─▶ 4역할 에이전트팀 ─▶ 하네스 1개 ─▶ 본인 업무 미러링
-3강 스킬 2~3 + MCP ─────┘   (수집·분석·검증·요약)   (재실행)    (전이)
-</code></pre>
-<h3>학습목표 매핑 (이 캡스톤이 통합 평가하는 것)</h3>
-<ul>
-<li><strong>LO3(창조)</strong>: 4역할 에이전트를 하나의 팀으로 오케스트레이션. (4-3·4-4)</li>
-<li><strong>LO3(창조)</strong>: 재실행 가능한 하네스로 패키징. (4-4)</li>
-<li><strong>LO4(전이)</strong>: 공통 프로젝트를 본인 업무로 미러링. (4-5)</li>
-<li><strong>LO5(평가)</strong>: 산출물을 수료 루브릭 3기준으로 자기판정. (4-6)</li>
-</ul>
+0강 I/P/O 시트 ────────────────────────────────▶ (4-2 미러링 시드)
+1강 배포·게시 URL/Supabase ──┐
+2강 콘텐츠 포맷 ──────────────┤─▶ 4역할 에이전트팀 ─▶ 하네스 1개 ─▶ 본인 업무 미러링
+3강 회의록 에이전트 ──────────┘   (수집·분석·검증·요약)  (CLI·에신Lite)  (전이)
+  (스킬·MCP 조립 노하우 + 요약 스킬 재사용)          (재실행·게시)</code></pre>
+<div class="block-label">학습목표 매핑</div>
+<ul><li><strong>LO(종합)</strong> 4역할 에이전트를 하나의 팀으로 오케스트레이션. (4-3·4-4)</li><li><strong>LO(창조)</strong> <strong>Claude Code CLI·에신Lite</strong>로 재실행 가능한 하네스로 패키징·게시. (4-4)</li><li><strong>LO(전이)</strong> 공통 프로젝트를 본인 업무로 미러링. (4-5)</li><li><strong>LO(평가)</strong> 산출물을 수료 루브릭 3기준으로 자기판정. (4-6)</li></ul>
 <hr />
-<h3>실습 4-1(미니 프로젝트): 공통 프로젝트 하네스 결선 — 4역할 조립</h3>
-<p><strong>매핑 학습목표</strong>: (창조) 3강 스킬·MCP를 붙여 수집·분석·검증·요약 4역할을 구성하고 하네스로 묶는다. (4-3·4-4)
-<strong>예상 소요시간</strong>: 55분 (4-3 25분 + 4-4 30분)
-<strong>난이도</strong>: 고급 · <strong>피라미드 4단계(미니 프로젝트·명세서 중심)</strong></p>
-<h4>시나리오</h4>
-<p>당신 조는 "매일 아침 글로벌 증시·주요 기업 뉴스에서 <strong>의사결정용 브리핑</strong>을 자동 생성"하는 에이전트팀을 만든다. 4명의 AI 직원(수집·분석·검증·요약)을 고용해 한 팀으로 일하게 하고, 버튼 한 번으로 재실행되도록 <strong>하네스</strong>로 포장한다.</p>
-<h4>기능 요구사항</h4>
-<p><strong>필수(Must)</strong></p>
-<ol>
-<li><strong>수집 에이전트</strong>: 웹검색 MCP(3강)로 지정 주제 지수·기업 뉴스 수집.</li>
-<li><strong>분석 에이전트</strong>: 정리/요약 스킬(3강)로 전조·패턴·인사이트 도출.</li>
-<li><strong>검증 에이전트</strong>: 검증 스킬로 숫자·출처 교차검증(★ 생략 금지).</li>
-<li><strong>요약 에이전트</strong>: 요약 스킬로 2강 콘텐츠 포맷의 <strong>브리핑 카드</strong> 생성.</li>
-<li><strong>하네스</strong>: 위 4역할을 순서대로 재실행하는 오케스트레이션 파일 1개.</li>
-</ol>
-<p><strong>선택(보너스)</strong></p>
-<ul>
-<li>브리핑을 1강 배포 채널(페이지/DB)에 저장·게시.</li>
-<li>실패 시 재시도, 주제 파라미터화(종목 목록 바꿔 실행).</li>
-</ul>
-<h4>스캐폴딩 (스타터 명세)</h4>
-<blockquote>
-<p><strong>채워둘 것</strong>: 4개 에이전트 정의 스켈레톤(역할·입력·출력·연동 부품 슬롯) + 하네스 오케스트레이션 골격(순서·데이터 전달 배관). 실행되는 상태로 제공.
-<strong>빈칸</strong>: 각 에이전트의 <strong>연동 부품 지정</strong>(어느 스킬/MCP를 쓸지)과 <strong>역할 프롬프트</strong>, 하네스의 <strong>호출 순서·전달 데이터</strong>.</p>
-</blockquote>
-<pre><code class="language-markdown"># harness/agents/collector.md  (수집 에이전트 스켈레톤)
+<h3>실습 4-1 (미니 프로젝트) · 공통 프로젝트 하네스 결선 — 4역할 조립 (CLI·에신Lite)</h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (종합) 3강 부품·조립 노하우를 붙여 수집·분석·검증·요약 4역할 구성·하네스 결선. (4-3·4-4) · <strong>소요</strong> 55분 · <strong>난이도</strong> 고급 · <em>피라미드 4단계(미니 프로젝트)</em></div>
+<div class="block-label">시나리오</div>
+<p>"매일 아침 글로벌 증시·주요 기업 뉴스에서 <strong>의사결정용 브리핑</strong>을 자동 생성"하는 에이전트팀을 만든다. 4명의 AI 직원(수집·분석·검증·요약)을 한 팀으로, <strong>Claude Code CLI·에신Lite</strong>로 버튼 한 번에 재실행되도록 <strong>하네스</strong>로 포장·게시. 3강 회의록 에이전트에서 익힌 "스킬+MCP 조립 노하우"가 그대로 쓰인다.</p>
+<div class="block-label">기능 요구사항</div>
+<p><strong>필수(Must)</strong></p><ol><li><strong>수집 에이전트</strong>: 웹검색 MCP로 지정 주제 지수·기업 뉴스 수집.</li><li><strong>분석 에이전트</strong>: 정리/요약 스킬로 전조·패턴·인사이트 도출.</li><li><strong>검증 에이전트</strong>: 검증 스킬로 숫자·출처 교차검증(★ 생략 금지).</li><li><strong>요약 에이전트</strong>: <strong>3강 요약/문서화 스킬을 재사용</strong>해 2강 콘텐츠 포맷의 브리핑 카드 생성.</li><li><strong>하네스</strong>: 4역할을 순서대로 재실행하는 오케스트레이션 파일 1개(CLI·에신Lite).</li></ol>
+<p><strong>선택(보너스)</strong> — 브리핑을 1강 배포·게시 채널에 저장·게시 / 실패 시 재시도·주제 파라미터화.</p>
+<div class="module-head"><strong>스캐폴딩 스타터</strong> — 4역할 스켈레톤+하네스 골격 실행 상태 제공(에신Lite가 스켈레톤 생성 보조). <em>빈칸</em>: 연동 부품 지정·역할 프롬프트·호출 순서.</div>
+<pre><code># harness/agents/collector.md  (수집 에이전트 스켈레톤)
 ---
 name: collector
 description: 글로벌 증시·기업 뉴스 수집
-tools: [web-search MCP]     # ← 3강에서 만든 MCP 지정
+tools: [web-search MCP]     # ← 3강에서 익힌 MCP 연결 방식 그대로
 ---
 역할: __________ (빈칸: 무엇을 수집하는지)
 입력: 주제/종목 목록
 출력: 뉴스 원자료(제목·URL·요지) 리스트   # ← 다음(analyst)에 전달
-안전: 검색 쿼리에 고객/기밀 금지
-</code></pre>
-<pre><code class="language-markdown"># harness/agents/verifier.md  (검증 에이전트 스켈레톤 — 생략 금지 역할)
+안전: 검색 쿼리에 고객/기밀 금지</code></pre>
+<pre><code># harness/agents/verifier.md  (검증 에이전트 스켈레톤 — 생략 금지 역할)
 ---
 name: verifier
 description: 숫자·출처 교차검증
-tools: [verify-skill]       # ← 3강 검증 스킬
+tools: [verify-skill]       # ← 3강 확장 스킬 C 재사용 가능
 ---
 역할: analyst 결과의 모든 숫자·주장에 출처 확인
-규칙: 출처 없는 주장은 '[미검증]' 표시 후 요약에서 제외
-출력: 검증 통과 인사이트만
-</code></pre>
-<pre><code class="language-yaml"># harness/run.yaml  (하네스 결선 골격 — 순서·전달만 채우기)
+규칙: 출처 없는 주장은 &#x27;[미검증]&#x27; 표시 후 요약에서 제외
+출력: 검증 통과 인사이트만</code></pre>
+<pre><code># harness/run.yaml  (하네스 결선 골격 — 순서·전달만 채우기 · CLI·에신Lite 실행)
 pipeline:
-
   - agent: collector   # 출력 → analyst.input
   - agent: analyst     # 출력 → verifier.input
   - agent: ____        # 빈칸: 무엇이 와야 하나? (검증)
-  - agent: summarizer  # 출력 → 브리핑 카드
-output: 내문서/vibecoding/harness/briefing_{date}.md
-</code></pre>
-<ul>
-<li><strong>힌트 1(방향)</strong>: "각 에이전트의 '출력'이 다음 에이전트의 '입력'이 되도록 배관을 잇는 게 핵심."</li>
-<li><strong>힌트 2(접근)</strong>: "먼저 collector 하나만 돌려 뉴스가 오는지 확인 → 하나씩 뒤에 붙이세요."</li>
-<li><strong>힌트 3(골격)</strong>: collector→analyst 2역할까지 완성본 공개 → verifier·summarizer는 조가 완성.</li>
-</ul>
-<h4>[조교 개입 신호]</h4>
-<ul>
-<li>에이전트 간 데이터가 안 넘어감 / <strong>검증 에이전트를 건너뛰고 요약으로 직행</strong> / 하네스가 1역할만 실행 → 즉시 개입. 특히 검증 생략은 이 강의 핵심 안전수칙이므로 반드시 잡는다.</li>
-</ul>
-<h4>완료 판정 기준 (동작 확인)</h4>
-<ul>
-<li><code>run.yaml</code> 1회 실행 → 4역할이 순서대로 동작 → <code>briefing_{date}.md</code> 브리핑 카드 1개 생성.</li>
-<li>브리핑의 모든 수치·주장에 출처가 붙어 있다(검증 에이전트 통과 증거).</li>
-<li><strong>재현성 확인</strong>: 같은 주제로 <strong>2회 실행</strong> 시 동일 품질 브리핑 생성.</li>
-</ul>
+  - agent: summarizer  # 출력 → 브리핑 카드 (3강 요약/문서화 스킬 재사용)
+output: 내문서/vibecoding/harness/briefing_{date}.md</code></pre>
+<ul><li><strong>힌트 1(방향)</strong>: "각 에이전트 '출력'이 다음 '입력'이 되도록 배관. 3강 회의록 파이프라인과 같은 구조."</li><li><strong>힌트 2(접근)</strong>: "먼저 collector 하나만 돌려 뉴스가 오는지 확인 → 하나씩 뒤에 붙이기."</li><li><strong>힌트 3(골격)</strong>: collector→analyst 2역할까지 완성본 공개 → verifier·summarizer는 조가 완성.</li></ul>
+<div class="callout warn"><div class="ico">!</div><div class="cbody"><p><strong>[조교 개입 신호]</strong> 에이전트 간 데이터 안 넘어감 / <strong>검증 에이전트 건너뛰고 요약 직행</strong> / 하네스가 1역할만 실행 → 즉시 개입. 검증 생략은 이 강 핵심 안전수칙이므로 반드시 잡는다.</p></div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정</strong> — <code>run.yaml</code> 1회 실행→4역할 순차→<code>briefing_{date}.md</code> 카드 1개 · 모든 수치·주장에 출처(검증 통과 증거) · <strong>재현성</strong>: 같은 주제 2회 동일 품질.</p></div></div>
 <hr />
-<h3>실습 4-2(캡스톤 본체): 본인 업무로 미러링</h3>
-<p><strong>매핑 학습목표</strong>: (전이) 공통 하네스를 본인 I/P/O 시나리오로 복제·개조한다. (4-5)
-<strong>예상 소요시간</strong>: 25분 (수업 내) + 30일 클리닉 정착
-<strong>난이도</strong>: 고급 · <strong>피라미드 5단계(캡스톤·멘토링만)</strong></p>
-<h4>시나리오</h4>
-<p>공통 프로젝트로 원리를 익혔으니, 이제 <strong>본인 업무(0강 I/P/O 시트 ★행)</strong>로 하네스를 복제한다. "수집→분석→검증→요약" 4역할은 그대로, <strong>소재·스킬·출력만 본인 업무로</strong> 바꾼다.</p>
-<h4>과제 지시</h4>
-<ol>
-<li>0강 I/P/O 시트의 <code>★</code> 업무를 연다.</li>
-<li>공통 하네스 폴더를 복제(<code>harness/</code> → <code>harness_mine/</code>).</li>
-<li>각 에이전트의 <strong>소재·스킬·MCP·출력</strong>을 본인 업무로 치환(4역할 골격은 유지).</li>
-<li>본인 업무 실데이터(가명/합성)로 실행 → 결과물 1개 생성.</li>
-<li>제출물: 동작하는 <code>harness_mine/</code> + 생성 결과물 1개 + 자기판정표(4-3).</li>
-</ol>
-<h4>스캐폴딩 (미러링 치환표 — 스타터)</h4>
-<blockquote>
-<p><strong>채워둘 것</strong>: 4역할 골격·배관은 복제 그대로 제공.
-<strong>빈칸</strong>: 아래 치환표의 "내 업무" 열.</p>
-</blockquote>
-<pre><code class="language-markdown">| 역할 | 공통 프로젝트 | → 내 업무로 치환 (빈칸) |
+<h3>실습 4-2 (캡스톤 본체) · 본인 업무로 미러링</h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (전이) 공통 하네스를 본인 I/P/O 시나리오로 복제·개조. (4-5) · <strong>소요</strong> 25분(수업 내)+30일 클리닉 · <strong>난이도</strong> 고급 · <em>피라미드 5단계(캡스톤·멘토링)</em></div>
+<div class="block-label">시나리오</div>
+<p>공통 프로젝트로 원리를 익혔으니 이제 <strong>본인 업무(0강 I/P/O 시트 ★행)</strong>로 하네스를 복제. "수집→분석→검증→요약" 4역할은 그대로, <strong>소재·스킬·출력만 본인 업무로</strong> 바꾼다. 검증은 생략하지 않고, 최종 확인은 사람이 한다.</p>
+<div class="block-label">과제 지시</div>
+<ol><li>0강 I/P/O 시트의 <code>★</code> 업무를 연다.</li><li>공통 하네스 폴더 복제(<code>harness/</code> → <code>harness_mine/</code>).</li><li>각 에이전트의 소재·스킬·MCP·출력을 본인 업무로 치환(4역할 골격 유지).</li><li>본인 업무 실데이터(가명/합성)로 실행 → 결과물 1개 생성.</li><li>제출물: 동작 <code>harness_mine/</code> + 결과물 1개 + 자기판정표(4-3).</li></ol>
+<div class="module-head"><strong>스캐폴딩 미러링 치환표</strong> — 4역할 골격·배관 복제 그대로. <em>빈칸</em>: "내 업무" 열.</div>
+<pre><code>| 역할 | 공통 프로젝트 | → 내 업무로 치환 (빈칸) |
 |------|--------------|------------------------|
 | 수집 | 증시·뉴스 (web MCP) | ________ (내 입력원) |
 | 분석 | 전조·패턴 스킬 | ________ (내 처리 규칙) |
 | 검증 | 숫자·출처 검증 | ________ (내 확인 항목) |
-| 요약 | 브리핑 카드 | ________ (내 출력물) |
-</code></pre>
-<ul>
-<li><strong>힌트 1</strong>: "0강 I/P/O의 입력(I)=수집, 처리(P)=분석, 출력(O)=요약에 그대로 대응돼요."</li>
-<li><strong>힌트 2</strong>: "3강에서 만든 본인 직군 스킬을 여기에 그대로 끼우면 됩니다."</li>
-<li><strong>힌트 3</strong>: 조교가 직군별 미러링 예(아래)로 1역할 시범 치환.</li>
-</ul>
-<h4>[조교 개입 신호]</h4>
-<ul>
-<li>미러링 대상 업무가 자동화 부적합(판단 100% 사람 몫) → 4역할 중 자동화 가능한 부분만 도려내도록 재설계 안내. / 실데이터에 고객정보 유입 → 즉시 가명화.</li>
-</ul>
-<h4>완료 판정 기준 (동작 확인)</h4>
-<ul>
-<li><code>harness_mine/</code> 실행 → 본인 업무 결과물 1개 생성.</li>
-<li>결과물이 0강 I/P/O 시트의 <strong>출력(O)과 일치</strong>한다.</li>
-<li><strong>재현성</strong>: 2회 실행 동일 품질.</li>
-</ul>
-<h4>직군별 미러링 변형 예시 (캡스톤)</h4>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>직군</th>
-<th>수집</th>
-<th>분석</th>
-<th>검증</th>
-<th>요약(출력)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>회계·세무</strong></td>
-<td>세법 개정·국세청 공지 수집</td>
-<td>우리 고객 영향 항목 도출</td>
-<td>개정 조항 원문 대조</td>
-<td>월 세무 변경 브리핑</td>
-</tr>
-<tr>
-<td><strong>법무</strong></td>
-<td>판례·입법예고 수집</td>
-<td>담당 분야 쟁점 추출</td>
-<td>판례번호·조문 대조</td>
-<td>판례 요약 메모</td>
-</tr>
-<tr>
-<td><strong>미디어</strong></td>
-<td>산업 뉴스 수집</td>
-<td>이번 주 핵심 흐름 분석</td>
-<td>사실·수치 팩트체크</td>
-<td>데스크 브리핑 카드</td>
-</tr>
-<tr>
-<td><strong>MICE</strong></td>
-<td>컨퍼런스·전시 일정 수집</td>
-<td>자사 타깃 행사 선별</td>
-<td>일시·장소·주최 확인</td>
-<td>월간 행사 캘린더</td>
-</tr>
-<tr>
-<td><strong>투자</strong></td>
-<td>관심 종목·지수 뉴스 수집</td>
-<td>전조·이벤트 인사이트</td>
-<td>숫자·출처 교차검증</td>
-<td>투자 판단 카드</td>
-</tr>
-</tbody>
-</table></div>
+| 요약 | 브리핑 카드 | ________ (내 출력물) |</code></pre>
+<ul><li><strong>힌트 1</strong>: "0강 I/P/O의 입력(I)=수집, 처리(P)=분석, 출력(O)=요약에 그대로 대응."</li><li><strong>힌트 2</strong>: "3강에서 만든 본인 직군 스킬(회의록 생성·문서화)을 그대로 끼우면 됩니다."</li><li><strong>힌트 3</strong>: 조교가 직군별 미러링 예로 1역할 시범 치환.</li></ul>
+<div class="callout warn"><div class="ico">!</div><div class="cbody"><p><strong>[조교 개입 신호]</strong> 미러링 대상이 자동화 부적합(판단 100% 사람 몫) → 자동화 가능한 부분만 도려내도록 재설계 안내. / 실데이터에 고객정보 유입 → 즉시 가명화.</p></div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정</strong> — <code>harness_mine/</code> 실행→본인 업무 결과물 1개 · 결과물이 0강 I/P/O 시트의 <strong>출력(O)과 일치</strong> · <strong>재현성</strong>: 2회 동일 품질.</p></div></div>
+<div class="block-label">직군별 미러링 변형 예시 (캡스톤)</div>
+<div class="tbl-wrap"><table><thead><tr><th>직군</th><th>수집</th><th>분석</th><th>검증</th><th>요약(출력)</th></tr></thead><tbody><tr><td>회계·세무</td><td>세법 개정·국세청 공지</td><td>우리 고객 영향 항목 도출</td><td>개정 조항 원문 대조</td><td>월 세무 변경 브리핑</td></tr><tr><td>법무</td><td>판례·입법예고 수집</td><td>담당 분야 쟁점 추출</td><td>판례번호·조문 대조</td><td>판례 요약 메모</td></tr><tr><td>미디어</td><td>산업 뉴스 수집</td><td>이번 주 핵심 흐름 분석</td><td>사실·수치 팩트체크</td><td>데스크 브리핑 카드</td></tr><tr><td>MICE</td><td>컨퍼런스·전시 일정 수집</td><td>자사 타깃 행사 선별</td><td>일시·장소·주최 확인</td><td>월간 행사 캘린더</td></tr><tr><td>투자</td><td>관심 종목·지수 뉴스</td><td>전조·이벤트 인사이트</td><td>숫자·출처 교차검증</td><td>투자 판단 카드</td></tr></tbody></table></div>
 <hr />
-<h3>실습 4-3: 루브릭 자기판정 (수료 게이트)</h3>
-<p><strong>매핑 학습목표</strong>: (평가) 실데이터·결과지향·재현성 3기준으로 자기판정한다. (4-6)
-<strong>예상 소요시간</strong>: 15분
-<strong>난이도</strong>: 중급 · <strong>피라미드 5단계(자기평가)</strong></p>
-<h4>과제 지시</h4>
-<p>아래 <strong>자기판정표</strong>를 채워 3기준 + 안전 게이트를 스스로 판정한다. 보완 항목은 30일 클리닉으로 이월.</p>
-<pre><code class="language-markdown">[캡스톤 자기판정표]
+<h3>실습 4-3 · 루브릭 자기판정 (수료 게이트)</h3>
+<div class="sess-meta"><strong>매핑 학습목표</strong> (평가) 실데이터·결과지향·재현성 3기준으로 자기판정. (4-6) · <strong>소요</strong> 15분 · <strong>난이도</strong> 중급 · <em>피라미드 5단계(자기평가)</em></div>
+<p>아래 자기판정표를 채워 3기준 + 안전 게이트를 스스로 판정. 보완 항목은 30일 클리닉으로 이월.</p>
+<pre><code>[캡스톤 자기판정표]
 | 기준 | 확인 질문 | 내 증거 | 통과/보완 |
 |------|----------|---------|----------|
 | ⓵ 실데이터 동작 | 실제 내/공통 업무 데이터로 돌았나 | ____ | ____ |
-| ⓶ 결과 지향 | '응답'이 아니라 '결과물'이 나왔나 | ____ | ____ |
+| ⓶ 결과 지향 | &#x27;응답&#x27;이 아니라 &#x27;결과물&#x27;이 나왔나 | ____ | ____ |
 | ⓷ 재현성 | 2회 실행 동일 품질인가 | ____ | ____ |
 [안전 게이트]
-
-- [ ] ① 비밀키 노출 0  - [ ] ② 개인정보 입력 0  - [ ] ③ 검증 단계 수행  - [ ] ④ 데이터 흐름·최종 확인
-</code></pre>
-<h4>완료 판정 기준 (= 수료 판정)</h4>
-<ul>
-<li>3기준 <strong>모두 통과</strong> + 안전 게이트 4개 전부 <code>✅</code> → <strong>수료</strong>.</li>
-<li>하나라도 보완 → 30일 클리닉에서 마무리(조건부 수료).</li>
-</ul>
-<hr />
-</section><div class="day-divider"><span class="d-title">종합 평가 루브릭</span></div><section class="card card--violet"><div class="sess-head"><span class="sess-no">08</span><div class="sess-title">A. 캡스톤 총괄 루브릭 (수료 3기준 — AX 2차 계승, 통과/보완제)</div></div>
+- [ ] ① 비밀키 노출 0  - [ ] ② 개인정보 입력 0  - [ ] ③ 검증 단계 수행  - [ ] ④ 데이터 흐름·사람 최종확인</code></pre>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>완료 판정(=수료)</strong> — 3기준 <strong>모두 통과</strong>+안전 게이트 4개 <code>✅</code> → <strong>수료</strong>. 하나라도 보완 → 30일 클리닉 마무리(조건부 수료).</p></div></div>
+</section>
+<div class="day-divider"><span class="d-badge">평가</span><span class="d-title">종합 평가 루브릭 + 운영 노트</span></div>
+<section class="card card--orange"><div class="sess-head"><span class="sess-no">루브릭</span><div class="sess-title">종합 평가 루브릭</div></div>
+<div class="block-label">A · 캡스톤 총괄 루브릭 (수료 3기준 — 통과/보완제)</div>
 <p>수료의 최종 판정 기준. <strong>3기준 모두 통과 시 수료.</strong></p>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>기준</th>
-<th>통과</th>
-<th>보완 (→ 30일 클리닉)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>⓵ 실데이터 동작</strong></td>
-<td>실제 본인/공통 업무 데이터로 처음부터 끝까지 동작, 결과물 생성</td>
-<td>샘플/더미로만 동작, 실데이터 미검증</td>
-</tr>
-<tr>
-<td><strong>⓶ 결과 지향</strong></td>
-<td>"응답이 있다"가 아니라 <strong>의사결정용 결과물</strong>(브리핑·카드·표)이 산출됨</td>
-<td>텍스트 응답만 나오고 정형 산출물 없음</td>
-</tr>
-<tr>
-<td><strong>⓷ 재현성</strong></td>
-<td>같은 입력 2회 실행 시 동일 품질·형식 산출</td>
-<td>실행마다 형식·품질 편차 큼</td>
-</tr>
-</tbody>
-</table></div>
-<p><strong>수료 증명</strong> = 배포된 데모 URL(1강 부품) + 동작하는 하네스 산출 영상/기록.</p>
-</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">09</span><div class="sess-title">B. 안전 게이트 (전 실습 공통 — 무관용 반려제)</div></div>
-<p>아래는 점수가 아니라 <strong>게이트</strong>다. 하나라도 위반 시 산출물 반려 후 재실행(수료 불가).</p>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>게이트</th>
-<th>통과 조건</th>
-<th>위반 예 (반려)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>① 비밀키 노출 0</strong></td>
-<td><code>anon</code> 공개키만 사용, <code>service_role</code>·API키가 코드·화면·스크린샷·프롬프트에 없음</td>
-<td>페이지 소스/스크린샷에 service_role 노출</td>
-</tr>
-<tr>
-<td><strong>② 개인정보 입력 0</strong></td>
-<td>폼 예시·프롬프트·테스트에 가명/합성 데이터만</td>
-<td>실제 고객명·계좌·주민번호 입력</td>
-</tr>
-<tr>
-<td><strong>③ 검증 단계 수행</strong></td>
-<td>AI 생성 숫자·법조항·출처를 사람이 확인(2강 이후)</td>
-<td>검증 없이 게시, 검증 에이전트 생략</td>
-</tr>
-<tr>
-<td><strong>④ 데이터 흐름·최종 확인</strong></td>
-<td>MCP가 데이터를 어디로 보내는지 확인, 대외 산출 전 최종 확인을 사람이 함(3강·4강)</td>
-<td>데이터 행선지 미확인, 사람 확인 없이 대외 발송</td>
-</tr>
-</tbody>
-</table></div>
-</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">10</span><div class="sess-title">C. 강별 실습 분석적 루브릭 (형성 — 통과선 진단용)</div></div>
-<p>각 강 실습을 상/중/하로 진단해 다음 강 진입 여부·보정 필요를 판단한다.</p>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>강·실습</th>
-<th>상 (90~100)</th>
-<th>중 (70~89)</th>
-<th>하 (0~69)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>0강 I/P/O</strong></td>
-<td>업무 2~3개 I·P·O 구체적, ★우선순위·주기 명시</td>
-<td>2개 채웠으나 일부 모호</td>
-<td>1개 이하·모호어 다수</td>
-</tr>
-<tr>
-<td><strong>1강 배포</strong></td>
-<td>URL 공개 접속 + 폼 제출→Supabase 저장 확인, 확장 1개</td>
-<td>URL은 열리나 DB 저장 조교 도움</td>
-<td>URL 미배포</td>
-</tr>
-<tr>
-<td><strong>2강 콘텐츠</strong></td>
-<td>게시 + 검증 흔적 1건 이상 + 유튜브 세트 완비</td>
-<td>게시했으나 검증 형식적</td>
-<td>미검증 게시·미게시</td>
-</tr>
-<tr>
-<td><strong>3강 스킬·MCP</strong></td>
-<td>스킬 2~3개 트리거·동작 + MCP 실데이터 수집</td>
-<td>스킬 1개 + MCP 부분 동작</td>
-<td>스킬 미동작</td>
-</tr>
-<tr>
-<td><strong>4강 하네스</strong></td>
-<td>4역할 재실행 + 미러링 결과물 + 3기준 통과</td>
-<td>공통 하네스만, 미러링 미완</td>
-<td>하네스 1역할만 동작</td>
-</tr>
-</tbody>
-</table></div>
-<ul>
-<li><strong>채점 규칙</strong>(assessment-engineering): 관찰 가능한 행동으로 기술 · 수준 간 차이 명확 · 학습자에게 사전 공개.</li>
-<li><strong>피드백 공식 EEC</strong> 적용: 증거(Evidence) → 영향(Effect) → 변경(Change) 순으로 코멘트.</li>
-</ul>
-</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">11</span><div class="sess-title">D. 부품 이월 점검 루브릭 (조교 매 강 종료 시)</div></div>
-<p>누적 부품이 다음 강으로 실제 연결되는지 확인(설계원칙 준수 검증).</p>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>확인</th>
-<th>통과 조건</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0강→4강</td>
-<td>I/P/O 시트가 저장돼 4강 미러링에 로드됨</td>
-</tr>
-<tr>
-<td>1강→4강</td>
-<td>배포 URL/Supabase가 하네스 출력 채널로 재사용 가능</td>
-</tr>
-<tr>
-<td>2강→4강</td>
-<td>콘텐츠 포맷이 요약 에이전트 산출 형식으로 반영</td>
-</tr>
-<tr>
-<td>3강→4강</td>
-<td>스킬 파일·MCP 설정이 4역할 에이전트에 실제 연결</td>
-</tr>
-</tbody>
-</table></div>
-<hr />
-</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">12</span><div class="sess-title">부록: 실습 진행 운영 노트 (강사·조교용)</div></div>
-<h3>동적 난이도 조절 (조별 편차 흡수)</h3>
-<div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>상황</th>
-<th>전략</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>조가 막힘</td>
-<td>3단 힌트(방향→접근→골격) 순차, 3분 간격. 정답 즉시 제공 금지</td>
-</tr>
-<tr>
-<td>빠른 조</td>
-<td>각 실습 <code>[확장 과제]</code>로 상향, 상급자에게 옆 조 멘토 역할</td>
-</tr>
-<tr>
-<td>느린 조</td>
-<td>각 실습 <code>[최소 통과선]</code>만 달성 → 다음 강 진입 자격 확보</td>
-</tr>
-<tr>
-<td>배포/설치 사고</td>
-<td>조교 백업 계정(GitHub·Vercel·Supabase 1세트)으로 우회</td>
-</tr>
-</tbody>
-</table></div>
-<h3>데이터/환경 대체 (환경 불분명 시)</h3>
-<ul>
-<li>로컬 설치 실패 → <strong>GitHub Codespaces + Claude Code CLI</strong>(일관 환경).</li>
-<li>실데이터 없음 → 각 실습 <strong>합성 데이터 스니펫</strong> 사용(고객정보 절대 금지).</li>
-<li>공통 프로젝트 뉴스·지수 → 웹검색 MCP로 공개 데이터 실시간 수집(개인정보 무관).</li>
-</ul>
-<h3>예시 솔루션 공개 정책</h3>
-<ul>
-<li>모든 스타터의 완성본은 조교가 보유하되, <strong>각 실습 완료 후에만</strong> 학습자에게 공개(먼저 보면 스캐폴딩 무력화).</li>
-</ul></section></div></div></body></html>
+<div class="tbl-wrap"><table><thead><tr><th>기준</th><th>통과</th><th>보완 (→ 30일 클리닉)</th></tr></thead><tbody><tr><td><strong>⓵ 실데이터 동작</strong></td><td>실제 본인/공통 업무 데이터로 처음부터 끝까지 동작, 결과물 생성</td><td>샘플/더미로만 동작, 실데이터 미검증</td></tr><tr><td><strong>⓶ 결과 지향</strong></td><td>"응답"이 아니라 <strong>의사결정용 결과물</strong>(브리핑·카드·표) 산출</td><td>텍스트 응답만, 정형 산출물 없음</td></tr><tr><td><strong>⓷ 재현성</strong></td><td>같은 입력 2회 실행 시 동일 품질·형식</td><td>실행마다 형식·품질 편차 큼</td></tr></tbody></table></div>
+<div class="callout info"><div class="ico">i</div><div class="cbody"><p><strong>수료 증명</strong> = 배포·게시된 데모 URL(1강 부품) + 동작하는 하네스 산출 영상/기록.</p></div></div>
+<div class="block-label">B · 안전 게이트 (전 실습 공통 — 무관용 반려제)</div>
+<p>점수가 아니라 <strong>게이트</strong>. 하나라도 위반 시 산출물 반려 후 재실행(수료 불가).</p>
+<div class="tbl-wrap"><table><thead><tr><th>게이트</th><th>통과 조건</th><th>위반 예 (반려)</th></tr></thead><tbody><tr><td><strong>① 비밀키 노출 0</strong></td><td><code>anon</code> 공개키만, <code>service_role</code>·API키가 코드·화면·스크린샷·프롬프트에 없음</td><td>페이지 소스/스크린샷에 service_role 노출</td></tr><tr><td><strong>② 개인정보 입력 0</strong></td><td>폼·프롬프트·테스트·회의록에 가명/합성만</td><td>실제 고객명·계좌·주민번호·참석자 실명 입력</td></tr><tr><td><strong>③ 검증 단계 수행</strong></td><td>AI 생성 숫자·법조항·출처를 사람이 확인(2강 이후), 4강 검증 에이전트 필수</td><td>검증 없이 게시, 검증 에이전트 생략</td></tr><tr><td><strong>④ 데이터 흐름·사람 최종확인</strong></td><td>MCP 데이터 행선지 확인(3강 메일), 대외 산출 전 사람 최종 확인</td><td>행선지 미확인, 사람 확인 없이 대외 발송</td></tr></tbody></table></div>
+<div class="block-label">C · 강별 실습 분석적 루브릭 (형성 — 통과선 진단)</div>
+<div class="tbl-wrap"><table><thead><tr><th>강·실습</th><th>상 (90~100)</th><th>중 (70~89)</th><th>하 (0~69)</th></tr></thead><tbody><tr><td><strong>0강 I/P/O</strong></td><td>업무 2~3개 I·P·O 구체적, ★우선순위·주기 명시</td><td>2개 채웠으나 일부 모호</td><td>1개 이하·모호어 다수</td></tr><tr><td><strong>1강 풀스택 배포·게시</strong></td><td>URL 공개 접속+폼→Supabase 저장, 확장 1개</td><td>URL 열리나 DB 저장 조교 도움</td><td>URL 미배포</td></tr><tr><td><strong>2강 콘텐츠</strong></td><td>게시+검증 흔적 1건+유튜브 세트 완비</td><td>게시했으나 검증 형식적</td><td>미검증 게시·미게시</td></tr><tr><td><strong>3강 회의록 에이전트</strong></td><td>스킬 2~3+메일 MCP 조립, 생성→문서화→발송 재현·마스킹</td><td>스킬 1~2개 동작, 발송 조교 도움</td><td>스킬 미동작·조립 실패</td></tr><tr><td><strong>4강 하네스</strong></td><td>4역할 재실행(CLI·에신Lite)+미러링 결과물+3기준 통과</td><td>공통 하네스만, 미러링 미완</td><td>하네스 1역할만 동작</td></tr></tbody></table></div>
+<div class="callout note"><div class="ico">✎</div><div class="cbody"><p><strong>채점 규칙</strong>(assessment-engineering): 관찰 가능한 행동으로 기술 · 수준 간 차이 명확 · 학습자에게 사전 공개.</p><p><strong>피드백 공식 EEC</strong>: 증거(Evidence) → 영향(Effect) → 변경(Change) 순으로 코멘트.</p></div></div>
+<div class="block-label">D · 부품 이월 점검 루브릭 (조교 매 강 종료 시)</div>
+<div class="tbl-wrap"><table><thead><tr><th>확인</th><th>통과 조건</th></tr></thead><tbody><tr><td>0강→4강</td><td>I/P/O 시트가 저장돼 4강 미러링에 로드됨</td></tr><tr><td>1강→4강</td><td>배포·게시 URL/Supabase가 하네스 출력·게시 채널로 재사용 가능</td></tr><tr><td>2강→4강</td><td>콘텐츠 포맷이 요약 에이전트 산출 형식으로 반영</td></tr><tr><td>3강→4강</td><td>회의록 에이전트의 스킬·MCP 조립 노하우(및 요약 스킬)가 4역할에 실제 연결</td></tr></tbody></table></div>
+</section>
+<section class="card card--amber"><div class="sess-head"><span class="sess-no">부록</span><div class="sess-title">실습 진행 운영 노트 (강사·조교용)</div></div>
+<div class="block-label">동적 난이도 조절 (조별 편차 흡수)</div>
+<div class="tbl-wrap"><table><thead><tr><th>상황</th><th>전략</th></tr></thead><tbody><tr><td>조가 막힘</td><td>3단 힌트(방향→접근→골격) 순차, 3분 간격. 정답 즉시 제공 금지</td></tr><tr><td>빠른 조</td><td>각 실습 <code>[확장 과제]</code>로 상향, 상급자에게 옆 조 멘토 역할</td></tr><tr><td>느린 조</td><td>각 실습 <code>[최소 통과선]</code>만 달성 → 다음 강 진입 자격 확보</td></tr><tr><td>배포/설치 사고</td><td>조교 백업 계정(GitHub·Vercel·Supabase 1세트)으로 우회</td></tr></tbody></table></div>
+<div class="block-label">데이터/환경 대체 (환경 불분명 시)</div>
+<ul><li>로컬 설치 실패 → <strong>GitHub Codespaces + Claude Code CLI</strong>(일관 환경).</li><li>실데이터 없음 → 각 실습 <strong>합성 데이터 스니펫</strong>(고객정보 절대 금지).</li><li>3강 회의 메모 → <strong>합성 회의록 스니펫</strong>(가상 안건·가명 참석자).</li><li>공통 프로젝트 뉴스·지수 → 웹검색 MCP로 공개 데이터 실시간 수집(개인정보 무관).</li></ul>
+<div class="block-label">예시 솔루션 공개 정책</div>
+<p>모든 스타터의 완성본(배포된 풀스택 페이지·완성 회의록 에이전트·완성 하네스)은 조교가 보유하되, <strong>각 실습 완료 후에만</strong> 학습자에게 공개(먼저 보면 스캐폴딩 무력화).</p>
+</section>
+<p class="footer-note">VibeCoding_AX_SM v0.2 · 실습과제/캡스톤 갱신본 · lab-designer 재생성 (2026-07) · SSOT: md/01_curriculum.md</p>
+</div></div></body></html>

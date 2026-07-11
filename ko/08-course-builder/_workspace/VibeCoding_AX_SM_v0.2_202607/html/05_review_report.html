@@ -221,331 +221,114 @@ hr{ border:0; height:1px; background:transparent; margin:26px 0; }
 .callout .cbody strong{ color:inherit; }
 /* intro prose between cover and first card */
 .intro{ margin:4px 0 6px; }
-</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">선명AG · AX 3차 · VibeCoding_AX_SM v0.2</div><h1>과정 품질 리뷰 보고서 — VibeCoding_AX_SM (v0.2)</h1></header><div class="intro"><blockquote>
-<p>검증자: course-reviewer (과정검증자 QA)
-검증 대상: <code>00_input.md</code>(SSOT) · <code>01_curriculum.md</code> · <code>02_lesson_plans.md</code> · <code>03_quizzes.md</code> · <code>04_labs.md</code>
-검증일: 2026-07-10</p>
-</blockquote>
-<hr /></div><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">✅ 수정 반영 로그 (오케스트레이터, 2026-07-10)</div></div>
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">선명AG · AX 3차 · VibeCoding_AX_SM v0.2 · 재검증본</div><h1>과정 품질 리뷰 보고서 — VibeCoding_AX_SM (v0.2)</h1><div class="cover-sub">02·03·04 전면 재생성 후 전체 교차 정합성 재검증</div><p class="cover-lede">검증자: course-reviewer(QA) · 검증일: 2026-07-11 · SSOT: <code>html/01_curriculum_tab.html</code></p><div class="cover-meta"><div class="cm"><span class="cm-k">준비 상태</span><span class="cm-v">🟢 배포 가능</span></div><div class="cm"><span class="cm-k">필수 수정</span><span class="cm-v">🔴 1건 → 수정 완료</span></div><div class="cm"><span class="cm-k">권장 수정</span><span class="cm-v">🟡 4건(경미)</span></div><div class="cm"><span class="cm-k">LO 커버리지</span><span class="cm-v">18개 · 누락 0</span></div></div></header><div class="intro"><blockquote><p>새 커리큘럼에 맞춰 교안·퀴즈·실습이 전면 재생성된 뒤의 전체 교차 정합성 재검증. 요구 구조 변경 6종의 일관 반영과 학습목표 정렬·안전수칙 3중 반영·누적 부품 이월을 교차 확인한다.</p></blockquote>
+<hr /></div>
+
+<section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">✅ 이번 재검증 조치 로그 (course-reviewer, 2026-07-11)</div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>🔴 필수수정 1건 — 검증자 직접 수정 완료.</strong> 3강 자동화 8개념의 <strong>"부품 3그룹 청킹"</strong> 분류가 교안(<code>02</code>)에서만 SSOT와 어긋나 있었다. 교안은 "에이전트·에이전트팀 = <strong>만드는 것</strong>"으로 분류했으나 SSOT 커리큘럼(<code>01</code>)·퀴즈(<code>03</code> Q3-2 정답 B·Q3-1 해설)·실습(<code>04</code>)은 모두 "에이전트·에이전트팀 = <strong>묶는 것</strong>". 교안대로 배운 학습자가 Q3-2에서 오답을 내는 <strong>평가-교안 충돌</strong>이므로, 교안 md/HTML을 SSOT 기준(만들기=스킬 / 연결=MCP·커넥터·플러그인 / 묶기=에이전트·에이전트팀·프로젝트·하네스)으로 통일했다. <code>02</code> 4개소 + HTML 트윈 동일 개소 수정, 3-2 강의 시간 배분 5/7/6+2=20분 재정합.</p></div></div>
 <ul>
-<li><strong>🔴 필수수정 1건 — 해결 완료</strong>: 안전 게이트 항목 수를 <strong>4항목으로 통일</strong>했다. <code>01_curriculum.md</code>(안전 루브릭), <code>04_labs.md</code>(0.5 게이트·4-3 자기판정표·B 게이트 표) 모두 quizzes 기준(① 비밀키 · ② 개인정보 · ③ 검증 단계 · ④ 데이터 흐름·최종 확인)에 맞춰 4항목·"4개 전부 ✅" 규칙으로 수정. 수료 판정 기준 문서 간 모순 해소.</li>
-<li><strong>🟡 권장 1건 — 해결 완료</strong>: <code>03_quizzes.md</code> S2 정답 보기 C의 게이트 표기 오류(<code>②·③·③, 그리고 ②</code>)를 해설과 일치하는 <strong><code>각각 ②·③·①</code></strong>로 정정.</li>
-<li><strong>🟡 잔여(경미, 선택 정정)</strong>: 120분 표준 타임라인 합계 라벨(125분 표기), 1·2강 블룸 분포 수치 미세 불일치, "도구 10종" 명명 vs 항목 11개 — 배포·운영에 지장 없는 표기 수준이라 보류. 필요 시 추가 정정.</li>
+<li><strong>이전 🔴(안전 게이트 3 vs 4) — 재생성본에서 이미 해소 확인.</strong> <code>01</code>(안전 루브릭)·<code>03</code>(총괄 B)·<code>04</code>(0.5·4-3·B표) 모두 4항목·"4개 전부 ✅"로 통일.</li>
+<li><strong>이전 🟡 반영 확인.</strong> <code>03</code> S2 정답 보기 C "각각 ②·③·①" 정정. 0강 "해외결제 카드" 문항 삭제 → Q0-4 "Claude Pro(유료 구독)"로 대체.</li>
 </ul>
-<hr />
-</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">종합 평가</div></div>
-<ul>
-<li><strong>과정 준비 상태</strong>: 🟡 <strong>수정 후 진행</strong> (소규모 정합성 정정 후 배포 가능)</li>
-<li><strong>총평</strong>: 학습목표 커버리지·3대 설계원칙·안전수칙 3중 반영·누적 부품 이월이 4개 문서에 걸쳐 매우 일관되게 구현된 배포 가능 수준의 과정이다. 다만 <strong>"안전 게이트 항목 수(3 vs 4)"가 퀴즈 문서와 실습/커리큘럼 문서 간에 불일치</strong>하여 수료 판정 기준이 문서마다 달라지는 결함이 1건 있으므로, 이 항목만 통일하면 수료 파이프라인으로 배포 가능하다.</li>
-</ul>
-<hr />
-</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">학습목표 커버리지 매트릭스</div></div>
-<blockquote>
-<p>LO ID = <code>LO-{강}-{순번}</code>. 교안=<code>02</code>, 퀴즈=<code>03</code>, 실습=<code>04</code> 반영 여부.
-✅ 직접 반영 / △ 부분·간접(이해·분석 목표라 hands-on 실습이 없어도 교육학적으로 허용) / ❌ 누락</p>
-</blockquote>
+</section>
+
+<section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">종합 평가</div></div>
+<div class="sess-meta"><strong>과정 준비 상태:</strong> 🟢 <strong>준비 완료(배포 가능)</strong> — 유일한 🔴는 검증자가 직접 수정 완료, 잔여는 배포 무영향 🟡 경미 사항.</div>
+<p><strong>총평:</strong> 학습목표 커버리지·3대 설계원칙(⓵⓶⓷)·안전수칙 3중 반영·누적 부품 이월이 4개 문서에 걸쳐 매우 일관되게 구현된 배포 가능 수준의 과정이다. 이번 재생성이 요구한 <strong>구조 변경 6종</strong>(0강 강의 없음·해외결제 문구 삭제·3강 회의록 에이전트+8개념·4강 CLI·에신Lite·강 제목 통일·30일 팔로우업)이 세 산출물에 일관 반영됐다. 재검증에서 3강 "부품 3그룹 청킹"의 교안↔SSOT 분류 충돌 1건(🔴)만 발견되어 즉시 수정했다.</p>
+</section>
+
+<section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">이번 갱신 핵심 — 새 구조 정합성 점검표 (요구 항목 6종)</div></div>
 <div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>학습목표 ID</th>
-<th>내용(요약)</th>
-<th>블룸</th>
-<th>교안</th>
-<th>퀴즈</th>
-<th>실습</th>
-<th>상태</th>
-</tr>
-</thead>
+<thead><tr><th>#</th><th>점검 항목</th><th>판정</th><th>근거</th></tr></thead>
 <tbody>
-<tr>
-<td>LO-0-1</td>
-<td>바이브코딩=지시(AI)+검증(사람) 설명</td>
-<td>이해</td>
-<td>✅ 0-1</td>
-<td>✅ Q0-1·Q0-2</td>
-<td>△ 개념실습 없음</td>
-<td>완전(이해목표)</td>
-</tr>
-<tr>
-<td>LO-0-2</td>
-<td>도구 10종 설치·로그인·체크리스트</td>
-<td>적용</td>
-<td>✅ 0-2·0-3</td>
-<td>✅ Q0-4</td>
-<td>✅ 0-A</td>
-<td>완전</td>
-</tr>
-<tr>
-<td>LO-0-3</td>
-<td>본인 업무 I/P/O 기술</td>
-<td>적용</td>
-<td>✅ 0-4</td>
-<td>✅ Q0-2</td>
-<td>✅ 0-B</td>
-<td>완전</td>
-</tr>
-<tr>
-<td>LO-1-1</td>
-<td>LLM 4종 지형도 비교·설명</td>
-<td>이해</td>
-<td>✅ 1-2</td>
-<td>✅ Q1-1</td>
-<td>△ 실습 무</td>
-<td>완전(이해목표)</td>
-</tr>
-<tr>
-<td>LO-1-2</td>
-<td>스켈레톤→랜딩 프론트 완성</td>
-<td>적용</td>
-<td>✅ 1-4</td>
-<td>✅ Q1-2</td>
-<td>✅ 1-1</td>
-<td>완전</td>
-</tr>
-<tr>
-<td>LO-1-3</td>
-<td>GitHub→Vercel+Supabase 배포</td>
-<td>창조</td>
-<td>✅ 1-5</td>
-<td>✅ Q1-2·Q1-3·Q1-5</td>
-<td>✅ 1-2</td>
-<td>완전</td>
-</tr>
-<tr>
-<td>LO-2-1</td>
-<td>Claude 3계층+코딩환경 3종 구분</td>
-<td>이해</td>
-<td>✅ 2-2·2-3</td>
-<td>✅ Q2-1·Q2-2</td>
-<td>△ 구분실습 무</td>
-<td>완전(이해목표)</td>
-</tr>
-<tr>
-<td>LO-2-2</td>
-<td>코딩환경 열어 콘텐츠 파이프라인 실행</td>
-<td>적용</td>
-<td>✅ 2-4</td>
-<td>△ 직접문항 약함</td>
-<td>✅ 2-1</td>
-<td>양호</td>
-</tr>
-<tr>
-<td>LO-2-3</td>
-<td>블로그+유튜브 세트 생성·게시+사람검증</td>
-<td>창조</td>
-<td>✅ 2-5·2-6·2-7</td>
-<td>✅ Q2-3·Q2-4</td>
-<td>✅ 2-1·2-2</td>
-<td>완전</td>
-</tr>
-<tr>
-<td>LO-3-1</td>
-<td>7개념 구분·관계 설명</td>
-<td>분석</td>
-<td>✅ 3-2</td>
-<td>✅ Q3-1·Q3-2</td>
-<td>△ 분류실습 무</td>
-<td>완전(분석은 퀴즈로)</td>
-</tr>
-<tr>
-<td>LO-3-2</td>
-<td>동작 스킬 2~3개 제작</td>
-<td>창조</td>
-<td>✅ 3-3·3-4</td>
-<td>△ Q3-1(개념)</td>
-<td>✅ 3-1</td>
-<td>양호</td>
-</tr>
-<tr>
-<td>LO-3-3</td>
-<td>MCP 연결·외부 데이터 호출</td>
-<td>적용</td>
-<td>✅ 3-5</td>
-<td>✅ Q3-3</td>
-<td>✅ 3-2</td>
-<td>완전</td>
-</tr>
-<tr>
-<td>LO-4-1</td>
-<td>4역할 에이전트팀 오케스트레이션</td>
-<td>창조</td>
-<td>✅ 4-2·4-3·4-4</td>
-<td>✅ Q4-1</td>
-<td>✅ 4-1</td>
-<td>완전</td>
-</tr>
-<tr>
-<td>LO-4-2</td>
-<td>재실행 가능한 하네스 패키징</td>
-<td>창조</td>
-<td>✅ 4-4</td>
-<td>✅ Q4-3·S1</td>
-<td>✅ 4-1</td>
-<td>완전</td>
-</tr>
-<tr>
-<td>LO-4-3</td>
-<td>본인 업무 미러링(전이)</td>
-<td>전이</td>
-<td>✅ 4-5</td>
-<td>✅ S3</td>
-<td>✅ 4-2</td>
-<td>완전</td>
-</tr>
-<tr>
-<td>LO-4-4</td>
-<td>루브릭 3기준 자기판정</td>
-<td>평가</td>
-<td>✅ 4-6</td>
-<td>✅ Q4-3·S1·총괄루브릭</td>
-<td>✅ 4-3</td>
-<td>완전</td>
-</tr>
+<tr><td>1</td><td>0강 = "프로그램 설치 안내(강의 없음·두 안내서 전달·설명)" 세 산출물 일관</td><td>🟢 통과</td><td><code>01</code> 0강 헤더·타임라인 "강의 없음" · <code>02</code> "이 강의 성격: 강의하지 않는다" + 블록 0-1~0-4 전달·설명 대본 · <code>04</code> 0-A 도구 온보딩 + 0-B I/P/O</td></tr>
+<tr><td>2</td><td>"해외결제 카드" 문구 어디에도 없음</td><td>🟢 통과(생성물) / 🟡 참고(SSOT 소스)</td><td>생성물 02·03·04 grep 0건. Q0-4 "Claude Pro(유료 구독)"·0-A "Claude Pro 결제 완료". 단 SSOT 소스 <code>00_input.html</code>·<code>01_curriculum_tab.html</code>에 <code>유료·해외결제</code> 배지 잔존(🟡-4)</td></tr>
+<tr><td>3</td><td>3강 = "회의록 에이전트 구축" + "자동화 개념 8종(스킬 외 7종)" 통일</td><td>🟢 통과</td><td>세 산출물 모두 8개념. "7개념"·"스킬 2~3개+MCP 나열"식 구 표현 생성물 0건. 산출물 = "동작하는 회의록 에이전트 1개"로 일치</td></tr>
+<tr><td>4</td><td>4강 = "Claude Code CLI·에신Lite" 명시</td><td>🟢 통과</td><td><code>01</code> 제목·모듈목표 · <code>02</code> 제목·4-2·4-4 · <code>03</code> Q4-2 · <code>04</code> 캡스톤·환경표 모두 명시</td></tr>
+<tr><td>5</td><td>강 제목 세 산출물 새 명칭 일치</td><td>🟢 통과</td><td>3강·4강 제목 <code>01</code>·<code>02</code> 완전 일치. <code>03</code>·<code>04</code>는 강 부제(태그라인) 동일 계승</td></tr>
+<tr><td>6</td><td>"30일 팔로우업" 명칭 통일 (구 "피드백/클리닉" 잔재)</td><td>🟢 통과</td><td>프로그램 명칭 세 문서 "30일 팔로우업". "클리닉"은 F-2 블록명으로만 국소 사용. "피드백/클리닉" 구 명칭 grep 0건</td></tr>
 </tbody>
 </table></div>
-<p><strong>커버리지 요약</strong>: 전 16개 학습목표가 교안·퀴즈·실습 3영역에서 추적 가능. △ 표시(LO-1-1, LO-2-1, LO-3-1)는 <strong>이해·분석 수준 목표</strong>로, hands-on 실습 대신 교안 강의 + 퀴즈 판단문항으로 평가하는 것이 교육학적으로 타당하다(실습은 적용·창조 목표에 집중). <strong>완전 누락(❌)은 없음.</strong></p>
-<hr />
-</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">중점 검증 항목별 판정</div></div>
-<h3>1. 학습목표 커버리지 → 🟢 양호</h3>
-<ul>
-<li>16개 LO 전부 최소 2영역 이상 반영, 창조·적용·전이 목표는 3영역 모두 반영.</li>
-<li>캡스톤(4-1~4-3)이 LO-4-1~4-4를 통합 평가하도록 명시적으로 매핑(<code>04_labs</code> line 540~544).</li>
-</ul>
-<h3>2. 3대 설계원칙 준수 → 🟢 양호</h3>
-<ul>
-<li><strong>⓵ 백지 시작 금지</strong>: 전 실습에 스켈레톤/템플릿/스니펫 배포 명시(교안 배포자료 개요, <code>04_labs</code> 0.1). 실습 1-1(HTML TODO), 3-1(SKILL.md 4칸), 4-1(agents 스켈레톤+run.yaml) 모두 실제 스타터 코드 첨부. 부록 A 자가점검 체크리스트 존재.</li>
-<li><strong>⓶ 데모 먼저</strong>: 모든 실습 블록이 "① 강사 시연(완성본 먼저) → ② 따라하기 → ③ 배포자료" 3단 구조로 고정. 각 강 도입 블록(1-1·2-1·3-1·4-1)이 완성본 데모.</li>
-<li><strong>⓷ 강사+조교 배석</strong>: 전 실습에 <code>[조교 개입 신호]</code> + 3단 힌트 시스템(<code>04_labs</code> 0.3) 명시. 3분 규칙·최소통과선/확장과제로 조별 편차 흡수.</li>
-</ul>
-<h3>3. 누적 부품 이월 → 🟢 양호 (가장 강한 축)</h3>
-<ul>
-<li>0강 I/P/O → 1강 URL → 2강 콘텐츠 포맷 → 3강 스킬·MCP → 4강 하네스 집결이 4개 문서에서 동일하게 서술:</li>
-<li>커리큘럼: "누적 부품 이월 지도"(line 48~61)</li>
-<li>교안: "전 강 관통 예시" 표(line 54~65) + 각 강 회고의 전이 멘트</li>
-<li>실습: "0.4 누적 부품 이월 대장"(고정 저장경로까지 지정) + "캡스톤 부품 집결도"</li>
-<li>저장 경로까지 일치(<code>내문서/vibecoding/00_ipo_sheet.md</code>, <code>02_content_format.md</code>, <code>~/.claude/skills/*</code>, <code>harness/</code>). 조교 매 강 종료 시 이월 점검 루브릭(D) 존재.</li>
-</ul>
-<h3>4. 안전수칙 커버리지 → 🟢 양호 (교안 삽입·퀴즈·실습 게이트 3중 반영)</h3>
+</section>
+
+<section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">학습목표 커버리지 매트릭스</div></div>
+<div class="sess-meta">✅ 직접 반영 / △ 부분·간접(이해·분석 목표라 hands-on 실습이 없어도 교육학적 허용) / ❌ 누락</div>
 <div class="tbl-wrap"><table>
-<thead>
-<tr>
-<th>강</th>
-<th>핵심 안전수칙</th>
-<th>교안 삽입</th>
-<th>퀴즈 문항</th>
-<th>실습 게이트</th>
-</tr>
-</thead>
+<thead><tr><th>LO ID</th><th>내용(요약)</th><th>블룸</th><th>교안</th><th>퀴즈</th><th>실습</th><th>산출물</th><th>상태</th></tr></thead>
 <tbody>
-<tr>
-<td>0강</td>
-<td>비밀키 스크린샷·업로드 금지·가명</td>
-<td>0-2·0-4</td>
-<td>Q0-3</td>
-<td>0-A 안전서약·0.5</td>
-</tr>
-<tr>
-<td>1강</td>
-<td>anon만 공개·service_role 금지·개인정보 금지</td>
-<td>1-5·1-6</td>
-<td>Q1-3·Q1-4</td>
-<td>1-2 게이트</td>
-</tr>
-<tr>
-<td>2강</td>
-<td>AI는 문장·근거는 사람·허위 숫자/법조항 금지</td>
-<td>2-4·2-5·2-7</td>
-<td>Q2-3·Q2-4</td>
-<td>2-1 검증 게이트</td>
-</tr>
-<tr>
-<td>3강</td>
-<td>MCP 데이터 행선지 확인·키 하드코딩 금지</td>
-<td>3-5·3-6</td>
-<td>Q3-3·Q3-4</td>
-<td>3-2 게이트</td>
-</tr>
-<tr>
-<td>4강</td>
-<td>검증 생략 금지·출처 없는 주장 배제·최종 확인 사람</td>
-<td>4-2·4-4·4-6</td>
-<td>Q4-2·Q4-4·S2</td>
-<td>4-1 게이트·캡스톤</td>
-</tr>
+<tr><td>LO-0-1</td><td>바이브코딩=지시(AI)+검증(사람) 파악</td><td>이해</td><td>✅ 0-1</td><td>✅ Q0-1</td><td>△ 0-A</td><td>✅ 안내서 숙지</td><td>완전(이해)</td></tr>
+<tr><td>LO-0-2</td><td>계정5·설치6·체크리스트 완료</td><td>적용</td><td>✅ 0-2</td><td>✅ Q0-4</td><td>✅ 0-A</td><td>✅ 체크리스트</td><td>완전</td></tr>
+<tr><td>LO-0-3</td><td>본인 업무 I/P/O 분해</td><td>분석</td><td>✅ 0-3·0-4</td><td>✅ Q0-2</td><td>✅ 0-B</td><td>✅ I/P/O 시트</td><td>완전</td></tr>
+<tr><td>LO-1-1</td><td>LLM 트렌드·4종 비교·선택</td><td>분석</td><td>✅ 1-2</td><td>✅ Q1-1·Q1-2</td><td>△ 무</td><td>—</td><td>완전(분석=퀴즈)</td></tr>
+<tr><td>LO-1-2</td><td>스켈레톤→풀스택 완성</td><td>적용</td><td>✅ 1-3·1-4</td><td>✅ Q1-3</td><td>✅ 1-1</td><td>—</td><td>완전</td></tr>
+<tr><td>LO-1-3</td><td>GitHub→Vercel+Supabase 배포·게시</td><td>창조</td><td>✅ 1-5·1-6</td><td>✅ Q1-3·Q1-4·Q1-5</td><td>✅ 1-2</td><td>✅ 배포 URL</td><td>완전</td></tr>
+<tr><td>LO-2-1</td><td>Claude 3계층+코딩환경 3종 구분</td><td>이해</td><td>✅ 2-2·2-3</td><td>✅ Q2-1·Q2-2</td><td>△ 무</td><td>—</td><td>완전(이해)</td></tr>
+<tr><td>LO-2-2</td><td>콘텐츠 파이프라인 실행</td><td>적용</td><td>✅ 2-4</td><td>△ 약함</td><td>✅ 2-1</td><td>—</td><td>양호</td></tr>
+<tr><td>LO-2-3</td><td>블로그+유튜브 생성·게시+사람검증</td><td>창조</td><td>✅ 2-5·2-6·2-7</td><td>✅ Q2-3·Q2-4</td><td>✅ 2-1·2-2</td><td>✅ 블로그URL·유튜브</td><td>완전</td></tr>
+<tr><td>LO-3-1</td><td>자동화 8개념(스킬 외 7종) 분류·관계</td><td>분석</td><td>✅ 3-2</td><td>✅ Q3-1·Q3-2</td><td>△ 조립으로 적용</td><td>—</td><td>완전(분석=퀴즈)</td></tr>
+<tr><td>LO-3-2</td><td>단일 책임 회의록 생성·문서화 스킬 제작</td><td>창조</td><td>✅ 3-3·3-4</td><td>△ Q3-3(간접)</td><td>✅ 3-1</td><td>✅ 스킬 2~3개</td><td>양호</td></tr>
+<tr><td>LO-3-3</td><td>스킬+메일MCP → 회의록 에이전트 결선</td><td>종합</td><td>✅ 3-5·3-6</td><td>✅ Q3-3</td><td>✅ 3-2</td><td>✅ 회의록 에이전트 1개</td><td>완전</td></tr>
+<tr><td>LO-4-1</td><td>4역할 에이전트팀 오케스트레이션</td><td>종합</td><td>✅ 4-2·4-3·4-4</td><td>✅ Q4-1·Q4-2</td><td>✅ 4-1</td><td>—</td><td>완전</td></tr>
+<tr><td>LO-4-2</td><td>CLI·에신Lite 하네스 패키징·게시</td><td>창조</td><td>✅ 4-4</td><td>✅ Q4-2·S1</td><td>✅ 4-1</td><td>✅ 재실행 하네스</td><td>완전</td></tr>
+<tr><td>LO-4-3</td><td>본인 업무 미러링(전이)</td><td>전이</td><td>✅ 4-5</td><td>✅ S3</td><td>✅ 4-2</td><td>✅ harness_mine</td><td>완전</td></tr>
+<tr><td>LO-4-4</td><td>루브릭 3기준 자기판정</td><td>평가</td><td>✅ 4-6</td><td>✅ Q4-4·S1</td><td>✅ 4-3</td><td>✅ 자기판정표</td><td>완전</td></tr>
+<tr><td>LO-F-1</td><td>30일 실사용 루브릭 재점검</td><td>평가</td><td>✅ F-1</td><td>—</td><td>✅ F-1·F-2</td><td>—</td><td>양호(팔로우업)</td></tr>
+<tr><td>LO-F-2</td><td>스킬 저장소 기여·확산</td><td>창조/전이</td><td>✅ F-3</td><td>—</td><td>✅ F-3</td><td>—</td><td>양호(팔로우업)</td></tr>
 </tbody>
 </table></div>
-<p>전 강 안전수칙이 교안 삽입지점·퀴즈 필수문항·실습 게이트 3곳에 모두 걸려 있음. 오답지에 "위험 행동"을 그럴듯하게 배치하라는 출제 원칙도 준수(Q0-3 A/B, Q1-3 A 등).</p>
-<h3>5. 수료 루브릭 3기준 정합성 → 🟢 양호(단 안전 게이트 항목 수는 6번 참조)</h3>
+<p><strong>커버리지 요약:</strong> 본과정 16 + 팔로우업 2 = 18개 LO가 교안·퀴즈·실습에서 추적 가능. △(LO-1-1·2-1·3-1)는 이해·분석 목표로 교안 강의 + 퀴즈 판단문항으로 평가하는 것이 타당(실습은 적용·창조·종합·전이에 집중). <strong>완전 누락(❌) 없음.</strong> 안전수칙은 별도 축으로 강별 퀴즈 필수문항·실습 게이트에 전량 반영.</p>
+</section>
+
+<section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">중점 검증 항목별 판정</div></div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>축</th><th>판정</th><th>요지</th></tr></thead>
+<tbody>
+<tr><td>1. 학습목표 커버리지</td><td>🟢 양호</td><td>18개 LO 전부 2영역 이상 반영. 창조·적용·종합·전이 목표는 3영역 모두. 캡스톤이 LO-4-1~4-4 통합 평가.</td></tr>
+<tr><td>2. 3대 설계원칙</td><td>🟢 양호</td><td>⓵ 전 실습 스켈레톤/스타터 첨부 · ⓶ "시연→따라하기→배포자료" 3단 고정 · ⓷ [조교 개입 신호]+3단 힌트. 0강은 "전달·설명/각자 완료/진단"으로 원칙 적용 대상서 정확히 분리.</td></tr>
+<tr><td>3. 누적 부품 이월</td><td>🟢 양호(최강축)</td><td>0강 I/P/O→1강 URL→2강 포맷→3강 회의록 에이전트→4강 하네스가 4문서 동일 서술 + 고정 저장경로. 3강 요약·문서화 스킬이 4강 요약 에이전트 "재사용"으로 실제 배관.</td></tr>
+<tr><td>4. 안전수칙 3중 반영</td><td>🟢 양호</td><td>강별 안전수칙이 교안 삽입·퀴즈 필수문항·실습 게이트 3곳 전량 반영(교안 부록 B 색인 일치). 안전 게이트 4항목 동일 정의·규칙으로 통일.</td></tr>
+<tr><td>5. 수료 루브릭 3기준</td><td>🟢 양호</td><td>실데이터·결과지향·재현성이 SSOT→교안 4-6→퀴즈 A→실습 A 동일 정의. 수료 증명·보완 이월 규칙도 일관.</td></tr>
+<tr><td>6. 3강 3그룹 청킹 분류</td><td>🟢 양호(수정 후)</td><td>교안만 "에이전트·팀=만드는 것"으로 SSOT·Q3-2와 충돌했던 것을 SSOT 기준(묶는 것)으로 통일. 네 문서 완전 일치.</td></tr>
+<tr><td>7. 난이도(인지부하)</td><td>🟡 권장</td><td>새 개념 3개 이하·8개념 3그룹 청킹 양호. 단 4강 [120분 표준]이 실제 125분(+쉬는시간 5), 일부 블룸 헤더 수치 미세 불일치.</td></tr>
+<tr><td>8. 문서 간 모순/중복</td><td>🟢 양호</td><td>교안이 퀴즈·실습을 포인터로만 참조해 중복 제거. 저장경로·산출물명·직군 5종 예시 전 문서 동일.</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">발견 사항</div></div>
+<div class="block-label">🔴 필수 수정</div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>[02_lesson_plans] 3강 "부품 3그룹 청킹" 분류가 SSOT·퀴즈와 충돌 — 검증자 수정 완료.</strong> 수정 전 교안은 "에이전트·에이전트팀 = 만드는 것"(블록3 인트로·3-2 강의흐름·개념표·슬라이드·핸드아웃), SSOT <code>01</code>·퀴즈 Q3-2 정답 B·Q3-1 해설·실습 <code>04</code>는 "묶는 것". 교안대로 배운 학습자가 Q3-2에서 오답 → 평가-교안 정합 파손. 교안 md/HTML을 SSOT 분류(만들기=스킬 / 연결=MCP·커넥터·플러그인 / 묶기=에이전트·에이전트팀·프로젝트·하네스)로 통일, 시간 배분 5/7/6+2=20분 재정합. <strong>수정 완료.</strong></p></div></div>
+<div class="block-label">🟡 권장 수정 (배포 무영향·병행 정정 가능)</div>
+<div class="callout warn"><div class="ico">!</div><div class="cbody">
+<p><strong>1. [02 타임라인] [120분 표준] 라벨이 실제 125분(+쉬는시간 5).</strong> 1~4강 표가 콘텐츠 120 + 쉬는시간 5 = 125분으로 종료(1강 00:00→02:05). 제안: 헤더를 "[120분+쉬는시간 5분]"으로 명확화하거나 한 블록 5분 축소.</p>
+<p><strong>2. [03 블룸 분포 헤더 vs 실제 문항 미세 불일치].</strong> 1강 헤더 "이해50/적용30/분석20" vs 실제 이해2·적용1·분석2. 2강 "적용" 문항 약함(이해·평가 위주). 제안: 헤더 재산정 또는 2강 적용 문항 1개 보강(LO-2-2 '양호' 근거와 연동).</p>
+<p><strong>3. ["도구 10종" 명명 vs 항목 수].</strong> 명명 항목은 계정 5 + 설치 6 = 11(Antigravity 포함, 선택 제외 시 10). 제안: "필수 10종(+Antigravity 선택)"로 표기.</p>
+<p><strong>4. [SSOT 소스 HTML] <code>유료·해외결제</code> 배지 잔존.</strong> 생성물엔 "해외결제 카드" 전량 삭제됐으나 SSOT 원본 <code>00_input.html</code>·<code>01_curriculum_tab.html</code> line 197에 배지 잔존. "특정 결제수단 강요 금지" 원칙과 미세 상충. 제안: "유료 구독"으로 완화 — <strong>SSOT 확정본이라 검증자 임의 수정하지 않고 오케스트레이터 판단에 위임.</strong></p>
+</div></div>
+<div class="block-label">🟢 참고 사항</div>
 <ul>
-<li>실데이터 동작·결과 지향·재현성 3기준이 SSOT→커리큘럼→교안 4-6→퀴즈 총괄 A→실습 A에서 동일 정의·동일 통과/보완 표현으로 일치.</li>
-<li>수료 증명("배포 데모 URL + 동작 하네스 영상/기록")도 4개 문서 일치.</li>
+<li>교안이 퀴즈·실습 전문을 포인터로만 연결해 3문서 중복을 성공적으로 제거 — 우수 문서 설계, 유지 권장.</li>
+<li>EEC(Evidence→Effect→Change) 피드백 공식이 전 오답 피드백에 일관 적용되어 형성평가 품질 높음.</li>
+<li>직군 5종(회계·법무·미디어·MICE·투자) 미러링 예시가 0강 시드~4강 캡스톤 전 문서 동일 — 전이 설계 견고.</li>
+<li>안전 게이트를 점수 아닌 "무관용 반려제"로 둔 것은 안전 최우선 원칙 부합.</li>
+<li>0강을 "강의 없는 준비 세션"으로 명확 분리 + 두 안내서 전달·설명 대본 구성 — 초보자 인지부하 관리에 효과적.</li>
 </ul>
-<h3>6. 난이도 정합성(인지부하) → 🟡 권장</h3>
+</section>
+
+<section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">최종 산출물 체크리스트</div></div>
 <ul>
-<li>블록당 새 개념 3개 이하 원칙: 1~4강 모두 "새 개념 3개 이하" 명시적 선언, 3강은 7개념을 "부품 3그룹"으로 청킹하여 인지부하 관리 → 양호.</li>
-<li><strong>타임라인 산정에 경미한 오차</strong>(아래 🟡 항목 참조): 대면 4강 [120분 표준] 표가 실제로는 125분(콘텐츠 120 + 쉬는시간 5)으로 합산되어 2시간 슬롯을 5분 초과. 100분 압축본은 2강 95분·3강 97분으로 라벨과 소폭 불일치.</li>
+<li class="check">커리큘럼 완성 (<code>01_curriculum.md</code> / <code>01_curriculum_tab.html</code> SSOT)</li>
+<li class="check">교안 완성 (<code>02_lesson_plans.md</code>, 3그룹 청킹 SSOT 정합 수정 반영)</li>
+<li class="check">퀴즈 완성 (<code>03_quizzes.md</code>, 형성 23 + 총괄 S1·S2·S3 + 루브릭/게이트)</li>
+<li class="check">실습과제 완성 (<code>04_labs.md</code>, 0강 사전과제 → 강별 실습 → 3강 회의록 에이전트 → 4강 캡스톤)</li>
+<li class="check">리뷰 보고서 완성 (본 문서)</li>
 </ul>
-<h3>7. 문서 간 모순/중복 → 🟡 권장 (아래 발견 사항)</h3>
-<ul>
-<li>교안이 퀴즈·실습 전문을 포인터(<code>[→ 03_quizzes]</code>, <code>[→ 04_labs]</code>)로만 참조해 <strong>중복을 의도적으로 회피</strong> → 중복 문제 거의 없음(양호).</li>
-<li>다만 안전 게이트 항목 수·일부 블룸 분포 수치·"10종" 명명에서 문서 간 소규모 불일치 존재.</li>
-</ul>
-<hr />
-</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">발견 사항</div></div>
-<h3>🔴 필수 수정</h3>
-<ol>
-<li><strong>[03_quizzes vs 04_labs/01_curriculum] 안전 게이트 항목 수가 3개 vs 4개로 불일치 — 수료 판정 기준이 문서마다 달라짐</strong>
-   - 현재:<ul>
-<li><code>03_quizzes.md</code> 총괄평가 B(line 414~423): 안전 게이트 <strong>4항목</strong>(①비밀키 ②개인/고객정보 ③사실검증 ④데이터 흐름·최종 확인), 합격 규칙 "4항목 전부 ✅".</li>
-<li><code>04_labs.md</code> 0.5(line 54~60) 및 B(line 708~715), 그리고 <code>01_curriculum.md</code>(line 296): 안전 게이트 <strong>3항목</strong>(비밀키·개인정보·검증 단계 수행).</li>
-<li><code>04_labs.md</code> 4-3 자기판정표(line 685~686)도 체크박스 <strong>3개</strong>뿐.</li>
-<li>문제: 실습(labs)만 따르면 3게이트를 통과해도 수료 조건을 충족하지만, 퀴즈 문서 기준으로는 4번째 게이트("MCP 데이터 흐름 확인 + 최종 사람 확인") 미체크로 불충족. <strong>수료 게이트의 통과 규칙이 문서 간에 literal하게 모순</strong>된다.</li>
-<li>제안: 두 문서의 게이트 목록·개수·통과 규칙을 <strong>하나로 통일</strong>한다. 권장은 04_labs·커리큘럼도 4항목으로 승격(④ 데이터 흐름·최종 확인을 별도 게이트로 명시)하여 quizzes와 일치시키는 것. 이 경우 04_labs 0.5·B·4-3 자기판정표 체크박스도 4개로 수정.</li>
-</ul>
-</li>
-</ol>
-<h3>🟡 권장 수정</h3>
-<ol>
-<li>
-<p><strong>[03_quizzes.md S2 line 466] 정답 보기 C의 게이트 매핑 표기 오류</strong>
-   - 현재: "세 가지 모두 안전 게이트 위반(<strong>②·③·③, 그리고 ②</strong>)이므로…"
-   - 문제: (1)개인정보=②, (2)출처없는 주장=③, (3)API키=① 인데 보기 텍스트가 "②·③·③, 그리고 ②"로 garbled. 해설(line 470)은 "②·③·①"로 올바르게 서술되어 보기와 상충.
-   - 제안: 보기 C를 "…안전 게이트 위반(②·③·①)이므로…"로 정정.</p>
-</li>
-<li>
-<p><strong>[02_lesson_plans.md 각 강 타임라인] [120분 표준] 라벨이 실제 125분(+쉬는시간 5)</strong>
-   - 현재: 1~4강 [120분 표준] 표가 콘텐츠 120분 + 쉬는시간 5분 = 총 125분으로 종료(예: 1강 00:00→02:05).
-   - 문제: "2h(120분)" 슬롯을 5분 초과. 초보자 대상 현실성 측면에서 라벨과 실제가 불일치.
-   - 제안: 헤더를 "[120분+쉬는시간 5분]" 또는 "[125분]"으로 명확화하거나, 한 블록을 5분 축소해 쉬는시간 포함 120분에 맞춘다. 100분 압축본도 2강(95분)·3강(97분) 합산을 라벨과 일치시킴.</p>
-</li>
-<li>
-<p><strong>[03_quizzes.md 블룸 분포 수치 불일치]</strong>
-   - 현재: 1강 헤더 "이해 50%/적용 30%/분석 20%"이나 실제 문항 분포는 이해2·적용2·분석1(40/40/20). 2강 헤더 "이해 50%/적용 30%/평가 20%"이나 실제는 적용 문항이 없고 이해3·평가1. 문항 통계표(line 501·502)의 수치도 실제 문항 블룸 라벨과 미세 불일치.
-   - 제안: 헤더·통계표 수치를 실제 출제 문항 블룸에 맞춰 재산정하거나, 목표 분포에 맞게 문항을 1개 조정(특히 2강 "적용" 문항 1개 보강 검토).</p>
-</li>
-<li>
-<p><strong>["도구 10종" 명명 vs 명명 항목 수 불일치]</strong>
-   - 현재: 전 문서가 "도구 10종"으로 부르나, 명명 항목은 계정 5 + 설치 6 = 11개(Antigravity 포함). Antigravity가 "선택"이라 제외하면 10개.
-   - 제안: "필수 10종(+Antigravity 선택)"처럼 표기해 산술적 혼동 제거. (Q0-4 해설이 "계정 5 + 설치 6, Antigravity는 선택"으로 이미 부분 해소하나, "5+6"과 "10종"이 병기되어 여전히 혼란 소지.)</p>
-</li>
-</ol>
-<h3>🟢 참고 사항</h3>
-<ol>
-<li>교안이 퀴즈·실습 전문을 포인터로만 연결해 3문서 중복을 성공적으로 제거한 점은 우수한 문서 설계다. 유지 권장.</li>
-<li>EEC(Evidence→Effect→Change) 피드백 공식이 전 오답 피드백에 일관 적용되어 형성평가 품질이 높다.</li>
-<li>직군별(회계·법무·미디어·MICE·투자) 미러링 예시가 0강 시드부터 4강 캡스톤까지 전 문서에 동일 5직군으로 일관 제공되어 전이(transfer) 설계가 견고하다.</li>
-<li>안전 게이트를 점수가 아닌 "무관용 반려제"로 둔 것은 안전 최우선 원칙에 부합.</li>
-</ol>
-<hr />
-</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">최종 산출물 체크리스트</div></div>
-<ul>
-<li class="check checked">커리큘럼 완성 (<code>01_curriculum.md</code>)</li>
-<li class="check checked">교안 완성 (<code>02_lesson_plans.md</code>)</li>
-<li class="check checked">퀴즈 완성 (<code>03_quizzes.md</code>, 형성 21 + 총괄 3문항 + 루브릭/게이트)</li>
-<li class="check checked">실습과제 완성 (<code>04_labs.md</code>, 0강 사전과제 → 강별 실습 → 4강 캡스톤)</li>
-<li class="check checked">리뷰 보고서 완성 (본 문서)</li>
-</ul>
-<hr />
-</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">07</span><div class="sess-title">종합 판정</div></div>
-<p><strong>수료 파이프라인으로서 배포 가능 — 단, 🔴 필수 수정 1건(안전 게이트 항목 수 통일) 선행 필요.</strong></p>
-<p>커버리지·설계원칙·안전 3중 반영·부품 이월·루브릭 정합성이 모두 배포 수준이며 완전 누락된 학습목표가 없다. 유일한 배포 차단 요소는 <strong>수료 게이트의 통과 규칙이 문서 간에 3항목 vs 4항목으로 모순되는 점</strong>으로, 이는 실제 수료 판정에서 학습자마다 다른 결과를 낳을 수 있으므로 배포 전 반드시 통일해야 한다. 나머지(🟡 4건)는 배포와 병행 정정 가능한 경미 사항이다.</p></section></div></div></body></html>
+</section>
+
+<section class="card card--violet"><div class="sess-head"><span class="sess-no">08</span><div class="sess-title">종합 판정</div></div>
+<div class="callout ok"><div class="ico">✓</div><div class="cbody"><p><strong>🟢 배포 가능</strong> — 유일한 🔴(3강 3그룹 청킹 분류 충돌)는 검증자가 직접 수정 완료했고, 잔여는 배포에 지장 없는 🟡 경미 사항이다.</p></div></div>
+<p>이번 재생성이 요구한 구조 변경 6종(0강 강의 없음·해외결제 문구 삭제·3강 회의록 에이전트+8개념·4강 CLI·에신Lite·강 제목 통일·30일 팔로우업)이 세 산출물에 일관 반영됐으며, 학습목표 커버리지·3대 설계원칙·안전수칙 3중 반영·누적 부품 이월·수료 루브릭이 모두 배포 수준이다. 완전 누락된 학습목표는 없다. 남은 🟡 4건(타임라인 라벨·블룸 분포 수치·"10종" 명명·SSOT 소스 배지)은 수료 판정에 영향을 주지 않으므로 배포와 병행 정정 가능하다.</p>
+<p class="footer-note">course-reviewer · VibeCoding_AX_SM v0.2 재검증본 · 2026-07-11</p>
+</section>
+
+</div></div></body></html>
