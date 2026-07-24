@@ -1,0 +1,3537 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>알뜰폰 MVNO · 프리텔레콤 분석</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bd:#C8DAF1;
+  --sky-bg:#EAF2FE; --sky-bd:#CBDDFB; --sky-dp:#1B4DA0; --sky-ac:#3D7BEA;
+  --orange-bg:#FCEBDA; --orange-bd:#F5CDA6; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB; --violet-bd:#DFD0F5; --violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bd:#F0E0AE; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE; --mint-bd:#C8E7D7; --mint-dp:#1C744E;
+  --red-bg:#FCEAEA; --red-bd:#F3C6C6; --red-dp:#A32A2A;
+  --radius:16px;
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0; background:radial-gradient(1100px 460px at 50% -240px,#fff 0%,rgba(255,255,255,0) 70%),var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:15.5px; line-height:1.72; letter-spacing:-.01em; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:28px 20px 100px;}
+
+/* ===== Cover ===== */
+.cover{background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:18px; padding:30px 30px 26px; margin-bottom:18px;}
+.eyebrow{font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--navy); margin-bottom:12px;}
+.cover h1{font-size:clamp(26px,4.6vw,40px); line-height:1.14; font-weight:800; color:var(--navy); margin:0 0 8px; letter-spacing:-.022em;}
+.cover p{margin:0 0 18px; color:var(--muted); font-weight:500; max-width:70ch;}
+.cover-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px;}
+.cm{border-radius:12px; padding:12px 14px;}
+.cm-k{font-size:10.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; opacity:.85;}
+.cm-v{font-size:14px; font-weight:800; letter-spacing:-.01em; margin-top:2px;}
+.cm:nth-child(4n+1){background:var(--sky-bg); border:1px solid var(--sky-bd); color:var(--sky-dp);}
+.cm:nth-child(4n+2){background:var(--orange-bg); border:1px solid var(--orange-bd); color:var(--orange-dp);}
+.cm:nth-child(4n+3){background:var(--violet-bg); border:1px solid var(--violet-bd); color:var(--violet-dp);}
+.cm:nth-child(4n+4){background:var(--mint-bg); border:1px solid var(--mint-bd); color:var(--mint-dp);}
+
+/* ===== Tabs ===== */
+.tabbar{position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; gap:6px;
+  background:rgba(243,245,251,.9); backdrop-filter:blur(8px); padding:10px 0; margin-bottom:16px; border-bottom:1px solid var(--line);}
+.tab{display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line); background:var(--card);
+  color:var(--muted); font-family:inherit; font-size:14px; font-weight:700; letter-spacing:-.01em;
+  padding:9px 15px; border-radius:11px; cursor:pointer; transition:all .15s;}
+.tab:hover{color:var(--navy); border-color:var(--navy-bd);}
+.tab.active{background:var(--navy); color:#fff; border-color:var(--navy); box-shadow:0 6px 16px rgba(22,56,110,.25);}
+.tab-emoji{font-size:15px;}
+
+/* ===== Panel ===== */
+.panel{display:none; animation:fade .25s ease;}
+.panel.active{display:block;}
+@keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+.panel > *:first-child{margin-top:0;}
+
+/* ===== Typography ===== */
+h1{font-size:clamp(22px,3.4vw,30px); font-weight:800; color:var(--navy); letter-spacing:-.02em; line-height:1.2;
+  margin:8px 0 14px; padding-bottom:14px; border-bottom:2px solid var(--navy);}
+h2{font-size:clamp(18px,2.6vw,23px); font-weight:800; color:var(--navy); letter-spacing:-.02em; line-height:1.25;
+  margin:38px 0 14px; padding-top:20px; border-top:1px solid var(--line); position:relative;}
+h2::before{content:""; position:absolute; top:-1px; left:0; width:48px; height:3px; background:var(--navy); border-radius:3px;}
+h3{font-size:16.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em; margin:24px 0 10px; line-height:1.3;}
+h4{font-size:15px; font-weight:800; color:var(--sky-dp); margin:18px 0 8px;}
+p{margin:0 0 12px;}
+strong{font-weight:750; color:var(--ink);}
+em{font-style:normal; color:#586383; font-weight:600;}
+a{color:var(--sky-ac); text-decoration:none;}
+a:hover{text-decoration:underline;}
+ul,ol{margin:0 0 14px; padding-left:22px;}
+li{margin:4px 0;}
+hr{border:none; border-top:1px solid var(--line); margin:26px 0;}
+code{font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--sky-bg); color:var(--sky-dp); padding:.14em .45em; border-radius:6px; font-weight:600; word-break:keep-all;}
+pre{background:#0F1B34; color:#D7E3F7; border-radius:12px; padding:16px 18px; overflow-x:auto;
+  font-size:13px; line-height:1.6; margin:0 0 16px;}
+pre code{background:none; color:inherit; padding:0; font-weight:500;}
+
+/* ===== Tables ===== */
+.tbl-scroll{overflow-x:auto; margin:0 0 18px; border-radius:12px; border:1px solid var(--line); box-shadow:var(--shadow-md);}
+table{border-collapse:collapse; width:100%; font-size:13.5px; background:var(--card);}
+thead th{background:var(--navy); color:#fff; font-weight:700; text-align:left; padding:10px 12px; white-space:nowrap; letter-spacing:-.01em;}
+tbody td{padding:9px 12px; border-top:1px solid var(--line2); vertical-align:top;}
+tbody tr:nth-child(even){background:#FBFCFE;}
+tbody tr:hover{background:var(--sky-bg);}
+td strong{color:var(--navy);}
+
+/* ===== Blockquote as callout ===== */
+blockquote{margin:0 0 16px; padding:14px 18px; background:var(--amber-bg); border:1px solid var(--amber-bd);
+  border-left:4px solid var(--amber-dp); border-radius:0 12px 12px 0; color:#4A3D14;}
+blockquote p{margin:0 0 6px;}
+blockquote p:last-child{margin:0;}
+blockquote strong{color:var(--amber-dp);}
+
+/* footer */
+.foot{margin-top:40px; padding-top:16px; border-top:1px solid var(--line); font-size:12.5px; color:var(--faint); text-align:center;}
+@media (max-width:640px){
+  .wrap{padding:16px 12px 80px;} body{font-size:14.5px;}
+  .tab{padding:8px 11px; font-size:13px;} table{font-size:12.5px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Market Research · 2026-07-23</div>
+    <h1>알뜰폰 MVNO 시장 &amp; ㈜프리텔레콤 분석</h1>
+    <p>삼화회계법인 DCF 지분가치 평가보고서(2025.12.31 기준)와 프리티 IR BOOK(2026.7)의 <strong>1차 자료</strong> 기반 분석. 관계사 별첨과 프리텔레콤 생존전략 포함.</p>
+    <div class="cover-meta">
+      <div class="cm"><div class="cm-k">프리텔레콤 영업이익률</div><div class="cm-v">10.7% (업계 1위급)</div></div>
+      <div class="cm"><div class="cm-k">지분가치 (삼화 DCF)</div><div class="cm-v">644.5억 원</div></div>
+      <div class="cm"><div class="cm-k">모회사 익스포저</div><div class="cm-v">약 215억 (현금 9.6억)</div></div>
+      <div class="cm"><div class="cm-k">장려금 커버리지 붕괴</div><div class="cm-v">2028년</div></div>
+    </div>
+  </div>
+
+  <nav class="tabbar">
+    <button class="tab active" data-tab="summary"><span class="tab-emoji">📊</span>요약</button>
+<button class="tab" data-tab="industry"><span class="tab-emoji">🏭</span>산업분석</button>
+<button class="tab" data-tab="competitor"><span class="tab-emoji">⚔️</span>경쟁자</button>
+<button class="tab" data-tab="consumer"><span class="tab-emoji">👥</span>소비자</button>
+<button class="tab" data-tab="trend"><span class="tab-emoji">📈</span>트렌드</button>
+<button class="tab" data-tab="survival"><span class="tab-emoji">🧭</span>생존전략</button>
+<button class="tab" data-tab="appendix"><span class="tab-emoji">🔗</span>별첨·계열사</button>
+  </nav>
+
+  <section id="summary" class="panel active"><h1>06. 종합 요약 (Executive Summary)</h1>
+<ul>
+<li>작성일: 2026-07-23</li>
+<li>대상: <code>00_input</code>~<code>05</code>, <code>07</code> 전체</li>
+<li>방법: ① 첨부 1차 자료(삼화 평가보고서·프리티 IR BOOK) 내부 정합성 ② 보고서 간 논리 사슬 ③ 계획 vs 트렌드 정합성</li>
+</ul>
+<hr />
+<h2>1. Executive Summary (3분 요약)</h2>
+<p><strong>분석 기반.</strong> 프리텔레콤 별도 감사대상 재무제표(삼화 DCF 평가보고서)와 프리티 연결 IR BOOK이라는 <strong>1차 자료</strong>로 프리텔레콤 법인과 프리티 통합 브랜드의 경쟁 지위·수익성·리스크를 규명했다.</p>
+<p><strong>핵심 판정.</strong></p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td><strong>프리텔레콤 별도 영업이익률 10.7% 확정</strong> — 업계 1위 KT엠모바일 2.8%의 3.8배</td>
+</tr>
+<tr>
+<td>B</td>
+<td><strong>박리(0~3%)는 후불 재판매의 속성</strong> — 선불·자체전산·니치 조합에는 10%대 이익률 구간이 실재</td>
+</tr>
+<tr>
+<td>C</td>
+<td><strong>1Q26 공격적 마케팅은 장려금이 마케팅비의 127%를 커버</strong> — 2028년 커버리지 붕괴 전까지는 합리적</td>
+</tr>
+<tr>
+<td>D</td>
+<td><strong>프리텔레콤 자체는 건전, 위기는 모회사 자본관계에 있음</strong></td>
+</tr>
+<tr>
+<td>E</td>
+<td><strong>관계사 분석·프리텔레콤 생존전략 포함</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>여섯 줄 결론.</strong>
+1. <strong>프리텔레콤은 알뜰폰 업계 최고 수익성(영업이익률 10.7%) 사업자다.</strong> 규모는 5위권(33.8만 회선)이나 회선당 영업이익은 KT엠모바일의 3.5배.
+2. <strong>이 수익성은 ① 선불 고마진 ② 자체 빌링 ③ MNO 장려금 ④ 모회사 수수료 위에 서 있고, ③④는 사업자가 통제하지 못하며 ④는 2026년 소멸한다.</strong>
+3. <strong>소비자 이탈이 실데이터로 확인됐다</strong> — 후불 기존가입자 잔존율이 2025년 12%p 급락(단통법 폐지 시점 일치). <strong>단, 선불은 오히려 개선</strong>되어 이탈이 연령이 아닌 상품 축으로 갈렸다.
+4. <strong>회사의 5개년 계획은 시장 트렌드에 역행한다</strong> — 순유출 시장에서 매출 +27%·규모 2배·마케팅비 +79%. 성립 조건은 잔존율 회복이며, 미회복 시 2026년 적자 전환 가능(민감도로 검증).
+5. <strong>진짜 위기는 본업이 아니라 모회사에 있다</strong> — 프리티 연결 순손실 -416.8억·자본잠식률 추정 74.5%. 프리텔레콤은 미수금 118.9억(현금은 9.6억)으로 모회사에 묶여 있다.
+6. <strong>생존전략은 두 층</strong> — (방어) 모회사 자금 방화벽, (공격) 규모 성장 대신 선불·니치 믹스로 이익률 10.7% 방어. <strong>시한은 장려금 커버리지가 붕괴하는 2028년.</strong></p>
+<hr />
+<h2>2. 주요 발견 사항</h2>
+<h3>🔴 중대 발견</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>발견</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴-1</td>
+<td><strong>프리텔레콤 영업이익 65.9억인데 순손익 -0.6억</strong> — 영업외손실 67.4억이 전액 상쇄</td>
+<td>00 §3.1</td>
+</tr>
+<tr>
+<td>🔴-2</td>
+<td><strong>모회사 익스포저 약 215억 vs 보유현금 9.6억</strong> — 미수금 118.9억 + 대여·미수 95.9억</td>
+<td>07 §2</td>
+</tr>
+<tr>
+<td>🔴-3</td>
+<td><strong>회사 계획이 스스로 이익 급감 예고</strong> — 2026 영업이익 -54.8%(65.9→29.8억), 5년간 2025 미회복</td>
+<td>02 §5</td>
+</tr>
+<tr>
+<td>🔴-4</td>
+<td><strong>모회사 자본잠식률 추정 74.5%</strong> + 2025 순손실 -416.8억</td>
+<td>07 §2</td>
+</tr>
+<tr>
+<td>🔴-5</td>
+<td><strong>장려금 커버리지 2028년 100% 붕괴</strong> — 그 전까지만 신규 유치가 현금 유입</td>
+<td>03 §3.2</td>
+</tr>
+</tbody>
+</table></div>
+<h3>🟡 정정·주의 (대외 인용 시)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>항목</th>
+<th>정정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟡-1</td>
+<td>"프리텔레콤 매출 1,014억"(IR)</td>
+<td><strong>616.9억(별도)</strong>. 1,014억은 그룹 알뜰폰 내부거래 미제거 합산</td>
+</tr>
+<tr>
+<td>🟡-2</td>
+<td>"점유율 8.2%"(IR)</td>
+<td>분모 미공개. <strong>통합 브랜드 5.9%(휴대폰 회선 기준)</strong> 권장</td>
+</tr>
+<tr>
+<td>🟡-3</td>
+<td>"매출 1,014억 / 영업이익 64억"(IR)</td>
+<td>분자·분모 범위 불일치. <strong>범위 맞추면 10.7%</strong></td>
+</tr>
+<tr>
+<td>🟡-4</td>
+<td>DCF 지분가치 644.5억</td>
+<td><strong>미수금 회수 가정 의존 + 감면 미반영(상방) + 잔존율 회복 가정(하방)</strong> 단서 필수</td>
+</tr>
+<tr>
+<td>🟡-5</td>
+<td>신규 유치 규율</td>
+<td>"CAC 회수기간 상한"이 아니라 <strong>"장려금 커버리지 100% 유지"</strong> 가 정확한 규율</td>
+</tr>
+</tbody>
+</table></div>
+<h3>🟢 확인·강화된 판단</h3>
+<ul>
+<li>시장 성숙기 진입·순유출(2025.6 정점 → 2026.4~5 순유출) — 잔존율로 <strong>실증</strong></li>
+<li>Porter 공급자 교섭력 5점 — 후불 원가율 80~88%로 <strong>강화</strong></li>
+<li>3사망 자산 = 유일 차별화 — <strong>장려금 경쟁 입찰 지렛대</strong>로 현금 가치 규명</li>
+<li>브랜드 매력도 3.2/5 "가격 성과 브랜드"</li>
+</ul>
+<hr />
+<h2>3. 정합성 매트릭스 (첨부 자료 내부 검증)</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>검증 항목</th>
+<th>삼화 평가보고서</th>
+<th>IR BOOK</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>프리텔레콤 2025 매출</td>
+<td>616.9억 (별도)</td>
+<td>1,014억 ("프리텔레콤")</td>
+<td>🟡 범위 차이 규명(02 §2)</td>
+</tr>
+<tr>
+<td>프리텔레콤 2025 영업이익</td>
+<td>65.9억 (별도)</td>
+<td>64억</td>
+<td>🟢 정합</td>
+</tr>
+<tr>
+<td>프리텔레콤 가입자</td>
+<td>337,593명</td>
+<td>"60만명"</td>
+<td>🟡 법인 vs 통합 브랜드</td>
+</tr>
+<tr>
+<td>프리티 연결 매출</td>
+<td>—</td>
+<td>1,055.6억</td>
+<td>🟢 (프리텔레콤 별도와 계층 정합)</td>
+</tr>
+<tr>
+<td>영업이익률 계산 재현</td>
+<td>65.9/616.9 = 10.7%</td>
+<td>64/1,014 = 6.3%</td>
+<td>🟡 IR은 범위 불일치</td>
+</tr>
+<tr>
+<td>잔존율 모델 재현</td>
+<td>KT 162,892 / SKT 235,793</td>
+<td>—</td>
+<td>🟢 재현 성공(03 §4.1)</td>
+</tr>
+<tr>
+<td>매출 성장 vs 시장</td>
+<td>+12~15% CAGR</td>
+<td>—</td>
+<td>🔴 시장 4.77%의 3배(04 §1)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>논리 사슬 총평</strong>: 01(원가·믹스) → 02(수익성·모회사 익스포저) → 03(잔존율·커버리지) → 04(계획 vs 트렌드) → 05(생존전략) → 07(관계사)로 이어지는 사슬에 단절 없음. <strong>모든 보고서가 "프리텔레콤은 우량하나 관계·정책 변수에 종속"이라는 하나의 결론으로 수렴</strong>한다.</p>
+<hr />
+<h2>4. 전략 권고 (프리텔레콤 관점, 우선순위)</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>권고</th>
+<th>근거</th>
+<th style="text-align: center;">우선순위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1</td>
+<td><strong>모회사 미수금 118.9억 회수 약정·담보화 + 관계사 거래 한도 사규화</strong></td>
+<td>07 §2, 05 D1·D2</td>
+<td style="text-align: center;">★★★ 즉시</td>
+</tr>
+<tr>
+<td>R2</td>
+<td><strong>성장 목표 하향, 선불·외국인·니치 믹스로 이익률 10.7% 방어</strong></td>
+<td>03 §5, 05 O1</td>
+<td style="text-align: center;">★★★ 즉시</td>
+</tr>
+<tr>
+<td>R3</td>
+<td><strong>장려금 커버리지 100%를 최상위 KPI로 — 2028 붕괴 대비</strong></td>
+<td>03 §3.2, 05 O3</td>
+<td style="text-align: center;">★★★ 즉시</td>
+</tr>
+<tr>
+<td>R4</td>
+<td><strong>3사망을 장려금 경쟁 입찰 지렛대로 현금화</strong></td>
+<td>01 §2, 05 O2</td>
+<td style="text-align: center;">★★☆ 6개월</td>
+</tr>
+<tr>
+<td>R5</td>
+<td><strong>CS 단일화·AICC 완주 (이미 착수)</strong></td>
+<td>03 §7, 05 O4</td>
+<td style="text-align: center;">★★☆ 6~12개월</td>
+</tr>
+<tr>
+<td>R6</td>
+<td><strong>지분 매각 국면 대비 — 인력 리텐션·독립 운영·감면 반영 재평가</strong></td>
+<td>05 D3·D4</td>
+<td style="text-align: center;">★★☆ 6개월</td>
+</tr>
+<tr>
+<td>R7</td>
+<td><strong>해외(캐나다·미국)는 옵션 보존, 자원은 국내 정상화 후</strong></td>
+<td>04 T8, 05 O5</td>
+<td style="text-align: center;">★☆☆ 지속</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>5. 산출물 구성</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>파일</th>
+<th>핵심</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00_input.md</td>
+<td>첨부 2건 정리·확정 사실</td>
+</tr>
+<tr>
+<td>01_industry_analysis.md</td>
+<td>장려금 구조·믹스 KSF</td>
+</tr>
+<tr>
+<td>02_competitor_analysis.md</td>
+<td>매출/점유율 규명·수익성 1위</td>
+</tr>
+<tr>
+<td>03_consumer_analysis.md</td>
+<td>잔존율 실증·커버리지 시한</td>
+</tr>
+<tr>
+<td>04_trend_analysis.md</td>
+<td>계획 vs 트렌드 정합성</td>
+</tr>
+<tr>
+<td>05_survival_strategy.md</td>
+<td>★생존전략 (방어+공격)</td>
+</tr>
+<tr>
+<td>06_review_report.md</td>
+<td>본 문서 (종합 요약)</td>
+</tr>
+<tr>
+<td>07_appendix_affiliates.md</td>
+<td>★별첨 관계사</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>부록: 데이터 한계 총괄</h2>
+<ol>
+<li>DART 원문 미대조 — 별도 F/S·기타비용 내역·지분 구조·영업외손실 내역 (각 보고서 부록 참조). 특히 ① 프리티 <strong>별도</strong> 재무제표(자본잠식 법적 판정) ② 기타비용 423.8억 계정 내역 ③ 프리텔레콤 영업외손실 67.4억 내역 ④ 정밀 지분 구조는 원문 확보 시 정정 여지 있음.</li>
+<li>자본잠식률은 연결 추정 — 상장 유지 판정은 별도 기준</li>
+<li>장려금 종속(T7)은 프리텔레콤 1개사 데이터 기반 구조 가설</li>
+<li>시나리오 확률·재평가액·KPI 목표치는 자체 판단</li>
+<li>시장 통계는 2026.7.5 조사 기준</li>
+<li><strong>평가보고서는 배포 제한 문서 — 본 분석은 내부 검토용, 대외 배포·인용 금지</strong></li>
+</ol></section>
+<section id="industry" class="panel"><h1>01. 산업 분석 — 국내 알뜰폰(MVNO) 시장</h1>
+<ul>
+<li>작성일: 2026-07-23</li>
+</ul>
+<h2>1. 산업 개요</h2>
+<h3>1.1 정의와 생명주기</h3>
+<ul>
+<li><strong>알뜰폰(MVNO)</strong>: MNO(SKT·KT·LGU+)의 망을 도매 임차해 자체 브랜드·요금제로 재판매하는 이동통신 서비스(전기통신사업법상 등록제).</li>
+<li><strong>생명주기 판정: 성장기 말~성숙기 진입 (변곡점 통과 중)</strong>
+  1. 휴대폰 회선 <strong>1,011만 684회선</strong>(2025.6말, 사상 첫 1,000만 돌파) 정점 통과 후 <strong>2026.4월 -7,353 / 5월 -11,211명 2개월 연속 순유출</strong>
+  2. 가입자 점유율 20.0% vs <strong>소매 매출액 점유율 8.4%</strong>(KISDI 2024) — 양적 성장의 질적 전환 실패
+  3. 중소 사업자 상당수 영업적자(과기정통부 2026.6 공식 언급) → 통폐합 압력</li>
+</ul>
+<h3>1.2 시장 규모</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>수치</th>
+<th>기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>알뜰폰 휴대폰 회선</td>
+<td><strong>1,011만</strong></td>
+<td>2025.6말</td>
+</tr>
+<tr>
+<td>회선 비중</td>
+<td>17.6~17.9%</td>
+<td>2025.6~3Q</td>
+</tr>
+<tr>
+<td>알뜰폰 ARPU</td>
+<td>약 16,000원/월 (MNO 36,000원의 44%)</td>
+<td>2023, KISDI</td>
+</tr>
+<tr>
+<td><strong>소매시장 규모</strong></td>
+<td><strong>연 약 2.0조 원 (1.9~2.2조)</strong></td>
+<td>2025 추정</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>2. 알뜰폰 손익의 진짜 메커니즘: 장려금이 마진을 만든다</h2>
+<p>통설은 "도매대가 인하가 원가를 개선한다"고 보지만, 평가보고서의 원가 실데이터는 <strong>더 결정적인 변수</strong>를 드러낸다.</p>
+<h3>2.1 도매원가율 실측 (프리텔레콤, 매출 대비 %)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th style="text-align: right;">2024(a)</th>
+<th style="text-align: right;">2025(a)</th>
+<th style="text-align: right;">2026(f)</th>
+<th style="text-align: right;">2030(f)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>장려금 차감 전</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>선불 KT</td>
+<td style="text-align: right;">41.9%</td>
+<td style="text-align: right;">51.7%</td>
+<td style="text-align: right;">52.0%</td>
+<td style="text-align: right;">52.0%</td>
+</tr>
+<tr>
+<td><strong>후불 KT</strong></td>
+<td style="text-align: right;"><strong>80.8%</strong></td>
+<td style="text-align: right;"><strong>77.6%</strong></td>
+<td style="text-align: right;"><strong>80.3%</strong></td>
+<td style="text-align: right;"><strong>80.3%</strong></td>
+</tr>
+<tr>
+<td>선불 SKT</td>
+<td style="text-align: right;">51.1%</td>
+<td style="text-align: right;">50.2%</td>
+<td style="text-align: right;">52.3%</td>
+<td style="text-align: right;">52.3%</td>
+</tr>
+<tr>
+<td><strong>후불 SKT</strong></td>
+<td style="text-align: right;"><strong>86.2%</strong></td>
+<td style="text-align: right;"><strong>79.4%</strong></td>
+<td style="text-align: right;"><strong>88.0%</strong></td>
+<td style="text-align: right;"><strong>88.0%</strong></td>
+</tr>
+<tr>
+<td><strong>장려금 차감 후</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>선불 KT</td>
+<td style="text-align: right;">40.5%</td>
+<td style="text-align: right;">50.7%</td>
+<td style="text-align: right;">50.0%</td>
+<td style="text-align: right;">49.8%</td>
+</tr>
+<tr>
+<td><strong>후불 KT</strong></td>
+<td style="text-align: right;">64.2%</td>
+<td style="text-align: right;"><strong>59.9%</strong></td>
+<td style="text-align: right;"><strong>51.9%</strong></td>
+<td style="text-align: right;"><strong>64.6%</strong></td>
+</tr>
+<tr>
+<td>선불 SKT</td>
+<td style="text-align: right;">44.2%</td>
+<td style="text-align: right;">43.9%</td>
+<td style="text-align: right;">41.0%</td>
+<td style="text-align: right;">39.9%</td>
+</tr>
+<tr>
+<td><strong>후불 SKT</strong></td>
+<td style="text-align: right;">66.6%</td>
+<td style="text-align: right;"><strong>58.2%</strong></td>
+<td style="text-align: right;"><strong>59.9%</strong></td>
+<td style="text-align: right;"><strong>65.8%</strong></td>
+</tr>
+<tr>
+<td><strong>장려금 총액(억원)</strong></td>
+<td style="text-align: right;">67.2</td>
+<td style="text-align: right;"><strong>104.2</strong></td>
+<td style="text-align: right;"><strong>152.6</strong></td>
+<td style="text-align: right;">183.9</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.2 이 표가 말하는 것 — 산업 구조에 대한 4개의 함의</h3>
+<p><strong>① 후불 알뜰폰은 도매대가만 놓고 보면 사실상 이익이 나지 않는 사업이다.</strong>
+후불 도매원가율이 <strong>80.3%(KT)·88.0%(SKT)</strong>. 여기에 판관비(매출 대비 34~43%)를 더하면 합계 114~131%로 <strong>구조적 적자</strong>. 후불 사업이 흑자가 되는 유일한 이유는 <strong>MNO가 지급하는 장려금</strong>(2025년 104.2억)이다.</p>
+<p><strong>② 따라서 알뜰폰 후불 사업의 손익 결정권은 도매대가가 아니라 MNO의 장려금 정책에 있다.</strong>
+평가보고서 §IV-3이 이를 명시한다 — <em>"장려금은 신규가입자 유치에 따라 통신망사업자(MNO)가 지급하는 것이나 </em><em>그 정책이 유동적</em><em>"</em>. 즉 알뜰폰 사업자는 원가의 20~30%p에 해당하는 변수를 <strong>계약이 아닌 정책 재량</strong>에 의존한다.
+→ <strong>Porter 공급자 교섭력 5점(매우 강함) 판정이 실측으로 뒷받침된다.</strong> 정부가 도매대가를 인하해도 MNO가 장려금을 줄이면 순효과는 상쇄될 수 있다. <strong>도매대가 인하 효과를 논할 때 장려금 정책을 함께 보지 않으면 오독한다.</strong></p>
+<p><strong>③ 선불이 후불보다 구조적으로 남는 사업이다.</strong>
+선불 도매원가율 50~52% vs 후불 80~88%. 장려금 차감 후에도 선불 SKT는 <strong>41~44%</strong> 로 압도적. 프리텔레콤이 국내 알뜰폰 1호(2009, LGU+ 선불폰)로 출발해 선불 노하우를 보유한 것이 <strong>영업이익률 10.7%의 실질적 원천</strong>으로 판단된다.
+→ 산업 시사점: <strong>"알뜰폰은 박리다매"라는 통념은 후불 중심 사업자에게만 참이다.</strong></p>
+<p><strong>④ 장려금 의존은 시간이 갈수록 희석된다 — 2026년 계획의 최대 취약점.</strong></p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th style="text-align: right;">2026(f)</th>
+<th style="text-align: right;">2030(f)</th>
+<th style="text-align: right;">변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>장려금 총액</td>
+<td style="text-align: right;">152.6억</td>
+<td style="text-align: right;">183.9억</td>
+<td style="text-align: right;">+20.5%</td>
+</tr>
+<tr>
+<td>누적가입자</td>
+<td style="text-align: right;">455,290명</td>
+<td style="text-align: right;">683,125명</td>
+<td style="text-align: right;">+50.0%</td>
+</tr>
+<tr>
+<td><strong>회선당 장려금</strong></td>
+<td style="text-align: right;"><strong>33,519원</strong></td>
+<td style="text-align: right;"><strong>26,916원</strong></td>
+<td style="text-align: right;"><strong>-19.7%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>장려금은 <strong>신규가입자 증가율(4.77%)</strong> 만큼 증가하는 것으로 추정된 반면 누적가입자는 그보다 빨리 늘어난다. 그 결과 후불 KT 원가율이 2026년 51.9%에서 2030년 <strong>64.6%로 12.7%p 악화</strong>한다. <strong>2026년의 좋은 원가율은 장려금이 신규 유치에 몰린 결과이지 구조적 개선이 아니다.</strong></p>
+<hr />
+<h2>3. Porter's 5 Forces</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>Force</th>
+<th style="text-align: center;">점수</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>공급자(MNO) 교섭력</td>
+<td style="text-align: center;">5</td>
+<td>후불 도매원가율 80~88% 실측 + 장려금 정책 재량 의존(§2). 원가의 2/3와 마진의 전부를 공급자가 통제</td>
+</tr>
+<tr>
+<td>구매자 교섭력</td>
+<td style="text-align: center;">4.5</td>
+<td>프리텔레콤 후불 <strong>기존가입자 잔존율이 2024년 62.3%(KT)·59.4%(SKT)에서 2025년 50.1%·47.0%로 12%p 급락</strong>(→ 03 §2). 이탈 옵션 행사가 실제 데이터로 확인</td>
+</tr>
+<tr>
+<td>신규 진입 위협</td>
+<td style="text-align: center;">3</td>
+<td>등록제·낮은 설비 요건은 그대로. 다만 후불 원가 구조(§2)를 아는 신규 진입자라면 자본만으로 뛰어들 유인 낮음</td>
+</tr>
+<tr>
+<td>대체재 위협</td>
+<td style="text-align: center;">4</td>
+<td>MNO 다이렉트 3브랜드(에어·요고·너겟) + 단통법 폐지 보조금</td>
+</tr>
+<tr>
+<td>기존 경쟁</td>
+<td style="text-align: center;">5</td>
+<td>동질 상품·가격 단일축</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>종합 평균 4.3/5 — 산업 매력도 낮음.</strong> 단 여기에는 단서가 붙는다: <strong>매력도가 낮은 것은 "후불 재판매" 세부 산업이며, 선불·자체전산·니치 조합에는 두 자릿수 이익률 구간이 실재한다.</strong></p>
+<hr />
+<h2>4. 알뜰폰 수익 구조 — 박리다매가 아닌 믹스 의존</h2>
+<h3>4.1 사업자별 이익률 실측</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>사업자</th>
+<th style="text-align: right;">매출</th>
+<th style="text-align: right;">영업이익</th>
+<th style="text-align: right;">이익률</th>
+<th>기준</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KT엠모바일 (업계 1위)</td>
+<td style="text-align: right;">3,455.8억</td>
+<td style="text-align: right;">95.8억</td>
+<td style="text-align: right;"><strong>2.8%</strong></td>
+<td>2024</td>
+<td>감사보고서 기반</td>
+</tr>
+<tr>
+<td>SK텔링크 알뜰폰 부문</td>
+<td style="text-align: right;">1,446.9억</td>
+<td style="text-align: right;">(역성장)</td>
+<td style="text-align: right;">—</td>
+<td>2024</td>
+<td>감사보고서 기반</td>
+</tr>
+<tr>
+<td>미디어로그</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">적자 전환</td>
+<td style="text-align: right;"><strong>(-)</strong></td>
+<td>2024</td>
+<td>감사보고서 기반</td>
+</tr>
+<tr>
+<td>KB리브모바일</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">5년 누적 -600억+</td>
+<td style="text-align: right;"><strong>(-)</strong></td>
+<td>2025</td>
+<td>공시 기반</td>
+</tr>
+<tr>
+<td><strong>㈜프리텔레콤 (별도)</strong></td>
+<td style="text-align: right;"><strong>616.9억</strong></td>
+<td style="text-align: right;"><strong>65.9억</strong></td>
+<td style="text-align: right;"><strong>10.7%</strong></td>
+<td><strong>2025</strong></td>
+<td><strong>★첨부① 감사대상 F/S</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.2 왜 프리텔레콤만 10.7%인가 — 4개 요인 분해</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>요인</th>
+<th>기여</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① <strong>선불 비중</strong></td>
+<td>高</td>
+<td>선불 도매원가율 50~52% vs 후불 80~88%(§2). 2025년 선불매출 176.4억(통신서비스의 33.7%)</td>
+</tr>
+<tr>
+<td>② <strong>자체 빌링·전산</strong></td>
+<td>中</td>
+<td>2023년 자체 통합 빌링 구축(연혁). 외부 전산 임차료 부재</td>
+</tr>
+<tr>
+<td>③ <strong>모회사 수수료매출</strong></td>
+<td>中</td>
+<td>경영관리수수료 82.8억(2025), 매출총이익 기여 약 7.9억 → <strong>영업이익의 12%</strong></td>
+</tr>
+<tr>
+<td>④ <strong>장려금 수취</strong></td>
+<td>高</td>
+<td>104.2억(2025). 신규가입자 290,813명 기준 <strong>1인당 35,821원</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>★ 중요: ③은 <strong>관계사 내부거래</strong>다. 2026년부터 순액(MVNO 매출액의 2%) 표시로 바뀌어 82.8억 → 8.2억이 된다. 즉 <strong>프리텔레콤의 외형 매출 중 13.4%(2025)가 모회사향 내부거래</strong>였고, "MVNO 부문 931.6억"과 IR의 "프리텔레콤 1,014억" 같은 수치들이 이 내부거래를 어떻게 처리했는지에 따라 달라진다(→ 02 §2).</p>
+</blockquote>
+<h3>4.3 산업 결론</h3>
+<blockquote>
+<p><strong>알뜰폰 산업은 "박리다매 산업"이 아니라 "믹스 의존 산업"이다.</strong>
+후불 단순재판매만 하면 장려금 없이는 적자, 있어도 2~3%.
+선불·자체전산·내부 수수료·니치를 조합하면 10%대가 가능하다.
+다만 이 10%대는 <strong>① MNO 장려금 정책 ② 관계사 거래 ③ 선불 시장 규모</strong>라는 세 개의 외생 변수 위에 서 있으며, 셋 다 사업자가 통제하지 못한다.</p>
+</blockquote>
+<hr />
+<h2>5. 밸류체인</h2>
+<pre><code>[MNO 망 도매]  →  [MVNE/자체 전산]  →  [MVNO]  →  [유통 채널]  →  [소비자]
+ SKT·KT·LGU+       빌링·HLR·개통       프리텔레콤 등    온라인·플랫폼·5,000 판매점
+   ↑ 도매대가                                ↑
+   ↓ 장려금 ←──── 실질 마진의 원천 ────────┘
+</code></pre>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>확인 사항</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 망 도매</td>
+<td>후불 원가율 80~88%. <strong>장려금 역류가 마진을 만드는 구조</strong>(§2)</td>
+</tr>
+<tr>
+<td>② 전산</td>
+<td>프리텔레콤 2023년 자체 통합 빌링 구축 완료. <strong>2026년 차세대 시스템+AI 서비스에 소프트웨어 CapEx 13.4억 계획</strong>(평가보고서 §IV-5) — 5년 총 CapEx 46.4억 중 29%가 2026년 단년 집중</td>
+</tr>
+<tr>
+<td>③ MVNO</td>
+<td>이익률 스펙트럼 (-)~10.7%로 넓게 분포</td>
+</tr>
+<tr>
+<td>④ 유통</td>
+<td>프리티 <strong>오프라인 전국 5,000여 판매점</strong>(IR §02). 대리점수수료 선불 24.7억 + 후불 38.7억(2025)</td>
+</tr>
+<tr>
+<td>⑤ 소비자</td>
+<td>프리텔레콤 ARPU 통신서비스 기준 <strong>월 약 12,900원</strong>(523.7억 ÷ 337,593명 ÷ 12) — 시장 평균 1.6만 원의 <strong>81%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>6. 규제 환경</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>규제</th>
+<th>상태</th>
+<th>산업 영향</th>
+<th>관측</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>도매대가 인하</strong> (2025.1, 최대 -52%)</td>
+<td>시행</td>
+<td>(+) 원가 개선</td>
+<td>⚠️ <strong>장려금 정책과 함께 보아야 순효과 판단 가능</strong>(§2)</td>
+</tr>
+<tr>
+<td><strong>사전→사후규제 전환</strong></td>
+<td>정착 중, 첫 자율협상 RM만 인하·RS 동결</td>
+<td>(−) 협상력 약한 중소사 불리</td>
+<td>프리텔레콤 3사망 소싱 = 경쟁입찰 지렛대이나 단독 33.8만 물량은 열위</td>
+</tr>
+<tr>
+<td><strong>전파사용료 90% 감면 + 3년 연장</strong></td>
+<td>2026.6.26 발표, 2027 시행 예정</td>
+<td>(+) 중소사 비용</td>
+<td>⚠️ 평가보고서 추정 재무제표에 <strong>감면 효과가 별도 반영된 흔적 없음</strong> → 상방 여지 또는 누락 (→ 06 검증)</td>
+</tr>
+<tr>
+<td><strong>단통법 폐지</strong> (2025.7.22)</td>
+<td>시행</td>
+<td>(−) 최대 역풍</td>
+<td>★<strong>실증 확인</strong> — 프리텔레콤 후불 기존가입자 잔존율 12%p 급락(2025)이 시행 시점과 일치</td>
+</tr>
+<tr>
+<td><strong>점유율 60% 제한법</strong></td>
+<td>법사위 계류·교착</td>
+<td>(±)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>금융권 진입 정식화</strong> (2025.4)</td>
+<td>시행</td>
+<td>(±)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>7. 핵심 성공 요인 (KSF)</h2>
+<p>알뜰폰 사업의 핵심 성공 요인(KSF)은 다음 8가지다.</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>KSF</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>규모의 경제</strong></td>
+<td>100만 회선 임계점. 단 실질 이유는 고정비 흡수보다 <strong>장려금 협상 물량</strong>이다(§2)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>자체 전산·빌링 내재화</strong></td>
+<td>프리텔레콤 10.7% 이익률의 기여 요인 ②로 확인</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>도매대가+장려금 결합 협상력</strong></td>
+<td>후불 마진의 20~30%p가 장려금에서 나오므로 도매대가 협상력만으로 부족</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>중소 지위 정책 수혜</strong></td>
+<td>전파사용료 90% 감면 '27~</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>디지털 유통·플랫폼 노출</strong></td>
+<td>오프라인 5,000 판매점 병행 확인</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>리텐션 설계</strong></td>
+<td>★최우선 — 잔존율 12%p 급락이 실측됨(→ 03)</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>ARPU 다변화</strong></td>
+<td>부가·B2B 수익원 확대로 ARPU 방어</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td><strong>사업 믹스 관리 (선불·후불·니치 비중)</strong></td>
+<td>후불 편중은 곧 장려금 종속. <strong>선불·B2B·해외 등 고마진 믹스 유지가 이익률을 결정</strong> (§4.2)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>요약</strong>: ①~④ 없이는 이익 불가, ⑤~⑦ 없이는 성장 불가, <strong>⑧ 없이는 ①~⑦을 다 해도 이익률이 2~3%대로 수렴</strong>.</p>
+<hr />
+<h2>8. 후속 분석가 전달 사항</h2>
+<p><strong>→ 경쟁 분석가(02)</strong>: ⓐ IR의 "프리텔레콤 매출 1,014억"과 평가보고서 별도 616.9억의 차이를 규명할 것 ⓑ IR 점유율표의 "인스코비(프리텔레콤) 8.2%"와 기존 추정 5.5%를 대조할 것 ⓒ 프리텔레콤 10.7% 이익률을 경쟁사 벤치마크에 반영.</p>
+<p><strong>→ 소비자 분석가(03)</strong>: 잔존율 표(평가보고서 §IV-2)가 <strong>이탈 실데이터</strong>다. 선불/후불 × 신규/기존 4분면으로 이탈 구조를 계량화할 것. 특히 후불 기존가입자 잔존율 50.1%(KT)·47.0%(SKT)의 의미.</p>
+<p><strong>→ 트렌드 분석가(04)</strong>: 회사 사업계획(2026 신규가입자 +33.5%, 통신서비스 매출 +26.9%)이 시장 순유출 트렌드와 정면 배치된다. <strong>정합성 판정</strong>이 필요.</p>
+<p><strong>→ 생존전략(05)</strong>: §2의 장려금 의존 구조와 §4.2의 이익률 4개 요인이 생존 조건의 원자료다. 특히 ③(모회사 수수료)이 2026년 소멸하는 점.</p>
+<hr />
+<h2>부록: 데이터 출처</h2>
+<ul>
+<li><strong>1차</strong>: 삼화회계법인 프리텔레콤 지분가치 평가보고서(2026.4.27) §II-2, §IV-2~6 / 프리티 IR BOOK(2026.7) §02, §06</li>
+<li><strong>2차</strong>: 과기정통부 무선통신서비스 가입 현황 인용 보도(ZDNet 2025.8.9, 디지털데일리 2025.8.8), KISDI 통신시장 경쟁상황평가 인용(뉴스토마토), 아주경제 2026.6.2(순유출), 더스쿠프 2026.5.26(이탈 의향 48%), 전자신문 2026.6.26(전파사용료), ZDNet 2025.1.15(도매대가)</li>
+<li>⚠️ 회선당 장려금·ARPU 월환산·원가율 함의는 <strong>본 보고서 자체 산출</strong>이며 평가보고서 원문에 없는 해석이다.</li>
+</ul></section>
+<section id="competitor" class="panel"><h1>02. 경쟁 분석 — 프리텔레콤/프리티의 경쟁 지위</h1>
+<ul>
+<li>작성일: 2026-07-23</li>
+<li>본 분석은 <strong>두 개의 숫자 불일치</strong>를 규명하는 데서 출발한다. ① "프리텔레콤 매출 1,014억"(IR) vs "616.9억"(평가보고서) ② "점유율 8.2%"(IR) vs "5.9%"(실측 추정). 둘 다 <strong>오류가 아니라 정의 차이</strong>로 판명되며, 그 정의를 확정하는 것이 경쟁 지위 판단의 출발점이다.</li>
+</ul>
+<hr />
+<h2>0. 핵심 요약</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>질문</th>
+<th>답변</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>프리텔레콤의 진짜 매출은?</strong></td>
+<td><strong>616.9억(별도, 2025)</strong>. IR의 1,014억은 <strong>프리티 그룹 알뜰폰 사업 전체의 내부거래 미제거 단순합산</strong> (§2에서 정확히 재현)</td>
+</tr>
+<tr>
+<td><strong>진짜 점유율은?</strong></td>
+<td><strong>프리텔레콤 단독 33.8만 회선 = 휴대폰 회선(1,011만)의 3.3%</strong>, <strong>프리티 통합 약 60만 = 5.9%</strong>. IR의 8.2%는 <strong>분모를 약 790만으로 축소</strong>한 회사 기준 (§3)</td>
+</tr>
+<tr>
+<td><strong>경쟁사 대비 수익성은?</strong></td>
+<td><strong>압도적 1위</strong> — 영업이익률 10.7% vs KT엠모바일 2.8%·미디어로그 적자·KB 누적적자. <strong>단 이 우위의 12%는 모회사 내부거래에서 나오며 2026년 소멸</strong> (§4)</td>
+</tr>
+<tr>
+<td><strong>경쟁 순위는?</strong></td>
+<td>회선 기준 알뜰폰 <strong>5~6위권</strong>(통합 브랜드), <strong>독립계 1위</strong>. 다만 <strong>수익성 기준으로는 업계 1위</strong>일 개연성이 높다</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>1. 경쟁 구도</h2>
+<h3>1.1 시장 지형</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>진영</th>
+<th>사업자 (가입자, 만 회선)</th>
+<th>합산 점유율</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① MNO 자회사 5사</strong></td>
+<td>KT엠모바일 170.4 · 미디어로그 103.7 · SK텔링크 77.7 · LG헬로비전 74.5 · KT스카이라이프 42.2</td>
+<td><strong>약 47~49%</strong></td>
+</tr>
+<tr>
+<td><strong>② 금융권</strong></td>
+<td>KB리브모바일 43.7 · 토스모바일 ~20 · 우리WON ~3</td>
+<td>약 6.5%</td>
+</tr>
+<tr>
+<td><strong>③ 독립계</strong></td>
+<td>유니컴즈 46.8 · <strong>프리티 통합 약 56~60</strong> · KCT(티플러스) 42.5 · 큰사람커넥트 29.0 · 아이즈비전 22.7 등 수십 개사</td>
+<td>약 45%</td>
+</tr>
+<tr>
+<td><strong>④ 간접 경쟁</strong></td>
+<td>MNO 다이렉트 — SKT 에어 · KT 요고 · LGU+ 너겟</td>
+<td>(알뜰폰 상단 잠식)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.2 IR BOOK의 시장 현황표 (첨부②) 원문</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>순번</th>
+<th>사업자</th>
+<th>점유율</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>K사</td>
+<td>21.5%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>M사</td>
+<td>13.7%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>L사</td>
+<td>9.4%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>S사</td>
+<td>9.0%</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong>인스코비 (프리텔레콤)</strong></td>
+<td><strong>8.2%</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>K사</td>
+<td>5.9%</td>
+</tr>
+</tbody>
+</table></div>
+<p>→ 이 표의 검증은 §3에서 수행한다.</p>
+<hr />
+<h2>2. ★해소① — "1,014억"의 정체</h2>
+<h3>2.1 세 개의 숫자</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>출처</th>
+<th style="text-align: right;">수치</th>
+<th>범위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>평가보고서 §II-2 (감사대상 F/S)</td>
+<td style="text-align: right;"><strong>616.9억</strong></td>
+<td>프리텔레콤 <strong>별도</strong></td>
+</tr>
+<tr>
+<td>IR BOOK §02</td>
+<td style="text-align: right;"><strong>1,014억</strong></td>
+<td>"㈜프리텔레콤 매출액('25)"</td>
+</tr>
+<tr>
+<td>IR BOOK §06 (연결 F/S)</td>
+<td style="text-align: right;">1,055.6억</td>
+<td>프리티 <strong>연결 전체</strong></td>
+</tr>
+<tr>
+<td>투자요청서</td>
+<td style="text-align: right;">931.6억</td>
+<td>연결 <strong>알뜰폰 부문</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.2 재현 검산 — 1,014억은 이렇게 만들어진다</h3>
+<pre><code>프리텔레콤 별도 매출                              616.9억
+  (−) 모회사향 수수료매출(내부거래)                −82.8억
+  ────────────────────────────────────────────────────
+  프리텔레콤 외부 매출                             534.1억
+  (+) 프리티 본체 MVNO사업부(LGU+망) 매출          397.5억   ← 역산
+  ────────────────────────────────────────────────────
+연결 알뜰폰 부문 매출                             931.6억   ✅ 투자요청서 수치와 일치
+  (+) 내부거래(수수료매출) 미제거분                +82.8억
+  ────────────────────────────────────────────────────
+IR 표기 &quot;프리텔레콤 매출&quot;                        1,014.4억  ✅ IR 1,014억과 일치
+</code></pre>
+<p><strong>판정: 계산 오류가 아니라 범위 표기 오류.</strong>
+IR BOOK은 회사 개요표에 "기업명 ㈜프리텔레콤 / 매출액('25) 1,014억"으로 적었으나, 실제로는 <strong>프리티 그룹 알뜰폰 사업 전체를 내부거래 제거 없이 단순합산한 값</strong>이다. 프리텔레콤 법인의 매출은 616.9억이다.</p>
+<h3>2.3 더 중요한 문제 — 영업이익 표기의 혼재</h3>
+<p>IR은 같은 칸에 <strong>"영업이익: 64억"</strong> 을 적었다.</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>후보</th>
+<th style="text-align: right;">값</th>
+<th>IR의 64억과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>프리텔레콤 <strong>별도</strong> 영업이익(2025)</td>
+<td style="text-align: right;"><strong>65.9억</strong></td>
+<td>✅ <strong>거의 일치</strong></td>
+</tr>
+<tr>
+<td>프리티 <strong>연결</strong> 영업이익(2025)</td>
+<td style="text-align: right;">40.8억</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>투자요청서 "MVNO 부문" 영업이익</td>
+<td style="text-align: right;">86.0억</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table></div>
+<p>→ <strong>IR의 "매출 1,014억 / 영업이익 64억"은 분자와 분모의 범위가 다르다.</strong> 매출은 그룹 합산, 영업이익은 프리텔레콤 별도. 이대로 나누면 영업이익률 6.3%가 되지만, <strong>범위를 맞추면 프리텔레콤 별도 10.7%</strong> 이다.</p>
+<blockquote>
+<p>⚠️ <strong>대외 인용 시 필수 정정</strong>: "프리텔레콤 매출 1,014억"은 사용 금지. 정확한 표현은 <strong>"프리텔레콤 별도 616.9억(영업이익률 10.7%), 그룹 알뜰폰 사업 합산 931.6억"</strong>.</p>
+</blockquote>
+<hr />
+<h2>3. ★해소② — "점유율 8.2%"의 분모</h2>
+<h3>3.1 IR 표를 실측 가입자로 역산</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>사업자(추정)</th>
+<th style="text-align: right;">실측 회선(만)</th>
+<th style="text-align: right;">IR 점유율</th>
+<th style="text-align: right;"><strong>역산 분모(만)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K사 = KT엠모바일</td>
+<td style="text-align: right;">170.4</td>
+<td style="text-align: right;">21.5%</td>
+<td style="text-align: right;">792.6</td>
+</tr>
+<tr>
+<td>M사 = 미디어로그</td>
+<td style="text-align: right;">103.7</td>
+<td style="text-align: right;">13.7%</td>
+<td style="text-align: right;">756.9</td>
+</tr>
+<tr>
+<td>L사 = LG헬로비전</td>
+<td style="text-align: right;">74.5</td>
+<td style="text-align: right;">9.4%</td>
+<td style="text-align: right;">792.6</td>
+</tr>
+<tr>
+<td>S사 = SK텔링크</td>
+<td style="text-align: right;">77.7</td>
+<td style="text-align: right;">9.0%</td>
+<td style="text-align: right;">863.3</td>
+</tr>
+<tr>
+<td>K사 = KT스카이라이프</td>
+<td style="text-align: right;">42.2</td>
+<td style="text-align: right;">5.9%</td>
+<td style="text-align: right;">715.3</td>
+</tr>
+<tr>
+<td><strong>인스코비(프리텔레콤)</strong></td>
+<td style="text-align: right;"><strong>33.8</strong> (별도)</td>
+<td style="text-align: right;"><strong>8.2%</strong></td>
+<td style="text-align: right;"><strong>412.2</strong> ← 이상치</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>해석</strong>: 5개 경쟁사는 분모가 <strong>약 715~863만(평균 약 784만)</strong> 으로 수렴한다. 프리텔레콤만 412만으로 절반이다. 두 가지 중 하나다.</p>
+<ul>
+<li>(a) 분자가 프리텔레콤 별도(33.8만)가 아니라 <strong>프리티 통합 브랜드</strong>다 → 784만 × 8.2% = <strong>약 64.3만 회선</strong>. IR 본문의 <strong>"가입자 60만명"</strong> 및 <strong>"MAU 약 60만"</strong> 서술과 정합. ✅ <strong>이 해석이 유력</strong></li>
+<li>(b) 프리텔레콤 별도 기준이라면 점유율은 33.8/784 = <strong>4.3%</strong> 여야 한다.</li>
+</ul>
+<h3>3.2 점유율 3중 표기 — 어떤 것을 쓸 것인가</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>기준</th>
+<th style="text-align: right;">분자</th>
+<th style="text-align: right;">분모</th>
+<th style="text-align: right;">점유율</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A. 법인 단독·공식 통계 분모</strong></td>
+<td style="text-align: right;">프리텔레콤 33.8만</td>
+<td style="text-align: right;">휴대폰 회선 1,011만</td>
+<td style="text-align: right;"><strong>3.3%</strong></td>
+<td>프리텔레콤 법인 분석·본 분석 기본값</td>
+</tr>
+<tr>
+<td><strong>B. 통합 브랜드·공식 통계 분모</strong></td>
+<td style="text-align: right;">프리티 통합 약 60만</td>
+<td style="text-align: right;">1,011만</td>
+<td style="text-align: right;"><strong>5.9%</strong></td>
+<td>대외 커뮤니케이션 권장값</td>
+</tr>
+<tr>
+<td>C. 회사 기준(IR)</td>
+<td style="text-align: right;">약 64만</td>
+<td style="text-align: right;">약 784만(조정)</td>
+<td style="text-align: right;"><strong>8.2%</strong></td>
+<td>IR 자료 — <strong>분모 근거 미공개, 인용 시 단서 필수</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>권고</strong>: 대외 문서에는 <strong>"휴대폰 회선 기준 약 5.9%(통합 브랜드), 독립계 1위"</strong> 로 기술한다. 8.2%는 분모 정의가 공개되지 않아 방어 곤란하다. 프리텔레콤 33.76만 + 프리티 통합분을 합한 <strong>통합 약 56~60만 회선 기준 → 5.5~5.9%</strong> 가 방어 가능 구간이다.</p>
+</blockquote>
+<hr />
+<h2>4. 수익성 경쟁 지위 — ★프리텔레콤이 업계 1위일 개연성</h2>
+<h3>4.1 벤치마크 재구성</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>사업자</th>
+<th style="text-align: right;">회선(만)</th>
+<th style="text-align: right;">매출</th>
+<th style="text-align: right;">영업이익</th>
+<th style="text-align: right;">이익률</th>
+<th>기준연도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KT엠모바일</td>
+<td style="text-align: right;">170.4</td>
+<td style="text-align: right;">3,455.8억</td>
+<td style="text-align: right;">95.8억</td>
+<td style="text-align: right;">2.8%</td>
+<td>2024</td>
+</tr>
+<tr>
+<td>SK텔링크(알뜰폰)</td>
+<td style="text-align: right;">77.7</td>
+<td style="text-align: right;">1,446.9억</td>
+<td style="text-align: right;">역성장·급감</td>
+<td style="text-align: right;">~0%</td>
+<td>2024</td>
+</tr>
+<tr>
+<td>미디어로그</td>
+<td style="text-align: right;">103.7</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">적자 확대(-869%)</td>
+<td style="text-align: right;">(−)</td>
+<td>2024</td>
+</tr>
+<tr>
+<td>KB리브모바일</td>
+<td style="text-align: right;">43.7</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">5년 누적 -600억+</td>
+<td style="text-align: right;">(−)</td>
+<td>2025</td>
+</tr>
+<tr>
+<td><strong>프리텔레콤</strong></td>
+<td style="text-align: right;"><strong>33.8</strong></td>
+<td style="text-align: right;"><strong>616.9억</strong></td>
+<td style="text-align: right;"><strong>65.9억</strong></td>
+<td style="text-align: right;"><strong>10.7%</strong></td>
+<td><strong>2025</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>회선당 매출</strong>: 프리텔레콤 616.9억 ÷ 33.76만 = <strong>18.3만 원/년</strong> vs KT엠모바일 3,455.8억 ÷ 170.4만 = <strong>20.3만 원/년</strong> → 프리텔레콤이 <strong>10% 낮다</strong>(저ARPU 확인).</li>
+<li><strong>회선당 영업이익</strong>: 프리텔레콤 65.9억 ÷ 33.76만 = <strong>1.95만 원/년</strong> vs KT엠모바일 95.8억 ÷ 170.4만 = <strong>0.56만 원/년</strong> → <strong>3.5배</strong>.</li>
+</ul>
+<blockquote>
+<p><strong>결론: 프리텔레콤은 규모에서 5분의 1이지만 회선당 이익에서 3.5배다.</strong> 알뜰폰 시장에서 규모와 수익성은 비례하지 않는다.</p>
+</blockquote>
+<h3>4.2 그러나 — 이 우위의 지속성에 대한 3개의 단서</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>단서</th>
+<th>내용</th>
+<th>영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 내부거래 의존 12%</strong></td>
+<td>영업이익 65.9억 중 모회사 경영관리수수료 기여 약 7.9억. <strong>2026년부터 순액(2%) 표시로 82.8억 → 8.2억</strong></td>
+<td>이익률 10.7% → 순수 외부거래 기준 약 <strong>9.4%</strong></td>
+</tr>
+<tr>
+<td><strong>② 장려금 의존</strong></td>
+<td>2025년 장려금 104.2억 = 영업이익의 <strong>1.6배</strong>. 장려금이 20% 삭감되면 영업이익 65.9 → 45.1억(-32%)</td>
+<td>MNO 정책 재량(→ 01 §2)</td>
+</tr>
+<tr>
+<td><strong>③ 회사 스스로 이익 급감을 계획</strong></td>
+<td>2026(f) 영업이익 <strong>29.8억</strong>(-54.8%), 이익률 <strong>4.3%</strong></td>
+<td>§5</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>5. ★신규 발견 — 사업계획이 스스로 예고하는 수익성 하락</h2>
+<p>평가보고서 §III-2의 추정 손익 (단위: 억원)</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th style="text-align: right;">2025(a)</th>
+<th style="text-align: right;">2026(f)</th>
+<th style="text-align: right;">2027(f)</th>
+<th style="text-align: right;">2028(f)</th>
+<th style="text-align: right;">2029(f)</th>
+<th style="text-align: right;">2030(f)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출액</td>
+<td style="text-align: right;">616.9</td>
+<td style="text-align: right;">685.2</td>
+<td style="text-align: right;">831.0</td>
+<td style="text-align: right;">935.6</td>
+<td style="text-align: right;">1,017.2</td>
+<td style="text-align: right;">1,086.8</td>
+</tr>
+<tr>
+<td><strong>영업이익</strong></td>
+<td style="text-align: right;"><strong>65.9</strong></td>
+<td style="text-align: right;"><strong>29.8</strong></td>
+<td style="text-align: right;">44.7</td>
+<td style="text-align: right;">48.5</td>
+<td style="text-align: right;">52.7</td>
+<td style="text-align: right;">56.3</td>
+</tr>
+<tr>
+<td><strong>영업이익률</strong></td>
+<td style="text-align: right;"><strong>10.7%</strong></td>
+<td style="text-align: right;"><strong>4.3%</strong></td>
+<td style="text-align: right;">5.4%</td>
+<td style="text-align: right;">5.2%</td>
+<td style="text-align: right;">5.2%</td>
+<td style="text-align: right;">5.2%</td>
+</tr>
+<tr>
+<td>마케팅비</td>
+<td style="text-align: right;">82.1</td>
+<td style="text-align: right;"><strong>146.6</strong></td>
+<td style="text-align: right;">155.7</td>
+<td style="text-align: right;">169.7</td>
+<td style="text-align: right;">182.4</td>
+<td style="text-align: right;">193.4</td>
+</tr>
+<tr>
+<td>판관비/매출</td>
+<td style="text-align: right;">34.1%</td>
+<td style="text-align: right;"><strong>42.7%</strong></td>
+<td style="text-align: right;">45.3%</td>
+<td style="text-align: right;">40.1%</td>
+<td style="text-align: right;">37.7%</td>
+<td style="text-align: right;">36.5%</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.1 세 가지 관찰</h3>
+<p><strong>① 5년 추정기간 내내 2025년 영업이익(65.9억)을 회복하지 못한다.</strong>
+매출은 2025→2030에 <strong>+76.2%</strong>(CAGR 12.0%) 증가하는데, 영업이익은 2030년에도 <strong>56.3억으로 2025년의 85%</strong>에 머문다. <strong>성장이 이익으로 전환되지 않는 계획</strong>이다.</p>
+<p><strong>② 2026년 이익 급감(-36.2억)의 원인은 명확히 분해된다.</strong></p>
+<pre><code>매출총이익 증가              +45.3억  (277.0 → 322.3)
+판매비와관리비 증가          −81.9억  (210.6 → 292.5)
+   └ 그중 마케팅비          −64.5억  (82.1 → 146.6, +78.6%)
+   ────────────────────────────────
+영업이익 변동                −36.2억  (65.9 → 29.8)  ✅ 검산 일치
+</code></pre>
+<p><strong>③ 회사는 공격적 신규 확보 전략을 이미 실행 중이다.</strong></p>
+<p>사업계획(평가기준일 2025.12.31)은 다음과 같은 공격적 마케팅 기조를 담고 있다.</p>
+<ul>
+<li>마케팅비 <strong>+78.6%</strong>, 신규가입자 <strong>+33.5%</strong></li>
+<li>신규 1인당 마케팅비 28,228원 → <strong>37,747원(+33.7%)</strong></li>
+<li>리텐션 항목은 별도로 계상되지 않음</li>
+</ul>
+<blockquote>
+<p>회사는 신규 가입자 확보를 위한 공격적 마케팅 전략을 <strong>이미 실행 중</strong>이며, 그 결과가 1Q26 영업적자 -15.1억(연결)이다. 이 문제의 해소가 <code>05_survival_strategy.md</code>의 출발점이다.</p>
+</blockquote>
+<hr />
+<h2>6. 밸류에이션 기준 경쟁 지위 (★신규 축)</h2>
+<p>평가보고서는 프리텔레콤 지분가치를 <strong>644.45억(100% 기준, 범위 575.5~749.9억)</strong> 으로 산정했다.</p>
+<h3>6.1 산정 구조</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>구성</th>
+<th style="text-align: right;">금액(억원)</th>
+<th style="text-align: right;">비중</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>추정기간 영업가치 (2026~2030)</td>
+<td style="text-align: right;">212.1</td>
+<td style="text-align: right;">32.9%</td>
+</tr>
+<tr>
+<td>잔존가치 (TV)</td>
+<td style="text-align: right;">288.5</td>
+<td style="text-align: right;">44.8%</td>
+</tr>
+<tr>
+<td><strong>영업가치 소계</strong></td>
+<td style="text-align: right;"><strong>500.6</strong></td>
+<td style="text-align: right;"><strong>77.7%</strong></td>
+</tr>
+<tr>
+<td><strong>비영업자산</strong></td>
+<td style="text-align: right;"><strong>145.6</strong></td>
+<td style="text-align: right;"><strong>22.6%</strong></td>
+</tr>
+<tr>
+<td>이자부부채</td>
+<td style="text-align: right;">-1.7</td>
+<td style="text-align: right;">-0.3%</td>
+</tr>
+<tr>
+<td><strong>지분가치</strong></td>
+<td style="text-align: right;"><strong>644.5</strong></td>
+<td style="text-align: right;"><strong>100%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>6.2 할인율(WACC) — 경쟁 벤치마크로서의 의미</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th style="text-align: right;">값</th>
+<th>시사점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>무위험이자율</td>
+<td style="text-align: right;">3.39%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>시장위험프리미엄</td>
+<td style="text-align: right;">8.00%</td>
+<td>한국공인회계사회 중위값</td>
+</tr>
+<tr>
+<td>Unlevered Beta</td>
+<td style="text-align: right;">0.409</td>
+<td>대용기업 3사 평균</td>
+</tr>
+<tr>
+<td><strong>Size Premium</strong></td>
+<td style="text-align: right;"><strong>4.02%</strong></td>
+<td>★ 소규모 할증 — Ke의 <strong>32%</strong>를 차지</td>
+</tr>
+<tr>
+<td>Cost of Equity (Ke)</td>
+<td style="text-align: right;">12.66%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Cost of Debt (Kd)</strong></td>
+<td style="text-align: right;"><strong>9.81%</strong></td>
+<td>★ <strong>신용등급 BBB-</strong> 기준 5년 무보증 공모사채</td>
+</tr>
+<tr>
+<td><strong>WACC</strong></td>
+<td style="text-align: right;"><strong>10.47%</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>대용기업 선정</strong>: 아이즈비전(β 0.548) · LG헬로비전(0.167) · <strong>인스코비(0.512)</strong></p>
+<blockquote>
+<p>⚠️ <strong>방법론 유의 2건</strong>
+1. <strong>순환참조 소지</strong> — 대용기업에 <strong>모회사 인스코비(현 프리티)</strong> 가 포함되어 있다. 프리텔레콤이 인스코비 연결 매출의 58%를 차지하는 상황에서 인스코비 베타를 프리텔레콤 평가에 쓰는 것은 자기참조에 가깝다. 다만 상장 MVNO 순수 비교기업이 국내에 희소한 현실적 제약도 있다.
+2. <strong>Size Premium 4.02%와 BBB- 가정</strong> — 회사 규모 열위와 신용도를 이미 반영한 보수적 할인율이다. <strong>역으로 프리텔레콤의 자금조달 비용이 연 9.8% 수준</strong>임을 의미하며, 이는 경쟁사(자회사군은 그룹 신용도로 조달) 대비 <strong>구조적 자본비용 열위</strong>다.</p>
+</blockquote>
+<h3>6.3 회선당 가치</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th style="text-align: right;">값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>지분가치 ÷ 누적가입자</td>
+<td style="text-align: right;">644.5억 ÷ 337,593명 = <strong>19.1만 원/회선</strong></td>
+</tr>
+<tr>
+<td>영업가치 ÷ 누적가입자</td>
+<td style="text-align: right;">500.6억 ÷ 337,593명 = <strong>14.8만 원/회선</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>→ 통폐합 국면(→ 04)에서 <strong>소형사 인수 시 회선당 지불 가능 상한의 내부 기준선</strong>으로 사용할 수 있다. 프리텔레콤 자체가 회선당 14.8만 원(영업가치 기준)이므로, <strong>그보다 비싼 회선을 사면 가치 파괴</strong>다.</p>
+<hr />
+<h2>7. SWOT</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th>긍정</th>
+<th>부정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>내부</strong></td>
+<td><strong>S1</strong> ★<strong>영업이익률 10.7%(2025)</strong> — 알뜰폰 업계 최상위 실측 확인, KT엠모바일의 3.8배 <strong>S2</strong> 국내 유일 3사망 통합 브랜드 <strong>S3</strong> 자체 통합 빌링(2023 구축) — 독립계 희소 자산 <strong>S4</strong> ★<strong>선불 사업 노하우</strong> — 도매원가율 50~52%로 후불(80~88%) 대비 구조적 고마진(01 §2) <strong>S5</strong> 중소 지위 → 전파사용료 90% 감면('27~) <strong>S6</strong> ★<strong>해외 진출 실적</strong> — 캐나다 TELUS 로밍 제휴 <strong>서비스 개시 완료</strong>, 미국 T-Mobile 계약 협의 중 <strong>S7</strong> 지분가치 644.5억 — 그룹 내 유일한 환금 가능 자산</td>
+<td><strong>W1</strong> ★<strong>모회사 익스포저 약 215억</strong> (미수금 118.9억 + 단기대여금·미수수익 95.9억) vs 보유 현금 <strong>9.6억</strong> <strong>W2</strong> ★<strong>영업외손실 67.4억이 영업이익 65.9억을 전액 상쇄</strong> — 순손실 -0.6억 <strong>W3</strong> 규모 열위 33.8만 회선 (KT엠 170.4만의 1/5) <strong>W4</strong> ★<strong>2026 계획 영업이익 -54.8%</strong> (65.9 → 29.8억), 5년간 2025년 실적 미회복 <strong>W5</strong> 자본비용 열위 — Kd 9.81%(BBB-), Size Premium 4.02% <strong>W6</strong> ARPU 월 1.29만 원 (시장 평균 1.6만의 81%) <strong>W7</strong> 법인 이원화(프리티/프리텔레콤) 중복 비용</td>
+</tr>
+<tr>
+<td><strong>외부</strong></td>
+<td><strong>O1</strong> 전파사용료 90% 감면 — ★<strong>평가보고서 추정치에 반영 흔적 없음 → 상방 여지</strong> <strong>O2</strong> 중소사 매물화 → 통폐합 주도 기회 (회선당 14.8만 원 기준선 보유) <strong>O3</strong> SKT 해킹 후 '망 선택권' 가치 부상 <strong>O4</strong> 금융권의 운영역량 부재 → MVNE 위탁 수요 <strong>O5</strong> 선불·외국인·eSIM 니치 성장</td>
+<td><strong>T1</strong> ★<strong>MNO 장려금 정책 재량</strong> — 영업이익의 1.6배 규모, 계약 아닌 정책 <strong>T2</strong> ★<strong>후불 기존가입자 잔존율 12%p 급락</strong>(2025, 단통법 폐지 시점 일치) <strong>T3</strong> MNO 다이렉트 3브랜드·통합요금제의 가격 격차 축소 <strong>T4</strong> 시장 순유출(2026.4~5) <strong>T5</strong> ★<strong>모회사 자본잠식(연결 추정 74.5%)</strong> — 프리텔레콤 지분 매각 압력 <strong>T6</strong> 도매 사후규제 — 단독 33.8만 물량 열위</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.1 전략 매트릭스 (핵심 4개만)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th>S 활용</th>
+<th>W 보완</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>O</strong></td>
+<td><strong>SO1</strong> S4(선불 고마진)+O5(외국인·니치) → <strong>후불 물량 경쟁 대신 선불·니치로 이익률 방어</strong> <strong>SO2</strong> S3(자체 빌링)+O2(매물화) → 회선당 14.8만 원 이하 경자산 인수</td>
+<td><strong>WO1</strong> W3(규모)를 O2(통폐합)로 보완하되 <strong>W1(현금 9.6억) 때문에 현금 인수 불가 → 이관·위탁 방식만 가능</strong></td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td><strong>ST1</strong> S2(3사망)+T1(장려금 정책) → <strong>3사망 경쟁 입찰로 장려금 협상력 확보</strong> — 단일망 사업자가 못 하는 유일한 수</td>
+<td><strong>WT1</strong> ★<strong>W1(모회사 익스포저)+T5(모회사 자본잠식) = 최대 복합 리스크.</strong> 프리텔레콤의 생존은 자체 경쟁력이 아니라 <strong>모회사와의 자금 관계 정리</strong>에 달려 있다 → <code>05_survival_strategy.md</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>8. 후속 전달 사항</h2>
+<ul>
+<li><strong>→ 03 소비자</strong>: §5의 마케팅비 +78.6% 계획이 어떤 소비자 행동 가정에 기대는지(잔존율 회복 가정) 검증 요망.</li>
+<li><strong>→ 04 트렌드</strong>: §5.1의 "매출 +76% vs 이익 정체" 구조가 시장 트렌드상 실현 가능한지 판정 요망.</li>
+<li><strong>→ 05 생존전략</strong>: WT1(모회사 익스포저 × 자본잠식)이 최우선 과제. §6.3의 회선당 14.8만 원은 M&amp;A 규율선.</li>
+<li><strong>→ 07 별첨</strong>: W1·W2·T5의 상세는 관계사 분석에서 다룬다.</li>
+</ul>
+<hr />
+<h2>부록: 데이터 한계</h2>
+<ul>
+<li>프리티 본체 MVNO사업부 매출 397.5억은 <strong>연결(931.6억) − 프리텔레콤 외부매출(534.1억) 역산치</strong>이며 공시 확인이 아니다.</li>
+<li>IR 점유율표의 사업자명은 이니셜(K사·M사·L사·S사)로 표기되어 <strong>KT엠모바일·미디어로그·LG헬로비전·SK텔링크로의 대응은 실측 회선 비율에 근거한 추정</strong>이다.</li>
+<li>경쟁사 재무(KT엠모바일 등)는 2024년 기준치이며, 프리텔레콤 2025년과 <strong>연도가 다르다</strong>. 직접 비교 시 1년의 시차를 감안할 것.</li>
+<li>회선당 가치·회선당 이익 지표는 본 보고서 자체 산출이다.</li>
+</ul></section>
+<section id="consumer" class="panel"><h1>03. 소비자 분석 — 이탈의 계량화</h1>
+<ul>
+<li>작성일: 2026-07-23</li>
+<li><strong>핵심 관점</strong>: 본 분석은 프리텔레콤 평가보고서에 담긴 <strong>잔존율 실측치</strong>로 소비자 이탈을 계량화한다. 리뷰·만족도·설문 의향("교체 예정자 48%가 이탈 의향") 같은 선언적 지표를 넘어, 이탈이 실제로 발생한 규모와 구조를 실데이터로 규명한다.</li>
+</ul>
+<p><strong>핵심 판정 요약</strong></p>
+<ul>
+<li>"단통법 폐지 후 이탈 의향 48%"(설문)은 실증되었다 — 후불 기존가입자 잔존율이 <strong>2025년 12%p 급락</strong>(→ §2).</li>
+<li>이탈은 세그먼트가 아니라 <strong>선불/후불 상품 축</strong>으로 갈린다. 후불은 붕괴, <strong>선불은 오히려 개선</strong>(→ §3).</li>
+<li>"M+7 프로모션 절벽이 이탈 트리거"는 미검증이다 — 평가보고서에 코호트 데이터가 없다.</li>
+</ul>
+<hr />
+<h2>1. 고객 구조 실측 (프리텔레콤, 2025말)</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th style="text-align: right;">누적가입자</th>
+<th style="text-align: right;">비중</th>
+<th style="text-align: right;">신규가입자(연간)</th>
+<th style="text-align: right;"><strong>회전율</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>선불</strong></td>
+<td style="text-align: right;">57,834</td>
+<td style="text-align: right;">17.1%</td>
+<td style="text-align: right;">64,429</td>
+<td style="text-align: right;"><strong>111.4%</strong></td>
+</tr>
+<tr>
+<td>KT</td>
+<td style="text-align: right;">21,228</td>
+<td style="text-align: right;">6.3%</td>
+<td style="text-align: right;">24,531</td>
+<td style="text-align: right;">115.6%</td>
+</tr>
+<tr>
+<td>SKT</td>
+<td style="text-align: right;">36,606</td>
+<td style="text-align: right;">10.8%</td>
+<td style="text-align: right;">39,898</td>
+<td style="text-align: right;">109.0%</td>
+</tr>
+<tr>
+<td><strong>후불</strong></td>
+<td style="text-align: right;">279,759</td>
+<td style="text-align: right;">82.9%</td>
+<td style="text-align: right;">226,384</td>
+<td style="text-align: right;"><strong>80.9%</strong></td>
+</tr>
+<tr>
+<td>KT</td>
+<td style="text-align: right;">91,170</td>
+<td style="text-align: right;">27.0%</td>
+<td style="text-align: right;">82,296</td>
+<td style="text-align: right;">90.3%</td>
+</tr>
+<tr>
+<td>SKT</td>
+<td style="text-align: right;">188,589</td>
+<td style="text-align: right;">55.9%</td>
+<td style="text-align: right;">144,088</td>
+<td style="text-align: right;">76.4%</td>
+</tr>
+<tr>
+<td><strong>합계</strong></td>
+<td style="text-align: right;"><strong>337,593</strong></td>
+<td style="text-align: right;">100%</td>
+<td style="text-align: right;"><strong>290,813</strong></td>
+<td style="text-align: right;"><strong>86.1%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>회전율 = 연간 신규가입자 ÷ 기말 누적가입자.</strong> 선불은 <strong>111%</strong> — 1년 동안 기존 고객 수보다 많은 신규를 유치해야 규모가 유지되는 구조다. 외국인·단기체류 특성상 정상이다.</p>
+</blockquote>
+<h3>1.1 ★ARPU 해석 주의 — 선불 ARPU는 착시다</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th style="text-align: right;">평가보고서 ARPU(연)</th>
+<th style="text-align: right;">월환산</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>선불 KT</td>
+<td style="text-align: right;">305,032원</td>
+<td style="text-align: right;">25,419원</td>
+</tr>
+<tr>
+<td>선불 SKT</td>
+<td style="text-align: right;">288,815원</td>
+<td style="text-align: right;">24,068원</td>
+</tr>
+<tr>
+<td>후불 KT</td>
+<td style="text-align: right;">182,884원</td>
+<td style="text-align: right;">15,240원</td>
+</tr>
+<tr>
+<td>후불 SKT</td>
+<td style="text-align: right;">106,318원</td>
+<td style="text-align: right;">8,860원</td>
+</tr>
+</tbody>
+</table></div>
+<p>"선불이 후불보다 3배 비싸다"는 결론은 <strong>오독</strong>이다. 평가보고서 §IV-2는 ARPU를 <em>"해당연도 매출액을 </em><em>당기 평균 누적가입자</em><em>로 나누어 산정"</em> 한다고 명시한다. 선불은 회전율 111%라 <strong>연중 실제로 서비스를 이용한 사람 수가 평균 누적가입자보다 훨씬 많다.</strong> 따라서 선불 ARPU는 <strong>1인당 요금이 아니라 "잔존 회선 1개가 연중 창출한 매출"</strong> 로 읽어야 한다.</p>
+<ul>
+<li>프리텔레콤 전체 실질 ARPU: 통신서비스 매출 523.7억 ÷ 337,593명 ÷ 12 = <strong>월 약 12,900원</strong> (시장 평균 1.6만 원의 <strong>81%</strong>)</li>
+</ul>
+<hr />
+<h2>2. ★핵심 발견 — 잔존율 12%p 급락, 단통법 폐지의 실증</h2>
+<h3>2.1 잔존율 실측 (평가보고서 §IV-2)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th style="text-align: right;">2024(a)</th>
+<th style="text-align: right;"><strong>2025(a)</strong></th>
+<th style="text-align: right;">변화</th>
+<th style="text-align: right;">2026(f) 계획</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>후불 기존가입자 (KT)</strong></td>
+<td style="text-align: right;">62.3%</td>
+<td style="text-align: right;"><strong>50.1%</strong></td>
+<td style="text-align: right;"><strong>-12.2%p</strong></td>
+<td style="text-align: right;">57.4%</td>
+</tr>
+<tr>
+<td><strong>후불 기존가입자 (SKT)</strong></td>
+<td style="text-align: right;">59.4%</td>
+<td style="text-align: right;"><strong>47.0%</strong></td>
+<td style="text-align: right;"><strong>-12.4%p</strong></td>
+<td style="text-align: right;">56.6%</td>
+</tr>
+<tr>
+<td>후불 신규가입자 (KT)</td>
+<td style="text-align: right;">67.2%</td>
+<td style="text-align: right;">66.9%</td>
+<td style="text-align: right;">-0.3%p</td>
+<td style="text-align: right;">77.6%</td>
+</tr>
+<tr>
+<td>후불 신규가입자 (SKT)</td>
+<td style="text-align: right;">77.6%</td>
+<td style="text-align: right;">70.9%</td>
+<td style="text-align: right;">-6.7%p</td>
+<td style="text-align: right;">77.6%</td>
+</tr>
+<tr>
+<td>선불 기존가입자 (KT)</td>
+<td style="text-align: right;">54.2%</td>
+<td style="text-align: right;"><strong>57.1%</strong></td>
+<td style="text-align: right;"><strong>+2.9%p</strong></td>
+<td style="text-align: right;">52.5%</td>
+</tr>
+<tr>
+<td>선불 기존가입자 (SKT)</td>
+<td style="text-align: right;">47.4%</td>
+<td style="text-align: right;"><strong>54.8%</strong></td>
+<td style="text-align: right;"><strong>+7.4%p</strong></td>
+<td style="text-align: right;">51.0%</td>
+</tr>
+<tr>
+<td>선불 신규가입자 (KT)</td>
+<td style="text-align: right;">30.5%</td>
+<td style="text-align: right;">32.6%</td>
+<td style="text-align: right;">+2.1%p</td>
+<td style="text-align: right;">33.6%</td>
+</tr>
+<tr>
+<td>선불 신규가입자 (SKT)</td>
+<td style="text-align: right;">30.3%</td>
+<td style="text-align: right;"><strong>38.6%</strong></td>
+<td style="text-align: right;"><strong>+8.3%p</strong></td>
+<td style="text-align: right;">33.6%</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.2 해석 — 세 가지 사실</h3>
+<p><strong>① 후불 기존가입자의 절반이 1년 안에 떠났다.</strong>
+잔존율 47~50% = <strong>연간 이탈률 50~53%</strong>. 2024년(37.7~40.6%)에서 12%p 이상 악화.</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th style="text-align: right;">2024</th>
+<th style="text-align: right;"><strong>2025</strong></th>
+<th style="text-align: right;">변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>후불 기존 연간 이탈률 (KT)</td>
+<td style="text-align: right;">37.7%</td>
+<td style="text-align: right;"><strong>49.9%</strong></td>
+<td style="text-align: right;">+12.2%p</td>
+</tr>
+<tr>
+<td>월 환산 이탈률</td>
+<td style="text-align: right;">3.86%</td>
+<td style="text-align: right;"><strong>5.61%</strong></td>
+<td style="text-align: right;">+45%</td>
+</tr>
+<tr>
+<td><strong>평균 고객 수명</strong></td>
+<td style="text-align: right;"><strong>25.9개월</strong></td>
+<td style="text-align: right;"><strong>17.8개월</strong></td>
+<td style="text-align: right;"><strong>-8.1개월 (-31%)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>계산: 월이탈률 = 1 − (1 − 연이탈률)^(1/12), 평균 수명 = 1 ÷ 월이탈률</p>
+</blockquote>
+<p><strong>② 시점이 단통법 폐지(2025.7.22)와 일치한다.</strong>
+"교체 예정자 48%가 보조금 조건부 이탈 의향"(더스쿠프 2026.5.26)이라는 <strong>설문 의향</strong>이 <strong>실제 행동으로 전환된 규모</strong>를 확인한다. 2025년은 단통법이 7월에 폐지된 해이며, 후불 잔존율이 정확히 그 해에 12%p 무너졌다.
+→ <strong>48% 이탈 의향의 실제 전환은 후불 기존가입자 기준 이탈률 12%p 상승으로 나타났다.</strong></p>
+<p><strong>③ ★그런데 선불은 오히려 좋아졌다.</strong>
+같은 해 선불 잔존율은 KT +2.9%p, SKT +7.4%p <strong>개선</strong>되었다. 신규 잔존율도 SKT +8.3%p 개선.</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>상품 축</th>
+<th>2025년 잔존율 변화</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>후불</strong></td>
+<td><strong>-12.2 ~ -6.7%p (악화)</strong></td>
+<td>보조금·번호이동 경쟁의 직접 사정권. MNO 다이렉트·플래그십 보조금과 <strong>정면 경합</strong></td>
+</tr>
+<tr>
+<td><strong>선불</strong></td>
+<td><strong>+2.1 ~ +8.3%p (개선)</strong></td>
+<td>외국인·단기체류 중심. <strong>보조금 경쟁과 무관한 비경합 시장</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>★ <strong>이탈의 축</strong>: 이탈은 "2030 회전문 vs 4050 침전"이라는 연령 축이 아니라 <strong>상품 축(선불/후불)</strong> 으로 갈린다. 후불은 MNO와 같은 링 위에 있고, 선불은 다른 링에 있다.
+→ <strong>전략 함의: 프리텔레콤의 이익률 10.7%를 지키는 방어선은 "리텐션 캠페인"이 아니라 "비경합 시장(선불·외국인·해외) 비중 유지"다.</strong> 이는 01 §2의 원가 구조(선불 도매원가율 50% vs 후불 88%)와 정확히 같은 방향을 가리킨다.</p>
+</blockquote>
+<hr />
+<h2>3. 리텐션 경제학 — 신규 22.6만 명을 유치해 순증 2.4만 명</h2>
+<h3>3.1 유치 효율의 붕괴</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th style="text-align: right;">2025(a)</th>
+<th style="text-align: right;">2026(f) 계획</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>후불 신규가입자</td>
+<td style="text-align: right;">226,384명</td>
+<td style="text-align: right;">308,606명</td>
+</tr>
+<tr>
+<td>후불 누적가입자 (기말)</td>
+<td style="text-align: right;">279,759명</td>
+<td style="text-align: right;">398,685명</td>
+</tr>
+<tr>
+<td><strong>후불 순증</strong></td>
+<td style="text-align: right;"><strong>+23,797명</strong></td>
+<td style="text-align: right;"><strong>+118,926명</strong></td>
+</tr>
+<tr>
+<td><strong>유치 대비 순증 효율</strong></td>
+<td style="text-align: right;"><strong>10.5%</strong></td>
+<td style="text-align: right;"><strong>38.5%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>2025년에는 신규 22.6만 명을 유치했으나 순증은 2.4만 명 — 유치의 89.5%가 이탈로 상쇄되었다.</strong> 2026년 계획은 이 효율을 <strong>3.7배(10.5% → 38.5%)</strong> 개선하겠다는 것이며, 그 유일한 근거는 <strong>잔존율 회복 가정</strong>(후불 기존 KT 50.1→57.4%, SKT 47.0→56.6%)이다.</p>
+</blockquote>
+<h3>3.2 ★장려금 커버리지 — 회사가 마케팅을 늘리는 것이 비합리적이지 않은 이유</h3>
+<p>"1Q26 공격적 마케팅 = 자멸 경로"라는 통념과 달리, 장려금을 반영한 실제 순 획득비용은 다음과 같다.</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>연도</th>
+<th style="text-align: right;">마케팅비(억)</th>
+<th style="text-align: right;">장려금 수취(억)</th>
+<th style="text-align: right;"><strong>순 획득비용(억)</strong></th>
+<th style="text-align: right;"><strong>장려금 커버리지</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025(a)</td>
+<td style="text-align: right;">82.1</td>
+<td style="text-align: right;">104.2</td>
+<td style="text-align: right;"><strong>-22.1 (순유입)</strong></td>
+<td style="text-align: right;"><strong>126.9%</strong></td>
+</tr>
+<tr>
+<td>2026(f)</td>
+<td style="text-align: right;">146.6</td>
+<td style="text-align: right;">152.6</td>
+<td style="text-align: right;"><strong>-6.0 (순유입)</strong></td>
+<td style="text-align: right;"><strong>104.1%</strong></td>
+</tr>
+<tr>
+<td>2027(f)</td>
+<td style="text-align: right;">155.7</td>
+<td style="text-align: right;">159.9</td>
+<td style="text-align: right;">-4.2 (순유입)</td>
+<td style="text-align: right;">102.7%</td>
+</tr>
+<tr>
+<td><strong>2028(f)</strong></td>
+<td style="text-align: right;"><strong>169.7</strong></td>
+<td style="text-align: right;"><strong>167.5</strong></td>
+<td style="text-align: right;"><strong>+2.2 (순유출)</strong></td>
+<td style="text-align: right;"><strong>98.7%</strong> ⚠️</td>
+</tr>
+<tr>
+<td>2029(f)</td>
+<td style="text-align: right;">182.4</td>
+<td style="text-align: right;">175.5</td>
+<td style="text-align: right;">+6.9</td>
+<td style="text-align: right;">96.2%</td>
+</tr>
+<tr>
+<td>2030(f)</td>
+<td style="text-align: right;">193.4</td>
+<td style="text-align: right;">183.9</td>
+<td style="text-align: right;">+9.5</td>
+<td style="text-align: right;">95.1%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>해석</strong>: MNO가 지급하는 장려금이 프리텔레콤의 마케팅비를 <strong>2025년 기준 127% 커버</strong>한다. 신규 1명을 유치할 때마다 현금이 오히려 들어온다. <strong>이 구조가 유지되는 한 신규 유치 확대는 재무적으로 합리적이다.</strong></p>
+<blockquote>
+<p>★ <strong>핵심 규율</strong>: 장려금을 반영하면 규율은 <strong>"CAC 상한"이 아니라 "장려금 커버리지 100% 유지"</strong> 다.</p>
+</blockquote>
+<p><strong>그러나 결정적 시한이 있다.</strong>
+계획상 장려금은 신규가입자 증가율(4.77%)만큼 늘어나는 반면 마케팅비는 매출 연동으로 더 빨리 늘어난다. <strong>커버리지는 2028년 98.7%로 100%를 깨고, 그 시점부터 신규 유치가 자기부담으로 전환된다.</strong>
+→ <strong>생존전략의 시계는 "2028년까지"다</strong> (→ 05 §3).</p>
+<h3>3.3 1인당 금액 추이</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th style="text-align: right;">2025</th>
+<th style="text-align: right;">2026(f)</th>
+<th style="text-align: right;">변화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>신규 1인당 마케팅비</td>
+<td style="text-align: right;">28,228원</td>
+<td style="text-align: right;"><strong>37,747원</strong></td>
+<td style="text-align: right;">+33.7%</td>
+</tr>
+<tr>
+<td>신규 1인당 장려금 수취</td>
+<td style="text-align: right;">35,821원</td>
+<td style="text-align: right;">39,302원</td>
+<td style="text-align: right;">+9.7%</td>
+</tr>
+<tr>
+<td><strong>순 획득손익(1인당)</strong></td>
+<td style="text-align: right;"><strong>+7,593원</strong></td>
+<td style="text-align: right;"><strong>+1,555원</strong></td>
+<td style="text-align: right;"><strong>-79.5%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>→ 신규 1명당 남는 돈이 <strong>7,593원 → 1,555원으로 80% 축소</strong>된다. 커버리지 붕괴(2028)보다 <strong>체감 악화는 이미 2026년에 온다</strong>.</p>
+<hr />
+<h2>4. 잔존율 민감도 — 2026년 계획의 취약점</h2>
+<p>계획의 모든 것이 <strong>잔존율 회복 가정</strong>에 걸려 있으므로, 회복이 없을 경우를 계산한다.</p>
+<h3>4.1 시나리오별 2026년 후불 누적가입자</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th>가정</th>
+<th style="text-align: right;">후불 누적가입자</th>
+<th style="text-align: right;">계획 대비</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>계획</strong></td>
+<td>잔존율 회복(KT 57.4%·SKT 56.6%), 신규 308,606명</td>
+<td style="text-align: right;"><strong>398,685명</strong></td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td><strong>S1. 잔존율 미회복</strong></td>
+<td>2025년 실적 잔존율 유지(KT 50.1%·SKT 47.0%), 신규는 계획대로</td>
+<td style="text-align: right;"><strong>347,417명</strong></td>
+<td style="text-align: right;"><strong>-12.9%</strong></td>
+</tr>
+<tr>
+<td><strong>S2. 잔존율 미회복 + 신규 정체</strong></td>
+<td>잔존율 2025 수준 + 신규도 2025 수준(226,384명)</td>
+<td style="text-align: right;"><strong>290,640명</strong></td>
+<td style="text-align: right;"><strong>-27.1%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>검산: 계획 KT = 142,428×0.776 + 91,170×0.574 = 162,856 ≈ 보고서 162,892 ✅ / 계획 SKT = 166,178×0.776 + 188,589×0.566 = 235,695 ≈ 보고서 235,793 ✅ — <strong>모델 재현 성공</strong>, 이하 시뮬레이션 신뢰 가능.</p>
+</blockquote>
+<h3>4.2 영업이익으로의 전이</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th style="text-align: right;">후불 평균누적가입자</th>
+<th style="text-align: right;">후불매출</th>
+<th style="text-align: right;">매출총이익 영향</th>
+<th style="text-align: right;"><strong>2026 영업이익</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>계획</strong></td>
+<td style="text-align: right;">339,222명</td>
+<td style="text-align: right;">494.3억</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><strong>+29.8억</strong></td>
+</tr>
+<tr>
+<td><strong>S1</strong></td>
+<td style="text-align: right;">313,588명 (-7.6%)</td>
+<td style="text-align: right;">456.8억 (-37.5억)</td>
+<td style="text-align: right;">약 -18억</td>
+<td style="text-align: right;"><strong>약 +12억</strong></td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td style="text-align: right;">285,200명 (-15.9%)</td>
+<td style="text-align: right;">415.7억 (-78.6억)</td>
+<td style="text-align: right;">약 -38억</td>
+<td style="text-align: right;"><strong>약 -8억 (적자)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>전제: 후불 매출총이익률 약 48%(장려금 고려 후 원가율 51.9% 기준), 판관비는 계획 고정. 장려금은 신규가입자 기준이므로 S1에서는 유지, S2에서는 신규 감소분만큼 비례 감소 반영.</p>
+</blockquote>
+<p><strong>결론: 2026년 흑자 여부는 잔존율 회복 하나에 달려 있다.</strong>
+- 잔존율만 미회복(S1) → 흑자는 유지되나 12억으로 축소
+- 잔존율 미회복 + 신규 정체(S2) → <strong>영업적자 전환</strong></p>
+<p>그리고 <strong>1Q26 연결 영업이익은 이미 -15.1억 적자</strong>다(IR §06). S2 경로에 들어섰을 가능성을 배제할 수 없다.</p>
+<hr />
+<h2>5. 소비자 세그먼트</h2>
+<p>5개 세그먼트를 <strong>이탈 실데이터 기준으로 우선순위를 배치</strong>한다.</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th style="text-align: center;"><strong>우선순위</strong></th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 2030 실속형 (후불 주력)</td>
+<td style="text-align: center;"><strong>3순위</strong></td>
+<td>잔존율 -12%p 붕괴 구간. 도매원가율 80~88%. <strong>볼륨은 크나 이익 기여는 얇고 방어 불가</strong></td>
+</tr>
+<tr>
+<td>② 4050 가족 총무형</td>
+<td style="text-align: center;"><strong>2순위</strong></td>
+<td>다회선·장기 잔존. 3사망 자산이 유일하게 기능하는 곳</td>
+</tr>
+<tr>
+<td>③ 시니어(60+)</td>
+<td style="text-align: center;">4순위</td>
+<td>CS 역량 전제</td>
+</tr>
+<tr>
+<td>④ 세컨드폰/듀얼심</td>
+<td style="text-align: center;">5순위</td>
+<td>회선 방어용</td>
+</tr>
+<tr>
+<td><strong>⑤ 외국인·단기체류 (선불)</strong></td>
+<td style="text-align: center;">★<strong>1순위</strong></td>
+<td><strong>잔존율 +2.9~+8.3%p 개선(유일)</strong>, 도매원가율 50%(후불 88%), 보조금 경쟁 비경합, 선수금 구조로 대손 없음</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>★ <strong>최우선 세그먼트</strong>: 선불·외국인 세그먼트가 <strong>잔존율·원가율·경합도 3개 축에서 모두 우위</strong>로 확인된다. 프리텔레콤이 2009년 국내 알뜰폰 1호로 <strong>LGU+ 선불폰</strong>에서 출발한 사업자라는 연혁적 강점과도 정합한다.</p>
+</blockquote>
+<hr />
+<h2>6. 페르소나</h2>
+<h3>A. "요금제 유목민" 김세민 (29, 후불) — <strong>이탈률 50% 집단의 얼굴</strong></h3>
+<p>평균 고객 수명 17.8개월. 장려금이 커버하는 동안에는 유치 가치가 있으나, <strong>2028년 커버리지 붕괴 후에는 유치할수록 손실</strong>이 되는 세그먼트.</p>
+<h3>B. "가족 통신 총무" 박정훈 (47) — <strong>3사망 자산의 유일한 수요처</strong></h3>
+<p>망별 고객센터 3원화(SKT망 1661-2207 / KT망 1577-4551 / LGU+망 1588-3615)가 여전히 감점 요인.</p>
+<h3>C. "자녀가 바꿔준" 이순자 (68)</h3>
+<h3>★D. (신설) "체류 2년" 응웬 (32, 선불) — <strong>최우선 세그먼트</strong></h3>
+<ul>
+<li><strong>상황</strong>: 제조업 취업 비자. 편의점·공항에서 선불 유심 구매. 본국 가족과 영상통화가 주 용도.</li>
+<li><strong>Job</strong>: "복잡한 절차·신용조회 없이 지금 당장 개통하고, 체류 기간만 쓰고 싶다."</li>
+<li><strong>행동</strong>: 보조금·플래그십 단말에 무관심 → <strong>MNO 경쟁의 사정권 밖</strong>. 커뮤니티(동포 네트워크) 구전이 채널.</li>
+<li><strong>프리텔레콤에 주는 의미</strong>: 잔존율이 개선되는 유일한 집단이며 도매원가율이 절반이다. <strong>다국어 CS·충전 편의·해외 송금/로밍 결합이 미충족 지점</strong>이며, 캐나다 TELUS·미국 T-Mobile 제휴(IR §02)와 결합 가능한 유일한 세그먼트다.</li>
+</ul>
+<hr />
+<h2>7. 브랜드 매력도</h2>
+<p><strong>"가격 성과 브랜드이지 아직 신뢰 자산 브랜드가 아니다" (종합 3.2/5)</strong></p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+<th>단서</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>모요 리뷰 평점</td>
+<td>4.3/5.0 (1,604건)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>컨슈머인사이트 체감 만족도</td>
+<td>'25하 719점 <strong>1위</strong> → '26상 716점 <strong>3위</strong></td>
+<td>프로모션 의존</td>
+</tr>
+<tr>
+<td>한국기업평판지수</td>
+<td>2026.6 <strong>1위</strong> (714,399)</td>
+<td><strong>단월·직전 2위·경쟁사 -31% 급락 반사효과</strong></td>
+</tr>
+<tr>
+<td>2025 한국품질만족도</td>
+<td>알뜰폰 전문 브랜드 <strong>1위</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>ICT AWARD KOREA</td>
+<td>웹·앱 품질 <strong>GOLD PRIZE</strong> (IR §02)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>최다 불만</strong>: ① 고객센터 연결 어려움 ② 망별 번호 3원화·평일 09~18시만 운영 ③ 프로모션 종료 후 요금 점프(7개월 0원 → 24,200원) ④ 앱 사용량 조회 오류</p>
+<blockquote>
+<p><strong>주석</strong>: 평가보고서는 2026년 고객센터 인원을 90명 → <strong>105명(+16.7%)</strong> 으로 늘리고 소프트웨어에 <strong>13.4억(차세대 시스템·AI 서비스)</strong> 을 투자하는 계획을 담고 있다. "구독형 AICC 도입" 권고와 방향이 일치한다.</p>
+</blockquote>
+<hr />
+<h2>8. 후속 전달 사항</h2>
+<ul>
+<li><strong>→ 04 트렌드</strong>: §2.2③의 "선불은 개선, 후불은 붕괴"가 구조적 트렌드인지 2025년 단발 현상인지 판정 요망.</li>
+<li><strong>→ 05 생존전략</strong>: ⓐ <strong>장려금 커버리지 100% 붕괴 시점 2028년</strong>이 전략 시계다 ⓑ §4의 S2(적자 전환) 방지가 2026년 최우선 KPI ⓒ 세그먼트 1순위를 선불·외국인으로 전환하는 것의 손익 효과 산정 요망.</li>
+<li><strong>→ 06 검증</strong>: 신규 유치 규율은 "CAC 회수기간 12개월 상한"이 아니라 "장려금 커버리지 100% 유지"임을 검증 기준으로 반영할 것.</li>
+</ul>
+<hr />
+<h2>부록: 데이터 한계</h2>
+<ul>
+<li>잔존율은 <strong>프리텔레콤(SKT·KT망) 기준</strong>이며, 프리티 본체(LGU+망) 가입자의 잔존율은 자료에 없다. 통합 브랜드 전체로 일반화할 때 주의.</li>
+<li>평균 고객 수명·LTV·장려금 커버리지·시나리오 S1/S2는 <strong>본 보고서 자체 산출</strong>이며 평가보고서 원문에 없다. 산식은 각 절에 명기했다.</li>
+<li>이탈률과 단통법 폐지의 <strong>인과관계는 시점 일치에 근거한 추론</strong>이다. 해지 사유 데이터(내부 서베이)로 확인 필요.</li>
+<li>리뷰·만족도·평판 지표는 2026.7.5 조사 기준이며 이후 갱신 없음.</li>
+<li>페르소나 D는 선불 세그먼트 실데이터(잔존율·회전율·원가율)에 근거해 <strong>신설한 가설적 인물</strong>이며, FGI 등 1차 조사로 검증되지 않았다.</li>
+</ul></section>
+<section id="trend" class="panel"><h1>04. 트렌드 분석 — 사업계획 대 시장 트렌드의 정합성</h1>
+<ul>
+<li>작성일: 2026-07-23</li>
+<li><strong>이 분석의 과제</strong>: 본 절은 <strong>회사가 실제로 세운 5개년 사업계획</strong>(평가보고서 §III·§IV)을 시장 트렌드에 비추어 판정한다. 즉 새로운 트렌드 발굴이 아니라 <strong>"이 계획이 이 트렌드 위에서 성립하는가"의 판정</strong>이 목적이다.</li>
+</ul>
+<hr />
+<h2>1. ★사업계획 vs 시장 트렌드 — 정합성 판정표</h2>
+<h3>1.1 계획의 성장 가정</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th style="text-align: right;">2025(a)</th>
+<th style="text-align: right;">2030(f)</th>
+<th style="text-align: right;"><strong>CAGR</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출액</td>
+<td style="text-align: right;">616.9억</td>
+<td style="text-align: right;">1,086.8억</td>
+<td style="text-align: right;"><strong>+12.0%</strong></td>
+</tr>
+<tr>
+<td>통신서비스 매출</td>
+<td style="text-align: right;">523.7억</td>
+<td style="text-align: right;">1,060.1억</td>
+<td style="text-align: right;"><strong>+15.2%</strong></td>
+</tr>
+<tr>
+<td>누적가입자</td>
+<td style="text-align: right;">337,593명</td>
+<td style="text-align: right;">683,125명</td>
+<td style="text-align: right;"><strong>+15.1%</strong></td>
+</tr>
+<tr>
+<td>후불 누적가입자</td>
+<td style="text-align: right;">279,759명</td>
+<td style="text-align: right;">619,315명</td>
+<td style="text-align: right;"><strong>+17.2%</strong></td>
+</tr>
+<tr>
+<td>영업이익</td>
+<td style="text-align: right;">65.9억</td>
+<td style="text-align: right;">56.3억</td>
+<td style="text-align: right;"><strong>-3.1%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ <strong>표면 매출성장률의 함정</strong>: 2026년 총매출 성장률은 +11.1%로 보이지만, 이는 모회사 수수료매출이 82.8억 → 8.2억으로 <strong>순액 표시 전환</strong>된 효과에 가려진 것이다. 이를 제거한 <strong>통신서비스 매출 성장률은 +26.9%</strong> 다. 계획의 공격성을 판단할 때는 후자를 봐야 한다.</p>
+</blockquote>
+<h3>1.2 정합성 판정</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>계획 가정</th>
+<th>시장 트렌드 (실측)</th>
+<th><strong>판정</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>가입자 CAGR <strong>+15.1%</strong> (2025~2030)</td>
+<td>외부기관(Mordor Intelligence) 한국 MVNO 시장 CAGR <strong>4.77%</strong> — 평가보고서 자신이 27년 이후 신규가입자 증가율로 채택한 수치</td>
+<td>⚠️ <strong>3.2배 초과</strong> — 시장 성장률의 3배로 크는 것은 <strong>점유율 확대 없이 불가능</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>2030년 프리텔레콤 683,125명</td>
+<td>시장 1,011만(2025.6) → 연 0~4.77% 성장 시 2030년 1,010~1,277만</td>
+<td>점유율 <strong>3.3% → 5.4~6.8%</strong> (+64~104%). 순증 <strong>+34.5만 회선</strong> 필요</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2026년 통신서비스 매출 <strong>+26.9%</strong></td>
+<td>시장은 <strong>2026.4~5월 2개월 연속 순유출</strong> (-7,353 / -11,211명)</td>
+<td>🔴 <strong>정면 배치</strong> — 축소되는 시장에서 27% 성장</td>
+</tr>
+<tr>
+<td>4</td>
+<td>후불 잔존율 회복 (KT 50.1→57.4%, SKT 47.0→56.6%)</td>
+<td>단통법 폐지(2025.7) 상시화, MNO 통합요금제·다이렉트 3브랜드 공세 지속</td>
+<td>🔴 <strong>역행 가정</strong> — 이탈 압력이 지속·강화되는 국면에서 잔존율 +7~10%p 회복</td>
+</tr>
+<tr>
+<td>5</td>
+<td>후불 신규 잔존율 <strong>양쪽 망 모두 77.6%</strong></td>
+<td>2025년 실적: KT 66.9%, SKT 70.9%</td>
+<td>⚠️ 2024년 SKT 최고치(77.6%)를 <strong>2개 망에 일괄 적용</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>마케팅비 +78.6% (82.1 → 146.6억)</td>
+<td>장려금 커버리지 126.9% → 104.1%(→ 03 §3.2)</td>
+<td>🟢 <strong>단기 합리적</strong> — 장려금이 마케팅비를 커버하는 동안은 성립</td>
+</tr>
+<tr>
+<td>7</td>
+<td>장려금 27년 이후 신규가입자 증가율(4.77%)만큼 증가</td>
+<td>MNO 장려금은 <strong>정책 재량</strong>(평가보고서 §IV-3 자인). 순유출 국면에서 MNO가 알뜰폰 유치를 계속 보조할 유인 불확실</td>
+<td>🔴 <strong>가장 취약한 가정</strong> — 이 가정이 깨지면 §1.1 전체가 붕괴</td>
+</tr>
+<tr>
+<td>8</td>
+<td>ARPU 2026년 수준 5년간 <strong>동결</strong></td>
+<td>MNO 통합요금제·중저가 5G로 가격 격차 역대 최소 구간</td>
+<td>⚠️ 하방 위험 (인하 압력)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>영업이익률 5.2%로 수렴</td>
+<td>업계 실적: KT엠 2.8%, 다수 적자</td>
+<td>🟢 <strong>보수적</strong> — 오히려 현재(10.7%)보다 낮춘 합리적 가정</td>
+</tr>
+<tr>
+<td>10</td>
+<td>전파사용료 90% 감면('27~)</td>
+<td>2026.6.26 발표, 2027 시행 예정</td>
+<td>🟢 <strong>미반영 → 상방 여지</strong> (§4.3)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>종합 판정</strong>: 🔴 3건 · ⚠️ 4건 · 🟢 3건.</p>
+<blockquote>
+<p><strong>계획은 "시장 트렌드에 순행하는 계획"이 아니라 "시장 트렌드를 거슬러 점유율을 2배로 늘리는 계획"이다.</strong> 그 실행 수단은 마케팅비 +78.6%이고, 그 재원은 MNO 장려금이며, 그 성립 조건은 잔존율 회복이다. <strong>세 개의 고리 중 하나만 끊겨도 계획은 성립하지 않는다</strong> (→ 03 §4 민감도).</p>
+</blockquote>
+<hr />
+<h2>2. PESTLE</h2>
+<p>영향도 1(미미)~5(결정적), 프리텔레콤 관점.</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>트렌드</th>
+<th style="text-align: center;">영향도</th>
+<th>기회/위협</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>★<strong>MNO 장려금 정책 재량</strong> — 2025년 104.2억 수취, 영업이익의 1.6배. 계약이 아닌 정책. 프리텔레콤을 좌우하는 최대 단일 변수</td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td><strong>위협</strong></td>
+</tr>
+<tr>
+<td>P</td>
+<td>단통법 폐지(2025.7.22) 상시화 — 실증 확인(잔존율 -12%p)</td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td>위협</td>
+</tr>
+<tr>
+<td>P</td>
+<td>도매대가 사후규제 정착 — 첫 자율협상 RM만 인하·RS 동결</td>
+<td style="text-align: center;">5</td>
+<td>위협</td>
+</tr>
+<tr>
+<td>P</td>
+<td>전파사용료 90% 감면 + 3년 연장(2027 시행) — 계획에 미반영 → 상방 여지</td>
+<td style="text-align: center;">4</td>
+<td><strong>기회</strong></td>
+</tr>
+<tr>
+<td>P</td>
+<td>점유율 60% 제한법 — 법사위 계류·교착</td>
+<td style="text-align: center;">3</td>
+<td>기회(성립 시)</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>MNO 통합요금제·중저가 5G 공세 (LGU+ 2만원대 2026.6)</td>
+<td style="text-align: center;">5</td>
+<td>위협</td>
+</tr>
+<tr>
+<td>E</td>
+<td>중소 사업자 철수 도미노 (세종텔레콤 등 10개사+)</td>
+<td style="text-align: center;">4</td>
+<td>기회(통합 주도)</td>
+</tr>
+<tr>
+<td>E</td>
+<td>★<strong>모회사 재무 악화</strong> — 프리티 연결 자본잠식률 추정 74.5%, 2025 순손실 -416.8억. 프리텔레콤 지분 매각 압력의 원천</td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td><strong>위협</strong></td>
+</tr>
+<tr>
+<td><strong>S</strong></td>
+<td>만족도 순위의 금융화 (리브 → 프리티 → 우리WON)</td>
+<td style="text-align: center;">4</td>
+<td>위협</td>
+</tr>
+<tr>
+<td>S</td>
+<td>보안·개인정보의 선택 변수화 (SKT 해킹)</td>
+<td style="text-align: center;">4</td>
+<td>기회(선점 시)</td>
+</tr>
+<tr>
+<td>S</td>
+<td>★<strong>외국인 체류인구 증가 → 선불 수요</strong> — 선불 잔존율 개선(+2.9~8.3%p)으로 실증</td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td><strong>기회</strong></td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td>eSIM 개통 보편화</td>
+<td style="text-align: center;">3</td>
+<td>기회</td>
+</tr>
+<tr>
+<td>T</td>
+<td>AICC(AI 콜센터) 확산 — 알뜰폰 도입 공백. 계획에 착수 확인(2026년 소프트웨어 CapEx 13.4억 — 차세대 시스템·AI 서비스)</td>
+<td style="text-align: center;">3</td>
+<td>기회</td>
+</tr>
+<tr>
+<td>T</td>
+<td>풀MVNO — 국내 미출현, 설비 수백억 (보류 권고)</td>
+<td style="text-align: center;">2</td>
+<td>중립</td>
+</tr>
+<tr>
+<td><strong>L</strong></td>
+<td>금융권 알뜰폰 부수업무 정식화(2025.4)</td>
+<td style="text-align: center;">4</td>
+<td>위협</td>
+</tr>
+<tr>
+<td>L</td>
+<td>★<strong>상장 유지 요건(자본잠식)</strong> → 05 §2</td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td><strong>위협</strong></td>
+</tr>
+<tr>
+<td><strong>E(환경)</strong></td>
+<td>중고폰·자급제 재사용</td>
+<td style="text-align: center;">1</td>
+<td>중립</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>PESTLE 총평</strong>: 결정적 변수(영향도 5)는 총 6개다 — 단통법·통합요금제·도매규제에 더해 <strong>MNO 장려금 정책 · 모회사 재무 · 상장 유지 요건</strong>. 즉 <strong>프리텔레콤의 운명을 결정하는 변수 6개 중 어느 것도 프리텔레콤 자신이 통제하지 못한다.</strong></p>
+<hr />
+<h2>3. 핵심 트렌드</h2>
+<h3>지속 트렌드 (T1~T6)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>트렌드</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>시장 성숙화 고착 — 1,000만 정점 후 구조적 순유출</td>
+<td>진행 중 · ★<strong>실증됨</strong>(잔존율 -12%p)</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>도매대가 거버넌스 변화 — 정부 협상 → 자율 협상</td>
+<td>진행 중</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>중소 사업자 철수·통폐합 개막</td>
+<td>진행 중</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>금융권 정식 진입 — 자본 공세 상시화</td>
+<td>진행 중</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>보안·신뢰의 선택 변수화</td>
+<td>진행 중</td>
+</tr>
+<tr>
+<td>T6</td>
+<td>eSIM 보편화 + AICC</td>
+<td>진행 중 / 초기 신호</td>
+</tr>
+</tbody>
+</table></div>
+<h3>★T7 — 알뜰폰 손익의 "장려금 종속" 심화 [진행 중 · 구조적]</h3>
+<ul>
+<li><strong>설명</strong>: 후불 도매원가율 80~88%(01 §2)에서 알뜰폰 후불 사업의 마진은 MNO 장려금이 만든다. 프리텔레콤 2025년 장려금 104.2억은 영업이익 65.9억의 <strong>1.6배</strong>. 이는 단일 사업자 특성이 아니라 <strong>후불 재판매 모델 자체의 구조</strong>로 판단된다.</li>
+<li><strong>왜 트렌드인가</strong>: 도매대가가 사후규제로 이동해 인하 동력이 약해진 상태(T2)에서, MNO가 마진을 조절하는 레버는 도매대가보다 <strong>장려금</strong>이다. 도매대가는 정부 신고 대상이지만 장려금은 재량이다. <strong>규제가 사후로 갈수록 장려금의 상대 중요도가 커진다.</strong></li>
+<li><strong>성숙도</strong>: 구조는 이미 확립. 공개 통계·업계 벤치마크가 없어 <strong>확인된 것은 프리텔레콤 1개사 사례</strong>다(데이터 한계).</li>
+<li><strong>So What?</strong>: ① <strong>장려금 커버리지(장려금÷마케팅비)를 KPI로 상시 관리</strong>할 것 — 프리텔레콤은 2028년 100% 붕괴 예정(03 §3.2) ② 3사망 보유는 <strong>장려금 경쟁 입찰</strong>의 지렛대다. 단일망 사업자는 협상 대안이 없다. <strong>이것이 3사망 자산의 가장 현실적인 현금 가치</strong>다 ③ 장려금 삭감을 조기 감지하는 경보 지표 필수(§5).</li>
+</ul>
+<h3>★T8 — 알뜰폰의 해외 아웃바운드 [초기 신호 · 트렌드 후보]</h3>
+<ul>
+<li><strong>설명</strong>: 프리텔레콤은 2024년 <strong>캐나다 TELUS와 계약해 알뜰폰 업계 최초 해외 진출</strong>(평가보고서 §II-1 연혁)했고, IR(2026.7)은 캐나다 <strong>로밍 제휴 서비스 개시 완료</strong>, 미국 <strong>T-Mobile과 계약 협의 중(2026년 중 서비스 개시 목표)</strong> 을 밝혔다. 현재 프리티CA Active는 약 3,000회선 규모다.</li>
+<li><strong>왜 의미 있는가</strong>: 국내 시장이 순유출·제로섬으로 이행한 상황에서 <strong>국내 경쟁 구도와 무관한 성장 축</strong>이며, ③ 선불·외국인 세그먼트(03 §5 1순위)와 <strong>같은 역량 기반</strong>(단기·비경합·유심/eSIM 중심)에 선다.</li>
+<li><strong>성숙도</strong>: <strong>초기 신호</strong>. 회선 규모(3,000회선)는 미미하고, 평가보고서 추정 재무제표에 해외 매출이 별도 계상되어 있지 않다 — <strong>계획상 수익 기여는 사실상 0으로 잡혀 있다</strong>.</li>
+<li><strong>So What?</strong>: ① 해외는 현재 <strong>밸류에이션에 반영되지 않은 옵션 가치</strong>다 ② 다만 국내 재무 정상화 전 확장은 금물 ③ <strong>미국 T-Mobile 계약 성사 여부</strong>를 2026년 추적 지표로 관리.</li>
+</ul>
+<hr />
+<h2>4. 계획에 반영되지 않은 상·하방 요인</h2>
+<h3>4.1 하방 (계획이 낙관한 것)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>요인</th>
+<th>계획 가정</th>
+<th>하방 시나리오</th>
+<th>영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>잔존율 회복</td>
+<td>KT 57.4% / SKT 56.6%</td>
+<td>2025 수준 유지</td>
+<td>2026 영업이익 29.8 → <strong>약 12억</strong> (03 §4.2 S1)</td>
+</tr>
+<tr>
+<td>신규가입자</td>
+<td>388,295명(+33.5%)</td>
+<td>2025 수준 정체</td>
+<td>2026 영업이익 → <strong>약 -8억 적자</strong> (S2)</td>
+</tr>
+<tr>
+<td>장려금 정책</td>
+<td>4.77% 증가 지속</td>
+<td>20% 삭감</td>
+<td>2025 기준 영업이익 65.9 → <strong>45.1억(-32%)</strong></td>
+</tr>
+<tr>
+<td>ARPU</td>
+<td>5년 동결</td>
+<td>MNO 공세로 -10%</td>
+<td>2030 매출 약 -100억</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.2 상방 (계획이 반영하지 않은 것)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>요인</th>
+<th>내용</th>
+<th>추정 효과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>★<strong>전파사용료 90% 감면</strong></td>
+<td>2026.6.26 발표(2027 시행 예정). 평가기준일이 2025.12.31이라 <strong>발표 이전 시점</strong>이므로 미반영이 정상</td>
+<td>그룹 연 20억+ 재원 추정. 프리텔레콤 단독 지분은 회선 비율(33.8만/60만)로 <strong>연 10억 내외 추정</strong></td>
+</tr>
+<tr>
+<td>★<strong>해외 사업(T8)</strong></td>
+<td>캐나다 개시 완료, 미국 협의 중</td>
+<td>계획 반영 0 → <strong>순수 옵션 가치</strong></td>
+</tr>
+<tr>
+<td>통폐합 인수</td>
+<td>계획에 M&amp;A 없음 (유기적 성장만)</td>
+<td>회선당 14.8만 원 이하 인수 시 가치 증분</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>★ <strong>중요</strong>: 평가기준일(2025.12.31)과 감면 발표일(2026.6.26)의 시차 때문에 <strong>감면 효과가 DCF에 빠져 있다</strong>. 이는 평가의 오류가 아니라 시점의 문제이며, <strong>재평가 시 상향 요인</strong>이다. 반대로 §4.1의 하방 요인은 대부분 계획이 낙관적으로 잡은 것이므로 <strong>하방이 상방보다 크다</strong>고 판단한다.</p>
+</blockquote>
+<hr />
+<h2>5. 시나리오 분석</h2>
+<p>시장 시나리오에 <strong>모회사 리스크</strong>라는 변수를 반영해 3개 경로와 그 하위 경로를 설정하고, 각각의 확률을 산정한다.</p>
+<h3>시나리오 A. "계획 달성" (확률 <strong>20%</strong>)</h3>
+<ul>
+<li><strong>전제</strong>: 잔존율 회복 성공 + 장려금 정책 유지 + 감면 시행 + 모회사 자본 문제 해결(증자·감자)</li>
+<li><strong>결과</strong>: 2026 영업이익 29.8억 → 2030년 56.3억, 가입자 68.3만. 지분가치 644.5억 이상 유지</li>
+<li><strong>필요 조건</strong>: 03 §4의 잔존율 회복이 실현되어야 하며, 이는 <strong>시장 트렌드에 역행</strong>하는 조건이다</li>
+</ul>
+<h3>시나리오 B. "성장 미달·흑자 유지" (확률 <strong>45%</strong>) ← <strong>기본</strong></h3>
+<ul>
+<li><strong>전제</strong>: 잔존율 미회복(2025 수준) + 신규는 계획의 80~90% 달성 + 장려금 유지</li>
+<li><strong>결과</strong>: 2026 영업이익 <strong>약 12억</strong>(계획의 40%), 2030년 가입자 <strong>50~55만</strong>(계획의 75~80%)</li>
+<li><strong>지분가치 재산정 시사</strong>: 매출 경로가 계획의 80% 수준이면 영업가치는 <strong>약 400억대</strong>, 지분가치 <strong>약 550억</strong> 수준으로 하향 (민감도 하단 575억과 근접)</li>
+<li><strong>핵심 대응</strong>: 성장 목표를 낮추고 <strong>선불·니치 믹스로 이익률을 지키는 전환</strong>(→ 05)</li>
+</ul>
+<h3>시나리오 C. "적자 전환 + 모회사 리스크 전이" (확률 <strong>35%</strong>) ⚠️</h3>
+<ul>
+<li><strong>전제</strong>: 잔존율 미회복 <strong>+</strong> 신규 정체(S2) <strong>+</strong> 다음 중 1개 이상</li>
+<li>장려금 삭감 (T7)</li>
+<li>모회사 자본잠식 미해소 → 관리종목 지정 (05 §2)</li>
+<li>모회사 미수금 118.9억 회수 지연 지속 → 프리텔레콤 유동성 압박</li>
+<li><strong>결과</strong>: 2026 영업이익 <strong>약 -8억 적자</strong>. 모회사가 <strong>프리텔레콤 지분 매각</strong>으로 자본 확충을 시도하는 국면</li>
+<li><strong>하방 리스크의 근거</strong>: 모회사는 <strong>자본잠식률 74.5%(추정)·2025 순손실 416.8억·기타비용 423.8억</strong>을 안고 있어(누적결손 1,337.7억·계속기업 불확실성 포함), 이 시나리오의 확률을 무겁게 본다</li>
+<li><strong>생존 최소선</strong>: 프리텔레콤 자체는 영업이익률 10.7%의 <strong>건전 자산</strong>이다. 위기는 본업이 아니라 <strong>자본 관계</strong>에서 온다 → 05 §4</li>
+</ul>
+<h3>★시나리오 D. "분리·매각" (확률 — C의 하위 경로)</h3>
+<ul>
+<li>모회사가 자본 확충을 위해 프리텔레콤 지분 일부/전부를 매각. <strong>삼화 평가보고서(644.5억)가 작성된 목적 자체가 이 가능성과 무관하지 않다</strong> — 평가 의뢰인이 모회사(인스코비)이고, 용역 목적이 "내부 의사결정 참고"다.</li>
+<li>프리텔레콤 임직원·사업 관점에서는 <strong>모회사 리스크로부터의 단절</strong>이라는 긍정적 측면도 있다(05 §4.3).</li>
+</ul>
+<hr />
+<h2>6. 조기 경보 지표 (9종)</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>지표</th>
+<th>주기</th>
+<th>경보 임계값</th>
+<th>대응</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>★<strong>장려금 수취액 ÷ 마케팅비 (커버리지)</strong></td>
+<td>월</td>
+<td><strong>100% 미만</strong> 2개월 연속</td>
+<td>신규 유치 즉시 감속, 선불·니치로 자원 이동</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>★<strong>후불 기존가입자 잔존율</strong></td>
+<td>분기</td>
+<td>2025년 수준(50%/47%) <strong>미달</strong></td>
+<td>2026 계획 전면 재수립, S2 대응 발동</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>★<strong>모회사 미수금 잔액</strong></td>
+<td>월</td>
+<td>118.9억 <strong>미감소</strong> 6개월 지속</td>
+<td>회수 약정 문서화 요구, 이사회 보고</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>★<strong>모회사 자본잠식률 (별도 기준)</strong></td>
+<td>분기</td>
+<td>50% 이상 지속</td>
+<td>관리종목 대응 프로토콜 (05 §2)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>알뜰폰 시장 순증감 (과기정통부)</td>
+<td>월</td>
+<td>3개월 연속 순유출</td>
+<td>마케팅 -30%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>MNO 통합요금제·다이렉트 추가 인하</td>
+<td>월</td>
+<td>실효 격차 20% 미만 상품 등장</td>
+<td>가격 매칭 금지, 비가격 축 방어</td>
+</tr>
+<tr>
+<td>7</td>
+<td>전파사용료 시행령 개정 진행</td>
+<td>분기</td>
+<td>2026 4Q까지 입법예고 미개시</td>
+<td>상방 요인 제거, 계획 하향</td>
+</tr>
+<tr>
+<td>8</td>
+<td>도매대가 자율협상 결과 (RM/RS)</td>
+<td>라운드별</td>
+<td>RS 동결 2라운드 연속</td>
+<td>5G 확대 동결</td>
+</tr>
+<tr>
+<td>9</td>
+<td>미국 T-Mobile 계약 진행</td>
+<td>분기</td>
+<td>2026년 내 미체결</td>
+<td>해외 옵션 가치 제거</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>★ 표시(1~4번)는 <strong>장려금 종속·모회사 자본 리스크를 조기 감지하는 핵심 지표</strong>다.</p>
+</blockquote>
+<hr />
+<h2>7. 전략적 시사점 (→ 05 생존전략 연결)</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>시사점</th>
+<th>근거</th>
+<th>긴급도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>★<strong>모회사 자금 관계 정리가 본업 전략보다 우선</strong> — 프리텔레콤은 영업이익률 10.7%의 우량 자산인데 순이익이 0인 이유가 영업 밖에 있다</td>
+<td>02 W1·W2, PESTLE E·L</td>
+<td>★★★ 즉시</td>
+</tr>
+<tr>
+<td>2</td>
+<td>★<strong>성장 목표를 하향하고 믹스로 이익을 지켜라</strong> — 시장 트렌드에 역행하는 +27% 성장 계획보다, 선불·니치 비중 유지가 이익률을 지킨다</td>
+<td>§1.2, 03 §5</td>
+<td>★★★ 즉시</td>
+</tr>
+<tr>
+<td>3</td>
+<td>★<strong>장려금 커버리지를 최상위 KPI로</strong> — 2028년 100% 붕괴가 예정된 시한폭탄</td>
+<td>T7, 03 §3.2</td>
+<td>★★★ 즉시</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>3사망은 장려금 경쟁 입찰의 지렛대로 현금화하라</strong> — 마케팅 서사가 아니라 조달 협상 카드</td>
+<td>T7, 02 ST1</td>
+<td>★★☆ 6개월</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>CS 통합·AICC는 이미 착수됨 — 완주하라</strong></td>
+<td>T6, 2026 CapEx 13.4억</td>
+<td>★★☆ 6~12개월</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>해외(T8)는 옵션으로 보존하되 자원 투입은 국내 정상화 후</strong></td>
+<td>T8</td>
+<td>★☆☆ 지속</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>감면 재원은 신규가 아닌 리텐션에</strong></td>
+<td>§4.2, T1</td>
+<td>★★☆ 2027</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>부록: 데이터 한계</h2>
+<ul>
+<li><strong>Mordor Intelligence 한국 MVNO CAGR 4.77%</strong> 는 평가보고서 §IV-2가 인용한 수치이며, 원 리포트를 직접 열람하지 않았다.</li>
+<li>T7(장려금 종속)은 <strong>프리텔레콤 1개사 데이터</strong>에서 도출한 구조 가설이다. 업계 전반의 장려금 규모·비중 통계는 공개되지 않아 일반화에 한계가 있다.</li>
+<li>시나리오 확률(20/45/35)은 <strong>자체 판단</strong>이며 계량 모델 산출이 아니다. 근거는 §5 C에 명기했다.</li>
+<li>시나리오 B의 지분가치 "약 550억"은 매출 경로 80% 가정의 <strong>개략 추정</strong>이며, 정식 재평가가 아니다.</li>
+<li>전파사용료 감면의 프리텔레콤 단독 효과 "연 10억 내외"는 그룹 추정치를 회선 비율로 안분한 <strong>자체 추정</strong>이다.</li>
+<li>시장 통계(순유출·회선 수·MNO 요금제)는 2026.7.5 조사 기준이다.</li>
+</ul></section>
+<section id="survival" class="panel"><h1>05. 프리텔레콤 생존전략 ★사용자 특별 요청</h1>
+<ul>
+<li>작성일: 2026-07-23</li>
+<li>근거: 01(장려금 구조·믹스 KSF) + 02(수익성 1위·모회사 익스포저) + 03(잔존율·커버리지 시한) + 04(계획 vs 트렌드 정합성·시나리오) + 07(관계사)</li>
+<li><strong>본 문서의 초점</strong>: <strong>프리텔레콤 법인 자체</strong>의 생존에 초점을 맞춘다. 첨부 실데이터로 <strong>진단을 정밀화</strong>하고 <strong>위기의 소재를 재정의</strong>한다.</li>
+</ul>
+<hr />
+<h2>0. 한 문장 진단</h2>
+<blockquote>
+<p><strong>프리텔레콤은 아프지 않다. 프리텔레콤을 안고 있는 모회사가 아프고, 그 병이 프리텔레콤으로 전이되는 것이 유일하고 최대의 위험이다.</strong></p>
+</blockquote>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>관점</th>
+<th>프리텔레콤 자체</th>
+<th>모회사(프리티)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>영업이익률</td>
+<td><strong>10.7%</strong> (업계 1위급)</td>
+<td>연결 3.9%</td>
+</tr>
+<tr>
+<td>순손익(2025)</td>
+<td>-0.6억 (영업외로 상쇄)</td>
+<td><strong>-416.8억</strong></td>
+</tr>
+<tr>
+<td>자본 상태</td>
+<td>자본총계 244.6억, 부채비율 55%</td>
+<td><strong>자본잠식률 추정 74.5%</strong></td>
+</tr>
+<tr>
+<td>지분가치</td>
+<td><strong>644.5억</strong> (삼화 평가)</td>
+<td>시가총액 대비 결손 누적</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>따라서 프리텔레콤의 생존전략은 두 층으로 나뉜다.</strong>
+- <strong>층 1 (방어)</strong>: 모회사 리스크로부터 자신을 지키는 것 — §2
+- <strong>층 2 (공격)</strong>: 본업의 이익률 10.7%를 지키고 키우는 것 — §3</p>
+<hr />
+<h2>1. 생존 위협의 재구성 — 위험은 본업이 아니라 자본 관계에 있다</h2>
+<h3>1.1 위협 매트릭스 (발생확률 × 영향)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>위협</th>
+<th style="text-align: center;">확률</th>
+<th style="text-align: center;">영향</th>
+<th>소재</th>
+<th style="text-align: center;">등급</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R1</strong></td>
+<td>★<strong>모회사 미수금 118.9억 회수 불능</strong> — 현금 9.6억뿐인 프리텔레콤의 유동성 직격</td>
+<td style="text-align: center;">中</td>
+<td style="text-align: center;">極大</td>
+<td>자본관계</td>
+<td style="text-align: center;"><strong>🔴 1</strong></td>
+</tr>
+<tr>
+<td><strong>R2</strong></td>
+<td>★<strong>모회사 자본잠식 → 프리텔레콤 지분 강제 매각</strong></td>
+<td style="text-align: center;">中</td>
+<td style="text-align: center;">大</td>
+<td>자본관계</td>
+<td style="text-align: center;"><strong>🔴 2</strong></td>
+</tr>
+<tr>
+<td><strong>R3</strong></td>
+<td>잔존율 미회복 → 2026 적자 전환(03 §4 S2)</td>
+<td style="text-align: center;">中高</td>
+<td style="text-align: center;">大</td>
+<td>본업</td>
+<td style="text-align: center;">🟠 3</td>
+</tr>
+<tr>
+<td><strong>R4</strong></td>
+<td>MNO 장려금 삭감 (커버리지 붕괴 2028)</td>
+<td style="text-align: center;">中</td>
+<td style="text-align: center;">大</td>
+<td>본업</td>
+<td style="text-align: center;">🟠 4</td>
+</tr>
+<tr>
+<td>R5</td>
+<td>도매 사후규제로 원가 악화</td>
+<td style="text-align: center;">中</td>
+<td style="text-align: center;">中</td>
+<td>본업</td>
+<td style="text-align: center;">🟡 5</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>시장 순유출 지속</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">中</td>
+<td>본업</td>
+<td style="text-align: center;">🟡 6</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>★ <strong>핵심 진단</strong>: 프리텔레콤 <strong>자체 재무는 건전</strong>(부채비율 55%, 영업흑자)하며, 위협의 소재는 <strong>모회사와의 자금 탯줄(R1·R2)</strong> 에 있다. <strong>프리텔레콤이 할 일은 "자기 재무 정상화"가 아니라 "모회사와의 자금 관계 방화벽 설치"다.</strong></p>
+</blockquote>
+<h3>1.2 R1의 정밀 진단 — 118.9억 미수금</h3>
+<p>평가보고서 §IV-6 원문: <em>"미수금의 경우 인스코비의 MVNO사업부와의 거래를 통해 발생한 채권이 </em><em>일시적으로 회수되지 않아</em><em> 평가기준일 현재 증가한 상태이며, 해당 효과는 </em><em>26년에 해소되는 것으로 가정</em><em>함."</em></p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th style="text-align: right;">2024</th>
+<th style="text-align: right;">2025</th>
+<th style="text-align: right;">2026(f) 가정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>미수금</td>
+<td style="text-align: right;">80.4억</td>
+<td style="text-align: right;"><strong>118.9억</strong></td>
+<td style="text-align: right;">67.1억 (해소 가정)</td>
+</tr>
+<tr>
+<td>프리텔레콤 현금</td>
+<td style="text-align: right;">14.0억</td>
+<td style="text-align: right;"><strong>9.6억</strong></td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>DCF가 지분가치를 만드는 방식과의 연결</strong>: 2026년 순운전자본 변동 <strong>+61.9억</strong>(현금 유입)이 FCF의 핵심이며, 이는 <strong>미수금 118.9억 → 67.1억 회수 가정에서 나온다</strong>. 즉 <strong>삼화 평가액 644.5억의 상당 부분이 "모회사가 미수금을 갚는다"는 가정에 의존</strong>한다.</li>
+<li><strong>위험</strong>: 모회사가 자본잠식 상태(07)에서 이 118.9억을 2026년에 정말 갚을 수 있는가? <strong>못 갚으면 ① 프리텔레콤 유동성 압박 ② DCF 가치 하락이 동시 발생</strong>한다.</li>
+</ul>
+<hr />
+<h2>2. 층 1 방어전략 — 모회사 리스크 방화벽</h2>
+<h3>전략 D1. 미수금 회수 약정의 문서화·담보화 (즉시)</h3>
+<ul>
+<li>118.9억 미수금에 대해 <strong>회수 스케줄·연체이자·담보(모회사 보유 자산 또는 타 계열사 지분)</strong> 를 명문화.</li>
+<li>이사회 의결로 관계사 거래 한도(신규 대여·미수 증가 상한)를 설정 — <strong>추가 자금 유출 차단</strong>.</li>
+<li>KPI: 미수금 잔액 월별 감소 곡선, 2026말 67억 이하.</li>
+</ul>
+<h3>전략 D2. 배당·자금이전에 대한 방어적 거버넌스 (즉시)</h3>
+<ul>
+<li>프리텔레콤은 모회사 100% 종속회사이므로 <strong>모회사가 배당·대여로 현금을 끌어갈 구조적 위험</strong>에 노출.</li>
+<li>최소 운영현금(예: 3개월 운영비) 하한선을 사규화, 그 이상만 상향 이전 가능하도록.</li>
+<li>프리텔레콤 이사회에 <strong>소수 독립적 견제 장치</strong>(외부 감사·준법 검토) 도입 검토.</li>
+</ul>
+<h3>전략 D3. 지분 매각 국면(R2·시나리오 D)에 대한 대비 (6개월)</h3>
+<ul>
+<li>모회사가 자본 확충을 위해 프리텔레콤 지분을 매각할 가능성(04 시나리오 D)에 대비:</li>
+<li><strong>경영진·핵심 인력 리텐션</strong> — 매각 협상에서 사업 가치를 지키는 것은 결국 운영 인력.</li>
+<li><strong>독립 운영 가능성 확보</strong> — 전산·CS·빌링이 모회사와 분리 가능하도록 시스템 경계 정리(2026 차세대 시스템 구축과 연계).</li>
+<li><strong>잠재 인수자 지형 파악</strong> — 금융권(MVNE 수요·02 O4), 사모펀드, 전략적 투자자.</li>
+<li><strong>관점 전환</strong>: 지분 매각은 프리텔레콤 입장에서 반드시 나쁜 것이 아니다. <strong>모회사 자본잠식·미수금 리스크로부터의 단절</strong>이자, 우량 독립 MVNO로서 <strong>더 나은 자본 파트너를 만날 기회</strong>일 수 있다(§4.3).</li>
+</ul>
+<h3>전략 D4. 삼화 평가액의 방어적 활용 (지속)</h3>
+<ul>
+<li>644.5억 평가는 <strong>협상 테이블의 기준선</strong>이다. 지분 매각·투자 유치 국면에서 회사 가치의 하한 근거로 활용.</li>
+<li>단, 이 평가가 <strong>① 미수금 회수 가정 ② 감면 미반영(상방) ③ 잔존율 회복 가정(하방)</strong> 위에 서 있음을 알고, <strong>감면 반영·미수금 확정 후 재평가</strong>로 협상력 강화.</li>
+</ul>
+<hr />
+<h2>3. 층 2 공격전략 — 이익률 10.7%를 지키고 키운다</h2>
+<h3>3.1 전략의 축 전환 — "규모 성장"에서 "믹스 이익"으로</h3>
+<p>본 분석이 일관되게 가리키는 방향:</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>회사 사업계획</th>
+<th>권고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>후불 CAGR +17.2%로 규모 2배</td>
+<td>후불은 <strong>방어</strong>(잔존율 관리), 성장은 <strong>선불·니치·해외</strong>에서</td>
+</tr>
+<tr>
+<td>마케팅비 +78.6%로 신규 유치</td>
+<td>장려금 커버리지 100% 유지 조건부로만</td>
+</tr>
+<tr>
+<td>영업이익률 10.7% → 4.3% 하락 수용</td>
+<td><strong>10.7% 방어를 최우선 KPI로</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>전략 O1. ★선불·외국인 세그먼트로 무게중심 이동 (즉시~지속)</h3>
+<p>근거: 03 §5에서 최우선(1순위) 세그먼트로 판정.</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>왜</th>
+<th>데이터</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>잔존율이 개선되는 유일 집단</td>
+<td>선불 기존 KT +2.9%p·SKT +7.4%p (2025)</td>
+</tr>
+<tr>
+<td>도매원가율이 절반</td>
+<td>선불 50~52% vs 후불 80~88%</td>
+</tr>
+<tr>
+<td>MNO 보조금 경쟁 비경합</td>
+<td>외국인·단기체류는 플래그십·보조금 무관심</td>
+</tr>
+<tr>
+<td>대손 없음</td>
+<td>선수금 구조</td>
+</tr>
+<tr>
+<td>해외 사업과 역량 공유</td>
+<td>캐나다·미국 제휴(T8)와 결합</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>실행</strong>: 다국어 CS(고객센터 105명 증원 활용), 편의점·공항·산업단지 유통 강화, 해외송금·로밍 결합 상품, eSIM 즉시개통.</li>
+<li><strong>KPI</strong>: 선불 회선 비중 17.1% → 22%+ (3년), 선불 부문 매출총이익 기여율.</li>
+</ul>
+<h3>전략 O2. ★장려금 협상력 = 3사망 경쟁 입찰 (6개월)</h3>
+<p>근거: 01 §2 · 04 T7 — 장려금이 후불 마진의 원천이고, 3사망은 협상 대안을 만든다.</p>
+<ul>
+<li>프리텔레콤은 SKT·KT 양망(+그룹 LGU+)에 회선을 배분할 수 있는 <strong>국내 유일 사업자</strong>. 신규 유치 물량을 <strong>장려금 조건이 좋은 망으로 유동 배분</strong>하는 것을 협상 카드로 명시화.</li>
+<li>독립계 공동 협상(협회 채널)에서 장려금 이슈를 도매대가와 함께 의제화.</li>
+<li><strong>KPI</strong>: 회선당 장려금(2025년 35,821원) 방어, 장려금 커버리지 100%+ 유지.</li>
+</ul>
+<h3>전략 O3. ★장려금 커버리지 시한(2028) 대비 (지속)</h3>
+<p>근거: 03 §3.2 — 커버리지가 2028년 100% 붕괴.</p>
+<ul>
+<li>붕괴 전(2026~2027)에 <strong>① 획득한 후불 고객의 잔존율을 끌어올려</strong>(자체 부담 유치가 시작되기 전에 우량 스톡 확보) <strong>② 자체 부담 전환 후엔 신규 유치를 선불·니치로 대체</strong>.</li>
+<li>M+7 프로모션 절벽(0원 7개월 → 24,200원)의 착지 요금 재설계. 잔존율 회복의 실질 수단.</li>
+<li><strong>KPI</strong>: 후불 기존가입자 잔존율 2025 수준(50%/47%)에서 반등, M+7 코호트 잔존율.</li>
+</ul>
+<h3>전략 O4. CS 통합·AICC 완주 (이미 착수, 6~12개월)</h3>
+<p>근거: 03 §7 · 04 T6 — 2026년 소프트웨어 CapEx 13.4억·고객센터 105명 계획 확인.</p>
+<ul>
+<li>망별 3원화 고객센터(1661-2207 / 1577-4551 / 1588-3615)를 <strong>단일 대표번호 + 구독형 AICC</strong>로 통합.</li>
+<li>최다 불만(연결 어려움) 해소 = 3사망 신뢰 서사의 전제.</li>
+<li><strong>KPI</strong>: CS 불만 언급률 50% 감소, 응답률 90%+, CS 건당 비용 -30%.</li>
+</ul>
+<h3>전략 O5. 해외(T8) 옵션 보존 (지속)</h3>
+<ul>
+<li>캐나다 TELUS 개시 완료·미국 T-Mobile 협의 중 — <strong>국내 재무 정상화 전에는 소규모 유지</strong>, 자원 집중 금물.</li>
+<li>미국 계약 성사 시 선불·외국인 역량(O1)과 결합해 확장.</li>
+<li><strong>KPI</strong>: 미국 T-Mobile 계약 체결 여부(2026 내), 해외 회선 손익분기.</li>
+</ul>
+<hr />
+<h2>4. 통합 로드맵 (프리텔레콤 관점 3단계)</h2>
+<h3>Phase 1. 방화벽 (0~6개월, 2026 하반기) — "탯줄을 관리한다"</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>과제</th>
+<th>유형</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>미수금 118.9억 회수 약정 문서화·담보화 (D1)</td>
+<td>방어</td>
+<td>월별 감소, 2026말 67억↓</td>
+</tr>
+<tr>
+<td>관계사 거래 한도·최소현금 하한 사규화 (D2)</td>
+<td>방어</td>
+<td>신규 대여 0</td>
+</tr>
+<tr>
+<td>장려금 커버리지 월간 KPI 가동 (O3)</td>
+<td>공격</td>
+<td>100%+ 유지</td>
+</tr>
+<tr>
+<td>선불·외국인 유통·다국어 CS 착수 (O1)</td>
+<td>공격</td>
+<td>선불 회선 비중 반등</td>
+</tr>
+<tr>
+<td>2026 적자 전환(S2) 방어 — 잔존율 조기 반등</td>
+<td>공격</td>
+<td>분기 영업흑자</td>
+</tr>
+<tr>
+<td><strong>선행조건</strong>: 이사회의 "믹스 이익 우선·규모 목표 하향" 승인</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Phase 2. 자립 (6~18개월, 2027) — "혼자 설 수 있게 만든다"</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>과제</th>
+<th>유형</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>전산·CS 모회사 분리 가능 구조화 (D3, 차세대 시스템 연계)</td>
+<td>방어</td>
+<td>독립 운영 검증</td>
+</tr>
+<tr>
+<td>단일 대표번호 + AICC 완성 (O4)</td>
+<td>공격</td>
+<td>불만 -50%</td>
+</tr>
+<tr>
+<td>3사망 장려금 경쟁 입찰 상시화 (O2)</td>
+<td>공격</td>
+<td>회선당 장려금 방어</td>
+</tr>
+<tr>
+<td>전파사용료 90% 감면 반영·재평가 (D4)</td>
+<td>방어</td>
+<td>감면 반영 후 지분가치 재산정</td>
+</tr>
+<tr>
+<td>지분 매각/투자유치 국면 대비 인력 리텐션 (D3)</td>
+<td>방어</td>
+<td>핵심 인력 유지율</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Phase 3. 전환 (18~36개월, 2028~2029) — "커버리지 붕괴를 넘는다"</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>과제</th>
+<th>유형</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>장려금 자체부담 전환 대비 — 선불·니치 중심 유치로 대체 (O3)</td>
+<td>공격</td>
+<td>선불 비중 22%+</td>
+</tr>
+<tr>
+<td>미국 T-Mobile 등 해외 수익화 (O5)</td>
+<td>공격</td>
+<td>해외 손익분기</td>
+</tr>
+<tr>
+<td>회선당 14.8만 원 이하 경자산 인수 (여력 확보 시)</td>
+<td>공격</td>
+<td>이관 잔존율 80%+</td>
+</tr>
+<tr>
+<td>영업이익률 방어 목표</td>
+<td>—</td>
+<td><strong>5%+ 안정, 10%대 회복 지향</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>5. 실행 체크리스트</h2>
+<h3>Phase 1 (0~6개월)</h3>
+<ul>
+<li>[ ] 미수금 118.9억 회수 약정서 체결 (담보·연체이자·스케줄 명시)</li>
+<li>[ ] 관계사 거래 한도·최소운영현금(3개월분) 하한 이사회 의결</li>
+<li>[ ] 장려금 커버리지 월간 대시보드 가동 (임계 100%)</li>
+<li>[ ] 후불 기존가입자 잔존율 분기 추적 체계 — 2025 수준 반등 목표</li>
+<li>[ ] 선불·외국인 유통 채널(편의점·산업단지) + 다국어 CS 착수</li>
+<li>[ ] M+7 착지 요금 재설계 출시</li>
+<li>[ ] 2026 분기 영업흑자 방어 (S2 회피)</li>
+</ul>
+<h3>Phase 2 (6~18개월)</h3>
+<ul>
+<li>[ ] 프리텔레콤 전산/CS의 모회사 분리 가능 구조 완성</li>
+<li>[ ] 단일 대표번호 + 구독형 AICC 도입 (알뜰폰 선행자)</li>
+<li>[ ] 3사망 장려금 경쟁 입찰 프로세스 사규화</li>
+<li>[ ] 전파사용료 90% 감면 반영 지분가치 재평가 (협상 기준선 갱신)</li>
+<li>[ ] 핵심 인력 리텐션 프로그램 (지분 매각 국면 대비)</li>
+</ul>
+<h3>Phase 3 (18~36개월)</h3>
+<ul>
+<li>[ ] 장려금 커버리지 붕괴(2028) 대비 선불·니치 유치 전환 완료 (선불 비중 22%+)</li>
+<li>[ ] 미국 T-Mobile 서비스 개시·손익분기</li>
+<li>[ ] MVNO 영업이익률 5%+ 2개 분기 연속, 10%대 회복 로드맵</li>
+<li>[ ] (여력 시) 회선당 14.8만 원 이하 경자산 인수 1건</li>
+</ul>
+<hr />
+<h2>6. 리스크 &amp; 컨틴전시</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>리스크</th>
+<th>발생 신호</th>
+<th>Plan B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R1. 미수금 회수 불능</strong></td>
+<td>6개월간 118.9억 미감소</td>
+<td>상계·담보 실행, 관계사 신규거래 전면 중단, 이사회·감사 특별 보고. 유동성 방어 위해 선불 선수금 회전 활용</td>
+</tr>
+<tr>
+<td><strong>R2. 지분 강제 매각</strong></td>
+<td>모회사 자본잠식 미해소·관리종목</td>
+<td>헐값 매각 회피 — 644.5억 평가 + 감면 반영 재평가로 하한 방어. 금융권 MVNE 파트너·전략적 투자자 대안 확보. 경영진 리텐션으로 사업가치 보존</td>
+</tr>
+<tr>
+<td><strong>R3. 2026 적자 전환</strong></td>
+<td>1Q·2Q 연속 영업적자</td>
+<td>마케팅 즉시 감속(장려금 커버리지 100% 룰), 성장 목표 공식 하향, 선불·니치로 자원 이동</td>
+</tr>
+<tr>
+<td><strong>R4. 장려금 삭감</strong></td>
+<td>회선당 장려금 급락</td>
+<td>3사망 경쟁 입찰 카드 강화, 후불 신규 유치 감속, 선불 전환 가속</td>
+</tr>
+<tr>
+<td><strong>R5. 모회사 동반 부실</strong></td>
+<td>모회사 감사의견 변형·상폐 심사</td>
+<td>프리텔레콤 독립성 최대 확보 — 별도 브랜드·별도 자금·별도 거버넌스로 전이 차단</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>7. 한 장 요약</h2>
+<blockquote>
+<p><strong>프리텔레콤의 생존 방정식 = (모회사 방화벽) × (믹스 이익 방어).</strong>
+층 1: 미수금 118.9억을 회수·담보화하고 관계사 거래에 한도를 걸어, 모회사의 자본잠식이 프리텔레콤 유동성으로 전이되는 것을 막는다.
+층 2: 규모 2배 성장이라는 계획을 내려놓고, 잔존율이 개선되고 원가율이 절반이며 보조금 경쟁이 없는 <strong>선불·외국인·해외</strong> 세그먼트로 무게중심을 옮겨 영업이익률 10.7%를 지킨다.
+<strong>시한은 2028년</strong> — 장려금 커버리지가 100%를 깨는 해다. 그 전에 우량 스톡을 쌓고 믹스를 전환해야 한다.
+<strong>프리텔레콤은 팔려도 좋은 회사가 아니라, 팔릴 만큼 좋은 회사다.</strong> 위기는 회사 안이 아니라 회사를 안고 있는 손에 있다.</p>
+</blockquote>
+<hr />
+<h2>부록: 데이터 한계</h2>
+<ul>
+<li>미수금·대여금의 <strong>회수 가능성 판단</strong>은 모회사 지급능력에 달려 있으나, 모회사 <strong>별도</strong> 재무제표를 확보하지 못해 정밀 평가가 불가하다(07 참조).</li>
+<li>자본잠식률 74.5%는 <strong>연결 추정치</strong>이며, 상장 유지 요건 판정은 <strong>별도 기준</strong>이다. 관리종목 지정 여부의 확정적 판단은 별도 F/S 확인 후 가능하다.</li>
+<li>지분 매각 가능성(시나리오 D)은 평가보고서의 존재·의뢰 목적에서 추론한 것이며, 모회사의 공식 의사결정을 확인한 것은 아니다.</li>
+<li>선불 비중 목표(22%)·영업이익률 방어선 등 KPI 수치는 <strong>전략적 목표치</strong>이며 회사 승인 계획이 아니다.</li>
+</ul></section>
+<section id="appendix" class="panel"><h1>07. 별첨 — 관계사(계열사) 분석 ★사용자 특별 요청</h1>
+<ul>
+<li>작성일: 2026-07-23</li>
+<li>대상: 프리텔레콤의 모회사 <strong>㈜프리티</strong>를 정점으로 한 계열 구조</li>
+<li>목적: 관계사가 <strong>프리텔레콤 본업에 미치는 영향</strong>을 규명. 특히 프리텔레콤이 왜 영업이익률 10.7%인데 순이익이 0인지, 그리고 지분 매각 리스크(05 R2)의 근원을 추적.</li>
+<li>자료: IR BOOK §01·§03·§04·§05·§06 + 평가보고서 §III·§IV + KS인더스트리 별도 리서치(<code>_workspace/KS인더스트리/</code>)</li>
+</ul>
+<hr />
+<h2>1. 계열 구조도</h2>
+<pre><code>                         [KS인더스트리]  (KOSDAQ 101000, 선박용 크레인)
+                              │ 14.14%
+                              ▼
+                         ┌─────────┐
+                         │ ㈜프리티 │ (KOSPI 006490, 구 인스코비)
+                         │  (모회사) │  통신·ICT/스마트그리드·바이오
+                         └────┬────┘
+              ┌───────────────┼───────────────┐
+        100.0%│           22.5%│           (지분 관계)
+              ▼               ▼                 ▼
+      ┌──────────────┐  ┌─────────┐      [ICT/스마트전력그리드]
+      │ ㈜프리텔레콤  │  │ 아피메즈 │       (프리티 본체 사업부문)
+      │  (SKT·KT망)  │  │ (바이오) │
+      │  ★분석 핵심   │  └────┬────┘
+      └──────────────┘   13.9%│  └─28.6%─┐
+                              ▼           ▼
+                      [Apimeds USA]  ... APUS
+                                     (AMEX/NYSE American Listed)
+                                          │
+                                    MindWave 합병
+                                          ▼
+                                  Lōkahi Therapeutics
+                                  (프리티 10% / MindWave 90%)
+</code></pre>
+<blockquote>
+<p>IR BOOK §01 계열사도 기준. 지분율은 IR 표기치. <strong>화살표 방향·지분율에 IR 원문상 다소 모호한 부분</strong>(아피메즈 13.9%/22.5%/28.6% 병기)이 있어, 정밀 지분 구조는 DART 확인 필요.</p>
+</blockquote>
+<h3>1.1 프리티(모회사)의 3개 사업 축</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>축</th>
+<th>실체</th>
+<th>위상</th>
+<th>손익 성격</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>통신</strong></td>
+<td>㈜프리텔레콤(100%) + 본체 MVNO사업부(LGU+망)</td>
+<td><strong>캐시카우 — 그룹 유일 안정 흑자원</strong></td>
+<td>영업이익률 10.7%(프리텔레콤 별도)</td>
+</tr>
+<tr>
+<td><strong>ICT/스마트전력그리드</strong></td>
+<td>프리티 본체 사업부문</td>
+<td>성장 기대 사업</td>
+<td>한전 AMI 누적 360억 실적, 손익 미공개</td>
+</tr>
+<tr>
+<td><strong>바이오</strong></td>
+<td>아피메즈(22.5%) → APUS → Lōkahi</td>
+<td><strong>고위험·고변동 — 손실의 진원지 추정</strong></td>
+<td>관계기업투자손익 지속 손실</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>2. ★핵심 분석 — 관계사가 프리텔레콤에 미치는 3대 영향</h2>
+<h3>영향 ① 자금 흡수 — 프리텔레콤이 그룹의 현금 공급처</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>통로</th>
+<th style="text-align: right;">금액(2025)</th>
+<th>방향</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>미수금 (MVNO사업부 거래)</td>
+<td style="text-align: right;"><strong>118.9억</strong></td>
+<td>프리텔레콤 → 모회사 (미회수)</td>
+<td>평가보고서 §IV-6</td>
+</tr>
+<tr>
+<td>단기대여금/미수수익</td>
+<td style="text-align: right;"><strong>95.9억</strong></td>
+<td>프리텔레콤 → 관계사</td>
+<td>평가보고서 §III-3</td>
+</tr>
+<tr>
+<td>경영관리수수료</td>
+<td style="text-align: right;">82.8억</td>
+<td>모회사 → 프리텔레콤 (수취)</td>
+<td>평가보고서 §IV-2</td>
+</tr>
+<tr>
+<td>종속/관계기업투자주식</td>
+<td style="text-align: right;">9.5억</td>
+<td>프리텔레콤 보유</td>
+<td>평가보고서 §III-3</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>★ <strong>프리텔레콤의 비영업자산 145.6억 중 약 215억 상당이 관계사 채권</strong>(미수금 118.9 + 대여·미수 95.9). 이것이 DCF 지분가치(644.5억)의 <strong>22.6%(비영업자산)</strong> 를 구성한다.</li>
+<li><strong>의미</strong>: 프리텔레콤은 그룹에서 <strong>현금을 만들어 위로 올려보내는 엔진</strong>이다. 그룹의 바이오·ICT 투자 손실을 통신 캐시카우가 떠받치는 구조.</li>
+<li><strong>프리텔레콤 관점 위험</strong>: 이 채권들의 회수 가능성은 <strong>모회사·관계사의 지급능력</strong>에 달려 있는데, 그 관계사들이 적자(바이오)이거나 재무 불안(모회사 자본잠식)이다 → 05 R1.</li>
+</ul>
+<h3>영향 ② 손실 전이 — 모회사 순손실 416.8억의 진원</h3>
+<p>프리티 연결 손익 분해 (2025, 억원):</p>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th style="text-align: right;">금액</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>영업이익</td>
+<td style="text-align: right;"><strong>+40.8</strong></td>
+<td>통신(프리텔레콤 65.9) 흑자가 견인</td>
+</tr>
+<tr>
+<td>기타비용</td>
+<td style="text-align: right;"><strong>-423.8</strong></td>
+<td>★대규모 손상차손 추정 (2024년 35.1억의 12배)</td>
+</tr>
+<tr>
+<td>금융비용</td>
+<td style="text-align: right;">-72.8</td>
+<td>CB 등 이자</td>
+</tr>
+<tr>
+<td>관계기업투자손익</td>
+<td style="text-align: right;"><strong>-21.6</strong></td>
+<td>★바이오(아피메즈) 지분법 손실</td>
+</tr>
+<tr>
+<td><strong>당기순손익</strong></td>
+<td style="text-align: right;"><strong>-416.8</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>자산 감소와의 정합</strong>: 연결 자산총계 907.3억(2024) → 604.6억(2025), <strong>-302.7억</strong>. 비유동자산이 616.2억 → 368.9억으로 <strong>-247.3억</strong> 급감 — 투자자산·무형자산 손상 추정.</li>
+<li>★ <strong>결정적 관찰</strong>: <strong>프리텔레콤이 벌어들인 영업이익(65.9억)의 6배가 넘는 손실이 관계사·투자자산에서 발생</strong>했다. 프리텔레콤의 우량함이 그룹 손실에 잠식되고 있다.</li>
+</ul>
+<h3>영향 ③ 자본잠식 → 지분 매각 압력</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th style="text-align: right;">2024</th>
+<th style="text-align: right;">2025</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>자본금</td>
+<td style="text-align: right;">596.8억</td>
+<td style="text-align: right;">629.4억</td>
+<td></td>
+</tr>
+<tr>
+<td>자본총계</td>
+<td style="text-align: right;">483.9억</td>
+<td style="text-align: right;"><strong>160.7억</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>자본잠식률 (연결)</strong></td>
+<td style="text-align: right;">잠식 없음</td>
+<td style="text-align: right;"><strong>약 74.5%</strong></td>
+<td>⚠️</td>
+</tr>
+<tr>
+<td>결손금</td>
+<td style="text-align: right;">-929.3억</td>
+<td style="text-align: right;"><strong>-1,348.3억</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>계산: (629.4 − 160.7) ÷ 629.4 = 74.5%. <strong>유가증권시장 상장규정상 자본잠식률 50% 이상은 관리종목 지정 사유</strong>(단, 판정은 <strong>별도 기준</strong>이며 연결이 아님 — §5 한계).</li>
+<li>★ <strong>프리텔레콤에 대한 함의</strong>: 모회사가 자본을 확충해야 하는 압박 하에서, <strong>그룹 내 유일한 환금 가능 우량자산은 프리텔레콤(지분가치 644.5억)</strong> 이다. 삼화 평가보고서가 <strong>바로 이 시점(2026.4)에, 모회사(인스코비) 의뢰로, 내부 의사결정 참고 목적</strong>으로 작성되었다는 사실 자체가 <strong>프리텔레콤 지분의 활용(매각·담보·투자유치) 검토</strong>를 시사한다(05 시나리오 D).</li>
+</ul>
+<hr />
+<h2>3. 관계사별 프로파일</h2>
+<h3>3.1 ㈜프리티 (모회사, KOSPI 006490)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사업</td>
+<td>통신(알뜰폰)·ICT/스마트그리드·바이오</td>
+</tr>
+<tr>
+<td>설립/상장</td>
+<td>1970.2.28 / 1985.1.17 (구 인스코비, 2026.6 '프리티' 상호 변경)</td>
+</tr>
+<tr>
+<td>대표이사</td>
+<td>송병권</td>
+</tr>
+<tr>
+<td>최대주주</td>
+<td><strong>KS인더스트리 14.14%</strong> (2026.4 변경)</td>
+</tr>
+<tr>
+<td>2025 실적</td>
+<td>연결 매출 1,055.6억, 영업이익 40.8억, <strong>순손실 -416.8억</strong></td>
+</tr>
+<tr>
+<td>재무 상태</td>
+<td><strong>자본잠식률 추정 74.5%</strong>, 결손금 -1,348.3억</td>
+</tr>
+<tr>
+<td>프리텔레콤과의 관계</td>
+<td>100% 모회사. <strong>미수금 118.9억 채무자</strong>, 경영관리수수료 지급</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>프리텔레콤에 대한 순영향: 🔴 부정적.</strong> 우량 자회사의 현금·가치를 그룹 손실 보전에 동원하는 구조.</p>
+<h3>3.2 KS인더스트리 (모회사의 최대주주, KOSDAQ 101000)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사업</td>
+<td>선박용 크레인·선박구성부분품 제조</td>
+</tr>
+<tr>
+<td>프리티 지분</td>
+<td>14.14% (최대주주, 2026.4)</td>
+</tr>
+<tr>
+<td>재무 (별도, <code>_workspace/KS인더스트리</code>)</td>
+<td>2025 매출 308.9억, <strong>영업손실 -53.4억</strong>, 5년 연속 적자, 누적결손 487억</td>
+</tr>
+<tr>
+<td>자본조달</td>
+<td>2년간 402억 조달, 최대주주 3회 변경</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>★ <strong>위험 신호</strong>: 프리티의 최대주주 자신이 <strong>5년 연속 적자·자본조달 의존 기업</strong>이다. 지배구조 최상단이 부실하면 프리티에 대한 <strong>추가 자본 지원 여력이 없고</strong>, 오히려 KS인더스트리가 프리티 지분·프리텔레콤 가치에 기대야 하는 역방향 압력이 생긴다.</li>
+<li>최대주주 변경(2026.4, KS인더스트리 13.71%)의 실체가 이것이며, KS인더스트리 자체도 부실하다.</li>
+</ul>
+<p><strong>프리텔레콤에 대한 순영향: 🟠 잠재 부정적.</strong> 지배구조 상단의 재무 취약이 자금 안정성 리스크를 가중.</p>
+<h3>3.3 아피메즈 / APUS / Lōkahi Therapeutics (바이오)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용 (IR §03·§04)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사업</td>
+<td>봉독(Bee venom) 기반 자가면역질환 치료제 '아피톡신'(국내 신약 6호)</td>
+</tr>
+<tr>
+<td>지분</td>
+<td>프리티 → 아피메즈 22.5% → Apimeds USA(APUS) → MindWave 합병 → Lōkahi(프리티 10%)</td>
+</tr>
+<tr>
+<td>상장</td>
+<td>APUS NYSE American 상장/거래개시(2025.5), MindWave 합병</td>
+</tr>
+<tr>
+<td>FDA</td>
+<td>임상 3상(MS) 2026.3Q~ 예정, 총 임상비용 400억</td>
+</tr>
+<tr>
+<td>손익</td>
+<td>2025 관계기업투자손익 <strong>-21.6억</strong> (지속 손실)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>성격</strong>: 고위험·고변동 바이오 벤처. FDA 임상 3상은 <strong>성공 시 대박·실패 시 전액 손실</strong>의 옵션. 총 임상비 400억은 그룹 재무 규모 대비 과중.</li>
+<li><strong>프리텔레콤 관점</strong>: 이 사업의 손실(-21.6억)과 투자자산 손상이 <strong>모회사 순손실의 한 축</strong>이며, 프리텔레콤 채권 회수 리스크의 배경.</li>
+</ul>
+<p><strong>프리텔레콤에 대한 순영향: 🟠 부정적(손실원) + 🟢 잠재 옵션(임상 성공 시 그룹 재무 반전).</strong></p>
+<h3>3.4 ICT/스마트전력그리드 (프리티 본체 사업부문)</h3>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용 (IR §05)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사업</td>
+<td>한전 AMI(누적 360억), 공장 FEMS 120여 곳, 데이터센터 전력관리</td>
+</tr>
+<tr>
+<td>기술</td>
+<td>K2 PLC Chip, Wi-SUN 모뎀, 스마트미터 게이트웨이, AI 공장에너지관리(개발 중)</td>
+</tr>
+<tr>
+<td>시장</td>
+<td>RE100 산단·노후 산단 리모델링 수요</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>성격</strong>: 실적(한전 누적 360억) 있는 B2B 사업. 데이터센터·RE100 정책 수혜 기대.</li>
+<li><strong>프리텔레콤 관점</strong>: 직접 연관은 낮으나, <strong>그룹 손익 변동성을 낮추는 안정 축</strong>이 될 수 있다면 프리텔레콤에 대한 자금 압박 완화에 간접 기여.</li>
+</ul>
+<p><strong>프리텔레콤에 대한 순영향: 🟡 중립~잠재 긍정.</strong></p>
+<hr />
+<h2>4. 관계사 종합 판정 — 프리텔레콤에 미치는 영향</h2>
+<div class="tbl-scroll"><table>
+<thead>
+<tr>
+<th>관계사</th>
+<th style="text-align: center;">영향 방향</th>
+<th>경로</th>
+<th style="text-align: center;">강도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>㈜프리티 (모회사)</td>
+<td style="text-align: center;">🔴 부정</td>
+<td>미수금 118.9억 미회수, 현금 흡수, 손실 잠식</td>
+<td style="text-align: center;">極</td>
+</tr>
+<tr>
+<td>KS인더스트리 (최대주주)</td>
+<td style="text-align: center;">🟠 잠재 부정</td>
+<td>지배구조 상단 부실, 자본 지원 여력 부재</td>
+<td style="text-align: center;">中</td>
+</tr>
+<tr>
+<td>아피메즈/APUS (바이오)</td>
+<td style="text-align: center;">🟠 부정 / 🟢 옵션</td>
+<td>지분법 손실 -21.6억 / 임상 성공 시 반전</td>
+<td style="text-align: center;">中</td>
+</tr>
+<tr>
+<td>ICT/스마트그리드</td>
+<td style="text-align: center;">🟡 중립~긍정</td>
+<td>그룹 손익 안정화 잠재</td>
+<td style="text-align: center;">低</td>
+</tr>
+</tbody>
+</table></div>
+<h3>핵심 결론</h3>
+<blockquote>
+<p><strong>프리텔레콤은 그룹에서 가장 건강한 자산인데, 가장 아픈 가족들에게 둘러싸여 있다.</strong>
+- 위(모회사·최대주주)로는 자본잠식·5년 적자가 자금을 빨아들이고,
+- 옆(바이오)으로는 임상 도박의 손실이 그룹 순이익을 갉아먹는다.
+- 프리텔레콤의 영업이익 65.9억은 그룹 손실 416.8억 앞에서 무력하고,
+- 프리텔레콤이 만든 현금 215억(미수·대여)은 회수가 관계사 지급능력에 묶여 있다.</p>
+<p><strong>→ 프리텔레콤의 생존은 본업 경쟁력(10.7%)이 아니라 이 관계망으로부터 얼마나 자신을 방어하느냐에 달려 있다.</strong> 상세 대응은 <code>05_survival_strategy.md</code> 층 1(방화벽).</p>
+</blockquote>
+<hr />
+<h2>5. 데이터 한계 (별첨)</h2>
+<ul>
+<li><strong>지분 구조</strong>: IR BOOK §01의 계열사도는 화살표·지분율(아피메즈 13.9%/22.5%/28.6% 병기)이 모호하다. 정확한 지분율·지배관계는 <strong>DART 프리티 사업보고서 '계열회사 현황'</strong> 으로 확인 필요.</li>
+<li><strong>자본잠식률 74.5%</strong>: 연결 기준 추정. 상장 유지 요건 판정은 <strong>별도 재무제표</strong> 기준이며 해당 수치 미확보. 관리종목 지정 여부 확정 판단 불가.</li>
+<li><strong>기타비용 423.8억</strong>: 손상차손 추정이나 계정별 내역(어느 자산의 손상인지) 미확인 — DART 주석 확인 필요.</li>
+<li><strong>KS인더스트리 수치</strong>: 별도 리서치(<code>_workspace/KS인더스트리/</code>) 인용. 프리티 지분율은 자료 간 차이(13.71% vs IR 14.14%)가 있음 — 시점 차이 추정.</li>
+<li><strong>바이오 임상·APUS 상장</strong>: IR BOOK 서술에 의존하며 독립 검증 자료 없음.</li>
+<li>관계사 채권의 <strong>회수 가능성 정량 평가</strong>는 모회사·관계사 별도 재무제표 확보 후에만 가능.</li>
+</ul></section>
+
+  <div class="foot">내부 검토용 · 첨부 평가보고서는 배포 제한 문서(대외 인용 금지) · 알뜰폰 MVNO 분석 · Market Research Harness</div>
+</div>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.tab');
+  var panels = document.querySelectorAll('.panel');
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      var id = t.getAttribute('data-tab');
+      tabs.forEach(function(x){x.classList.remove('active');});
+      panels.forEach(function(p){p.classList.remove('active');});
+      t.classList.add('active');
+      var panel = document.getElementById(id);
+      if(panel) panel.classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
