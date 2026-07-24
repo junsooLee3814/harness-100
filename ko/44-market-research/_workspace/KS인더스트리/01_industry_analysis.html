@@ -1,0 +1,551 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>01. 산업분석 — 선박용 크레인 / 조선기자재</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">KS인더스트리 · 산업분석</div><h1>01. 산업분석 — 선박용 크레인 / 조선기자재</h1></header><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">1. 산업 정의와 KSI의 위치</div></div>
+<h3>1.1 밸류체인</h3>
+<pre><code>[원자재]        [기자재 제조]       [조선소]          [선주/해운사]
+강재·형강    →  선박용 크레인    →  HD현대·한화오션  →  글로벌 선주
+(한일철강,      데크머시너리        삼성중공업          (선주가 크레인
+ 국일철강,      LNG/LPG 탱크        중형사(HJ,케이조선,  브랜드를 직접
+ 삼우강업)      ↑ KSI 위치         대한조선…)          지정하는 경우多)
+                                                       ↓
+[부품 수입]                                        [애프터마켓]
+감속기·유압·                                       부품 공급/수리
+베어링·전기부품                                     ↑ KSI 병행 영위
+</code></pre>
+<p><strong>KSI의 구조적 위치 = 밸류체인 최약체 구간.</strong></p>
+<ul>
+<li>후방(강재)은 소수 대형 철강사, 전방(조선소)은 3사 과점 → <strong>가격결정권 없는 샌드위치</strong></li>
+<li>게다가 선주가 크레인 제조사를 <strong>지정(Maker's List)</strong> 하는 관행 → 조선소가 아니라 선주에게도 인정받아야 하는 이중 관문</li>
+</ul>
+<h3>1.2 KSI 사업 구성 (2026.1Q, 별도, 백만원)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>사업</th>
+<th style="text-align: right;">매출</th>
+<th style="text-align: right;">비중</th>
+<th>특성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>선박구성부분품 제조</td>
+<td style="text-align: right;">6,683</td>
+<td style="text-align: right;">83.7%</td>
+<td>100% 주문생산, 수출 80.2%</td>
+</tr>
+<tr>
+<td>기자재 판매 및 수리</td>
+<td style="text-align: right;">1,297</td>
+<td style="text-align: right;">16.3%</td>
+<td>내수 97.2%, <strong>애프터마켓</strong></td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">2. 시장 규모 (TAM / SAM / SOM)</div></div>
+<h3>2.1 TAM — 글로벌 선박용 데크크레인</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>출처</th>
+<th>기준연도</th>
+<th style="text-align: right;">규모</th>
+<th style="text-align: right;">CAGR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verified Market Reports</td>
+<td>2023</td>
+<td style="text-align: right;">USD 725M</td>
+<td style="text-align: right;">4.8% (→2031 1,007M)</td>
+</tr>
+<tr>
+<td>Future Market Report</td>
+<td>2024</td>
+<td style="text-align: right;">USD 564M</td>
+<td style="text-align: right;">4.3% (→2031 757M)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>추정 TAM ≈ USD 6~8억 (약 8,000억~1.1조원), CAGR 4~5%</strong></p>
+<ul>
+<li>여기에 데크머시너리(윈치·무어링), 오프쇼어 크레인, 머티리얼핸들링을 포함한 <strong>KSI 확장 TAM ≈ 2~3조원</strong></li>
+<li>성장률이 <strong>한 자릿수 중반</strong> — 시장 성장으로 구원받을 수 있는 산업이 아님. 점유율 싸움.</li>
+</ul>
+<h3>2.2 SAM — 국내 조선소향 선박용 크레인 (하향식 역산)</h3>
+<pre><code>오리엔탈정공 리프팅어플라이언스 매출 585억 ÷ 점유율 70%
+  = 국내 선박용 크레인 시장 ≈ 835억원
+검증(상향식): 오리엔탈정공 585억 + KSI 254억(2026.1Q×4 추정) + 기타/수입 ≈ 900~1,100억
+</code></pre>
+<p><strong>SAM ≈ 900~1,100억원/년</strong> (국내 조선소가 발주하는 선박용 크레인)</p>
+<ul>
+<li>여기에 데크머시너리·기자재 A/S를 더한 KSI 접근 가능 시장 <strong>≈ 1,500~1,800억원</strong></li>
+</ul>
+<h3>2.3 SOM — KSI가 현실적으로 가져올 수 있는 몫</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th style="text-align: right;">3년 후 매출</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>보수</td>
+<td style="text-align: right;">350억</td>
+<td>현 수주잔고 626억을 2.5년에 걸쳐 소진, 신규 수주 정체</td>
+</tr>
+<tr>
+<td>기준</td>
+<td style="text-align: right;">450~500억</td>
+<td>가동률 87%→100%, 기자재 A/S 2배 확대</td>
+</tr>
+<tr>
+<td>낙관</td>
+<td style="text-align: right;">700억</td>
+<td>위 + 미국/해외 거점 수주 확보</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>핵심</strong>: KSI 생산능력은 분기 84대 = 연 336대. 2025년 실적 276대(가동률 82%), 2026.1Q 74대(87%). <strong>설비 여유가 겨우 13% 남았다.</strong> 즉 현 설비로는 매출 400억 수준이 천장이며, 그 이상은 CAPEX를 다시 요구한다. — 성장전략 설계 시 반드시 반영해야 할 제약.</p>
+</blockquote>
+<h3>2.4 수주잔고 (2026.1Q말, 별도)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>품목</th>
+<th style="text-align: right;">수주총액</th>
+<th style="text-align: right;">기납품</th>
+<th style="text-align: right;"><strong>수주잔고</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>선박구성부분품 제조</td>
+<td style="text-align: right;">66,528</td>
+<td style="text-align: right;">6,664</td>
+<td style="text-align: right;"><strong>59,864</strong></td>
+</tr>
+<tr>
+<td>기자재 판매 및 수리</td>
+<td style="text-align: right;">4,008</td>
+<td style="text-align: right;">1,297</td>
+<td style="text-align: right;"><strong>2,711</strong></td>
+</tr>
+<tr>
+<td>합계</td>
+<td style="text-align: right;">70,536</td>
+<td style="text-align: right;">7,961</td>
+<td style="text-align: right;"><strong>62,575</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>수주잔고 626억 = 별도매출(2025년 309억) 기준 약 2.0년치.</strong> 당장의 일감은 있다. 문제는 <strong>이 일감이 이익을 못 낸다는 것</strong>(선박부문 2026.1Q 영업손실 -8.7억).</p>
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">3. 산업 사이클 — "호황의 끝자락"</div></div>
+<h3>3.1 전방 조선업 전망</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th style="text-align: right;">2025</th>
+<th style="text-align: right;">2026(E)</th>
+<th style="text-align: right;">증감</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>글로벌 신조 발주량</td>
+<td style="text-align: right;">4,100만 CGT</td>
+<td style="text-align: right;">3,500만 CGT</td>
+<td style="text-align: right;"><strong>-14.6%</strong></td>
+</tr>
+<tr>
+<td>글로벌 발주액</td>
+<td style="text-align: right;">1,320억$</td>
+<td style="text-align: right;">1,120억$</td>
+<td style="text-align: right;"><strong>-15%</strong></td>
+</tr>
+<tr>
+<td>한국 수주량</td>
+<td style="text-align: right;">(1,160만 CGT)</td>
+<td style="text-align: right;">900만 CGT</td>
+<td style="text-align: right;">-5.3%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>한국 조선사 <strong>수주잔고 4년치 이상</strong>, 2028년까지 인도 슬롯 대부분 확정</li>
+<li>신조선가 지수는 완만한 조정 중이나 장기평균 대비 여전히 높음</li>
+<li><strong>고선가 물량이 매출에 본격 반영되는 시기 = 2026년</strong></li>
+</ul>
+<h3>3.2 이것이 KSI에 주는 의미 — 이중 메시지</h3>
+<p>✅ <strong>좋은 소식</strong>: 향후 2~3년 조선소 물량은 확정적. 기자재 발주도 따라옴. <strong>KSI가 망하지 않을 최소한의 시간은 벌었다.</strong></p>
+<p>🔴 <strong>나쁜 소식</strong>: 발주는 2026년부터 꺾인다. 즉 <strong>이번 사이클이 KSI가 체질을 바꿀 마지막 기회</strong>다. 다음 하강 국면(2027~2029)에 지금 구조 그대로 진입하면 생존이 어렵다.</p>
+<blockquote>
+<p>조선기자재 업체가 사이클 정점(2024~2026)에서 <strong>매출 +31%인데 영업적자 -53억</strong>을 낸다는 것은, 사이클이 아니라 <strong>회사 내부에 문제가 있다</strong>는 결정적 증거다.</p>
+</blockquote>
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">4. Porter's 5 Forces</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Force</th>
+<th style="text-align: center;">강도</th>
+<th>근거</th>
+<th>KSI 영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>신규 진입 위협</strong></td>
+<td style="text-align: center;">낮음 ★★☆☆☆</td>
+<td>선급(Class) 인증, API-2C·OHSAS, 대규모 야적장·시험설비, 납품 실적(Track Record), 선주 Maker's List 등재 필요</td>
+<td>유일한 방어막. <strong>KSI가 아직 살아있는 이유</strong></td>
+</tr>
+<tr>
+<td><strong>공급자 교섭력</strong></td>
+<td style="text-align: center;">중~높음 ★★★☆☆</td>
+<td>강재(한일·국일·삼우), 감속기·유압부품·베어링은 상당수 수입. 2026.1Q 부재료 매입 22.7억 &gt; 원재료 6.8억</td>
+<td>부재료 비중 77% → <strong>원가의 주도권이 외부에</strong></td>
+</tr>
+<tr>
+<td><strong>구매자 교섭력</strong></td>
+<td style="text-align: center;"><strong>매우 높음 ★★★★★</strong></td>
+<td>2026.1Q 현대중공업그룹 52.7억(매출의 50.7%), 삼성중공업 13.3억. 2025년 상위 4개사 = 매출의 <strong>70.8%</strong></td>
+<td><strong>치명적.</strong> 단가 인하 요구를 거부할 수 없는 구조</td>
+</tr>
+<tr>
+<td><strong>대체재 위협</strong></td>
+<td style="text-align: center;">낮음 ★★☆☆☆</td>
+<td>선박에서 크레인을 대체할 수단 없음. 다만 육상 하역 의존형 설계(Gearless선) 확대는 장기 위협</td>
+<td>낮음</td>
+</tr>
+<tr>
+<td><strong>기존 경쟁 강도</strong></td>
+<td style="text-align: center;"><strong>높음 ★★★★☆</strong></td>
+<td>오리엔탈정공 국내 점유율 ~70%. 글로벌 MacGregor·Palfinger·Liebherr·Konecranes. 중국 저가 공세</td>
+<td><strong>1위와 격차 7배</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>산업 매력도 종합</h3>
+<pre><code>일반 사업자 관점:  ★★★☆☆ (중)  — 진입장벽은 높으나 구매자 파워가 수익성을 압박
+KSI 관점:         ★★☆☆☆ (중하) — 위 + 압도적 1위 존재 + 규모의 열위
+</code></pre>
+<p><strong>전략적 시사점 3가지</strong></p>
+<ol>
+<li><strong>구매자 파워를 우회하지 못하면 영원히 적자다.</strong> → 고객 다변화(수출·미국) 또는 교섭력 있는 영역(A/S)으로 이동이 필수</li>
+<li><strong>진입장벽(인증·실적)은 KSI가 이미 가진 자산이다.</strong> 20년 실적, 14건 특허, API-2C/OHSAS 인증, 현대중공업 우수협력사 이력 — 신규 진입자는 5년 걸려도 못 얻는다. <strong>이 자산을 현금화하는 전략이 답</strong></li>
+<li><strong>부재료 수입 의존을 못 줄이면 원가율 개선은 한계가 있다.</strong></li>
+</ol>
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">5. 규제 환경 — 위협이자 기회</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>규제</th>
+<th>내용</th>
+<th>KSI 영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IMO 온실가스 전략</td>
+<td>2030년 -20%, 2040년 -70%, 2050년 넷제로</td>
+<td>➕ 노후선 조기 교체 → 신조 수요</td>
+</tr>
+<tr>
+<td>IMO 탄소부담금</td>
+<td>2027년부터 전 선박 배출 부담금</td>
+<td>➕ 친환경선 전환 가속</td>
+</tr>
+<tr>
+<td><strong>레트로핏(개조) 시장</strong></td>
+<td>조선 3사가 애프터마켓 진출, <strong>친환경 개조시장 10배 이상 성장 전망</strong></td>
+<td>➕➕ <strong>KSI 기자재 판매·수리 사업과 정확히 일치</strong></td>
+</tr>
+<tr>
+<td>SOLAS / MARPOL / 각국 선급</td>
+<td>품질·안전 인증 필수</td>
+<td>➕ 진입장벽 유지</td>
+</tr>
+<tr>
+<td>MASGA (미-한 조선협력)</td>
+<td>한화 필리조선소 연 1.5척→10척 확대, MPZ 지정·기자재 관세면제 추진</td>
+<td>➕➕ <strong>한국 기자재 대미 수출 창구 개방</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>주목</strong>: KSI는 이미 <strong>한화오션에코텍</strong>을 계약이행보증(79.5억) 대상 발주처로 두고 있다. 한화 계열 공급망에 편입되어 있다는 뜻이며, MASGA 밸류체인 접근의 <strong>실질적 교두보</strong>다. 이건 현재 재무제표에 안 잡히는 무형의 자산이다.</p>
+</blockquote>
+</section><section class="card card--sky"><div class="sess-head"><span class="sess-no">06</span><div class="sess-title">6. 산업분석 결론</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>결론</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>시장은 작고(SAM 1,000억), 성장은 느리고(CAGR 4~5%), 1위가 70%를 먹고 있다.</strong> 정면승부로는 답이 없다.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>전방 조선 호황은 2026년이 정점.</strong> KSI에게 남은 구조조정 시간은 사실상 18~24개월.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>KSI의 적자는 사이클이 아니라 내부 문제.</strong> 매출 +31%에 적자 6배는 산업 탓이 아니다.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>애프터마켓(기자재 판매·수리) + 레트로핏이 유일하게 구매자 파워가 약한 영역</strong>이며, 규제가 이 시장을 키우고 있다.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>MASGA는 KSI 규모의 회사가 잡을 수 있는 몇 안 되는 비대칭 기회</strong>다. 한화오션에코텍 거래관계가 실마리.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>설비 천장(연 336대, 가동률 87%)</strong> 때문에 제조 물량 확대만으로는 매출 400억이 한계. 부가가치형 매출 구성 전환이 불가피.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><strong>출처</strong></p>
+<ul>
+<li><a href="https://www.biztribune.co.kr/news/articleView.html?idxno=346661">2026 산업전망 K-조선 — 비즈트리뷴</a></li>
+<li><a href="https://news.nate.com/view/20260113n02226">2026 전망보고서: 조선업 — 네이트뉴스</a></li>
+<li><a href="https://www.fortunebusinessinsights.com/marine-deck-crane-market-115083">Marine Deck Crane Market — Fortune Business Insights</a></li>
+<li><a href="https://www.verifiedmarketreports.com/product/marine-deck-cranes-market/">Marine Deck Cranes Market — Verified Market Reports</a></li>
+<li><a href="https://m.sedaily.com/article/14053484">IMO 규제에 친환경 선박 교체 수요 — 서울경제</a></li>
+<li><a href="https://www.economidaily.com/view/20240814132607240">조선3사 애프터마켓 진출, 친환경 개조시장 10배 — 이코노믹데일리</a></li>
+<li><a href="https://www.kistep.re.kr/boardDownload.es?bid=0067&amp;list_no=94416&amp;seq=1">MASGA 시대의 조선기자재 산업 대응 — KISTEP</a></li>
+<li><a href="https://www.etnews.com/20260318000299">한미 조선동맹 MASGA 본격 가동 — 전자신문</a></li>
+<li>KSI 감사보고서(2026.03.18), 분기보고서(2026.05.15)</li>
+</ul></section></div></div></body></html>

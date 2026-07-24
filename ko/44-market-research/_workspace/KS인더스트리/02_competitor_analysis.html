@@ -1,0 +1,620 @@
+<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>02. 경쟁자분석 — 오리엔탈정공 및 국내외 경쟁사</title><link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css'><style>/* =====================================================================
+   html-pastel-style · Pastel Card Design System
+   Clean, document-grade pastel cards. Pretendard + soft tints + depth.
+   Load Pretendard in <head>:
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+   ===================================================================== */
+
+:root{
+  /* ---- neutrals ---- */
+  --ink:#19223C; --text:#37415C; --muted:#6C748C; --faint:#9AA1B4;
+  --bg:#F3F5FB; --card:#FFFFFF; --line:#E6E9F2; --line2:#EEF1F8;
+  --accent:#2F55C6; --accent-soft:#E9EFFD; --accent-ink:#21408F;
+  --navy:#16386E; --navy-bg:#EAF1FB; --navy-bg2:#D9E6F6; --navy-bd:#C8DAF1;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(20,30,60,.05);
+  --shadow-md:0 1px 2px rgba(20,30,60,.04), 0 14px 32px rgba(20,30,60,.07);
+  --shadow-inset:0 2px 10px rgba(20,30,60,.06);
+
+  /* ---- pastel families: bg / bg2(deeper) / border / accent / deep(ink) ---- */
+  --sky-bg:#EAF2FE;   --sky-bg2:#D7E7FD;   --sky-bd:#CBDDFB;   --sky-ac:#3D7BEA;   --sky-dp:#1B4DA0;
+  --orange-bg:#FCEBDA; --orange-bg2:#F9D8BC; --orange-bd:#F5CDA6; --orange-ac:#EA6A17; --orange-dp:#A8500F;
+  --violet-bg:#F1EAFB;--violet-bg2:#E6DAF7;--violet-bd:#DFD0F5;--violet-ac:#875AD2;--violet-dp:#653A9F;
+  --amber-bg:#FBF3D9; --amber-bg2:#F6E8BC; --amber-bd:#F0E0AE; --amber-ac:#D2A11C; --amber-dp:#8A6912;
+  --mint-bg:#E6F5EE;  --mint-bg2:#D2EEDE;  --mint-bd:#C8E7D7;  --mint-ac:#2C9F70;  --mint-dp:#1C744E;
+  --peach-bg:#FDEEE6; --peach-bg2:#FADFCF; --peach-bd:#F8D6C5; --peach-ac:#E0784C; --peach-dp:#B0512B;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 460px at 50% -240px, #fff 0%, rgba(255,255,255,0) 70%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.page{ max-width:920px; margin:0 auto; padding:40px 22px 96px; }
+.doc{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-md); padding:clamp(26px,5vw,60px);
+}
+
+/* ============ COVER ============ */
+.cover{ background:var(--navy-bg); border:1px solid var(--navy-bd); border-radius:16px;
+  padding:30px 32px 28px; margin:0 0 12px; }
+.eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:18px; }
+.cover h1{ font-size:clamp(30px,5.4vw,46px); line-height:1.12; font-weight:800;
+  color:var(--navy); margin:0 0 6px; letter-spacing:-.022em; }
+.cover-sub{ font-size:clamp(15px,2.4vw,19px); font-weight:700; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-.01em; }
+.cover-lede{ font-size:clamp(14.5px,2.2vw,17px); color:var(--muted); font-weight:500;
+  margin:0 0 24px; max-width:54ch; }
+
+/* pastel meta cells (blue / pink / purple / yellow) */
+.cover-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  background:#fff; border:1px solid var(--navy-bd); border-radius:12px; padding:8px; }
+.cm{ border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;
+  border:1px solid transparent; }
+.cm-k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.cm-v{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+.cm:nth-child(4n+1){ background:var(--sky-bg);    border-color:var(--sky-bd);    color:var(--sky-dp); }
+.cm:nth-child(4n+2){ background:var(--orange-bg); border-color:var(--orange-bd); color:var(--orange-dp); }
+.cm:nth-child(4n+3){ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.cm:nth-child(4n+4){ background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.cm-k{ color:inherit; } .cm-v{ color:inherit; }
+
+.sync-badge{ display:inline-block; margin-top:18px; font-size:12px; font-weight:700;
+  color:var(--navy); background:#fff; border:1px solid var(--navy-bd);
+  padding:8px 14px; border-radius:10px; line-height:1.5; }
+
+/* ============ HEADINGS / TEXT ============ */
+h2{ font-size:clamp(20px,3vw,25px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; line-height:1.25; margin:52px 0 16px; padding-top:24px;
+  border-top:1px solid var(--line); position:relative; }
+h2::before{ content:""; position:absolute; top:-1px; left:0; width:54px; height:3px;
+  background:var(--navy); border-radius:3px; }
+h3{ font-size:17.5px; font-weight:800; color:var(--ink); letter-spacing:-.015em;
+  margin:28px 0 12px; line-height:1.3; }
+p{ margin:0 0 13px; }
+strong{ font-weight:700; color:var(--ink); }
+em{ font-style:normal; color:#586383; font-weight:500; }
+code{ font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace; font-size:.86em;
+  background:var(--accent-soft); color:var(--accent-ink); padding:.16em .5em; border-radius:6px;
+  font-weight:600; word-break:keep-all; }
+
+/* ============ DAY DIVIDER (strong anchor between colored cards) ============ */
+.day-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 8px; padding-top:22px;
+  border-top:2px solid var(--navy); }
+.day-divider .d-badge{ flex:0 0 auto; font-size:12px; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); background:var(--navy-bg); border:1px solid var(--navy-bd); padding:7px 13px; border-radius:9px; }
+.day-divider .d-title{ font-size:clamp(18px,2.6vw,22px); font-weight:800; color:var(--navy);
+  letter-spacing:-.02em; }
+
+/* ============ CARD (pastel families via local vars) ============ */
+.card{
+  --c-bg:#fff; --c-bg2:#F4F6FB; --c-bd:var(--line); --c-ac:var(--accent); --c-dp:var(--ink);
+  position:relative; background:var(--c-bg); border:1px solid var(--c-bd);
+  border-radius:var(--radius); padding:24px 26px 22px; margin:18px 0;
+  box-shadow:var(--shadow-md); overflow:visible;
+}
+.card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--c-ac); border-radius:var(--radius) var(--radius) 0 0; }
+.card--sky   { --c-bg:var(--sky-bg);    --c-bg2:var(--sky-bg2);    --c-bd:var(--sky-bd);    --c-ac:var(--sky-ac);    --c-dp:var(--sky-dp); }
+.card--orange{ --c-bg:var(--orange-bg); --c-bg2:var(--orange-bg2); --c-bd:var(--orange-bd); --c-ac:var(--orange-ac); --c-dp:var(--orange-dp); }
+.card--violet{ --c-bg:var(--violet-bg); --c-bg2:var(--violet-bg2); --c-bd:var(--violet-bd); --c-ac:var(--violet-ac); --c-dp:var(--violet-dp); }
+.card--amber { --c-bg:var(--amber-bg);  --c-bg2:var(--amber-bg2);  --c-bd:var(--amber-bd);  --c-ac:var(--amber-ac);  --c-dp:var(--amber-dp); }
+.card--mint  { --c-bg:var(--mint-bg);   --c-bg2:var(--mint-bg2);   --c-bd:var(--mint-bd);   --c-ac:var(--mint-ac);   --c-dp:var(--mint-dp); }
+
+/* card header (badge + meta + title) */
+.sess-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 4px; }
+.sess-no{ font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--c-dp);
+  background:rgba(255,255,255,.72); border:1px solid var(--c-bd); padding:4px 11px; border-radius:7px; }
+.sess-time{ font-size:13px; font-weight:700; color:var(--c-dp); opacity:.9; }
+.sess-title{ flex-basis:100%; font-size:19px; font-weight:800; color:var(--ink);
+  letter-spacing:-.015em; margin-top:6px; }
+
+/* meta strip (frosted white on tint) */
+.sess-meta{ font-size:13px; color:var(--text); background:rgba(255,255,255,.66);
+  border:1px solid var(--c-bd); border-radius:10px; padding:10px 14px; margin:10px 0 16px; line-height:1.55; }
+.sess-meta strong{ color:var(--c-dp); }
+.sess-meta em{ color:var(--text); font-weight:600; }
+
+/* small section label */
+.block-label{ font-size:12px; font-weight:800; letter-spacing:.04em; color:var(--c-dp);
+  margin:20px 0 8px; display:flex; align-items:center; gap:7px; }
+.block-label::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--c-ac); }
+
+/* module head = white inset sub-card on the tint */
+.module-head{ background:#fff; border:1px solid var(--c-bd); border-left:3px solid var(--c-ac);
+  border-radius:10px; padding:10px 14px; margin:16px 0 8px; box-shadow:var(--shadow-sm); }
+.module-head strong{ font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+.module-head em{ color:var(--muted); font-weight:500; }
+
+/* ============ LISTS ============ */
+ul,ol{ margin:6px 0 16px; padding-left:0; list-style:none; }
+li{ position:relative; padding-left:22px; margin:7px 0; line-height:1.66; }
+ul > li::before{ content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px;
+  border-radius:50%; background:var(--c-ac,var(--accent)); }
+ol{ counter-reset:li; }
+ol > li{ padding-left:30px; counter-increment:li; }
+ol > li::before{ content:counter(li); position:absolute; left:0; top:.05em; width:21px; height:21px;
+  background:var(--c-ac,var(--accent)); color:#fff; border-radius:50%; font-size:11px;
+  font-weight:800; display:flex; align-items:center; justify-content:center; }
+li ul{ margin:6px 0 4px; }
+li ul > li{ padding-left:20px; }
+li ul > li::before{ width:5px; height:5px; background:var(--faint); top:.62em; }
+
+/* checklist */
+ul > li.check{ padding-left:28px; margin:6px 0; }
+ul > li.check::before{ content:""; left:1px; top:.28em; width:14px; height:14px; border-radius:4px;
+  border:1.8px solid var(--c-ac,var(--accent)); background:rgba(255,255,255,.7); }
+
+/* ============ TABLES (white container, tinted header) ============ */
+.tbl-wrap{ overflow-x:auto; margin:14px 0 18px; border:1px solid var(--c-bd,var(--line));
+  border-radius:12px; background:#fff; box-shadow:var(--shadow-sm); }
+table{ width:100%; min-width:520px; border-collapse:collapse; font-size:14px; background:#fff; }
+thead th{ background:var(--c-bg2,#F4F6FB); color:var(--c-dp,var(--ink)); font-weight:800;
+  text-align:left; font-size:12.5px; padding:11px 14px; border-bottom:1px solid var(--c-bd,var(--line)); white-space:nowrap; }
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line2); vertical-align:top;
+  line-height:1.6; color:var(--text); }
+tbody tr:last-child td{ border-bottom:0; }
+tbody td:first-child{ font-weight:700; color:var(--ink); }
+
+/* ============ CALLOUTS (pastel + icon chip) ============ */
+.callout{ display:flex; gap:11px; align-items:flex-start; margin:14px 0; padding:13px 16px;
+  border-radius:12px; font-size:14.5px; line-height:1.6; border:1px solid transparent; }
+.callout .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:7px; color:#fff;
+  font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.callout strong{ color:inherit; }
+.callout.info{ background:var(--sky-bg);   border-color:var(--sky-bd);   color:var(--sky-dp); }
+.callout.info .ico{ background:var(--sky-ac); }
+.callout.tip{  background:var(--amber-bg);  border-color:var(--amber-bd);  color:var(--amber-dp); }
+.callout.tip .ico{ background:var(--amber-ac); }
+.callout.ok{   background:var(--mint-bg);   border-color:var(--mint-bd);   color:var(--mint-dp); }
+.callout.ok .ico{ background:var(--mint-ac); }
+.callout.note{ background:var(--violet-bg); border-color:var(--violet-bd); color:var(--violet-dp); }
+.callout.note .ico{ background:var(--violet-ac); }
+.callout.warn{ background:var(--peach-bg);  border-color:var(--peach-bd);  color:var(--peach-dp); }
+.callout.warn .ico{ background:var(--peach-ac); }
+
+/* quote / pain-point */
+blockquote{ margin:14px 0; padding:13px 17px; background:rgba(255,255,255,.6);
+  border-left:3px solid var(--c-ac,var(--accent)); border-radius:0 10px 10px 0; color:var(--text); }
+blockquote p{ margin:0; font-weight:600; }
+blockquote p em{ color:var(--muted); }
+
+/* ============ MISC ============ */
+hr{ border:0; height:1px; background:transparent; margin:26px 0; }
+.footer-note, .doc > p:last-child em{ display:block; margin-top:28px; padding-top:18px;
+  border-top:1px solid var(--line); color:var(--faint); font-size:13px; font-weight:500; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:680px){
+  .page{ padding:16px 12px 60px; }
+  .cover-meta{ grid-template-columns:repeat(2,1fr); }
+  .card{ padding:20px 18px; }
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{ background:#fff; }
+  .page{ padding:0; max-width:none; }
+  .doc{ border:0; box-shadow:none; border-radius:0; padding:0; }
+  .card,.tbl-wrap,table,.module-head,blockquote,.callout{
+    break-inside:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h2,h3,.day-divider{ break-after:avoid; }
+}
+
+/* ===== generic-document helpers ===== */
+.card h3{ color:var(--c-dp); margin:18px 0 10px; font-size:16px; }
+.cover-lede:last-child{ margin-bottom:0; }
+.callout .cbody{ flex:1; min-width:0; }
+.callout .cbody > :first-child{ margin-top:0; }
+.callout .cbody p{ margin:0 0 6px; }
+.callout .cbody p:last-child{ margin:0; }
+.callout .cbody ul,.callout .cbody ol{ margin:6px 0; }
+.callout .cbody strong{ color:inherit; }
+/* intro prose between cover and first card */
+.intro{ margin:4px 0 6px; }
+</style></head><body><div class='page'><div class='doc'><header class="cover"><div class="eyebrow">KS인더스트리 · 경쟁자분석</div><h1>02. 경쟁자분석 — 오리엔탈정공 및 국내외 경쟁사</h1></header><section class="card card--sky"><div class="sess-head"><span class="sess-no">01</span><div class="sess-title">1. 경쟁 지형 개관</div></div>
+<pre><code>                     기술·브랜드 프리미엄 (高)
+                              │
+   MacGregor(Cargotec) ●      │      ● Liebherr
+   Palfinger Marine    ●      │      ● Konecranes
+                              │
+   ─────────────────────────────────────────────── 규모(大)
+                    ● 오리엔탈정공                │
+                      (국내 70%, 매출 2,100억)    │
+                              │                   │
+              ● KSI           │                   │
+              (매출 309억)     │                   │
+                              │       ● 중국 로컬 (대련·우한 등)
+                     가격 경쟁 (低)
+</code></pre>
+<p><strong>KSI는 "규모도 작고, 프리미엄도 아닌" 중간지대(Stuck in the Middle)에 갇혀 있다.</strong> 마이클 포터가 가장 위험하다고 지적한 포지션이다.</p>
+</section><section class="card card--orange"><div class="sess-head"><span class="sess-no">02</span><div class="sess-title">2. 국내 최대 경쟁자 — 오리엔탈정공 (KOSDAQ 014940)</div></div>
+<h3>2.1 정면 비교</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th style="text-align: right;"><strong>오리엔탈정공</strong></th>
+<th style="text-align: right;"><strong>KSI</strong></th>
+<th style="text-align: right;">격차</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매출 (2026.1Q)</td>
+<td style="text-align: right;"><strong>564억</strong></td>
+<td style="text-align: right;">80억(별도) / 104억(연결)</td>
+<td style="text-align: right;"><strong>7.1배</strong></td>
+</tr>
+<tr>
+<td>수주잔고 (2026.1Q말)</td>
+<td style="text-align: right;"><strong>3,072억</strong></td>
+<td style="text-align: right;">626억</td>
+<td style="text-align: right;"><strong>4.9배</strong></td>
+</tr>
+<tr>
+<td>영업이익 (2025.4Q)</td>
+<td style="text-align: right;"><strong>+40.8억</strong></td>
+<td style="text-align: right;">(연간 -53억)</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>선박용 크레인 국내 점유율</td>
+<td style="text-align: right;"><strong>약 70%</strong></td>
+<td style="text-align: right;">추정 20~25%</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>사업 포트폴리오</td>
+<td style="text-align: right;">리프팅어플라이언스 50% + <strong>데크하우스 50%</strong></td>
+<td style="text-align: right;">선박부품 84% + 기자재 16%</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>신용등급</td>
+<td style="text-align: right;">(상대적 우량)</td>
+<td style="text-align: right;"><strong>B (이크레더블, 2026.3)</strong></td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>지배구조</td>
+<td style="text-align: right;">안정</td>
+<td style="text-align: right;"><strong>2년간 최대주주 3회 변경</strong></td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.2 오리엔탈정공의 경쟁우위 원천 (분해)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>우위</th>
+<th>내용</th>
+<th style="text-align: center;">KSI 모방 가능성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LNG선 크레인 독점</strong></td>
+<td>LNG 화물창 인슐레이션 패널 운반 크레인 = 사실상 유일 공급자. 한국이 LNG선 세계 1위인 한 구조적 독점</td>
+<td style="text-align: center;">🔴 <strong>불가</strong> — 이미 Maker's List 고착</td>
+</tr>
+<tr>
+<td><strong>데크하우스 겸업</strong></td>
+<td>매출의 50%가 데크하우스(선실 블록). 크레인 발주 사이클과 다른 축 → 실적 안정화</td>
+<td style="text-align: center;">🟡 가능하나 대규모 CAPEX·야적장 필요</td>
+</tr>
+<tr>
+<td><strong>규모의 경제</strong></td>
+<td>매출 7배 → 강재·부품 구매단가, 고정비 흡수력</td>
+<td style="text-align: center;">🔴 단기 불가</td>
+</tr>
+<tr>
+<td><strong>수주잔고 3,072억</strong></td>
+<td>5년 이상 가시성 → 설비투자·인력 선제 확보 가능</td>
+<td style="text-align: center;">🔴 불가</td>
+</tr>
+<tr>
+<td><strong>경영 안정성</strong></td>
+<td>장기 경영진, 예측 가능한 의사결정</td>
+<td style="text-align: center;">🟢 <strong>KSI가 가장 빨리 바꿀 수 있는 항목</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.3 오리엔탈정공의 약점 (KSI가 파고들 틈)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>약점</th>
+<th>설명</th>
+<th>KSI 공략 가능성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>대형 신조 중심</strong></td>
+<td>조선소향 신조 물량에 집중. 소량·긴급·비표준 대응은 상대적으로 후순위</td>
+<td>🟢 <strong>KSI의 다품종 소량·긴급대응 여지</strong></td>
+</tr>
+<tr>
+<td><strong>애프터마켓 비중 낮음</strong></td>
+<td>매출 구성이 리프팅+데크하우스 99.9% → <strong>A/S·부품 사업 존재감 미미</strong></td>
+<td>🟢🟢 <strong>가장 명확한 빈틈</strong></td>
+</tr>
+<tr>
+<td><strong>국내 조선소 의존</strong></td>
+<td>국내 발주 사이클과 운명 공동체</td>
+<td>🟢 KSI는 해외 거점으로 차별화 가능</td>
+</tr>
+<tr>
+<td><strong>capacity 포화</strong></td>
+<td>수주잔고 5년치 = <strong>신규 물량을 다 못 받는다</strong></td>
+<td>🟢🟢 <strong>오버플로 물량이 KSI로 흘러올 구조</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>핵심 통찰</strong>: 1위가 수주잔고 5년치로 포화 상태라는 것은, <strong>조선소 입장에서 제2·제3 공급사(Dual Sourcing)가 반드시 필요하다</strong>는 뜻이다. KSI가 살아있어야 하는 이유는 조선소에게도 있다. — 이건 협상 카드다.</p>
+</blockquote>
+</section><section class="card card--violet"><div class="sess-head"><span class="sess-no">03</span><div class="sess-title">3. 글로벌 경쟁자</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>기업</th>
+<th>국가</th>
+<th>포지션</th>
+<th>KSI와의 관계</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MacGregor</strong> (구 Cargotec, 2025 분리)</td>
+<td>핀란드</td>
+<td>데크크레인·화물처리 글로벌 1위. TTS Marine 인수(2019)로 통합</td>
+<td>직접 경쟁 (고사양 세그먼트)</td>
+</tr>
+<tr>
+<td><strong>Liebherr</strong></td>
+<td>독일/스위스</td>
+<td>오프쇼어·중대형 크레인 강자, 프리미엄</td>
+<td>해양플랜트 영역 경쟁</td>
+</tr>
+<tr>
+<td><strong>Palfinger Marine</strong></td>
+<td>오스트리아</td>
+<td>데비트·소형 마린크레인, 글로벌 서비스망</td>
+<td><strong>A/S 네트워크가 벤치마크</strong></td>
+</tr>
+<tr>
+<td><strong>Konecranes</strong></td>
+<td>핀란드</td>
+<td>항만·산업 크레인 겸업</td>
+<td>육상 확장 시 경쟁</td>
+</tr>
+<tr>
+<td><strong>중국 로컬</strong> (대련·우한 계열)</td>
+<td>중국</td>
+<td>가격 30~40% 저가, 자국 조선소 물량</td>
+<td>🔴 <strong>최대 장기 위협</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>글로벌 시장 구조</strong>: 데크크레인 TAM USD 6~8억을 위 4~5개사가 과점. <strong>KSI 매출 309억(≈USD 22M)은 글로벌 시장의 약 3%.</strong> 즉 글로벌 무대에서 KSI는 사실상 무명이다.</p>
+<p><strong>단, Palfinger Marine 모델은 참고 가치가 높다</strong> — 제조 규모는 MacGregor에 밀리지만 <strong>글로벌 서비스 거점 네트워크</strong>로 수익성을 확보한다. KSI의 "기자재 판매 및 수리" 사업이 이 방향이며, 분기보고서에도 "해외 거점 확보를 통해 글로벌 시장으로 확대"가 명시되어 있다.</p>
+</section><section class="card card--amber"><div class="sess-head"><span class="sess-no">04</span><div class="sess-title">4. KSI SWOT</div></div>
+<h3>Strengths</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>S</th>
+<th>내용</th>
+<th>증거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1</td>
+<td><strong>20년 축적된 인증·실적 자산</strong></td>
+<td>API-2C(2007), OHSAS(2008), 특허 14건(국내 13+중국 1), 2004년부터 개발이력</td>
+</tr>
+<tr>
+<td>S2</td>
+<td><strong>국내 조선 빅2 공급망 등재</strong></td>
+<td>현대중공업그룹(2026.1Q 매출 50.7%), 삼성중공업, 한화오션에코텍</td>
+</tr>
+<tr>
+<td>S3</td>
+<td><strong>기자재 판매·수리 사업 보유</strong></td>
+<td>2026.1Q 13억, 마진 구조상 제조보다 우량. 경쟁사가 약한 영역</td>
+</tr>
+<tr>
+<td>S4</td>
+<td><strong>함안 신공장 (2025년 완공)</strong></td>
+<td>유형자산 279억, 건설중인자산 116억이 2025년 본자산 전환. <strong>투자는 이미 끝났다</strong></td>
+</tr>
+<tr>
+<td>S5</td>
+<td><strong>세무상 이월결손금 972억</strong></td>
+<td>향후 이익 발생 시 상당 기간 법인세 부담 없음 → 회생 시 현금흐름 레버리지</td>
+</tr>
+<tr>
+<td>S6</td>
+<td><strong>원가율 급개선 시그널</strong></td>
+<td>매출총이익률 2025년 8.2% → 2026.1Q <strong>21.5%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Weaknesses</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>W</th>
+<th>내용</th>
+<th>증거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W1</td>
+<td><strong>5년 연속 적자, 누적결손 487억</strong></td>
+<td>결손금 -48,693백만(2025말)</td>
+</tr>
+<tr>
+<td>W2</td>
+<td><strong>판관비 폭증</strong></td>
+<td>2024년 40억 → 2025년 <strong>79억</strong> (매출의 25.5%). 지급수수료 15.2억, 급여 36.6억</td>
+</tr>
+<tr>
+<td>W3</td>
+<td><strong>고객 초집중</strong></td>
+<td>상위 4개사 = 매출 70.8%. 단일 최대 고객 25.3%</td>
+</tr>
+<tr>
+<td>W4</td>
+<td><strong>채권 부실</strong></td>
+<td>대손충당금 설정률 <strong>59.5%</strong> (채권 134억 중 80억 대손). 대여금 58억 중 44억(75.9%) 대손</td>
+</tr>
+<tr>
+<td>W5</td>
+<td><strong>지배구조 불안</strong></td>
+<td>2024.03→2025.03→2026.01 최대주주 3회 변경, 2026년 1분기에만 이사회 24회, 이사 9명 사임</td>
+</tr>
+<tr>
+<td>W6</td>
+<td><strong>R&amp;D 중단</strong></td>
+<td>"당기부터 연구개발조직을 운영하지 않음", 연구개발비 <strong>0원</strong> (3개 기수 연속)</td>
+</tr>
+<tr>
+<td>W7</td>
+<td><strong>설비 천장</strong></td>
+<td>가동률 87.06%, 잔여 여유 13%</td>
+</tr>
+<tr>
+<td>W8</td>
+<td><strong>소송 9건 계류</strong></td>
+<td>이엘엠시스템·소시디어·민봉기 등 전 경영진/특수관계자 관련 다수</td>
+</tr>
+<tr>
+<td>W9</td>
+<td><strong>잠재 희석</strong></td>
+<td>CB 162억(15회 61억 + 18회 101억) 전환 시 1,203만주 = 현 발행주식의 <strong>30.3%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Opportunities</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>O</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O1</td>
+<td><strong>MASGA / 미국 조선 재건</strong> — 기자재 관세면제 추진, 한화 필리조선소 확장. 한화오션에코텍 거래관계 = 교두보</td>
+</tr>
+<tr>
+<td>O2</td>
+<td><strong>IMO 규제발 레트로핏 시장</strong> — 친환경 개조시장 10배 성장 전망, KSI A/S 사업과 직결</td>
+</tr>
+<tr>
+<td>O3</td>
+<td><strong>1위의 capacity 포화</strong> — 오리엔탈정공 수주잔고 5년치 → 조선소의 Dual Sourcing 수요</td>
+</tr>
+<tr>
+<td>O4</td>
+<td><strong>조선소 수주잔고 4년치</strong> — 향후 2~3년 물량 가시성 확보</td>
+</tr>
+<tr>
+<td>O5</td>
+<td><strong>자본 확충 완료</strong> — 2026.1Q 현금 226억, 유동비율 154%</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Threats</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>T</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td><strong>2026년부터 글로벌 발주 -14.6%</strong> — 사이클 하강 진입</td>
+</tr>
+<tr>
+<td>T2</td>
+<td><strong>중국 저가 공세</strong></td>
+</tr>
+<tr>
+<td>T3</td>
+<td><strong>CB 만기</strong> — 15회차 61억(2027.11), 18회차 조기상환청구 2027.03부터. 주가 1,105원 하회 시 상환 압박</td>
+</tr>
+<tr>
+<td>T4</td>
+<td><strong>파생상품부채 106억</strong> — 주가 변동에 따라 매 분기 대규모 평가손익 발생, 손익 왜곡</td>
+</tr>
+<tr>
+<td>T5</td>
+<td><strong>관리종목/상장적격성</strong> — 5년 연속 영업손실 지속 시 코스닥 관리종목 리스크</td>
+</tr>
+<tr>
+<td>T6</td>
+<td><strong>본업 무관 확장</strong> — 인스코비 137억 투자, 정관 사업목적 76개 중 영위 14개</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="card card--mint"><div class="sess-head"><span class="sess-no">05</span><div class="sess-title">5. 경쟁 포지셔닝 진단</div></div>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>축</th>
+<th>오리엔탈정공</th>
+<th>KSI</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>원가 리더십</td>
+<td>규모의 경제</td>
+<td>❌ 없음</td>
+<td>패</td>
+</tr>
+<tr>
+<td>차별화(기술)</td>
+<td>LNG 크레인 독점</td>
+<td>❌ R&amp;D 중단</td>
+<td>패</td>
+</tr>
+<tr>
+<td>집중화(니치)</td>
+<td>대형 신조</td>
+<td>⚠️ 미정립</td>
+<td><strong>여기가 유일한 활로</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>결론: KSI는 원가로도 기술로도 이길 수 없다. 유일한 생존 경로는 "집중화(Focus) 전략"이다.</strong>
+구체적으로 ➊ <strong>애프터마켓·레트로핏</strong>, ➋ <strong>해외(미국) 거점</strong>, ➌ <strong>긴급·비표준 대응</strong> — 1위가 안 하거나 못 하는 세 영역.</p>
+<hr />
+<p><strong>출처</strong></p>
+<ul>
+<li><a href="https://kr.investing.com/news/global-filings/article-93CH-1934322">오리엔탈정공 2026년 1분기 실적 — Investing.com</a></li>
+<li><a href="https://www.paxetv.com/news/articleView.html?idxno=176613">오리엔탈정공 선박용 크레인·데크하우스 주력 — 팍스경제TV</a></li>
+<li><a href="http://www.dailyinvest.kr/news/articleView.html?idxno=69158">파워 e종목: 오리엔탈정공 실적 호조 — 데일리인베스트</a></li>
+<li><a href="https://markwideresearch.com/marine-deck-cranes-market/">Marine Deck Cranes Market — MarkWide Research</a></li>
+<li>KSI 감사보고서(2026.03.18), 분기보고서(2026.05.15)</li>
+</ul></section></div></div></body></html>
