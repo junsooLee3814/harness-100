@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AX강의 v3 · 실습과제·캡스톤 설계서</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    :root {
+      --bg: #f4f7ff;
+      --card: #ffffff;
+      --ink: #18223d;
+      --muted: #5f6b8a;
+      --line: #e2e8f7;
+      --accent: #2f55c6;
+      --accent2: #ef7a2a;
+      --mint: #2fa57b;
+      --violet: #7f56d9;
+      --amber: #d0a11d;
+      --red: #d1495b;
+      --sky: #e6f0ff;
+      --orange: #fdf0e5;
+      --green: #eaf8f2;
+      --purple: #f2ebff;
+      --amberbg: #fbf3d9;
+      --redbg: #fdecef;
+      --shadow: 0 10px 30px rgba(20, 32, 60, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+      background: linear-gradient(180deg, #f9fbff 0%, var(--bg) 100%);
+      color: var(--ink);
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+    }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 18px 60px; }
+    .shell {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero {
+      padding: 30px 32px 26px;
+      background: linear-gradient(90deg, #17386f 0%, #2f55c6 100%);
+      color: white;
+    }
+    .eyebrow {
+      font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.9;
+      margin-bottom: 10px;
+    }
+    h1 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 40px); line-height: 1.15; }
+    .sub { margin: 0; font-size: 16px; opacity: 0.95; max-width: 78ch; }
+    .meta {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 18px;
+    }
+    .meta .chip {
+      background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 14px; padding: 10px 12px;
+      backdrop-filter: blur(4px);
+    }
+    .chip .k { display: block; font-size: 11px; font-weight: 700; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.1em; }
+    .chip .v { display: block; font-size: 14px; font-weight: 700; margin-top: 3px; }
+
+    /* 원칙 스트립 */
+    .principles {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px;
+      padding: 16px 20px 4px; background: #fbfcff; border-bottom: 1px solid var(--line);
+    }
+    .principle {
+      border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; background: #fff;
+    }
+    .principle .pn { font-size: 12px; font-weight: 800; color: var(--accent); letter-spacing: 0.04em; }
+    .principle .pt { font-weight: 800; margin: 2px 0 3px; }
+    .principle .pd { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    .tabs {
+      display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 20px 0; border-bottom: 1px solid var(--line);
+      background: #fbfcff;
+    }
+    .tab-btn {
+      border: 0; background: #f3f6ff; color: var(--muted); padding: 10px 15px; border-radius: 999px;
+      font-weight: 700; cursor: pointer; transition: 0.2s ease; font-size: 14px;
+    }
+    .tab-btn:hover { background: #e7edff; color: var(--accent); }
+    .tab-btn.active {
+      background: var(--accent); color: white;
+      box-shadow: 0 8px 18px rgba(47,85,198,0.16);
+    }
+    .tab-panel { display: none; padding: 22px 20px 30px; animation: fade 0.25s ease; }
+    .tab-panel.active { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+    .card {
+      border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; margin: 14px 0;
+      background: var(--card);
+      box-shadow: 0 6px 16px rgba(20, 32, 60, 0.04);
+    }
+    .card.sky { background: var(--sky); }
+    .card.orange { background: var(--orange); }
+    .card.green { background: var(--green); }
+    .card.purple { background: var(--purple); }
+    .card.amber { background: var(--amberbg); }
+    .card h2, .card h3 { margin-top: 0; }
+    .card h2 { font-size: 21px; line-height: 1.3; }
+    .card h3 { font-size: 16px; }
+    .card h4 { font-size: 14px; margin: 16px 0 4px; color: var(--accent); letter-spacing: 0.01em; }
+    .kicker { font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 7px; }
+    ul { padding-left: 18px; margin: 8px 0; }
+    li { margin: 6px 0; }
+    ol { padding-left: 20px; margin: 8px 0; }
+    .pill {
+      display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 9px; margin: 0 5px 4px 0; border-radius: 999px;
+      background: rgba(47,85,198,0.1); color: var(--accent);
+    }
+    .pill.demo { background: rgba(239,122,42,0.14); color: #b8560f; }
+    .pill.hands { background: rgba(47,165,123,0.15); color: #1c744e; }
+    .pill.bloom { background: rgba(127,86,217,0.13); color: #653a9f; }
+    .pill.present { background: rgba(208,161,29,0.16); color: #8a6a0d; }
+    .pill.rest { background: rgba(95,107,138,0.12); color: #5f6b8a; }
+    .pill.part { background: rgba(209,73,91,0.13); color: #9c2637; }
+    .pillbar { margin: 2px 0 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+    th, td { padding: 10px 11px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #f8faff; text-align: left; font-weight: 700; white-space: nowrap; }
+    td:first-child { font-weight: 700; white-space: nowrap; }
+    .table-wrap { overflow-x: auto; }
+    .table-wrap table { background: #fff; border-radius: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .badge { display: inline-block; margin: 0 6px 4px 0; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; background: white; border: 1px solid var(--line); }
+    .footer { color: var(--muted); font-size: 13px; margin-top: 14px; }
+
+    /* ASCII 다이어그램 */
+    pre.diagram {
+      background: #f8faff; border: 1px solid var(--line); border-radius: 12px;
+      padding: 14px 16px; overflow-x: auto; font-size: 12.5px; line-height: 1.55;
+      font-family: "D2Coding", Consolas, "Courier New", monospace; margin: 12px 0;
+      color: var(--ink);
+    }
+
+    /* 스타터 코드블록 (원문 보존) */
+    .starter { margin: 12px 0 4px; }
+    .starter-h {
+      font-size: 12.5px; font-weight: 800; color: #8a6a0d; background: var(--amberbg);
+      border: 1px solid #eddfb0; border-bottom: 0; border-radius: 10px 10px 0 0; padding: 7px 12px;
+      display: block;
+    }
+    pre.code {
+      margin: 0 0 10px; background: #fbfcff; border: 1px solid var(--line); border-radius: 0 0 10px 10px;
+      padding: 13px 15px; overflow: auto; max-height: 460px;
+      font-size: 12.5px; line-height: 1.6; color: var(--ink);
+      white-space: pre;
+    }
+    pre.code code {
+      font-family: "D2Coding", Consolas, "Courier New", monospace; white-space: pre;
+    }
+    code { font-family: "D2Coding", Consolas, "Courier New", monospace; font-size: 0.93em;
+      background: #f2f5ff; border-radius: 5px; padding: 1px 5px; }
+    pre.code code, pre.diagram code { background: transparent; padding: 0; }
+
+    /* 체크리스트 */
+    ul.check { list-style: none; padding-left: 2px; margin: 8px 0; }
+    ul.check li { display: flex; gap: 9px; align-items: flex-start; margin: 5px 0; }
+    ul.check input[type="checkbox"] { margin: 7px 0 0; flex: 0 0 auto; width: 15px; height: 15px; accent-color: var(--accent); }
+
+    /* 힌트 접기 */
+    details {
+      border: 1px solid var(--line); border-radius: 12px; background: #fbfcff; padding: 4px 14px; margin: 12px 0;
+    }
+    details summary {
+      cursor: pointer; font-weight: 800; font-size: 13.5px; color: var(--accent); padding: 8px 0; list-style: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::before { content: "▸ "; font-weight: 800; }
+    details[open] summary::before { content: "▾ "; }
+    details[open] { background: #fff; }
+    details ul { margin-bottom: 10px; }
+
+    /* 콜아웃 */
+    .callout { border-radius: 12px; padding: 12px 15px; margin: 12px 0; font-size: 14px; line-height: 1.6; border: 1px solid transparent; }
+    .callout .ct { font-weight: 800; display: block; margin-bottom: 3px; font-size: 13px; }
+    .callout.warn { background: var(--redbg); border-color: #f6c9d1; color: #8f2233; }
+    .callout.tip { background: var(--green); border-color: #c5ebda; color: #1c744e; }
+    .callout.info { background: var(--sky); border-color: #cdddfb; color: #1b4da0; }
+    .callout.note { background: var(--purple); border-color: #ded0f5; color: #5b3494; }
+    .callout ul.check input[type="checkbox"] { accent-color: currentColor; }
+    .callout.big { font-size: 14.5px; padding: 16px 18px; border-width: 2px; }
+
+    .obj-note { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .quote { border-left: 4px solid var(--accent); background: #f8faff; padding: 10px 14px; margin: 12px 0; border-radius: 0 10px 10px 0; font-size: 14px; }
+
+    @media (max-width: 800px) {
+      .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .principles { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      .tabs { display: none; }
+      .tab-panel { display: block !important; page-break-before: always; }
+      .tab-panel:first-of-type { page-break-before: avoid; }
+      body { background: #fff; }
+      details { page-break-inside: avoid; }
+      details > summary ~ * { display: block !important; }
+      details:not([open]) > summary ~ * { display: block !important; }
+      pre.code { max-height: none; overflow: visible; white-space: pre-wrap; }
+      .card { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <header class="hero">
+        <div class="eyebrow">선명AG · AX강의 2026.08 · v3</div>
+        <h1>AX강의 v3 · 실습과제·캡스톤 설계서</h1>
+        <p class="sub">VibeCoding_AX 주 1회 3h × 5주 — <strong>① 강별 실습(커리큘럼 실습 블록과 1:1 대응) ② 주간 과제 5건 ③ 5강 캡스톤(업무자동화 하네스 개발)</strong>과 평가 루브릭 전체를 정의합니다. 모든 실습은 <strong>스타터(실제 문안)</strong>에서 출발하며, 1강 배포 채널 → 2강 콘텐츠 포맷 → 3강 회의록 에이전트 → 4강 에이전트팀 → 5강 하네스로 <strong>부품이 이월</strong>됩니다.</p>
+        <div class="meta">
+          <div class="chip"><span class="k">대상</span><span class="v">초보자·전 직군</span></div>
+          <div class="chip"><span class="k">실습</span><span class="v">강별 12 + 캡스톤 4</span></div>
+          <div class="chip"><span class="k">주간 과제</span><span class="v">5건</span></div>
+          <div class="chip"><span class="k">캡스톤</span><span class="v">본인 업무 하네스</span></div>
+        </div>
+      </header>
+
+      <div class="principles">
+        <div class="principle">
+          <div class="pn">원칙 ⓵</div>
+          <div class="pt">백지 시작 금지</div>
+          <div class="pd">모든 실습에 스타터(템플릿·스켈레톤·프롬프트 카드 — 실제 문안 수록)를 배포한다.</div>
+        </div>
+        <div class="principle">
+          <div class="pn">원칙 ⓶</div>
+          <div class="pt">데모 먼저</div>
+          <div class="pd">각 실습 직전 블록이 강사 시연(완성본 먼저). 눈으로 본 뒤 손을 움직인다.</div>
+        </div>
+        <div class="principle">
+          <div class="pn">원칙 ⓷</div>
+          <div class="pt">강사 + 조교 배석</div>
+          <div class="pd">3인 1조 + 강사 1 + 조교 1~2. 각 실습에 [조교 개입 신호] 명시.</div>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="실습과제 섹션">
+        <button class="tab-btn active" data-tab="design">설계 규약</button>
+        <button class="tab-btn" data-tab="lab1">1강 실습</button>
+        <button class="tab-btn" data-tab="lab2">2강 실습</button>
+        <button class="tab-btn" data-tab="lab3">3강 실습</button>
+        <button class="tab-btn" data-tab="lab4">4강 실습</button>
+        <button class="tab-btn" data-tab="lab5">5강 캡스톤</button>
+        <button class="tab-btn" data-tab="weekly">주간 과제</button>
+        <button class="tab-btn" data-tab="rubric">루브릭·운영노트</button>
+      </div>
+
+      <!-- ================= 설계 규약 ================= -->
+      <section class="tab-panel active" id="design">
+
+        <div class="callout warn big">
+          <span class="ct">⚠ 배포 주의 (청킹 보호)</span>
+          본 §0 규약·이월 대장과 문서 말미의 루브릭·운영 노트는 <strong>강사·조교용</strong>이다. 여기에는 4·5강 용어(<strong>에이전트팀·하네스</strong>)가 전체 조망 목적으로 등장한다. <strong>학습자 배포본은 해당 강 실습 절만 발췌해 배포</strong>하고, 1~3강 시점에는 이 두 용어를 노출하지 않는다(3강까지는 개념 5종 — 스킬·MCP·커넥터·에이전트·프로젝트만). 학습자가 먼저 물으면 "다음 강에서 확장한다"로만 답한다.
+        </div>
+
+        <div class="card sky">
+          <div class="kicker">실습과제/캡스톤 — AX강의 2026.08 v3 (VibeCoding_AX 주 1회 3h × 5주)</div>
+          <h2>문서 개요 · SSOT</h2>
+          <ul>
+            <li><strong>SSOT</strong>: <code>md/00_input.md</code> (v3 확정 구조) · <strong>커리큘럼 정답</strong>: <code>md/01_curriculum.md</code> — 특히 "실습설계자(lab-designer) 전달 사항"의 스캐폴딩 원칙·강별 시나리오·루브릭을 그대로 따랐다.</li>
+            <li><strong>스타일 전신</strong>: <code>_workspace/VibeCoding_AX_SM_v0.2_202607/md/04_labs.md</code> (구조 참고, 내용은 v3 신규).</li>
+            <li>본 문서는 <strong>① 강별 실습(커리큘럼 실습 블록과 1:1 대응) ② 주간 과제 5건 ③ 5강 캡스톤(업무자동화 하네스 개발)</strong>과 평가 루브릭 전체를 정의한다.</li>
+            <li><strong>v3 반영 핵심</strong>: 3h×5강(주 1회 5주) · 1강 프로필 랜딩페이지(풀스택) 배포 · 2강 블로그·유튜브 <strong>계정 개설</strong>부터 · 3강 <strong>Gmail MCP/커넥터</strong> 연동 · 4강 <strong>에신Lite</strong> 4역할 에이전트팀 · 5강 캡스톤 = <strong>본인 업무 미러링 하네스</strong> + 수료 루브릭 판정.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="kicker">0. 설계 관통 규약 (모든 실습에 강제 적용)</div>
+          <h3>0.1 3대 설계원칙 준수 방식</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>원칙</th><th>본 실습설계 반영 방식</th></tr></thead>
+              <tbody>
+                <tr><td><strong>⓵ 백지 시작 금지</strong></td><td>모든 실습에 <strong>스타터(템플릿/스켈레톤/프롬프트 카드 — 실제 문안 수록)</strong>를 배포한다. 학습자는 "빈칸 채우기 → 수정 → 확장"만 한다. 빈 화면·빈 파일에서 시작하라는 지시는 없다.</td></tr>
+                <tr><td><strong>⓶ 데모 먼저</strong></td><td>각 실습 직전 블록이 강사 시연(완성본 먼저)이다. 학습자는 "무엇이 나오는지" 눈으로 본 뒤 손을 움직인다. 완성 참조본(배포된 랜딩페이지·게시된 블로그·완성 회의록 에이전트·실행되는 에이전트팀·재실행되는 하네스)은 조교가 미리 배포/실행해 둔다.</td></tr>
+                <tr><td><strong>⓷ 강사+조교 배석</strong></td><td>3인 1조 + 강사 1 + 조교 1~2. 각 실습에 <strong>[조교 개입 신호]</strong>를 명시했다. 한 명이 막히면 조 전체가 멈추므로 신호 발생 시 즉시 개입한다.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card purple">
+          <h3>0.2 난이도 피라미드 배치 <span class="obj-note">(전원 초보자 — "빈칸 채우기 → 수정 → 확장")</span></h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>강</th><th>실습(블록)</th><th>난이도 단계</th><th>학습자 자율성</th><th>스타터 형태</th></tr></thead>
+              <tbody>
+                <tr><td>1강</td><td>1-2 설치확인 · 1-6 템플릿 채우기 · 1-7 배포</td><td><strong>빈칸 채우기</strong></td><td>20%</td><td>체크리스트 + HTML 스켈레톤(TODO 3곳) + 배포 절차 카드</td></tr>
+                <tr><td>2강</td><td>2-4 계정 개설 · 2-7 블로그 · 2-8 유튜브</td><td>빈칸 채우기 → <strong>수정</strong></td><td>35%</td><td>개설 절차 카드 + 프롬프트 템플릿(빈칸) + 검증 체크리스트</td></tr>
+                <tr><td>3강</td><td>3-4 스킬 제작 · 3-7 Gmail 결선</td><td>수정 → 소규모 <strong>확장</strong></td><td>55%</td><td>SKILL.md 스켈레톤 2종 + Gmail 연동 절차 카드 + 결선 골격</td></tr>
+                <tr><td>4강</td><td>4-3 CLI 워밍업 · 4-4/4-6 팀 구축 · 4-7 게시</td><td>수정 → 확장</td><td>70%</td><td>에신Lite 4역할 스켈레톤 + 결선 골격(절반 완성)</td></tr>
+                <tr><td>5강</td><td>5-3~5-7 캡스톤</td><td><strong>확장(전이)</strong></td><td>85%</td><td>공통 하네스 완제품(복제용) + 미러링 워크시트 W1~W4</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card green">
+          <h3>0.3 3단 힌트 시스템 <span class="obj-note">(전 실습 공통 — 조별 진도 편차 흡수)</span></h3>
+          <p>막히면 아래 순서로만 개입한다. <strong>정답을 바로 주지 않는다.</strong></p>
+          <pre class="diagram"><code>[스스로 시도] ── 3분 경과 ──▶
+[힌트 1·방향]  "이건 ○○ 개념이에요. 배포자료의 △△ 섹션을 보세요."   ── 3분 ──▶
+[힌트 2·접근]  "이 프롬프트/설정을 여기에 붙여 보세요: (일부 공개)"     ── 3분 ──▶
+[힌트 3·골격]  "구조는 이래요: (스켈레톤 절반 공개)"                  ── 3분 ──▶
+[조교 1:1]    화면 공유로 함께 완성 → 반드시 "왜 이렇게 되는지" 1줄 회고</code></pre>
+          <ul>
+            <li><strong>빠른 조</strong>: 각 실습의 <code>[확장 과제]</code>로 상향(추가 기능·제약 1개).</li>
+            <li><strong>느린 조</strong>: 각 실습의 <code>[최소 통과선]</code>만 달성하면 통과(다음 강 진입 자격 확보).</li>
+          </ul>
+        </div>
+
+        <div class="card orange">
+          <h3>0.4 누적 부품 이월 대장 <span class="obj-note">(Carryover Ledger — 조교가 매 강 종료 시 저장 확인)</span></h3>
+          <p>각 실습 산출물은 <strong>다음 강에서 재사용 가능한 형태</strong>로 아래 고정 경로에 저장한다. 5강에서 전부 집결한다.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>산출 강(블록)</th><th>부품</th><th>저장 형태·위치</th><th>소비 강(블록)</th><th>소비 방식</th></tr></thead>
+              <tbody>
+                <tr><td>1강(1-7)</td><td>배포·게시된 <strong>풀스택 랜딩페이지</strong> URL + repo</td><td>Vercel URL + GitHub repo + Supabase 프로젝트</td><td>4강(4-7)·5강</td><td>브리핑 <strong>게시 채널</strong> / 하네스 출력 채널</td></tr>
+                <tr><td>2강(2-4·2-7·2-8)</td><td>블로그·유튜브 채널 + 콘텐츠 포맷·검증 루프</td><td>채널 URL + <code>내문서/vibecoding/02_content_format.md</code></td><td>4강(4-7)·5강</td><td>요약 산출 <strong>포맷</strong> + 검증 습관</td></tr>
+                <tr><td>3강(3-7)</td><td><strong>동작하는 회의록 에이전트 1개</strong>(스킬 2~3 + Gmail 연동 + 프로젝트 폴더)</td><td><code>~/.claude/skills/*</code> + Gmail 연동 설정 + <code>내문서/vibecoding/minutes_agent/</code></td><td>4강(4-4·4-6)</td><td>부품 제작·연결·<strong>조립 노하우</strong>(문서화 스킬 재사용)</td></tr>
+                <tr><td>4강(4-6·4-7)</td><td>동작·게시된 <strong>에이전트팀 1개</strong>(에신Lite+CLI)</td><td><code>내문서/vibecoding/team_insight/</code></td><td>5강(5-2·5-5)</td><td>하네스화 시연·<strong>미러링 원본</strong></td></tr>
+                <tr><td>4강 후(주간 과제 ⑤)</td><td><strong>본인 업무 I/P/O 시트</strong></td><td><code>내문서/vibecoding/05_ipo_sheet.md</code></td><td>5강(5-1·5-3)</td><td><strong>캡스톤 핵심 입력물</strong>(미제출 시 5강 실습 불가)</td></tr>
+                <tr><td>5강(5-5~5-7)</td><td>본인 업무 하네스 + 루브릭 판정 기록</td><td><code>내문서/vibecoding/harness_mine/</code> + 판정표</td><td>수료·확산</td><td>수료 증명 + 사내 공유 등재</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <span class="ct">⚠ 0.5 안전 루브릭 (전 실습 공통 게이트, 5항목 — 위반 시 산출물 반려 후 재실행)</span>
+          점수가 아니라 <strong>게이트</strong>다. 모든 실습 제출 전 자기점검 체크박스로 통과해야 한다.
+          <ul class="check">
+            <li><input type="checkbox" disabled><span><strong>① 비밀키 노출 0</strong> — <code>service_role</code>·API 키·토큰이 코드·화면·스크린샷·프롬프트 어디에도 없다(하드코딩 포함). 공개키 <code>anon</code>만 허용.</span></li>
+            <li><input type="checkbox" disabled><span><strong>② 고객/개인정보 프롬프트 입력 0</strong> — 실명·주민번호·계좌·연락처·고객 식별정보를 폼 예시·프롬프트·테스트 데이터에 넣지 않았다. <strong>5강은 본인 업무 데이터 가명화 확인.</strong></span></li>
+            <li><input type="checkbox" disabled><span><strong>③ 검증 단계 수행</strong> — AI 생성 숫자·법조항·출처를 사람이 확인했다(2강 이후 필수, 4강 검증 에이전트 생략 금지).</span></li>
+            <li><input type="checkbox" disabled><span><strong>④ 데이터 흐름 확인</strong> — Gmail·MCP가 데이터를 <strong>어디로 보내는지</strong> 확인했고, <strong>테스트 발송은 본인 메일로만</strong> 했다.</span></li>
+            <li><input type="checkbox" disabled><span><strong>⑤ 사람 최종 확인</strong> — 대외 산출·사내 공유 저장소 등재 전 비밀키·내부정보 제거를 사람이 최종 확인했다.</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>실습 환경 요구사항 <span class="obj-note">(1강 전반부에서 체크리스트 100% 완료 전제)</span></h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>구분</th><th>항목</th><th>확인 방법</th></tr></thead>
+              <tbody>
+                <tr><td>계정 5종</td><td>Claude Pro(유료) · GitHub · Vercel · Supabase · 타 LLM 택1(ChatGPT/Gemini/Grok)</td><td>각 서비스 로그인 화면(1강 1-2에서 대면 확인)</td></tr>
+                <tr><td>콘텐츠 계정 2종</td><td>블로그(네이버/티스토리 택1) · 유튜브(구글 계정 기반 채널)</td><td><strong>2강 2-4에서 개설</strong>(선수 요건 아님)</td></tr>
+                <tr><td>설치</td><td>Node.js · Git · VS Code · Claude Code(CLI) · Claude 데스크톱(커넥터) · Antigravity(선택)</td><td><code>node -v</code> · <code>git --version</code> · <code>claude --version</code> 출력(1강 1-2)</td></tr>
+                <tr><td>배포 3종 세트</td><td>GitHub → Vercel 배포·게시 + Supabase(PostgreSQL DB·Auth·Storage, 무료)</td><td>1강 1-7에서 실배포</td></tr>
+                <tr><td>연동</td><td><strong>Gmail MCP/커넥터</strong>(메일 발송, 3강) · 웹검색 MCP/커넥터(4강)</td><td>해당 강 시연 블록에서 강사 배포·연결 확인</td></tr>
+                <tr><td>에이전트 제조</td><td>Claude Code CLI · <strong>에신Lite</strong>(에이전트 제조 경량 도구)</td><td>4강 4-3에서 기본 조작 워밍업</td></tr>
+                <tr><td>실습 데이터</td><td><strong>합성/가명 데이터만</strong>(고객정보 금지). 공통 프로젝트용 공개 뉴스·지수는 웹검색 MCP로 실시간 수집</td><td>—</td></tr>
+                <tr><td>백업</td><td>조교용 백업 GitHub·Vercel·Supabase 계정 1세트(배포 실패 대비) + 합성 회의록 스니펫 + 예비 Gmail 테스트 계정</td><td>강사·조교 준비</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout info">
+            <span class="ct">ⓘ 대체 환경</span>
+            로컬 설치가 끝내 막히면: <strong>GitHub Codespaces + Claude Code CLI</strong>를 대체 환경으로 사용(일관 환경 보장). 실데이터가 없으면 각 실습의 <strong>합성 데이터 스니펫</strong>을 사용한다.
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 1강 실습 ================= -->
+      <section class="tab-panel" id="lab1">
+        <div class="card sky">
+          <div class="kicker">Ⅰ. 강별 실습 (커리큘럼 실습 블록과 1:1 대응)</div>
+          <h2>1강 실습 — "출발선 정렬, 그리고 첫 배포"</h2>
+          <p class="pillbar"><span class="pill demo">블록 1-2</span><span class="pill demo">블록 1-6</span><span class="pill demo">블록 1-7</span></p>
+        </div>
+
+        <!-- 1-A -->
+        <div class="card">
+          <div class="kicker">실습 1-A · 블록 1-2</div>
+          <h2>설치·계정 완료 확인·보정 — 10종 도구 체크리스트</h2>
+          <p class="pillbar">
+            <span class="pill">실습 1-A</span><span class="pill demo">블록 1-2</span><span class="pill present">40분</span>
+            <span class="pill bloom">난이도: 빈칸 채우기(상태칸만 채움)</span><span class="pill part">조교 전원 투입 블록</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">적용</span> 계정 5종·설치 도구를 체크리스트로 확인하고 미비점을 현장 보정한다. — 1강 종료 시 체크리스트 100%가 2강 이후의 절대 선수조건.</p>
+
+          <h4>시나리오</h4>
+          <p>당신은 코딩 무경험 정규직이다. 사전 안내서로 미리 시도해 왔지만 어딘가 막혔을 수 있다. 오늘 이 40분 안에 "연장 10종"을 전부 손에 쥔다. 미완료는 부끄러운 게 아니라 <strong>이 블록의 존재 이유</strong>다 — 손을 들면 조교가 온다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안 — 배포 워크시트)</span>
+            <pre class="code"><code># 1강 10종 도구 체크리스트  (상태칸·증거칸만 채우세요)
+## A. 계정 5종
+- [ ] 1. Claude Pro 결제·로그인          증거: 로그인 화면 확인 ____
+- [ ] 2. GitHub 가입·로그인              증거: ____
+- [ ] 3. Vercel 가입(GitHub 연동 로그인)  증거: ____
+- [ ] 4. Supabase 프로젝트 1개 생성       증거: 프로젝트 대시보드 ____
+- [ ] 5. 타 LLM 택1 (GPT/Gemini/Grok)    증거: ____
+## B. 설치 5종 (+선택 1)
+- [ ] 6. node -v        → 출력: ____  (v18 이상 OK)
+- [ ] 7. git --version  → 출력: ____
+- [ ] 8. VS Code 실행    → 증거: ____
+- [ ] 9. claude --version → 출력: ____   ★ 이것만 되면 1-6 진입 가능
+- [ ]10. Claude 데스크톱 로그인 → 증거: ____
+- [ ] (선택) Antigravity → 증거: ____
+## C. 안전 서약 (읽고 체크 — 1강 안전수칙)
+- [ ] service_role 등 비밀키는 어디에도 올리지 않는다 (anon 공개키만 페이지에)
+- [ ] 폼 예시에 실제 개인정보를 넣지 않는다</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>워크시트를 열고 A→B 순서로 각 항목을 확인, 상태칸 체크.</li>
+            <li>터미널 확인 3종(<code>node -v</code>, <code>git --version</code>, <code>claude --version</code>)은 출력 문자열을 그대로 붙인다.</li>
+            <li>❌ 항목은 즉시 손을 들어 조교 호출(설치 순서: Node → Git → VS Code → Claude Code CLI).</li>
+            <li>C 안전 서약 2줄을 읽고 체크.</li>
+            <li>완료 조는 옆 조 ❌ 항목을 함께 봐 준다(조 단위 완주).</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>A·B 10항목 전부 ✅ (Antigravity 선택 제외)</span></li>
+            <li><input type="checkbox" disabled><span><code>claude --version</code>이 버전 문자열을 출력한다</span></li>
+            <li><input type="checkbox" disabled><span>C 안전 서약 2줄 체크</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 워크시트·화면 어디에도 키·토큰이 보이지 않는다</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "계정은 GitHub부터 — Vercel·Supabase가 GitHub 로그인을 재사용해요."</li>
+              <li><strong>힌트 2(접근)</strong>: "설치가 꼬였으면 지우고 다시가 빠릅니다. 조교와 함께 재설치 5분."</li>
+              <li><strong>힌트 3(골격)</strong>: 조교가 화면을 함께 보며 설치 명령을 같이 실행(원칙⓷).</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            Claude Pro 결제 실패 / <code>claude --version</code> 미출력 / Node 설치 후 터미널 재시작 안 함 → <strong>즉시 1:1</strong>. 블록 종료 시 미완료자 0명이 목표. 끝내 안 되면 Codespaces 우회 + 강 종료 후 보정 예약.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: 항목 9(<code>claude</code> CLI)까지 완료 — 1-6 실습 진입 가능. 나머지는 휴식(1-4)에 조교 보정.</li>
+              <li><strong>확장 과제(빠른 조)</strong>: Supabase 대시보드에서 Project Settings → API 화면을 열어 <strong>anon 키와 service_role 키가 어떻게 다르게 표시되는지</strong> 눈으로 확인(1-7 예습).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 1-B -->
+        <div class="card">
+          <div class="kicker">실습 1-B · 블록 1-6</div>
+          <h2>프로필 랜딩페이지 제작 — 템플릿에 본인 소개·경력·연락처 채우기</h2>
+          <p class="pillbar">
+            <span class="pill">실습 1-B</span><span class="pill demo">블록 1-6</span><span class="pill present">40분</span>
+            <span class="pill bloom">난이도: 빈칸 채우기(TODO 3곳)</span><span class="pill hands">선행: 블록 1-5 시연 관찰</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">적용</span> 제공 템플릿에 자연어로 섹션·문의 폼을 구성하고 Supabase에 연결할 준비를 마친다.</p>
+
+          <h4>시나리오</h4>
+          <p>당신의 <strong>직무 프로필 랜딩페이지</strong>를 만든다 — 회계 담당자는 세무상담 접수 폼, 법무 담당자는 법률문의 폼이 달린 "내 명함 웹페이지"다. 강사가 방금 시연한 완성본이 참조본이다. 백지에서 만들지 않는다 — 스켈레톤의 <strong>TODO 3곳</strong>을 자연어 지시로 채운다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안 — 스켈레톤 + 프롬프트 카드) ① index.html</span>
+            <pre class="code"><code>&lt;!-- index.html (스타터: 그대로 실행됨. TODO 3곳만 자연어로 채우기) --&gt;
+&lt;!DOCTYPE html&gt;&lt;html lang="ko"&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;
+  &lt;title&gt;프로필&lt;/title&gt;&lt;link rel="stylesheet" href="style.css"&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;__(수정 금지: 로고·내비 슬롯)__&lt;/header&gt;
+
+  &lt;!-- TODO 1: 프로필 히어로 (이름·직무·한 줄 소개) --&gt;
+  &lt;section class="hero"&gt;&lt;/section&gt;
+
+  &lt;!-- TODO 2: 경력·업무 소개 카드 3개 --&gt;
+  &lt;section class="career"&gt;&lt;/section&gt;
+
+  &lt;!-- TODO 3: 문의(상담 접수) 폼 — name/contact/type/message --&gt;
+  &lt;form id="contact-form"&gt;&lt;/form&gt;
+
+  &lt;footer&gt;__(수정 금지)__&lt;/footer&gt;
+  &lt;script src="app.js"&gt;&lt;/script&gt;  &lt;!-- 1-C에서 Supabase 연결 --&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ② 프롬프트 카드</span>
+            <pre class="code"><code>[프롬프트 카드 — Claude Code에 그대로 붙이고 밑줄만 바꾸세요]
+카드① (TODO 1): "hero 섹션에 '__(이름)__ · __(직무)__' 헤드라인과
+  한 줄 소개, '문의하기' 버튼을 넣어줘. TODO 1 주석 사이만 수정해."
+카드② (TODO 2): "career 섹션에 내 경력·담당업무 카드 3개를 만들어줘.
+  내용: 1)____ 2)____ 3)____ . 카드형 레이아웃으로."
+카드③ (TODO 3): "contact-form에 이름·연락처·문의유형(select)·내용(textarea)
+  입력 폼과 전송 버튼을 만들어줘. 예시 placeholder에 실제 개인정보 금지."</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>조교가 배포한 <strong>완성 참조 페이지</strong>를 먼저 연다(⓶ 데모 먼저).</li>
+            <li>스타터 폴더를 VS Code로 열고 Claude Code(CLI)를 실행.</li>
+            <li>프롬프트 카드 ①→②→③ 순서로 붙여넣어 TODO 3곳을 채운다(카드 밑줄만 본인 내용으로).</li>
+            <li>로컬 미리보기로 화면 확인 — 어색한 문구·색은 "○○를 △△로 바꿔줘"로 <strong>수정</strong>(피라미드 2단계).</li>
+            <li>산출물: 완성된 프론트(배포는 실습 1-C에서).</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>미리보기에서 히어로(이름·직무)·경력 카드·문의 폼이 보인다</span></li>
+            <li><input type="checkbox" disabled><span>폼에 텍스트 입력이 가능하다(전송 연결은 1-C)</span></li>
+            <li><input type="checkbox" disabled><span>TODO 밖 영역(header/footer)이 훼손되지 않았다</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 폼 placeholder·예시에 실제 개인정보 없음</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "카드①부터 순서대로. 한 번에 하나의 TODO만 지시하세요."</li>
+              <li><strong>힌트 2(접근)</strong>: "폼이 안 나오면 '입력 필드 4개를 하나씩 만들어줘'로 쪼개서 지시."</li>
+              <li><strong>힌트 3(골격)</strong>: 폼 HTML 절반(input 2개까지) 공개 → 나머지 학습자 완성.</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            미리보기 흰 화면 / Claude가 파일 전체를 갈아엎음 / TODO 밖을 건드림 → 즉시 개입, "TODO 주석 사이만 바꿔달라고 지시"로 교정.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: TODO 1(히어로) + TODO 3(폼) 2곳 완성 — 경력 카드는 휴식 시간 보완 허용.</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 섹션 1개 추가(자격증·프로젝트 이력 등) / 다크모드 색상 시안.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 1-C -->
+        <div class="card">
+          <div class="kicker">실습 1-C · 블록 1-7</div>
+          <h2>GitHub→Vercel 배포·게시 + Supabase 폼 데이터 흐름 확인</h2>
+          <p class="pillbar">
+            <span class="pill">실습 1-C</span><span class="pill demo">블록 1-7</span><span class="pill present">25분</span>
+            <span class="pill bloom">난이도: 빈칸 채우기(절차 카드의 본인 값 2곳)</span><span class="pill part">★부품: 배포 URL</span>
+            <span class="pill hands">선행: 1-B 완성 + 블록 내 강사 시연 먼저</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">창조</span> 실제 URL로 배포·게시하고 폼 데이터가 Supabase에 저장됨을 확인한다.</p>
+
+          <h4>시나리오</h4>
+          <p>1-B의 프론트에 <strong>Supabase 백엔드를 붙여 풀스택으로 완성</strong>하고 인터넷에 <strong>실배포·게시</strong>한다. 폼 제출이 DB에 실제로 쌓이는지 확인한다. 이 URL은 <strong>4강 브리핑 게시 채널·5강 하네스 출력 채널</strong>로 재사용된다(부품 이월).</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ① 배포 절차 카드</span>
+            <pre class="code"><code>[배포 절차 카드 — 순서대로. 빈칸은 본인 값]
+1. GitHub: 스타터 폴더를 repo로 push  (repo 이름: __________)
+   → Claude Code에 "이 폴더를 GitHub 새 repo로 올려줘"라고 지시해도 된다.
+2. Vercel: Add New → Project → 방금 repo Import → Deploy
+3. Supabase: SQL 에디터에 아래 테이블 스타터 실행
+4. app.js 빈칸 2곳에 본인 프로젝트 URL·anon 키 입력  ⚠️ anon만!
+5. 다시 push → Vercel 자동 재배포 → 게시 URL에서 폼 제출 테스트</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ② app.js 코드 골격</span>
+            <pre class="code"><code>// app.js (스타터: __빈칸__ 2곳만 본인 값으로. service_role 절대 금지)
+const SUPABASE_URL = "__여기에_프로젝트_URL__";
+const SUPABASE_ANON_KEY = "__여기에_anon_공개키__"; // ⚠️ anon만! service_role이면 반려
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+document.getElementById("contact-form").addEventListener("submit", async (e) =&gt; {
+  e.preventDefault();
+  const f = e.target;
+  // TODO: insert 한 줄 — 힌트: sb.from("inquiries").insert({...})
+});</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ③ Supabase 테이블 SQL</span>
+            <pre class="code"><code>-- Supabase SQL 에디터에 붙여 실행 (테이블 스타터)
+create table inquiries (
+  id bigint generated always as identity primary key,
+  name text, contact text, type text, message text,
+  created_at timestamptz default now()
+);
+alter table inquiries enable row level security;
+create policy "anon insert" on inquiries for insert to anon with check (true);</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>참조본이 이미 인터넷에 떠 있음을 확인(⓶).</li>
+            <li>절차 카드 1~2: GitHub push → Vercel Import → 첫 배포.</li>
+            <li>절차 카드 3~4: Supabase 테이블 생성 → <code>app.js</code> 빈칸 2곳 입력(<strong>Settings → API의 <code>anon public</code> 키만</strong>).</li>
+            <li>재배포 후 <strong>게시 URL에서 폼을 가명 데이터로 제출</strong> → Supabase Table Editor에서 행 생성 확인.</li>
+            <li>조원 다른 기기(폰)에서도 URL 접속 확인 → 부품 대장에 URL·repo 기록.</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>게시 URL이 인터넷에서 열린다(다른 기기 접속 확인)</span></li>
+            <li><input type="checkbox" disabled><span>폼 제출 → Supabase <code>inquiries</code> 테이블에 행 1개 생성(가명 데이터)</span></li>
+            <li><input type="checkbox" disabled><span>페이지 소스·repo에 <code>anon</code> 키만 있고 <code>service_role</code> 없음 (안전 게이트 ①)</span></li>
+            <li><input type="checkbox" disabled><span>URL + repo 주소를 부품 이월 대장에 기록(→4·5강 재사용)</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "URL·키는 Supabase → Project Settings → API. <code>anon public</code>이라 적힌 것만."</li>
+              <li><strong>힌트 2(접근)</strong>: "insert가 안 되면 브라우저 콘솔(F12) 에러를 Claude에 붙여넣고 '고쳐줘'."</li>
+              <li><strong>힌트 3(골격)</strong>: <code>sb.from("inquiries").insert({ name: f.name.value, ... })</code> 절반 공개.</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            Vercel 빌드 실패 / 폼 제출 시 401·RLS 에러 / <strong>service_role 키를 붙이려 함</strong> → 즉시 개입(키 사고는 최우선 차단). 배포가 끝내 실패하면 <strong>조교 백업 계정</strong>으로 우회 배포 후 강 종료 후 원인 보정.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: 게시 URL이 열리고 폼이 보인다(DB 저장은 조교 도움 허용).</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 제출 성공 토스트("문의가 접수되었습니다") / 문의유형별 색 배지 / 섹션 1개 추가.</li>
+            </ul>
+          </div>
+
+          <h4>직군별 변형 (폼 필드)</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>직군</th><th>페이지 주제</th><th>폼 필드 변형</th></tr></thead>
+              <tbody>
+                <tr><td>회계·세무</td><td>세무상담 접수</td><td>상담유형(종소세·법인·부가세)·희망일</td></tr>
+                <tr><td>법무</td><td>법률상담 접수</td><td>사건분야(민사·형사·가사)·긴급도</td></tr>
+                <tr><td>미디어</td><td>취재·제보 접수</td><td>제보유형·매체</td></tr>
+                <tr><td>MICE</td><td>행사 문의 접수</td><td>행사규모·희망시기·유형(전시·컨퍼런스)</td></tr>
+                <tr><td>투자</td><td>IR·투자문의 접수</td><td>관심분야·투자규모대(범주)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 2강 실습 ================= -->
+      <section class="tab-panel" id="lab2">
+        <div class="card sky">
+          <div class="kicker">Ⅰ. 강별 실습</div>
+          <h2>2강 실습 — "일하는 3계층, 그리고 내 채널"</h2>
+          <p class="pillbar"><span class="pill demo">블록 2-4</span><span class="pill demo">블록 2-7</span><span class="pill demo">블록 2-8</span></p>
+        </div>
+
+        <!-- 2-A -->
+        <div class="card">
+          <div class="kicker">실습 2-A · 블록 2-4</div>
+          <h2>블로그·유튜브 계정 개설 + 기본 설정</h2>
+          <p class="pillbar">
+            <span class="pill">실습 2-A</span><span class="pill demo">블록 2-4</span><span class="pill present">30분</span>
+            <span class="pill bloom">난이도: 빈칸 채우기(절차 따라가기)</span><span class="pill part">★부품: 내 채널</span>
+            <span class="pill hands">선행: 블록 2-3 개설 시연</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">적용</span> 본인 명의 블로그(네이버/티스토리 택1)·유튜브 채널을 개설하고 기본 설정을 완료한다.</p>
+
+          <h4>시나리오</h4>
+          <p>오늘부터 당신은 "채널을 가진 사람"이다. 이 채널은 단순 실습장이 아니라 <strong>4강에서 자동 생성될 브리핑이 게시될 실제 지면</strong>이다. 계정 개설은 어렵지 않지만 본인인증·초기 설정에서 잘 막힌다 — 그래서 대면 실습이다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안 — 개설 절차 카드)</span>
+            <pre class="code"><code># 채널 개설 절차 카드 (완료칸만 채우세요)
+## A. 블로그 (네이버 / 티스토리 택1에 ○: ____)
+- [ ] 1. 로그인 → 블로그 개설 메뉴 진입
+- [ ] 2. 블로그 주소(ID) 결정: ____________  (변경 어려움 — 직군+이름 조합 권장)
+- [ ] 3. 블로그명·소개 1줄 입력: "________________" (직군 키워드 포함)
+- [ ] 4. 카테고리 1개 생성: ____________ (예: 세무 상식 / 법률 가이드 / 행사 소식)
+- [ ] 5. 첫 화면 접속 확인 → 채널 URL 기록: ____________
+## B. 유튜브 (구글 계정 기반)
+- [ ] 1. youtube.com 로그인 → 우상단 프로필 → '채널 만들기'
+- [ ] 2. 채널명 결정: ____________ (블로그명과 통일 권장)
+- [ ] 3. 채널 설명 2줄 입력 (블로그 소개 재사용 가능)
+- [ ] 4. 채널 URL 기록: ____________
+## C. 안전 (2강 안전수칙)
+- [ ] 계정 비밀번호는 개인 관리 — 조원·조교에게도 공유하지 않는다</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>시연(2-3)에서 본 절차 그대로 A 블로그부터 개설(택1에 ○ 표시).</li>
+            <li>블로그 주소·이름은 카드의 권장 규칙(직군+이름)으로 결정 — 고민 3분 초과 금지(나중에 소개만 수정 가능).</li>
+            <li>B 유튜브 채널 생성 — 채널명은 블로그와 통일.</li>
+            <li>두 채널 URL을 카드에 기록하고 부품 대장에 저장.</li>
+            <li>C 비밀번호 개인 관리 서약 체크.</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>블로그 첫 화면이 본인 브라우저에서 열린다(URL 기록)</span></li>
+            <li><input type="checkbox" disabled><span>유튜브 채널 페이지가 열린다(URL 기록)</span></li>
+            <li><input type="checkbox" disabled><span>블로그 카테고리 1개 생성됨</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 비밀번호를 어디에도 적거나 공유하지 않았다</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "이름 짓기에 시간 쓰지 마세요. '직군+이름'이면 충분 — 소개글은 나중에 AI와 다듬습니다."</li>
+              <li><strong>힌트 2(접근)</strong>: "본인인증 문자가 안 오면 스팸함·통신사 차단 확인. 그래도 안 되면 손 들기."</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            본인인증 실패 반복 / 구글 계정 복구 모드 진입 / 개설 5분 이상 정체 → 즉시 1:1. 끝내 막히면 <strong>블로그만 우선 개설</strong>(유튜브는 휴식·강 종료 후 보정)하고 2-B로 진행시킨다.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: 블로그 1개 개설 완료(유튜브는 강 종료 전 보정).</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 블로그 프로필 이미지·대문 문구를 Claude와 함께 작성 적용 / 유튜브 채널 아트 문구 시안.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2-B -->
+        <div class="card">
+          <div class="kicker">실습 2-B · 블록 2-7</div>
+          <h2>블로그 글 1편 생성·수정·게시 (본인 직군 소재)</h2>
+          <p class="pillbar">
+            <span class="pill">실습 2-B</span><span class="pill demo">블록 2-7</span><span class="pill present">35분</span>
+            <span class="pill bloom">난이도: 빈칸 채우기 → 수정(생성 후 고치는 훈련)</span><span class="pill part">★부품: 콘텐츠 포맷+검증 루프</span>
+            <span class="pill hands">선행: 블록 2-6 루프 시연</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">창조</span> 자기 직군 소재 글 1편을 생성-수정-검증 루프로 완성해 실제 게시한다. <span class="pill bloom">평가</span> 사실 근거를 사람이 검증한다.</p>
+
+          <h4>시나리오</h4>
+          <p>핵심 훈련은 <strong>"AI는 문장, 사실 근거는 사람이 준다"</strong>. AI가 쓴 숫자·법조항·통계를 사람이 검증하는 루프를 몸에 익힌다. 이 포맷과 검증 루프는 다음 강들의 자동화 실습에서 산출 포맷·검증 부품으로 그대로 확장된다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ① 블로그 생성 프롬프트 템플릿</span>
+            <pre class="code"><code>[블로그 생성 프롬프트 템플릿 — 빈칸만 채워서 Claude(chat 계층)에 붙이기]
+너는 __(직군)__ 실무자를 위한 블로그 작성자다.
+주제: __________ (예: 연말정산에서 자주 틀리는 3가지)
+독자: __________ (예: 중소기업 재무담당자)
+톤: 신뢰감 있고 쉬움. 전문용어는 첫 등장 시 1줄 정의.
+반드시 포함할 핵심 3가지: 1)_____ 2)_____ 3)_____
+분량: 1,000~1,500자, 소제목 3개.
+⚠️ 확실하지 않은 통계·법조항·판례번호는 '[확인 필요]'로 표시하고 지어내지 마라.</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ② 사실검증 체크리스트</span>
+            <pre class="code"><code>[사실검증 체크리스트 — 게시 전 필수 (2강 안전수칙)]
+- [ ] 본문의 모든 숫자·통계에 출처를 확인했다 (없으면 삭제)
+- [ ] 법조항·판례번호·규정을 원문과 대조했다 (허위 법조항 금지)
+- [ ] '[확인 필요]' 표시가 남아있지 않다 (전부 검증 또는 삭제)
+- [ ] 고객정보·개인정보가 예시에 없다 (프롬프트에도 넣지 않았다)
+- 수정·삭제한 내용 1건 이상 기록: ______________________</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>완성 참조 글을 먼저 읽는다(⓶).</li>
+            <li>프롬프트 템플릿 빈칸(주제·독자·핵심3)을 본인 직군으로 채워 초안 생성.</li>
+            <li><strong>수정 루프 2회 이상</strong>: "소제목 2를 더 쉽게" · "예시를 우리 업무 상황으로" 등 구체 지시로 고친다.</li>
+            <li><strong>검증 체크리스트 수행</strong>: 숫자·법조항·인용을 사람이 확인 — 근거를 못 대는 문장은 삭제/수정(최소 1건 기록).</li>
+            <li>검증 통과본을 2-A 블로그에 게시 → 게시 URL을 부품 대장에 기록.</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>게시 URL이 열린다(2-A 본인 블로그)</span></li>
+            <li><input type="checkbox" disabled><span>검증 체크리스트 4항목 전부 ✅ + <strong>실제 수정/삭제 기록 1건 이상</strong>(무검증 통과 방지)</span></li>
+            <li><input type="checkbox" disabled><span>수정 루프 흔적(초안과 게시본이 다름)</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 허위 숫자·법조항 0 · 개인정보 0</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "핵심 3가지는 '독자가 이 글에서 얻어갈 것' 3개로 잡으세요."</li>
+              <li><strong>힌트 2(접근)</strong>: "AI가 '2024년 통계에 따르면…'이라 쓰면 그게 바로 검증 대상. 출처를 못 대면 지웁니다."</li>
+              <li><strong>힌트 3(골격)</strong>: 검증 전/후 문단 비교 예시 1개 제시.</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            검증 없이 바로 게시하려 함 / '[확인 필요]'를 그대로 게시 → <strong>즉시 개입</strong>(이 강 핵심 원칙 위반). / 프롬프트에 고객 사례를 실명으로 넣음 → 즉시 가명화.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: 검증된 800자 글 1편 게시.</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 같은 소재 2개 톤(격식/캐주얼) A/B 생성 후 비교 1줄 회고 / 도입부에 검색 키워드 3개 반영.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2-C -->
+        <div class="card">
+          <div class="kicker">실습 2-C · 블록 2-8</div>
+          <h2>유튜브 콘텐츠 세트 제작·업로드</h2>
+          <p class="pillbar">
+            <span class="pill">실습 2-C</span><span class="pill demo">블록 2-8</span><span class="pill present">30분</span>
+            <span class="pill bloom">난이도: 빈칸 채우기 → 수정</span><span class="pill part">★부품: 영상 산출 포맷</span>
+            <span class="pill hands">선행: 2-B 게시 완료(소재 재사용)</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">창조</span> 유튜브 세트(대본·설명·썸네일 문구)를 제작해 본인 채널에 업로드한다.</p>
+
+          <h4>시나리오</h4>
+          <p>2-B 블로그 글을 소재로 <strong>원소스 멀티유즈</strong>를 체험한다. 촬영·편집은 이 과정의 범위가 아니다 — <strong>대본(스크립트)·제목·설명·썸네일 문구 세트</strong>를 만들고, 간단 영상(슬라이드 낭독·화면 녹화 등 최소형)을 <strong>본인 채널에 실제 업로드</strong>한다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ① 유튜브 세트 프롬프트</span>
+            <pre class="code"><code>[유튜브 세트 프롬프트 — 빈칸 채워서 Claude에 붙이기]
+소재: (2-B 블로그 제목) __________
+아래 4가지를 만들어줘:
+1) 60~90초 낭독용 대본 (인사 1줄 → 핵심 3가지 → 마무리 1줄)
+2) 클릭 유도 제목 3안 (과장·허위 금지)
+3) 설명문 3~4줄 + 해시태그 5개
+4) 썸네일 문구 6단어 이내 2안
+⚠️ 조회수 유도라도 허위 정보·과장 수치 금지. 블로그에서 검증된 내용만 사용.</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ② 업로드 절차 카드</span>
+            <pre class="code"><code>[업로드 절차 카드]
+- [ ] 1. 대본을 소리내어 1회 읽어 어색한 문장 수정 (사람 검증)
+- [ ] 2. 최소형 영상 준비: 슬라이드 1~3장 화면 녹화 + 낭독 (또는 폰 셀프 촬영 60초)
+- [ ] 3. 유튜브 스튜디오 → 업로드 → 제목·설명·해시태그 붙여넣기
+- [ ] 4. 공개 범위: '일부 공개(링크 공유)' 권장 — 부담 없이 시작
+- [ ] 5. 영상 URL 기록: ____________</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>세트 프롬프트로 4종(대본·제목·설명·썸네일 문구) 생성.</li>
+            <li>대본을 <strong>소리내어 읽고 수정</strong>(어색한 AI 문장 → 내 말투).</li>
+            <li>최소형 영상 1개 준비(품질보다 완주 — 60초면 충분).</li>
+            <li>본인 채널 업로드('일부 공개' 권장) → URL 기록.</li>
+            <li>블로그 URL + 유튜브 세트를 <code>02_content_format.md</code>로 저장(→4강 산출 포맷 부품).</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>세트 4종이 <code>02_content_format.md</code>에 저장됨</span></li>
+            <li><input type="checkbox" disabled><span>본인 채널에 영상 1개 업로드됨(URL 기록) — 인증 지연 시 절차 견학으로 대체, 3강 전까지 제출</span></li>
+            <li><input type="checkbox" disabled><span>대본 사람 수정 흔적 1곳 이상</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 허위·과장 수치 0 · 고객정보 0</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "제목은 '무엇을 얻는가'를 6~12자로. 썸네일 문구는 제목과 다른 각도로."</li>
+              <li><strong>힌트 2(접근)</strong>: "영상이 부담이면 슬라이드 1장 + 낭독 60초로 충분해요. 오늘의 목표는 '업로드 경험'입니다."</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            녹화 도구를 못 찾음(OS 기본 녹화 안내) / 업로드 처리 지연 → 업로드 진행 중 상태로 다음 블록 진행 허용, 종료 전 확인.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: 세트 4종을 <code>02_content_format.md</code>에 저장 + <strong>업로드 절차 견학으로 대체 가능</strong>(구글 본인인증·채널 활성화 지연 시). 이 경우 실제 업로드는 <strong>3강 전까지</strong> 완료해 URL을 조교 채널에 제출한다.</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 썸네일 시안 2종 비교 / 챕터 타임코드 삽입 / 블로그 글에 영상 임베드.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 3강 실습 ================= -->
+      <section class="tab-panel" id="lab3">
+        <div class="card sky">
+          <div class="kicker">Ⅰ. 강별 실습</div>
+          <h2>3강 실습 — "부품 5종을 이해하고, 첫 에이전트를 세운다"</h2>
+          <p class="pillbar"><span class="pill demo">블록 3-4</span><span class="pill demo">블록 3-7</span></p>
+          <div class="quote">
+            <strong>미니 프로젝트 개요 — 동작하는 회의록 에이전트 1개</strong>: 회의 메모/녹취를 넣으면 → 구조화 회의록 생성 → 배포용 문서 정리 → <strong>Gmail로 발송</strong>하는 에이전트. 3-A(스킬 제작)와 3-B(Gmail 결선)의 산출물이 합쳐져 완성된다.
+          </div>
+          <pre class="diagram"><code>[회의록 에이전트 = 스킬 2~3개(만드는 것) + Gmail MCP/커넥터(연결하는 것) + 프로젝트 폴더(담는 것) → 에이전트(부리는 것)]
+회의 메모 ─▶ [스킬 A: 회의록 생성] ─▶ [스킬 B: 문서화] ─▶ (사람 최종확인) ─▶ [Gmail 발송] ─▶ 본인 메일함(테스트)
+                               └ (확장) 스킬 C: 액션아이템 추출·검증</code></pre>
+        </div>
+
+        <!-- 3-A -->
+        <div class="card">
+          <div class="kicker">실습 3-A · 블록 3-4</div>
+          <h2>회의록 생성·문서화 스킬 제작</h2>
+          <p class="pillbar">
+            <span class="pill">실습 3-A</span><span class="pill demo">블록 3-4</span><span class="pill present">45분</span>
+            <span class="pill bloom">난이도: 수정(스켈레톤 빈칸+규칙 다듬기)</span><span class="pill part">★부품: 스킬 파일 2~3개</span>
+            <span class="pill hands">선행: 블록 3-3 전 과정 시연</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">창조</span> 단일 책임 스킬 2~3개를 스켈레톤에서 제작하고 샘플 회의 녹취록으로 테스트한다.</p>
+
+          <h4>시나리오</h4>
+          <p>자동화의 레고 블록인 <strong>스킬(만드는 것)</strong>을 직접 만든다. 회의록 에이전트의 두뇌가 될 스킬 2개(생성·문서화)를 제작하고 합성 회의 메모로 테스트한다. 여기서 익힌 "스킬 만들기"는 다음 강(4강)의 분석·검증·요약 스킬 제작으로 그대로 확장된다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ① SKILL.md 스켈레톤 — 스킬 A</span>
+            <pre class="code"><code>---
+name: make-minutes            # 스킬 A: 회의록 생성 (필드 구조 수정 금지)
+description: "____ 할 때 사용. '회의록 만들어'·'회의 정리해' 트리거."  # ← 빈칸: 트리거 문구
+---
+# 회의록 생성 스킬
+## 언제 쓰나
+- ____ (빈칸: 발동 상황 — 예: 회의 메모/녹취 텍스트를 붙여넣었을 때)
+## 처리 규칙
+1. 입력에서 '안건 → 논의 → 결정사항 → 액션아이템'을 분리   # ← 규칙 채우고 다듬기
+2. 액션아이템은 '담당자·기한'을 반드시 표기 (없으면 [미정])
+3. 원문에 없는 결정·수치는 추가 금지 (환각 차단)
+## 출력 형식
+- ____ (빈칸: 예) ## 안건 / ## 결정사항 / ## 액션아이템(담당·기한) 표
+## 안전 규칙
+- 참석자 실명·연락처는 이니셜/직책으로 마스킹</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ② SKILL.md 스켈레톤 — 스킬 B</span>
+            <pre class="code"><code>---
+name: format-doc              # 스킬 B: 문서화
+description: "____ 트리거."    # ← 빈칸: 예) '문서로 정리해'·'메일 본문 만들어'
+---
+# 문서화 스킬
+## 처리 규칙
+1. 회의록 구조를 배포용 md + 메일 본문 2형식으로 변환
+2. 제목/일시/참석(직책)/요약 3줄을 상단에 배치
+## 출력 형식
+- ____ (빈칸: 메일 제목 1줄 + 본문 + 하단 액션아이템 표)</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ③ 합성 회의 메모 스니펫 (테스트 입력용)</span>
+            <pre class="code"><code>[합성 회의 메모 스니펫 — 테스트 입력용 (가상 안건·가명 참석자)]
+7/28 월마감 점검 회의. 참석 K팀장, L대리, P사원.
+미결 전표 12건 중 8건은 L대리가 수요일까지 처리하기로 함.
+나머지 4건은 거래처 회신 대기. 다음 회의는 8/4 오전 10시.
+법인카드 증빙 누락 3건 — P사원이 금요일까지 수집.</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>시연 스킬(참조본)의 트리거·구조를 관찰(⓶).</li>
+            <li>스킬 A 스켈레톤의 빈칸(트리거·발동 상황·출력 형식)을 채운다.</li>
+            <li><strong>실제 호출 테스트</strong>: 합성 회의 메모를 붙이고 트리거 문구 입력 → 안건·결정·액션아이템(담당·기한) 구조가 나오는지 확인.</li>
+            <li>출력이 마음에 안 들면 <strong>처리 규칙을 수정</strong>하고 재테스트(수정 루프 — 이것이 스킬 디버깅).</li>
+            <li>스킬 B(문서화)를 같은 방식으로 완성 → A 출력을 B에 넣어 md+메일 본문 2형식 확인.</li>
+            <li>(확장) 스킬 C: 액션아이템 추출·검증 스킬(담당자·기한 누락 점검).</li>
+            <li>산출물: <code>~/.claude/skills/</code> 아래 동작하는 스킬 2~3개.</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>트리거 문구 입력 → 스킬 A가 발동하고 정의한 출력 형식대로 생성</span></li>
+            <li><input type="checkbox" disabled><span>합성 메모 입력 → 안건·결정·액션아이템(담당·기한 표기) 구조 확인</span></li>
+            <li><input type="checkbox" disabled><span>스킬 B: 구조화 회의록 → 배포용 md + 메일 본문 2형식 생성</span></li>
+            <li><input type="checkbox" disabled><span>같은 메모 2회 실행 시 동일 구조 출력(재현성 맛보기)</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 원문에 없는 결정·수치 삽입 0 · 참석자 실명 마스킹</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "<code>description</code>이 곧 트리거예요. '언제 이 스킬이 켜지길 원하나'를 문장으로 쓰세요."</li>
+              <li><strong>힌트 2(접근)</strong>: "처리 규칙은 '입력 → 무엇을 → 어떻게 → 출력' 순서로 번호 매기기."</li>
+              <li><strong>힌트 3(골격)</strong>: 스킬 A 완성본 절반 공개 → 스킬 B는 구조를 복제해 학습자가 완성.</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            스킬이 트리거되지 않음(→ description 문구 조정) / 스킬이 원문에 없는 결정·수치를 지어냄(→ 환각 차단 규칙 보강) / 회의 메모에 실명·연락처 방치(→ 즉시 마스킹).
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: <strong>생성 스킬 1개</strong>가 트리거·동작(문서화는 조교 도움 허용).</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 스킬 C(액션아이템 검증) 추가 / A→B 연계 파이프를 한 문장 지시로 실행.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3-B -->
+        <div class="card">
+          <div class="kicker">실습 3-B · 블록 3-7</div>
+          <h2>Gmail 연동 발송 + 프로젝트 폴더 정리 — 회의록 에이전트 완성</h2>
+          <p class="pillbar">
+            <span class="pill">실습 3-B</span><span class="pill demo">블록 3-7</span><span class="pill present">35분</span>
+            <span class="pill bloom">난이도: 수정 → 소규모 확장(조립)</span><span class="pill part">★부품: 동작하는 회의록 에이전트 1개</span>
+            <span class="pill hands">선행: 3-A 완성 + 블록 3-6 Gmail 연동 시연</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">종합</span> 스킬 + Gmail MCP/커넥터 연동을 프로젝트에 담아 동작하는 회의록 에이전트로 결선한다. <span class="pill bloom">평가</span> Gmail 연동의 데이터 행선지를 확인한다.</p>
+
+          <h4>시나리오</h4>
+          <p>스킬이 "내가 만든 도구"라면 <strong>Gmail MCP/커넥터는 "외부 세계로 난 창"(연결하는 것)</strong>이다. 3-A의 스킬들이 만든 회의록을 <strong>Gmail로 발송</strong>해 부품들이 처음으로 <strong>하나의 에이전트(부리는 것)</strong>가 되고, 이를 <strong>프로젝트 폴더(담는 것)</strong>에 담는다 — 개념 5종 중 4종이 여기서 실물로 조립된다. 동시에 <strong>"이 데이터가 어디로 가는지"</strong> 확인하는 안전 습관을 익힌다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ① Gmail MCP/커넥터 연동 절차 카드</span>
+            <pre class="code"><code>[Gmail MCP/커넥터 연동 절차 카드 — 시연(3-6) 그대로 따라하기]
+- [ ] 1. Claude(데스크톱/코드)의 커넥터 설정에서 Gmail 연결 시작
+- [ ] 2. 구글 로그인 → 권한 화면에서 **요청 권한 목록을 소리내어 읽기**
+       (무엇을 읽고, 무엇을 보낼 수 있는 권한인지 확인 — 안전수칙)
+- [ ] 3. 연결 완료 후 Claude에서 "내 Gmail 라벨 목록 보여줘"로 인식 확인
+- [ ] 4. ⚠️ 키·비밀번호를 코드나 프롬프트에 직접 적지 않는다 (하드코딩 금지)</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ② 회의록 에이전트 결선 골격</span>
+            <pre class="code"><code># minutes_agent/agent.md (회의록 에이전트 결선 골격 — 슬롯만 채우기)
+---
+name: minutes-agent
+description: 회의 메모 → 회의록 생성·문서화 → Gmail 발송
+skills: [____ , ____]     # ← 빈칸: 3-A의 스킬 A(생성)·스킬 B(문서화) 이름
+tools:  [____]            # ← 빈칸: Gmail MCP/커넥터
+---
+파이프라인:
+1) make-minutes 로 회의록 구조화
+2) format-doc   로 메일 본문 생성
+3) (사람 최종확인) ← 발송 전 반드시 사람이 본문·수신자 확인   # 안전 게이트 ⑤
+4) Gmail 로 발송 — 테스트는 반드시 본인 주소로만              # 안전 게이트 ④
+안전: 참석자 실명 마스킹 · 발송 전 수신자 주소 재확인</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ③ 데이터 흐름 점검표</span>
+            <pre class="code"><code>[데이터 흐름 점검표 — 필수 기록 (3강 안전수칙)]
+- 이 연동이 보내는 것: (예) 회의록 메일 본문·수신자 주소
+- 보내는 곳: (예) 구글 Gmail 서버 → 수신자 메일함
+- 받아오는 것: (예) 발송 성공/실패 응답
+- [ ] 테스트 발송은 본인 메일로만 했다
+- [ ] 고객정보·미확인 회의록을 발송하지 않았다 (사람 최종확인 완료)</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>시연(3-6)에서 연동 설정→권한 확인→데이터 행선지 점검→테스트 발송 장면 관찰(⓶).</li>
+            <li>절차 카드대로 Gmail MCP/커넥터 연결 — <strong>권한 화면을 읽고 무엇이 허용되는지 확인</strong>.</li>
+            <li>결선 골격의 슬롯(스킬 2개·Gmail)을 채워 <code>minutes_agent/</code> 프로젝트 폴더를 완성.</li>
+            <li>합성 회의 메모로 전체 파이프 실행: 생성 → 문서화 → <strong>(사람 최종확인)</strong> → <strong>본인 주소로 테스트 발송</strong>.</li>
+            <li>데이터 흐름 점검표 기록(보내는 것/보내는 곳/받아오는 것).</li>
+            <li>산출물: 동작하는 회의록 에이전트(스킬 2~3 + Gmail 연동 + 프로젝트 폴더) + 본인 메일함 수신 캡처.</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>Gmail 연동이 인식된다(라벨 목록 확인)</span></li>
+            <li><input type="checkbox" disabled><span>에이전트 1회 실행 → 생성→문서화→사람확인→<strong>본인 주소 테스트 메일 1통 수신</strong></span></li>
+            <li><input type="checkbox" disabled><span>데이터 흐름 점검표 3줄 + 체크 2개 기록 완료</span></li>
+            <li><input type="checkbox" disabled><span>같은 메모 2회 실행 시 동일 품질 회의록·메일(재현성)</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 키 하드코딩 0 · 실명 마스킹 · 본인 메일로만 발송 · 발송 전 사람 확인</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "커넥터는 연결 후 Claude 재시작해야 잡히는 경우가 있어요."</li>
+              <li><strong>힌트 2(접근)</strong>: "발송이 안 되면 '방금 실패한 이유를 설명해줘'로 에러를 그대로 물어보세요."</li>
+              <li><strong>힌트 3(골격)</strong>: 결선 골격의 skills 슬롯 1개를 채운 상태로 공개 → 나머지 학습자 완성.</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            Gmail 권한 화면에서 멈춤 / <strong>키·비밀번호를 프롬프트에 붙임</strong> / 회의록에 실명·기밀 방치 / <strong>사람 확인 없이 곧장 발송</strong> 또는 <strong>타인 주소로 테스트 발송</strong> → 즉시 개입. 행선지 미확인·무단 발송은 3강 핵심 안전수칙 위반이므로 반드시 잡는다.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: 생성 스킬 1개 동작 + Gmail 발송 1회 성공(조교와 함께 허용).</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 스킬 C(검증)를 파이프 3)번 앞에 삽입 / 발송 대신 초안(draft) 저장 모드 추가 / 회의록 md를 1강 페이지·Supabase에 저장.</li>
+            </ul>
+          </div>
+
+          <h4>직군별 회의 소재 (합성 데이터 변형)</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>직군</th><th>회의 유형 예시</th><th>액션아이템 성격</th></tr></thead>
+              <tbody>
+                <tr><td>회계·세무</td><td>월마감 점검 회의</td><td>미결 전표 처리 담당·기한</td></tr>
+                <tr><td>법무</td><td>사건 대응 전략 회의</td><td>서면 제출·자료조사 담당·기한</td></tr>
+                <tr><td>미디어</td><td>편집 기획 회의</td><td>취재·마감 담당·기한</td></tr>
+                <tr><td>MICE</td><td>행사 운영 회의</td><td>부스·연사 컨펌 담당·기한</td></tr>
+                <tr><td>투자</td><td>딜 리뷰 회의</td><td>실사·검토 담당·기한</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 4강 실습 ================= -->
+      <section class="tab-panel" id="lab4">
+        <div class="card sky">
+          <div class="kicker">Ⅰ. 강별 실습</div>
+          <h2>4강 실습 — "부품이 팀이 된다: 에신Lite"</h2>
+          <p class="pillbar"><span class="pill demo">블록 4-3</span><span class="pill demo">블록 4-4</span><span class="pill demo">블록 4-6</span><span class="pill demo">블록 4-7</span></p>
+        </div>
+
+        <!-- 4-A -->
+        <div class="card">
+          <div class="kicker">실습 4-A · 블록 4-3</div>
+          <h2>Claude Code CLI · 에신Lite 워밍업 (시연 따라하기)</h2>
+          <p class="pillbar">
+            <span class="pill">실습 4-A</span><span class="pill demo">블록 4-3</span><span class="pill present">25분</span>
+            <span class="pill bloom">난이도: 빈칸 채우기(따라하기)</span><span class="pill hands">강사 시연과 동시 진행</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">적용</span> CLI·에신Lite의 기본 명령 흐름(프로젝트 열기→지시→실행)을 따라 수행한다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안 — 조작 카드)</span>
+            <pre class="code"><code>[에신Lite 워밍업 카드 — 강사와 같은 속도로 따라 치기]
+1. 터미널에서 실습 폴더 열기:  cd 내문서/vibecoding/team_insight
+2. Claude Code 실행:          claude
+3. 에신Lite 호출(자연어):      "에신 라이트로 간단한 인사 에이전트 하나 만들어줘.
+                              이름은 hello-agent, 역할은 '오늘 날짜와 함께 인사'."
+4. 생성 확인:                 폴더에 hello-agent 정의가 생겼는지 확인
+5. 실행:                      "hello-agent 실행해줘" → 응답 확인
+6. 정리:                      "hello-agent는 연습용이니 삭제해줘"</code></pre>
+          </div>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>CLI에서 프로젝트 폴더를 열고 <code>claude</code> 실행</span></li>
+            <li><input type="checkbox" disabled><span>에신Lite로 연습 에이전트 1개 생성→실행→삭제 완료</span></li>
+            <li><input type="checkbox" disabled><span>"지시→생성→실행"의 감각을 1줄 회고로 기록</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1</strong>: "명령을 외울 필요 없어요. '~해줘'라고 말하면 됩니다 — 그게 바이브코딩."</li>
+              <li><strong>힌트 2</strong>: "에신Lite가 뭘 만들었는지 항상 폴더에서 눈으로 확인하는 습관."</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            CLI 실행 안 됨(1강 체크리스트 재점검) / 에신Lite 미인식 → 즉시 개입(4-B 진입 전 전원 해결 필수).
+          </div>
+        </div>
+
+        <!-- 4-B -->
+        <div class="card">
+          <div class="kicker">실습 4-B · 블록 4-4</div>
+          <h2>4역할 팀 구축 1부 — 수집·분석 에이전트</h2>
+          <p class="pillbar">
+            <span class="pill">실습 4-B</span><span class="pill demo">블록 4-4</span><span class="pill present">35분</span>
+            <span class="pill bloom">난이도: 수정(스켈레톤 슬롯 채우기+규칙 다듬기)</span><span class="pill hands">선행: 4-A</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">종합</span> 수집(웹검색 MCP/커넥터)·분석(3개 분석 스킬) 에이전트를 에신Lite 스타터에서 구성하고 개별 동작을 확인한다.</p>
+
+          <h4>시나리오</h4>
+          <p>당신 조는 "매일 아침 글로벌 증시·주요 기업 뉴스에서 <strong>의사결정용 브리핑</strong>을 자동 생성"하는 에이전트팀을 만든다. 오늘 1부에서는 앞단 2명의 AI 직원(수집·분석)을 고용한다. 3강 회의록 에이전트에서 익힌 "스킬+연결 조립 노하우"가 그대로 쓰인다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안 — 에신Lite 4역할 스켈레톤 중 2종) ① collector.md</span>
+            <pre class="code"><code># team_insight/agents/collector.md (수집 에이전트 스켈레톤)
+---
+name: collector
+description: 글로벌 증시·기업 뉴스 수집
+tools: [웹검색 MCP/커넥터]      # ← 3강 Gmail 연동과 같은 '연결하는 것'
+---
+역할: __________ (빈칸: 무엇을 수집하는지 — 예: 지정 지수 3종 + 관심 기업 뉴스 5건)
+입력: 주제/종목 목록 (예: S&amp;P500·나스닥·엔비디아·삼성전자)
+출력: 뉴스 원자료 리스트 (제목·URL·발행일·요지)   # ← analyst에 전달
+안전: 검색 쿼리에 고객/기밀 금지</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ② analyst.md</span>
+            <pre class="code"><code># team_insight/agents/analyst.md (분석 에이전트 스켈레톤)
+---
+name: analyst
+description: 뉴스 전조·패턴·숨은 인사이트 도출
+skills: [trend-scan, ____, ____]   # ← 빈칸: 3개 분석 스킬 이름 (스타터에 동봉:
+---                                #    trend-scan·pattern-link·hidden-insight)
+역할: collector 출력에서 ① 반복 신호(전조) ② 종목 간 연결(패턴)
+      ③ 헤드라인에 없는 함의(숨은 인사이트)를 각 2개씩 도출
+출력: 인사이트 후보 목록 (각 항목에 근거 기사 URL 필수)   # ← verifier에 전달
+안전: 근거 없는 추측 생성 금지 — 근거 URL 없는 항목은 만들지 않는다</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>완성 팀 실행 장면(4-1 데모)을 상기 — 오늘 만드는 것이 그 앞단이다(⓶).</li>
+            <li>에신Lite에 지시해 collector 스켈레톤의 빈칸(수집 대상)을 채우고 생성.</li>
+            <li><strong>collector 단독 실행</strong> → 뉴스 원자료 리스트가 나오는지 확인(하나 완성 후 다음 — 배관 원칙).</li>
+            <li>analyst 스켈레톤의 스킬 슬롯을 채우고 생성 → collector 출력을 넣어 단독 실행.</li>
+            <li>인사이트 항목마다 근거 URL이 붙어 있는지 확인(없으면 규칙 보강 후 재실행).</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>collector 단독 실행 → 제목·URL·요지 리스트 산출</span></li>
+            <li><input type="checkbox" disabled><span>analyst 단독 실행 → 전조·패턴·숨은 인사이트 각 2개(근거 URL 포함)</span></li>
+            <li><input type="checkbox" disabled><span>두 에이전트 정의 파일이 <code>team_insight/agents/</code>에 저장</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 검색 쿼리·프롬프트에 고객/기밀 0 · 근거 없는 항목 0</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "collector 하나만 먼저 돌리세요. 뉴스가 와야 분석할 게 있습니다."</li>
+              <li><strong>힌트 2(접근)</strong>: "analyst 출력이 뻔하면 '헤드라인에 없는 함의를 찾아줘'로 역할 문구를 날카롭게."</li>
+              <li><strong>힌트 3(골격)</strong>: collector 완성본 공개 → analyst는 조가 완성.</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            웹검색 MCP 미인식 / collector 출력이 빈 리스트(검색어 조정) / analyst가 근거 없는 주장 생성(규칙 보강) → 즉시 개입.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: collector 1개 단독 동작(analyst는 2부에서 조교와 완성).</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 수집 대상을 파라미터화(종목 목록만 바꿔 재실행) / 분석 스킬 1개 자작 추가.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4-C -->
+        <div class="card">
+          <div class="kicker">실습 4-C · 블록 4-6</div>
+          <h2>4역할 팀 구축 2부 — 검증·요약 + 팀 결선·전체 실행</h2>
+          <p class="pillbar">
+            <span class="pill">실습 4-C</span><span class="pill demo">블록 4-6</span><span class="pill present">40분</span>
+            <span class="pill bloom">난이도: 수정 → 확장(결선)</span><span class="pill part">★부품: 동작하는 에이전트팀</span>
+            <span class="pill hands">선행: 4-B</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">종합</span> 검증(교차검증 스킬)·요약(브리핑 스킬) 에이전트를 붙여 4역할 팀을 완성하고 전체 실행한다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안 — 나머지 2역할 + 팀 결선 골격) ① verifier.md</span>
+            <pre class="code"><code># team_insight/agents/verifier.md (검증 에이전트 — 생략 금지 역할)
+---
+name: verifier
+description: 사실·숫자·출처 교차검증 (VibeCoding 검증 원칙)
+skills: [verify-cross]        # ← 스타터 동봉. 3강 스킬 C를 만든 조는 그것도 연결 가능
+---
+역할: analyst 결과의 모든 숫자·주장에 출처 확인 (2개 이상 출처 교차)
+규칙: 출처 없는 주장은 '[미검증]' 표시 후 요약 단계에서 제외
+출력: 검증 통과 인사이트만                     # ← summarizer에 전달</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ② summarizer.md</span>
+            <pre class="code"><code># team_insight/agents/summarizer.md (요약 에이전트)
+---
+name: summarizer
+description: 의사결정용 브리핑·카드 생성
+skills: [briefing-card, ____]   # ← 빈칸: 3강 문서화 스킬(format-doc) 재사용 권장
+---
+역할: 검증 통과 인사이트를 2강 콘텐츠 포맷(02_content_format.md)의
+      브리핑 카드로 변환 — 제목/요약 3줄/핵심 3가지/출처 목록
+출력: briefing_{날짜}.md</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ③ run.yaml (팀 결선 골격)</span>
+            <pre class="code"><code># team_insight/run.yaml (팀 결선 골격 — 빈칸 1곳 + 전달 배관 확인)
+pipeline:
+  - agent: collector    # 출력 → analyst.input
+  - agent: analyst      # 출력 → verifier.input
+  - agent: ____         # ← 빈칸: 여기 무엇이 와야 하나? (힌트: 생략 금지 역할)
+  - agent: summarizer   # 출력 → 브리핑 카드
+output: team_insight/briefing_{date}.md</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>verifier 생성 → analyst 출력을 넣어 단독 실행('[미검증]' 항목이 실제로 걸러지는지 확인).</li>
+            <li>summarizer 생성 — 스킬 슬롯에 <strong>3강 문서화 스킬 재사용</strong>(부품 이월).</li>
+            <li><code>run.yaml</code> 빈칸을 채워 4역할 결선.</li>
+            <li><strong>전체 실행 1회</strong> → <code>briefing_{date}.md</code> 생성 확인 — 브리핑의 모든 수치·주장에 출처가 붙어 있는지 확인.</li>
+            <li><strong>같은 주제로 2회 실행</strong> → 동일 품질인지 비교(재현성 — 5강 예습).</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>4역할이 순서대로 동작해 브리핑 카드 1개 생성</span></li>
+            <li><input type="checkbox" disabled><span>브리핑의 모든 수치·주장에 출처 표기(verifier 통과 증거)</span></li>
+            <li><input type="checkbox" disabled><span>'[미검증]' 항목이 요약에서 제외됨을 1건 이상 확인</span></li>
+            <li><input type="checkbox" disabled><span>같은 주제 2회 실행 시 동일 품질(형식·항목 수 일치)</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 검증 단계 생략 0 · 출처 없는 주장 0 · 고객 식별정보 입력 0</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "각 에이전트의 '출력'이 다음의 '입력'이 되는 배관 — 3강 회의록 파이프와 같은 구조예요."</li>
+              <li><strong>힌트 2(접근)</strong>: "전체 실행이 실패하면 어느 역할에서 멈췄는지 로그를 Claude에 붙여 물어보세요."</li>
+              <li><strong>힌트 3(골격)</strong>: collector→analyst 2역할 결선까지 완성본 공개 → verifier·summarizer 결선은 조가 완성.</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            에이전트 간 데이터가 안 넘어감 / <strong>verifier를 건너뛰고 summarizer로 직행</strong>(즉시 차단 — 4강 핵심 안전수칙) / 팀이 1역할만 실행 → 즉시 개입.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: collector→analyst→summarizer 3역할 연결 실행(verifier는 조교와 함께 결선 후 통과).</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 실패 시 재시도 규칙 추가 / 주제 파라미터화 / 브리핑 카드 디자인(표·이모지 규격) 개선.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4-D -->
+        <div class="card">
+          <div class="kicker">실습 4-D · 블록 4-7</div>
+          <h2>브리핑 산출물 게시 — 1강 채널 + 2강 포맷 재사용</h2>
+          <p class="pillbar">
+            <span class="pill">실습 4-D</span><span class="pill demo">블록 4-7</span><span class="pill present">20분</span>
+            <span class="pill bloom">난이도: 확장</span><span class="pill part">★부품 이월 체감</span>
+            <span class="pill hands">선행: 4-C</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">창조</span> 팀 산출 브리핑을 실제 채널에 게시한다 — 1·2강 부품 재사용을 실습 절차에 명시적으로 포함.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안 — 게시 절차 카드)</span>
+            <pre class="code"><code>[게시 절차 카드 — 1·2강 부품을 꺼내 쓴다]
+- [ ] 1. 부품 대장에서 꺼내기: 1강 배포 URL/repo · 2강 블로그 채널 · 02_content_format.md
+- [ ] 2. 게시 경로 택1 (조 단위 결정):
+      A안) 2강 블로그에 브리핑 글로 게시 (briefing md → 블로그 편집기에 정리)
+      B안) 1강 랜딩페이지에 '오늘의 브리핑' 섹션 추가 → 재배포
+      C안) (빠른 조) A+B 모두
+- [ ] 3. 게시 전 사람 최종 확인: 출처·숫자 재확인 (안전 게이트 ③⑤)
+- [ ] 4. 게시 URL 기록: ____________  → 부품 대장 갱신</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>부품 대장에서 1강 URL·2강 채널을 꺼낸다(이월 체감이 이 실습의 목적).</li>
+            <li>게시 경로 택1(A안이 기본 — B안은 1강 배포 경험 복습).</li>
+            <li><strong>게시 전 사람 최종 확인</strong>(출처·숫자) 후 게시.</li>
+            <li>게시 URL을 조별 발표(4-8)에서 공유.</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>브리핑이 실제 채널(블로그 또는 랜딩페이지)에 게시됨(URL)</span></li>
+            <li><input type="checkbox" disabled><span>게시본에 출처 목록 포함</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 게시 전 사람 최종 확인 수행 · 비밀키/기밀 0</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1</strong>: "블로그 게시가 가장 빠릅니다. md를 붙여넣고 제목·소제목만 정리하세요."</li>
+              <li><strong>힌트 2</strong>: "B안은 1강 절차 카드(1-C)를 다시 꺼내면 됩니다 — 같은 배관이에요."</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            1강 URL·repo를 분실(부품 대장 미기록 조) → 조교가 백업 기록으로 복구, 대장 관리 재강조.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: A안(블로그 게시) 1건.</li>
+              <li><strong>확장 과제(빠른 조)</strong>: C안(블로그+랜딩페이지 동시 게시) / 브리핑을 Supabase 테이블에 저장해 이력화.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 5강 캡스톤 ================= -->
+      <section class="tab-panel" id="lab5">
+        <div class="card sky">
+          <div class="kicker">Ⅲ. 5강 캡스톤 — 업무자동화 하네스 개발</div>
+          <h2>캡스톤 개요 <span class="obj-note">(블록 5-3 · 5-5 · 5-6 · 5-7)</span></h2>
+          <p>전 과정의 부품을 집결시켜, 4강 에이전트팀을 <strong>재실행 가능한 하네스(재생산 구조)</strong>로 감싸는 법을 시연(5-2)으로 관찰한 뒤, <strong>본인 업무 I/P/O 시트를 미러링</strong>해 나만의 업무자동화 하네스를 완성한다. 이것이 수료 증거물이다.</p>
+          <pre class="diagram"><code>[캡스톤 부품 집결도]
+주간과제⑤ I/P/O 시트(W1) ──────────────────────▶ 5-3 미러링 설계(W2)
+1강 배포 채널(URL·Supabase) ──┐                        │
+2강 콘텐츠 포맷·검증 루프 ─────┤─▶ 4강 에이전트팀 ──▶ 5-5 하네스 결선(W3) ─▶ 5-6 재실행 검증(W4)
+3강 스킬+Gmail 조립 노하우 ────┘   (미러링 원본)              │                      │
+                                                        harness_mine/          5-7 수료 루브릭 판정</code></pre>
+          <p><strong>워크플로우 = 워크시트 4단계</strong>: W1 I/P/O 시트 → W2 4역할 매핑(미러링 치환) → W3 하네스 결선 → W4 재실행 검증. 각 워크시트가 다음 워크시트의 입력이 된다.</p>
+          <p><strong>학습목표 매핑</strong>: <span class="pill bloom">전이</span> 공통 하네스를 본인 I/P/O로 미러링 【5-3】 · <span class="pill bloom">창조</span> 재실행 가능한 하네스 완성 【5-5】 · <span class="pill bloom">평가</span> 재현성 직접 검증 【5-6】 · <span class="pill bloom">평가</span> 수료 루브릭 자기판정 【5-7】.</p>
+        </div>
+
+        <!-- W1 -->
+        <div class="card amber">
+          <div class="kicker">워크시트 W1 · 주간 과제 ⑤ 제출물 → 블록 5-1에서 점검</div>
+          <h2>본인 업무 I/P/O 시트</h2>
+          <div class="quote">배포 시점: 4강 4-8에서 템플릿 배포(작성 예시 2종 — 직군 상이 — 포함). 5강 2일 전 제출.</div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안 — W1 시트)</span>
+            <pre class="code"><code># W1. 내 업무 I/P/O 시트  (예시행 2종 참고, 본인 업무 2~3행 채우기)
+| ★ | 업무명 | 입력(I) — 무엇이 들어오나 | 처리(P) — 무엇을 하나 | 출력(O) — 무엇이 나가나 | 현재 소요 | 반복주기 |
+|---|--------|--------------------------|----------------------|------------------------|----------|----------|
+|   | (예시·회계) 월마감 대사 | 은행거래내역 CSV·전표 목록 | 대사·차이 검출·원인 분류 | 대사 결과표 + 미결 목록 | 3시간 | 매월 |
+|   | (예시·MICE) 행사 일정 수집 | 업종·지역 키워드 | 컨퍼런스/전시 검색·선별·확인 | 월간 행사 캘린더 | 2시간 | 매월 |
+| ★ | (내 업무1) ____ | ____ | ____ | ____ | ____ | ____ |
+|   | (내 업무2) ____ | ____ | ____ | ____ | ____ | ____ |
+|   | (내 업무3·선택) ____ | ____ | ____ | ____ | ____ | ____ |
+
+작성 규칙:
+1. I·P·O는 구체적 명사로 ("잘 정리한다" 같은 모호어 금지)
+2. 처리(P)를 '수집→분석→검증→요약' 4동사로 쪼갤 수 있으면 최적 (4역할에 그대로 대응)
+3. 자동화 1순위 업무에 ★ 1개
+4. 고객 실명·계좌·연락처 기재 금지 — 가명·범주명만 (5강 안전수칙: 가명화)</code></pre>
+          </div>
+
+          <div class="callout info">
+            <span class="ct">ⓘ W1 점검 기준(5-1 조별)</span>
+            업무 2개 이상 I·P·O 3열이 구체적 명사 / ★ 1개 지정 / 개인정보 0. 미제출·미비자는 조교가 <strong>공통 프로젝트 변형 소재</strong>(예: "우리 팀 관심 종목 브리핑")를 대체 제공.
+          </div>
+        </div>
+
+        <!-- 5-A -->
+        <div class="card">
+          <div class="kicker">실습 5-A (워크시트 W2) · 블록 5-3</div>
+          <h2>미러링 설계 — I/P/O를 하네스 설계도로 변환</h2>
+          <p class="pillbar">
+            <span class="pill">실습 5-A</span><span class="pill demo">블록 5-3</span><span class="pill present">30분</span>
+            <span class="pill bloom">난이도: 확장(전이 — 구조는 유지, 내용만 치환)</span>
+            <span class="pill hands">선행: 블록 5-2 하네스화 시연 + W1</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">분석·전이</span> 본인 I/P/O를 공통 하네스 구조에 대응(미러링)시켜 설계도를 완성한다.</p>
+
+          <h4>시나리오</h4>
+          <p>5-2 시연에서 4강 에이전트팀이 하네스(입력 고정·실행 절차·산출 규격)로 포장되는 것을 봤다. 이제 같은 구조에 <strong>당신의 업무</strong>를 얹는다. "수집→분석→검증→요약" 4역할 골격은 그대로 두고, <strong>소재·스킬·연결·출력만</strong> 바꾼다 — 이것이 미러링이다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안 — W2 미러링 치환 워크시트)</span>
+            <pre class="code"><code># W2. 4역할 매핑(미러링 치환표)  — W1의 ★ 업무 1개를 여기에 옮겨 적고 시작
+★ 업무명: ____________  (W1에서 복사)
+
+## ① I/P/O → 4역할 대응 (규칙: I=수집, P의 앞부분=분석, P의 확인부분=검증, O=요약)
+| 역할 | 공통 프로젝트(원본) | → 내 업무로 치환 (빈칸) | 쓸 부품 (스킬/연결) |
+|------|--------------------|------------------------|--------------------|
+| 수집 | 증시·뉴스 (웹검색 MCP) | 내 입력원: ________ | ________ (예: 웹검색 MCP / 파일 읽기) |
+| 분석 | 전조·패턴 3스킬 | 내 처리 규칙: ________ | ________ (예: 3강 생성 스킬 개조) |
+| 검증 | 숫자·출처 교차검증 | 내 확인 항목: ________ | ________ (예: verify-cross 재사용) |
+| 요약 | 브리핑 카드 | 내 출력물: ________ | ________ (예: format-doc 재사용) |
+
+## ② 하네스 3요소 (5-2 시연에서 관찰한 것)
+- 고정 입력: ________ (매번 같은 형식으로 들어올 것 — 예: 키워드 목록 / CSV 1개)
+- 실행 방법: "한 문장 지시" 문안: "________________ 실행해줘"
+- 산출 규격: ________ (파일명 규칙 포함 — 예: 결과_{날짜}.md, 표 3열 고정)
+
+## ③ 출력 행선지 (부품 이월)
+- [ ] 파일 저장만  [ ] 1강 페이지/Supabase 게시  [ ] 2강 블로그 게시  [ ] Gmail 발송(본인 메일)</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>W1의 ★ 업무를 W2 상단에 옮겨 적는다.</li>
+            <li>① 치환표: I=수집, P=분석·검증, O=요약 규칙으로 4행을 채운다. "쓸 부품" 열은 <strong>기존 부품 재사용 우선</strong>(3강 스킬·4강 검증 스킬).</li>
+            <li>② 하네스 3요소(고정 입력·실행 문안·산출 규격)를 확정한다 — 5-6 재실행 검증에서 이 문안을 2회 그대로 사용한다.</li>
+            <li>③ 출력 행선지 택1 이상.</li>
+            <li>조 내 상호 검토 1회: "이 설계도만 보고 남이 만들 수 있나?"를 서로 묻는다.</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>치환표 4행이 전부 구체적으로 채워짐(모호어 0)</span></li>
+            <li><input type="checkbox" disabled><span>하네스 3요소(고정 입력·실행 문안·산출 규격) 확정</span></li>
+            <li><input type="checkbox" disabled><span>재사용 부품이 1개 이상 지정됨(3·4강 이월)</span></li>
+            <li><input type="checkbox" disabled><span>조 내 상호 검토 1회 완료</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 설계도에 고객 실명·기밀 0(가명·범주명만)</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "W1의 I/P/O가 이미 답이에요. 입력(I)=수집, 처리(P)=분석·검증, 출력(O)=요약."</li>
+              <li><strong>힌트 2(접근)</strong>: "3강에서 만든 본인 스킬을 '쓸 부품' 열에 그대로 끼우면 절반은 끝."</li>
+              <li><strong>힌트 3(골격)</strong>: 조교가 아래 직군별 미러링 예시로 1행 시범 치환.</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            미러링 대상이 자동화 부적합(판단 100% 사람 몫) → 4역할 중 자동화 가능한 부분만 도려내 재설계 안내 / 검증 행이 비어 있음 → "무엇이 틀리면 사고인가"를 물어 확인 항목 도출.
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: 공통 프로젝트 변형 소재(조교 제공)로 치환표 완성.</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 2번째 업무(W1의 다른 행)도 치환표 작성.</li>
+            </ul>
+          </div>
+
+          <h4>직군별 미러링 예시 <span class="obj-note">(5-3 배포자료 — 3개 이상 필수, 5종 제공)</span></h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>직군</th><th>★업무 예</th><th>수집(I)</th><th>분석(P)</th><th>검증(P)</th><th>요약(O)</th></tr></thead>
+              <tbody>
+                <tr><td><strong>회계·세무</strong></td><td><strong>월마감 자동화</strong></td><td>은행 CSV·전표 목록 읽기</td><td>대사·차이 검출·원인 분류</td><td>차이 금액 재계산·원장 대조</td><td>대사 결과표 + 미결 목록</td></tr>
+                <tr><td><strong>법무</strong></td><td><strong>판례 요약 브리핑</strong></td><td>사건 키워드로 판례·입법예고 수집</td><td>담당 분야 쟁점 추출</td><td>판례번호·조문 원문 대조</td><td>쟁점 요약 메모</td></tr>
+                <tr><td><strong>MICE</strong></td><td><strong>행사 일정 수집</strong></td><td>업종·지역 키워드로 컨퍼런스/전시 검색</td><td>자사 타깃 행사 선별</td><td>일시·장소·주최 공식 페이지 확인</td><td>월간 행사 캘린더</td></tr>
+                <tr><td>미디어</td><td>산업 뉴스 큐레이션</td><td>주제 키워드 뉴스 수집</td><td>이번 주 핵심 흐름 분석</td><td>사실·수치 팩트체크</td><td>데스크 브리핑 카드</td></tr>
+                <tr><td>투자</td><td>종목 동향 스캔</td><td>관심 종목·지수 뉴스 수집</td><td>전조·이벤트 인사이트</td><td>숫자·출처 교차검증</td><td>의사결정 카드</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 5-B -->
+        <div class="card">
+          <div class="kicker">실습 5-B (워크시트 W3) · 블록 5-5</div>
+          <h2>하네스 개발 1부 — 공통 하네스 복제·개조</h2>
+          <p class="pillbar">
+            <span class="pill">실습 5-B</span><span class="pill demo">블록 5-5</span><span class="pill present">40분</span>
+            <span class="pill bloom">난이도: 확장(캡스톤 본체)</span><span class="pill part">★조교 밀착</span>
+            <span class="pill hands">선행: W2 완성 · 도구: 에신Lite + Claude Code CLI</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">창조</span> 설계도(W2)대로 하네스를 복제·개조하고 본인 업무 데이터(가명화)로 1차 실행한다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ① 복제·개조 절차 카드</span>
+            <pre class="code"><code>[복제·개조 절차 카드]
+- [ ] 1. 공통 하네스 복제: team_insight/ → harness_mine/ 폴더 복사
+       (또는 에신Lite에 지시: "team_insight를 harness_mine으로 복제해줘")
+- [ ] 2. W2 치환표대로 4역할 개조 — 에신Lite 지시 문안:
+       "harness_mine의 collector를 고쳐줘. 수집 대상을 __(W2 수집행)__으로,
+        입력은 __(고정 입력)__으로 바꿔줘."   (analyst·verifier·summarizer 반복)
+- [ ] 3. run 결선 확인: 4역할 순서·전달 배관이 살아 있는지 확인
+- [ ] 4. 테스트 데이터 준비: 본인 업무 데이터 1건 — 반드시 가명화
+       (고객명→가명, 계좌·연락처→마스킹. 조교 확인 후 투입)
+- [ ] 5. 1차 실행 → 산출물이 W2 '산출 규격'대로 나오는지 확인</code></pre>
+          </div>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안) ② W3 하네스 결선 기록표</span>
+            <pre class="code"><code># W3. 하네스 결선 기록표 (harness_mine/README.md 로 저장 — 재현성의 문서 축)
+- 하네스 이름: ____________
+- 실행 문안(고정): "________________ 실행해줘"   ← W2 ②에서 복사, 이후 변경 금지
+- 고정 입력: ____________ (형식·위치)
+- 4역할 구성: 수집 ____ / 분석 ____ / 검증 ____ / 요약 ____
+- 산출 규격: ____________ (파일명 규칙 포함)
+- 출력 행선지: ____________
+- 1차 실행 결과: [ ] 산출 규격 일치  [ ] 불일치 → 고친 것: ____________</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>절차 카드 1: 공통 하네스 복제(골격은 절대 새로 만들지 않는다 — 미러링 원칙).</li>
+            <li>절차 카드 2: W2 치환표를 보며 4역할을 하나씩 개조 — <strong>하나 고치고 하나 실행</strong>(수집부터 단독 확인).</li>
+            <li>절차 카드 4: 본인 업무 데이터 1건 <strong>가명화</strong> 후 투입(조교 확인 필수 — 5강 안전수칙).</li>
+            <li>1차 전체 실행 → 산출물 확인. 불일치는 "어디가 다른지"를 Claude에 보여주고 수정.</li>
+            <li>W3 기록표를 <code>harness_mine/README.md</code>로 저장 — <strong>실행 문안은 이후 변경 금지</strong>(5-C에서 그대로 2회 사용).</li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span><code>harness_mine/</code> 폴더가 4역할 구성으로 존재</span></li>
+            <li><input type="checkbox" disabled><span>가명화된 본인 업무 데이터로 1차 실행 → 결과물 1개 생성</span></li>
+            <li><input type="checkbox" disabled><span>결과물이 W1의 출력(O)·W2의 산출 규격과 일치</span></li>
+            <li><input type="checkbox" disabled><span>W3 기록표(README) 저장 완료</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 투입 데이터 가명화 조교 확인 · 비밀키 하드코딩 0</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "새로 만들지 마세요. 복제→개조가 미러링입니다. 골격을 건드리면 배관이 끊어져요."</li>
+              <li><strong>힌트 2(접근)</strong>: "4역할을 한 번에 고치지 말고, collector 고치고 단독 실행 → 통과하면 다음."</li>
+              <li><strong>힌트 3(골격)</strong>: 조교가 collector 개조 1건을 함께 수행(에신Lite 지시 문안 시범).</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            실데이터에 고객 실명·계좌 발견(→ 즉시 가명화, 투입 중단) / 복제 대신 처음부터 새로 만들기 시작(→ 복제 절차로 회귀) / 1차 실행이 특정 역할에서 반복 실패(→ 그 역할만 공통 프로젝트 원본으로 되돌려 범위 축소).
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: 공통 프로젝트 변형 하네스(소재만 교체)가 1차 실행 성공.</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 출력 행선지 2개 연결(파일+게시) / 2번째 업무용 하네스 복제 착수.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 5-C -->
+        <div class="card">
+          <div class="kicker">실습 5-C (워크시트 W4) · 블록 5-6</div>
+          <h2>하네스 개발 2부 — 재실행 검증</h2>
+          <p class="pillbar">
+            <span class="pill">실습 5-C</span><span class="pill demo">블록 5-6</span><span class="pill present">25분</span>
+            <span class="pill bloom">난이도: 확장(검증)</span><span class="pill hands">선행: 5-B 1차 실행 성공</span>
+          </p>
+          <p><strong>목표</strong>: <span class="pill bloom">평가</span> 같은 입력 2회 실행·품질 비교로 재현성을 직접 검증하고 오류를 수정한다.</p>
+
+          <div class="starter">
+            <span class="starter-h">스타터 (실제 문안 — W4 재실행 검증 기록표)</span>
+            <pre class="code"><code># W4. 재실행 검증 기록표 (수료 기준 ⓷ 재현성의 증거 — harness_mine/W4_verify.md)
+- 실행 문안(W3에서 복사·변경 금지): "________________"
+- 고정 입력(동일 파일/키워드): ____________
+
+| 비교 항목 | 1회차 | 2회차 | 동일? |
+|----------|-------|-------|-------|
+| 실행 완주 (끝까지 돌았나) | ____ | ____ | [ ] |
+| 산출 파일명 규칙 | ____ | ____ | [ ] |
+| 출력 형식 (표·섹션 구조) | ____ | ____ | [ ] |
+| 핵심 항목 수 (예: 인사이트 3개) | ____ | ____ | [ ] |
+| 검증 표시 (출처·확인 항목) | ____ | ____ | [ ] |
+
+- 편차 발견 시 조치: 무엇이 달랐나 ____________ → 어떻게 고정했나 ____________
+  (힌트: 출력 형식이 흔들리면 요약 역할의 '출력 규격'을 더 구체적으로 못박는다)
+- 최종: [ ] 같은 입력 2회 실행 동일 품질 확인  ← 이 체크 전에 "완성" 선언 금지 (5강 안전수칙)</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>W3의 실행 문안을 <strong>한 글자도 바꾸지 않고</strong> 2회차 실행.</li>
+            <li>W4 비교표 5항목을 1·2회차 나란히 기록.</li>
+            <li>편차 발견 시: 원인 역할을 찾아 규격을 고정(출력 형식 명세를 구체화) → <strong>다시 2회 실행</strong>(수정 후 재검증).</li>
+            <li>5항목 전부 동일 → 최종 체크. <strong>이 체크 전에는 "완성"이라고 말하지 않는다.</strong></li>
+          </ol>
+
+          <h4>완료 기준 (체크리스트)</h4>
+          <ul class="check">
+            <li><input type="checkbox" disabled><span>같은 입력·같은 문안으로 2회 실행 완료</span></li>
+            <li><input type="checkbox" disabled><span>W4 비교표 5항목 기록 완료</span></li>
+            <li><input type="checkbox" disabled><span>편차 0 또는 수정 후 재검증 통과</span></li>
+            <li><input type="checkbox" disabled><span>안전 게이트: 재현성 확인 전 "완성" 선언 금지 준수</span></li>
+          </ul>
+
+          <details>
+            <summary>힌트 보기</summary>
+            <ul>
+              <li><strong>힌트 1(방향)</strong>: "재현성의 적은 '느슨한 출력 규격'이에요. 형식이 흔들리면 규격 문장을 더 못박으세요."</li>
+              <li><strong>힌트 2(접근)</strong>: "1·2회차 산출물을 나란히 열고 Claude에 '두 파일의 구조 차이를 찾아줘'라고 시키세요."</li>
+            </ul>
+          </details>
+
+          <div class="callout info">
+            <span class="ct">ⓘ [조교 개입 신호]</span>
+            2회차에서 실행 문안을 바꿔버림(→ W3 문안으로 회귀) / 편차 수정이 3회 이상 실패(→ 산출 규격을 조교와 함께 재작성, 범위 축소).
+          </div>
+
+          <div class="callout tip">
+            <span class="ct">✓ [최소 통과선 / 확장 과제]</span>
+            <ul>
+              <li><strong>최소 통과선</strong>: 5항목 중 4항목 동일 + 편차 원인·조치 기록(보완 판정으로 5-D 진행 — 사후 점검에서 마무리).</li>
+              <li><strong>확장 과제(빠른 조)</strong>: 입력을 바꾼 3회차 실행(다른 데이터에도 규격 유지되는지) / 실패 시 재시도 규칙 삽입.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 5-D -->
+        <div class="card">
+          <div class="kicker">실습 5-D · 블록 5-7</div>
+          <h2>수료 루브릭 3기준 판정 (자가진단 → 강사 확인)</h2>
+          <p class="pillbar">
+            <span class="pill">실습 5-D</span><span class="pill demo">블록 5-7</span><span class="pill present">15분</span>
+            <span class="pill part">수료 판정</span>
+          </p>
+
+          <div class="starter">
+            <span class="starter-h">수료 루브릭 판정표 (실제 문안 — 자가진단 후 강사 확인)</span>
+            <pre class="code"><code># 수료 루브릭 판정표 (5-7 제출 — harness_mine/final_rubric.md)
+성명: ____ / 하네스 이름: ____ / ★업무: ____
+
+## A. 수료 3기준 (모두 통과 시 수료)
+| 기준 | 확인 질문 | 내 증거 (구체적으로) | 자가판정 | 강사판정 |
+|------|----------|---------------------|---------|---------|
+| ⓵ 실데이터 동작 | 실제 본인/공통 업무 데이터로 동작하는가 | ____ (예: 7월 가명화 전표 12건 투입 결과물) | 통과/보완 | 통과/보완 |
+| ⓶ 결과 지향 | "응답이 있다"가 아니라 "결과가 만들어진다"인가 | ____ (예: 대사 결과표 md 파일 생성) | 통과/보완 | 통과/보완 |
+| ⓷ 재현성 | 같은 입력 2회 실행 시 동일 품질인가 | ____ (W4 기록표 첨부) | 통과/보완 | 통과/보완 |
+
+## B. 안전 루브릭 게이트 (5항목 — 하나라도 위반 시 산출물 반려 후 재실행)
+- [ ] ① 비밀키 노출 0 (service_role·하드코딩 포함)
+- [ ] ② 고객/개인정보 입력 0 — 본인 업무 데이터 가명화 확인
+- [ ] ③ 검증 단계 수행 (검증 역할 생략 없음·출처/숫자 확인)
+- [ ] ④ 데이터 행선지 확인 (Gmail·MCP가 어디로 보내는지 + 테스트는 본인 메일만)
+- [ ] ⑤ 사람 최종 확인 (사내 공유 등재 전 비밀키·내부정보 제거)
+
+## C. 수료 증명물
+- [ ] 배포된 데모 URL: ____________ (1강 채널 또는 게시물)
+- [ ] 하네스 산출 영상/기록: ____________ (2회 실행 화면 녹화 또는 W4+산출물 2쌍)
+
+판정 결과:  [ ] 수료 (A 3기준 전부 통과 + B 게이트 전부 ✅)
+           [ ] 보완 (보완 항목: ______ → 수료 후 온라인 사후 점검 60분에서 마무리)</code></pre>
+          </div>
+
+          <h4>단계별 지시</h4>
+          <ol>
+            <li>A표를 자가진단으로 채운다 — "내 증거" 칸은 파일명·기록 등 <strong>구체물</strong>로(빈말 금지).</li>
+            <li>B 게이트 5항목 자기점검 — ②는 조교의 가명화 확인 서명 필요.</li>
+            <li>강사가 조별 순회하며 증거를 열어 확인 → 강사판정 기입.</li>
+            <li>판정 기록을 <code>harness_mine/final_rubric.md</code>로 저장 → 5-8 발표(하네스 시연 + 확산 계획 1줄)로 이동.</li>
+          </ol>
+
+          <div class="callout warn">
+            <span class="ct">⚠ 판정 규칙</span>
+            <ul>
+              <li><strong>수료</strong> = A 3기준 전부 통과 <strong>+</strong> B 게이트 5항목 전부 ✅. B는 점수가 아니라 게이트 — 하나라도 위반 시 산출물 반려 후 재실행(3기준 통과여도 수료 불가).</li>
+              <li><strong>보완</strong> = A 중 1개 이상 보완 → 수료 후 온라인 사후 점검(운영 옵션 60분)에서 마무리 가능.</li>
+              <li>5-8 사내 공유 저장소 등재는 <strong>B-⑤ 통과자만</strong>(비밀키·내부정보 제거 확인 후).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 주간 과제 ================= -->
+      <section class="tab-panel" id="weekly">
+        <div class="card sky">
+          <div class="kicker">Ⅱ. 주간 과제 5건 (강 간 연결 — 매 강 종료 시 부여, 다음 강 도입 회고에서 확인)</div>
+          <h2>주간 과제 개요</h2>
+          <div class="quote">주 1회 간격의 망각 곡선을 상쇄하는 v3의 핵심 장치. 각 과제는 <strong>강 내 실습 산출물의 소폭 변형·실전 적용</strong>이며(백지 과제 없음), 다음 강 도입 블록에서 반드시 확인한다.</div>
+        </div>
+
+        <div class="card">
+          <div class="kicker">주간 과제 ① · 1강 전 · 사전 배포</div>
+          <h2>두 안내서 숙지 + 설치·계정 사전 시도</h2>
+          <ul>
+            <li><strong>내용</strong>: ① 프로그램 설치 안내서 ② 사전과제 작성 안내서(1강 2~3일 전 배포)를 읽고, 계정 5종·설치 도구를 <strong>미리 시도</strong>해 온다(완료가 아니라 시도 — 완료 확인·보정은 1강 1-2에서 대면 수행).</li>
+            <li><strong>제출물</strong>: 없음(시도 상태 그대로 1강 지참). 막힌 항목은 안내서 여백에 "어디서 막혔는지" 1줄 메모.</li>
+            <li><strong>확인 방법</strong>: 1강 블록 1-2에서 10종 체크리스트로 대면 확인 — 사전 시도자가 많을수록 확인 시간이 단축된다.</li>
+            <li><strong>막힘 대비</strong>: 설치가 무서우면 계정 5종만이라도 가입해 오기. 결제(Claude Pro)가 안 되면 1강에서 조교와 함께.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="kicker">주간 과제 ② · 1강 후 → 2강 2-1 확인</div>
+          <h2>랜딩페이지 1섹션 추가·수정해 재배포</h2>
+          <ul>
+            <li><strong>내용</strong>: 1강에서 배포한 본인 랜딩페이지에 <strong>섹션 1개를 추가 또는 수정</strong>하고(예: 자격증·FAQ·인사말 업데이트) 재배포한다. 1강 실습(1-B·1-C)의 소폭 변형 — 같은 배관을 혼자 한 번 더 돌려 <strong>재현성을 체감</strong>하는 것이 목적.</li>
+            <li><strong>제출물</strong>: 재배포된 URL(주소는 동일) + 무엇을 바꿨는지 1줄.</li>
+            <li><strong>확인 방법</strong>: 2강 블록 2-1 회고에서 조별로 URL을 다시 열어 변경 섹션을 상호 확인. 강사는 2~3명 화면 공유로 "혼자서도 배포가 됐다"를 전체 확인.</li>
+            <li><strong>막힘 대비</strong>: 힌트 ① 1-B 프롬프트 카드를 재사용해 "○○ 섹션을 추가해줘" ② push하면 Vercel이 자동 재배포 — 새로 배포 설정할 필요 없음. 그래도 막히면 주중 조교 채널에 캡처 질문.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="kicker">주간 과제 ③ · 2강 후 → 3강 3-1 확인</div>
+          <h2>본인 직군 소재 블로그 글 1편 추가 게시</h2>
+          <ul>
+            <li><strong>내용</strong>: 2강 실습(2-B)과 같은 루프(생성→수정→<strong>검증</strong>→게시)로 본인 직군 소재 글 1편을 <strong>혼자</strong> 추가 게시한다. 검증 체크리스트 수행 필수(수정·삭제 기록 1건 이상).</li>
+            <li><strong>제출물</strong>: 게시 URL + 검증 체크리스트(수정/삭제한 내용 1건 기록 포함).</li>
+            <li><strong>확인 방법</strong>: 3강 블록 3-1 회고에서 URL 확인 + "검증에서 무엇을 걸러냈는지" 1인 1문장 공유(검증 루프 정착 확인).</li>
+            <li><strong>막힘 대비</strong>: 힌트 ① 2-B 프롬프트 템플릿 재사용, 주제만 교체 ② 소재가 없으면 직군별 소재표(2강 변형표)에서 선택.</li>
+          </ul>
+          <div class="callout warn">
+            <span class="ct">⚠ 안전</span>
+            허위 숫자·법조항 금지 · 고객정보 프롬프트 금지.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="kicker">주간 과제 ④ · 3강 후 → 4강 4-1 확인</div>
+          <h2>회의록 에이전트를 실제 회의 1건에 사용</h2>
+          <ul>
+            <li><strong>내용</strong>: 3강에서 만든 회의록 에이전트를 <strong>실제 업무 회의 1건</strong>(팀 회의·미팅 메모)에 사용한다. 실데이터 동작을 처음 체감하는 과제. 참석자 실명은 이니셜/직책으로 마스킹, 발송은 <strong>본인 메일로만</strong>(실제 참석자 발송은 사내 합의 전 금지).</li>
+            <li><strong>제출물</strong>: 생성된 회의록(마스킹본) + 본인 메일 수신 캡처 + "실데이터에서 무엇이 달랐는지" 1줄.</li>
+            <li><strong>확인 방법</strong>: 4강 블록 4-1 회고에서 후기 공유 — "합성 데이터와 실데이터의 차이"를 조별 1건씩 발표(5강 수료 기준 ⓵ 실데이터 동작의 예열).</li>
+            <li><strong>막힘 대비</strong>: 힌트 ① 회의가 없던 주면 과거 회의 메모 재사용 가능 ② 스킬이 실데이터에서 이상하게 동작하면 그 사례 자체가 훌륭한 공유거리 — 고치지 못해도 기록해 오기.</li>
+          </ul>
+        </div>
+
+        <div class="card amber">
+          <div class="kicker">주간 과제 ⑤ · 4강 후 → 5강 5-1 점검 · ★캡스톤 핵심 입력물</div>
+          <h2>본인 업무 2~3개 I/P/O 시트 작성</h2>
+          <ul>
+            <li><strong>내용</strong>: 본인 업무 2~3개를 <strong>입력(I)→처리(P)→출력(O)</strong> 시트로 분해한다. <strong>이것은 과제가 아니라 5강 실습의 입력물</strong> — 미제출 시 5강 하네스 실습 진행 불가(커리큘럼 명시). 자동화 1순위 업무에 ★ 표시.</li>
+            <li><strong>제출물</strong>: <code>내문서/vibecoding/05_ipo_sheet.md</code> (캡스톤 워크시트 W1 서식 — <strong>5강 캡스톤 탭</strong> 참조) — <strong>5강 2일 전까지</strong> 조교 채널 제출.</li>
+            <li><strong>확인 방법</strong>: 제출 즉시 조교가 주중 1회 서면 피드백(운영 권장 — I/P/O가 모호한 행 지적). 5강 블록 5-1에서 조별 점검 후 5-3 미러링 설계의 소재로 즉시 사용.</li>
+            <li><strong>막힘 대비</strong>: 힌트 ① 시트 템플릿에 직군 예시행 2종이 채워져 있음(W1) ② "반복되고·규칙 있고·결과물이 명확한" 업무를 고르면 실패 없음 ③ 정 없으면 5-1에서 공통 프로젝트 변형 소재로 대체 제공(최소 통과선).</li>
+          </ul>
+          <div class="callout warn">
+            <span class="ct">⚠ 안전</span>
+            시트에 고객 실명·계좌 등 기재 금지(가명·범주명만).
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 루브릭·운영노트 ================= -->
+      <section class="tab-panel" id="rubric">
+        <div class="card sky">
+          <div class="kicker">Ⅳ. 종합 평가 루브릭</div>
+          <h2>A. 캡스톤 총괄 루브릭 <span class="obj-note">(수료 3기준 — 통과/보완제, 5-7 판정)</span></h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>기준</th><th>통과</th><th>보완 (→ 사후 점검 60분)</th></tr></thead>
+              <tbody>
+                <tr><td><strong>⓵ 실데이터 동작</strong></td><td>실제 본인/공통 업무 데이터(가명화)로 처음부터 끝까지 동작, 결과물 생성</td><td>샘플/더미로만 동작, 실데이터 미검증</td></tr>
+                <tr><td><strong>⓶ 결과 지향</strong></td><td>"응답이 있다"가 아니라 <strong>의사결정용 결과물</strong>(표·카드·문서 파일)이 산출됨</td><td>텍스트 응답만 나오고 정형 산출물 없음</td></tr>
+                <tr><td><strong>⓷ 재현성</strong></td><td>같은 입력·같은 문안 2회 실행 시 동일 품질·형식(W4 증빙)</td><td>실행마다 형식·품질 편차, W4 미완</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout tip">
+            <span class="ct">✓ 수료 증명</span>
+            배포된 데모 URL + 동작하는 하네스 산출 영상/기록.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>B. 안전 루브릭 <span class="obj-note">(전 실습 공통 게이트 5항목 — 무관용 반려제)</span></h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>게이트</th><th>통과 조건</th><th>위반 예 (반려)</th></tr></thead>
+              <tbody>
+                <tr><td><strong>① 비밀키 노출 0</strong></td><td><code>anon</code> 공개키만, <code>service_role</code>·API키가 코드·화면·스크린샷·프롬프트에 없음(하드코딩 포함)</td><td>페이지 소스·repo에 service_role / 커넥터 키를 프롬프트에 붙임</td></tr>
+                <tr><td><strong>② 개인정보 입력 0</strong></td><td>폼 예시·프롬프트·테스트·회의록에 가명/합성만. <strong>5강 본인 데이터 가명화</strong></td><td>고객 실명·계좌·주민번호·참석자 실명 입력</td></tr>
+                <tr><td><strong>③ 검증 수행</strong></td><td>AI 생성 숫자·법조항·출처를 사람이 확인(2강~), <strong>4강 검증 에이전트·5강 검증 역할 생략 금지</strong></td><td>무검증 게시, verifier 건너뛰기</td></tr>
+                <tr><td><strong>④ 데이터 행선지 확인</strong></td><td>Gmail·MCP가 무엇을 어디로 보내는지 기록(3강 점검표), <strong>테스트 발송은 본인 메일로만</strong></td><td>행선지 미확인 발송, 타인 주소 테스트</td></tr>
+                <tr><td><strong>⑤ 사람 최종 확인</strong></td><td>대외 게시·발송·사내 등재 전 사람이 최종 확인(비밀키·내부정보 제거)</td><td>사람 확인 없이 발송·게시·등재</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card purple">
+          <h2>C. 강별 실습 분석적 루브릭 <span class="obj-note">(형성 — 다음 강 진입·보정 판단용)</span></h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>강·실습</th><th>상 (90~100)</th><th>중 (70~89)</th><th>하 (0~69)</th></tr></thead>
+              <tbody>
+                <tr><td><strong>1강 배포</strong> (1-A~C)</td><td>체크리스트 100% + URL 공개 접속 + 폼→Supabase 저장 + 확장 1개</td><td>URL 열리나 DB 저장은 조교 도움</td><td>체크리스트 미완 또는 URL 미배포</td></tr>
+                <tr><td><strong>2강 채널·콘텐츠</strong> (2-A~C)</td><td>채널 2종 개설 + 검증 흔적 있는 글 게시 + 유튜브 업로드</td><td>블로그 개설·게시, 유튜브 보정 필요</td><td>채널 미개설 또는 무검증 게시</td></tr>
+                <tr><td><strong>3강 회의록 에이전트</strong> (3-A~B)</td><td>스킬 2~3개 + Gmail 결선, 생성→문서화→본인 발송 재현 + 마스킹</td><td>스킬 1~2개 동작, 발송 조교 도움</td><td>스킬 미동작·조립 실패</td></tr>
+                <tr><td><strong>4강 에이전트팀</strong> (4-A~D)</td><td>4역할 재실행 + 출처 완비 브리핑 + 실채널 게시</td><td>3역할 연결(검증은 조교와), 게시 완료</td><td>1역할만 동작·게시 실패</td></tr>
+                <tr><td><strong>5강 하네스</strong> (5-A~D)</td><td>W1~W4 완비 + 3기준 통과 + 게이트 5✅</td><td>공통 변형 하네스 통과 또는 재현성 보완</td><td>1차 실행 실패·판정 불가</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul>
+            <li><strong>채점 규칙</strong>: 관찰 가능한 행동으로 기술 · 수준 간 차이 명확 · 학습자에게 사전 공개.</li>
+            <li><strong>피드백 공식 EEC</strong>: 증거(Evidence) → 영향(Effect) → 변경(Change) 순으로 코멘트.</li>
+          </ul>
+        </div>
+
+        <div class="card orange">
+          <h2>D. 부품 이월 점검 <span class="obj-note">(조교 — 매 강 종료 시)</span></h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>확인</th><th>통과 조건</th></tr></thead>
+              <tbody>
+                <tr><td>1강→4·5강</td><td>배포 URL·repo·Supabase가 대장에 기록되고 4-D 게시·5강 출력 채널로 재사용 가능</td></tr>
+                <tr><td>2강→4·5강</td><td>채널 URL + <code>02_content_format.md</code> 저장, 요약 산출 포맷으로 반영</td></tr>
+                <tr><td>3강→4·5강</td><td>스킬 파일·Gmail 연동·<code>minutes_agent/</code>가 보존되고 4강(문서화 스킬)·5강(부품)에 실제 연결</td></tr>
+                <tr><td>4강→5강</td><td><code>team_insight/</code>가 복제 가능한 상태 + <strong>I/P/O 시트(W1) 제출</strong>(5강 2일 전)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="kicker">부록: 실습 진행 운영 노트 (강사·조교용)</div>
+          <h3>동적 난이도 조절 <span class="obj-note">(조별 편차 흡수)</span></h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>상황</th><th>전략</th></tr></thead>
+              <tbody>
+                <tr><td>조가 막힘</td><td>3단 힌트(방향→접근→골격) 순차, 3분 간격. 정답 즉시 제공 금지</td></tr>
+                <tr><td>빠른 조</td><td>각 실습 <code>[확장 과제]</code> 상향 + 옆 조 멘토 역할</td></tr>
+                <tr><td>느린 조</td><td>각 실습 <code>[최소 통과선]</code> 달성 시 통과(다음 강 진입 자격)</td></tr>
+                <tr><td>배포/설치 사고</td><td>조교 백업 계정(GitHub·Vercel·Supabase 1세트) 우회 후 사후 보정</td></tr>
+                <tr><td>I/P/O 미제출(주간 과제 ⑤)</td><td>5-1에서 공통 프로젝트 변형 소재 대체 제공(최소 통과선 경로)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="margin-top:18px;">데이터/환경 대체</h3>
+          <ul>
+            <li>로컬 설치 실패 → <strong>GitHub Codespaces + Claude Code CLI</strong>(일관 환경).</li>
+            <li>실데이터 없음 → 각 실습 <strong>합성 데이터 스니펫</strong>(3강 회의 메모 등) 사용. 고객정보 절대 금지.</li>
+            <li>공통 프로젝트 뉴스·지수 → 웹검색 MCP로 공개 데이터 실시간 수집(개인정보 무관).</li>
+            <li>주간 과제 주중 질문 → 조교 채널(캡처+1줄 질문 형식) 운영, 4강 후 주간은 I/P/O 시트 피드백 1회 포함.</li>
+          </ul>
+
+          <h3 style="margin-top:18px;">예시 솔루션 공개 정책</h3>
+          <ul>
+            <li>모든 스타터의 완성본(배포된 풀스택 페이지·게시 글·완성 회의록 에이전트·완성 에이전트팀·완성 하네스)은 조교가 보유하되, <strong>각 실습 완료 후에만</strong> 학습자에게 공개(먼저 보면 스캐폴딩 무력화).</li>
+            <li>5강 공통 하네스 완제품(<code>team_insight/</code> 하네스화 버전)만 예외적으로 <strong>5-2 시연 직후 전원 배포</strong>(복제·개조의 원본이므로).</li>
+          </ul>
+          <div class="footer">AX강의 2026.08 v3 · 실습과제/캡스톤 설계서 — 강사·조교용 전체본. 학습자 배포 시 해당 강 실습 절만 발췌(청킹 보호).</div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = button.getAttribute('data-tab');
+        buttons.forEach((btn) => btn.classList.remove('active'));
+        panels.forEach((panel) => panel.classList.remove('active'));
+        button.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    // 인쇄 시 모든 details 펼침
+    window.addEventListener('beforeprint', () => {
+      document.querySelectorAll('details').forEach((d) => {
+        if (!d.open) { d.dataset.wasClosed = '1'; d.open = true; }
+      });
+    });
+    window.addEventListener('afterprint', () => {
+      document.querySelectorAll('details[data-was-closed="1"]').forEach((d) => {
+        d.open = false; delete d.dataset.wasClosed;
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AX강의 2026.08 v3 · 강의 입력 정보 (SSOT)</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    :root {
+      --bg: #f4f7ff; --card: #ffffff; --ink: #18223d; --muted: #5f6b8a; --line: #e2e8f7;
+      --accent: #2f55c6; --accent2: #ef7a2a; --mint: #2fa57b; --violet: #7f56d9; --amber: #d0a11d; --red: #d1495b;
+      --sky: #e6f0ff; --orange: #fdf0e5; --green: #eaf8f2; --purple: #f2ebff; --amberbg: #fbf3d9; --redbg: #fdecef;
+      --shadow: 0 10px 30px rgba(20, 32, 60, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+      background: linear-gradient(180deg, #f9fbff 0%, var(--bg) 100%); color: var(--ink); line-height: 1.7; letter-spacing: -0.01em;
+    }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 18px 60px; }
+    .shell { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); overflow: hidden; }
+    .hero { padding: 30px 32px 26px; background: linear-gradient(90deg, #17386f 0%, #2f55c6 100%); color: white; }
+    .eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.9; margin-bottom: 10px; }
+    h1 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 40px); line-height: 1.15; }
+    .sub { margin: 0; font-size: 16px; opacity: 0.95; max-width: 78ch; }
+    .meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    .meta .chip { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 14px; padding: 10px 12px; }
+    .chip .k { display: block; font-size: 11px; font-weight: 700; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.1em; }
+    .chip .v { display: block; font-size: 14px; font-weight: 700; margin-top: 3px; }
+    .body { padding: 22px 20px 30px; }
+    .card { border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; margin: 14px 0; background: var(--card); box-shadow: 0 6px 16px rgba(20, 32, 60, 0.04); }
+    .card.sky { background: var(--sky); } .card.orange { background: var(--orange); } .card.green { background: var(--green); }
+    .card.purple { background: var(--purple); } .card.amber { background: var(--amberbg); }
+    .card h2, .card h3 { margin-top: 0; }
+    .card h2 { font-size: 21px; line-height: 1.3; } .card h3 { font-size: 16px; }
+    .kicker { font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 7px; }
+    ul { padding-left: 18px; margin: 8px 0; } li { margin: 6px 0; }
+    .pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 9px; margin: 0 5px 4px 0; border-radius: 999px; background: rgba(47,85,198,0.1); color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+    th, td { padding: 10px 11px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #f8faff; text-align: left; font-weight: 700; white-space: nowrap; }
+    td:first-child { font-weight: 700; white-space: nowrap; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .badge { display: inline-block; margin: 0 6px 4px 0; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; background: white; border: 1px solid var(--line); }
+    .callout { border-radius: 12px; padding: 12px 15px; margin: 12px 0; font-size: 14px; line-height: 1.6; border: 1px solid transparent; }
+    .callout .ct { font-weight: 800; display: block; margin-bottom: 3px; font-size: 13px; }
+    .callout.warn { background: var(--redbg); border-color: #f6c9d1; color: #8f2233; }
+    .callout.tip { background: var(--green); border-color: #c5ebda; color: #1c744e; }
+    .callout.info { background: var(--sky); border-color: #cdddfb; color: #1b4da0; }
+    .footer { color: var(--muted); font-size: 13px; margin-top: 14px; }
+    .tablewrap { overflow-x: auto; }
+    @media (max-width: 800px) { .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); } .grid { grid-template-columns: 1fr; } }
+    @media print { body { background: #fff; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <header class="hero">
+        <div class="eyebrow">선명AG · AX강의 2026.08 · v3 · SSOT</div>
+        <h1>강의 입력 정보 — VibeCoding_AX v3</h1>
+        <p class="sub">"코딩하지 않고 자연어로 지시하며, 검증은 사람이 한다." 전원 초보자(사내 정규직) 대상 <strong>주 1회 3시간 × 5주 = 총 15시간</strong> 재편성판. 수료 시 <strong>본인 업무를 자동화하는 에이전트팀 + 이를 재생산하는 하네스</strong>를 스스로 구축한다. 이 문서는 course-builder 파이프라인의 단일 진실 원천(SSOT)이며, 하위 산출물(01~05)은 이 구조를 따른다.</p>
+        <div class="meta">
+          <div class="chip"><span class="k">대상</span><span class="v">초보자 · 전 직군</span></div>
+          <div class="chip"><span class="k">편성</span><span class="v">3h × 5강 (주 1회)</span></div>
+          <div class="chip"><span class="k">방식</span><span class="v">시연 후 따라하기</span></div>
+          <div class="chip"><span class="k">최종 산출</span><span class="v">본인 업무 하네스</span></div>
+        </div>
+      </header>
+
+      <div class="body">
+        <div class="card sky">
+          <div class="kicker">v0.2 → v3 주요 변경 (재작업 사유)</div>
+          <ul>
+            <li><strong>시간 구조</strong>: 0강(비대면)+2h×4강+30일 팔로우업 → <strong>3h×5강(주 1회, 5주)</strong>. 0강 설치는 1강 전반부에 흡수(대면·조교 개입), 30일 팔로우업의 하네스 정착 내용은 정식 <strong>5강</strong>으로 승격.</li>
+            <li><strong>1강</strong>: 프로그램 설치 + <strong>프로필 랜딩페이지</strong>(풀스택) 생성·배포·게시.</li>
+            <li><strong>2강</strong>: Claude 3계층 + 블로그·유튜브 <strong>계정생성 → 작성 → 업로드</strong> (계정생성이 정식 실습으로 추가).</li>
+            <li><strong>3강</strong>: 자동화 개념 <strong>5종(스킬·MCP·커넥터·에이전트·프로젝트)</strong>으로 축소·집중. 회의록 작성 프로젝트의 메일 발송을 <strong>G메일(Gmail) 연동</strong>으로 구체화.</li>
+            <li><strong>4강</strong>: 증시·뉴스 인사이트 에이전트팀 — <strong>에신Lite</strong>(+Claude Code CLI)로 구축·게시.</li>
+            <li><strong>5강</strong>: <strong>업무자동화 하네스 개발</strong> — 본인 업무 미러링 → 재실행 가능한 하네스 → 수료 루브릭 판정 → 공유·확산.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>강 구조 (5강 × 3h = 15시간)</h2>
+          <div class="tablewrap">
+          <table>
+            <thead><tr><th>강</th><th>주제</th><th>핵심</th><th>산출물</th></tr></thead>
+            <tbody>
+              <tr><td>1강</td><td>프로그램 설치 + 프로필 랜딩페이지(풀스택) 생성·배포</td><td>설치·계정 완료 확인(조교 개입) · LLM 4종 지형도 압축 브리핑 · 템플릿→프로필 랜딩페이지(프론트+Supabase)→GitHub→Vercel 배포·게시</td><td>✅10종 도구 체크리스트 + 🌐배포된 프로필 랜딩페이지 URL</td></tr>
+              <tr><td>2강</td><td>Claude 3계층 및 블로그·유튜브 계정생성·작성·업로드</td><td>Claude 3계층(chat/cowork/code) · 블로그·유튜브 계정 개설 · 콘텐츠 생성-수정-검증 루프 · 블로그 1편 게시 + 유튜브 세트 업로드</td><td>개설된 블로그·유튜브 채널 + 게시 글 1편 + 업로드된 유튜브 세트</td></tr>
+              <tr><td>3강</td><td>자동화 개념 5종 + 회의록 작성 프로젝트(G메일 연동)</td><td>개념 5종(스킬·MCP·커넥터·에이전트·프로젝트) · 회의록 생성·문서화 스킬 제작 + Gmail MCP/커넥터 연동 발송</td><td>🤖동작하는 회의록 에이전트 1개(스킬 2~3개 + Gmail 연동 + 프로젝트 폴더)</td></tr>
+              <tr><td>4강</td><td>증시·뉴스 인사이트 에이전트팀 — 에신Lite</td><td>Claude Code CLI + 에신Lite로 4역할(수집·분석·검증·요약) 에이전트팀 구축·실행·게시</td><td>동작·게시된 에이전트팀 1개 + (과제) 본인 업무 I/P/O 시트</td></tr>
+              <tr><td>5강</td><td>업무자동화 하네스 개발</td><td>하네스 개념(재생산 구조) · 공통 프로젝트 하네스화 시연 · 본인 업무 미러링→재실행 가능한 하네스 개발 · 수료 루브릭 판정 · 공유·확산</td><td>🏆본인 업무 하네스 1개(재실행 가능) + 루브릭 판정 기록</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card orange">
+            <h3>3대 설계 원칙 (전 강 관통)</h3>
+            <ul>
+              <li><strong>⓵ 백지 시작 금지</strong> — 모든 실습은 템플릿·스켈레톤·스니펫에서 출발.</li>
+              <li><strong>⓶ 데모 먼저, 따라하기 나중</strong> — 강사 시연(완성본 먼저) → 학습자 따라하기.</li>
+              <li><strong>⓷ 강사 + 조교 배석</strong> — 3인 1조 + 강사 1 + 조교 1~2, 실습 중 즉시 개입.</li>
+            </ul>
+          </div>
+          <div class="card green">
+            <h3>대상 학습자 · 편성</h3>
+            <ul>
+              <li>전원 초보자(사내 정규직 전 직군 — 회계·세무·법무·미디어·MICE). 코딩 무경험 전제.</li>
+              <li>숙련도 편차 큼 → 3인 1조 + 조교 즉시 개입.</li>
+              <li>각 강 180분(중간 휴식 10분 내외 포함). 1강 2~3일 전 두 안내서 배포, 설치는 사전 시도 + 1강 대면 완료 확인.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>실습 환경 (도구 목록)</h3>
+          <div class="tablewrap">
+          <table>
+            <thead><tr><th>구분</th><th>도구</th><th>역할</th></tr></thead>
+            <tbody>
+              <tr><td>계정 5종</td><td>Claude Pro(유료) · GitHub · Vercel · Supabase · 타 LLM 택1(ChatGPT/Gemini/Grok)</td><td>1강 전반부에서 완료 확인</td></tr>
+              <tr><td>콘텐츠 계정 2종</td><td>블로그(네이버/티스토리 등 택1) · 유튜브(구글 계정 기반 채널)</td><td><strong>2강에서 개설</strong>(계정생성 실습)</td></tr>
+              <tr><td>설치</td><td>Node.js · Git · VS Code · Claude Code(CLI) · Claude 데스크톱(커넥터) · Antigravity(선택)</td><td>사전 시도 + 1강 완료 확인</td></tr>
+              <tr><td>배포 3종 세트</td><td>GitHub → Vercel 배포·게시 + Supabase(PostgreSQL DB·Auth·Storage, 무료)</td><td>1강부터 실제 배포</td></tr>
+              <tr><td>연동</td><td>Gmail MCP/커넥터(메일 발송) · 웹검색 MCP/커넥터</td><td>3강(Gmail) · 4강(웹검색)에서 사용</td></tr>
+              <tr><td>에이전트 제조</td><td>Claude Code CLI · <strong>에신Lite</strong>(에이전트 제조 경량 도구)</td><td>4·5강에서 사용</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div class="card purple">
+          <h3>주간 과제 (강 간 연결 — 매 강 종료 시 부여)</h3>
+          <div class="tablewrap">
+          <table>
+            <thead><tr><th>시점</th><th>과제</th><th>다음 강에서의 용도</th></tr></thead>
+            <tbody>
+              <tr><td>1강 전</td><td>두 안내서 숙지 + 설치·계정 사전 시도</td><td>1강 전반부 완료 확인 시간 단축</td></tr>
+              <tr><td>1강 후</td><td>랜딩페이지 1섹션 추가·수정해 재배포</td><td>2강 회고에서 URL 재확인(재현성 체감)</td></tr>
+              <tr><td>2강 후</td><td>본인 직군 소재 블로그 글 1편 추가 게시</td><td>3강 회고 + 콘텐츠 루프 정착</td></tr>
+              <tr><td>3강 후</td><td>회의록 에이전트를 실제 회의 1건에 사용</td><td>4강 회고(실데이터 동작 체감)</td></tr>
+              <tr><td>4강 후</td><td><strong>본인 업무 2~3개를 입력→처리→출력(I/P/O) 시트로 작성</strong></td><td><strong>5강 하네스 개발의 핵심 소재</strong></td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>자동화 개념 5종 (3강 — v3 확정)</h3>
+            <div class="tablewrap">
+            <table>
+              <thead><tr><th>개념</th><th>정의</th><th>청킹</th></tr></thead>
+              <tbody>
+                <tr><td>스킬</td><td>단일 작업을 수행하는 재사용 가능한 부품</td><td>만드는 것</td></tr>
+                <tr><td>MCP · 커넥터</td><td>외부 시스템(메일·검색 등)과 연결하는 인터페이스</td><td>연결하는 것</td></tr>
+                <tr><td>에이전트</td><td>목표를 위해 스킬·연결을 조합해 일하는 주체</td><td>부리는 것</td></tr>
+                <tr><td>프로젝트</td><td>부품·산출물을 담아 반복 사용하는 작업 공간</td><td>담는 것</td></tr>
+              </tbody>
+            </table>
+            </div>
+            <p class="footer">에이전트팀(4강)·하네스(5강)는 해당 강에서 필요 시점에 도입 — 개념 선행 과잉 금지(인지부하 관리).</p>
+          </div>
+          <div class="card">
+            <h3>공통 프로젝트 — 글로벌 증시·뉴스 인사이트 에이전트팀</h3>
+            <div class="tablewrap">
+            <table>
+              <thead><tr><th>역할</th><th>하는 일</th><th>연동 부품</th></tr></thead>
+              <tbody>
+                <tr><td>수집</td><td>글로벌 주요 지수·주요 기업 뉴스 수집</td><td>웹검색 MCP/커넥터</td></tr>
+                <tr><td>분석</td><td>뉴스 전조·패턴·숨은 인사이트 도출</td><td>3개 분석 스킬</td></tr>
+                <tr><td>검증</td><td>사실·숫자·출처 교차검증</td><td>검증 스킬</td></tr>
+                <tr><td>요약</td><td>의사결정용 브리핑·카드 생성</td><td>요약 스킬</td></tr>
+              </tbody>
+            </table>
+            </div>
+            <p class="footer">4강에서 구축 → 5강 하네스화 시연 소재.</p>
+          </div>
+        </div>
+
+        <div class="card amber">
+          <h3>수료 루브릭 (3기준 — 5강에서 판정)</h3>
+          <div class="tablewrap">
+          <table>
+            <thead><tr><th>기준</th><th>확인 질문</th><th>판정</th></tr></thead>
+            <tbody>
+              <tr><td>⓵ 실데이터 동작</td><td>실제 본인/공통 업무 데이터로 동작하는가</td><td>통과 / 보완</td></tr>
+              <tr><td>⓶ 결과 지향</td><td>"응답이 있다"가 아니라 "결과가 만들어진다"인가</td><td>통과 / 보완</td></tr>
+              <tr><td>⓷ 재현성</td><td>같은 입력 2회 실행 시 동일 품질인가</td><td>통과 / 보완</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="callout tip">
+            <span class="ct">✓ 수료 판정</span>
+            3기준 모두 통과 시 수료. 수료 증명 = <strong>배포된 데모 URL + 동작하는 하네스 산출 영상/기록.</strong> 보완 판정자는 수료 후 온라인 사후 점검(운영 옵션, 60분)에서 마무리 가능.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>각 강 안전·성실 수칙 (필수 반영)</h3>
+          <ul>
+            <li><strong>1강</strong>: service_role 등 비밀키는 어디에도 올리지 않는다 · anon 공개키만 페이지에 · 개인정보는 폼 예시에 넣지 않기.</li>
+            <li><strong>2강</strong>: AI는 문장, 사실 근거는 사람이 준다 · 허위 숫자·법조항 금지 · 고객정보 프롬프트 금지 · 계정 비밀번호는 개인 관리(공유 금지).</li>
+            <li><strong>3강</strong>: 고객정보 프롬프트 금지 · Gmail 연동이 데이터를 어디로 보내는지 확인 · 키 하드코딩 금지 · 테스트 발송은 본인 메일로만.</li>
+            <li><strong>4강</strong>: 검증 단계 생략 금지 · 출처 없는 주장 배제 · 고객 식별정보/기밀 입력 금지 · 최종 확인은 사람.</li>
+            <li><strong>5강</strong>: 기밀·개인정보는 가명화 후 사용 · 재현성 확인 전 "완성" 선언 금지 · 공유 저장소 등재 시 비밀키·내부정보 제거.</li>
+          </ul>
+          <div class="callout warn">
+            <span class="ct">⚠ 전 강 공통</span>
+            백지 시작 금지 · 데모 먼저 · 강사+조교 배석. 그리고 언제나 <strong>검증은 사람이 한다.</strong>
+          </div>
+        </div>
+
+        <p class="footer">산출물: md — 00_input · 01_curriculum · 02_lesson_plans · 03_quizzes · 04_labs · 05_review_report / html — 동일 6종. 저장 위치: <code>_workspace/AX강의_2026.08_v3/</code> · 전신: VibeCoding_AX_SM_v0.2_202607</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
