@@ -22,6 +22,7 @@ description: "법률 실무서 집필 풀 파이프라인. 대상 법률 1건을
 | chapter-writer | `.claude/agents/chapter-writer.md` | 5블록 집필·이원독자 서술·[검증필요] 표기 | general-purpose |
 | example-builder | `.claude/agents/example-builder.md` | 계산사례(검산 의무)·시나리오·서식·FAQ | general-purpose |
 | textbook-reviewer | `.claude/agents/textbook-reviewer.md` | 6축 검증·체크리스트 유지·반려 | general-purpose |
+| prose-editor | `.claude/agents/prose-editor.md` | 문체 교열(어휘 격상)·무결성 기계검증 | general-purpose |
 
 ## 워크플로우
 
@@ -49,9 +50,19 @@ description: "법률 실무서 집필 풀 파이프라인. 대상 법률 1건을
 
 **필수 왕복**: 집필자→사례작성자(사례 요청) / 검증자→담당자(반려, 최대 2회) / 검증자→조사자(조사 오류 발견 시 역추적)
 
+### Phase 2.5: 문체 교열 (prose-editor)
+
+6축 검증 통과 장을 대상으로 **연결 어휘·구어체·번역투를 대학교재/언론 수준으로 격상**한다 (`ko-prose-style` 스킬 기준).
+
+- 사실 불변: 조문·수치·사건번호·[검증필요]·구조는 한 글자도 못 바꾼다 — 매 파일 `check_edit_integrity.py` exit 0이 납품 조건 (calc-verify와 같은 지위)
+- 교열 전 원본을 `chapters_backup_교열전_{날짜}/`에 백업하고 그것을 검증 대조 기준으로 쓴다
+- 장 단위로 독립적이므로 병렬 5~7팀이 안정적 — 지시서에 "하위 에이전트 금지" 명시
+- 산출물: 원고 in-place 수정 + `05_review/{장번호}_prose_edit.md` 교열 로그
+- 교열 후 열람본·작업표 등 보조 산출물은 스크립트로 재생성한다 (낡은 사본 방지)
+
 ### Phase 3: 마감
 
-0. **서문·부록 생성 (chapter-writer)** — 서문(면책 문구·기준 시행일·독자 안내 의무 포함, `chapters/00_서문.md`)과 부록(플로차트·요약표·시기별 체크리스트·용어집·색인, `chapters/99_부록.md`). 검증자가 서문 면책·용어집을 검사하므로 이 단계 생략 금지
+0. **서문·부록 생성 (chapter-writer)** — 서문(면책 문구·기준 시행일·독자 안내 의무 포함, `chapters/00_서문.md`)과 부록(플로차트·요약표·시기별 체크리스트·용어집·색인, `chapters/99_부록.md`). 검증자가 서문 면책·용어집을 검사하므로 이 단계 생략 금지. 서문·부록도 문체 교열을 거친다
 1. `05_review/00_final_review.md` — 전권 6축 요약
 2. `02_verification_checklist.md` 최종 상태 확인 — [검증필요] 잔여 목록 명시
 3. 사용자 보고: 장별 현황 + 미해결 + **출판 전 필수 조치** (law.go.kr 1:1 대조·전문가 감수 — 사람의 몫)
@@ -65,6 +76,7 @@ description: "법률 실무서 집필 풀 파이프라인. 대상 법률 1건을
 | "목차만 설계해줘" | 목차 모드 | outline-designer |
 | "제N장만 써줘" (목차·조사 있음) | 장 집필 모드 | researcher→example→writer→reviewer (해당 장) |
 | "이 원고 검증해줘" | 검증 모드 | textbook-reviewer 단독 |
+| "문체 다듬어줘"·"교열해줘"·"어휘 수준 올려줘" | 교열 모드 | prose-editor (병렬 5~7팀, 무결성 검증 의무) |
 | "계산 사례만 만들어줘" | 사례 모드 | example-builder (+researcher) |
 | "개정법 반영해서 개정판" | 개정판 모드 | researcher(개정 조사)→영향 장만 재집필·재검증 |
 
@@ -108,3 +120,4 @@ description: "법률 실무서 집필 풀 파이프라인. 대상 법률 1건을
 | `chapter-template` | outline-designer, chapter-writer, textbook-reviewer | 5블록 장 구조·이원독자 규칙 (도정법 실증) — 검증자는 이 구조를 기준으로 5블록 준수를 판정 |
 | `legal-currency-guard` | researcher, writer, reviewer | 최신성·확인상태 3단계·체크리스트·면책 |
 | `calc-verify` | example-builder, reviewer | 계산 사례 기계 검산 엔진 (verify_calc.py) |
+| `ko-prose-style` | prose-editor, chapter-writer | 문체 격상 가이드(격상표·금지 목록) + 무결성 검증 (check_edit_integrity.py) |

@@ -8,17 +8,19 @@
 
 ```
 .claude/
-├── agents/  (5명)
+├── agents/  (6명)
 │   ├── outline-designer.md    — 목차 설계 (구성방식·표준주제 대조·우선순위)
 │   ├── law-researcher.md      — 법령·판례 조사 (확인상태 3단계 · 번호 추측 금지)
 │   ├── chapter-writer.md      — 5블록 집필 (이원독자 · [검증필요] 표기)
 │   ├── example-builder.md     — 사례·계산 (세법류는 기계검산 의무)
-│   └── textbook-reviewer.md   — 6축 검증 (구조·최신성·확인상태·검산·용어·독자)
-├── skills/  (5종)
-│   ├── law-textbook/          — 오케스트레이터 (장 단위 순환 · 6모드)
+│   ├── textbook-reviewer.md   — 6축 검증 (구조·최신성·확인상태·검산·용어·독자)
+│   └── prose-editor.md        — 문체 교열 편집장 (어휘 격상 · 사실 불변 기계검증)
+├── skills/  (6종)
+│   ├── law-textbook/          — 오케스트레이터 (장 단위 순환 · 7모드)
 │   ├── chapter-template/      — 5블록 장 구조 (도정법 실증 부품)
 │   ├── legal-currency-guard/  — 최신성 가드 (기준시행일·확인상태·체크리스트·면책)
 │   ├── calc-verify/           — 계산 검산 엔진 (verify_calc.py · cases.sample.json)
+│   ├── ko-prose-style/        — 문체 격상 가이드 (격상표·금지 목록 · check_edit_integrity.py)
 │   └── book-typeset/          — 책 조판 (신국판·머리글·바닥글·차례·색인 자동 페이지 → HTML+PDF)
 └── CLAUDE.md
 ```
@@ -73,6 +75,12 @@
 
 **보조 산출물은 반드시 스크립트로 만들어라.** 열람본 html·작업표 xlsx를 수동 제작했더니 원고가
 3.68배 늘었을 때 통째로 낡았다. `build_reading_html.py`·`build_crosscheck_xlsx.py`가 그 해법이다.
+
+**연결 어휘는 별도 교열 공정이 필요하다.** 법률 용어는 법령에서 오니 정확한데, 그 사이를 잇는
+어휘("넘어가는 길은 두 갈래", "반쪽 설계")가 구어·헤드라인체로 처진다 — PO가 1호기에서 직접 지적.
+해법은 prose-editor(편집장) + `ko-prose-style`(격상표·금지 목록) + `check_edit_integrity.py`
+(수치·조문·사건번호·[검증필요]·분량 97% 불변 기계검증). "잘 써라"는 추상 지시는 안 듣고,
+**금지 목록 + 이전→이후 예시쌍**만 듣는다. 종결어미는 서술체(~이다) 유지가 PO 확정 방침.
 
 ## 관련 하네스·자산
 
