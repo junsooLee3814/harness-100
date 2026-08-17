@@ -45,6 +45,10 @@ if os.path.exists(ix_path):
             terms.append((parts[0], variants))
 
 # ---------- md → html (5블록 원고 문법)
+# inline()은 & < > 만 이스케이프하므로 이 자리표시자는 그대로 통과한다.
+# 원고에 자연히 나타날 수 없는 문자열이어야 오치환이 없다.
+BR = "@@BRK@@"
+
 def inline(s):
     s = _h.escape(s, quote=False)
     s = re.sub(r"\[검증필요[::]?\s*([^\]]+)\]", r"<span class='vreq'>⚠ \1</span>", s)
@@ -53,7 +57,31 @@ def inline(s):
     return s
 
 def md_body(md):
+    """원고 md → 조판용 html.
+
+    ★ 원고는 가독성을 위해 100자 안팎에서 **줄바꿈**되어 있다. 줄 하나를 문단 하나로
+    보면 ① 문장이 중간에서 쪼개지고 ② 줄을 걸친 `**굵게**`가 매칭되지 않아 별표가
+    본문에 그대로 새어 나온다. 그러므로 연속한 본문 줄은 **빈 줄이나 구조 요소를 만날
+    때까지 이어 붙인 뒤** 한 번에 변환한다. 인용문(`> `)·목록 항목의 이어지는 줄도 같다.
+    """
     out, tbl, lst, pre = [], [], [], None
+    para, quote = [], []
+
+    def fpara():
+        nonlocal para
+        if para:
+            out.append(f"<p>{inline(' '.join(para))}</p>")
+            para = []
+
+    def fquote():
+        nonlocal quote
+        if quote:
+            # 자리표시자를 쓴다 — inline()이 HTML을 이스케이프하므로 `<br>`을 직접 넣으면
+            # `&lt;br&gt;`로 새어 나온다. 이스케이프를 통과시킨 뒤 되돌린다.
+            html = inline(" ".join(quote)).replace(BR, "<br>")
+            out.append(f"<blockquote>{html}</blockquote>")
+            quote = []
+
     def ftbl():
         nonlocal tbl
         if len(tbl) >= 2:
@@ -69,6 +97,10 @@ def md_body(md):
         if lst:
             out.append("<ul>" + "".join(f"<li>{inline(x)}</li>" for x in lst) + "</ul>")
             lst = []
+
+    def fall():
+        """문단·인용·목록을 한꺼번에 닫는다 (표·코드블록 진입 직전용)."""
+        fpara(); fquote(); flst()
     for ln in md.splitlines():
         if pre is not None:
             if ln.strip().startswith("```"):
@@ -77,28 +109,38 @@ def md_body(md):
                 pre.append(ln)
             continue
         if ln.strip().startswith("```"):
-            ftbl(); flst(); pre = []; continue
+            ftbl(); fall(); pre = []; continue
         if ln.startswith("|"):
-            flst(); tbl.append(ln); continue
+            fall(); tbl.append(ln); continue
         ftbl()
         s = ln.rstrip()
         if s.startswith("# "):
-            flst()
+            fall()
         elif s.startswith("## "):
-            flst(); out.append(f"<h2>{inline(s[3:])}</h2>")
+            fall(); out.append(f"<h2>{inline(s[3:])}</h2>")
         elif s.startswith("### "):
-            flst(); out.append(f"<h3>{inline(s[4:])}</h3>")
-        elif s.startswith("> "):
-            flst(); out.append(f"<blockquote>{inline(s[2:])}</blockquote>")
+            fall(); out.append(f"<h3>{inline(s[4:])}</h3>")
+        elif s.startswith(">"):
+            # 인용문은 연속한 줄을 하나로 잇는다 (`>` 단독 줄은 문단 구분자로 쓰인다)
+            fpara(); flst()
+            body = s[1:].lstrip()
+            if body:
+                quote.append(body)
+            elif quote:
+                quote.append(BR)
         elif s.startswith("- ") or s.startswith("* "):
+            fpara(); fquote()
             lst.append(re.sub(r"^\[ \]\s*", "☐ ", s[2:]))
+        elif lst and ln[:1].isspace() and s.strip():
+            # 목록 항목이 다음 줄로 이어진 경우 — 마지막 항목에 붙인다
+            lst[-1] += " " + s.strip()
         elif s.startswith("---") or s.startswith("<!--"):
-            flst()
+            fall()
         elif not s.strip():
-            flst()
+            fall()
         else:
-            flst(); out.append(f"<p>{inline(s)}</p>")
-    ftbl(); flst()
+            fquote(); flst(); para.append(s.strip())
+    ftbl(); fall()
     return "".join(out)
 
 # ---------- 색인 앵커 심기: 장마다 각 표제어의 첫 등장 텍스트에 <span id> 부착
@@ -165,7 +207,7 @@ for label in sorted(ix_entries.keys()):
     if g != cur_grp:
         ix_rows.append(f"<h2 class='ixgrp'>{g}</h2>"); cur_grp = g
     links = " · ".join(f"<a class='pg' href='#{aid}'></a>" for _, aid in sorted(ix_entries[label]))
-    ix_rows.append(f"<div class='ixrow'><span>{_h.escape(label)}</span><span class='ixpg'>{links}</span></div>")
+    ix_rows.append(f"<div class='ixrow'><span class='ixterm'>{_h.escape(label)}</span><span class='ixpg'>{links}</span></div>")
 index_html = "".join(ix_rows)
 missing = [t[0] for t in terms if t[0] not in ix_entries]
 
@@ -228,8 +270,12 @@ strong{font-weight:700}
 .ixsec .cols{column-count:2;column-gap:8mm}
 .ixgrp{font-size:11pt;color:var(--navy);border-bottom:1.5px solid var(--navy);
  margin:3.5mm 0 2mm;padding-bottom:.8mm;break-after:avoid}
-.ixrow{display:flex;justify-content:space-between;font-size:8.8pt;margin-bottom:1.1mm;break-inside:avoid}
-.ixrow .ixpg{color:var(--muted);white-space:nowrap;margin-left:2mm}
+/* 색인 행 — flex + nowrap 조합은 페이지 번호가 길 때 표제어 칸을 0으로 눌러
+   한글이 한 글자씩 세로로 꺾인다. 달아쓰기 + 내어쓰기(hanging indent)로 둔다. */
+.ixrow{font-size:8.8pt;margin-bottom:1.1mm;break-inside:avoid;
+  line-height:1.45;text-indent:-4mm;padding-left:4mm;word-break:keep-all;overflow-wrap:anywhere}
+.ixrow .ixterm{font-weight:600}
+.ixrow .ixpg{color:var(--muted);margin-left:1.6mm}
 """
 
 doc = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8">

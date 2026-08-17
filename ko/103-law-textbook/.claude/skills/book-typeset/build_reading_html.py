@@ -45,6 +45,8 @@ if not files:
 # ---------- 인라인 서식
 VREQ_RE = re.compile(r"\[검증필요([^\]]*)\]")
 
+BRK = "@@BRK@@"   # inline()의 HTML 이스케이프를 통과하는 줄바꿈 자리표시자
+
 def inline(s):
     """한 줄의 md 인라인 문법 → html. HTML 이스케이프를 먼저 하고 마크업을 심는다."""
     s = _h.escape(s, quote=False)
@@ -80,7 +82,7 @@ def callout_class(raw):
 def md_to_html(md, chid):
     """본문 md → (html, [(절 앵커, 절 제목)])"""
     out, secs = [], []
-    tbl, ul, ol, bq = [], [], [], []
+    tbl, ul, ol, bq, para = [], [], [], [], []
     pre = None
 
     def flush_tbl():
@@ -110,13 +112,20 @@ def md_to_html(md, chid):
     def flush_bq():
         if bq:
             cls = callout_class(" ".join(bq))
-            body = "<br>".join(inline(x) for x in bq)
+            # 줄마다 inline()을 걸면 줄을 걸친 `**굵게**`가 매칭되지 않아 별표가 새어 나온다.
+            # 이어 붙인 뒤 한 번에 변환하고, 줄바꿈은 자리표시자로 보존한다.
+            body = inline(BRK.join(bq)).replace(BRK, "<br>")
             attr = (" class='%s'" % cls) if cls else ""
             out.append("<blockquote%s>%s</blockquote>" % (attr, body))
             del bq[:]
 
+    def flush_para():
+        if para:
+            out.append("<p>%s</p>" % inline(" ".join(para)))
+            del para[:]
+
     def flush_all():
-        flush_tbl(); flush_ul(); flush_ol(); flush_bq()
+        flush_para(); flush_tbl(); flush_ul(); flush_ol(); flush_bq()
 
     for ln in md.splitlines():
         s = ln.rstrip()
@@ -134,12 +143,12 @@ def md_to_html(md, chid):
             continue
 
         if s.startswith("|"):
-            flush_ul(); flush_ol(); flush_bq()
+            flush_para(); flush_ul(); flush_ol(); flush_bq()
             tbl.append(s)
             continue
 
         if s.startswith(">"):
-            flush_tbl(); flush_ul(); flush_ol()
+            flush_para(); flush_tbl(); flush_ul(); flush_ol()
             bq.append(s.lstrip(">").strip())
             continue
 
@@ -147,7 +156,7 @@ def md_to_html(md, chid):
 
         h = re.match(r"^(#{1,6})\s+(.*)$", s)
         if h:
-            flush_ul(); flush_ol()
+            flush_para(); flush_ul(); flush_ol()
             title = h.group(2).strip()
             if len(h.group(1)) <= 2:          # ## 절 → 좌측 목차에 실린다
                 sid = "%s-s%d" % (chid, len(secs) + 1)
@@ -156,23 +165,23 @@ def md_to_html(md, chid):
             else:
                 out.append("<h3>%s</h3>" % inline(title))
         elif re.match(r"^[-*+] ", s):
-            flush_ol()
+            flush_para(); flush_ol()
             ul.append(re.sub(r"^\[[ xX]\]\s*", "☐ ", s[2:]))
         elif re.match(r"^\d+\. ", s):
-            flush_ul()
+            flush_para(); flush_ul()
             ol.append(re.sub(r"^\d+\.\s*", "", s))
         elif not s.strip() or re.match(r"^(---+|\*\*\*+|___+)$", s.strip()) or s.lstrip().startswith("<!--"):
-            flush_ul(); flush_ol()
+            flush_para(); flush_ul(); flush_ol()
         elif s.startswith("⚠️") or s.startswith("⚠") or s.startswith("💡"):
             # 인용부호 없이 본문에 놓인 주의·팁 문단도 콜아웃 박스로 통일한다
-            flush_ul(); flush_ol()
+            flush_para(); flush_ul(); flush_ol()
             out.append("<blockquote class='%s'>%s</blockquote>"
                        % ("tip" if s.startswith("💡") else "warn", inline(s)))
         else:
             flush_ul(); flush_ol()
-            out.append("<p>%s</p>" % inline(s))
+            para.append(s.strip())
 
-    flush_all()
+    flush_para(); flush_all()
     return "".join(out), secs
 
 # ---------- 본문 조립
